@@ -1,0 +1,22 @@
+# Any path
+*.swp
+*~
+nimcache/
+
+# Absolute paths
+/src/babel
+/src/nimble
+/tests/tester
+
+# executables from test and build
+/nimble
+/tests/nimscript/nimscript
+/tests/issue27/issue27
+
+# Windows executables
+*.exe
+*.dll
+
+# VCC compiler and linker artifacts
+*.ilk
+*.pdb

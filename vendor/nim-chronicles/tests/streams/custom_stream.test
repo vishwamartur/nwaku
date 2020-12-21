@@ -1,0 +1,11 @@
+program="../custom_stream"
+chronicles_sinks="textlines[stdout]"
+chronicles_colors=None
+chronicles_timestamps=None
+
+[Output]
+stdout="""INF before main                                tid=0 a=1 b=3
+[INFO] inside main:  (tid=0, key=val)
+INF after main                                 tid=0
+[WARN] exiting:  (tid=0)
+"""

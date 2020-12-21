@@ -1,0 +1,20 @@
+# Ignore all files without extensions (unix executable files)
+*
+!*.*
+!*/
+
+# Ignore all binary outputs
+*.so
+*.dylib
+*.a
+*.la
+*.exe
+*.dll
+
+nimcache/
+/build
+
+# Ignore editor settings
+.vscode
+
+

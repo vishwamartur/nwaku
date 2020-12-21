@@ -1,0 +1,217 @@
+#
+#                  Chronos Handles
+#              (c) Copyright 2018-Present
+#         Status Research & Development GmbH
+#
+#              Licensed under either of
+#  Apache License, version 2.0, (LICENSE-APACHEv2)
+#              MIT license (LICENSE-MIT)
+
+import net, nativesockets, asyncloop
+
+when defined(windows):
+  import os, winlean
+  const
+    asyncInvalidSocket* = AsyncFD(-1)
+    TCP_NODELAY* = 1
+    IPPROTO_TCP* = 6
+    PIPE_TYPE_BYTE = 0x00000000'i32
+    PIPE_READMODE_BYTE = 0x00000000'i32
+    PIPE_WAIT = 0x00000000'i32
+    DEFAULT_PIPE_SIZE = 65536'i32
+    ERROR_PIPE_CONNECTED = 535
+    ERROR_PIPE_BUSY = 231
+    pipeHeaderName = r"\\.\pipe\chronos\"
+
+  proc connectNamedPipe(hNamedPipe: Handle, lpOverlapped: pointer): WINBOOL
+       {.importc: "ConnectNamedPipe", stdcall, dynlib: "kernel32".}
+else:
+  import os, posix
+  const
+    asyncInvalidSocket* = AsyncFD(posix.INVALID_SOCKET)
+    TCP_NODELAY* = 1
+    IPPROTO_TCP* = 6
+
+const
+  asyncInvalidPipe* = asyncInvalidSocket
+
+proc setSocketBlocking*(s: SocketHandle, blocking: bool): bool =
+  ## Sets blocking mode on socket.
+  when defined(windows):
+    result = true
+    var mode = clong(ord(not blocking))
+    if ioctlsocket(s, FIONBIO, addr(mode)) == -1:
+      result = false
+  else:
+    result = true
+    var x: int = fcntl(s, F_GETFL, 0)
+    if x == -1:
+      result = false
+    else:
+      var mode = if blocking: x and not O_NONBLOCK else: x or O_NONBLOCK
+      if fcntl(s, F_SETFL, mode) == -1:
+        result = false
+
+proc setSockOpt*(socket: AsyncFD, level, optname, optval: int): bool =
+  ## `setsockopt()` for integer options.
+  ## Returns ``true`` on success, ``false`` on error.
+  var value = cint(optval)
+  result = setsockopt(SocketHandle(socket), cint(level), cint(optname),
+                      addr(value), SockLen(sizeof(value))) >= cint(0)
+
+proc setSockOpt*(socket: AsyncFD, level, optname: int, value: pointer,
+                 valuelen: int): bool =
+  ## `setsockopt()` for custom options (pointer and length).
+  ## Returns ``true`` on success, ``false`` on error.
+  result = setsockopt(SocketHandle(socket), cint(level), cint(optname), value,
+                      SockLen(valuelen)) >= cint(0)
+
+proc getSockOpt*(socket: AsyncFD, level, optname: int, value: var int): bool =
+  ## `getsockopt()` for integer options.
+  ## Returns ``true`` on success, ``false`` on error.
+  var res: cint
+  var size = SockLen(sizeof(res))
+  if getsockopt(SocketHandle(socket), cint(level), cint(optname),
+                addr(res), addr(size)) >= cint(0):
+    value = int(res)
+    result = true
+
+proc getSockOpt*(socket: AsyncFD, level, optname: int, value: pointer,
+                 valuelen: var int): bool =
+  ## `getsockopt()` for custom options (pointer and length).
+  ## Returns ``true`` on success, ``false`` on error.
+  result = getsockopt(SocketHandle(socket), cint(level), cint(optname),
+                      value, cast[ptr Socklen](addr valuelen)) >= cint(0)
+
+proc getSocketError*(socket: AsyncFD, err: var int): bool =
+  ## Recover error code associated with socket handle ``socket``.
+  result = getSockOpt(socket, cint(SOL_SOCKET), cint(SO_ERROR), err)
+
+proc createAsyncSocket*(domain: Domain, sockType: SockType,
+                        protocol: Protocol): AsyncFD =
+  ## Creates new asynchronous socket.
+  ## Returns ``asyncInvalidSocket`` on error.
+  let handle = createNativeSocket(domain, sockType, protocol)
+  if handle == osInvalidSocket:
+    return asyncInvalidSocket
+  if not setSocketBlocking(handle, false):
+    close(handle)
+    return asyncInvalidSocket
+  when defined(macosx) and not defined(nimdoc):
+    if not setSockOpt(AsyncFD(handle), SOL_SOCKET, SO_NOSIGPIPE, 1):
+      close(handle)
+      return asyncInvalidSocket
+  result = AsyncFD(handle)
+  register(result)
+
+proc wrapAsyncSocket*(sock: SocketHandle): AsyncFD =
+  ## Wraps socket to asynchronous socket handle.
+  ## Return ``asyncInvalidSocket`` on error.
+  if not setSocketBlocking(sock, false):
+    close(sock)
+    return asyncInvalidSocket
+  when defined(macosx) and not defined(nimdoc):
+    if not setSockOpt(AsyncFD(sock), SOL_SOCKET, SO_NOSIGPIPE, 1):
+      close(sock)
+      return asyncInvalidSocket
+  result = AsyncFD(sock)
+  register(result)
+
+proc getMaxOpenFiles*(): int =
+  ## Returns maximum file descriptor number that can be opened by this process.
+  ##
+  ## Note: On Windows its impossible to obtain such number, so getMaxOpenFiles()
+  ## will return constant value of 16384. You can get more information on this
+  ## link https://docs.microsoft.com/en-us/archive/blogs/markrussinovich/pushing-the-limits-of-windows-handles
+  when defined(windows):
+    result = 16384
+  else:
+    var limits: RLimit
+    if getrlimit(posix.RLIMIT_NOFILE, limits) != 0:
+      raiseOSError(osLastError())
+    result = int(limits.rlim_cur)
+
+proc setMaxOpenFiles*(count: int) =
+  ## Set maximum file descriptor number that can be opened by this process.
+  ##
+  ## Note: On Windows its impossible to set this value, so it just a nop call.
+  when defined(windows):
+    discard
+  else:
+    var limits: RLimit
+    if getrlimit(posix.RLIMIT_NOFILE, limits) != 0:
+      raiseOSError(osLastError())
+    limits.rlim_cur = count
+    if setrlimit(posix.RLIMIT_NOFILE, limits) != 0:
+      raiseOSError(osLastError())
+
+proc createAsyncPipe*(): tuple[read: AsyncFD, write: AsyncFD] =
+  ## Create new asynchronouse pipe.
+  ## Returns tuple of read pipe handle and write pipe handle``asyncInvalidPipe`` on error.
+  when defined(windows):
+    var pipeIn, pipeOut: Handle
+    var pipeName: WideCString
+    var uniq = 0'u64
+    var sa = SECURITY_ATTRIBUTES(nLength: sizeof(SECURITY_ATTRIBUTES).cint,
+                                 lpSecurityDescriptor: nil, bInheritHandle: 0)
+    while true:
+      QueryPerformanceCounter(uniq)
+      pipeName = newWideCString(pipeHeaderName & $uniq)
+      var openMode = FILE_FLAG_FIRST_PIPE_INSTANCE or FILE_FLAG_OVERLAPPED or
+                     PIPE_ACCESS_INBOUND
+      var pipeMode = PIPE_TYPE_BYTE or PIPE_READMODE_BYTE or PIPE_WAIT
+      pipeIn = createNamedPipe(pipeName, openMode, pipeMode, 1'i32,
+                               DEFAULT_PIPE_SIZE, DEFAULT_PIPE_SIZE,
+                               0'i32, addr sa)
+      if pipeIn == INVALID_HANDLE_VALUE:
+        let err = osLastError()
+        # If error in {ERROR_ACCESS_DENIED, ERROR_PIPE_BUSY}, then named pipe
+        # with such name already exists.
+        if int32(err) != ERROR_ACCESS_DENIED and int32(err) != ERROR_PIPE_BUSY:
+          result = (read: asyncInvalidPipe, write: asyncInvalidPipe)
+          return
+        continue
+      else:
+        break
+
+    var openMode = (GENERIC_WRITE or FILE_WRITE_DATA or SYNCHRONIZE)
+    pipeOut = createFileW(pipeName, openMode, 0, addr(sa), OPEN_EXISTING,
+                          FILE_FLAG_OVERLAPPED, 0)
+    if pipeOut == INVALID_HANDLE_VALUE:
+      discard closeHandle(pipeIn)
+      result = (read: asyncInvalidPipe, write: asyncInvalidPipe)
+      return
+
+    var ovl = OVERLAPPED()
+    let res = connectNamedPipe(pipeIn, cast[pointer](addr ovl))
+    if res == 0:
+      let err = osLastError()
+      if int32(err) == ERROR_PIPE_CONNECTED:
+        discard
+      elif int32(err) == ERROR_IO_PENDING:
+        var bytesRead = 0.Dword
+        if getOverlappedResult(pipeIn, addr ovl, bytesRead, 1) == 0:
+          discard closeHandle(pipeIn)
+          discard closeHandle(pipeOut)
+          result = (read: asyncInvalidPipe, write: asyncInvalidPipe)
+          return
+      else:
+        discard closeHandle(pipeIn)
+        discard closeHandle(pipeOut)
+        result = (read: asyncInvalidPipe, write: asyncInvalidPipe)
+        return
+
+    result = (read: AsyncFD(pipeIn), write: AsyncFD(pipeOut))
+  else:
+    var fds: array[2, cint]
+
+    if posix.pipe(fds) == -1:
+      result = (read: asyncInvalidPipe, write: asyncInvalidPipe)
+      return
+
+    if not(setSocketBlocking(SocketHandle(fds[0]), false)) or
+       not(setSocketBlocking(SocketHandle(fds[1]), false)):
+      result = (read: asyncInvalidPipe, write: asyncInvalidPipe)
+      return
+
+    result = (read: AsyncFD(fds[0]), write: AsyncFD(fds[1]))
