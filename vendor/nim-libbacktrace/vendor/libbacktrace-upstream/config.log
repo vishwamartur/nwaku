@@ -841,7 +841,7 @@ configure:12482: $? = 0
 configure:12482: result: yes
 configure:12499: checking for getexecname
 configure:12499: gcc -o conftest -g -O3 -std=gnu11 -pipe -Wall -Wextra -fPIC   conftest.c  >&5
-/tmp/cczOe5KH.o: In function `main':
+/tmp/ccEuTD9Y.o: In function `main':
 /home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace/vendor/libbacktrace-upstream/conftest.c:73: undefined reference to `getexecname'
 collect2: error: ld returned 1 exit status
 configure:12499: $? = 1
