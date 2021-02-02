@@ -11,7 +11,6 @@ import std/oids
 import stew/byteutils
 import chronicles, chronos, metrics
 import ../varint,
-       ../vbuffer,
        ../peerinfo,
        ../multiaddress
 
@@ -21,7 +20,7 @@ declareGauge(libp2p_open_streams,
 export oids
 
 logScope:
-  topics = "lpstream"
+  topics = "libp2p lpstream"
 
 const
   LPStreamTrackerName* = "LPStream"
@@ -38,6 +37,7 @@ type
     objName*: string
     oid*: Oid
     dir*: Direction
+    closedWithEOF: bool # prevent concurrent calls
 
   LPStreamError* = object of CatchableError
   LPStreamIncompleteError* = object of LPStreamError
@@ -125,7 +125,7 @@ method initStream*(s: LPStream) {.base.} =
 
   libp2p_open_streams.inc(labelValues = [s.objName, $s.dir])
   inc getStreamTracker(s.objName).opened
-  debug "Stream created", s, objName = s.objName, dir = $s.dir
+  trace "Stream created", s, objName = s.objName, dir = $s.dir
 
 proc join*(s: LPStream): Future[void] =
   s.closeEvent.wait()
@@ -235,12 +235,16 @@ proc readLp*(s: LPStream, maxSize: int): Future[seq[byte]] {.async, gcsafe.} =
 method write*(s: LPStream, msg: seq[byte]): Future[void] {.base.} =
   doAssert(false, "not implemented!")
 
-proc writeLp*(s: LPStream, msg: string | seq[byte]): Future[void] {.gcsafe.} =
-  ## write length prefixed
-  var buf = initVBuffer()
-  buf.writeSeq(msg)
-  buf.finish()
-  s.write(buf.buffer)
+proc writeLp*(s: LPStream, msg: openArray[byte]): Future[void] =
+  ## Write `msg` with a varint-encoded length prefix
+  let vbytes = PB.toBytes(msg.len().uint64)
+  var buf = newSeqUninitialized[byte](msg.len() + vbytes.len)
+  buf[0..<vbytes.len] = vbytes.toOpenArray()
+  buf[vbytes.len..<buf.len] = msg
+  s.write(buf)
+
+proc writeLp*(s: LPStream, msg: string): Future[void] =
+  writeLp(s, msg.toOpenArrayByte(0, msg.high))
 
 proc write*(s: LPStream, pbytes: pointer, nbytes: int): Future[void] {.deprecated: "seq".} =
   s.write(@(toOpenArray(cast[ptr UncheckedArray[byte]](pbytes), 0, nbytes - 1)))
@@ -254,7 +258,7 @@ method closeImpl*(s: LPStream): Future[void] {.async, base.} =
   s.closeEvent.fire()
   libp2p_open_streams.dec(labelValues = [s.objName, $s.dir])
   inc getStreamTracker(s.objName).closed
-  debug "Closed stream", s, objName = s.objName, dir = $s.dir
+  trace "Closed stream", s, objName = s.objName, dir = $s.dir
 
 method close*(s: LPStream): Future[void] {.base, async.} = # {.raises [Defect].}
   ## close the stream - this may block, but will not raise exceptions
@@ -280,6 +284,16 @@ proc closeWithEOF*(s: LPStream): Future[void] {.async.} =
   ##
   ## In particular, it must not be used when there is another concurrent read
   ## ongoing (which may be the case during cancellations)!
+  ##
+
+  trace "Closing with EOF", s
+  if s.closedWithEOF:
+    trace "Already closed"
+    return
+
+  # prevent any further calls to avoid triggering
+  # reading the stream twice (which should assert)
+  s.closedWithEOF = true
   await s.close()
 
   if s.atEof():

@@ -20,7 +20,7 @@ import rpc/[messages, message, protobuf],
 export peerid, connection
 
 logScope:
-  topics = "pubsubpeer"
+  topics = "libp2p pubsubpeer"
 
 when defined(libp2p_expensive_metrics):
   declareCounter(libp2p_pubsub_sent_messages, "number of messages sent", labels = ["id", "topic"])
@@ -48,7 +48,6 @@ type
     onEvent*: OnEvent                   # Connectivity updates for peer
     codec*: string                      # the protocol that this peer joined from
     sendConn*: Connection               # cached send connection
-    connections*: seq[Connection]       # connections to this peer
     peerId*: PeerID
     handler*: RPCHandler
     observers*: ref seq[PubSubObserver] # ref as in smart_ptr
@@ -59,6 +58,9 @@ type
     outbound*: bool # if this is an outbound connection
     appScore*: float64 # application specific score
     behaviourPenalty*: float64 # the eventual penalty score
+
+    when defined(libp2p_agents_metrics):
+      shortAgent*: string
 
   RPCHandler* = proc(peer: PubSubPeer, msg: RPCMsg): Future[void] {.gcsafe.}
 

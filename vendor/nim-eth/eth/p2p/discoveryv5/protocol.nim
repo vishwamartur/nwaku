@@ -1,5 +1,5 @@
 # nim-eth - Node Discovery Protocol v5
-# Copyright (c) 2020 Status Research & Development GmbH
+# Copyright (c) 2020-2021 Status Research & Development GmbH
 # Licensed under either of
 #   * Apache License, version 2.0, (LICENSE-APACHEv2)
 #   * MIT license (LICENSE-MIT)
@@ -73,11 +73,11 @@
 ## This might be a concern for mobile devices.
 
 import
-  std/[tables, sets, options, math, sequtils],
+  std/[tables, sets, options, math, sequtils, algorithm],
   stew/shims/net as stewNet, json_serialization/std/net,
-  stew/[byteutils, endians2], chronicles, chronos, stint, bearssl,
+  stew/endians2, chronicles, chronos, stint, bearssl, metrics,
   eth/[rlp, keys, async_utils],
-  types, encoding, node, routing_table, enr, random2, sessions
+  types, encoding, node, routing_table, enr, random2, sessions, ip_vote
 
 import nimcrypto except toHex
 
@@ -85,19 +85,32 @@ export options
 
 {.push raises: [Defect].}
 
+declareCounter discovery_message_requests_outgoing,
+  "Discovery protocol outgoing message requests", labels = ["response"]
+declareCounter discovery_message_requests_incoming,
+  "Discovery protocol incoming message requests", labels = ["response"]
+declareCounter discovery_unsolicited_messages,
+  "Discovery protocol unsolicited or timed-out messages"
+declareCounter discovery_enr_auto_update,
+  "Amount of discovery IP:port address ENR auto updates"
+
 logScope:
   topics = "discv5"
 
 const
   alpha = 3 ## Kademlia concurrency factor
-  lookupRequestLimit = 3
-  findNodeResultLimit = 15 # applies in FINDNODE handler
-  maxNodesPerMessage = 3
-  lookupInterval = 60.seconds ## Interval of launching a random lookup to
-  ## populate the routing table. go-ethereum seems to do 3 runs every 30
-  ## minutes. Trinity starts one every minute.
+  lookupRequestLimit = 3 ## Amount of distances requested in a single Findnode
+  ## message for a lookup or query
+  findNodeResultLimit = 16 ## Maximum amount of ENRs in the total Nodes messages
+  ## that will be processed
+  maxNodesPerMessage = 3 ## Maximum amount of ENRs per individual Nodes message
+  refreshInterval = 5.minutes ## Interval of launching a random query to
+  ## refresh the routing table.
   revalidateMax = 10000 ## Revalidation of a peer is done between 0 and this
   ## value in milliseconds
+  ipMajorityInterval = 5.minutes ## Interval for checking the latest IP:Port
+  ## majority and updating this when ENR auto update is set.
+  initialLookups = 1 ## Amount of lookups done when populating the routing table
   handshakeTimeout* = 2.seconds ## timeout for the reply on the
   ## whoareyou message
   responseTimeout* = 4.seconds ## timeout for the response of a request-response
@@ -113,9 +126,13 @@ type
     routingTable: RoutingTable
     codec*: Codec
     awaitedMessages: Table[(NodeId, RequestId), Future[Option[Message]]]
-    lookupLoop: Future[void]
+    refreshLoop: Future[void]
     revalidateLoop: Future[void]
+    ipMajorityLoop: Future[void]
+    lastLookup: chronos.Moment
     bootstrapRecords*: seq[Record]
+    ipVote: IpVote
+    enrAutoUpdate: bool
     rng*: ref BrHmacDrbgContext
 
   PendingRequest = object
@@ -127,11 +144,12 @@ type
 proc addNode*(d: Protocol, node: Node): bool =
   ## Add `Node` to discovery routing table.
   ##
-  ## Returns false only if `Node` is not eligable for adding (no Address).
-  if node.address.isSome():
-    # Only add nodes with an address to the routing table
-    discard d.routingTable.addNode(node)
+  ## Returns true only when `Node` was added as a new entry to a bucket in the
+  ## routing table.
+  if d.routingTable.addNode(node) == Added:
     return true
+  else:
+    return false
 
 proc addNode*(d: Protocol, r: Record): bool =
   ## Add `Node` from a `Record` to discovery routing table.
@@ -254,13 +272,8 @@ proc sendNodes(d: Protocol, toId: NodeId, toAddr: Address, reqId: RequestId,
 
 proc handlePing(d: Protocol, fromId: NodeId, fromAddr: Address,
     ping: PingMessage, reqId: RequestId) =
-  let a = fromAddr
-  var pong: PongMessage
-  pong.enrSeq = d.localNode.record.seqNum
-  pong.ip = case a.ip.family
-    of IpAddressFamily.IPv4: @(a.ip.address_v4)
-    of IpAddressFamily.IPv6: @(a.ip.address_v6)
-  pong.port = a.port.uint16
+  let pong = PongMessage(enrSeq: d.localNode.record.seqNum, ip: fromAddr.ip,
+    port: fromAddr.port.uint16)
 
   let (data, _) = encodeMessagePacket(d.rng[], d.codec, fromId, fromAddr,
     encodeMessage(pong, reqId))
@@ -304,12 +317,17 @@ proc handleMessage(d: Protocol, srcId: NodeId, fromAddr: Address,
     message: Message) {.raises:[Exception].} =
   case message.kind
   of ping:
+    discovery_message_requests_incoming.inc()
     d.handlePing(srcId, fromAddr, message.ping, message.reqId)
   of findNode:
+    discovery_message_requests_incoming.inc()
     d.handleFindNode(srcId, fromAddr, message.findNode, message.reqId)
   of talkreq:
+    discovery_message_requests_incoming.inc()
     d.handleTalkReq(srcId, fromAddr, message.talkreq, message.reqId)
   of regtopic, topicquery:
+    discovery_message_requests_incoming.inc()
+    discovery_message_requests_incoming.inc(labelValues = ["no_response"])
     trace "Received unimplemented message kind", kind = message.kind,
       origin = fromAddr
   else:
@@ -317,6 +335,7 @@ proc handleMessage(d: Protocol, srcId: NodeId, fromAddr: Address,
     if d.awaitedMessages.take((srcId, message.reqId), waiter):
       waiter.complete(some(message)) # TODO: raises: [Exception]
     else:
+      discovery_unsolicited_messages.inc()
       trace "Timed out or unrequested message", kind = message.kind,
         origin = fromAddr
 
@@ -393,10 +412,10 @@ proc receive*(d: Protocol, a: Address, packet: openArray[byte]) {.gcsafe,
         # Not filling table with nodes without correct IP in the ENR
         # TODO: Should we care about this???
         if node.address.isSome() and a == node.address.get():
-          debug "Adding new node to routing table", node
-          discard d.addNode(node)
+          if d.addNode(node):
+            trace "Added new node to routing table after handshake", node
   else:
-    debug "Packet decoding error", error = decoded.error, address = a
+    trace "Packet decoding error", error = decoded.error, address = a
 
 # TODO: Not sure why but need to pop the raises here as it is apparently not
 # enough to put it in the raises pragma of `processClient` and other async procs.
@@ -493,12 +512,24 @@ proc verifyNodesRecords*(enrs: openarray[Record], fromNode: Node,
   ## Verify and convert ENRs to a sequence of nodes. Only ENRs that pass
   ## verification will be added. ENRs are verified for duplicates, invalid
   ## addresses and invalid distances.
-  # TODO:
-  # - Should we fail and ignore values on first invalid Node?
-  # - Should we limit the amount of nodes? The discovery v5 specification holds
-  # no limit on the amount that can be returned.
   var seen: HashSet[Node]
+  var count = 0
   for r in enrs:
+    # Check and allow for processing of maximum `findNodeResultLimit` ENRs
+    # returned. This limitation is required so no huge lists of invalid ENRs
+    # are processed for no reason, and for not overwhelming a routing table
+    # with nodes from a malicious actor.
+    # The discovery v5 specification specifies no limit on the amount of ENRs
+    # that can be returned, but clients usually stick with the bucket size limit
+    # as in original Kademlia. Because of this it is chosen not to fail
+    # immediatly, but still process maximum `findNodeResultLimit`.
+    if count >= findNodeResultLimit:
+      debug "Response on findnode returned too many ENRs", enrs = enrs.len(),
+        limit = findNodeResultLimit, sender = fromNode.record.toURI
+      break
+
+    count.inc()
+
     let node = newNode(r)
     if node.isOk():
       let n = node.get()
@@ -518,7 +549,7 @@ proc verifyNodesRecords*(enrs: openarray[Record], fromNode: Node,
         continue
       # Check if returned node has one of the requested distances.
       if not distances.contains(logDist(n.id, fromNode.id)):
-        warn "Nodes reply contained record with incorrect distance",
+        debug "Nodes reply contained record with incorrect distance",
           record = n.record.toURI, sender = fromNode.record.toURI
         continue
 
@@ -565,6 +596,7 @@ proc sendMessage*[T: SomeMessage](d: Protocol, toNode: Node, m: T):
   d.registerRequest(toNode, message, nonce)
   trace "Send message packet", dstId = toNode.id, address, kind = messageKind(T)
   d.send(toNode, data)
+  discovery_message_requests_outgoing.inc()
   return reqId
 
 proc ping*(d: Protocol, toNode: Node):
@@ -581,6 +613,7 @@ proc ping*(d: Protocol, toNode: Node):
     return ok(resp.get().pong)
   else:
     d.replaceNode(toNode)
+    discovery_message_requests_outgoing.inc(labelValues = ["no_response"])
     return err("Pong message not received in time")
 
 proc findNode*(d: Protocol, toNode: Node, distances: seq[uint32]):
@@ -598,6 +631,7 @@ proc findNode*(d: Protocol, toNode: Node, distances: seq[uint32]):
     return ok(res)
   else:
     d.replaceNode(toNode)
+    discovery_message_requests_outgoing.inc(labelValues = ["no_response"])
     return err(nodes.error)
 
 proc talkreq*(d: Protocol, toNode: Node, protocol, request: seq[byte]):
@@ -614,6 +648,7 @@ proc talkreq*(d: Protocol, toNode: Node, protocol, request: seq[byte]):
     return ok(resp.get().talkresp)
   else:
     d.replaceNode(toNode)
+    discovery_message_requests_outgoing.inc(labelValues = ["no_response"])
     return err("Talk response message not received in time")
 
 proc lookupDistances(target, dest: NodeId): seq[uint32] {.raises: [Defect].} =
@@ -630,38 +665,40 @@ proc lookupDistances(target, dest: NodeId): seq[uint32] {.raises: [Defect].} =
 proc lookupWorker(d: Protocol, destNode: Node, target: NodeId):
     Future[seq[Node]] {.async, raises: [Exception, Defect].} =
   let dists = lookupDistances(target, destNode.id)
-  var i = 0
-  # TODO: We can make use of the multiple distances here now.
-  while i < lookupRequestLimit and result.len < findNodeResultLimit:
-    let r = await d.findNode(destNode, @[dists[i]])
-    # TODO: Handle failures better. E.g. stop on different failures than timeout
-    if r.isOk:
-      # TODO: I guess it makes sense to limit here also to `findNodeResultLimit`?
-      result.add(r[])
-    inc i
 
-  for n in result:
-    discard d.routingTable.addNode(n)
+  # Instead of doing max `lookupRequestLimit` findNode requests,  make use
+  # of the discv5.1 functionality to request nodes for multiple distances.
+  let r = await d.findNode(destNode, dists)
+  if r.isOk:
+    result.add(r[])
+
+    # Attempt to add all nodes discovered
+    for n in result:
+      discard d.addNode(n)
 
 proc lookup*(d: Protocol, target: NodeId): Future[seq[Node]]
     {.async, raises: [Exception, Defect].} =
   ## Perform a lookup for the given target, return the closest n nodes to the
   ## target. Maximum value for n is `BUCKET_SIZE`.
-  # TODO: Sort the returned nodes on distance
-  # Also use unseen nodes as a form of validation.
-  result = d.routingTable.neighbours(target, BUCKET_SIZE, seenOnly = false)
-  var asked = initHashSet[NodeId]()
-  asked.incl(d.localNode.id)
-  var seen = asked
-  for node in result:
+  # `closestNodes` holds the k closest nodes to target found, sorted by distance
+  # Unvalidated nodes are used for requests as a form of validation.
+  var closestNodes = d.routingTable.neighbours(target, BUCKET_SIZE,
+    seenOnly = false)
+
+  var asked, seen = initHashSet[NodeId]()
+  asked.incl(d.localNode.id) # No need to ask our own node
+  seen.incl(d.localNode.id) # No need to discover our own node
+  for node in closestNodes:
     seen.incl(node.id)
 
   var pendingQueries = newSeqOfCap[Future[seq[Node]]](alpha)
 
   while true:
     var i = 0
-    while i < result.len and pendingQueries.len < alpha:
-      let n = result[i]
+    # Doing `alpha` amount of requests at once as long as closer non queried
+    # nodes are discovered.
+    while i < closestNodes.len and pendingQueries.len < alpha:
+      let n = closestNodes[i]
       if not asked.containsOrIncl(n.id):
         pendingQueries.add(d.lookupWorker(n, target))
       inc i
@@ -671,26 +708,96 @@ proc lookup*(d: Protocol, target: NodeId): Future[seq[Node]]
     if pendingQueries.len == 0:
       break
 
-    let idx = await oneIndex(pendingQueries)
-    trace "Got discv5 lookup response", idx
+    let query = await one(pendingQueries)
+    trace "Got discv5 lookup query response"
 
-    let nodes = pendingQueries[idx].read
-    pendingQueries.del(idx)
+    let index = pendingQueries.find(query)
+    if index != -1:
+      pendingQueries.del(index)
+    else:
+      error "Resulting query should have been in the pending queries"
+
+    let nodes = query.read
+    # TODO: Remove node on timed-out query?
     for n in nodes:
       if not seen.containsOrIncl(n.id):
-        if result.len < BUCKET_SIZE:
-          result.add(n)
+        # If it wasn't seen before, insert node while remaining sorted
+        closestNodes.insert(n, closestNodes.lowerBound(n,
+          proc(x: Node, n: Node): int =
+            cmp(distanceTo(x, target), distanceTo(n, target))
+        ))
 
-proc lookupRandom*(d: Protocol): Future[seq[Node]]
+        if closestNodes.len > BUCKET_SIZE:
+          closestNodes.del(closestNodes.high())
+
+  d.lastLookup = now(chronos.Moment)
+  return closestNodes
+
+proc query*(d: Protocol, target: NodeId, k = BUCKET_SIZE): Future[seq[Node]]
+    {.async, raises: [Exception, Defect].} =
+  ## Query k nodes for the given target, returns all nodes found, including the
+  ## nodes queried.
+  ##
+  ## This will take k nodes from the routing table closest to target and
+  ## query them for nodes closest to target. If there are less than k nodes in
+  ## the routing table, nodes returned by the first queries will be used.
+  var queryBuffer = d.routingTable.neighbours(target, k, seenOnly = false)
+
+  var asked, seen = initHashSet[NodeId]()
+  asked.incl(d.localNode.id) # No need to ask our own node
+  seen.incl(d.localNode.id) # No need to discover our own node
+  for node in queryBuffer:
+    seen.incl(node.id)
+
+  var pendingQueries = newSeqOfCap[Future[seq[Node]]](alpha)
+
+  while true:
+    var i = 0
+    while i < min(queryBuffer.len, k) and pendingQueries.len < alpha:
+      let n = queryBuffer[i]
+      if not asked.containsOrIncl(n.id):
+        pendingQueries.add(d.lookupWorker(n, target))
+      inc i
+
+    trace "discv5 pending queries", total = pendingQueries.len
+
+    if pendingQueries.len == 0:
+      break
+
+    let query = await one(pendingQueries)
+    trace "Got discv5 lookup query response"
+
+    let index = pendingQueries.find(query)
+    if index != -1:
+      pendingQueries.del(index)
+    else:
+      error "Resulting query should have been in the pending queries"
+
+    let nodes = query.read
+    # TODO: Remove node on timed-out query?
+    for n in nodes:
+      if not seen.containsOrIncl(n.id):
+        queryBuffer.add(n)
+
+  d.lastLookup = now(chronos.Moment)
+  return queryBuffer
+
+proc queryRandom*(d: Protocol): Future[seq[Node]]
     {.async, raises:[Exception, Defect].} =
-  ## Perform a lookup for a random target, return the closest n nodes to the
-  ## target. Maximum value for n is `BUCKET_SIZE`.
-  var id: NodeId
-  var buf: array[sizeof(id), byte]
-  brHmacDrbgGenerate(d.rng[], buf)
-  copyMem(addr id, addr buf[0], sizeof(id))
+  ## Perform a query for a random target, return all nodes discovered.
+  return await d.query(NodeId.random(d.rng[]))
 
-  return await d.lookup(id)
+proc queryRandom*(d: Protocol, enrField: (string, seq[byte])):
+    Future[seq[Node]] {.async, raises:[Exception, Defect].} =
+  ## Perform a query for a random target, return all nodes discovered which
+  ## contain enrField.
+  let nodes = await d.queryRandom()
+  var filtered: seq[Node]
+  for n in nodes:
+    if n.record.contains(enrField):
+      filtered.add(n)
+
+  return filtered
 
 proc resolve*(d: Protocol, id: NodeId): Future[Option[Node]]
     {.async, raises: [Exception, Defect].} =
@@ -719,18 +826,51 @@ proc resolve*(d: Protocol, id: NodeId): Future[Option[Node]]
 
   return node
 
+proc seedTable*(d: Protocol) =
+  ## Seed the table with known nodes.
+  for record in d.bootstrapRecords:
+    if d.addNode(record):
+      debug "Added bootstrap node", uri = toURI(record)
+    else:
+      debug "Bootstrap node could not be added", uri = toURI(record)
+
+  # TODO:
+  # Persistent stored nodes could be added to seed from here
+  # See: https://github.com/status-im/nim-eth/issues/189
+
+proc populateTable*(d: Protocol) {.async, raises: [Exception, Defect].} =
+  ## Do a set of initial lookups to quickly populate the table.
+  # start with a self target query (neighbour nodes)
+  let selfQuery = await d.query(d.localNode.id)
+  trace "Discovered nodes in self target query", nodes = selfQuery.len
+
+  # `initialLookups` random queries
+  for i in 0..<initialLookups:
+    let randomQuery = await d.queryRandom()
+    trace "Discovered nodes in random target query", nodes = randomQuery.len
+
+  debug "Total nodes in routing table after populate",
+    total = d.routingTable.len()
+
 proc revalidateNode*(d: Protocol, n: Node)
     {.async, raises: [Exception, Defect].} = # TODO: Exception
   let pong = await d.ping(n)
 
   if pong.isOK():
-    if pong.get().enrSeq > n.record.seqNum:
+    let res = pong.get()
+    if res.enrSeq > n.record.seqNum:
       # Request new ENR
       let nodes = await d.findNode(n, @[0'u32])
       if nodes.isOk() and nodes[].len > 0:
         discard d.addNode(nodes[][0])
 
+    # Get IP and port from pong message and add it to the ip votes
+    let a = Address(ip: ValidIpAddress.init(res.ip), port: Port(res.port))
+    d.ipVote.insert(n.id, a)
+
 proc revalidateLoop(d: Protocol) {.async, raises: [Exception, Defect].} =
+  ## Loop which revalidates the nodes in the routing table by sending the ping
+  ## message.
   # TODO: General Exception raised.
   try:
     while true:
@@ -741,26 +881,82 @@ proc revalidateLoop(d: Protocol) {.async, raises: [Exception, Defect].} =
   except CancelledError:
     trace "revalidateLoop canceled"
 
-proc lookupLoop(d: Protocol) {.async, raises: [Exception, Defect].} =
+proc refreshLoop(d: Protocol) {.async, raises: [Exception, Defect].} =
+  ## Loop that refreshes the routing table by starting a random query in case
+  ## no queries were done since `refreshInterval` or more.
+  ## It also refreshes the majority address voted for via pong responses.
   # TODO: General Exception raised.
   try:
-    # lookup self (neighbour nodes)
-    let selfLookup = await d.lookup(d.localNode.id)
-    trace "Discovered nodes in self lookup", nodes = selfLookup
+    await d.populateTable()
+
     while true:
-      let randomLookup = await d.lookupRandom()
-      trace "Discovered nodes in random lookup", nodes = randomLookup
-      debug "Total nodes in discv5 routing table", total = d.routingTable.len()
-      await sleepAsync(lookupInterval)
+      let currentTime = now(chronos.Moment)
+      if currentTime > (d.lastLookup + refreshInterval):
+        let randomQuery = await d.queryRandom()
+        trace "Discovered nodes in random target query", nodes = randomQuery.len
+        debug "Total nodes in discv5 routing table", total = d.routingTable.len()
+
+      await sleepAsync(refreshInterval)
   except CancelledError:
-    trace "lookupLoop canceled"
+    trace "refreshLoop canceled"
+
+proc ipMajorityLoop(d: Protocol) {.async, raises: [Exception, Defect].} =
+  ## When `enrAutoUpdate` is enabled, the IP:port combination returned
+  ## by the majority will be used to update the local ENR.
+  ## This should be safe as long as the routing table is not overwhelmed by
+  ## malicious nodes trying to provide invalid addresses.
+  ## Why is that?
+  ## - Only one vote per NodeId is counted, and they are removed over time.
+  ## - IP:port values are provided through the pong message. The local node
+  ## initiates this by first sending a ping message. Unsolicited pong messages
+  ## are ignored.
+  ## - At interval pings are send to the least recently contacted node (tail of
+  ## bucket) from a random bucket from the routing table.
+  ## - Only messages that our node initiates (ping, findnode, talkreq) and that
+  ## successfully get a response move a node to the head of the bucket.
+  ## Additionally, findNode requests have typically a randomness to it, as they
+  ## usually come from a query for random NodeId.
+  ## - Currently, when a peer fails the respond, it gets replaced. It doesn't
+  ## remain at the tail of the bucket.
+  ## - There are IP limits on the buckets and the whole routing table.
+  try:
+    while true:
+      let majority = d.ipVote.majority()
+      if majority.isSome():
+        if d.localNode.address != majority:
+          let address = majority.get()
+          let previous = d.localNode.address
+          if d.enrAutoUpdate:
+            let res = d.localNode.update(d.privateKey,
+              ip = some(address.ip), udpPort = some(address.port))
+            if res.isErr:
+              warn "Failed updating ENR with newly discovered external address",
+                majority, previous, error = res.error
+            else:
+              discovery_enr_auto_update.inc()
+              info "Updated ENR with newly discovered external address",
+                majority, previous, uri = toURI(d.localNode.record)
+          else:
+            warn "Discovered new external address but ENR auto update is off",
+              majority, previous
+        else:
+          debug "Discovered external address matches current address", majority,
+            current = d.localNode.address
+
+      await sleepAsync(ipMajorityInterval)
+  except CancelledError:
+    trace "ipMajorityLoop canceled"
 
 proc newProtocol*(privKey: PrivateKey,
-                  externalIp: Option[ValidIpAddress], tcpPort, udpPort: Port,
+                  externalIp: Option[ValidIpAddress],
+                  tcpPort, udpPort: Port,
                   localEnrFields: openarray[(string, seq[byte])] = [],
                   bootstrapRecords: openarray[Record] = [],
                   previousRecord = none[enr.Record](),
-                  bindIp = IPv4_any(), rng = newRng()):
+                  bindIp = IPv4_any(),
+                  enrAutoUpdate = false,
+                  tableIpLimits = DefaultTableIpLimits,
+                  rng = newRng()):
                   Protocol {.raises: [Defect].} =
   # TODO: Tried adding bindPort = udpPort as parameter but that gave
   # "Error: internal error: environment misses: udpPort" in nim-beacon-chain.
@@ -774,11 +970,11 @@ proc newProtocol*(privKey: PrivateKey,
   var record: Record
   if previousRecord.isSome():
     record = previousRecord.get()
-    record.update(privKey, externalIp, tcpPort, udpPort,
+    record.update(privKey, externalIp, some(tcpPort), some(udpPort),
       extraFields).expect("Record within size limits and correct key")
   else:
-    record = enr.Record.init(1, privKey, externalIp, tcpPort, udpPort,
-     extraFields).expect("Record within size limits")
+    record = enr.Record.init(1, privKey, externalIp, some(tcpPort),
+      some(udpPort), extraFields).expect("Record within size limits")
   let node = newNode(record).expect("Properly initialized record")
 
   # TODO Consider whether this should be a Defect
@@ -791,26 +987,30 @@ proc newProtocol*(privKey: PrivateKey,
     codec: Codec(localNode: node, privKey: privKey,
       sessions: Sessions.init(256)),
     bootstrapRecords: @bootstrapRecords,
+    ipVote: IpVote.init(),
+    enrAutoUpdate: enrAutoUpdate,
     rng: rng)
 
-  result.routingTable.init(node, 5, rng)
+  result.routingTable.init(node, DefaultBitsPerHop, tableIpLimits, rng)
 
 proc open*(d: Protocol) {.raises: [Exception, Defect].} =
   info "Starting discovery node", node = d.localNode,
     bindAddress = d.bindAddress, uri = toURI(d.localNode.record)
+
+  if d.localNode.address.isNone():
+    info "No external IP provided, this node will not be discoverable"
   # TODO allow binding to specific IP / IPv6 / etc
   let ta = initTAddress(d.bindAddress.ip, d.bindAddress.port)
   # TODO: raises `OSError` and `IOSelectorsException`, the latter which is
   # object of Exception. In Nim devel this got changed to CatchableError.
   d.transp = newDatagramTransport(processClient, udata = d, local = ta)
 
-  for record in d.bootstrapRecords:
-    debug "Adding bootstrap node", uri = toURI(record)
-    discard d.addNode(record)
+  d.seedTable()
 
 proc start*(d: Protocol) {.raises: [Exception, Defect].} =
-  d.lookupLoop = lookupLoop(d)
+  d.refreshLoop = refreshLoop(d)
   d.revalidateLoop = revalidateLoop(d)
+  d.ipMajorityLoop = ipMajorityLoop(d)
 
 proc close*(d: Protocol) {.raises: [Exception, Defect].} =
   doAssert(not d.transp.closed)
@@ -818,8 +1018,10 @@ proc close*(d: Protocol) {.raises: [Exception, Defect].} =
   debug "Closing discovery node", node = d.localNode
   if not d.revalidateLoop.isNil:
     d.revalidateLoop.cancel()
-  if not d.lookupLoop.isNil:
-    d.lookupLoop.cancel()
+  if not d.refreshLoop.isNil:
+    d.refreshLoop.cancel()
+  if not d.ipMajorityLoop.isNil:
+    d.ipMajorityLoop.cancel()
 
   d.transp.close()
 
@@ -829,7 +1031,9 @@ proc closeWait*(d: Protocol) {.async, raises: [Exception, Defect].} =
   debug "Closing discovery node", node = d.localNode
   if not d.revalidateLoop.isNil:
     await d.revalidateLoop.cancelAndWait()
-  if not d.lookupLoop.isNil:
-    await d.lookupLoop.cancelAndWait()
+  if not d.refreshLoop.isNil:
+    await d.refreshLoop.cancelAndWait()
+  if not d.ipMajorityLoop.isNil:
+    await d.ipMajorityLoop.cancelAndWait()
 
   await d.transp.closeWait()

@@ -20,7 +20,7 @@ import ./pubsub,
        ../../utility
 
 logScope:
-  topics = "floodsub"
+  topics = "libp2p floodsub"
 
 const FloodSubCodec* = "/floodsub/1.0.0"
 
@@ -33,17 +33,37 @@ method subscribeTopic*(f: FloodSub,
                        topic: string,
                        subscribe: bool,
                        peer: PubsubPeer) {.gcsafe.} =
-  procCall PubSub(f).subscribeTopic(topic, subscribe, peer)
+  logScope:
+    peer
+    topic
 
-  if topic notin f.floodsub:
-    f.floodsub[topic] = initHashSet[PubSubPeer]()
+  # this is a workaround for a race condition
+  # that can happen if we disconnect the peer very early
+  # in the future we might use this as a test case
+  # and eventually remove this workaround
+  if subscribe and peer.peerId notin f.peers:
+    trace "ignoring unknown peer"
+    return
+
+  if subscribe and not(isNil(f.subscriptionValidator)) and not(f.subscriptionValidator(topic)):
+    # this is a violation, so warn should be in order
+    warn "ignoring invalid topic subscription", topic, peer
+    return
 
   if subscribe:
+    if topic notin f.floodsub:
+      f.floodsub[topic] = initHashSet[PubSubPeer]()
+
     trace "adding subscription for topic", peer, topic
+
     # subscribe the peer to the topic
     f.floodsub[topic].incl(peer)
   else:
+    if topic notin f.floodsub:
+      return
+
     trace "removing subscription for topic", peer, topic
+
     # unsubscribe the peer from the topic
     f.floodsub[topic].excl(peer)
 
@@ -171,14 +191,14 @@ method publish*(f: FloodSub,
   return peers.len
 
 method unsubscribe*(f: FloodSub,
-                    topics: seq[TopicPair]) {.async.} =
-  await procCall PubSub(f).unsubscribe(topics)
+                    topics: seq[TopicPair]) =
+  procCall PubSub(f).unsubscribe(topics)
 
   for p in f.peers.values:
     f.sendSubs(p, topics.mapIt(it.topic).deduplicate(), false)
 
-method unsubscribeAll*(f: FloodSub, topic: string) {.async.} =
-  await procCall PubSub(f).unsubscribeAll(topic)
+method unsubscribeAll*(f: FloodSub, topic: string) =
+  procCall PubSub(f).unsubscribeAll(topic)
 
   for p in f.peers.values:
     f.sendSubs(p, @[topic], false)

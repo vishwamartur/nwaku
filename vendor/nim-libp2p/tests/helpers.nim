@@ -9,6 +9,8 @@ import ../libp2p/stream/lpstream
 import ../libp2p/muxers/mplex/lpchannel
 import ../libp2p/protocols/secure/secure
 
+export unittest
+
 const
   StreamTransportTrackerName = "stream.transport"
   StreamServerTrackerName = "stream.server"
@@ -96,3 +98,17 @@ proc newBufferStream*(writeHandler: WriteHandler): TestBufferStream =
   new result
   result.writeHandler = writeHandler
   result.initStream()
+
+proc checkExpiringInternal(cond: proc(): bool): Future[bool] {.async, gcsafe.} =
+  {.gcsafe.}:
+    let start = Moment.now()
+    while true:
+      if Moment.now() > (start + chronos.seconds(5)):
+        return false
+      elif cond():
+        return true
+      else:
+        await sleepAsync(1.millis)
+
+template checkExpiring*(code: untyped): untyped =
+  checkExpiringInternal(proc(): bool = code)

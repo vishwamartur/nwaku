@@ -28,7 +28,7 @@ suite "Discovery v5.1 Protocol Message Encodings":
   test "Pong Response":
     let
       enrSeq = 1'u64
-      ip = @[127.byte, 0, 0, 1]
+      ip = IpAddress(family: IPv4, address_v4: [127.byte, 0, 0, 1])
       port = 5000'u16
       p = PongMessage(enrSeq: enrSeq, ip: ip, port: port)
       reqId = RequestId(id: @[1.byte])
@@ -118,6 +118,13 @@ suite "Discovery v5.1 Protocol Message Encodings":
     check encoded.toHex == "01cb8900010203040506070801"
 
     let decoded = decodeMessage(encoded)
+    check decoded.isErr()
+
+  test "Pong with invalid IP address size":
+    # pong message with ip field of 5 bytes
+    let encodedPong = "02cb0101857f00000102821388"
+
+    let decoded = decodeMessage(hexToSeqByte(encodedPong))
     check decoded.isErr()
 
 # According to test vectors:
@@ -212,13 +219,13 @@ suite "Discovery v5.1 Packet Encodings Test Vectors":
       privKeyB = PrivateKey.fromHex(nodeBKey)[] # receive -> decode
 
       enrRecA = enr.Record.init(1, privKeyA,
-        some(ValidIpAddress.init("127.0.0.1")), Port(9000),
-        Port(9000)).expect("Properly intialized private key")
+        some(ValidIpAddress.init("127.0.0.1")), some(Port(9000)),
+        some(Port(9000))).expect("Properly intialized private key")
       nodeA = newNode(enrRecA).expect("Properly initialized record")
 
       enrRecB = enr.Record.init(1, privKeyB,
-        some(ValidIpAddress.init("127.0.0.1")), Port(9000),
-        Port(9000)).expect("Properly intialized private key")
+        some(ValidIpAddress.init("127.0.0.1")), some(Port(9000)),
+        some(Port(9000))).expect("Properly intialized private key")
       nodeB = newNode(enrRecB).expect("Properly initialized record")
 
     var
@@ -425,12 +432,14 @@ suite "Discovery v5.1 Additional Encode/Decode":
       privKeyA = PrivateKey.random(rng[]) # sender -> encode
       privKeyB = PrivateKey.random(rng[]) # receiver -> decode
 
-      enrRecA = enr.Record.init(1, privKeyA, some(ValidIpAddress.init("127.0.0.1")), Port(9000),
-        Port(9000)).expect("Properly intialized private key")
+      enrRecA = enr.Record.init(1, privKeyA,
+        some(ValidIpAddress.init("127.0.0.1")), some(Port(9000)),
+        some(Port(9000))).expect("Properly intialized private key")
       nodeA = newNode(enrRecA).expect("Properly initialized record")
 
-      enrRecB = enr.Record.init(1, privKeyB, some(ValidIpAddress.init("127.0.0.1")), Port(9000),
-        Port(9000)).expect("Properly intialized private key")
+      enrRecB = enr.Record.init(1, privKeyB,
+        some(ValidIpAddress.init("127.0.0.1")), some(Port(9000)),
+        some(Port(9000))).expect("Properly intialized private key")
       nodeB = newNode(enrRecB).expect("Properly initialized record")
 
     var

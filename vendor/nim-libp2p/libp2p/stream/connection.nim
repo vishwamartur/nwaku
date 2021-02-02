@@ -16,7 +16,7 @@ import lpstream,
 export lpstream, peerinfo
 
 logScope:
-  topics = "connection"
+  topics = "libp2p connection"
 
 const
   ConnectionTrackerName* = "Connection"
@@ -32,8 +32,25 @@ type
     timeoutHandler*: TimeoutHandler # timeout handler
     peerInfo*: PeerInfo
     observedAddr*: Multiaddress
+    upgraded*: Future[void]
 
 proc timeoutMonitor(s: Connection) {.async, gcsafe.}
+
+proc isUpgraded*(s: Connection): bool =
+  if not isNil(s.upgraded):
+    return s.upgraded.finished
+
+proc upgrade*(s: Connection, failed: ref Exception = nil) =
+  if not isNil(s.upgraded):
+    if not isNil(failed):
+      s.upgraded.fail(failed)
+      return
+
+    s.upgraded.complete()
+
+proc onUpgrade*(s: Connection) {.async.} =
+  if not isNil(s.upgraded):
+    await s.upgraded
 
 func shortLog*(conn: Connection): string =
   if conn.isNil: "Connection(nil)"
@@ -49,6 +66,9 @@ method initStream*(s: Connection) =
 
   doAssert(isNil(s.timerTaskFut))
 
+  if isNil(s.upgraded):
+    s.upgraded = newFuture[void]()
+
   if s.timeout > 0.millis:
     trace "Monitoring for timeout", s, timeout = s.timeout
 
@@ -61,8 +81,14 @@ method initStream*(s: Connection) =
 method closeImpl*(s: Connection): Future[void] =
   # Cleanup timeout timer
   trace "Closing connection", s
+
   if not isNil(s.timerTaskFut) and not s.timerTaskFut.finished:
     s.timerTaskFut.cancel()
+    s.timerTaskFut = nil
+
+  if not isNil(s.upgraded) and not s.upgraded.finished:
+    s.upgraded.cancel()
+    s.upgraded = nil
 
   trace "Closed connection", s
 
@@ -70,6 +96,32 @@ method closeImpl*(s: Connection): Future[void] =
 
 func hash*(p: Connection): Hash =
   cast[pointer](p).hash
+
+proc pollActivity(s: Connection): Future[bool] {.async.} =
+  if s.closed and s.atEof:
+    return false # Done, no more monitoring
+
+  if s.activity:
+    s.activity = false
+    return true
+
+  # Inactivity timeout happened, call timeout monitor
+
+  trace "Connection timed out", s
+  if not(isNil(s.timeoutHandler)):
+    trace "Calling timeout handler", s
+
+    try:
+      await s.timeoutHandler()
+    except CancelledError:
+      # timeoutHandler is expected to be fast, but it's still possible that
+      # cancellation will happen here - no need to warn about it - we do want to
+      # stop the polling however
+      debug "Timeout handler cancelled", s
+    except CatchableError as exc: # Shouldn't happen
+      warn "exception in timeout handler", s, exc = exc.msg
+
+  return false
 
 proc timeoutMonitor(s: Connection) {.async, gcsafe.} =
   ## monitor the channel for inactivity
@@ -80,40 +132,25 @@ proc timeoutMonitor(s: Connection) {.async, gcsafe.} =
   ## be reset
   ##
 
-  try:
-    while true:
+  while true:
+    try: # Sleep at least once!
       await sleepAsync(s.timeout)
+    except CancelledError:
+      return
 
-      if s.closed and s.atEof:
-        return
-
-      if s.activity:
-        s.activity = false
-        continue
-
-      break
-
-    # reset channel on inactivity timeout
-    trace "Connection timed out", s
-    if not(isNil(s.timeoutHandler)):
-      trace "Calling timeout handler", s
-      await s.timeoutHandler()
-
-  except CancelledError as exc:
-    raise exc
-  except CatchableError as exc: # Shouldn't happen
-    warn "exception in timeout", s, exc = exc.msg
-  finally:
-    s.timerTaskFut = nil
+    if not await s.pollActivity():
+      return
 
 proc init*(C: type Connection,
            peerInfo: PeerInfo,
            dir: Direction,
            timeout: Duration = DefaultConnectionTimeout,
-           timeoutHandler: TimeoutHandler = nil): Connection =
+           timeoutHandler: TimeoutHandler = nil,
+           observedAddr: MultiAddress = MultiAddress()): Connection =
   result = C(peerInfo: peerInfo,
              dir: dir,
              timeout: timeout,
-             timeoutHandler: timeoutHandler)
+             timeoutHandler: timeoutHandler,
+             observedAddr: observedAddr)
 
   result.initStream()

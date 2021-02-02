@@ -1,6 +1,6 @@
 import
-  std/hashes,
-  stint,
+  std/[hashes, net],
+  stew/arrayops,
   eth/rlp, enr, node
 
 {.push raises: [Defect].}
@@ -40,7 +40,7 @@ type
 
   PongMessage* = object
     enrSeq*: uint64
-    ip*: seq[byte]
+    ip*: IpAddress
     port*: uint16
 
   FindNodeMessage* = object
@@ -114,19 +114,31 @@ proc read*(rlp: var Rlp, T: type RequestId): T
 proc append*(writer: var RlpWriter, value: RequestId) =
   writer.append(value.id)
 
+proc read*(rlp: var Rlp, T: type IpAddress): T
+    {.raises: [RlpError, Defect].} =
+  let ipBytes = rlp.toBytes()
+  rlp.skipElem()
+
+  if ipBytes.len == 4:
+    var ip: array[4, byte]
+    discard copyFrom(ip, ipBytes)
+    IpAddress(family: IPv4, address_v4: ip)
+  elif ipBytes.len == 16:
+    var ip: array[16, byte]
+    discard copyFrom(ip, ipBytes)
+    IpAddress(family: IPv6, address_v6: ip)
+  else:
+    raise newException(RlpTypeMismatch,
+      "Amount of bytes for IP address is different from 4 or 16")
+
+proc append*(writer: var RlpWriter, ip: IpAddress) =
+  case ip.family:
+  of IpAddressFamily.IPv4:
+    writer.append(ip.address_v4)
+  of IpAddressFamily.IPv6: writer.append(ip.address_v6)
+
 proc hash*(reqId: RequestId): Hash =
   hash(reqId.id)
-
-proc toBytes*(id: NodeId): array[32, byte] {.inline.} =
-  id.toByteArrayBE()
-
-proc hash*(id: NodeId): Hash {.inline.} =
-  result = hashData(unsafeAddr id, sizeof(id))
-
-# TODO: To make this work I think we also need to implement `==` due to case
-# fields in object
-proc hash*(address: Address): Hash {.inline.} =
-  hashData(unsafeAddr address, sizeof(address))
 
 proc hash*(key: HandshakeKey): Hash =
   result = key.nodeId.hash !& key.address.hash

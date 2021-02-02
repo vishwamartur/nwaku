@@ -14,7 +14,7 @@ requires "nim >= 1.2.0",
          "chronos >= 2.5.2",
          "metrics",
          "secp256k1",
-         "stew >= 0.1.0"
+         "stew#head"
 
 proc runTest(filename: string, verify: bool = true, sign: bool = true,
              moreoptions: string = "") =
@@ -51,9 +51,6 @@ task testpubsub, "Runs pubsub tests":
   runTest("pubsub/testpubsub")
   runTest("pubsub/testpubsub", sign = false, verify = false)
   runTest("pubsub/testpubsub", sign = false, verify = false, moreoptions = "-d:libp2p_pubsub_anonymize=true")
-  runTest("pubsub/testgossipinternal10", sign = false, verify = false, moreoptions = "-d:pubsub_internal_testing")
-  runTest("pubsub/testpubsub", moreoptions = "-d:fallback_gossipsub_10")
-  runTest("pubsub/testpubsub", sign = false, verify = false, moreoptions = "-d:fallback_gossipsub_10")
 
 task testpubsub_slim, "Runs pubsub tests":
   runTest("pubsub/testgossipinternal", sign = false, verify = false, moreoptions = "-d:pubsub_internal_testing")

@@ -1,6 +1,7 @@
 import testvarint,
        testminprotobuf,
-       teststreamseq
+       teststreamseq,
+       testsemaphore
 
 import testminasn1,
        testrsa,
@@ -13,7 +14,7 @@ import testmultibase,
        testmultihash,
        testmultiaddress,
        testcid,
-       testpeer
+       testpeerid
 
 import testtransport,
        testmultistream,

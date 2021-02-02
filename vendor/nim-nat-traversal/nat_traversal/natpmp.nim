@@ -10,6 +10,8 @@
 # headers and library location #
 ################################
 
+{.push raises: [Defect].}
+
 import os
 when defined(windows):
   import winlean
@@ -194,16 +196,18 @@ proc strnatpmperr*(t: cint): cstring {.importc: "strnatpmperr", header: "natpmp.
 # custom wrappers #
 ###################
 
-import stew/result
+import
+  stew/results
+export results
 
 type NatPmp* {.packed.} = ref object
   cstruct*: natpmp_t
 
-proc natpmpFinalizer(x: NatPmp) =
+proc close*(x: NatPmp) =
   discard closenatpmp(addr(x.cstruct))
 
 proc newNatPmp*(): NatPmp =
-  new(result, natpmpFinalizer)
+  new(result)
 
 proc init*(self: NatPmp): Result[bool, cstring] =
   let res = initnatpmp(addr(self.cstruct), 0, 0)
@@ -215,7 +219,7 @@ proc init*(self: NatPmp): Result[bool, cstring] =
 proc `=deepCopy`(x: NatPmp): NatPmp =
   doAssert(false, "not implemented")
 
-proc getNatPmpResponse(self: NatPmp, natPmpResponsePtr: ptr natpmpresp_t): Result[bool, cstring] =
+proc getNatPmpResponse(self: NatPmp, natPmpResponsePtr: ptr natpmpresp_t): Result[bool, string] =
   var
     res: cint
     timeout: Timeval
@@ -226,7 +230,7 @@ proc getNatPmpResponse(self: NatPmp, natPmpResponsePtr: ptr natpmpresp_t): Resul
     FD_SET(SocketHandle(self.cstruct.s), fds)
     res = getnatpmprequesttimeout(addr(self.cstruct), addr(timeout))
     if res != 0:
-      result.err(strnatpmperr(res))
+      result.err($strnatpmperr(res))
       return
     res = select(FD_SETSIZE, addr(fds), nil, nil, addr(timeout))
     if res == -1:
@@ -234,7 +238,7 @@ proc getNatPmpResponse(self: NatPmp, natPmpResponsePtr: ptr natpmpresp_t): Resul
       return
     res = readnatpmpresponseorretry(addr(self.cstruct), natPmpResponsePtr)
     if res < 0 and res != NATPMP_TRYAGAIN:
-      result.err(strnatpmperr(res))
+      result.err($strnatpmperr(res))
       return
     if res != NATPMP_TRYAGAIN:
       break
@@ -242,14 +246,14 @@ proc getNatPmpResponse(self: NatPmp, natPmpResponsePtr: ptr natpmpresp_t): Resul
   result.ok(true)
 
 
-proc externalIPAddress*(self: NatPmp): Result[cstring, cstring] =
+proc externalIPAddress*(self: NatPmp): Result[cstring, string] =
   var
     res: cint
     natPmpResponse: natpmpresp_t
 
   res = sendpublicaddressrequest(addr(self.cstruct))
   if res < 0:
-    result.err(strnatpmperr(res))
+    result.err($strnatpmperr(res))
     return
   if (let r = self.getNatPmpResponse(addr(natPmpResponse)); r.isErr):
     result.err(r.error)
@@ -260,14 +264,14 @@ type NatPmpProtocol* = enum
   UDP = NATPMP_PROTOCOL_UDP
   TCP = NATPMP_PROTOCOL_TCP
 
-proc doMapping(self: NatPmp, eport: cushort, iport: cushort, protocol: NatPmpProtocol, lifetime: culong): Result[cushort, cstring] =
+proc doMapping(self: NatPmp, eport: cushort, iport: cushort, protocol: NatPmpProtocol, lifetime: culong): Result[cushort, string] =
   var
     res: cint
     natPmpResponse: natpmpresp_t
 
   res = sendnewportmappingrequest(addr(self.cstruct), protocol.cint, iport, eport, lifetime)
   if res < 0:
-    result.err(strnatpmperr(res))
+    result.err($strnatpmperr(res))
     return
   if (let r = self.getNatPmpResponse(addr(natPmpResponse)); r.isErr):
     result.err(r.error)
@@ -276,9 +280,9 @@ proc doMapping(self: NatPmp, eport: cushort, iport: cushort, protocol: NatPmpPro
 
 ## returns the mapped external port (might be different than the one requested)
 ## "lifetime" is in seconds
-proc addPortMapping*(self: NatPmp, eport: cushort, iport: cushort, protocol: NatPmpProtocol, lifetime: culong): Result[cushort, cstring] =
+proc addPortMapping*(self: NatPmp, eport: cushort, iport: cushort, protocol: NatPmpProtocol, lifetime: culong): Result[cushort, string] =
   return self.doMapping(eport, iport, protocol, lifetime)
 
-proc deletePortMapping*(self: NatPmp, eport: cushort, iport: cushort, protocol: NatPmpProtocol): Result[cushort, cstring] =
+proc deletePortMapping*(self: NatPmp, eport: cushort, iport: cushort, protocol: NatPmpProtocol): Result[cushort, string] =
   return self.doMapping(eport, iport, protocol, 0)
 

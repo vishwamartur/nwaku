@@ -177,8 +177,7 @@ elif unixPlatform:
                     MSG_NOSIGNAL, SIGPIPE
 
 type
-  CallbackFunc* = proc (arg: pointer = nil) {.gcsafe.}
-  CallSoonProc* = proc (c: CallbackFunc, u: pointer = nil) {.gcsafe.}
+  CallbackFunc* = proc (arg: pointer) {.gcsafe.}
 
   AsyncCallback* = object
     function*: CallbackFunc
@@ -201,12 +200,11 @@ type
   PDispatcherBase = ref object of RootRef
     timers*: HeapQueue[TimerCallback]
     callbacks*: Deque[AsyncCallback]
+    idlers*: Deque[AsyncCallback]
     trackers*: Table[string, TrackerBase]
 
 proc `<`(a, b: TimerCallback): bool =
   result = a.finishAt < b.finishAt
-
-proc callSoon*(cbproc: CallbackFunc, data: pointer = nil) {.gcsafe.}
 
 func getAsyncTimestamp*(a: Duration): auto {.inline.} =
   ## Return rounded up value of duration with milliseconds resolution.
@@ -238,17 +236,18 @@ template processTimersGetTimeout(loop, timeout: untyped) =
       break
 
     loop.callbacks.addLast(loop.timers.pop().function)
+
   if loop.timers.len > 0:
     timeout = (lastFinish - curTime).getAsyncTimestamp()
 
   if timeout == 0:
-    if len(loop.callbacks) == 0:
+    if (len(loop.callbacks) == 0) and (len(loop.idlers) == 0):
       when defined(windows):
         timeout = INFINITE
       else:
         timeout = -1
   else:
-    if len(loop.callbacks) != 0:
+    if (len(loop.callbacks) != 0) or (len(loop.idlers) != 0):
       timeout = 0
 
 template processTimers(loop: untyped) =
@@ -261,6 +260,10 @@ template processTimers(loop: untyped) =
     if curTime < loop.timers[0].finishAt:
       break
     loop.callbacks.addLast(loop.timers.pop().function)
+
+template processIdlers(loop: untyped) =
+  if len(loop.idlers) > 0:
+    loop.callbacks.addLast(loop.idlers.popFirst())
 
 template processCallbacks(loop: untyped) =
   var count = len(loop.callbacks)
@@ -362,37 +365,34 @@ when defined(windows) or defined(nimdoc):
 
   proc newDispatcher*(): PDispatcher =
     ## Creates a new Dispatcher instance.
-    new result
-    result.ioPort = createIoCompletionPort(INVALID_HANDLE_VALUE, 0, 0, 1)
+    var res = PDispatcher()
+    res.ioPort = createIoCompletionPort(INVALID_HANDLE_VALUE, 0, 0, 1)
     when declared(initHashSet):
       # After 0.20.0 Nim's stdlib version
-      result.handles = initHashSet[AsyncFD]()
+      res.handles = initHashSet[AsyncFD]()
     else:
       # Pre 0.20.0 Nim's stdlib version
-      result.handles = initSet[AsyncFD]()
+      res.handles = initSet[AsyncFD]()
     when declared(initHeapQueue):
       # After 0.20.0 Nim's stdlib version
-      result.timers = initHeapQueue[TimerCallback]()
+      res.timers = initHeapQueue[TimerCallback]()
     else:
       # Pre 0.20.0 Nim's stdlib version
-      result.timers = newHeapQueue[TimerCallback]()
-    result.callbacks = initDeque[AsyncCallback](64)
-    result.trackers = initTable[string, TrackerBase]()
-    initAPI(result)
+      res.timers = newHeapQueue[TimerCallback]()
+    res.callbacks = initDeque[AsyncCallback](64)
+    res.idlers = initDeque[AsyncCallback]()
+    res.trackers = initTable[string, TrackerBase]()
+    initAPI(res)
+    res
 
   var gDisp{.threadvar.}: PDispatcher ## Global dispatcher
 
-  proc setGlobalDispatcher*(disp: PDispatcher) =
-    ## Set current thread's dispatcher instance to ``disp``.
-    if not gDisp.isNil:
-      doAssert gDisp.callbacks.len == 0
-    gDisp = disp
-
-  proc getGlobalDispatcher*(): PDispatcher =
-    ## Returns current thread's dispatcher instance.
-    if gDisp.isNil:
-      setGlobalDispatcher(newDispatcher())
-    result = gDisp
+  proc setThreadDispatcher*(disp: PDispatcher) {.gcsafe, raises: [Defect].}
+  proc getThreadDispatcher*(): PDispatcher {.gcsafe, raises: [Defect].}
+  proc setGlobalDispatcher*(disp: PDispatcher) {.
+       gcsafe, deprecated: "Use setThreadDispatcher() instead".}
+  proc getGlobalDispatcher*(): PDispatcher {.
+       gcsafe, deprecated: "Use getThreadDispatcher() instead".}
 
   proc getIoHandler*(disp: PDispatcher): Handle =
     ## Returns the underlying IO Completion Port handle (Windows) or selector
@@ -401,7 +401,7 @@ when defined(windows) or defined(nimdoc):
 
   proc register*(fd: AsyncFD) =
     ## Register file descriptor ``fd`` in thread's dispatcher.
-    let loop = getGlobalDispatcher()
+    let loop = getThreadDispatcher()
     if createIoCompletionPort(fd.Handle, loop.ioPort,
                               cast[CompletionKey](fd), 1) == 0:
       raiseOSError(osLastError())
@@ -409,9 +409,10 @@ when defined(windows) or defined(nimdoc):
 
   proc poll*() =
     ## Perform single asynchronous step.
-    let loop = getGlobalDispatcher()
+    let loop = getThreadDispatcher()
     var curTime = Moment.now()
     var curTimeout = DWORD(0)
+    var noNetworkEvents = false
 
     # Moving expired timers to `loop.callbacks` and calculate timeout
     loop.processTimersGetTimeout(curTimeout)
@@ -442,9 +443,16 @@ when defined(windows) or defined(nimdoc):
       else:
         if int32(errCode) != WAIT_TIMEOUT:
           raiseOSError(errCode)
+        else:
+          noNetworkEvents = true
 
     # Moving expired timers to `loop.callbacks`.
     loop.processTimers()
+
+    # We move idle callbacks to `loop.callbacks` only if there no pending
+    # network events.
+    if noNetworkEvents:
+      loop.processIdlers()
 
     # All callbacks which will be added in process will be processed on next
     # poll() call.
@@ -452,7 +460,7 @@ when defined(windows) or defined(nimdoc):
 
   proc closeSocket*(fd: AsyncFD, aftercb: CallbackFunc = nil) =
     ## Closes a socket and ensures that it is unregistered.
-    let loop = getGlobalDispatcher()
+    let loop = getThreadDispatcher()
     loop.handles.excl(fd)
     close(SocketHandle(fd))
     if not isNil(aftercb):
@@ -461,7 +469,7 @@ when defined(windows) or defined(nimdoc):
 
   proc closeHandle*(fd: AsyncFD, aftercb: CallbackFunc = nil) =
     ## Closes a (pipe/file) handle and ensures that it is unregistered.
-    let loop = getGlobalDispatcher()
+    let loop = getThreadDispatcher()
     loop.handles.excl(fd)
     discard closeHandle(Handle(fd))
     if not isNil(aftercb):
@@ -470,7 +478,7 @@ when defined(windows) or defined(nimdoc):
 
   proc unregister*(fd: AsyncFD) =
     ## Unregisters ``fd``.
-    getGlobalDispatcher().handles.excl(fd)
+    getThreadDispatcher().handles.excl(fd)
 
   proc contains*(disp: PDispatcher, fd: AsyncFD): bool =
     ## Returns ``true`` if ``fd`` is registered in thread's dispatcher.
@@ -510,32 +518,29 @@ elif unixPlatform:
 
   proc newDispatcher*(): PDispatcher =
     ## Create new dispatcher.
-    new result
-    result.selector = newSelector[SelectorData]()
+    var res = PDispatcher()
+    res.selector = newSelector[SelectorData]()
     when declared(initHeapQueue):
       # After 0.20.0 Nim's stdlib version
-      result.timers = initHeapQueue[TimerCallback]()
+      res.timers = initHeapQueue[TimerCallback]()
     else:
       # Before 0.20.0 Nim's stdlib version
-      result.timers.newHeapQueue()
-    result.callbacks = initDeque[AsyncCallback](64)
-    result.keys = newSeq[ReadyKey](64)
-    result.trackers = initTable[string, TrackerBase]()
-    initAPI(result)
+      res.timers.newHeapQueue()
+    res.callbacks = initDeque[AsyncCallback](64)
+    res.idlers = initDeque[AsyncCallback]()
+    res.keys = newSeq[ReadyKey](64)
+    res.trackers = initTable[string, TrackerBase]()
+    initAPI(res)
+    res
 
   var gDisp{.threadvar.}: PDispatcher ## Global dispatcher
 
-  proc setGlobalDispatcher*(disp: PDispatcher) =
-    ## Set current thread's dispatcher instance to ``disp``.
-    if not gDisp.isNil:
-      doAssert gDisp.callbacks.len == 0
-    gDisp = disp
-
-  proc getGlobalDispatcher*(): PDispatcher =
-    ## Returns current thread's dispatcher instance.
-    if gDisp.isNil:
-      setGlobalDispatcher(newDispatcher())
-    result = gDisp
+  proc setThreadDispatcher*(disp: PDispatcher) {.gcsafe, raises: [Defect].}
+  proc getThreadDispatcher*(): PDispatcher {.gcsafe, raises: [Defect].}
+  proc setGlobalDispatcher*(disp: PDispatcher) {.
+       gcsafe, deprecated: "Use setThreadDispatcher() instead".}
+  proc getGlobalDispatcher*(): PDispatcher {.
+       gcsafe, deprecated: "Use getThreadDispatcher() instead".}
 
   proc getIoHandler*(disp: PDispatcher): Selector[SelectorData] =
     ## Returns system specific OS queue.
@@ -543,7 +548,7 @@ elif unixPlatform:
 
   proc register*(fd: AsyncFD) =
     ## Register file descriptor ``fd`` in thread's dispatcher.
-    let loop = getGlobalDispatcher()
+    let loop = getThreadDispatcher()
     var data: SelectorData
     data.rdata.fd = fd
     data.wdata.fd = fd
@@ -551,7 +556,7 @@ elif unixPlatform:
 
   proc unregister*(fd: AsyncFD) =
     ## Unregister file descriptor ``fd`` from thread's dispatcher.
-    getGlobalDispatcher().selector.unregister(int(fd))
+    getThreadDispatcher().selector.unregister(int(fd))
 
   proc contains*(disp: PDispatcher, fd: AsyncFd): bool {.inline.} =
     ## Returns ``true`` if ``fd`` is registered in thread's dispatcher.
@@ -560,7 +565,7 @@ elif unixPlatform:
   proc addReader*(fd: AsyncFD, cb: CallbackFunc, udata: pointer = nil) =
     ## Start watching the file descriptor ``fd`` for read availability and then
     ## call the callback ``cb`` with specified argument ``udata``.
-    let loop = getGlobalDispatcher()
+    let loop = getThreadDispatcher()
     var newEvents = {Event.Read}
     withData(loop.selector, int(fd), adata) do:
       let acb = AsyncCallback(function: cb, udata: addr adata.rdata)
@@ -575,7 +580,7 @@ elif unixPlatform:
 
   proc removeReader*(fd: AsyncFD) =
     ## Stop watching the file descriptor ``fd`` for read availability.
-    let loop = getGlobalDispatcher()
+    let loop = getThreadDispatcher()
     var newEvents: set[Event]
     withData(loop.selector, int(fd), adata) do:
       # We need to clear `reader` data, because `selectors` don't do it
@@ -590,7 +595,7 @@ elif unixPlatform:
   proc addWriter*(fd: AsyncFD, cb: CallbackFunc, udata: pointer = nil) =
     ## Start watching the file descriptor ``fd`` for write availability and then
     ## call the callback ``cb`` with specified argument ``udata``.
-    let loop = getGlobalDispatcher()
+    let loop = getThreadDispatcher()
     var newEvents = {Event.Write}
     withData(loop.selector, int(fd), adata) do:
       let acb = AsyncCallback(function: cb, udata: addr adata.wdata)
@@ -605,7 +610,7 @@ elif unixPlatform:
 
   proc removeWriter*(fd: AsyncFD) =
     ## Stop watching the file descriptor ``fd`` for write availability.
-    let loop = getGlobalDispatcher()
+    let loop = getThreadDispatcher()
     var newEvents: set[Event]
     withData(loop.selector, int(fd), adata) do:
       # We need to clear `writer` data, because `selectors` don't do it
@@ -624,7 +629,7 @@ elif unixPlatform:
     ## closing socket, while operation pending, socket will be closed as
     ## soon as all pending operations will be notified.
     ## You can execute ``aftercb`` before actual socket close operation.
-    let loop = getGlobalDispatcher()
+    let loop = getThreadDispatcher()
 
     proc continuation(udata: pointer) =
       if SocketHandle(fd) in loop.selector:
@@ -669,7 +674,7 @@ elif unixPlatform:
       ## callback ``cb`` with specified argument ``udata``. Returns signal
       ## identifier code, which can be used to remove signal callback
       ## via ``removeSignal``.
-      let loop = getGlobalDispatcher()
+      let loop = getThreadDispatcher()
       var data: SelectorData
       result = loop.selector.registerSignal(signal, data)
       withData(loop.selector, result, adata) do:
@@ -681,12 +686,12 @@ elif unixPlatform:
 
     proc removeSignal*(sigfd: int) =
       ## Remove watching signal ``signal``.
-      let loop = getGlobalDispatcher()
+      let loop = getThreadDispatcher()
       loop.selector.unregister(sigfd)
 
   proc poll*() =
     ## Perform single asynchronous step.
-    let loop = getGlobalDispatcher()
+    let loop = getThreadDispatcher()
     var curTime = Moment.now()
     var curTimeout = 0
 
@@ -698,7 +703,7 @@ elif unixPlatform:
     loop.processTimersGetTimeout(curTimeout)
 
     # Processing IO descriptors and all hardware events.
-    var count = loop.selector.selectInto(curTimeout, loop.keys)
+    let count = loop.selector.selectInto(curTimeout, loop.keys)
     for i in 0..<count:
       let fd = loop.keys[i].fd
       let events = loop.keys[i].events
@@ -724,6 +729,11 @@ elif unixPlatform:
     # Moving expired timers to `loop.callbacks`.
     loop.processTimers()
 
+    # We move idle callbacks to `loop.callbacks` only if there no pending
+    # network events.
+    if count == 0:
+      loop.processIdlers()
+
     # All callbacks which will be added in process, will be processed on next
     # poll() call.
     loop.processCallbacks()
@@ -732,11 +742,48 @@ else:
   proc initAPI() = discard
   proc globalInit() = discard
 
+proc setThreadDispatcher*(disp: PDispatcher) =
+  ## Set current thread's dispatcher instance to ``disp``.
+  if not gDisp.isNil:
+    doAssert gDisp.callbacks.len == 0
+  gDisp = disp
+
+proc getThreadDispatcher*(): PDispatcher =
+  ## Returns current thread's dispatcher instance.
+  template getErrorMessage(exc): string =
+    "Cannot create thread dispatcher: " & exc.msg
+
+  if gDisp.isNil:
+    when defined(windows):
+      let disp =
+        try:
+          newDispatcher()
+        except CatchableError as exc:
+          raise newException(Defect, getErrorMessage(exc))
+    else:
+      let disp =
+        try:
+          newDispatcher()
+        except IOSelectorsException as exc:
+          raise newException(Defect, getErrorMessage(exc))
+        except CatchableError as exc:
+          raise newException(Defect, getErrorMessage(exc))
+    setThreadDispatcher(disp)
+  return gDisp
+
+proc setGlobalDispatcher*(disp: PDispatcher) =
+  ## Set current thread's dispatcher instance to ``disp``.
+  setThreadDispatcher(disp)
+
+proc getGlobalDispatcher*(): PDispatcher =
+  ## Returns current thread's dispatcher instance.
+  getThreadDispatcher()
+
 proc setTimer*(at: Moment, cb: CallbackFunc,
                udata: pointer = nil): TimerCallback =
   ## Arrange for the callback ``cb`` to be called at the given absolute
   ## timestamp ``at``. You can also pass ``udata`` to callback.
-  let loop = getGlobalDispatcher()
+  let loop = getThreadDispatcher()
   result = TimerCallback(finishAt: at,
                          function: AsyncCallback(function: cb, udata: udata))
   loop.timers.push(result)
@@ -761,7 +808,7 @@ proc addTimer*(at: uint64, cb: CallbackFunc, udata: pointer = nil) {.
 proc removeTimer*(at: Moment, cb: CallbackFunc, udata: pointer = nil) =
   ## Remove timer callback ``cb`` with absolute timestamp ``at`` from waiting
   ## queue.
-  let loop = getGlobalDispatcher()
+  let loop = getThreadDispatcher()
   var list = cast[seq[TimerCallback]](loop.timers)
   var index = -1
   for i in 0..<len(list):
@@ -779,6 +826,44 @@ proc removeTimer*(at: int64, cb: CallbackFunc, udata: pointer = nil) {.
 proc removeTimer*(at: uint64, cb: CallbackFunc, udata: pointer = nil) {.
      inline, deprecated: "Use removeTimer(Duration, cb, udata)".} =
   removeTimer(Moment.init(int64(at), Millisecond), cb, udata)
+
+proc callSoon*(acb: AsyncCallback) {.gcsafe, raises: [Defect].} =
+  ## Schedule `cbproc` to be called as soon as possible.
+  ## The callback is called when control returns to the event loop.
+  getThreadDispatcher().callbacks.addLast(acb)
+
+proc callSoon*(cbproc: CallbackFunc, data: pointer) {.
+     gcsafe, raises: [Defect].} =
+  ## Schedule `cbproc` to be called as soon as possible.
+  ## The callback is called when control returns to the event loop.
+  doAssert(not isNil(cbproc))
+  callSoon(AsyncCallback(function: cbproc, udata: data))
+
+proc callSoon*(cbproc: CallbackFunc) {.gcsafe, raises: [Defect].} =
+  callSoon(cbproc, nil)
+
+proc callIdle*(acb: AsyncCallback) {.gcsafe, raises: [Defect].} =
+  ## Schedule ``cbproc`` to be called when there no pending network events
+  ## available.
+  ##
+  ## **WARNING!** Despite the name, "idle" callbacks called on every loop
+  ## iteration if there no network events available, not when the loop is
+  ## actually "idle".
+  getThreadDispatcher().idlers.addLast(acb)
+
+proc callIdle*(cbproc: CallbackFunc, data: pointer) {.
+     gcsafe, raises: [Defect].} =
+  ## Schedule ``cbproc`` to be called when there no pending network events
+  ## available.
+  ##
+  ## **WARNING!** Despite the name, "idle" callbacks called on every loop
+  ## iteration if there no network events available, not when the loop is
+  ## actually "idle".
+  doAssert(not isNil(cbproc))
+  callIdle(AsyncCallback(function: cbproc, udata: data))
+
+proc callIdle*(cbproc: CallbackFunc) {.gcsafe, raises: [Defect].} =
+  callIdle(cbproc, nil)
 
 include asyncfutures2
 
@@ -835,6 +920,24 @@ proc stepsAsync*(number: int): Future[void] =
     retFuture.cancelCallback = cancellation
     callSoon(continuation, nil)
 
+  retFuture
+
+proc idleAsync*(): Future[void] =
+  ## Suspends the execution of the current asynchronous task until "idle" time.
+  ##
+  ## "idle" time its moment of time, when no network events were processed by
+  ## ``poll()`` call.
+  var retFuture = newFuture[void]("chronos.idleAsync()")
+
+  proc continuation(data: pointer) {.gcsafe.} =
+    if not(retFuture.finished()):
+      retFuture.complete()
+
+  proc cancellation(udata: pointer) {.gcsafe.} =
+    discard
+
+  retFuture.cancelCallback = cancellation
+  callIdle(continuation, nil)
   retFuture
 
 proc withTimeout*[T](fut: Future[T], timeout: Duration): Future[bool] =
@@ -968,13 +1071,6 @@ proc wait*[T](fut: Future[T], timeout = -1): Future[T] {.
 
 include asyncmacro2
 
-proc callSoon*(cbproc: CallbackFunc, data: pointer = nil) =
-  ## Schedule `cbproc` to be called as soon as possible.
-  ## The callback is called when control returns to the event loop.
-  doAssert(not isNil(cbproc))
-  let acb = AsyncCallback(function: cbproc, udata: data)
-  getGlobalDispatcher().callbacks.addLast(acb)
-
 proc runForever*() =
   ## Begins a never ending global dispatcher poll loop.
   while true:
@@ -990,12 +1086,12 @@ proc waitFor*[T](fut: Future[T]): T =
 proc addTracker*[T](id: string, tracker: T) =
   ## Add new ``tracker`` object to current thread dispatcher with identifier
   ## ``id``.
-  let loop = getGlobalDispatcher()
+  let loop = getThreadDispatcher()
   loop.trackers[id] = tracker
 
 proc getTracker*(id: string): TrackerBase =
   ## Get ``tracker`` from current thread dispatcher using identifier ``id``.
-  let loop = getGlobalDispatcher()
+  let loop = getThreadDispatcher()
   result = loop.trackers.getOrDefault(id, nil)
 
 when defined(chronosFutureTracking):

@@ -18,7 +18,9 @@ import transport,
        ../stream/chronosstream
 
 logScope:
-  topics = "tcptransport"
+  topics = "libp2p tcptransport"
+
+export transport
 
 const
   TcpTransportTrackerName* = "libp2p.tcptransport"
@@ -60,15 +62,25 @@ proc setupTcpTransportTracker(): TcpTransportTracker =
 proc connHandler*(t: TcpTransport,
                   client: StreamTransport,
                   dir: Direction): Future[Connection] {.async.} =
-  debug "Handling tcp connection", address = $client.remoteAddress,
+  var observedAddr: MultiAddress = MultiAddress()
+  try:
+    observedAddr = MultiAddress.init(client.remoteAddress).tryGet()
+  except CatchableError as exc:
+    trace "Connection setup failed", exc = exc.msg
+    if not(isNil(client) and client.closed):
+      await client.closeWait()
+      raise exc
+
+  trace "Handling tcp connection", address = $observedAddr,
                                    dir = $dir,
                                    clients = t.clients[Direction.In].len +
                                    t.clients[Direction.Out].len
 
   let conn = Connection(
     ChronosStream.init(
-      client,
-      dir
+      client = client,
+      dir = dir,
+      observedAddr = observedAddr
     ))
 
   proc onClose() {.async.} =
@@ -76,7 +88,7 @@ proc connHandler*(t: TcpTransport,
       let futs = @[client.join(), conn.join()]
       await futs[0] or futs[1]
       for f in futs:
-        if not f.finished: f.cancel # cancel outstanding join()
+        if not f.finished: await f.cancelAndWait() # cancel outstanding join()
 
       trace "Cleaning up client", addrs = $client.remoteAddress,
                                   conn
@@ -94,15 +106,6 @@ proc connHandler*(t: TcpTransport,
 
   t.clients[dir].add(client)
   asyncSpawn onClose()
-
-  try:
-    conn.observedAddr = MultiAddress.init(client.remoteAddress).tryGet()
-  except CatchableError as exc:
-    trace "Connection setup failed", exc = exc.msg, conn
-    if not(isNil(client) and client.closed):
-      await client.closeWait()
-
-    raise exc
 
   return conn
 
@@ -127,7 +130,10 @@ method start*(t: TcpTransport, ma: MultiAddress) {.async.} =
   await procCall Transport(t).start(ma)
   trace "Starting TCP transport"
 
-  t.server = createStreamServer(t.ma, t.flags, t)
+  t.server = createStreamServer(
+    ma = t.ma,
+    flags = t.flags,
+    udata = t)
 
   # always get the resolved address in case we're bound to 0.0.0.0:0
   t.ma = MultiAddress.init(t.server.sock.getLocalAddress()).tryGet()
@@ -138,6 +144,8 @@ method start*(t: TcpTransport, ma: MultiAddress) {.async.} =
 method stop*(t: TcpTransport) {.async, gcsafe.} =
   ## stop the transport
   ##
+
+  t.running = false # mark stopped as soon as possible
 
   try:
     trace "Stopping TCP transport"
@@ -157,8 +165,6 @@ method stop*(t: TcpTransport) {.async, gcsafe.} =
     inc getTcpTransportTracker().closed
   except CatchableError as exc:
     trace "Error shutting down tcp transport", exc = exc.msg
-  finally:
-    t.running = false
 
 method accept*(t: TcpTransport): Future[Connection] {.async, gcsafe.} =
   ## accept a new TCP connection
@@ -176,12 +182,12 @@ method accept*(t: TcpTransport): Future[Connection] {.async, gcsafe.} =
     # that can't.
     debug "OS Error", exc = exc.msg
   except TransportTooManyError as exc:
-    warn "Too many files opened", exc = exc.msg
+    debug "Too many files opened", exc = exc.msg
   except TransportUseClosedError as exc:
-    info "Server was closed", exc = exc.msg
+    debug "Server was closed", exc = exc.msg
     raise newTransportClosedError(exc)
   except CatchableError as exc:
-    trace "Unexpected error creating connection", exc = exc.msg
+    warn "Unexpected error creating connection", exc = exc.msg
     raise exc
 
 method dial*(t: TcpTransport,

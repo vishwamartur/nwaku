@@ -5,6 +5,7 @@
 [![License: Apache](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 ![Stability: experimental](https://img.shields.io/badge/stability-experimental-orange.svg)
+![Github action](https://github.com/status-im/nim-stew/workflows/nim-stew%20CI/badge.svg)
 
 `stew` is collection of utilities, std library extensions and budding libraries
 that are frequently used at Status, but are too small to deserve their own
@@ -21,6 +22,8 @@ broken out into separate repositories.
 Libraries are documented either in-module or on a separate README in their
 respective folders
 
+- `arrayops` - small helpers and operations on `array`/`openArray`
+- `assign2` - fast assignments (unlike the `=` operator in nim which is very slow)
 - `bitops2` - an updated version of `bitops.nim`, filling in gaps in original code
 - `byteutils` - utilities that make working with the Nim `byte` type convenient
 - `endians2` - utilities for converting to and from little / big endian integers
@@ -28,6 +31,8 @@ respective folders
 - `ptrops` - pointer arithmetic utilities
 - `result` - friendly, exception-free value-or-error returns, similar to `Option[T]`, from [nim-result](https://github.com/arnetheduck/nim-result/)
 - `shims` - backports of nim `devel` code to the stable version that Status is using
+- `sequtils2` - extensions to the `sequtils` module for working conveniently with `seq`
+- `varints` - helpers for working with variable length integers
 
 ## Layout
 

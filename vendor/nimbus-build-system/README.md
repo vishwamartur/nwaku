@@ -40,8 +40,8 @@ Write your own top-level Makefile, taking our
 example.
 
 See also the Makefiles we wrote for
-[Nimbus](https://github.com/status-im/nimbus/),
-[nim-beacon-chain](https://github.com/status-im/nim-beacon-chain),
+[Nimbus-eth1](https://github.com/status-im/nimbus-eth1),
+[Nimbus-eth2](https://github.com/status-im/nimbus-eth2),
 [nim-waku](https://github.com/status-im/nim-waku),
 [Stratus](https://github.com/status-im/nim-stratus),
 [nim-status-client](https://github.com/status-im/nim-status-client).
@@ -138,11 +138,30 @@ Link PCRE, defaults to 1.
 
 `make LINK_PCRE=0`
 
+### QUICK_AND_DIRTY_COMPILER
+
+Skip some Nim compiler bootstrap iterations and tool building. Useful in
+CI. Defaults to 0.
+
+`make QUICK_AND_DIRTY_COMPILER=1 build-nim`
+
 ## Make targets
 
 ### build
 
 Internal target that creates the directory with the same name.
+
+### sanity-checks
+
+Internal target used to check that a C compiler is installed.
+
+### warn-update
+
+Internal target that checks if `make update` was executed for the current Git commit.
+
+### warn-jobs
+
+Internal target that checks if Make's parallelism was enabled by specifying the number of jobs.
 
 ### deps-common
 

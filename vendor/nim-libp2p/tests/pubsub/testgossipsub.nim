@@ -19,15 +19,10 @@ import utils, ../../libp2p/[errors,
                             stream/bufferstream,
                             crypto/crypto,
                             protocols/pubsub/pubsub,
+                            protocols/pubsub/gossipsub,
                             protocols/pubsub/pubsubpeer,
                             protocols/pubsub/peertable,
                             protocols/pubsub/rpc/messages]
-
-when defined(fallback_gossipsub_10):
-  import ../../libp2p/protocols/pubsub/gossipsub10
-else:
-  import ../../libp2p/protocols/pubsub/gossipsub
-
 import ../helpers
 
 proc waitSub(sender, receiver: auto; key: string) {.async, gcsafe.} =
@@ -99,8 +94,8 @@ suite "GossipSub":
 
     await subscribeNodes(nodes)
 
-    await nodes[0].subscribe("foobar", handler)
-    await nodes[1].subscribe("foobar", handler)
+    nodes[0].subscribe("foobar", handler)
+    nodes[1].subscribe("foobar", handler)
 
     var subs: seq[Future[void]]
     subs &= waitSub(nodes[1], nodes[0], "foobar")
@@ -133,7 +128,7 @@ suite "GossipSub":
 
     await allFuturesThrowing(nodesFut.concat())
 
-  asyncTest "GossipSub validation should fail":
+  asyncTest "GossipSub validation should fail (reject)":
     proc handler(topic: string, data: seq[byte]) {.async, gcsafe.} =
       check false # if we get here, it should fail
 
@@ -155,8 +150,8 @@ suite "GossipSub":
 
     await subscribeNodes(nodes)
 
-    await nodes[0].subscribe("foobar", handler)
-    await nodes[1].subscribe("foobar", handler)
+    nodes[0].subscribe("foobar", handler)
+    nodes[1].subscribe("foobar", handler)
 
     var subs: seq[Future[void]]
     subs &= waitSub(nodes[1], nodes[0], "foobar")
@@ -176,6 +171,68 @@ suite "GossipSub":
                     message: Message):
                     Future[ValidationResult] {.async.} =
       result = ValidationResult.Reject
+      validatorFut.complete(true)
+
+    nodes[1].addValidator("foobar", validator)
+    tryPublish await nodes[0].publish("foobar", "Hello!".toBytes()), 1
+
+    check (await validatorFut) == true
+
+    await allFuturesThrowing(
+      nodes[0].switch.stop(),
+      nodes[1].switch.stop()
+    )
+
+    await allFuturesThrowing(
+      nodes[0].stop(),
+      nodes[1].stop()
+    )
+
+    await allFuturesThrowing(nodesFut.concat())
+
+  asyncTest "GossipSub validation should fail (ignore)":
+    proc handler(topic: string, data: seq[byte]) {.async, gcsafe.} =
+      check false # if we get here, it should fail
+
+    let
+      nodes = generateNodes(2, gossip = true)
+
+      # start switches
+      nodesFut = await allFinished(
+        nodes[0].switch.start(),
+        nodes[1].switch.start(),
+      )
+
+    # start pubsub
+    await allFuturesThrowing(
+      allFinished(
+        nodes[0].start(),
+        nodes[1].start(),
+    ))
+
+    await subscribeNodes(nodes)
+
+    nodes[0].subscribe("foobar", handler)
+    nodes[1].subscribe("foobar", handler)
+
+    var subs: seq[Future[void]]
+    subs &= waitSub(nodes[1], nodes[0], "foobar")
+    subs &= waitSub(nodes[0], nodes[1], "foobar")
+
+    await allFuturesThrowing(subs)
+
+    let gossip1 = GossipSub(nodes[0])
+    let gossip2 = GossipSub(nodes[1])
+
+    check:
+      gossip1.mesh["foobar"].len == 1 and "foobar" notin gossip1.fanout
+      gossip2.mesh["foobar"].len == 1 and "foobar" notin gossip2.fanout
+
+    var validatorFut = newFuture[bool]()
+    proc validator(topic: string,
+                    message: Message):
+                    Future[ValidationResult] {.async.} =
+      result = ValidationResult.Ignore
       validatorFut.complete(true)
 
     nodes[1].addValidator("foobar", validator)
@@ -219,8 +276,8 @@ suite "GossipSub":
 
     await subscribeNodes(nodes)
 
-    await nodes[1].subscribe("foo", handler)
-    await nodes[1].subscribe("bar", handler)
+    nodes[1].subscribe("foo", handler)
+    nodes[1].subscribe("bar", handler)
 
     var passed, failed: Future[bool] = newFuture[bool]()
     proc validator(topic: string,
@@ -285,7 +342,7 @@ suite "GossipSub":
 
     await subscribeNodes(nodes)
 
-    await nodes[1].subscribe("foobar", handler)
+    nodes[1].subscribe("foobar", handler)
     await sleepAsync(10.seconds)
 
     let gossip1 = GossipSub(nodes[0])
@@ -333,8 +390,8 @@ suite "GossipSub":
 
     await subscribeNodes(nodes)
 
-    await nodes[0].subscribe("foobar", handler)
-    await nodes[1].subscribe("foobar", handler)
+    nodes[0].subscribe("foobar", handler)
+    nodes[1].subscribe("foobar", handler)
 
     var subs: seq[Future[void]]
     subs &= waitSub(nodes[1], nodes[0], "foobar")
@@ -398,7 +455,7 @@ suite "GossipSub":
 
     await subscribeNodes(nodes)
 
-    await nodes[1].subscribe("foobar", handler)
+    nodes[1].subscribe("foobar", handler)
     await waitSub(nodes[0], nodes[1], "foobar")
 
     var observed = 0
@@ -470,8 +527,8 @@ suite "GossipSub":
 
     await subscribeNodes(nodes)
 
-    await nodes[0].subscribe("foobar", handler)
-    await nodes[1].subscribe("foobar", handler)
+    nodes[0].subscribe("foobar", handler)
+    nodes[1].subscribe("foobar", handler)
     await waitSub(nodes[0], nodes[1], "foobar")
 
     tryPublish await nodes[0].publish("foobar", "Hello!".toBytes()), 1
@@ -513,7 +570,8 @@ suite "GossipSub":
 
     var seen: Table[string, int]
     var seenFut = newFuture[void]()
-    for dialer in nodes:
+    for i in 0..<nodes.len:
+      let dialer = nodes[i]
       var handler: TopicHandler
       closureScope:
         var peerName = $dialer.peerInfo.peerId
@@ -525,7 +583,7 @@ suite "GossipSub":
           if not seenFut.finished() and seen.len >= runs:
             seenFut.complete()
 
-      await dialer.subscribe("foobar", handler)
+      dialer.subscribe("foobar", handler)
       await waitSub(nodes[0], dialer, "foobar")
 
     tryPublish await wait(nodes[0].publish("foobar",
@@ -564,7 +622,8 @@ suite "GossipSub":
 
     var seen: Table[string, int]
     var seenFut = newFuture[void]()
-    for dialer in nodes:
+    for i in 0..<nodes.len:
+      let dialer = nodes[i]
       var handler: TopicHandler
       closureScope:
         var peerName = $dialer.peerInfo.peerId
@@ -576,7 +635,7 @@ suite "GossipSub":
           if not seenFut.finished() and seen.len >= runs:
             seenFut.complete()
 
-      await dialer.subscribe("foobar", handler)
+      dialer.subscribe("foobar", handler)
       await waitSub(nodes[0], dialer, "foobar")
 
     tryPublish await wait(nodes[0].publish("foobar",
@@ -603,3 +662,114 @@ suite "GossipSub":
           it.switch.stop())))
 
     await allFuturesThrowing(nodesFut)
+
+  asyncTest "GossipSub invalid topic subscription":
+    var handlerFut = newFuture[bool]()
+    proc handler(topic: string, data: seq[byte]) {.async, gcsafe.} =
+      check topic == "foobar"
+      handlerFut.complete(true)
+
+    let
+      nodes = generateNodes(2, gossip = true)
+
+      # start switches
+      nodesFut = await allFinished(
+        nodes[0].switch.start(),
+        nodes[1].switch.start(),
+      )
+
+    # start pubsub
+    await allFuturesThrowing(
+      allFinished(
+        nodes[0].start(),
+        nodes[1].start(),
+    ))
+
+    var gossip = GossipSub(nodes[0])
+    let invalidDetected = newFuture[void]()
+    gossip.subscriptionValidator =
+      proc(topic: string): bool =
+        if topic == "foobar":
+          try:
+            invalidDetected.complete()
+          except:
+            raise newException(Defect, "Exception during subscriptionValidator")
+          false
+        else:
+          true
+
+    await subscribeNodes(nodes)
+
+    nodes[0].subscribe("foobar", handler)
+    nodes[1].subscribe("foobar", handler)
+
+    await invalidDetected.wait(10.seconds)
+
+    await allFuturesThrowing(
+      nodes[0].switch.stop(),
+      nodes[1].switch.stop()
+    )
+
+    await allFuturesThrowing(
+      nodes[0].stop(),
+      nodes[1].stop()
+    )
+
+    await allFuturesThrowing(nodesFut.concat())
+
+  asyncTest "GossipSub test directPeers":
+    var handlerFut = newFuture[bool]()
+    proc handler(topic: string, data: seq[byte]) {.async, gcsafe.} =
+      check topic == "foobar"
+      handlerFut.complete(true)
+
+    let
+      nodes = generateNodes(2, gossip = true)
+
+      # start switches
+      nodesFut = await allFinished(
+        nodes[0].switch.start(),
+        nodes[1].switch.start(),
+      )
+
+    var gossip = GossipSub(nodes[0])
+    gossip.parameters.directPeers[nodes[1].switch.peerInfo.peerId] = nodes[1].switch.peerInfo.addrs
+
+    # start pubsub
+    await allFuturesThrowing(
+      allFinished(
+        nodes[0].start(),
+        nodes[1].start(),
+    ))
+
+    let invalidDetected = newFuture[void]()
+    gossip.subscriptionValidator =
+      proc(topic: string): bool =
+        if topic == "foobar":
+          try:
+            invalidDetected.complete()
+          except:
+            raise newException(Defect, "Exception during subscriptionValidator")
+          false
+        else:
+          true
+
+    # DO NOT SUBSCRIBE, CONNECTION SHOULD HAPPEN
+    ### await subscribeNodes(nodes)
+
+    nodes[0].subscribe("foobar", handler)
+    nodes[1].subscribe("foobar", handler)
+
+    await invalidDetected.wait(10.seconds)
+
+    await allFuturesThrowing(
+      nodes[0].switch.stop(),
+      nodes[1].switch.stop()
+    )
+
+    await allFuturesThrowing(
+      nodes[0].stop(),
+      nodes[1].stop()
+    )
+
+    await allFuturesThrowing(nodesFut.concat())

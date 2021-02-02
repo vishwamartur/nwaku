@@ -304,6 +304,12 @@ template err*[T, E](R: type Result[T, E], x: auto): R =
   ## Example: `Result[int, string].err("uh-oh")`
   R(o: false, e: x)
 
+template err*[T](R: type Result[T, cstring], x: string): R =
+  ## Initialize the result to an error
+  ## Example: `Result[int, string].err("uh-oh")`
+  const s = x
+  R(o: false, e: cstring(s))
+
 template err*[T](R: type Result[T, void]): R =
   R(o: false)
 
@@ -311,6 +317,10 @@ template err*[T, E](self: var Result[T, E], x: auto) =
   ## Set the result as an error
   ## Example: `result.err("uh-oh")`
   self = err(type self, x)
+
+template err*[T](self: var Result[T, cstring], x: string) =
+  const s = x # Make sure we don't return a dangling pointer
+  self = err(type self, cstring(s))
 
 template err*[T](self: var Result[T, void]) =
   ## Set the result as an error
@@ -432,11 +442,17 @@ template capture*[E: Exception](T: type, someExceptionExpr: ref E): Result[T, re
     ret = R.err(caught)
   ret
 
-func `==`*[T0, E0, T1, E1](lhs: Result[T0, E0], rhs: Result[T1, E1]): bool {.inline.} =
+func `==`*[T0: not void, E0, T1: not void, E1](lhs: Result[T0, E0], rhs: Result[T1, E1]): bool {.inline.} =
   if lhs.o != rhs.o:
     false
   elif lhs.o: # and rhs.o implied
     lhs.v == rhs.v
+  else:
+    lhs.e == rhs.e
+
+func `==`*[E0, E1](lhs: Result[void, E0], rhs: Result[void, E1]): bool {.inline.} =
+  if lhs.o != rhs.o:
+    false
   else:
     lhs.e == rhs.e
 

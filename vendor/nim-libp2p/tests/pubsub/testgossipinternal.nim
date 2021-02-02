@@ -9,6 +9,7 @@ import ../../libp2p/standard_setup
 import ../../libp2p/errors
 import ../../libp2p/crypto/crypto
 import ../../libp2p/stream/bufferstream
+import ../../libp2p/switch
 
 import ../helpers
 
@@ -29,6 +30,48 @@ proc randomPeerInfo(): PeerInfo =
 suite "GossipSub internal":
   teardown:
     checkTrackers()
+
+  asyncTest "subscribe/unsubscribeAll":
+    let gossipSub = TestGossipSub.init(newStandardSwitch())
+
+    proc handler(topic: string, data: seq[byte]): Future[void] {.gcsafe.} =
+      discard
+
+    let topic = "foobar"
+    gossipSub.mesh[topic] = initHashSet[PubSubPeer]()
+    gossipSub.topicParams[topic] = TopicParams.init()
+
+    var conns = newSeq[Connection]()
+    gossipSub.gossipsub[topic] = initHashSet[PubSubPeer]()
+    for i in 0..<15:
+      let conn = newBufferStream(noop)
+      conns &= conn
+      let peerInfo = randomPeerInfo()
+      conn.peerInfo = peerInfo
+      let peer = gossipSub.getPubSubPeer(peerInfo.peerId)
+      peer.sendConn = conn
+      gossipSub.onNewPeer(peer)
+      gossipSub.peers[peerInfo.peerId] = peer
+      gossipSub.gossipsub[topic].incl(peer)
+
+    # test via dynamic dispatch
+    gossipSub.PubSub.subscribe(topic, handler)
+
+    check:
+      gossipSub.topics.contains(topic)
+      gossipSub.gossipsub[topic].len() > 0
+      gossipSub.mesh[topic].len() > 0
+
+    # test via dynamic dispatch
+    gossipSub.PubSub.unsubscribeAll(topic)
+
+    check:
+      topic notin gossipSub.topics # not in local topics
+      topic notin gossipSub.mesh # not in mesh
+      topic in gossipSub.gossipsub # but still in gossipsub table (for fanning out)
+
+    await allFuturesThrowing(conns.mapIt(it.close()))
+    await gossipSub.switch.stop()
 
   asyncTest "topic params":
     let params = TopicParams.init()
@@ -55,7 +98,7 @@ suite "GossipSub internal":
       gossipSub.gossipsub[topic].incl(peer)
 
     check gossipSub.peers.len == 15
-    await gossipSub.rebalanceMesh(topic)
+    gossipSub.rebalanceMesh(topic)
     check gossipSub.mesh[topic].len == gossipSub.parameters.d # + 2 # account opportunistic grafts
 
     await allFuturesThrowing(conns.mapIt(it.close()))
@@ -82,7 +125,7 @@ suite "GossipSub internal":
       gossipSub.mesh[topic].incl(peer)
 
     check gossipSub.mesh[topic].len == 15
-    await gossipSub.rebalanceMesh(topic)
+    gossipSub.rebalanceMesh(topic)
     check gossipSub.mesh[topic].len == gossipSub.parameters.d + gossipSub.parameters.dScore
 
     await allFuturesThrowing(conns.mapIt(it.close()))
@@ -369,6 +412,76 @@ suite "GossipSub internal":
 
     let peers = gossipSub.getGossipPeers()
     check peers.len == 0
+
+    await allFuturesThrowing(conns.mapIt(it.close()))
+    await gossipSub.switch.stop()
+
+  asyncTest "Drop messages of topics without subscription":
+    let gossipSub = TestGossipSub.init(newStandardSwitch())
+
+    proc handler(peer: PubSubPeer, msg: RPCMsg) {.async.} =
+      check false
+
+    let topic = "foobar"
+    var conns = newSeq[Connection]()
+    for i in 0..<30:
+      let conn = newBufferStream(noop)
+      conns &= conn
+      let peerInfo = randomPeerInfo()
+      conn.peerInfo = peerInfo
+      let peer = gossipSub.getPubSubPeer(peerInfo.peerId)
+      gossipSub.onNewPeer(peer)
+      peer.handler = handler
+
+    # generate messages
+    var seqno = 0'u64
+    for i in 0..5:
+      let conn = newBufferStream(noop)
+      conns &= conn
+      let peerInfo = randomPeerInfo()
+      conn.peerInfo = peerInfo
+      let peer = gossipSub.getPubSubPeer(peerInfo.peerId)
+      inc seqno
+      let msg = Message.init(some(peerInfo), ("bar" & $i).toBytes(), topic, some(seqno), false)
+      await gossipSub.rpcHandler(peer, RPCMsg(messages: @[msg]))
+
+    check gossipSub.mcache.msgs.len == 0
+
+    await allFuturesThrowing(conns.mapIt(it.close()))
+    await gossipSub.switch.stop()
+
+  asyncTest "Disconnect bad peers":
+    let gossipSub = TestGossipSub.init(newStandardSwitch())
+    gossipSub.parameters.disconnectBadPeers = true
+
+    proc handler(peer: PubSubPeer, msg: RPCMsg) {.async.} =
+      check false
+
+    let topic = "foobar"
+    var conns = newSeq[Connection]()
+    for i in 0..<30:
+      let conn = newBufferStream(noop)
+      conns &= conn
+      let peerInfo = randomPeerInfo()
+      conn.peerInfo = peerInfo
+      let peer = gossipSub.getPubSubPeer(peerInfo.peerId)
+      gossipSub.onNewPeer(peer)
+      peer.sendConn = conn
+      peer.handler = handler
+      peer.score = gossipSub.parameters.graylistThreshold - 1
+      gossipSub.gossipsub.mgetOrPut(topic, initHashSet[PubSubPeer]()).incl(peer)
+      gossipSub.peers[peerInfo.peerId] = peer
+      gossipSub.switch.connManager.storeConn(conn)
+
+    gossipSub.updateScores()
+
+    await sleepAsync(100.millis)
+
+    check:
+      # test our disconnect mechanics
+      gossipSub.gossipsub.peers(topic) == 0
+      # also ensure we cleanup properly the peersInIP table
+      gossipSub.peersInIP.len == 0
 
     await allFuturesThrowing(conns.mapIt(it.close()))
     await gossipSub.switch.stop()

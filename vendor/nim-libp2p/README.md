@@ -1,5 +1,5 @@
 <h1 align="center">
-  <a href="libp2p.io"><img width="250" src="https://github.com/libp2p/libp2p/blob/master/logo/black-bg-2.png?raw=true" alt="libp2p hex logo" /></a>
+  <a href="https://libp2p.io"><img width="250" src="https://github.com/libp2p/libp2p/blob/master/logo/black-bg-2.png?raw=true" alt="libp2p hex logo" /></a>
 </h1>
 
 <h3 align="center">The Nim implementation of the libp2p Networking Stack.</h3>
@@ -13,7 +13,7 @@
 <p align="center">
 <a href="https://opensource.org/licenses/Apache-2.0"><img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" /></a>
 <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg" /></a>
-<a href=""><img src="https://img.shields.io/badge/nim-%3E%3D1.0.6-orange.svg?style=flat-square" /></a>
+<img src="https://img.shields.io/badge/nim-%3E%3D1.2.0-orange.svg?style=flat-square" />
 </p>
 
 ## Introduction
@@ -151,10 +151,22 @@ Packages that exist in the original libp2p specs and are under active developmen
 
 ### Tips and tricks
 
-- enable expensive metrics:
+#### enable expensive metrics:
 
 ```bash
 nim c -d:libp2p_expensive_metrics some_file.nim
+```
+
+#### use identify metrics
+
+```bash
+nim c -d:libp2p_agents_metrics -d:KnownLibP2PAgents=nimbus,lighthouse,prysm,teku some_file.nim
+```
+
+### specify gossipsub specific topics to measure
+
+```bash
+nim c -d:KnownLibP2PTopics=topic1,topic2,topic3 some_file.nim
 ```
 
 ## Contribute

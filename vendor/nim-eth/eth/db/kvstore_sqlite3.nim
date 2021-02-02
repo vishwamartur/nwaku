@@ -3,7 +3,7 @@
 {.push raises: [Defect].}
 
 import
-  os, strformat,
+  std/[os, strformat],
   sqlite3_abi,
   ./kvstore
 
@@ -30,13 +30,19 @@ type
   SqStoreRef* = ref object of RootObj
     env: Sqlite
     keyspaces: seq[KeySpaceStatements]
-    extraStmts: seq[RawStmtPtr]
+    managedStmts: seq[RawStmtPtr]
+
+  SqStoreCheckpointKind* {.pure.} = enum
+    passive, full, restart, truncate
 
 template dispose(db: Sqlite) =
   discard sqlite3_close(db)
 
 template dispose(db: RawStmtPtr) =
   discard sqlite3_finalize(db)
+
+template dispose*(db: SqliteStmt) =
+  discard sqlite3_finalize(RawStmtPtr db)
 
 proc release[T](x: var AutoDisposed[T]): T =
   result = x.val
@@ -58,9 +64,11 @@ template checkErr(op) =
 proc prepareStmt*(db: SqStoreRef,
                   stmt: string,
                   Params: type,
-                  Res: type): KvResult[SqliteStmt[Params, Res]] =
+                  Res: type,
+                  managed = true): KvResult[SqliteStmt[Params, Res]] =
   var s: RawStmtPtr
   checkErr sqlite3_prepare_v2(db.env, stmt, stmt.len.cint, addr s, nil)
+  if managed: db.managedStmts.add s
   ok SqliteStmt[Params, Res](s)
 
 proc bindParam(s: RawStmtPtr, n: int, val: auto): cint =
@@ -69,12 +77,22 @@ proc bindParam(s: RawStmtPtr, n: int, val: auto): cint =
       sqlite3_bind_blob(s, n.cint, unsafeAddr val[0], val.len.cint, nil)
     else:
       sqlite3_bind_blob(s, n.cint, nil, 0.cint, nil)
+  elif val is array:
+    when val.items.typeof is byte:
+      # Prior to Nim 1.4 and view types array[N, byte] in tuples
+      # don't match with openarray[byte]
+      if val.len > 0:
+        sqlite3_bind_blob(s, n.cint, unsafeAddr val[0], val.len.cint, nil)
+      else:
+        sqlite3_bind_blob(s, n.cint, nil, 0.cint, nil)
+    else:
+      {.fatal: "Please add support for the '" & $typeof(val) & "' type".}
   elif val is int32:
     sqlite3_bind_int(s, n.cint, val)
   elif val is int64:
     sqlite3_bind_int64(s, n.cint, val)
   else:
-    {.fatal: "Please add support for the '" & $(T) & "' type".}
+    {.fatal: "Please add support for the '" & $typeof(val) & "' type".}
 
 template bindParams(s: RawStmtPtr, params: auto) =
   when params is tuple:
@@ -120,6 +138,20 @@ template readResult(s: RawStmtPtr, column: cint, T: type): auto =
       res.setLen(len)
       copyMem(addr res[0], sqlite3_column_blob(s, column), len)
     res
+  elif T is array:
+    # array[N, byte]. "genericParams(T)[1]" requires 1.4 to handle nnkTypeOfExpr
+    when typeof(default(T)[0]) is byte:
+      var res: T
+      let colLen = sqlite3_column_bytes(s, column)
+
+      # truncate if the type is too small
+      # TODO: warning/error? We assume that users always properly dimension buffers
+      let copyLen = min(colLen, res.len)
+      if copyLen > 0:
+        copyMem(addr res[0], sqlite3_column_blob(s, column), copyLen)
+      res
+    else:
+      {.fatal: "Please add support for the '" & $(T) & "' type".}
   else:
     {.fatal: "Please add support for the '" & $(T) & "' type".}
 
@@ -165,12 +197,17 @@ template exec*[Res](s: SqliteStmt[NoParams, Res],
                     onData: ResultHandler[Res]): KvResult[bool] =
   exec(s, (), onData)
 
-proc exec*(db: SqStoreRef, stmt: string): KvResult[void] =
-  let stmt = ? db.prepareStmt(stmt, NoParams, void)
-  result = exec(stmt)
+proc exec*[Params: tuple](db: SqStoreRef,
+                          stmt: string,
+                          params: Params): KvResult[void] =
+  let stmt = ? db.prepareStmt(stmt, Params, void, managed = false)
+  result = exec(stmt, params)
   let finalizeStatus = sqlite3_finalize(RawStmtPtr stmt)
   if finalizeStatus != SQLITE_OK and result.isOk:
     return err($sqlite3_errstr(finalizeStatus))
+
+template exec*(db: SqStoreRef, stmt: string): KvResult[void] =
+  exec(db, stmt, ())
 
 proc getImpl(db: SqStoreRef,
              keyspace: int,
@@ -281,12 +318,20 @@ proc close*(db: SqStoreRef) =
     discard sqlite3_finalize(keyspace.delStmt)
     discard sqlite3_finalize(keyspace.containsStmt)
 
-  for stmt in db.extraStmts:
+  for stmt in db.managedStmts:
     discard sqlite3_finalize(stmt)
 
   discard sqlite3_close(db.env)
 
   db[] = SqStoreRef()[]
+
+proc checkpoint*(db: SqStoreRef, kind = SqStoreCheckpointKind.passive) =
+  let mode: cint = case kind
+  of SqStoreCheckpointKind.passive: SQLITE_CHECKPOINT_PASSIVE
+  of SqStoreCheckpointKind.full: SQLITE_CHECKPOINT_FULL
+  of SqStoreCheckpointKind.restart: SQLITE_CHECKPOINT_RESTART
+  of SqStoreCheckpointKind.truncate: SQLITE_CHECKPOINT_TRUNCATE
+  discard sqlite3_wal_checkpoint_v2(db.env, nil, mode, nil, nil)
 
 proc isClosed*(db: SqStoreRef): bool =
   db.env != nil
@@ -297,6 +342,7 @@ proc init*(
     name: string,
     readOnly = false,
     inMemory = false,
+    manualCheckpoint = false,
     keyspaces: openarray[string] = ["kvstore"]): KvResult[T] =
   var env: AutoDisposed[ptr sqlite3]
   defer: disposeIfUnreleased(env)
@@ -356,6 +402,15 @@ proc init*(
   checkWalPragmaResult(journalModePragma)
   checkExec(journalModePragma)
 
+
+  if manualCheckpoint:
+    checkErr sqlite3_wal_autocheckpoint(env.val, 0)
+    # In manual checkpointing mode, we relax synchronization to NORMAL -
+    # this is safe in WAL mode leaving us with a consistent database at all
+    # times, though potentially losing any data written between checkpoints.
+    # http://www3.sqlite.org/wal.html#performance_considerations
+    checkExec("PRAGMA synchronous = NORMAL;")
+
   var keyspaceStatements = newSeq[KeySpaceStatements]()
   for keyspace in keyspaces:
     checkExec """
@@ -395,13 +450,14 @@ proc init*(
     name: string,
     Keyspaces: type[enum],
     readOnly = false,
-    inMemory = false): KvResult[T] =
+    inMemory = false,
+    manualCheckpoint = false): KvResult[T] =
 
   var keyspaceNames = newSeq[string]()
   for keyspace in Keyspaces:
     keyspaceNames.add $keyspace
 
-  SqStoreRef.init(basePath, name, readOnly, inMemory, keyspaceNames)
+  SqStoreRef.init(basePath, name, readOnly, inMemory, manualCheckpoint, keyspaceNames)
 
 when defined(metrics):
   import tables, times,
@@ -435,4 +491,3 @@ when defined(metrics):
           timestamp: timestamp,
         ),
       ]
-
