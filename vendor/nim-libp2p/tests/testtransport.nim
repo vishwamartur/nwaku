@@ -183,8 +183,11 @@ suite "TCP transport":
     let transport2: TcpTransport = TcpTransport.init()
     let cancellation = transport2.dial(transport1.ma)
 
-    await cancellation.cancelAndWait()
-    check cancellation.cancelled
+    try:
+      cancellation.cancel()
+    except CancelledError as exc:
+      await sleepAsync(100.millis)
+      check cancellation.cancelled
 
     await transport2.stop()
     await transport1.stop()
@@ -195,8 +198,16 @@ suite "TCP transport":
     let transport1: TcpTransport = TcpTransport.init()
     await transport1.start(ma)
 
+    let transport2: TcpTransport = TcpTransport.init()
+    let connFut = transport2.dial(transport1.ma)
+
     let acceptHandler = transport1.accept()
-    await acceptHandler.cancelAndWait()
-    check acceptHandler.cancelled
+    try:
+      acceptHandler.cancel()
+    except CancelledError as exc:
+      await sleepAsync(100.millis)
+      check acceptHandler.cancelled
+      check isNil((await connFut))
 
     await transport1.stop()
+    await transport2.stop()
