@@ -1,0 +1,14 @@
+route	route__o6tYbpAGosAeJHIlpkpsyQ	/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/server.nim	23	5
+result	result	/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/server.nim	23	0
+:env	colonenv_	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncmacro2.nim	259	32
+:env	colonenv__2	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncmacro2.nim	259	32
+route	route__4JhWafNTfSkgRjXJ7U9bzpw	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncmacro2.nim	210	30
+result	result	/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/server.nim	23	0
+:envP	colonenvP_	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncmacro2.nim	210	30
+router	router	/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/router.nim	140	12
+data	data_0	/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/router.nim	140	31
+route_continue	route_continue__GsJQ9cG4Yofwf7ppjcNzPxg	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncmacro2.nim	258	23
+udata`gensym39561124	udataX60gensym39561124_	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncmacro2.nim	33	17
+:envP	colonenvP_	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncmacro2.nim	258	23
+next`gensym39561125	nextX60gensym39561125_	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncmacro2.nim	36	12
+exc`gensym39561127	excX60gensym39561127_	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncmacro2.nim	53	29

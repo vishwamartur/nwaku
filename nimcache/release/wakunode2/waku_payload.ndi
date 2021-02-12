@@ -1,0 +1,16 @@
+encode	encode__2KgjWQn0o2NsqrP9cIM9aLlA	/home/runner/work/nim-waku/nim-waku/waku/v2/node/waku_payload.nim	64	5
+encoded	encoded	/home/runner/work/nim-waku/nim-waku/waku/v2/node/waku_payload.nim	71	8
+rng	rng_0	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/rlpx_protocols/whisper/whisper_types.nim	232	13
+self	self	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/rlpx_protocols/whisper/whisper_types.nim	232	41
+decodePayload	decodePayload__7VdtcIHui3a9bgfu1E5On2Q	/home/runner/work/nim-waku/nim-waku/waku/v2/node/waku_payload.nim	36	5
+decoded	decoded_1	/home/runner/work/nim-waku/nim-waku/waku/v2/node/waku_payload.nim	44	10
+result	result	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/options.nim	139	0
+result	result	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/options.nim	124	0
+self	self	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/options.nim	143	16
+result	result	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/options.nim	143	0
+self	self	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/options.nim	170	13
+decoded	decoded_2	/home/runner/work/nim-waku/nim-waku/waku/v2/node/waku_payload.nim	51	10
+val	val_0	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/options.nim	101	14
+result	result	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/options.nim	101	0
+result	result	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/options.nim	139	0
+result	result	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/options.nim	124	0

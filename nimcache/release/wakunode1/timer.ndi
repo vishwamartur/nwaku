@@ -1,0 +1,16 @@
+now	now__mCajdQHw9bYnr8G34j9c2hagtimer	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/timer.nim	430	5
+fastEpochTimeNano	fastEpochTimeNano__zu4zzNx2HJIoIgQ9bSEK8Zwtimer	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/timer.nim	161	9
+<	lt___QNBMwDJVuJUeFFKiVHrUsgtimer	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/timer.nim	250	5
+nanoseconds	nanoseconds__88N0v0UmPJVCc226s6v6WQtimer	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/timer.nim	335	5
+-	minus___XKInQJSWS19bkkORt3tkfTQtimer	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/timer.nim	212	5
+<=	lteq___QNBMwDJVuJUeFFKiVHrUsg_2timer	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/timer.nim	258	5
+milliseconds	milliseconds__dI9cQVjR2FKvNMXcFOo9ajcAtimer	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/timer.nim	311	5
+milliseconds	milliseconds__88N0v0UmPJVCc226s6v6WQ_2timer	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/timer.nim	343	5
+fromNow	fromNow__bopkN8KkIJU9bnQVuCeHVMQtimer	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/timer.nim	439	5
++	plus___IN6zcqOUsAnWHxO4kl3boAtimer	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/timer.nim	200	5
+seconds	seconds__VnZgvngfH64K9cbR19bMHEEAtimer	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/timer.nim	315	5
+milliseconds	milliseconds__VnZgvngfH64K9cbR19bMHEEA_2timer	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/timer.nim	311	5
+<=	lteq___9bfEhbzW79ca4dBMuQ823Zcgtimer	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/timer.nim	254	5
+*	star___8UR1hZNec1PpYC5F0rAOrwtimer	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/timer.nim	278	5
+isZero	isZero__9aGbe9cylOmVnoz0iGkhB8Ngtimer	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/timer.nim	422	5
+isInfinite	isInfinite__9aGbe9cylOmVnoz0iGkhB8Ng_2timer	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/timer.nim	426	5

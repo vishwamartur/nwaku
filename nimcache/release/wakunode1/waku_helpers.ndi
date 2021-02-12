@@ -1,0 +1,11 @@
+setBootNodes	setBootNodes__I3ZVz3aXhPPsUjoX3YcKTA	/home/runner/work/nim-waku/nim-waku/waku/v1/node/waku_helpers.nim	5	5
+result	result	/home/runner/work/nim-waku/nim-waku/waku/v1/node/waku_helpers.nim	5	0
+nodeId	nodeId	/home/runner/work/nim-waku/nim-waku/waku/v1/node/waku_helpers.nim	7	6
+i	i	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators.nim	3	6
+self	self	/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/results.nim	506	29
+m	m	/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/results.nim	506	49
+e	e_0	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/enode.nim	45	32
+connectToNodes	connectToNodes__OaVza6vjgVH0CRjD5siyrw	/home/runner/work/nim-waku/nim-waku/waku/v1/node/waku_helpers.nim	11	5
+nodeId	nodeId	/home/runner/work/nim-waku/nim-waku/waku/v1/node/waku_helpers.nim	12	6
+i	i	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators.nim	3	6
+whisperENode	whisperENode	/home/runner/work/nim-waku/nim-waku/waku/v1/node/waku_helpers.nim	14	8

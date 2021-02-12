@@ -1,0 +1,13 @@
+peer	peer	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/private/p2p_types.nim	142	31
+network	network	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/private/p2p_types.nim	143	34
+peer	peer	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/private/p2p_types.nim	144	24
+peer	peer	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/private/p2p_types.nim	145	31
+reason	reason	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/private/p2p_types.nim	146	31
+x	x_0	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/private/p2p_types.nim	138	20
+msgId	msgId	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/private/p2p_types.nim	138	29
+data	data_0	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/private/p2p_types.nim	138	41
+msg	msg	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/private/p2p_types.nim	139	32
+msg	msg	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/private/p2p_types.nim	140	26
+future	future	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/private/p2p_types.nim	140	40
+msgData	msgData	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/private/p2p_types.nim	141	26
+future	future	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/private/p2p_types.nim	141	40

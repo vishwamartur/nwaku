@@ -1,0 +1,15 @@
+high	high__vPqx5MAmmEuu2z9bZL4adzAintops	/home/runner/work/nim-waku/nim-waku/vendor/nim-stint/stint/intops.nim	147	5
+==	eqeq___E3VvJua1YcWV3rsDzt7I9aAintops	/home/runner/work/nim-waku/nim-waku/vendor/nim-stint/stint/intops.nim	84	5
+<	lt___E3VvJua1YcWV3rsDzt7I9aA_2intops	/home/runner/work/nim-waku/nim-waku/vendor/nim-stint/stint/intops.nim	78	5
+<=	lteq___E3VvJua1YcWV3rsDzt7I9aA_3intops	/home/runner/work/nim-waku/nim-waku/vendor/nim-stint/stint/intops.nim	81	5
+divmod	divmod__fNjZ05xTKdqHi4aRUWuQ3Aintops	/home/runner/work/nim-waku/nim-waku/vendor/nim-stint/stint/intops.nim	70	5
+isZero	isZero__IFUGdgCzqXbj8AcP9c8gBHgintops	/home/runner/work/nim-waku/nim-waku/vendor/nim-stint/stint/intops.nim	92	5
+zero	zero__DTOuaUVmACyQr9andsM4iKwintops	/home/runner/work/nim-waku/nim-waku/vendor/nim-stint/stint/intops.nim	19	5
+one	one__DTOuaUVmACyQr9andsM4iKw_2intops	/home/runner/work/nim-waku/nim-waku/vendor/nim-stint/stint/intops.nim	23	5
+or	or__JtDZUqIC9c9cqv9bVMIAIrWswintops	/home/runner/work/nim-waku/nim-waku/vendor/nim-stint/stint/intops.nim	119	5
+shl	shl__ZT19bUHErLd0t7J8KB9cr0Pwintops	/home/runner/work/nim-waku/nim-waku/vendor/nim-stint/stint/intops.nim	140	5
+and	and__JtDZUqIC9c9cqv9bVMIAIrWsw_2intops	/home/runner/work/nim-waku/nim-waku/vendor/nim-stint/stint/intops.nim	122	5
++	plus___JtDZUqIC9c9cqv9bVMIAIrWsw_3intops	/home/runner/work/nim-waku/nim-waku/vendor/nim-stint/stint/intops.nim	29	5
+div	div__JtDZUqIC9c9cqv9bVMIAIrWsw_4intops	/home/runner/work/nim-waku/nim-waku/vendor/nim-stint/stint/intops.nim	62	5
+-	minus___JtDZUqIC9c9cqv9bVMIAIrWsw_5intops	/home/runner/work/nim-waku/nim-waku/vendor/nim-stint/stint/intops.nim	35	5
+xor	xor__JtDZUqIC9c9cqv9bVMIAIrWsw_6intops	/home/runner/work/nim-waku/nim-waku/vendor/nim-stint/stint/intops.nim	125	5

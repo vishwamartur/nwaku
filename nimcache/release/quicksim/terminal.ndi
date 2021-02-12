@@ -1,0 +1,10 @@
+gTerm	gTerm__wkpx9csKte2r1l45yvskIcA	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/terminal.nim	38	4
+gFG	gFG__g7w4T3anr20OMlWloNx2tQ	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/terminal.nim	463	4
+gBG	gBG__dgmeknpHWrtwqMJGQAp9atA	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/terminal.nim	464	4
+ansiForegroundColorCode	ansiForegroundColorCode__aiWNvQSWqGNTUqhMXNZzrQ	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/terminal.nim	619	5
+result	result	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/terminal.nim	619	0
+style	style	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/terminal.nim	620	6
+ansiStyleCode	ansiStyleCode__9cVIfUEE6Zf6B3dSUGw8cLQ	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/terminal.nim	491	5
+style	style	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/terminal.nim	491	20
+result	result	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/terminal.nim	491	0
+fmtRes	fmtRes	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strformat.nim	533	18

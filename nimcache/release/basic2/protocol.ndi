@@ -1,0 +1,10 @@
+init	init__pkXzn3N1QvEEaqoiztBICg	/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/protocols/protocol.nim	22	7
+p	p_0	/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/protocols/protocol.nim	22	13
+conn	conn	/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/protocols/protocol.nim	14	26
+proto	proto	/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/protocols/protocol.nim	15	26
+codec=	codeceq___FJgTWmJomZg9cJD1BFJyUDQ	/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/protocols/protocol.nim	28	5
+x	x_0	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system.nim	1258	16
+item	item	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system.nim	1258	31
+i	i	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system.nim	1258	45
+codec	codec__9aMav7tf05vmztlcWKYHy9ag	/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/protocols/protocol.nim	24	5
+result	result	/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/protocols/protocol.nim	24	0

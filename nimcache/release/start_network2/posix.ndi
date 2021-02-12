@@ -1,0 +1,6 @@
+WIFSIGNALED	WIFSIGNALED__o9b5GK70QLj9ahJeczQ2LyRg	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/posix/posix_linux_amd64.nim	583	5
+result	result	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/posix/posix_linux_amd64.nim	583	0
+WTERMSIG	WTERMSIG__T7ZeAv6ofGPBA29bsuGG1ug	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/posix/posix_linux_amd64.nim	580	5
+result	result	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/posix/posix_linux_amd64.nim	580	0
+WEXITSTATUS	WEXITSTATUS__T7ZeAv6ofGPBA29bsuGG1ug_2	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/posix/posix_linux_amd64.nim	579	5
+result	result	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/posix/posix_linux_amd64.nim	579	0
