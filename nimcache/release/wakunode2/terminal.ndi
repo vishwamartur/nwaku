@@ -8,12 +8,6 @@ ansiStyleCode	ansiStyleCode__9cVIfUEE6Zf6B3dSUGw8cLQ	/home/runner/work/nim-waku/
 style	style	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/terminal.nim	491	20
 result	result	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/terminal.nim	491	0
 fmtRes	fmtRes	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strformat.nim	533	18
-result	result	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strformat.nim	498	18
-value	value_0	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strformat.nim	498	38
-specifier	specifier	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strformat.nim	498	53
-result	result	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strformat.nim	420	34
-value	value_0	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strformat.nim	420	54
-specifier	specifier	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strformat.nim	421	4
 resetAttributes	resetAttributes__6J8xlU57R8cS9bLzTS89aM5g	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/terminal.nim	466	5
 terminalWidth	terminalWidth__s9bdJLFVciGfQ0i2sQaMF1g	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/terminal.nim	240	7
 result	result	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/terminal.nim	240	2

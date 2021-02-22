@@ -15,9 +15,6 @@ t	t	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/li
 key	key_0	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim	521	36
 val	val_0	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim	521	44
 node	node	/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/protocols/pubsub/timedcache.nim	55	6
-a	a	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/timer.nim	200	10
-b	b	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/timer.nim	200	21
-result	result	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/timer.nim	200	0
 cur	cur	/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/protocols/pubsub/timedcache.nim	62	8
 t	t	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim	309	18
 key	key_0	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim	309	38

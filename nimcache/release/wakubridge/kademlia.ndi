@@ -184,7 +184,6 @@ k	k	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/kademlia.nim	245	
 n	n_0	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/kademlia.nim	245	31
 result	result	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/kademlia.nim	324	56
 :env	colonenv_	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncmacro2.nim	259	32
-loc	loc	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncfutures2.nim	99	22
 :env	colonenv__2	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncmacro2.nim	259	32
 bond	bond__d3af2XpAGu7abH3iBkZ8nA	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncmacro2.nim	210	30
 result	result	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/kademlia.nim	324	0
@@ -205,9 +204,6 @@ item	item	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/
 result	result	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system.nim	1748	0
 i	i	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system.nim	1751	6
 i	i_2	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators.nim	3	6
-future	future	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncfutures2.nim	228	17
-val	val_0	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncfutures2.nim	228	36
-loc	loc	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncfutures2.nim	228	44
 pingId	pingId__zsbpZEyvFtI4h2tdYxQJhgkademlia	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/kademlia.nim	265	5
 n	n_0	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/kademlia.nim	265	12
 token	token	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/kademlia.nim	265	21
@@ -244,12 +240,8 @@ next`gensym52510078	nextX60gensym52510078_	/home/runner/work/nim-waku/nim-waku/v
 exc`gensym52510080	excX60gensym52510080_	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncmacro2.nim	53	29
 :anonymous	colonanonymous___C8HxzCB4zEKjjHxzHHD5QQ	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/kademlia.nim	263	4
 :envP	colonenvP_	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/kademlia.nim	263	4
-future	future	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncfutures2.nim	148	15
-result	result	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncfutures2.nim	148	0
 t	t	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim	506	16
 key	key_0	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim	506	36
-fut	fut	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncfutures2.nim	472	22
-result	result	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncfutures2.nim	472	0
 removeNode	removeNode__i8wu9aaiZO5KyzmNp0KxuZA	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/kademlia.nim	190	5
 r	r	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/kademlia.nim	190	16
 n	n_0	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/kademlia.nim	190	37
@@ -295,9 +287,6 @@ udata`gensym52565398	udataX60gensym52565398_	/home/runner/work/nim-waku/nim-waku
 :envP	colonenvP_	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncmacro2.nim	258	23
 next`gensym52565399	nextX60gensym52565399_	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncmacro2.nim	36	12
 exc`gensym52565401	excX60gensym52565401_	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncmacro2.nim	53	29
-future	future	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncfutures2.nim	274	13
-error	error	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncfutures2.nim	274	32
-loc	loc	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncfutures2.nim	274	54
 d	d	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/discovery.nim	121	15
 n	n_0	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/discovery.nim	121	37
 token	token	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/discovery.nim	121	46

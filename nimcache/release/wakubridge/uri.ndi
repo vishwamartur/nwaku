@@ -29,3 +29,4 @@ start	start	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendo
 result	result	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/parseutils.nim	369	0
 i	i	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/parseutils.nim	380	6
 authority	authority	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/uri.nim	247	8
+parseUri	parseUri__rbZTAh57otUDsvMlWgTQog	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/uri.nim	257	5

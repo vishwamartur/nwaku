@@ -3,7 +3,7 @@
 /* The generated code is subject to the original license. */
 /* Compiled for: Linux, amd64, gcc */
 /* Command for C compiler:
-   gcc -c  -w -pthread -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace/install/usr/include -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1/src -DHAVE_CONFIG_H -DHAVE_BUILTIN_EXPECT -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/src -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/inc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/tools -DBR_USE_UNIX_TIME=1 -DBR_USE_URANDOM=1 -DBR_LE_UNALIGNED=1 -DBR_64=1  -DBR_amd64=1 -DBR_INT128=1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/miniupnp/miniupnpc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/libnatpmp-upstream -DENABLE_STRNATPMPERR -march=native -g3 -Og -O3 -fno-strict-aliasing -fno-ident  -I/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib -I/home/runner/work/nim-waku/nim-waku/waku/common -o nimcache/release/wakubridge/stdlib_random.nim.c.o nimcache/release/wakubridge/stdlib_random.nim.c */
+   gcc -c  -w -pthread -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace/install/usr/include -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1/src -DHAVE_CONFIG_H -DHAVE_BUILTIN_EXPECT -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/src -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/inc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/tools -DBR_USE_UNIX_TIME=1 -DBR_USE_URANDOM=1 -DBR_LE_UNALIGNED=1 -DBR_64=1  -DBR_amd64=1 -DBR_INT128=1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/miniupnp/miniupnpc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/libnatpmp-upstream -DENABLE_STRNATPMPERR -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/certs -march=native -g3 -Og -O3 -fno-strict-aliasing -fno-ident  -I/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib -I/home/runner/work/nim-waku/nim-waku/waku/common -o nimcache/release/wakubridge/stdlib_random.nim.c.o nimcache/release/wakubridge/stdlib_random.nim.c */
 #define NIM_INTBITS 64
 
 #include "nimbase.h"
@@ -113,9 +113,9 @@ N_LIB_PRIVATE N_NIMCALL(NI64, toUnix__mXmxlr1pBpariZiJTjytHg)(tyObject_Time__3y2
 N_LIB_PRIVATE N_NIMCALL(NI, nanosecond__w9bWusm7fy39b4s5K9azEA0RA)(tyObject_Time__3y2ZpqsTJLqdZvpC9a0rU2Q time);
 N_LIB_PRIVATE N_NIMCALL(NF, rand__Ln7Vq2z8NofZIhmklcJO9bg)(tyObject_Rand__liBKmwv1H6v7oYBhDFHa6A* r, NF max);
 N_LIB_PRIVATE N_NOINLINE(void, raiseRangeErrorF)(NF i, NF a, NF b);
-N_LIB_PRIVATE N_NIMCALL(void, shuffle__okICJB7yyEczQCSYXVlJiQ)(tyObject_Rand__liBKmwv1H6v7oYBhDFHa6A* r, tySequence__6H5Oh5UUvVCLiakt9aTwtUQ** x_0, NI x_0Len_0);
 N_LIB_PRIVATE N_NIMCALL(NI, rand__SN9aVN0MBPaaBWhJdtZLhNA)(tyObject_Rand__liBKmwv1H6v7oYBhDFHa6A* r, NI max);
 N_LIB_PRIVATE N_NOINLINE(void, raiseRangeErrorI)(NI64 i, NI64 a, NI64 b);
+N_LIB_PRIVATE N_NIMCALL(void, shuffle__okICJB7yyEczQCSYXVlJiQ)(tyObject_Rand__liBKmwv1H6v7oYBhDFHa6A* r, tySequence__6H5Oh5UUvVCLiakt9aTwtUQ** x_0, NI x_0Len_0);
 N_LIB_PRIVATE N_NOINLINE(void, raiseIndexError2)(NI i, NI n);
 N_LIB_PRIVATE N_NIMCALL(void, unsureAsgnRef)(void** dest, void* src);
 N_LIB_PRIVATE N_NIMCALL(void, shuffle__xZRKNe6YzIK3ZR2f11OUGQ)(tyObject_Rand__liBKmwv1H6v7oYBhDFHa6A* r, tyObject_PubSubPeercolonObjectType___6rsvBHOjeRkx0KPoUqsmsw** x_0, NI x_0Len_0);
@@ -372,6 +372,15 @@ N_LIB_PRIVATE N_NIMCALL(NI, rand__SN9aVN0MBPaaBWhJdtZLhNA)(tyObject_Rand__liBKmw
 	}
 	}BeforeRet_: ;
 	return result;}
+
+#line 253 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/random.nim"
+N_LIB_PRIVATE N_NIMCALL(NI, rand__v7jZDEs4VOsrcpvk0yo8Rg)(NI max) {	NI result;	result = (NI)0;
+#line 254 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/random.nim"
+
+#line 273 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/random.nim"
+	if ((max) < ((NI) 0) || (max) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI(max, ((NI) 0), ((NI) IL64(9223372036854775807))); }
+#line 273 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/random.nim"
+	result = rand__SN9aVN0MBPaaBWhJdtZLhNA((&state__4atHrcHUZPts5LqH9bzbl0w), ((NI) (max)));	return result;}
 
 #line 595 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/random.nim"
 N_LIB_PRIVATE N_NIMCALL(void, shuffle__okICJB7yyEczQCSYXVlJiQ)(tyObject_Rand__liBKmwv1H6v7oYBhDFHa6A* r, tySequence__6H5Oh5UUvVCLiakt9aTwtUQ** x_0, NI x_0Len_0) {	{		NI i;		NI colontmp_;		NI res;		i = (NI)0;		colontmp_ = (NI)0;

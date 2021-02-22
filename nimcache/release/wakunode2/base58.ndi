@@ -5,7 +5,6 @@ binsz	binsz	/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/base58.nim	
 zcount	zcount	/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/base58.nim	74	6
 size	size	/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/base58.nim	79	6
 buffer	buffer	/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/base58.nim	80	6
-len	len_0	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system.nim	625	16
 hi	hi	/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/base58.nim	82	6
 i	i	/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/base58.nim	83	6
 j	j	/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/base58.nim	84	6
@@ -38,6 +37,3 @@ t	t	/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/base58.nim	179	10
 boffset	boffset	/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/base58.nim	191	6
 joffset	joffset	/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/base58.nim	192	6
 m	m	/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/base58.nim	215	6
-dest	dest_0	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/memalloc.nim	17	16
-source	source	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/memalloc.nim	17	22
-size	size	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/memalloc.nim	17	39

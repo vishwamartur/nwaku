@@ -114,3 +114,11 @@ result	result	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/ven
 []	X5BX5D___277k8m8OstpfbY4dHQex6wjson	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/json.nim	461	5
 getStr	getStr__QeJX1ptVmfOrOg9cwOVpcAA	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/json.nim	216	5
 result	result	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/json.nim	216	0
+%	percent___DjeV1LtBmZAE5eqEPNcN6A	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/json.nim	316	5
+result	result	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/json.nim	316	0
+elem	elem	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/json.nim	319	6
+i	i	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators.nim	3	6
+getBiggestInt	getBiggestInt__PqGEbz7TZWJYF9aMChcCbPw	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/json.nim	230	5
+result	result	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/json.nim	230	0
+%	percent___NSr46Qz23yGk4m9csPSbQBQ	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/json.nim	288	5
+result	result	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/json.nim	288	0

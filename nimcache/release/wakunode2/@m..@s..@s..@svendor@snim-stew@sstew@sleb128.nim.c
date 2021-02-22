@@ -3,7 +3,7 @@
 /* The generated code is subject to the original license. */
 /* Compiled for: Linux, amd64, gcc */
 /* Command for C compiler:
-   gcc -c  -w -pthread -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace/install/usr/include -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1/src -DHAVE_CONFIG_H -DHAVE_BUILTIN_EXPECT -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/src -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/inc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/tools -DBR_USE_UNIX_TIME=1 -DBR_USE_URANDOM=1 -DBR_LE_UNALIGNED=1 -DBR_64=1  -DBR_amd64=1 -DBR_INT128=1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/miniupnp/miniupnpc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/libnatpmp-upstream -DENABLE_STRNATPMPERR -march=native -g3 -Og -O3 -fno-strict-aliasing -fno-ident  -I/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib -I/home/runner/work/nim-waku/nim-waku/waku/v2/node -o nimcache/release/wakunode2/@m..@s..@s..@svendor@snim-stew@sstew@sleb128.nim.c.o nimcache/release/wakunode2/@m..@s..@s..@svendor@snim-stew@sstew@sleb128.nim.c */
+   gcc -c  -w -pthread -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace/install/usr/include -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1/src -DHAVE_CONFIG_H -DHAVE_BUILTIN_EXPECT -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/src -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/inc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/tools -DBR_USE_UNIX_TIME=1 -DBR_USE_URANDOM=1 -DBR_LE_UNALIGNED=1 -DBR_64=1  -DBR_amd64=1 -DBR_INT128=1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/certs -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/miniupnp/miniupnpc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/libnatpmp-upstream -DENABLE_STRNATPMPERR -march=native -g3 -Og -O3 -fno-strict-aliasing -fno-ident  -I/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib -I/home/runner/work/nim-waku/nim-waku/waku/v2/node -o nimcache/release/wakunode2/@m..@s..@s..@svendor@snim-stew@sstew@sleb128.nim.c.o nimcache/release/wakunode2/@m..@s..@s..@svendor@snim-stew@sstew@sleb128.nim.c */
 #define NIM_INTBITS 64
 
 #include "nimbase.h"
@@ -124,7 +124,7 @@ static NIM_CONST tyTuple__VUQsm9bkd3EZ53SlvlfA4ZQ TM__Sxv3y49bqOy7cAzqcfVVn3w_3 
 ;
 
 #line 127 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-N_LIB_PRIVATE N_NIMCALL(tyTuple__lQTEq64iYzLA0LTdjMrTyA, fromBytes__7hWUjMBxLj9cxfulyDO6OAA)(NU8* x_0, NI x_0Len_0) {	tyTuple__lQTEq64iYzLA0LTdjMrTyA result;	NI xlen_1;	NU64 res;	NU8 bX60gensym38876289_;	NU8 valbX60gensym38876290_;	NU64 valX60gensym38876291_;	NU64 valsX60gensym38876292_;	NU8 bX60gensym38876301_;	NU8 valbX60gensym38876302_;	NU64 valX60gensym38876303_;	NU64 valsX60gensym38876304_;	NU8 bX60gensym38876313_;	NU8 valbX60gensym38876314_;	NU64 valX60gensym38876315_;	NU64 valsX60gensym38876316_;	NU8 bX60gensym38876325_;	NU8 valbX60gensym38876326_;	NU64 valX60gensym38876327_;	NU64 valsX60gensym38876328_;	NU8 bX60gensym38876337_;	NU8 valbX60gensym38876338_;	NU64 valX60gensym38876339_;	NU64 valsX60gensym38876340_;	NU8 bX60gensym38876349_;	NU8 valbX60gensym38876350_;	NU64 valX60gensym38876351_;	NU64 valsX60gensym38876352_;	NU8 bX60gensym38876361_;	NU8 valbX60gensym38876362_;	NU64 valX60gensym38876363_;	NU64 valsX60gensym38876364_;	NU8 bX60gensym38876373_;	NU8 valbX60gensym38876374_;	NU64 valX60gensym38876375_;	NU64 valsX60gensym38876376_;	NU8 bX60gensym38876385_;	NU8 valbX60gensym38876386_;	NU64 valX60gensym38876387_;	NU64 valsX60gensym38876388_;	NU8 bX60gensym38876397_;	NU8 valbX60gensym38876398_;	NU64 valX60gensym38876399_;	NU64 valsX60gensym38876400_;{
+N_LIB_PRIVATE N_NIMCALL(tyTuple__lQTEq64iYzLA0LTdjMrTyA, fromBytes__7hWUjMBxLj9cxfulyDO6OAA)(NU8* x_0, NI x_0Len_0) {	tyTuple__lQTEq64iYzLA0LTdjMrTyA result;	NI xlen_1;	NU64 res;	NU8 bX60gensym82561450_;	NU8 valbX60gensym82561451_;	NU64 valX60gensym82561452_;	NU64 valsX60gensym82561453_;	NU8 bX60gensym82561462_;	NU8 valbX60gensym82561463_;	NU64 valX60gensym82561464_;	NU64 valsX60gensym82561465_;	NU8 bX60gensym82561474_;	NU8 valbX60gensym82561475_;	NU64 valX60gensym82561476_;	NU64 valsX60gensym82561477_;	NU8 bX60gensym82561486_;	NU8 valbX60gensym82561487_;	NU64 valX60gensym82561488_;	NU64 valsX60gensym82561489_;	NU8 bX60gensym82561498_;	NU8 valbX60gensym82561499_;	NU64 valX60gensym82561500_;	NU64 valsX60gensym82561501_;	NU8 bX60gensym82561510_;	NU8 valbX60gensym82561511_;	NU64 valX60gensym82561512_;	NU64 valsX60gensym82561513_;	NU8 bX60gensym82561522_;	NU8 valbX60gensym82561523_;	NU64 valX60gensym82561524_;	NU64 valsX60gensym82561525_;	NU8 bX60gensym82561534_;	NU8 valbX60gensym82561535_;	NU64 valX60gensym82561536_;	NU64 valsX60gensym82561537_;	NU8 bX60gensym82561546_;	NU8 valbX60gensym82561547_;	NU64 valX60gensym82561548_;	NU64 valsX60gensym82561549_;	NU8 bX60gensym82561558_;	NU8 valbX60gensym82561559_;	NU64 valX60gensym82561560_;	NU64 valsX60gensym82561561_;{
 #line 131 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 134 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
@@ -148,25 +148,25 @@ N_LIB_PRIVATE N_NIMCALL(tyTuple__lQTEq64iYzLA0LTdjMrTyA, fromBytes__7hWUjMBxLj9c
 	LA3_: ;
 
 #line 113 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	bX60gensym38876289_ = x_0[((NI) 0)];
+	bX60gensym82561450_ = x_0[((NI) 0)];
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valbX60gensym38876290_ = (NU8)(bX60gensym38876289_ & ((NU8) 127));
+	valbX60gensym82561451_ = (NU8)(bX60gensym82561450_ & ((NU8) 127));
 #line 115 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valX60gensym38876291_ = ((NU64) (valbX60gensym38876290_));
+	valX60gensym82561452_ = ((NU64) (valbX60gensym82561451_));
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valsX60gensym38876292_ = (NU64)((NU64)(valX60gensym38876291_) << (NU64)(((NI) 0)));
+	valsX60gensym82561453_ = (NU64)((NU64)(valX60gensym82561452_) << (NU64)(((NI) 0)));
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	res = (NU64)(res | valsX60gensym38876292_);
+	res = (NU64)(res | valsX60gensym82561453_);
 #line 138 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 	{		NU64 colontmp__3;		NI8 colontmp__4;
 #line 124 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-		if (!(bX60gensym38876289_ == valbX60gensym38876290_)) goto LA7_;
+		if (!(bX60gensym82561450_ == valbX60gensym82561451_)) goto LA7_;
 
 #line 125 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
@@ -196,25 +196,25 @@ N_LIB_PRIVATE N_NIMCALL(tyTuple__lQTEq64iYzLA0LTdjMrTyA, fromBytes__7hWUjMBxLj9c
 	LA11_: ;
 
 #line 113 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	bX60gensym38876301_ = x_0[((NI) 1)];
+	bX60gensym82561462_ = x_0[((NI) 1)];
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valbX60gensym38876302_ = (NU8)(bX60gensym38876301_ & ((NU8) 127));
+	valbX60gensym82561463_ = (NU8)(bX60gensym82561462_ & ((NU8) 127));
 #line 115 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valX60gensym38876303_ = ((NU64) (valbX60gensym38876302_));
+	valX60gensym82561464_ = ((NU64) (valbX60gensym82561463_));
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valsX60gensym38876304_ = (NU64)((NU64)(valX60gensym38876303_) << (NU64)(((NI) 7)));
+	valsX60gensym82561465_ = (NU64)((NU64)(valX60gensym82561464_) << (NU64)(((NI) 7)));
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	res = (NU64)(res | valsX60gensym38876304_);
+	res = (NU64)(res | valsX60gensym82561465_);
 #line 139 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 	{		NU64 colontmp__7;		NI8 colontmp__8;
 #line 124 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-		if (!(bX60gensym38876301_ == valbX60gensym38876302_)) goto LA15_;
+		if (!(bX60gensym82561462_ == valbX60gensym82561463_)) goto LA15_;
 
 #line 125 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
@@ -244,25 +244,25 @@ N_LIB_PRIVATE N_NIMCALL(tyTuple__lQTEq64iYzLA0LTdjMrTyA, fromBytes__7hWUjMBxLj9c
 	LA19_: ;
 
 #line 113 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	bX60gensym38876313_ = x_0[((NI) 2)];
+	bX60gensym82561474_ = x_0[((NI) 2)];
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valbX60gensym38876314_ = (NU8)(bX60gensym38876313_ & ((NU8) 127));
+	valbX60gensym82561475_ = (NU8)(bX60gensym82561474_ & ((NU8) 127));
 #line 115 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valX60gensym38876315_ = ((NU64) (valbX60gensym38876314_));
+	valX60gensym82561476_ = ((NU64) (valbX60gensym82561475_));
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valsX60gensym38876316_ = (NU64)((NU64)(valX60gensym38876315_) << (NU64)(((NI) 14)));
+	valsX60gensym82561477_ = (NU64)((NU64)(valX60gensym82561476_) << (NU64)(((NI) 14)));
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	res = (NU64)(res | valsX60gensym38876316_);
+	res = (NU64)(res | valsX60gensym82561477_);
 #line 140 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 	{		NU64 colontmp__11;		NI8 colontmp__12;
 #line 124 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-		if (!(bX60gensym38876313_ == valbX60gensym38876314_)) goto LA23_;
+		if (!(bX60gensym82561474_ == valbX60gensym82561475_)) goto LA23_;
 
 #line 125 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
@@ -292,25 +292,25 @@ N_LIB_PRIVATE N_NIMCALL(tyTuple__lQTEq64iYzLA0LTdjMrTyA, fromBytes__7hWUjMBxLj9c
 	LA27_: ;
 
 #line 113 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	bX60gensym38876325_ = x_0[((NI) 3)];
+	bX60gensym82561486_ = x_0[((NI) 3)];
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valbX60gensym38876326_ = (NU8)(bX60gensym38876325_ & ((NU8) 127));
+	valbX60gensym82561487_ = (NU8)(bX60gensym82561486_ & ((NU8) 127));
 #line 115 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valX60gensym38876327_ = ((NU64) (valbX60gensym38876326_));
+	valX60gensym82561488_ = ((NU64) (valbX60gensym82561487_));
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valsX60gensym38876328_ = (NU64)((NU64)(valX60gensym38876327_) << (NU64)(((NI) 21)));
+	valsX60gensym82561489_ = (NU64)((NU64)(valX60gensym82561488_) << (NU64)(((NI) 21)));
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	res = (NU64)(res | valsX60gensym38876328_);
+	res = (NU64)(res | valsX60gensym82561489_);
 #line 141 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 	{		NU64 colontmp__15;		NI8 colontmp__16;
 #line 124 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-		if (!(bX60gensym38876325_ == valbX60gensym38876326_)) goto LA31_;
+		if (!(bX60gensym82561486_ == valbX60gensym82561487_)) goto LA31_;
 
 #line 125 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
@@ -340,25 +340,25 @@ N_LIB_PRIVATE N_NIMCALL(tyTuple__lQTEq64iYzLA0LTdjMrTyA, fromBytes__7hWUjMBxLj9c
 	LA35_: ;
 
 #line 113 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	bX60gensym38876337_ = x_0[((NI) 4)];
+	bX60gensym82561498_ = x_0[((NI) 4)];
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valbX60gensym38876338_ = (NU8)(bX60gensym38876337_ & ((NU8) 127));
+	valbX60gensym82561499_ = (NU8)(bX60gensym82561498_ & ((NU8) 127));
 #line 115 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valX60gensym38876339_ = ((NU64) (valbX60gensym38876338_));
+	valX60gensym82561500_ = ((NU64) (valbX60gensym82561499_));
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valsX60gensym38876340_ = (NU64)((NU64)(valX60gensym38876339_) << (NU64)(((NI) 28)));
+	valsX60gensym82561501_ = (NU64)((NU64)(valX60gensym82561500_) << (NU64)(((NI) 28)));
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	res = (NU64)(res | valsX60gensym38876340_);
+	res = (NU64)(res | valsX60gensym82561501_);
 #line 142 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 	{		NU64 colontmp__19;		NI8 colontmp__20;
 #line 124 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-		if (!(bX60gensym38876337_ == valbX60gensym38876338_)) goto LA39_;
+		if (!(bX60gensym82561498_ == valbX60gensym82561499_)) goto LA39_;
 
 #line 125 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
@@ -388,25 +388,25 @@ N_LIB_PRIVATE N_NIMCALL(tyTuple__lQTEq64iYzLA0LTdjMrTyA, fromBytes__7hWUjMBxLj9c
 	LA43_: ;
 
 #line 113 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	bX60gensym38876349_ = x_0[((NI) 5)];
+	bX60gensym82561510_ = x_0[((NI) 5)];
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valbX60gensym38876350_ = (NU8)(bX60gensym38876349_ & ((NU8) 127));
+	valbX60gensym82561511_ = (NU8)(bX60gensym82561510_ & ((NU8) 127));
 #line 115 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valX60gensym38876351_ = ((NU64) (valbX60gensym38876350_));
+	valX60gensym82561512_ = ((NU64) (valbX60gensym82561511_));
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valsX60gensym38876352_ = (NU64)((NU64)(valX60gensym38876351_) << (NU64)(((NI) 35)));
+	valsX60gensym82561513_ = (NU64)((NU64)(valX60gensym82561512_) << (NU64)(((NI) 35)));
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	res = (NU64)(res | valsX60gensym38876352_);
+	res = (NU64)(res | valsX60gensym82561513_);
 #line 143 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 	{		NU64 colontmp__23;		NI8 colontmp__24;
 #line 124 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-		if (!(bX60gensym38876349_ == valbX60gensym38876350_)) goto LA47_;
+		if (!(bX60gensym82561510_ == valbX60gensym82561511_)) goto LA47_;
 
 #line 125 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
@@ -436,25 +436,25 @@ N_LIB_PRIVATE N_NIMCALL(tyTuple__lQTEq64iYzLA0LTdjMrTyA, fromBytes__7hWUjMBxLj9c
 	LA51_: ;
 
 #line 113 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	bX60gensym38876361_ = x_0[((NI) 6)];
+	bX60gensym82561522_ = x_0[((NI) 6)];
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valbX60gensym38876362_ = (NU8)(bX60gensym38876361_ & ((NU8) 127));
+	valbX60gensym82561523_ = (NU8)(bX60gensym82561522_ & ((NU8) 127));
 #line 115 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valX60gensym38876363_ = ((NU64) (valbX60gensym38876362_));
+	valX60gensym82561524_ = ((NU64) (valbX60gensym82561523_));
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valsX60gensym38876364_ = (NU64)((NU64)(valX60gensym38876363_) << (NU64)(((NI) 42)));
+	valsX60gensym82561525_ = (NU64)((NU64)(valX60gensym82561524_) << (NU64)(((NI) 42)));
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	res = (NU64)(res | valsX60gensym38876364_);
+	res = (NU64)(res | valsX60gensym82561525_);
 #line 144 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 	{		NU64 colontmp__27;		NI8 colontmp__28;
 #line 124 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-		if (!(bX60gensym38876361_ == valbX60gensym38876362_)) goto LA55_;
+		if (!(bX60gensym82561522_ == valbX60gensym82561523_)) goto LA55_;
 
 #line 125 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
@@ -484,25 +484,25 @@ N_LIB_PRIVATE N_NIMCALL(tyTuple__lQTEq64iYzLA0LTdjMrTyA, fromBytes__7hWUjMBxLj9c
 	LA59_: ;
 
 #line 113 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	bX60gensym38876373_ = x_0[((NI) 7)];
+	bX60gensym82561534_ = x_0[((NI) 7)];
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valbX60gensym38876374_ = (NU8)(bX60gensym38876373_ & ((NU8) 127));
+	valbX60gensym82561535_ = (NU8)(bX60gensym82561534_ & ((NU8) 127));
 #line 115 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valX60gensym38876375_ = ((NU64) (valbX60gensym38876374_));
+	valX60gensym82561536_ = ((NU64) (valbX60gensym82561535_));
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valsX60gensym38876376_ = (NU64)((NU64)(valX60gensym38876375_) << (NU64)(((NI) 49)));
+	valsX60gensym82561537_ = (NU64)((NU64)(valX60gensym82561536_) << (NU64)(((NI) 49)));
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	res = (NU64)(res | valsX60gensym38876376_);
+	res = (NU64)(res | valsX60gensym82561537_);
 #line 145 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 	{		NU64 colontmp__31;		NI8 colontmp__32;
 #line 124 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-		if (!(bX60gensym38876373_ == valbX60gensym38876374_)) goto LA63_;
+		if (!(bX60gensym82561534_ == valbX60gensym82561535_)) goto LA63_;
 
 #line 125 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
@@ -532,25 +532,25 @@ N_LIB_PRIVATE N_NIMCALL(tyTuple__lQTEq64iYzLA0LTdjMrTyA, fromBytes__7hWUjMBxLj9c
 	LA67_: ;
 
 #line 113 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	bX60gensym38876385_ = x_0[((NI) 8)];
+	bX60gensym82561546_ = x_0[((NI) 8)];
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valbX60gensym38876386_ = (NU8)(bX60gensym38876385_ & ((NU8) 127));
+	valbX60gensym82561547_ = (NU8)(bX60gensym82561546_ & ((NU8) 127));
 #line 115 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valX60gensym38876387_ = ((NU64) (valbX60gensym38876386_));
+	valX60gensym82561548_ = ((NU64) (valbX60gensym82561547_));
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valsX60gensym38876388_ = (NU64)((NU64)(valX60gensym38876387_) << (NU64)(((NI) 56)));
+	valsX60gensym82561549_ = (NU64)((NU64)(valX60gensym82561548_) << (NU64)(((NI) 56)));
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	res = (NU64)(res | valsX60gensym38876388_);
+	res = (NU64)(res | valsX60gensym82561549_);
 #line 146 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 	{		NU64 colontmp__35;		NI8 colontmp__36;
 #line 124 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-		if (!(bX60gensym38876385_ == valbX60gensym38876386_)) goto LA71_;
+		if (!(bX60gensym82561546_ == valbX60gensym82561547_)) goto LA71_;
 
 #line 125 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
@@ -580,17 +580,17 @@ N_LIB_PRIVATE N_NIMCALL(tyTuple__lQTEq64iYzLA0LTdjMrTyA, fromBytes__7hWUjMBxLj9c
 	LA75_: ;
 
 #line 113 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	bX60gensym38876397_ = x_0[((NI) 9)];
+	bX60gensym82561558_ = x_0[((NI) 9)];
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valbX60gensym38876398_ = (NU8)(bX60gensym38876397_ & ((NU8) 127));
+	valbX60gensym82561559_ = (NU8)(bX60gensym82561558_ & ((NU8) 127));
 #line 115 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valX60gensym38876399_ = ((NU64) (valbX60gensym38876398_));
+	valX60gensym82561560_ = ((NU64) (valbX60gensym82561559_));
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valsX60gensym38876400_ = (NU64)((NU64)(valX60gensym38876399_) << (NU64)(((NI) 63)));
+	valsX60gensym82561561_ = (NU64)((NU64)(valX60gensym82561560_) << (NU64)(((NI) 63)));
 #line 120 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 	{		NU64 colontmp__39;		NI8 colontmp__40;
 #line 120 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
@@ -598,7 +598,7 @@ N_LIB_PRIVATE N_NIMCALL(tyTuple__lQTEq64iYzLA0LTdjMrTyA, fromBytes__7hWUjMBxLj9c
 #line 120 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 120 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-		if (!!(((NU64)((NU64)(valsX60gensym38876400_) >> (NU64)(((NI) 63))) == valX60gensym38876399_))) goto LA79_;
+		if (!!(((NU64)((NU64)(valsX60gensym82561561_) >> (NU64)(((NI) 63))) == valX60gensym82561560_))) goto LA79_;
 
 #line 121 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
@@ -616,11 +616,11 @@ N_LIB_PRIVATE N_NIMCALL(tyTuple__lQTEq64iYzLA0LTdjMrTyA, fromBytes__7hWUjMBxLj9c
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	res = (NU64)(res | valsX60gensym38876400_);
+	res = (NU64)(res | valsX60gensym82561561_);
 #line 147 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 	{		NU64 colontmp__41;		NI8 colontmp__42;
 #line 124 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-		if (!(bX60gensym38876397_ == valbX60gensym38876398_)) goto LA83_;
+		if (!(bX60gensym82561558_ == valbX60gensym82561559_)) goto LA83_;
 
 #line 125 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
@@ -1042,7 +1042,7 @@ N_LIB_PRIVATE N_NIMCALL(tyObject_Leb128Buf__9bzW7WZ9baNLvEUq6EAZWcQQ, toBytes__h
 	result.len += ((NI) 1);	return result;}
 
 #line 127 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-N_LIB_PRIVATE N_NIMCALL(tyTuple__VUQsm9bkd3EZ53SlvlfA4ZQ, fromBytes__IwPEtyYwTpDiRz9by9bukxfQ)(NU8* x_0, NI x_0Len_0) {	tyTuple__VUQsm9bkd3EZ53SlvlfA4ZQ result;	NI xlen_1;	NU32 res;	NU8 bX60gensym38876289_;	NU8 valbX60gensym38876290_;	NU32 valX60gensym38876291_;	NU32 valsX60gensym38876292_;	NU8 bX60gensym38876301_;	NU8 valbX60gensym38876302_;	NU32 valX60gensym38876303_;	NU32 valsX60gensym38876304_;	NU8 bX60gensym38876313_;	NU8 valbX60gensym38876314_;	NU32 valX60gensym38876315_;	NU32 valsX60gensym38876316_;	NU8 bX60gensym38876325_;	NU8 valbX60gensym38876326_;	NU32 valX60gensym38876327_;	NU32 valsX60gensym38876328_;	NU8 bX60gensym38876337_;	NU8 valbX60gensym38876338_;	NU32 valX60gensym38876339_;	NU32 valsX60gensym38876340_;	NU8 bX60gensym38876349_;	NU8 valbX60gensym38876350_;	NU32 valX60gensym38876351_;	NU32 valsX60gensym38876352_;	NU8 bX60gensym38876361_;	NU8 valbX60gensym38876362_;	NU32 valX60gensym38876363_;	NU32 valsX60gensym38876364_;	NU8 bX60gensym38876373_;	NU8 valbX60gensym38876374_;	NU32 valX60gensym38876375_;	NU32 valsX60gensym38876376_;	NU8 bX60gensym38876385_;	NU8 valbX60gensym38876386_;	NU32 valX60gensym38876387_;	NU32 valsX60gensym38876388_;	NU8 bX60gensym38876397_;	NU8 valbX60gensym38876398_;	NU32 valX60gensym38876399_;	NU32 valsX60gensym38876400_;{
+N_LIB_PRIVATE N_NIMCALL(tyTuple__VUQsm9bkd3EZ53SlvlfA4ZQ, fromBytes__IwPEtyYwTpDiRz9by9bukxfQ)(NU8* x_0, NI x_0Len_0) {	tyTuple__VUQsm9bkd3EZ53SlvlfA4ZQ result;	NI xlen_1;	NU32 res;	NU8 bX60gensym82561450_;	NU8 valbX60gensym82561451_;	NU32 valX60gensym82561452_;	NU32 valsX60gensym82561453_;	NU8 bX60gensym82561462_;	NU8 valbX60gensym82561463_;	NU32 valX60gensym82561464_;	NU32 valsX60gensym82561465_;	NU8 bX60gensym82561474_;	NU8 valbX60gensym82561475_;	NU32 valX60gensym82561476_;	NU32 valsX60gensym82561477_;	NU8 bX60gensym82561486_;	NU8 valbX60gensym82561487_;	NU32 valX60gensym82561488_;	NU32 valsX60gensym82561489_;	NU8 bX60gensym82561498_;	NU8 valbX60gensym82561499_;	NU32 valX60gensym82561500_;	NU32 valsX60gensym82561501_;	NU8 bX60gensym82561510_;	NU8 valbX60gensym82561511_;	NU32 valX60gensym82561512_;	NU32 valsX60gensym82561513_;	NU8 bX60gensym82561522_;	NU8 valbX60gensym82561523_;	NU32 valX60gensym82561524_;	NU32 valsX60gensym82561525_;	NU8 bX60gensym82561534_;	NU8 valbX60gensym82561535_;	NU32 valX60gensym82561536_;	NU32 valsX60gensym82561537_;	NU8 bX60gensym82561546_;	NU8 valbX60gensym82561547_;	NU32 valX60gensym82561548_;	NU32 valsX60gensym82561549_;	NU8 bX60gensym82561558_;	NU8 valbX60gensym82561559_;	NU32 valX60gensym82561560_;	NU32 valsX60gensym82561561_;{
 #line 131 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 134 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
@@ -1066,25 +1066,25 @@ N_LIB_PRIVATE N_NIMCALL(tyTuple__VUQsm9bkd3EZ53SlvlfA4ZQ, fromBytes__IwPEtyYwTpD
 	LA3_: ;
 
 #line 113 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	bX60gensym38876289_ = x_0[((NI) 0)];
+	bX60gensym82561450_ = x_0[((NI) 0)];
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valbX60gensym38876290_ = (NU8)(bX60gensym38876289_ & ((NU8) 127));
+	valbX60gensym82561451_ = (NU8)(bX60gensym82561450_ & ((NU8) 127));
 #line 115 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valX60gensym38876291_ = ((NU32) (valbX60gensym38876290_));
+	valX60gensym82561452_ = ((NU32) (valbX60gensym82561451_));
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valsX60gensym38876292_ = (NU32)((NU64)(valX60gensym38876291_) << (NU64)(((NI) 0)));
+	valsX60gensym82561453_ = (NU32)((NU64)(valX60gensym82561452_) << (NU64)(((NI) 0)));
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	res = (NU32)(res | valsX60gensym38876292_);
+	res = (NU32)(res | valsX60gensym82561453_);
 #line 138 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 	{		NU32 colontmp__3;		NI8 colontmp__4;
 #line 124 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-		if (!(bX60gensym38876289_ == valbX60gensym38876290_)) goto LA7_;
+		if (!(bX60gensym82561450_ == valbX60gensym82561451_)) goto LA7_;
 
 #line 125 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
@@ -1114,25 +1114,25 @@ N_LIB_PRIVATE N_NIMCALL(tyTuple__VUQsm9bkd3EZ53SlvlfA4ZQ, fromBytes__IwPEtyYwTpD
 	LA11_: ;
 
 #line 113 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	bX60gensym38876301_ = x_0[((NI) 1)];
+	bX60gensym82561462_ = x_0[((NI) 1)];
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valbX60gensym38876302_ = (NU8)(bX60gensym38876301_ & ((NU8) 127));
+	valbX60gensym82561463_ = (NU8)(bX60gensym82561462_ & ((NU8) 127));
 #line 115 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valX60gensym38876303_ = ((NU32) (valbX60gensym38876302_));
+	valX60gensym82561464_ = ((NU32) (valbX60gensym82561463_));
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valsX60gensym38876304_ = (NU32)((NU64)(valX60gensym38876303_) << (NU64)(((NI) 7)));
+	valsX60gensym82561465_ = (NU32)((NU64)(valX60gensym82561464_) << (NU64)(((NI) 7)));
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	res = (NU32)(res | valsX60gensym38876304_);
+	res = (NU32)(res | valsX60gensym82561465_);
 #line 139 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 	{		NU32 colontmp__7;		NI8 colontmp__8;
 #line 124 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-		if (!(bX60gensym38876301_ == valbX60gensym38876302_)) goto LA15_;
+		if (!(bX60gensym82561462_ == valbX60gensym82561463_)) goto LA15_;
 
 #line 125 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
@@ -1162,25 +1162,25 @@ N_LIB_PRIVATE N_NIMCALL(tyTuple__VUQsm9bkd3EZ53SlvlfA4ZQ, fromBytes__IwPEtyYwTpD
 	LA19_: ;
 
 #line 113 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	bX60gensym38876313_ = x_0[((NI) 2)];
+	bX60gensym82561474_ = x_0[((NI) 2)];
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valbX60gensym38876314_ = (NU8)(bX60gensym38876313_ & ((NU8) 127));
+	valbX60gensym82561475_ = (NU8)(bX60gensym82561474_ & ((NU8) 127));
 #line 115 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valX60gensym38876315_ = ((NU32) (valbX60gensym38876314_));
+	valX60gensym82561476_ = ((NU32) (valbX60gensym82561475_));
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valsX60gensym38876316_ = (NU32)((NU64)(valX60gensym38876315_) << (NU64)(((NI) 14)));
+	valsX60gensym82561477_ = (NU32)((NU64)(valX60gensym82561476_) << (NU64)(((NI) 14)));
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	res = (NU32)(res | valsX60gensym38876316_);
+	res = (NU32)(res | valsX60gensym82561477_);
 #line 140 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 	{		NU32 colontmp__11;		NI8 colontmp__12;
 #line 124 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-		if (!(bX60gensym38876313_ == valbX60gensym38876314_)) goto LA23_;
+		if (!(bX60gensym82561474_ == valbX60gensym82561475_)) goto LA23_;
 
 #line 125 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
@@ -1210,25 +1210,25 @@ N_LIB_PRIVATE N_NIMCALL(tyTuple__VUQsm9bkd3EZ53SlvlfA4ZQ, fromBytes__IwPEtyYwTpD
 	LA27_: ;
 
 #line 113 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	bX60gensym38876325_ = x_0[((NI) 3)];
+	bX60gensym82561486_ = x_0[((NI) 3)];
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valbX60gensym38876326_ = (NU8)(bX60gensym38876325_ & ((NU8) 127));
+	valbX60gensym82561487_ = (NU8)(bX60gensym82561486_ & ((NU8) 127));
 #line 115 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valX60gensym38876327_ = ((NU32) (valbX60gensym38876326_));
+	valX60gensym82561488_ = ((NU32) (valbX60gensym82561487_));
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valsX60gensym38876328_ = (NU32)((NU64)(valX60gensym38876327_) << (NU64)(((NI) 21)));
+	valsX60gensym82561489_ = (NU32)((NU64)(valX60gensym82561488_) << (NU64)(((NI) 21)));
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	res = (NU32)(res | valsX60gensym38876328_);
+	res = (NU32)(res | valsX60gensym82561489_);
 #line 141 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 	{		NU32 colontmp__15;		NI8 colontmp__16;
 #line 124 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-		if (!(bX60gensym38876325_ == valbX60gensym38876326_)) goto LA31_;
+		if (!(bX60gensym82561486_ == valbX60gensym82561487_)) goto LA31_;
 
 #line 125 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
@@ -1258,17 +1258,17 @@ N_LIB_PRIVATE N_NIMCALL(tyTuple__VUQsm9bkd3EZ53SlvlfA4ZQ, fromBytes__IwPEtyYwTpD
 	LA35_: ;
 
 #line 113 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	bX60gensym38876337_ = x_0[((NI) 4)];
+	bX60gensym82561498_ = x_0[((NI) 4)];
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valbX60gensym38876338_ = (NU8)(bX60gensym38876337_ & ((NU8) 127));
+	valbX60gensym82561499_ = (NU8)(bX60gensym82561498_ & ((NU8) 127));
 #line 115 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valX60gensym38876339_ = ((NU32) (valbX60gensym38876338_));
+	valX60gensym82561500_ = ((NU32) (valbX60gensym82561499_));
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valsX60gensym38876340_ = (NU32)((NU64)(valX60gensym38876339_) << (NU64)(((NI) 28)));
+	valsX60gensym82561501_ = (NU32)((NU64)(valX60gensym82561500_) << (NU64)(((NI) 28)));
 #line 120 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 	{		NU32 colontmp__19;		NI8 colontmp__20;
 #line 120 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
@@ -1276,7 +1276,7 @@ N_LIB_PRIVATE N_NIMCALL(tyTuple__VUQsm9bkd3EZ53SlvlfA4ZQ, fromBytes__IwPEtyYwTpD
 #line 120 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 120 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-		if (!!(((NU32)((NU32)(valsX60gensym38876340_) >> (NU64)(((NI) 28))) == valX60gensym38876339_))) goto LA39_;
+		if (!!(((NU32)((NU32)(valsX60gensym82561501_) >> (NU64)(((NI) 28))) == valX60gensym82561500_))) goto LA39_;
 
 #line 121 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
@@ -1294,11 +1294,11 @@ N_LIB_PRIVATE N_NIMCALL(tyTuple__VUQsm9bkd3EZ53SlvlfA4ZQ, fromBytes__IwPEtyYwTpD
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	res = (NU32)(res | valsX60gensym38876340_);
+	res = (NU32)(res | valsX60gensym82561501_);
 #line 142 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 	{		NU32 colontmp__21;		NI8 colontmp__22;
 #line 124 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-		if (!(bX60gensym38876337_ == valbX60gensym38876338_)) goto LA43_;
+		if (!(bX60gensym82561498_ == valbX60gensym82561499_)) goto LA43_;
 
 #line 125 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
@@ -1328,17 +1328,17 @@ N_LIB_PRIVATE N_NIMCALL(tyTuple__VUQsm9bkd3EZ53SlvlfA4ZQ, fromBytes__IwPEtyYwTpD
 	LA47_: ;
 
 #line 113 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	bX60gensym38876349_ = x_0[((NI) 5)];
+	bX60gensym82561510_ = x_0[((NI) 5)];
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valbX60gensym38876350_ = (NU8)(bX60gensym38876349_ & ((NU8) 127));
+	valbX60gensym82561511_ = (NU8)(bX60gensym82561510_ & ((NU8) 127));
 #line 115 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valX60gensym38876351_ = ((NU32) (valbX60gensym38876350_));
+	valX60gensym82561512_ = ((NU32) (valbX60gensym82561511_));
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valsX60gensym38876352_ = (NU32)((NU64)(valX60gensym38876351_) << (NU64)(((NI) 35)));
+	valsX60gensym82561513_ = (NU32)((NU64)(valX60gensym82561512_) << (NU64)(((NI) 35)));
 #line 120 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 	{		NU32 colontmp__25;		NI8 colontmp__26;
 #line 120 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
@@ -1346,7 +1346,7 @@ N_LIB_PRIVATE N_NIMCALL(tyTuple__VUQsm9bkd3EZ53SlvlfA4ZQ, fromBytes__IwPEtyYwTpD
 #line 120 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 120 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-		if (!!(((NU32)((NU32)(valsX60gensym38876352_) >> (NU64)(((NI) 35))) == valX60gensym38876351_))) goto LA51_;
+		if (!!(((NU32)((NU32)(valsX60gensym82561513_) >> (NU64)(((NI) 35))) == valX60gensym82561512_))) goto LA51_;
 
 #line 121 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
@@ -1364,11 +1364,11 @@ N_LIB_PRIVATE N_NIMCALL(tyTuple__VUQsm9bkd3EZ53SlvlfA4ZQ, fromBytes__IwPEtyYwTpD
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	res = (NU32)(res | valsX60gensym38876352_);
+	res = (NU32)(res | valsX60gensym82561513_);
 #line 143 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 	{		NU32 colontmp__27;		NI8 colontmp__28;
 #line 124 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-		if (!(bX60gensym38876349_ == valbX60gensym38876350_)) goto LA55_;
+		if (!(bX60gensym82561510_ == valbX60gensym82561511_)) goto LA55_;
 
 #line 125 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
@@ -1398,17 +1398,17 @@ N_LIB_PRIVATE N_NIMCALL(tyTuple__VUQsm9bkd3EZ53SlvlfA4ZQ, fromBytes__IwPEtyYwTpD
 	LA59_: ;
 
 #line 113 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	bX60gensym38876361_ = x_0[((NI) 6)];
+	bX60gensym82561522_ = x_0[((NI) 6)];
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valbX60gensym38876362_ = (NU8)(bX60gensym38876361_ & ((NU8) 127));
+	valbX60gensym82561523_ = (NU8)(bX60gensym82561522_ & ((NU8) 127));
 #line 115 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valX60gensym38876363_ = ((NU32) (valbX60gensym38876362_));
+	valX60gensym82561524_ = ((NU32) (valbX60gensym82561523_));
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valsX60gensym38876364_ = (NU32)((NU64)(valX60gensym38876363_) << (NU64)(((NI) 42)));
+	valsX60gensym82561525_ = (NU32)((NU64)(valX60gensym82561524_) << (NU64)(((NI) 42)));
 #line 120 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 	{		NU32 colontmp__31;		NI8 colontmp__32;
 #line 120 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
@@ -1416,7 +1416,7 @@ N_LIB_PRIVATE N_NIMCALL(tyTuple__VUQsm9bkd3EZ53SlvlfA4ZQ, fromBytes__IwPEtyYwTpD
 #line 120 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 120 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-		if (!!(((NU32)((NU32)(valsX60gensym38876364_) >> (NU64)(((NI) 42))) == valX60gensym38876363_))) goto LA63_;
+		if (!!(((NU32)((NU32)(valsX60gensym82561525_) >> (NU64)(((NI) 42))) == valX60gensym82561524_))) goto LA63_;
 
 #line 121 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
@@ -1434,11 +1434,11 @@ N_LIB_PRIVATE N_NIMCALL(tyTuple__VUQsm9bkd3EZ53SlvlfA4ZQ, fromBytes__IwPEtyYwTpD
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	res = (NU32)(res | valsX60gensym38876364_);
+	res = (NU32)(res | valsX60gensym82561525_);
 #line 144 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 	{		NU32 colontmp__33;		NI8 colontmp__34;
 #line 124 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-		if (!(bX60gensym38876361_ == valbX60gensym38876362_)) goto LA67_;
+		if (!(bX60gensym82561522_ == valbX60gensym82561523_)) goto LA67_;
 
 #line 125 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
@@ -1468,17 +1468,17 @@ N_LIB_PRIVATE N_NIMCALL(tyTuple__VUQsm9bkd3EZ53SlvlfA4ZQ, fromBytes__IwPEtyYwTpD
 	LA71_: ;
 
 #line 113 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	bX60gensym38876373_ = x_0[((NI) 7)];
+	bX60gensym82561534_ = x_0[((NI) 7)];
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valbX60gensym38876374_ = (NU8)(bX60gensym38876373_ & ((NU8) 127));
+	valbX60gensym82561535_ = (NU8)(bX60gensym82561534_ & ((NU8) 127));
 #line 115 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valX60gensym38876375_ = ((NU32) (valbX60gensym38876374_));
+	valX60gensym82561536_ = ((NU32) (valbX60gensym82561535_));
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valsX60gensym38876376_ = (NU32)((NU64)(valX60gensym38876375_) << (NU64)(((NI) 49)));
+	valsX60gensym82561537_ = (NU32)((NU64)(valX60gensym82561536_) << (NU64)(((NI) 49)));
 #line 120 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 	{		NU32 colontmp__37;		NI8 colontmp__38;
 #line 120 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
@@ -1486,7 +1486,7 @@ N_LIB_PRIVATE N_NIMCALL(tyTuple__VUQsm9bkd3EZ53SlvlfA4ZQ, fromBytes__IwPEtyYwTpD
 #line 120 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 120 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-		if (!!(((NU32)((NU32)(valsX60gensym38876376_) >> (NU64)(((NI) 49))) == valX60gensym38876375_))) goto LA75_;
+		if (!!(((NU32)((NU32)(valsX60gensym82561537_) >> (NU64)(((NI) 49))) == valX60gensym82561536_))) goto LA75_;
 
 #line 121 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
@@ -1504,11 +1504,11 @@ N_LIB_PRIVATE N_NIMCALL(tyTuple__VUQsm9bkd3EZ53SlvlfA4ZQ, fromBytes__IwPEtyYwTpD
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	res = (NU32)(res | valsX60gensym38876376_);
+	res = (NU32)(res | valsX60gensym82561537_);
 #line 145 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 	{		NU32 colontmp__39;		NI8 colontmp__40;
 #line 124 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-		if (!(bX60gensym38876373_ == valbX60gensym38876374_)) goto LA79_;
+		if (!(bX60gensym82561534_ == valbX60gensym82561535_)) goto LA79_;
 
 #line 125 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
@@ -1538,17 +1538,17 @@ N_LIB_PRIVATE N_NIMCALL(tyTuple__VUQsm9bkd3EZ53SlvlfA4ZQ, fromBytes__IwPEtyYwTpD
 	LA83_: ;
 
 #line 113 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	bX60gensym38876385_ = x_0[((NI) 8)];
+	bX60gensym82561546_ = x_0[((NI) 8)];
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valbX60gensym38876386_ = (NU8)(bX60gensym38876385_ & ((NU8) 127));
+	valbX60gensym82561547_ = (NU8)(bX60gensym82561546_ & ((NU8) 127));
 #line 115 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valX60gensym38876387_ = ((NU32) (valbX60gensym38876386_));
+	valX60gensym82561548_ = ((NU32) (valbX60gensym82561547_));
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valsX60gensym38876388_ = (NU32)((NU64)(valX60gensym38876387_) << (NU64)(((NI) 56)));
+	valsX60gensym82561549_ = (NU32)((NU64)(valX60gensym82561548_) << (NU64)(((NI) 56)));
 #line 120 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 	{		NU32 colontmp__43;		NI8 colontmp__44;
 #line 120 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
@@ -1556,7 +1556,7 @@ N_LIB_PRIVATE N_NIMCALL(tyTuple__VUQsm9bkd3EZ53SlvlfA4ZQ, fromBytes__IwPEtyYwTpD
 #line 120 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 120 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-		if (!!(((NU32)((NU32)(valsX60gensym38876388_) >> (NU64)(((NI) 56))) == valX60gensym38876387_))) goto LA87_;
+		if (!!(((NU32)((NU32)(valsX60gensym82561549_) >> (NU64)(((NI) 56))) == valX60gensym82561548_))) goto LA87_;
 
 #line 121 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
@@ -1574,11 +1574,11 @@ N_LIB_PRIVATE N_NIMCALL(tyTuple__VUQsm9bkd3EZ53SlvlfA4ZQ, fromBytes__IwPEtyYwTpD
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	res = (NU32)(res | valsX60gensym38876388_);
+	res = (NU32)(res | valsX60gensym82561549_);
 #line 146 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 	{		NU32 colontmp__45;		NI8 colontmp__46;
 #line 124 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-		if (!(bX60gensym38876385_ == valbX60gensym38876386_)) goto LA91_;
+		if (!(bX60gensym82561546_ == valbX60gensym82561547_)) goto LA91_;
 
 #line 125 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
@@ -1608,17 +1608,17 @@ N_LIB_PRIVATE N_NIMCALL(tyTuple__VUQsm9bkd3EZ53SlvlfA4ZQ, fromBytes__IwPEtyYwTpD
 	LA95_: ;
 
 #line 113 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	bX60gensym38876397_ = x_0[((NI) 9)];
+	bX60gensym82561558_ = x_0[((NI) 9)];
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valbX60gensym38876398_ = (NU8)(bX60gensym38876397_ & ((NU8) 127));
+	valbX60gensym82561559_ = (NU8)(bX60gensym82561558_ & ((NU8) 127));
 #line 115 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valX60gensym38876399_ = ((NU32) (valbX60gensym38876398_));
+	valX60gensym82561560_ = ((NU32) (valbX60gensym82561559_));
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	valsX60gensym38876400_ = (NU32)((NU64)(valX60gensym38876399_) << (NU64)(((NI) 63)));
+	valsX60gensym82561561_ = (NU32)((NU64)(valX60gensym82561560_) << (NU64)(((NI) 63)));
 #line 120 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 	{		NU32 colontmp__49;		NI8 colontmp__50;
 #line 120 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
@@ -1626,7 +1626,7 @@ N_LIB_PRIVATE N_NIMCALL(tyTuple__VUQsm9bkd3EZ53SlvlfA4ZQ, fromBytes__IwPEtyYwTpD
 #line 120 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 120 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-		if (!!(((NU32)((NU32)(valsX60gensym38876400_) >> (NU64)(((NI) 63))) == valX60gensym38876399_))) goto LA99_;
+		if (!!(((NU32)((NU32)(valsX60gensym82561561_) >> (NU64)(((NI) 63))) == valX60gensym82561560_))) goto LA99_;
 
 #line 121 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
@@ -1644,11 +1644,11 @@ N_LIB_PRIVATE N_NIMCALL(tyTuple__VUQsm9bkd3EZ53SlvlfA4ZQ, fromBytes__IwPEtyYwTpD
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-	res = (NU32)(res | valsX60gensym38876400_);
+	res = (NU32)(res | valsX60gensym82561561_);
 #line 147 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 	{		NU32 colontmp__51;		NI8 colontmp__52;
 #line 124 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
-		if (!(bX60gensym38876397_ == valbX60gensym38876398_)) goto LA103_;
+		if (!(bX60gensym82561558_ == valbX60gensym82561559_)) goto LA103_;
 
 #line 125 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/leb128.nim"
 

@@ -77,6 +77,14 @@ needsEscape	needsEscape	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicle
 needsQuote	needsQuote	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles/log_output.nim	566	4
 color	color	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles/log_output.nim	584	9
 bright	bright	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles/log_output.nim	584	16
+setProperty	setProperty__QDpV173D9cku9b79b74cdiehw	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles/log_output.nim	551	5
+valText	valText	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles/log_output.nim	553	6
+escaped	escaped	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles/log_output.nim	556	4
+valueToWrite	valueToWrite	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles/log_output.nim	557	4
+needsEscape	needsEscape	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles/log_output.nim	565	4
+needsQuote	needsQuote	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles/log_output.nim	566	4
+color	color	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles/log_output.nim	584	9
+bright	bright	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles/log_output.nim	584	16
 setProperty	setProperty__GhWi7AIWVqt7uu6sxAhbKw	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles/log_output.nim	551	5
 valText	valText	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles/log_output.nim	553	6
 x	x_0	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/dollars.nim	69	27

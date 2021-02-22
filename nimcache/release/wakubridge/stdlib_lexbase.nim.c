@@ -3,7 +3,7 @@
 /* The generated code is subject to the original license. */
 /* Compiled for: Linux, amd64, gcc */
 /* Command for C compiler:
-   gcc -c  -w -pthread -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace/install/usr/include -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1/src -DHAVE_CONFIG_H -DHAVE_BUILTIN_EXPECT -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/src -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/inc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/tools -DBR_USE_UNIX_TIME=1 -DBR_USE_URANDOM=1 -DBR_LE_UNALIGNED=1 -DBR_64=1  -DBR_amd64=1 -DBR_INT128=1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/miniupnp/miniupnpc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/libnatpmp-upstream -DENABLE_STRNATPMPERR -march=native -g3 -Og -O3 -fno-strict-aliasing -fno-ident  -I/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib -I/home/runner/work/nim-waku/nim-waku/waku/common -o nimcache/release/wakubridge/stdlib_lexbase.nim.c.o nimcache/release/wakubridge/stdlib_lexbase.nim.c */
+   gcc -c  -w -pthread -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace/install/usr/include -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1/src -DHAVE_CONFIG_H -DHAVE_BUILTIN_EXPECT -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/src -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/inc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/tools -DBR_USE_UNIX_TIME=1 -DBR_USE_URANDOM=1 -DBR_LE_UNALIGNED=1 -DBR_64=1  -DBR_amd64=1 -DBR_INT128=1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/miniupnp/miniupnpc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/libnatpmp-upstream -DENABLE_STRNATPMPERR -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/certs -march=native -g3 -Og -O3 -fno-strict-aliasing -fno-ident  -I/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib -I/home/runner/work/nim-waku/nim-waku/waku/common -o nimcache/release/wakubridge/stdlib_lexbase.nim.c.o nimcache/release/wakubridge/stdlib_lexbase.nim.c */
 #define NIM_INTBITS 64
 
 #include "nimbase.h"
@@ -103,7 +103,7 @@ N_LIB_PRIVATE N_NOINLINE(void, raiseOverflow)(void);
 N_LIB_PRIVATE N_NIMCALL(void, fillBuffer__m9bpQUVeRkyuyv4zAGVgY9bw)(tyObject_BaseLexer__MAw8rJZtJ279bVV3TWMtXSg* L);
 static N_INLINE(void, moveMem__i80o3k0SgEI5gTRCzYdyWA_2system)(void* dest_0, void* source, NI size);
 N_LIB_PRIVATE N_NOINLINE(void, raiseIndexError2)(NI i, NI n);
-N_LIB_PRIVATE N_NIMCALL(NI, readDataStr__78VQwN48e7jIIL2Q9bINIFw_2)(tyObject_StreamObj__THYguAi9bSgidczZ3ywEIMQ* s_0, NimStringDesc** buffer_0, tyObject_HSlice__EE5dzjqoOrHT6HJhIPXAvA slice);
+N_LIB_PRIVATE N_NIMCALL(NI, readDataStr__78VQwN48e7jIIL2Q9bINIFw)(tyObject_StreamObj__THYguAi9bSgidczZ3ywEIMQ* s_0, NimStringDesc** buffer_0, tyObject_HSlice__EE5dzjqoOrHT6HJhIPXAvA slice);
 static N_INLINE(tyObject_HSlice__EE5dzjqoOrHT6HJhIPXAvA, dotdot___BokNSDrKN1xmV1nA01G9brAsystem)(NI a, NI b);
 static N_INLINE(void, nimZeroMem)(void* p, NI size);
 static N_INLINE(void, nimSetMem__zxfKBYntu9cBapkhrCOk1fgmemory)(void* a, int v, NI size);
@@ -111,7 +111,7 @@ N_LIB_PRIVATE N_NOINLINE(void, chckNil)(void* p);
 N_LIB_PRIVATE N_NIMCALL(NimStringDesc*, setLengthStr)(NimStringDesc* s, NI newLen);
 N_LIB_PRIVATE N_NIMCALL(void, skipUtf8Bom__m9bpQUVeRkyuyv4zAGVgY9bw_2)(tyObject_BaseLexer__MAw8rJZtJ279bVV3TWMtXSg* L);
 N_LIB_PRIVATE N_NIMCALL(NI, fillBaseLexer__sLQC1Z9cokufE3lZEw9b42Cw_2)(tyObject_BaseLexer__MAw8rJZtJ279bVV3TWMtXSg* L, NI pos);
-N_LIB_PRIVATE N_NIMCALL(void, close__y1KA3B0U09bKtU09am9a9avRYQ_2)(tyObject_StreamObj__THYguAi9bSgidczZ3ywEIMQ* s_0);
+N_LIB_PRIVATE N_NIMCALL(void, close__y1KA3B0U09bKtU09am9a9avRYQ)(tyObject_StreamObj__THYguAi9bSgidczZ3ywEIMQ* s_0);
 extern TNimType NTI__ytyiCJqK439aF9cIibuRVpAg_;
 N_LIB_PRIVATE TNimType NTI__MAw8rJZtJ279bVV3TWMtXSg_;
 extern TNimType NTI__rR5Bzr1D5krxoo1NcNyeMA_;
@@ -241,7 +241,7 @@ N_LIB_PRIVATE N_NIMCALL(void, fillBuffer__m9bpQUVeRkyuyv4zAGVgY9bw)(tyObject_Bas
 #line 65 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/lexbase.nim"
 	T13_ = dotdot___BokNSDrKN1xmV1nA01G9brAsystem(toCopy, (NI)(TM__k6p5NxDJat9aTyZxfZjCDJQ_14));
 #line 65 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/lexbase.nim"
-	charsRead = readDataStr__78VQwN48e7jIIL2Q9bINIFw_2((*L).input, (&(*L).buf), T13_);
+	charsRead = readDataStr__78VQwN48e7jIIL2Q9bINIFw((*L).input, (&(*L).buf), T13_);
 #line 66 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/lexbase.nim"
 
 #line 66 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/lexbase.nim"
@@ -331,7 +331,7 @@ N_LIB_PRIVATE N_NIMCALL(void, fillBuffer__m9bpQUVeRkyuyv4zAGVgY9bw)(tyObject_Bas
 #line 85 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/lexbase.nim"
 					T34_ = dotdot___BokNSDrKN1xmV1nA01G9brAsystem(oldBufLen, (NI)(TM__k6p5NxDJat9aTyZxfZjCDJQ_21));
 #line 85 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/lexbase.nim"
-					charsRead = readDataStr__78VQwN48e7jIIL2Q9bINIFw_2((*L).input, (&(*L).buf), T34_);
+					charsRead = readDataStr__78VQwN48e7jIIL2Q9bINIFw((*L).input, (&(*L).buf), T34_);
 #line 86 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/lexbase.nim"
 					{						NI TM__k6p5NxDJat9aTyZxfZjCDJQ_22;						NI TM__k6p5NxDJat9aTyZxfZjCDJQ_23;
 #line 86 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/lexbase.nim"
@@ -571,7 +571,7 @@ N_LIB_PRIVATE N_NIMCALL(void, close__m9bpQUVeRkyuyv4zAGVgY9bw_3)(tyObject_BaseLe
 #line 41 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/lexbase.nim"
 
 #line 41 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/lexbase.nim"
-	close__y1KA3B0U09bKtU09am9a9avRYQ_2((*L).input);
+	close__y1KA3B0U09bKtU09am9a9avRYQ((*L).input);
 }
 N_LIB_PRIVATE N_NIMCALL(void, stdlib_lexbaseDatInit000)(void) {
 

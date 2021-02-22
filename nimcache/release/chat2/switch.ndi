@@ -33,8 +33,6 @@ result	result	/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/switc
 m	m	/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/multistream.nim	49	13
 conn	conn	/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/multistream.nim	50	13
 proto	proto	/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/multistream.nim	51	13
-fut	fut	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncfutures2.nim	472	22
-result	result	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncfutures2.nim	472	0
 negotiateStream_continue	negotiateStream_continue__rCi9cMOn3Bpu9aOuJFWm1q4w	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncmacro2.nim	258	23
 udata`gensym88655047	udataX60gensym88655047_	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncmacro2.nim	33	17
 :envP	colonenvP_	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncmacro2.nim	258	23
@@ -121,8 +119,6 @@ result	result	/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/switc
 m	m	/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/multistream.nim	95	13
 conn	conn	/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/multistream.nim	96	13
 proto	proto	/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/multistream.nim	97	13
-fut	fut	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncfutures2.nim	472	22
-result	result	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncfutures2.nim	472	0
 p	p_0	/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/protocols/identify.nim	126	15
 conn	conn	/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/protocols/identify.nim	127	15
 remotePeerInfo	remotePeerInfo	/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/protocols/identify.nim	128	15

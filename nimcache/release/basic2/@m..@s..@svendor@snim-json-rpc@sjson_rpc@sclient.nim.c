@@ -78,11 +78,17 @@ typedef struct tyTuple__jq7X5k7hWG0tdTZTDkiyGQ tyTuple__jq7X5k7hWG0tdTZTDkiyGQ;
 typedef struct tyObject_ValueError__yoNlBGx0D2tRizIdhQuENw tyObject_ValueError__yoNlBGx0D2tRizIdhQuENw;
 typedef struct tyObject_InvalidResponse__R9bBZlGtGzTb9bMI5O4S9c1Ag tyObject_InvalidResponse__R9bBZlGtGzTb9bMI5O4S9c1Ag;
 typedef struct tyObject_JsonRpcError__PbMadDRFbEp3ZW19ay9bgEjg tyObject_JsonRpcError__PbMadDRFbEp3ZW19ay9bgEjg;
+typedef struct tyObject_RpcHttpClientcolonObjectType___u3j0QH8vuOoERyF1cvcloQ tyObject_RpcHttpClientcolonObjectType___u3j0QH8vuOoERyF1cvcloQ;
+typedef struct tySequence__3rZkFaasjqz3gbEo7TUKpg tySequence__3rZkFaasjqz3gbEo7TUKpg;
+typedef struct tyObject_HttpClientOptions__Vx7OnI8zNxtvzDIAnmD4NA tyObject_HttpClientOptions__Vx7OnI8zNxtvzDIAnmD4NA;
+typedef struct tyObject_RpcWebSocketClientcolonObjectType___LD0Aog8mGDSfuTTejqIMnQ tyObject_RpcWebSocketClientcolonObjectType___LD0Aog8mGDSfuTTejqIMnQ;
+typedef struct tyObject_WebSocketcolonObjectType___yvMgECADneknCWUjGO9c4Cw tyObject_WebSocketcolonObjectType___yvMgECADneknCWUjGO9c4Cw;
 typedef struct tyObject_StackTraceEntry__oLyohQ7O2XOvGnflOss8EA tyObject_StackTraceEntry__oLyohQ7O2XOvGnflOss8EA;
 typedef struct tyObject_AsyncCallback__Swoy2e9aGWZSpT0Jm9aqp3Zw tyObject_AsyncCallback__Swoy2e9aGWZSpT0Jm9aqp3Zw;
 typedef struct tyTuple__PVXP7LYmC79cHLv3MgDW9cFw tyTuple__PVXP7LYmC79cHLv3MgDW9cFw;
 typedef struct tyTuple__FxWADhULcfihQn5gGVN7CQ tyTuple__FxWADhULcfihQn5gGVN7CQ;
 typedef struct tyTuple__awOivLjlO76sGdHY7nQUjQ tyTuple__awOivLjlO76sGdHY7nQUjQ;
+typedef struct tyObject_TransportAddress__qYn6nlnhZhmKlocg1rtkTw tyObject_TransportAddress__qYn6nlnhZhmKlocg1rtkTw;
 struct TGenericSeq {NI len;
 NI reserved;
 };
@@ -315,6 +321,17 @@ N_NIMCALL_PTR(void, ClP_0) (tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q* j, v
 void* ClE_0;
 } tyProc__ADCDtoN1AvOABxjfvZcWKw;
 typedef N_CLOSURE_PTR(void, TM__wAgQIJL9biVm0jMy3Mh9auyw_38) (tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q* j);
+typedef NU8 tyEnum_HttpMethod__bMq0sooE6Gop1f7wiKaIpw;
+struct tyObject_HttpClientOptions__Vx7OnI8zNxtvzDIAnmD4NA {tyEnum_HttpMethod__bMq0sooE6Gop1f7wiKaIpw httpMethod;
+};
+struct tyObject_RpcHttpClientcolonObjectType___u3j0QH8vuOoERyF1cvcloQ {  tyObject_RpcClientcolonObjectType___HXKp9b9a0omxEB4lZgQBt7Xw Sup;tyObject_FuturecolonObjectType___GXFSekg1U8JRoedGa2vBSA* loop;
+tySequence__3rZkFaasjqz3gbEo7TUKpg* addresses;
+tyObject_HttpClientOptions__Vx7OnI8zNxtvzDIAnmD4NA options;
+};
+struct tyObject_RpcWebSocketClientcolonObjectType___LD0Aog8mGDSfuTTejqIMnQ {  tyObject_RpcClientcolonObjectType___HXKp9b9a0omxEB4lZgQBt7Xw Sup;tyObject_WebSocketcolonObjectType___yvMgECADneknCWUjGO9c4Cw* transport;
+NimStringDesc* uri;
+tyObject_FuturecolonObjectType___GXFSekg1U8JRoedGa2vBSA* loop;
+};
 struct tyObject_StackTraceEntry__oLyohQ7O2XOvGnflOss8EA {NCSTRING procname;
 NI line;
 NCSTRING filename;
@@ -338,7 +355,22 @@ NI Field1;
 NimStringDesc* Field2;
 tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q* Field3;
 };
-struct tySequence__uB9b75OUPRENsBAu4AnoePA {  TGenericSeq Sup;  tyObject_StackTraceEntry__oLyohQ7O2XOvGnflOss8EA data[SEQ_DECL_SIZE];};struct tySequence__qkV9cggxceO9cpfUWIbCnvJg {  TGenericSeq Sup;  tyObject_AsyncCallback__Swoy2e9aGWZSpT0Jm9aqp3Zw data[SEQ_DECL_SIZE];};struct tySequence__P7q4mRBU3fRhL1KHJGOBAQ {  TGenericSeq Sup;  tyTuple__PVXP7LYmC79cHLv3MgDW9cFw data[SEQ_DECL_SIZE];};struct tySequence__87DZdIc4Y9ccnDlJfZoyb5w {  TGenericSeq Sup;  tyTuple__FxWADhULcfihQn5gGVN7CQ data[SEQ_DECL_SIZE];};struct tySequence__MlAD6nAPq9bHKla9cWiIZP0g {  TGenericSeq Sup;  tyTuple__awOivLjlO76sGdHY7nQUjQ data[SEQ_DECL_SIZE];};struct tySequence__oLpBKXzW3hF9aCVMo5EymfQ {  TGenericSeq Sup;  tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q* data[SEQ_DECL_SIZE];};N_LIB_PRIVATE N_NIMCALL(tyObject_FuturecolonObjectType___V0L9cQCp4qvFI1wEA712A8w*, call__4NOdOp09c3LOwLmPJSl0Utg)(tyObject_RpcClientcolonObjectType___HXKp9b9a0omxEB4lZgQBt7Xw* client, NimStringDesc* name_0, tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q* params);
+typedef NU8 tyEnum_AddressFamily__ISHglMoDNRIPCY0ku2DcvA;
+typedef NU8 tyArray__H8qf9bpC2ziYA2earmO8m7w[4];
+typedef NU8 tyArray__qtqsWM5aXmcpMIVmvq3kAA[16];
+typedef NU8 tyArray__82HHG9cFXBx30wZlwBk6mvQ[108];
+struct tyObject_TransportAddress__qYn6nlnhZhmKlocg1rtkTw {tyEnum_AddressFamily__ISHglMoDNRIPCY0ku2DcvA family;
+union{
+struct {tyArray__H8qf9bpC2ziYA2earmO8m7w address_v4;
+} _family_2;
+struct {tyArray__qtqsWM5aXmcpMIVmvq3kAA address_v6;
+} _family_3;
+struct {tyArray__82HHG9cFXBx30wZlwBk6mvQ address_un;
+} _family_4;
+};
+NU16 port;
+};
+struct tySequence__uB9b75OUPRENsBAu4AnoePA {  TGenericSeq Sup;  tyObject_StackTraceEntry__oLyohQ7O2XOvGnflOss8EA data[SEQ_DECL_SIZE];};struct tySequence__qkV9cggxceO9cpfUWIbCnvJg {  TGenericSeq Sup;  tyObject_AsyncCallback__Swoy2e9aGWZSpT0Jm9aqp3Zw data[SEQ_DECL_SIZE];};struct tySequence__P7q4mRBU3fRhL1KHJGOBAQ {  TGenericSeq Sup;  tyTuple__PVXP7LYmC79cHLv3MgDW9cFw data[SEQ_DECL_SIZE];};struct tySequence__87DZdIc4Y9ccnDlJfZoyb5w {  TGenericSeq Sup;  tyTuple__FxWADhULcfihQn5gGVN7CQ data[SEQ_DECL_SIZE];};struct tySequence__MlAD6nAPq9bHKla9cWiIZP0g {  TGenericSeq Sup;  tyTuple__awOivLjlO76sGdHY7nQUjQ data[SEQ_DECL_SIZE];};struct tySequence__oLpBKXzW3hF9aCVMo5EymfQ {  TGenericSeq Sup;  tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q* data[SEQ_DECL_SIZE];};struct tySequence__3rZkFaasjqz3gbEo7TUKpg {  TGenericSeq Sup;  tyObject_TransportAddress__qYn6nlnhZhmKlocg1rtkTw data[SEQ_DECL_SIZE];};N_LIB_PRIVATE N_NIMCALL(tyObject_FuturecolonObjectType___V0L9cQCp4qvFI1wEA712A8w*, call__4NOdOp09c3LOwLmPJSl0Utg)(tyObject_RpcClientcolonObjectType___HXKp9b9a0omxEB4lZgQBt7Xw* client, NimStringDesc* name_0, tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q* params);
 N_LIB_PRIVATE N_NIMCALL(void, nimGCvisit)(void* d, NI op);
 static N_NIMCALL(void, Marker_tyRef__qVyXI1JIDn5HmLpFjhFr9bw)(void* p, NI op);
 N_LIB_PRIVATE N_NIMCALL(void*, newObj)(TNimType* typ, NI size);
@@ -421,6 +453,8 @@ N_LIB_PRIVATE N_NIMCALL(tyObject_SrcLoc__9cugm8iqHlSb5d0xCTLlcbg*, srcLocImpl__2
 N_LIB_PRIVATE N_NIMCALL(NimStringDesc*, dollar___79aIqF5QC8ZRJgu2hlv9bdjw)(tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q* node);
 N_LIB_PRIVATE N_NIMCALL(tyObject_SrcLoc__9cugm8iqHlSb5d0xCTLlcbg*, srcLocImpl__NrSVHOBS87OOEQH0S2rkww)(void);
 N_LIB_PRIVATE N_NIMCALL(void, getOrDefault__sQoMsjENLNs8DNuYSclEUg)(tyObject_Table__k9cb4Qn3gUx6gxyGj3hd20w t, NimStringDesc* key_0, tyProc__ADCDtoN1AvOABxjfvZcWKw* Result);
+static N_NIMCALL(void, Marker_tyRef__cEWFzfxMrtn5XQnoWrY5iA)(void* p, NI op);
+N_LIB_PRIVATE N_NIMCALL(void, X5BX5Deq___09bAq9cIFbuhsTph9bIc7WYRQ)(tyObject_Table__k9cb4Qn3gUx6gxyGj3hd20w* t, NimStringDesc* key_0, tyProc__ADCDtoN1AvOABxjfvZcWKw val_0);
 extern TNimType NTI__ytyiCJqK439aF9cIibuRVpAg_;
 N_LIB_PRIVATE TNimType NTI__1bc5LCd2WkT3bJ69b8RTntA_;
 extern TNimType NTI__xHTZrq9aYs6boc9bCba0JbpQ_;
@@ -478,6 +512,7 @@ extern TNimType NTI__oS9cGid3zFC4kMg9cHzoV3dQ_;
 extern TNimType NTI__R9bBZlGtGzTb9bMI5O4S9c1Ag_;
 STRING_LITERAL(TM__wAgQIJL9biVm0jMy3Mh9auyw_37, "Missing `result` field", 22);
 STRING_LITERAL(TM__wAgQIJL9biVm0jMy3Mh9auyw_39, "Invalid jsonrpc message: ", 25);
+N_LIB_PRIVATE TNimType NTI__cEWFzfxMrtn5XQnoWrY5iA_;
 extern TNimType* nimTypeRoot;
 extern NIM_THREADVAR tyObject_GcHeap__1TRH1TZMaVZTnLNcIHuNFQ gch__IcYaEuuWivYAS86vFMTS3Q;
 extern NIM_THREADVAR TSafePoint* excHandler__rqLlY5bs9atDw2OXYqJEn5g;
@@ -1500,6 +1535,28 @@ N_LIB_PRIVATE N_NIMCALL(void, processMessage__wJdqKrODUDBHszy2eIz0Jg)(tyObject_R
 "c/client.nim", 94);	}
 	LA1_: ;
 }
+static N_NIMCALL(void, Marker_tyRef__cEWFzfxMrtn5XQnoWrY5iA)(void* p, NI op) {
+	tyObject_RpcClientcolonObjectType___HXKp9b9a0omxEB4lZgQBt7Xw* a;
+	a = (tyObject_RpcClientcolonObjectType___HXKp9b9a0omxEB4lZgQBt7Xw*)p;
+	nimGCvisit((void*)(*a).awaiting.data, op);	nimGCvisit((void*)(*a).methodHandlers.data, op);	nimGCvisit((void*)(*a).onDisconnect.ClE_0, op);}
+
+#line 21 "/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/client.nim"
+N_LIB_PRIVATE N_NIMCALL(void, initRpcClient__M84XvqVukfke6zK9cvszpeg)(tyObject_RpcHttpClientcolonObjectType___u3j0QH8vuOoERyF1cvcloQ** client) {
+#line 22 "/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/client.nim"
+	(*(*client)).Sup.nextId = IL64(1);}
+
+#line 21 "/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/client.nim"
+N_LIB_PRIVATE N_NIMCALL(void, initRpcClient__F9aLmvcElUrr78VbxBMSR8A)(tyObject_RpcWebSocketClientcolonObjectType___LD0Aog8mGDSfuTTejqIMnQ** client) {
+#line 22 "/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/client.nim"
+	(*(*client)).Sup.nextId = IL64(1);}
+
+#line 197 "/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/client.nim"
+N_LIB_PRIVATE N_NIMCALL(void, setMethodHandler__SgzJ9bmAIBnh0GdJaYteCuw)(tyObject_RpcClientcolonObjectType___HXKp9b9a0omxEB4lZgQBt7Xw* cl, NimStringDesc* name_0, tyProc__ADCDtoN1AvOABxjfvZcWKw callback) {
+#line 198 "/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/client.nim"
+
+#line 198 "/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/client.nim"
+	X5BX5Deq___09bAq9cIFbuhsTph9bIc7WYRQ((&(*cl).methodHandlers), name_0, callback);
+}
 N_LIB_PRIVATE N_NIMCALL(void, json_rpc_clientDatInit000)(void) {
 
 #line 999999 "generated_not_to_break_here"
@@ -1683,5 +1740,11 @@ TM__wAgQIJL9biVm0jMy3Mh9auyw_0[25].typ = (&NTI__IIomJ6ptE6vfJ5zRbATgkQ_);
 TM__wAgQIJL9biVm0jMy3Mh9auyw_0[25].name = "onDisconnect";
 TM__wAgQIJL9biVm0jMy3Mh9auyw_0[18].len = 4; TM__wAgQIJL9biVm0jMy3Mh9auyw_0[18].kind = 2; TM__wAgQIJL9biVm0jMy3Mh9auyw_0[18].sons = &TM__wAgQIJL9biVm0jMy3Mh9auyw_17_4[0];
 NTI__HXKp9b9a0omxEB4lZgQBt7Xw_.node = &TM__wAgQIJL9biVm0jMy3Mh9auyw_0[18];
+NTI__cEWFzfxMrtn5XQnoWrY5iA_.size = sizeof(tyObject_RpcClientcolonObjectType___HXKp9b9a0omxEB4lZgQBt7Xw*);
+NTI__cEWFzfxMrtn5XQnoWrY5iA_.kind = 22;
+NTI__cEWFzfxMrtn5XQnoWrY5iA_.base = (&NTI__HXKp9b9a0omxEB4lZgQBt7Xw_);
+NTI__cEWFzfxMrtn5XQnoWrY5iA_.name = "RpcClient";
+NTI__cEWFzfxMrtn5XQnoWrY5iA_.nextType = nimTypeRoot; nimTypeRoot=&NTI__cEWFzfxMrtn5XQnoWrY5iA_;
+NTI__cEWFzfxMrtn5XQnoWrY5iA_.marker = Marker_tyRef__cEWFzfxMrtn5XQnoWrY5iA;
 }
 

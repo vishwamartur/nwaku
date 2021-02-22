@@ -46,6 +46,18 @@ len	len__1sFSPDjOVgiQDSUeulrfDgdeques	/home/runner/work/nim-waku/nim-waku/vendor
 popFirst	popFirst__ceviD9bYyJC69bF3mc8s4ExQdeques	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/deques.nim	369	5
 addFirst	addFirst__Mbms1e4Y9cLAnba44idQ7SA_2	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/deques.nim	286	5
 initDeque	initDeque__N1wIcTLP9bCRskE8hJDBW2w	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/deques.nim	78	5
+len	len__uJZ8Hap0lQuqWOX9bTG8oOgdeques	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/deques.nim	91	5
+addLast	addLast__gIby5vW5Il2x2MShko8Szg	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/deques.nim	306	5
+expandIfNeeded	expandIfNeeded__iOVbtnQquuE39bdzI9bkDCnQ	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/deques.nim	271	5
+deq	deq	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/deques.nim	271	23
+cap	cap	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/deques.nim	273	6
+n	n_1	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/deques.nim	275	8
+len	len_0	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system.nim	625	16
+i	i	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/deques.nim	276	8
+x	x_1	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/deques.nim	277	8
+i	i_2	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/deques.nim	231	6
+c	c	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/deques.nim	232	6
+i	i_3	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim	106	8
 initDeque	initDeque__uFbxMlnsNA9aJ6aO7FT16pQ	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/deques.nim	78	5
 len	len__N35Ke9bYDYMyD4GQOuRuvqAdeques	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/deques.nim	91	5
 addLast	addLast__qpTAJUaGWCOk9cmos58MqFA	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/deques.nim	306	5
@@ -61,3 +73,6 @@ c	c	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/li
 i	i_3	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim	106	8
 popFirst	popFirst__nzwg1IuGgB6FasAOIuk9aHAdeques	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/deques.nim	369	5
 []	X5BX5D___brvV3NwXU6gNd4ItUBDNvQdeques	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/deques.nim	124	5
+initDeque	initDeque__Y9azsLOyZBUhHH9agV40jKtw	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/deques.nim	78	5
+popFirst	popFirst__Ih36EaA1BEnCR6OhWz9cUXgdeques	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/deques.nim	369	5
+addFirst	addFirst__gIby5vW5Il2x2MShko8Szg_2	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/deques.nim	286	5

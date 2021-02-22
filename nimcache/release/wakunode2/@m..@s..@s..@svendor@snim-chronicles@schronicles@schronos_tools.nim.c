@@ -3,7 +3,7 @@
 /* The generated code is subject to the original license. */
 /* Compiled for: Linux, amd64, gcc */
 /* Command for C compiler:
-   gcc -c  -w -pthread -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace/install/usr/include -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1/src -DHAVE_CONFIG_H -DHAVE_BUILTIN_EXPECT -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/src -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/inc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/tools -DBR_USE_UNIX_TIME=1 -DBR_USE_URANDOM=1 -DBR_LE_UNALIGNED=1 -DBR_64=1  -DBR_amd64=1 -DBR_INT128=1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/miniupnp/miniupnpc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/libnatpmp-upstream -DENABLE_STRNATPMPERR -march=native -g3 -Og -O3 -fno-strict-aliasing -fno-ident  -I/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib -I/home/runner/work/nim-waku/nim-waku/waku/v2/node -o nimcache/release/wakunode2/@m..@s..@s..@svendor@snim-chronicles@schronicles@schronos_tools.nim.c.o nimcache/release/wakunode2/@m..@s..@s..@svendor@snim-chronicles@schronicles@schronos_tools.nim.c */
+   gcc -c  -w -pthread -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace/install/usr/include -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1/src -DHAVE_CONFIG_H -DHAVE_BUILTIN_EXPECT -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/src -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/inc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/tools -DBR_USE_UNIX_TIME=1 -DBR_USE_URANDOM=1 -DBR_LE_UNALIGNED=1 -DBR_64=1  -DBR_amd64=1 -DBR_INT128=1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/certs -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/miniupnp/miniupnpc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/libnatpmp-upstream -DENABLE_STRNATPMPERR -march=native -g3 -Og -O3 -fno-strict-aliasing -fno-ident  -I/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib -I/home/runner/work/nim-waku/nim-waku/waku/v2/node -o nimcache/release/wakunode2/@m..@s..@s..@svendor@snim-chronicles@schronicles@schronos_tools.nim.c.o nimcache/release/wakunode2/@m..@s..@s..@svendor@snim-chronicles@schronicles@schronos_tools.nim.c */
 #define NIM_INTBITS 64
 
 #include "nimbase.h"
@@ -568,15 +568,15 @@ N_LIB_PRIVATE N_NIMCALL(void, catchOrQuit__mHjKb06L9cEyBRFuCwD8J9cw)(Exception* 
 					flushRecord__2TFyTWhDxeU5kGr2yqnA6w((&record));
 				} LA7: ;
 				popSafePoint();			}
-			else {				popSafePoint();				if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {					tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym160640019_;					Exception* T17_;					Exception* T18_;					TM__TRdHGCJ1f9blFUg2UzDb9cng_4.status = 0;
+			else {				popSafePoint();				if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {					tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym173345019_;					Exception* T17_;					Exception* T18_;					TM__TRdHGCJ1f9blFUg2UzDb9cng_4.status = 0;
 #line 323 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 
 #line 0 "\?\?\?"
 
 #line 0 "\?\?\?"
-					T17_ = (Exception*)0;					T17_ = getCurrentException();					errX60gensym160640019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T17_));
+					T17_ = (Exception*)0;					T17_ = getCurrentException();					errX60gensym173345019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T17_));
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
-					T18_ = (Exception*)0;					T18_ = &errX60gensym160640019_->Sup;
+					T18_ = (Exception*)0;					T18_ = &errX60gensym173345019_->Sup;
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 					logLoggingFailure__HTlKfqAl9c6Ci7zIH6cYlmg("Async operation ended with a recoverable error", T18_);
 					popCurrentException();				}
@@ -652,15 +652,15 @@ N_LIB_PRIVATE N_NIMCALL(void, catchOrQuit__mHjKb06L9cEyBRFuCwD8J9cw)(Exception* 
 				flushRecord__2TFyTWhDxeU5kGr2yqnA6w((&record_2));
 			} LA23: ;
 			popSafePoint();		}
-		else {			popSafePoint();			if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {				tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym160705019_;				Exception* T34_;				Exception* T35_;				TM__TRdHGCJ1f9blFUg2UzDb9cng_10.status = 0;
+		else {			popSafePoint();			if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {				tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym173410019_;				Exception* T34_;				Exception* T35_;				TM__TRdHGCJ1f9blFUg2UzDb9cng_10.status = 0;
 #line 323 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 
 #line 0 "\?\?\?"
 
 #line 0 "\?\?\?"
-				T34_ = (Exception*)0;				T34_ = getCurrentException();				errX60gensym160705019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T34_));
+				T34_ = (Exception*)0;				T34_ = getCurrentException();				errX60gensym173410019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T34_));
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
-				T35_ = (Exception*)0;				T35_ = &errX60gensym160705019_->Sup;
+				T35_ = (Exception*)0;				T35_ = &errX60gensym173410019_->Sup;
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 				logLoggingFailure__HTlKfqAl9c6Ci7zIH6cYlmg("Fatal exception reached", T35_);
 				popCurrentException();			}

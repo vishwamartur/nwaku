@@ -71,5 +71,7 @@ v	v	/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1.nim	478	1
 sign	sign__EnvJquxZs9aCJYufWzauE3A	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/keys.nim	216	5
 result	result	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/keys.nim	216	0
 hash	hash_1	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/keys.nim	217	6
+toCanonicalAddress	toCanonicalAddress__vn4kzxBmOg9cphvH55gBpSw	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/keys.nim	185	5
+hash	hash_1	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/keys.nim	187	6
 $	dollar___3DNipDnN4A79aliwn9a5d9bQA	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/keys.nim	198	5
 result	result	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/keys.nim	198	0

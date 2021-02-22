@@ -3,7 +3,7 @@
 /* The generated code is subject to the original license. */
 /* Compiled for: Linux, amd64, gcc */
 /* Command for C compiler:
-   gcc -c  -w -pthread -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace/install/usr/include -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1/src -DHAVE_CONFIG_H -DHAVE_BUILTIN_EXPECT -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/src -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/inc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/tools -DBR_USE_UNIX_TIME=1 -DBR_USE_URANDOM=1 -DBR_LE_UNALIGNED=1 -DBR_64=1  -DBR_amd64=1 -DBR_INT128=1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/miniupnp/miniupnpc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/libnatpmp-upstream -DENABLE_STRNATPMPERR -march=native -g3 -Og -O3 -fno-strict-aliasing -fno-ident  -I/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib -I/home/runner/work/nim-waku/nim-waku/waku/v2/node -o nimcache/release/wakunode2/@m..@s..@s..@svendor@snim-eth@seth@srlp.nim.c.o nimcache/release/wakunode2/@m..@s..@s..@svendor@snim-eth@seth@srlp.nim.c */
+   gcc -c  -w -pthread -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace/install/usr/include -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1/src -DHAVE_CONFIG_H -DHAVE_BUILTIN_EXPECT -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/src -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/inc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/tools -DBR_USE_UNIX_TIME=1 -DBR_USE_URANDOM=1 -DBR_LE_UNALIGNED=1 -DBR_64=1  -DBR_amd64=1 -DBR_INT128=1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/certs -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/miniupnp/miniupnpc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/libnatpmp-upstream -DENABLE_STRNATPMPERR -march=native -g3 -Og -O3 -fno-strict-aliasing -fno-ident  -I/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib -I/home/runner/work/nim-waku/nim-waku/waku/v2/node -o nimcache/release/wakunode2/@m..@s..@s..@svendor@snim-eth@seth@srlp.nim.c.o nimcache/release/wakunode2/@m..@s..@s..@svendor@snim-eth@seth@srlp.nim.c */
 #define NIM_INTBITS 64
 
 #include "nimbase.h"
@@ -813,24 +813,24 @@ N_LIB_PRIVATE N_NIMCALL(NI, payloadBytesCount__EqfIXRABRD085klc9c3SUgg_3)(tyObje
 	LA12_: ;
 
 #line 140 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp.nim"
-	{		NI lengthBytesX60gensym149175036_;		NI remainingBytesX60gensym149175037_;		NI T36_;		NI TM__WaXqGRAfVeSDXlS9cwIpbgg_13;
+	{		NI lengthBytesX60gensym74045036_;		NI remainingBytesX60gensym74045037_;		NI T36_;		NI TM__WaXqGRAfVeSDXlS9cwIpbgg_13;
 #line 140 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp.nim"
 		if (!((NU8)(marker) < (NU8)(((NU8) 192)))) goto LA34_;
 
 #line 119 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp.nim"
 
 #line 119 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp.nim"
-		lengthBytesX60gensym149175036_ = ((NI) ((NU8)((NU8)(marker) - (NU8)(((NU8) 183)))));
+		lengthBytesX60gensym74045036_ = ((NI) ((NU8)((NU8)(marker) - (NU8)(((NU8) 183)))));
 #line 120 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp.nim"
 
 #line 120 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp.nim"
 
 #line 120 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp.nim"
-		T36_ = (self.bytes ? self.bytes->Sup.len : 0);		if (nimSubInt(T36_, self.position, &TM__WaXqGRAfVeSDXlS9cwIpbgg_13)) { raiseOverflow(); };		remainingBytesX60gensym149175037_ = (NI)(TM__WaXqGRAfVeSDXlS9cwIpbgg_13);
+		T36_ = (self.bytes ? self.bytes->Sup.len : 0);		if (nimSubInt(T36_, self.position, &TM__WaXqGRAfVeSDXlS9cwIpbgg_13)) { raiseOverflow(); };		remainingBytesX60gensym74045037_ = (NI)(TM__WaXqGRAfVeSDXlS9cwIpbgg_13);
 #line 122 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp.nim"
 		{			tyObject_MalformedRlpError__6cXDdh17tBlXcW9cVhgAVfQ* T41_;			NimStringDesc* T42_;
 #line 122 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp.nim"
-			if (!(remainingBytesX60gensym149175037_ <= lengthBytesX60gensym149175036_)) goto LA39_;
+			if (!(remainingBytesX60gensym74045037_ <= lengthBytesX60gensym74045036_)) goto LA39_;
 			T41_ = (tyObject_MalformedRlpError__6cXDdh17tBlXcW9cVhgAVfQ*)0;			T41_ = (tyObject_MalformedRlpError__6cXDdh17tBlXcW9cVhgAVfQ*) newObj((&NTI__0geplitlq7F5N3ksbgvhVA_), sizeof(tyObject_MalformedRlpError__6cXDdh17tBlXcW9cVhgAVfQ));			(*T41_).Sup.Sup.Sup.Sup.m_type = (&NTI__6cXDdh17tBlXcW9cVhgAVfQ_);			(*T41_).Sup.Sup.Sup.name = "MalformedRlpError";			T42_ = (NimStringDesc*)0;			T42_ = (*T41_).Sup.Sup.Sup.message; (*T41_).Sup.Sup.Sup.message = copyStringRC1(((NimStringDesc*) &TM__WaXqGRAfVeSDXlS9cwIpbgg_10));			if (T42_) nimGCunrefNoCycle(T42_);			asgnRef((void**) (&(*T41_).Sup.Sup.Sup.parent), NIM_NIL);
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp.nim"
 			raiseExceptionEx((Exception*)T41_, "MalformedRlpError", "payloadBytesCount", "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp.nim", 123);		}
@@ -841,7 +841,7 @@ N_LIB_PRIVATE N_NIMCALL(NI, payloadBytesCount__EqfIXRABRD085klc9c3SUgg_3)(tyObje
 #line 125 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp.nim"
 			T45_ = (NIM_BOOL)0;
 #line 125 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp.nim"
-			T45_ = (((NI) 1) < remainingBytesX60gensym149175037_);			if (!(T45_)) goto LA46_;
+			T45_ = (((NI) 1) < remainingBytesX60gensym74045037_);			if (!(T45_)) goto LA46_;
 
 #line 125 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp.nim"
 
@@ -858,12 +858,12 @@ N_LIB_PRIVATE N_NIMCALL(NI, payloadBytesCount__EqfIXRABRD085klc9c3SUgg_3)(tyObje
 #line 129 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp.nim"
 			T53_ = (NIM_BOOL)0;
 #line 129 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp.nim"
-			T53_ = (((NI) 8) < lengthBytesX60gensym149175036_);			if (T53_) goto LA54_;
+			T53_ = (((NI) 8) < lengthBytesX60gensym74045036_);			if (T53_) goto LA54_;
 
 #line 130 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp.nim"
 			T55_ = (NIM_BOOL)0;
 #line 130 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp.nim"
-			T55_ = (lengthBytesX60gensym149175036_ == ((NI) 8));			if (!(T55_)) goto LA56_;
+			T55_ = (lengthBytesX60gensym74045036_ == ((NI) 8));			if (!(T55_)) goto LA56_;
 
 #line 130 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp.nim"
 
@@ -875,16 +875,16 @@ N_LIB_PRIVATE N_NIMCALL(NI, payloadBytesCount__EqfIXRABRD085klc9c3SUgg_3)(tyObje
 #line 131 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp.nim"
 			raiseExceptionEx((Exception*)T59_, "UnsupportedRlpError", "payloadBytesCount", "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp.nim", 131);		}
 		LA57_: ;
-		{			NI iX60gensym149175038_;			NI res;			iX60gensym149175038_ = (NI)0;
+		{			NI iX60gensym74045038_;			NI res;			iX60gensym74045038_ = (NI)0;
 #line 77 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 			res = ((NI) 1);			{
 #line 78 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 				while (1) {					NI TM__WaXqGRAfVeSDXlS9cwIpbgg_18;					NI TM__WaXqGRAfVeSDXlS9cwIpbgg_19;
 #line 78 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-					if (!(res <= lengthBytesX60gensym149175036_)) goto LA63;
+					if (!(res <= lengthBytesX60gensym74045036_)) goto LA63;
 
 #line 133 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp.nim"
-					iX60gensym149175038_ = res;
+					iX60gensym74045038_ = res;
 #line 134 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp.nim"
 
 #line 134 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp.nim"
@@ -892,7 +892,7 @@ N_LIB_PRIVATE N_NIMCALL(NI, payloadBytesCount__EqfIXRABRD085klc9c3SUgg_3)(tyObje
 #line 134 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp.nim"
 
 #line 134 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp.nim"
-					if (nimAddInt(self.position, iX60gensym149175038_, &TM__WaXqGRAfVeSDXlS9cwIpbgg_18)) { raiseOverflow(); };					if ((NU)((NI)(TM__WaXqGRAfVeSDXlS9cwIpbgg_18)) >= (NU)(self.bytes ? self.bytes->Sup.len : 0)){ raiseIndexError2((NI)(TM__WaXqGRAfVeSDXlS9cwIpbgg_18),(self.bytes ? self.bytes->Sup.len : 0)-1); }					result = (NI)((NI)((NU64)(result) << (NU64)(((NI) 8))) | ((NI) (self.bytes->data[(NI)(TM__WaXqGRAfVeSDXlS9cwIpbgg_18)])));
+					if (nimAddInt(self.position, iX60gensym74045038_, &TM__WaXqGRAfVeSDXlS9cwIpbgg_18)) { raiseOverflow(); };					if ((NU)((NI)(TM__WaXqGRAfVeSDXlS9cwIpbgg_18)) >= (NU)(self.bytes ? self.bytes->Sup.len : 0)){ raiseIndexError2((NI)(TM__WaXqGRAfVeSDXlS9cwIpbgg_18),(self.bytes ? self.bytes->Sup.len : 0)-1); }					result = (NI)((NI)((NU64)(result) << (NU64)(((NI) 8))) | ((NI) (self.bytes->data[(NI)(TM__WaXqGRAfVeSDXlS9cwIpbgg_18)])));
 #line 80 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 					if (nimAddInt(res, ((NI) 1), &TM__WaXqGRAfVeSDXlS9cwIpbgg_19)) { raiseOverflow(); };					res = (NI)(TM__WaXqGRAfVeSDXlS9cwIpbgg_19);				} LA63: ;
 			}
@@ -919,21 +919,21 @@ N_LIB_PRIVATE N_NIMCALL(NI, payloadBytesCount__EqfIXRABRD085klc9c3SUgg_3)(tyObje
 		result = ((NI) ((NU8)((NU8)(marker) - (NU8)(((NU8) 192)))));	}
 	goto LA32_;
 	LA71_: ;
-	{		NI lengthBytesX60gensym149225002_;		NI remainingBytesX60gensym149225003_;		NI T74_;		NI TM__WaXqGRAfVeSDXlS9cwIpbgg_20;
+	{		NI lengthBytesX60gensym74095002_;		NI remainingBytesX60gensym74095003_;		NI T74_;		NI TM__WaXqGRAfVeSDXlS9cwIpbgg_20;
 #line 119 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp.nim"
 
 #line 119 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp.nim"
-		lengthBytesX60gensym149225002_ = ((NI) ((NU8)((NU8)(marker) - (NU8)(((NU8) 247)))));
+		lengthBytesX60gensym74095002_ = ((NI) ((NU8)((NU8)(marker) - (NU8)(((NU8) 247)))));
 #line 120 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp.nim"
 
 #line 120 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp.nim"
 
 #line 120 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp.nim"
-		T74_ = (self.bytes ? self.bytes->Sup.len : 0);		if (nimSubInt(T74_, self.position, &TM__WaXqGRAfVeSDXlS9cwIpbgg_20)) { raiseOverflow(); };		remainingBytesX60gensym149225003_ = (NI)(TM__WaXqGRAfVeSDXlS9cwIpbgg_20);
+		T74_ = (self.bytes ? self.bytes->Sup.len : 0);		if (nimSubInt(T74_, self.position, &TM__WaXqGRAfVeSDXlS9cwIpbgg_20)) { raiseOverflow(); };		remainingBytesX60gensym74095003_ = (NI)(TM__WaXqGRAfVeSDXlS9cwIpbgg_20);
 #line 122 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp.nim"
 		{			tyObject_MalformedRlpError__6cXDdh17tBlXcW9cVhgAVfQ* T79_;			NimStringDesc* T80_;
 #line 122 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp.nim"
-			if (!(remainingBytesX60gensym149225003_ <= lengthBytesX60gensym149225002_)) goto LA77_;
+			if (!(remainingBytesX60gensym74095003_ <= lengthBytesX60gensym74095002_)) goto LA77_;
 			T79_ = (tyObject_MalformedRlpError__6cXDdh17tBlXcW9cVhgAVfQ*)0;			T79_ = (tyObject_MalformedRlpError__6cXDdh17tBlXcW9cVhgAVfQ*) newObj((&NTI__0geplitlq7F5N3ksbgvhVA_), sizeof(tyObject_MalformedRlpError__6cXDdh17tBlXcW9cVhgAVfQ));			(*T79_).Sup.Sup.Sup.Sup.m_type = (&NTI__6cXDdh17tBlXcW9cVhgAVfQ_);			(*T79_).Sup.Sup.Sup.name = "MalformedRlpError";			T80_ = (NimStringDesc*)0;			T80_ = (*T79_).Sup.Sup.Sup.message; (*T79_).Sup.Sup.Sup.message = copyStringRC1(((NimStringDesc*) &TM__WaXqGRAfVeSDXlS9cwIpbgg_10));			if (T80_) nimGCunrefNoCycle(T80_);			asgnRef((void**) (&(*T79_).Sup.Sup.Sup.parent), NIM_NIL);
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp.nim"
 			raiseExceptionEx((Exception*)T79_, "MalformedRlpError", "payloadBytesCount", "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp.nim", 123);		}
@@ -944,7 +944,7 @@ N_LIB_PRIVATE N_NIMCALL(NI, payloadBytesCount__EqfIXRABRD085klc9c3SUgg_3)(tyObje
 #line 125 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp.nim"
 			T83_ = (NIM_BOOL)0;
 #line 125 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp.nim"
-			T83_ = (((NI) 1) < remainingBytesX60gensym149225003_);			if (!(T83_)) goto LA84_;
+			T83_ = (((NI) 1) < remainingBytesX60gensym74095003_);			if (!(T83_)) goto LA84_;
 
 #line 125 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp.nim"
 
@@ -961,12 +961,12 @@ N_LIB_PRIVATE N_NIMCALL(NI, payloadBytesCount__EqfIXRABRD085klc9c3SUgg_3)(tyObje
 #line 129 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp.nim"
 			T91_ = (NIM_BOOL)0;
 #line 129 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp.nim"
-			T91_ = (((NI) 8) < lengthBytesX60gensym149225002_);			if (T91_) goto LA92_;
+			T91_ = (((NI) 8) < lengthBytesX60gensym74095002_);			if (T91_) goto LA92_;
 
 #line 130 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp.nim"
 			T93_ = (NIM_BOOL)0;
 #line 130 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp.nim"
-			T93_ = (lengthBytesX60gensym149225002_ == ((NI) 8));			if (!(T93_)) goto LA94_;
+			T93_ = (lengthBytesX60gensym74095002_ == ((NI) 8));			if (!(T93_)) goto LA94_;
 
 #line 130 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp.nim"
 
@@ -978,16 +978,16 @@ N_LIB_PRIVATE N_NIMCALL(NI, payloadBytesCount__EqfIXRABRD085klc9c3SUgg_3)(tyObje
 #line 131 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp.nim"
 			raiseExceptionEx((Exception*)T97_, "UnsupportedRlpError", "payloadBytesCount", "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp.nim", 131);		}
 		LA95_: ;
-		{			NI iX60gensym149225004_;			NI res_2;			iX60gensym149225004_ = (NI)0;
+		{			NI iX60gensym74095004_;			NI res_2;			iX60gensym74095004_ = (NI)0;
 #line 77 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 			res_2 = ((NI) 1);			{
 #line 78 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 				while (1) {					NI TM__WaXqGRAfVeSDXlS9cwIpbgg_23;					NI TM__WaXqGRAfVeSDXlS9cwIpbgg_24;
 #line 78 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-					if (!(res_2 <= lengthBytesX60gensym149225002_)) goto LA101;
+					if (!(res_2 <= lengthBytesX60gensym74095002_)) goto LA101;
 
 #line 133 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp.nim"
-					iX60gensym149225004_ = res_2;
+					iX60gensym74095004_ = res_2;
 #line 134 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp.nim"
 
 #line 134 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp.nim"
@@ -995,7 +995,7 @@ N_LIB_PRIVATE N_NIMCALL(NI, payloadBytesCount__EqfIXRABRD085klc9c3SUgg_3)(tyObje
 #line 134 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp.nim"
 
 #line 134 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp.nim"
-					if (nimAddInt(self.position, iX60gensym149225004_, &TM__WaXqGRAfVeSDXlS9cwIpbgg_23)) { raiseOverflow(); };					if ((NU)((NI)(TM__WaXqGRAfVeSDXlS9cwIpbgg_23)) >= (NU)(self.bytes ? self.bytes->Sup.len : 0)){ raiseIndexError2((NI)(TM__WaXqGRAfVeSDXlS9cwIpbgg_23),(self.bytes ? self.bytes->Sup.len : 0)-1); }					result = (NI)((NI)((NU64)(result) << (NU64)(((NI) 8))) | ((NI) (self.bytes->data[(NI)(TM__WaXqGRAfVeSDXlS9cwIpbgg_23)])));
+					if (nimAddInt(self.position, iX60gensym74095004_, &TM__WaXqGRAfVeSDXlS9cwIpbgg_23)) { raiseOverflow(); };					if ((NU)((NI)(TM__WaXqGRAfVeSDXlS9cwIpbgg_23)) >= (NU)(self.bytes ? self.bytes->Sup.len : 0)){ raiseIndexError2((NI)(TM__WaXqGRAfVeSDXlS9cwIpbgg_23),(self.bytes ? self.bytes->Sup.len : 0)-1); }					result = (NI)((NI)((NU64)(result) << (NU64)(((NI) 8))) | ((NI) (self.bytes->data[(NI)(TM__WaXqGRAfVeSDXlS9cwIpbgg_23)])));
 #line 80 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 					if (nimAddInt(res_2, ((NI) 1), &TM__WaXqGRAfVeSDXlS9cwIpbgg_24)) { raiseOverflow(); };					res_2 = (NI)(TM__WaXqGRAfVeSDXlS9cwIpbgg_24);				} LA101: ;
 			}

@@ -525,15 +525,15 @@ N_LIB_PRIVATE N_NIMCALL(NIM_BOOL, tryAcquire__9auHOp9agM0WLi1QLpiBZb9aQ)(tyObjec
 					flushRecord__2TFyTWhDxeU5kGr2yqnA6w((&record));
 				}
 				popSafePoint();			}
-			else {				popSafePoint();				if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {					tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym98020019_;					Exception* T15_;					Exception* T16_;					TM__Kah9a3IfxSOWJCm8ktpqWmA_5.status = 0;
+			else {				popSafePoint();				if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {					tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym110630019_;					Exception* T15_;					Exception* T16_;					TM__Kah9a3IfxSOWJCm8ktpqWmA_5.status = 0;
 #line 323 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 
 #line 0 "\?\?\?"
 
 #line 0 "\?\?\?"
-					T15_ = (Exception*)0;					T15_ = getCurrentException();					errX60gensym98020019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T15_));
+					T15_ = (Exception*)0;					T15_ = getCurrentException();					errX60gensym110630019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T15_));
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
-					T16_ = (Exception*)0;					T16_ = &errX60gensym98020019_->Sup;
+					T16_ = (Exception*)0;					T16_ = &errX60gensym110630019_->Sup;
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 					logLoggingFailure__HTlKfqAl9c6Ci7zIH6cYlmg("Acquired slot", T16_);
 					popCurrentException();				}
@@ -635,15 +635,15 @@ N_LIB_PRIVATE N_NIMCALL(tyObject_FuturecolonObjectType___GXFSekg1U8JRoedGa2vBSA*
 				flushRecord__2TFyTWhDxeU5kGr2yqnA6w((&record));
 			}
 			popSafePoint();		}
-		else {			popSafePoint();			if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {				tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym98115019_;				Exception* T16_;				Exception* T17_;				TM__Kah9a3IfxSOWJCm8ktpqWmA_13.status = 0;
+		else {			popSafePoint();			if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {				tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym110725019_;				Exception* T16_;				Exception* T17_;				TM__Kah9a3IfxSOWJCm8ktpqWmA_13.status = 0;
 #line 323 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 
 #line 0 "\?\?\?"
 
 #line 0 "\?\?\?"
-				T16_ = (Exception*)0;				T16_ = getCurrentException();				errX60gensym98115019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T16_));
+				T16_ = (Exception*)0;				T16_ = getCurrentException();				errX60gensym110725019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T16_));
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
-				T17_ = (Exception*)0;				T17_ = &errX60gensym98115019_->Sup;
+				T17_ = (Exception*)0;				T17_ = &errX60gensym110725019_->Sup;
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 				logLoggingFailure__HTlKfqAl9c6Ci7zIH6cYlmg("Queued slot", T17_);
 				popCurrentException();			}
@@ -747,15 +747,15 @@ N_LIB_PRIVATE N_NIMCALL(void, release__MUHSo45XRK1Nd2AHMwwFfA)(tyObject_AsyncSem
 					flushRecord__2TFyTWhDxeU5kGr2yqnA6w((&record));
 				}
 				popSafePoint();			}
-			else {				popSafePoint();				if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {					tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym98200019_;					Exception* T16_;					Exception* T17_;					TM__Kah9a3IfxSOWJCm8ktpqWmA_17.status = 0;
+			else {				popSafePoint();				if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {					tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym110810019_;					Exception* T16_;					Exception* T17_;					TM__Kah9a3IfxSOWJCm8ktpqWmA_17.status = 0;
 #line 323 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 
 #line 0 "\?\?\?"
 
 #line 0 "\?\?\?"
-					T16_ = (Exception*)0;					T16_ = getCurrentException();					errX60gensym98200019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T16_));
+					T16_ = (Exception*)0;					T16_ = getCurrentException();					errX60gensym110810019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T16_));
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
-					T17_ = (Exception*)0;					T17_ = &errX60gensym98200019_->Sup;
+					T17_ = (Exception*)0;					T17_ = &errX60gensym110810019_->Sup;
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 					logLoggingFailure__HTlKfqAl9c6Ci7zIH6cYlmg("Releasing slot", T17_);
 					popCurrentException();				}
@@ -844,15 +844,15 @@ N_LIB_PRIVATE N_NIMCALL(void, release__MUHSo45XRK1Nd2AHMwwFfA)(tyObject_AsyncSem
 					flushRecord__2TFyTWhDxeU5kGr2yqnA6w((&record_2));
 				}
 				popSafePoint();			}
-			else {				popSafePoint();				if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {					tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym98290019_;					Exception* T38_;					Exception* T39_;					TM__Kah9a3IfxSOWJCm8ktpqWmA_22.status = 0;
+			else {				popSafePoint();				if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {					tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym110900019_;					Exception* T38_;					Exception* T39_;					TM__Kah9a3IfxSOWJCm8ktpqWmA_22.status = 0;
 #line 323 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 
 #line 0 "\?\?\?"
 
 #line 0 "\?\?\?"
-					T38_ = (Exception*)0;					T38_ = getCurrentException();					errX60gensym98290019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T38_));
+					T38_ = (Exception*)0;					T38_ = getCurrentException();					errX60gensym110900019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T38_));
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
-					T39_ = (Exception*)0;					T39_ = &errX60gensym98290019_->Sup;
+					T39_ = (Exception*)0;					T39_ = &errX60gensym110900019_->Sup;
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 					logLoggingFailure__HTlKfqAl9c6Ci7zIH6cYlmg("Released slot", T39_);
 					popCurrentException();				}

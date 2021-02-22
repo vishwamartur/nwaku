@@ -1285,15 +1285,15 @@ N_LIB_PRIVATE N_NIMCALL(tySequence__6H5Oh5UUvVCLiakt9aTwtUQ*, encodeRpcMsg__kzQs
 				flushRecord__2TFyTWhDxeU5kGr2yqnA6w((&record));
 			} LA3: ;
 			popSafePoint();		}
-		else {			popSafePoint();			if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {				tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym128220019_;				Exception* T14_;				Exception* T15_;				TM__ULDljMVWuz6CdX4Yv4QTIA_3.status = 0;
+		else {			popSafePoint();			if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {				tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym135950019_;				Exception* T14_;				Exception* T15_;				TM__ULDljMVWuz6CdX4Yv4QTIA_3.status = 0;
 #line 323 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 
 #line 0 "\?\?\?"
 
 #line 0 "\?\?\?"
-				T14_ = (Exception*)0;				T14_ = getCurrentException();				errX60gensym128220019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T14_));
+				T14_ = (Exception*)0;				T14_ = getCurrentException();				errX60gensym135950019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T14_));
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
-				T15_ = (Exception*)0;				T15_ = &errX60gensym128220019_->Sup;
+				T15_ = (Exception*)0;				T15_ = &errX60gensym135950019_->Sup;
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 				logLoggingFailure__HTlKfqAl9c6Ci7zIH6cYlmg("encodeRpcMsg: encoding message", T15_);
 				popCurrentException();			}

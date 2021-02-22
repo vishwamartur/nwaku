@@ -35,12 +35,6 @@ value	value_0	/home/runner/work/nim-waku/nim-waku/waku/v1/node/rpc/hexstrings.ni
 result	result	/home/runner/work/nim-waku/nim-waku/waku/v1/node/rpc/hexstrings.nim	86	0
 toSymKey	toSymKey__8sEVtCoIasRM8VgJZPBzjQhexstrings	/home/runner/work/nim-waku/nim-waku/waku/v1/node/rpc/hexstrings.nim	151	5
 key	key_0	/home/runner/work/nim-waku/nim-waku/waku/v1/node/rpc/hexstrings.nim	151	15
-hexStr	hexStr	/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/byteutils.nim	56	21
-output	output	/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/byteutils.nim	56	37
-hexStr	hexStr	/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/byteutils.nim	40	21
-output	output	/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/byteutils.nim	40	37
-fromIdx	fromIdx	/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/byteutils.nim	40	66
-toIdx	toIdx	/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/byteutils.nim	40	75
 %	percent___pkfa9cGeWOoPAcBkDNCbOsw	/home/runner/work/nim-waku/nim-waku/waku/v1/node/rpc/hexstrings.nim	134	5
 result	result	/home/runner/work/nim-waku/nim-waku/waku/v1/node/rpc/hexstrings.nim	134	0
 fromJson	fromJson__ITeh3aKYCjCB0p1pmJkluA	/home/runner/work/nim-waku/nim-waku/waku/v1/node/rpc/hexstrings.nim	182	5

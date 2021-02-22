@@ -8,11 +8,6 @@ result	result	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/han
 x	x_1	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/handles.nim	47	8
 mode	mode	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/handles.nim	51	10
 fd	fd	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncloop.nim	549	17
-setSockOpt	setSockOpt__asYSrzrcLl2JOJLLPn0Rfw	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/handles.nim	55	5
-result	result	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/handles.nim	55	0
-value	value_1	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/handles.nim	58	6
-wrapAsyncSocket	wrapAsyncSocket__4iacLgkl9c9arYqPJ8f7z6mg	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/handles.nim	107	5
-result	result	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/handles.nim	107	0
 getSocketError	getSocketError__ETrsq9aycvx2E9bNw0j9b3zGA	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/handles.nim	86	5
 result	result	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/handles.nim	86	0
 getSockOpt	getSockOpt__bxMZV3ngojtrsh3q9ahNQyg	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/handles.nim	69	5
@@ -23,3 +18,8 @@ value	value_0	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/han
 result	result	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/handles.nim	69	0
 res	res	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/handles.nim	72	6
 size	size	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/handles.nim	73	6
+setSockOpt	setSockOpt__asYSrzrcLl2JOJLLPn0Rfw	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/handles.nim	55	5
+result	result	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/handles.nim	55	0
+value	value_1	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/handles.nim	58	6
+wrapAsyncSocket	wrapAsyncSocket__4iacLgkl9c9arYqPJ8f7z6mg	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/handles.nim	107	5
+result	result	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/handles.nim	107	0

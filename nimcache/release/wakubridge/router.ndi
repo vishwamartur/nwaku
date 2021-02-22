@@ -13,7 +13,6 @@ node	node	/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/route
 res	res	/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/router.nim	84	6
 valid`gensym38691900	validX60gensym38691900_	/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/router.nim	70	4
 msg`gensym38691901	msgX60gensym38691901_	/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/router.nim	71	4
-buffer	buffer_0	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/json.nim	928	18
 exc`gensym38691902	excX60gensym38691902_	/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/router.nim	74	27
 record	record	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim	297	19
 err`gensym38725070	errX60gensym38725070_	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim	323	29
@@ -21,14 +20,8 @@ val	val_0	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/
 node	node	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/json.nim	478	13
 key	key_0	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/json.nim	478	29
 jVer	jVer	/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/router.nim	91	6
-node	node	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/json.nim	526	11
-key	key_0	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/json.nim	526	27
 a	a	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/json.nim	397	11
 b	b	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/json.nim	397	14
-s	s_0	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/json.nim	280	10
-node	node	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/json.nim	461	11
-name	name_0	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/json.nim	461	27
-result	result	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/json.nim	461	0
 self	self	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/options.nim	143	16
 result	result	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/options.nim	143	0
 self	self	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/options.nim	203	13
@@ -42,7 +35,6 @@ msg	msg	/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/router.
 id	id	/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/router.nim	108	40
 data	data_0	/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/router.nim	109	16
 result	result	/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/router.nim	108	0
-node	node	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/json.nim	737	10
 s	s_0	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/json.nim	611	17
 record	record	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim	297	19
 r	r	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles/log_output.nim	551	18

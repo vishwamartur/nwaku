@@ -5089,7 +5089,7 @@ NTI__hnCuDR9cLe2lA3YIkwKIyuA_.size = sizeof(tyTuple__hnCuDR9cLe2lA3YIkwKIyuA);
 NTI__hnCuDR9cLe2lA3YIkwKIyuA_.kind = 18;
 NTI__hnCuDR9cLe2lA3YIkwKIyuA_.base = 0;
 NTI__hnCuDR9cLe2lA3YIkwKIyuA_.flags = 2;
-NTI__hnCuDR9cLe2lA3YIkwKIyuA_.name = "KeyValuePair[MessageID]";
+NTI__hnCuDR9cLe2lA3YIkwKIyuA_.name = "KeyValuePair[seq[byte]]";
 NTI__hnCuDR9cLe2lA3YIkwKIyuA_.nextType = nimTypeRoot; nimTypeRoot=&NTI__hnCuDR9cLe2lA3YIkwKIyuA_;
 TM__0JXiWyhP5OCO8jWMA6sb1w_72_2[0] = &TM__0JXiWyhP5OCO8jWMA6sb1w_0[52];
 TM__0JXiWyhP5OCO8jWMA6sb1w_0[52].kind = 1;
@@ -5107,7 +5107,7 @@ NTI__9aVNV7ijepQnHXz4JmQHd3g_.size = sizeof(tySequence__9aVNV7ijepQnHXz4JmQHd3g*
 NTI__9aVNV7ijepQnHXz4JmQHd3g_.kind = 24;
 NTI__9aVNV7ijepQnHXz4JmQHd3g_.base = (&NTI__hnCuDR9cLe2lA3YIkwKIyuA_);
 NTI__9aVNV7ijepQnHXz4JmQHd3g_.flags = 2;
-NTI__9aVNV7ijepQnHXz4JmQHd3g_.name = "KeyValuePairSeq[MessageID]";
+NTI__9aVNV7ijepQnHXz4JmQHd3g_.name = "KeyValuePairSeq[seq[byte]]";
 NTI__9aVNV7ijepQnHXz4JmQHd3g_.nextType = nimTypeRoot; nimTypeRoot=&NTI__9aVNV7ijepQnHXz4JmQHd3g_;
 NTI__9aVNV7ijepQnHXz4JmQHd3g_.marker = Marker_tySequence__9aVNV7ijepQnHXz4JmQHd3g;
 NTI__o1ej6dBUQnezVPAEZ8Ad9bA_.size = sizeof(tyObject_HashSet__o1ej6dBUQnezVPAEZ8Ad9bA);

@@ -249,6 +249,8 @@ N_LIB_PRIVATE N_NIMCALL(void, nsuRemovePrefixCharSet)(NimStringDesc** s_0, tySet
 N_LIB_PRIVATE N_NIMCALL(void, nsuDelete)(NimStringDesc** s, NI first, NI last);
 N_LIB_PRIVATE N_NIMCALL(NimStringDesc*, substr__iGg0RIKceRvsmvq8FUHOEw)(NimStringDesc* s_0, NI first_0);
 N_LIB_PRIVATE N_NIMCALL(NI, npuParseBiggestUInt)(NimStringDesc* s_0, NU64* number, NI start);
+N_LIB_PRIVATE N_NIMCALL(NI, parseHex__5URmSDed0NZg9au720T3U9aA)(NimStringDesc* s_0, NI* number, NI start, NI maxLen);
+N_LIB_PRIVATE N_NIMCALL(NimStringDesc*, nsuToHex)(NI64 x_0, NI len_0);
 STRING_LITERAL(TM__JGc9b9bh2D3nTdUR7TGyq8aA_3, "0123456789ABCDEF", 16);
 extern TNimType NTI__Ie1m0dv1ZHg72IgPRr1cDw_;
 extern TNimType NTI__yoNlBGx0D2tRizIdhQuENw_;
@@ -275,6 +277,7 @@ STRING_LITERAL(TM__JGc9b9bh2D3nTdUR7TGyq8aA_124, "false", 5);
 STRING_LITERAL(TM__JGc9b9bh2D3nTdUR7TGyq8aA_125, "0", 1);
 STRING_LITERAL(TM__JGc9b9bh2D3nTdUR7TGyq8aA_126, "off", 3);
 STRING_LITERAL(TM__JGc9b9bh2D3nTdUR7TGyq8aA_127, "cannot interpret as a bool: ", 28);
+STRING_LITERAL(TM__JGc9b9bh2D3nTdUR7TGyq8aA_143, "invalid hex integer: ", 21);
 extern NIM_THREADVAR tyObject_GcHeap__1TRH1TZMaVZTnLNcIHuNFQ gch__IcYaEuuWivYAS86vFMTS3Q;
 
 #line 920 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
@@ -2805,3 +2808,212 @@ N_LIB_PRIVATE N_NIMCALL(NU64, nsuParseBiggestUInt)(NimStringDesc* s_0) {	NU64 re
 "vendor/Nim/lib/pure/strutils.nim", 1114);	}
 	LA5_: ;
 	return result;}
+
+#line 304 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+N_LIB_PRIVATE N_NIMCALL(NI, nsuCmpIgnoreCase)(NimStringDesc* a, NimStringDesc* b) {	NI result;	NI i;	NI m;	NI TM__JGc9b9bh2D3nTdUR7TGyq8aA_136;{	result = (NI)0;
+#line 315 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+	i = ((NI) 0);
+#line 316 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+
+#line 316 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+
+#line 316 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+
+#line 316 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+	m = (((a ? a->Sup.len : 0) <= (b ? b->Sup.len : 0)) ? (a ? a->Sup.len : 0) : (b ? b->Sup.len : 0));	{
+#line 317 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+		while (1) {			NIM_CHAR T3_;			NIM_CHAR T4_;			NI TM__JGc9b9bh2D3nTdUR7TGyq8aA_134;			NI TM__JGc9b9bh2D3nTdUR7TGyq8aA_135;
+#line 317 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+			if (!(i < m)) goto LA2;
+
+#line 318 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+
+#line 318 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+
+#line 318 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+
+#line 318 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+			if ((NU)(i) >= (NU)(a ? a->Sup.len : 0)){ raiseIndexError2(i,(a ? a->Sup.len : 0)-1); }
+#line 318 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+			T3_ = (NIM_CHAR)0;			T3_ = nsuToLowerAsciiChar(a->data[i]);
+#line 318 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+
+#line 318 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+			if ((NU)(i) >= (NU)(b ? b->Sup.len : 0)){ raiseIndexError2(i,(b ? b->Sup.len : 0)-1); }
+#line 318 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+			T4_ = (NIM_CHAR)0;			T4_ = nsuToLowerAsciiChar(b->data[i]);			if (nimSubInt(((NU8)(T3_)), ((NU8)(T4_)), &TM__JGc9b9bh2D3nTdUR7TGyq8aA_134)) { raiseOverflow(); };			result = (NI)(TM__JGc9b9bh2D3nTdUR7TGyq8aA_134);
+#line 319 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+			{
+#line 319 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+
+#line 319 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+				if (!!((result == ((NI) 0)))) goto LA7_;
+
+#line 319 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+				goto BeforeRet_;
+			}
+			LA7_: ;
+
+#line 320 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+			if (nimAddInt(i, ((NI) 1), &TM__JGc9b9bh2D3nTdUR7TGyq8aA_135)) { raiseOverflow(); };			i = (NI)(TM__JGc9b9bh2D3nTdUR7TGyq8aA_135);		} LA2: ;
+	}
+
+#line 321 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+
+#line 321 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+
+#line 321 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+
+#line 321 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+	if (nimSubInt((a ? a->Sup.len : 0), (b ? b->Sup.len : 0), &TM__JGc9b9bh2D3nTdUR7TGyq8aA_136)) { raiseOverflow(); };	result = (NI)(TM__JGc9b9bh2D3nTdUR7TGyq8aA_136);	}BeforeRet_: ;
+	return result;}
+
+#line 851 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+N_LIB_PRIVATE N_NIMCALL(tySequence__sM4lkSb7zS6F7OVMvW9cffQ*, nsuSplitLines)(NimStringDesc* s_0, NIM_BOOL keepEol) {	tySequence__sM4lkSb7zS6F7OVMvW9cffQ* result;	result = (tySequence__sM4lkSb7zS6F7OVMvW9cffQ*)0;
+#line 410 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+	result = NIM_NIL;	{		NimStringDesc* xX60gensym14540053_;		NI first_1;		NI last;		NI eolpos;		xX60gensym14540053_ = (NimStringDesc*)0;
+#line 646 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+		first_1 = ((NI) 0);
+#line 647 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+		last = ((NI) 0);
+#line 648 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+		eolpos = ((NI) 0);		{
+#line 649 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+			while (1) {				NI T25_;				NI T31_;				NimStringDesc* T32_;				{
+#line 650 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+					while (1) {						NIM_BOOL T6_;						NI TM__JGc9b9bh2D3nTdUR7TGyq8aA_137;
+#line 650 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+						T6_ = (NIM_BOOL)0;
+#line 650 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+
+#line 650 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+						T6_ = (last < (s_0 ? s_0->Sup.len : 0));						if (!(T6_)) goto LA7_;
+
+#line 650 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+
+#line 650 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+						if ((NU)(last) >= (NU)(s_0 ? s_0->Sup.len : 0)){ raiseIndexError2(last,(s_0 ? s_0->Sup.len : 0)-1); }						T6_ = !((((NU8)(s_0->data[last])) == ((NU8)(13)) || ((NU8)(s_0->data[last])) == ((NU8)(10))));						LA7_: ;
+						if (!T6_) goto LA5;
+
+#line 650 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+						if (nimAddInt(last, ((NI) 1), &TM__JGc9b9bh2D3nTdUR7TGyq8aA_137)) { raiseOverflow(); };						last = (NI)(TM__JGc9b9bh2D3nTdUR7TGyq8aA_137);					} LA5: ;
+				}
+
+#line 652 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+				eolpos = last;
+#line 653 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+				{
+#line 653 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+
+#line 653 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+					if (!(last < (s_0 ? s_0->Sup.len : 0))) goto LA10_;
+
+#line 654 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+					{						NI TM__JGc9b9bh2D3nTdUR7TGyq8aA_138;
+#line 654 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+						if ((NU)(last) >= (NU)(s_0 ? s_0->Sup.len : 0)){ raiseIndexError2(last,(s_0 ? s_0->Sup.len : 0)-1); }						if (!((NU8)(s_0->data[last]) == (NU8)(10))) goto LA14_;
+
+#line 654 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+						if (nimAddInt(last, ((NI) 1), &TM__JGc9b9bh2D3nTdUR7TGyq8aA_138)) { raiseOverflow(); };						last = (NI)(TM__JGc9b9bh2D3nTdUR7TGyq8aA_138);					}
+					goto LA12_;
+					LA14_: ;
+					{						NI TM__JGc9b9bh2D3nTdUR7TGyq8aA_139;
+#line 655 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+						if ((NU)(last) >= (NU)(s_0 ? s_0->Sup.len : 0)){ raiseIndexError2(last,(s_0 ? s_0->Sup.len : 0)-1); }						if (!((NU8)(s_0->data[last]) == (NU8)(13))) goto LA17_;
+
+#line 656 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+						if (nimAddInt(last, ((NI) 1), &TM__JGc9b9bh2D3nTdUR7TGyq8aA_139)) { raiseOverflow(); };						last = (NI)(TM__JGc9b9bh2D3nTdUR7TGyq8aA_139);
+#line 657 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+						{							NIM_BOOL T21_;							NI TM__JGc9b9bh2D3nTdUR7TGyq8aA_140;
+#line 657 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+							T21_ = (NIM_BOOL)0;
+#line 657 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+
+#line 657 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+							T21_ = (last < (s_0 ? s_0->Sup.len : 0));							if (!(T21_)) goto LA22_;
+
+#line 657 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+							if ((NU)(last) >= (NU)(s_0 ? s_0->Sup.len : 0)){ raiseIndexError2(last,(s_0 ? s_0->Sup.len : 0)-1); }							T21_ = ((NU8)(s_0->data[last]) == (NU8)(10));							LA22_: ;
+							if (!T21_) goto LA23_;
+
+#line 657 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+							if (nimAddInt(last, ((NI) 1), &TM__JGc9b9bh2D3nTdUR7TGyq8aA_140)) { raiseOverflow(); };							last = (NI)(TM__JGc9b9bh2D3nTdUR7TGyq8aA_140);						}
+						LA23_: ;
+					}
+					goto LA12_;
+					LA17_: ;
+					LA12_: ;
+				}
+				LA10_: ;
+
+#line 860 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+				T25_ = (NI)0;
+#line 659 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+				{					NI TM__JGc9b9bh2D3nTdUR7TGyq8aA_141;					if (!keepEol) goto LA28_;
+
+#line 659 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+					if (nimSubInt(last, ((NI) 1), &TM__JGc9b9bh2D3nTdUR7TGyq8aA_141)) { raiseOverflow(); };					T25_ = (NI)(TM__JGc9b9bh2D3nTdUR7TGyq8aA_141);				}
+				goto LA26_;
+				LA28_: ;
+				{					NI TM__JGc9b9bh2D3nTdUR7TGyq8aA_142;
+#line 659 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+					if (nimSubInt(eolpos, ((NI) 1), &TM__JGc9b9bh2D3nTdUR7TGyq8aA_142)) { raiseOverflow(); };					T25_ = (NI)(TM__JGc9b9bh2D3nTdUR7TGyq8aA_142);				}
+				LA26_: ;
+
+#line 860 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+				xX60gensym14540053_ = substr__2yh9cer0ymNRHlOOg8P7IuA(s_0, first_1, T25_);
+#line 411 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+				result = (tySequence__sM4lkSb7zS6F7OVMvW9cffQ*) incrSeqV3((TGenericSeq*)(result), (&NTI__sM4lkSb7zS6F7OVMvW9cffQ_));				T31_ = result->Sup.len++;				T32_ = (NimStringDesc*)0;				T32_ = result->data[T31_]; result->data[T31_] = copyStringRC1(xX60gensym14540053_);				if (T32_) nimGCunrefNoCycle(T32_);
+#line 662 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+				{
+#line 662 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+					if (!(eolpos == last)) goto LA35_;
+
+#line 663 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+					goto LA2;
+				}
+				LA35_: ;
+
+#line 665 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+				first_1 = last;			}
+		} LA2: ;
+	}
+	return result;}
+
+#line 1158 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+N_LIB_PRIVATE N_NIMCALL(NI, nsuParseHexInt)(NimStringDesc* s_0) {	NI result;	NI L;	result = (NI)0;
+#line 1165 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+
+#line 1165 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+	L = parseHex__5URmSDed0NZg9au720T3U9aA(s_0, (&result), ((NI) 0), ((NI) 0));
+#line 1166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+	{		NIM_BOOL T3_;		tyObject_ValueError__yoNlBGx0D2tRizIdhQuENw* T7_;		NimStringDesc* T8_;
+#line 1166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+		T3_ = (NIM_BOOL)0;
+#line 1166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+
+#line 1166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+
+#line 1166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+		T3_ = !((L == (s_0 ? s_0->Sup.len : 0)));		if (T3_) goto LA4_;
+
+#line 1166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+		T3_ = (L == ((NI) 0));		LA4_: ;
+		if (!T3_) goto LA5_;
+		T7_ = (tyObject_ValueError__yoNlBGx0D2tRizIdhQuENw*)0;		T7_ = (tyObject_ValueError__yoNlBGx0D2tRizIdhQuENw*) newObj((&NTI__Ie1m0dv1ZHg72IgPRr1cDw_), sizeof(tyObject_ValueError__yoNlBGx0D2tRizIdhQuENw));		(*T7_).Sup.Sup.Sup.m_type = (&NTI__yoNlBGx0D2tRizIdhQuENw_);		(*T7_).Sup.Sup.name = "ValueError";
+#line 1167 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+		T8_ = (NimStringDesc*)0;		T8_ = rawNewString((s_0 ? s_0->Sup.len : 0) + 21);appendString(T8_, ((NimStringDesc*) &TM__JGc9b9bh2D3nTdUR7TGyq8aA_143));appendString(T8_, s_0);		asgnRef((void**) (&(*T7_).Sup.Sup.message), T8_);		asgnRef((void**) (&(*T7_).Sup.Sup.parent), NIM_NIL);
+#line 1167 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+		raiseExceptionEx((Exception*)T7_, "ValueError", "parseHexInt", "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/"
+"vendor/Nim/lib/pure/strutils.nim", 1167);	}
+	LA5_: ;
+	return result;}
+
+#line 944 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+N_LIB_PRIVATE N_NIMCALL(NimStringDesc*, toHex__ziyYRZOkaJBp9bZAA9cVEV2w)(NU64 x_0) {	NimStringDesc* result;	result = (NimStringDesc*)0;
+#line 945 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+
+#line 948 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+	if ((NI64)(x_0) < (IL64(-9223372036854775807) - IL64(1)) || (NI64)(x_0) > IL64(9223372036854775807)){ raiseRangeErrorI(x_0, (IL64(-9223372036854775807) - IL64(1)), IL64(9223372036854775807)); }
+#line 948 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strutils.nim"
+	result = nsuToHex(((NI64) (x_0)), ((NI) 16));	return result;}

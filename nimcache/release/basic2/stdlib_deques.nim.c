@@ -1121,6 +1121,49 @@ N_LIB_PRIVATE N_NIMCALL(void, addLast__qpTAJUaGWCOk9cmos58MqFA)(tyObject_Deque__
 
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/deques.nim"
 	if (nimAddInt((*deq).tail, ((NI) 1), &TM__NdgYN5HU2ty0qMI5oazWyg_59)) { raiseOverflow(); };	(*deq).tail = (NI)((NI)(TM__NdgYN5HU2ty0qMI5oazWyg_59) & (*deq).mask);}
+
+#line 78 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/deques.nim"
+N_LIB_PRIVATE N_NIMCALL(void, initDeque__Y9azsLOyZBUhHH9agV40jKtw)(NI initialSize, tyObject_Deque__ts9cu9cb0X9aRYRce9ca9aHNaGw* Result) {	NI TM__NdgYN5HU2ty0qMI5oazWyg_60;	chckNil((void*)Result);	unsureAsgnRef((void**)&(*Result).data, NIM_NIL);	(*Result).head = 0;	(*Result).tail = 0;	(*Result).count = 0;	(*Result).mask = 0;
+#line 69 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/deques.nim"
+	{		NIM_BOOL T3_;
+#line 69 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/deques.nim"
+
+#line 69 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/deques.nim"
+
+#line 69 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/deques.nim"
+		T3_ = (NIM_BOOL)0;		T3_ = isPowerOfTwo__1xdTQapFveM9bImKot7h9cdw(initialSize);		if (!!(T3_)) goto LA4_;
+
+#line 69 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/deques.nim"
+
+#line 69 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/deques.nim"
+		failedAssertImpl__W9cjVocn1tjhW7p7xohJj6A(((NimStringDesc*) &TM__NdgYN5HU2ty0qMI5oazWyg_13));
+	}
+	LA4_: ;
+
+#line 70 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/deques.nim"
+
+#line 70 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/deques.nim"
+	if (nimSubInt(initialSize, ((NI) 1), &TM__NdgYN5HU2ty0qMI5oazWyg_60)) { raiseOverflow(); };	(*Result).mask = (NI)(TM__NdgYN5HU2ty0qMI5oazWyg_60);
+#line 89 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/deques.nim"
+	if ((initialSize) < ((NI) 0) || (initialSize) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI(initialSize, ((NI) 0), ((NI) IL64(9223372036854775807))); }	unsureAsgnRef((void**) (&(*Result).data), (tySequence__KS1KnfmcGyX3vyaf0MAihQ*) newSeq((&NTI__KS1KnfmcGyX3vyaf0MAihQ_), ((NI) (initialSize))));}
+
+#line 286 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/deques.nim"
+N_LIB_PRIVATE N_NIMCALL(void, addFirst__gIby5vW5Il2x2MShko8Szg_2)(tyObject_Deque__ts9cu9cb0X9aRYRce9ca9aHNaGw* deq, tyObject_WriteItem__EtmP5EvEiRbeAbwdU39cGTw* item) {	NI TM__NdgYN5HU2ty0qMI5oazWyg_61;	NI TM__NdgYN5HU2ty0qMI5oazWyg_62;
+#line 301 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/deques.nim"
+
+#line 301 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/deques.nim"
+	expandIfNeeded__iOVbtnQquuE39bdzI9bkDCnQ(deq);
+
+#line 302 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/deques.nim"
+	if (nimAddInt((*deq).count, ((NI) 1), &TM__NdgYN5HU2ty0qMI5oazWyg_61)) { raiseOverflow(); };	(*deq).count = (NI)(TM__NdgYN5HU2ty0qMI5oazWyg_61);
+#line 303 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/deques.nim"
+
+#line 303 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/deques.nim"
+
+#line 303 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/deques.nim"
+	if (nimSubInt((*deq).head, ((NI) 1), &TM__NdgYN5HU2ty0qMI5oazWyg_62)) { raiseOverflow(); };	(*deq).head = (NI)((NI)(TM__NdgYN5HU2ty0qMI5oazWyg_62) & (*deq).mask);	if ((NU)((*deq).head) >= (NU)((*deq).data ? (*deq).data->Sup.len : 0)){ raiseIndexError2((*deq).head,((*deq).data ? (*deq).data->Sup.len : 0)-1); }
+#line 304 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/deques.nim"
+	genericAssign((void*)(&(*deq).data->data[(*deq).head]), (void*)item, (&NTI__EtmP5EvEiRbeAbwdU39cGTw_));}
 N_LIB_PRIVATE N_NIMCALL(void, stdlib_dequesDatInit000)(void) {
 
 #line 999999 "generated_not_to_break_here"

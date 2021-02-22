@@ -3,7 +3,7 @@
 /* The generated code is subject to the original license. */
 /* Compiled for: Linux, amd64, gcc */
 /* Command for C compiler:
-   gcc -c  -w -pthread -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace/install/usr/include -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1/src -DHAVE_CONFIG_H -DHAVE_BUILTIN_EXPECT -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/src -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/inc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/tools -DBR_USE_UNIX_TIME=1 -DBR_USE_URANDOM=1 -DBR_LE_UNALIGNED=1 -DBR_64=1  -DBR_amd64=1 -DBR_INT128=1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/miniupnp/miniupnpc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/libnatpmp-upstream -DENABLE_STRNATPMPERR -march=native -g3 -Og -O3 -fno-strict-aliasing -fno-ident  -I/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib -I/home/runner/work/nim-waku/nim-waku/waku/v2/node -o nimcache/release/wakunode2/@m..@s..@s..@svendor@snimcrypto@snimcrypto@ssha.nim.c.o nimcache/release/wakunode2/@m..@s..@s..@svendor@snimcrypto@snimcrypto@ssha.nim.c */
+   gcc -c  -w -pthread -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace/install/usr/include -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1/src -DHAVE_CONFIG_H -DHAVE_BUILTIN_EXPECT -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/src -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/inc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/tools -DBR_USE_UNIX_TIME=1 -DBR_USE_URANDOM=1 -DBR_LE_UNALIGNED=1 -DBR_64=1  -DBR_amd64=1 -DBR_INT128=1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/certs -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/miniupnp/miniupnpc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/libnatpmp-upstream -DENABLE_STRNATPMPERR -march=native -g3 -Og -O3 -fno-strict-aliasing -fno-ident  -I/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib -I/home/runner/work/nim-waku/nim-waku/waku/v2/node -o nimcache/release/wakunode2/@m..@s..@s..@svendor@snimcrypto@snimcrypto@ssha.nim.c.o nimcache/release/wakunode2/@m..@s..@s..@svendor@snimcrypto@snimcrypto@ssha.nim.c */
 #define NIM_INTBITS 64
 
 #include "nimbase.h"
@@ -116,7 +116,7 @@ static N_INLINE(void, copyMem__i80o3k0SgEI5gTRCzYdyWAsystem)(void* dest, void* s
 }
 
 #line 80 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Context__xzOcQO5jKMUoBcYv9ctHzLQ* ctx, NU8* blk, NI blkLen_0, NI offset) {	NU32 A;	NU32 B;	NU32 C;	NU32 D;	NU32 E;	tyArray__U0SiHM0pVagA9c71oWelQMA arr;	NU32 tmpX60gensym39266320_;	NU32 pX60gensym48331161_;	NI TM__uO9aur3E5qgDnFhX0NAUatA_9;	NU32 tmpX60gensym39266324_;	NU32 pX60gensym48350012_;	NI TM__uO9aur3E5qgDnFhX0NAUatA_10;	NU32 tmpX60gensym39266328_;	NU32 pX60gensym48370012_;	NI TM__uO9aur3E5qgDnFhX0NAUatA_11;	NU32 tmpX60gensym39266332_;	NU32 pX60gensym48390012_;	NI TM__uO9aur3E5qgDnFhX0NAUatA_12;	NU32 tmpX60gensym39266336_;	NU32 pX60gensym48410012_;	NI TM__uO9aur3E5qgDnFhX0NAUatA_13;	NU32 tmpX60gensym39266340_;	NU32 pX60gensym48430012_;	NI TM__uO9aur3E5qgDnFhX0NAUatA_14;	NU32 tmpX60gensym39266344_;	NU32 pX60gensym48450012_;	NI TM__uO9aur3E5qgDnFhX0NAUatA_15;	NU32 tmpX60gensym39266348_;	NU32 pX60gensym48470012_;	NI TM__uO9aur3E5qgDnFhX0NAUatA_16;	NU32 tmpX60gensym39266352_;	NU32 pX60gensym48490012_;	NI TM__uO9aur3E5qgDnFhX0NAUatA_17;	NU32 tmpX60gensym39266356_;	NU32 pX60gensym48510012_;	NI TM__uO9aur3E5qgDnFhX0NAUatA_18;	NU32 tmpX60gensym39266360_;	NU32 pX60gensym48530012_;	NI TM__uO9aur3E5qgDnFhX0NAUatA_19;	NU32 tmpX60gensym39266364_;	NU32 pX60gensym48550012_;	NI TM__uO9aur3E5qgDnFhX0NAUatA_20;	NU32 tmpX60gensym39266368_;	NU32 pX60gensym48570012_;	NI TM__uO9aur3E5qgDnFhX0NAUatA_21;	NU32 tmpX60gensym39266372_;	NU32 pX60gensym48590012_;	NI TM__uO9aur3E5qgDnFhX0NAUatA_22;	NU32 tmpX60gensym39266376_;	NU32 pX60gensym48610012_;	NI TM__uO9aur3E5qgDnFhX0NAUatA_23;	NU32 tmpX60gensym39266380_;	NU32 pX60gensym48630012_;	NI TM__uO9aur3E5qgDnFhX0NAUatA_24;	NU32 tmpX60gensym39266384_;	NU32 tmpX60gensym39266388_;	NU32 tmpX60gensym39266392_;	NU32 tmpX60gensym39266396_;	NU32 tmpX60gensym39266400_;	NU32 tmpX60gensym39266404_;	NU32 tmpX60gensym39266408_;	NU32 tmpX60gensym39266412_;	NU32 tmpX60gensym39266416_;	NU32 tmpX60gensym39266420_;	NU32 tmpX60gensym39266424_;	NU32 tmpX60gensym39266428_;	NU32 tmpX60gensym39266432_;	NU32 tmpX60gensym39266436_;	NU32 tmpX60gensym39266440_;	NU32 tmpX60gensym39266444_;	NU32 tmpX60gensym39266448_;	NU32 tmpX60gensym39266452_;	NU32 tmpX60gensym39266456_;	NU32 tmpX60gensym39266460_;	NU32 tmpX60gensym39266464_;	NU32 tmpX60gensym39266468_;	NU32 tmpX60gensym39266472_;	NU32 tmpX60gensym39266476_;	NU32 tmpX60gensym39266480_;	NU32 tmpX60gensym39266484_;	NU32 tmpX60gensym39266488_;	NU32 tmpX60gensym39266492_;	NU32 tmpX60gensym39266496_;	NU32 tmpX60gensym39266500_;	NU32 tmpX60gensym39266504_;	NU32 tmpX60gensym39266508_;	NU32 tmpX60gensym39266512_;	NU32 tmpX60gensym39266516_;	NU32 tmpX60gensym39266520_;	NU32 tmpX60gensym39266524_;	NU32 tmpX60gensym39266528_;	NU32 tmpX60gensym39266532_;	NU32 tmpX60gensym39266536_;	NU32 tmpX60gensym39266540_;	NU32 tmpX60gensym39266544_;	NU32 tmpX60gensym39266548_;	NU32 tmpX60gensym39266552_;	NU32 tmpX60gensym39266556_;	NU32 tmpX60gensym39266560_;	NU32 tmpX60gensym39266564_;	NU32 tmpX60gensym39266568_;	NU32 tmpX60gensym39266572_;	NU32 tmpX60gensym39266576_;	NU32 tmpX60gensym39266580_;	NU32 tmpX60gensym39266584_;	NU32 tmpX60gensym39266588_;	NU32 tmpX60gensym39266592_;	NU32 tmpX60gensym39266596_;	NU32 tmpX60gensym39266600_;	NU32 tmpX60gensym39266604_;	NU32 tmpX60gensym39266608_;	NU32 tmpX60gensym39266612_;	NU32 tmpX60gensym39266616_;	NU32 tmpX60gensym39266620_;	NU32 tmpX60gensym39266624_;	NU32 tmpX60gensym39266628_;	NU32 tmpX60gensym39266632_;	NU32 tmpX60gensym39266636_;	A = (NU32)0;	B = (NU32)0;	C = (NU32)0;	D = (NU32)0;	E = (NU32)0;
+static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Context__xzOcQO5jKMUoBcYv9ctHzLQ* ctx, NU8* blk, NI blkLen_0, NI offset) {	NU32 A;	NU32 B;	NU32 C;	NU32 D;	NU32 E;	tyArray__U0SiHM0pVagA9c71oWelQMA arr;	NU32 tmpX60gensym58491280_;	NU32 pX60gensym83316161_;	NI TM__uO9aur3E5qgDnFhX0NAUatA_9;	NU32 tmpX60gensym58491284_;	NU32 pX60gensym83335012_;	NI TM__uO9aur3E5qgDnFhX0NAUatA_10;	NU32 tmpX60gensym58491288_;	NU32 pX60gensym83355012_;	NI TM__uO9aur3E5qgDnFhX0NAUatA_11;	NU32 tmpX60gensym58491292_;	NU32 pX60gensym83375012_;	NI TM__uO9aur3E5qgDnFhX0NAUatA_12;	NU32 tmpX60gensym58491296_;	NU32 pX60gensym83395012_;	NI TM__uO9aur3E5qgDnFhX0NAUatA_13;	NU32 tmpX60gensym58491300_;	NU32 pX60gensym83415012_;	NI TM__uO9aur3E5qgDnFhX0NAUatA_14;	NU32 tmpX60gensym58491304_;	NU32 pX60gensym83435012_;	NI TM__uO9aur3E5qgDnFhX0NAUatA_15;	NU32 tmpX60gensym58491308_;	NU32 pX60gensym83455012_;	NI TM__uO9aur3E5qgDnFhX0NAUatA_16;	NU32 tmpX60gensym58491312_;	NU32 pX60gensym83475012_;	NI TM__uO9aur3E5qgDnFhX0NAUatA_17;	NU32 tmpX60gensym58491316_;	NU32 pX60gensym83495012_;	NI TM__uO9aur3E5qgDnFhX0NAUatA_18;	NU32 tmpX60gensym58491320_;	NU32 pX60gensym83515012_;	NI TM__uO9aur3E5qgDnFhX0NAUatA_19;	NU32 tmpX60gensym58491324_;	NU32 pX60gensym83535012_;	NI TM__uO9aur3E5qgDnFhX0NAUatA_20;	NU32 tmpX60gensym58491328_;	NU32 pX60gensym83555012_;	NI TM__uO9aur3E5qgDnFhX0NAUatA_21;	NU32 tmpX60gensym58491332_;	NU32 pX60gensym83575012_;	NI TM__uO9aur3E5qgDnFhX0NAUatA_22;	NU32 tmpX60gensym58491336_;	NU32 pX60gensym83595012_;	NI TM__uO9aur3E5qgDnFhX0NAUatA_23;	NU32 tmpX60gensym58491340_;	NU32 pX60gensym83615012_;	NI TM__uO9aur3E5qgDnFhX0NAUatA_24;	NU32 tmpX60gensym58491344_;	NU32 tmpX60gensym58491348_;	NU32 tmpX60gensym58491352_;	NU32 tmpX60gensym58491356_;	NU32 tmpX60gensym58491360_;	NU32 tmpX60gensym58491364_;	NU32 tmpX60gensym58491368_;	NU32 tmpX60gensym58491372_;	NU32 tmpX60gensym58491376_;	NU32 tmpX60gensym58491380_;	NU32 tmpX60gensym58491384_;	NU32 tmpX60gensym58491388_;	NU32 tmpX60gensym58491392_;	NU32 tmpX60gensym58491396_;	NU32 tmpX60gensym58491400_;	NU32 tmpX60gensym58491404_;	NU32 tmpX60gensym58491408_;	NU32 tmpX60gensym58491412_;	NU32 tmpX60gensym58491416_;	NU32 tmpX60gensym58491420_;	NU32 tmpX60gensym58491424_;	NU32 tmpX60gensym58491428_;	NU32 tmpX60gensym58491432_;	NU32 tmpX60gensym58491436_;	NU32 tmpX60gensym58491440_;	NU32 tmpX60gensym58491444_;	NU32 tmpX60gensym58491448_;	NU32 tmpX60gensym58491452_;	NU32 tmpX60gensym58491456_;	NU32 tmpX60gensym58491460_;	NU32 tmpX60gensym58491464_;	NU32 tmpX60gensym58491468_;	NU32 tmpX60gensym58491472_;	NU32 tmpX60gensym58491476_;	NU32 tmpX60gensym58491480_;	NU32 tmpX60gensym58491484_;	NU32 tmpX60gensym58491488_;	NU32 tmpX60gensym58491492_;	NU32 tmpX60gensym58491496_;	NU32 tmpX60gensym58491500_;	NU32 tmpX60gensym58491504_;	NU32 tmpX60gensym58491508_;	NU32 tmpX60gensym58491512_;	NU32 tmpX60gensym58491516_;	NU32 tmpX60gensym58491520_;	NU32 tmpX60gensym58491524_;	NU32 tmpX60gensym58491528_;	NU32 tmpX60gensym58491532_;	NU32 tmpX60gensym58491536_;	NU32 tmpX60gensym58491540_;	NU32 tmpX60gensym58491544_;	NU32 tmpX60gensym58491548_;	NU32 tmpX60gensym58491552_;	NU32 tmpX60gensym58491556_;	NU32 tmpX60gensym58491560_;	NU32 tmpX60gensym58491564_;	NU32 tmpX60gensym58491568_;	NU32 tmpX60gensym58491572_;	NU32 tmpX60gensym58491576_;	NU32 tmpX60gensym58491580_;	NU32 tmpX60gensym58491584_;	NU32 tmpX60gensym58491588_;	NU32 tmpX60gensym58491592_;	NU32 tmpX60gensym58491596_;	A = (NU32)0;	B = (NU32)0;	C = (NU32)0;	D = (NU32)0;	E = (NU32)0;
 #line 87 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 	A = (*ctx).h[(((NI) 0))- 0];
 #line 88 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -132,13 +132,13 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 335 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 22 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	if (nimAddInt(offset, ((NI) 0), &TM__uO9aur3E5qgDnFhX0NAUatA_9)) { raiseOverflow(); };	if ((NU)((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_9)) >= (NU)(blkLen_0)){ raiseIndexError2((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_9),blkLen_0-1); }	pX60gensym48331161_ = (*((NU32*) ((&blk[(NI)(TM__uO9aur3E5qgDnFhX0NAUatA_9)]))));
+	if (nimAddInt(offset, ((NI) 0), &TM__uO9aur3E5qgDnFhX0NAUatA_9)) { raiseOverflow(); };	if ((NU)((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_9)) >= (NU)(blkLen_0)){ raiseIndexError2((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_9),blkLen_0-1); }	pX60gensym83316161_ = (*((NU32*) ((&blk[(NI)(TM__uO9aur3E5qgDnFhX0NAUatA_9)]))));
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	tmpX60gensym39266320_ = __builtin_bswap32(pX60gensym48331161_);
+	tmpX60gensym58491280_ = __builtin_bswap32(pX60gensym83316161_);
 #line 23 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 0))- 0] = tmpX60gensym39266320_;
+	arr[(((NI) 0))- 0] = tmpX60gensym58491280_;
 #line 24 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 24 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -160,7 +160,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	E = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(E) + (NU32)(tmpX60gensym39266320_))) + (NU32)((NU32)((NU32)((NU32)(A) << (NU32)(((NU32) 5))) | (NU32)((NU32)(A) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(C ^ D) & B) ^ D)))) + (NU32)(((NU32) 1518500249)));
+	E = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(E) + (NU32)(tmpX60gensym58491280_))) + (NU32)((NU32)((NU32)((NU32)(A) << (NU32)(((NU32) 5))) | (NU32)((NU32)(A) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(C ^ D) & B) ^ D)))) + (NU32)(((NU32) 1518500249)));
 #line 25 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 25 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -174,13 +174,13 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 335 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 22 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	if (nimAddInt(offset, ((NI) 4), &TM__uO9aur3E5qgDnFhX0NAUatA_10)) { raiseOverflow(); };	if ((NU)((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_10)) >= (NU)(blkLen_0)){ raiseIndexError2((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_10),blkLen_0-1); }	pX60gensym48350012_ = (*((NU32*) ((&blk[(NI)(TM__uO9aur3E5qgDnFhX0NAUatA_10)]))));
+	if (nimAddInt(offset, ((NI) 4), &TM__uO9aur3E5qgDnFhX0NAUatA_10)) { raiseOverflow(); };	if ((NU)((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_10)) >= (NU)(blkLen_0)){ raiseIndexError2((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_10),blkLen_0-1); }	pX60gensym83335012_ = (*((NU32*) ((&blk[(NI)(TM__uO9aur3E5qgDnFhX0NAUatA_10)]))));
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	tmpX60gensym39266324_ = __builtin_bswap32(pX60gensym48350012_);
+	tmpX60gensym58491284_ = __builtin_bswap32(pX60gensym83335012_);
 #line 23 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 1))- 0] = tmpX60gensym39266324_;
+	arr[(((NI) 1))- 0] = tmpX60gensym58491284_;
 #line 24 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 24 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -202,7 +202,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	D = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(D) + (NU32)(tmpX60gensym39266324_))) + (NU32)((NU32)((NU32)((NU32)(E) << (NU32)(((NU32) 5))) | (NU32)((NU32)(E) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(B ^ C) & A) ^ C)))) + (NU32)(((NU32) 1518500249)));
+	D = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(D) + (NU32)(tmpX60gensym58491284_))) + (NU32)((NU32)((NU32)((NU32)(E) << (NU32)(((NU32) 5))) | (NU32)((NU32)(E) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(B ^ C) & A) ^ C)))) + (NU32)(((NU32) 1518500249)));
 #line 25 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 25 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -216,13 +216,13 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 335 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 22 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	if (nimAddInt(offset, ((NI) 8), &TM__uO9aur3E5qgDnFhX0NAUatA_11)) { raiseOverflow(); };	if ((NU)((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_11)) >= (NU)(blkLen_0)){ raiseIndexError2((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_11),blkLen_0-1); }	pX60gensym48370012_ = (*((NU32*) ((&blk[(NI)(TM__uO9aur3E5qgDnFhX0NAUatA_11)]))));
+	if (nimAddInt(offset, ((NI) 8), &TM__uO9aur3E5qgDnFhX0NAUatA_11)) { raiseOverflow(); };	if ((NU)((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_11)) >= (NU)(blkLen_0)){ raiseIndexError2((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_11),blkLen_0-1); }	pX60gensym83355012_ = (*((NU32*) ((&blk[(NI)(TM__uO9aur3E5qgDnFhX0NAUatA_11)]))));
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	tmpX60gensym39266328_ = __builtin_bswap32(pX60gensym48370012_);
+	tmpX60gensym58491288_ = __builtin_bswap32(pX60gensym83355012_);
 #line 23 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 2))- 0] = tmpX60gensym39266328_;
+	arr[(((NI) 2))- 0] = tmpX60gensym58491288_;
 #line 24 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 24 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -244,7 +244,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	C = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(C) + (NU32)(tmpX60gensym39266328_))) + (NU32)((NU32)((NU32)((NU32)(D) << (NU32)(((NU32) 5))) | (NU32)((NU32)(D) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(A ^ B) & E) ^ B)))) + (NU32)(((NU32) 1518500249)));
+	C = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(C) + (NU32)(tmpX60gensym58491288_))) + (NU32)((NU32)((NU32)((NU32)(D) << (NU32)(((NU32) 5))) | (NU32)((NU32)(D) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(A ^ B) & E) ^ B)))) + (NU32)(((NU32) 1518500249)));
 #line 25 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 25 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -258,13 +258,13 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 335 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 22 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	if (nimAddInt(offset, ((NI) 12), &TM__uO9aur3E5qgDnFhX0NAUatA_12)) { raiseOverflow(); };	if ((NU)((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_12)) >= (NU)(blkLen_0)){ raiseIndexError2((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_12),blkLen_0-1); }	pX60gensym48390012_ = (*((NU32*) ((&blk[(NI)(TM__uO9aur3E5qgDnFhX0NAUatA_12)]))));
+	if (nimAddInt(offset, ((NI) 12), &TM__uO9aur3E5qgDnFhX0NAUatA_12)) { raiseOverflow(); };	if ((NU)((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_12)) >= (NU)(blkLen_0)){ raiseIndexError2((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_12),blkLen_0-1); }	pX60gensym83375012_ = (*((NU32*) ((&blk[(NI)(TM__uO9aur3E5qgDnFhX0NAUatA_12)]))));
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	tmpX60gensym39266332_ = __builtin_bswap32(pX60gensym48390012_);
+	tmpX60gensym58491292_ = __builtin_bswap32(pX60gensym83375012_);
 #line 23 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 3))- 0] = tmpX60gensym39266332_;
+	arr[(((NI) 3))- 0] = tmpX60gensym58491292_;
 #line 24 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 24 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -286,7 +286,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	B = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(B) + (NU32)(tmpX60gensym39266332_))) + (NU32)((NU32)((NU32)((NU32)(C) << (NU32)(((NU32) 5))) | (NU32)((NU32)(C) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(E ^ A) & D) ^ A)))) + (NU32)(((NU32) 1518500249)));
+	B = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(B) + (NU32)(tmpX60gensym58491292_))) + (NU32)((NU32)((NU32)((NU32)(C) << (NU32)(((NU32) 5))) | (NU32)((NU32)(C) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(E ^ A) & D) ^ A)))) + (NU32)(((NU32) 1518500249)));
 #line 25 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 25 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -300,13 +300,13 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 335 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 22 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	if (nimAddInt(offset, ((NI) 16), &TM__uO9aur3E5qgDnFhX0NAUatA_13)) { raiseOverflow(); };	if ((NU)((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_13)) >= (NU)(blkLen_0)){ raiseIndexError2((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_13),blkLen_0-1); }	pX60gensym48410012_ = (*((NU32*) ((&blk[(NI)(TM__uO9aur3E5qgDnFhX0NAUatA_13)]))));
+	if (nimAddInt(offset, ((NI) 16), &TM__uO9aur3E5qgDnFhX0NAUatA_13)) { raiseOverflow(); };	if ((NU)((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_13)) >= (NU)(blkLen_0)){ raiseIndexError2((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_13),blkLen_0-1); }	pX60gensym83395012_ = (*((NU32*) ((&blk[(NI)(TM__uO9aur3E5qgDnFhX0NAUatA_13)]))));
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	tmpX60gensym39266336_ = __builtin_bswap32(pX60gensym48410012_);
+	tmpX60gensym58491296_ = __builtin_bswap32(pX60gensym83395012_);
 #line 23 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 4))- 0] = tmpX60gensym39266336_;
+	arr[(((NI) 4))- 0] = tmpX60gensym58491296_;
 #line 24 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 24 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -328,7 +328,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	A = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(A) + (NU32)(tmpX60gensym39266336_))) + (NU32)((NU32)((NU32)((NU32)(B) << (NU32)(((NU32) 5))) | (NU32)((NU32)(B) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(D ^ E) & C) ^ E)))) + (NU32)(((NU32) 1518500249)));
+	A = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(A) + (NU32)(tmpX60gensym58491296_))) + (NU32)((NU32)((NU32)((NU32)(B) << (NU32)(((NU32) 5))) | (NU32)((NU32)(B) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(D ^ E) & C) ^ E)))) + (NU32)(((NU32) 1518500249)));
 #line 25 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 25 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -342,13 +342,13 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 335 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 22 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	if (nimAddInt(offset, ((NI) 20), &TM__uO9aur3E5qgDnFhX0NAUatA_14)) { raiseOverflow(); };	if ((NU)((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_14)) >= (NU)(blkLen_0)){ raiseIndexError2((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_14),blkLen_0-1); }	pX60gensym48430012_ = (*((NU32*) ((&blk[(NI)(TM__uO9aur3E5qgDnFhX0NAUatA_14)]))));
+	if (nimAddInt(offset, ((NI) 20), &TM__uO9aur3E5qgDnFhX0NAUatA_14)) { raiseOverflow(); };	if ((NU)((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_14)) >= (NU)(blkLen_0)){ raiseIndexError2((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_14),blkLen_0-1); }	pX60gensym83415012_ = (*((NU32*) ((&blk[(NI)(TM__uO9aur3E5qgDnFhX0NAUatA_14)]))));
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	tmpX60gensym39266340_ = __builtin_bswap32(pX60gensym48430012_);
+	tmpX60gensym58491300_ = __builtin_bswap32(pX60gensym83415012_);
 #line 23 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 5))- 0] = tmpX60gensym39266340_;
+	arr[(((NI) 5))- 0] = tmpX60gensym58491300_;
 #line 24 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 24 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -370,7 +370,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	E = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(E) + (NU32)(tmpX60gensym39266340_))) + (NU32)((NU32)((NU32)((NU32)(A) << (NU32)(((NU32) 5))) | (NU32)((NU32)(A) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(C ^ D) & B) ^ D)))) + (NU32)(((NU32) 1518500249)));
+	E = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(E) + (NU32)(tmpX60gensym58491300_))) + (NU32)((NU32)((NU32)((NU32)(A) << (NU32)(((NU32) 5))) | (NU32)((NU32)(A) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(C ^ D) & B) ^ D)))) + (NU32)(((NU32) 1518500249)));
 #line 25 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 25 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -384,13 +384,13 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 335 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 22 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	if (nimAddInt(offset, ((NI) 24), &TM__uO9aur3E5qgDnFhX0NAUatA_15)) { raiseOverflow(); };	if ((NU)((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_15)) >= (NU)(blkLen_0)){ raiseIndexError2((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_15),blkLen_0-1); }	pX60gensym48450012_ = (*((NU32*) ((&blk[(NI)(TM__uO9aur3E5qgDnFhX0NAUatA_15)]))));
+	if (nimAddInt(offset, ((NI) 24), &TM__uO9aur3E5qgDnFhX0NAUatA_15)) { raiseOverflow(); };	if ((NU)((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_15)) >= (NU)(blkLen_0)){ raiseIndexError2((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_15),blkLen_0-1); }	pX60gensym83435012_ = (*((NU32*) ((&blk[(NI)(TM__uO9aur3E5qgDnFhX0NAUatA_15)]))));
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	tmpX60gensym39266344_ = __builtin_bswap32(pX60gensym48450012_);
+	tmpX60gensym58491304_ = __builtin_bswap32(pX60gensym83435012_);
 #line 23 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 6))- 0] = tmpX60gensym39266344_;
+	arr[(((NI) 6))- 0] = tmpX60gensym58491304_;
 #line 24 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 24 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -412,7 +412,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	D = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(D) + (NU32)(tmpX60gensym39266344_))) + (NU32)((NU32)((NU32)((NU32)(E) << (NU32)(((NU32) 5))) | (NU32)((NU32)(E) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(B ^ C) & A) ^ C)))) + (NU32)(((NU32) 1518500249)));
+	D = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(D) + (NU32)(tmpX60gensym58491304_))) + (NU32)((NU32)((NU32)((NU32)(E) << (NU32)(((NU32) 5))) | (NU32)((NU32)(E) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(B ^ C) & A) ^ C)))) + (NU32)(((NU32) 1518500249)));
 #line 25 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 25 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -426,13 +426,13 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 335 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 22 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	if (nimAddInt(offset, ((NI) 28), &TM__uO9aur3E5qgDnFhX0NAUatA_16)) { raiseOverflow(); };	if ((NU)((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_16)) >= (NU)(blkLen_0)){ raiseIndexError2((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_16),blkLen_0-1); }	pX60gensym48470012_ = (*((NU32*) ((&blk[(NI)(TM__uO9aur3E5qgDnFhX0NAUatA_16)]))));
+	if (nimAddInt(offset, ((NI) 28), &TM__uO9aur3E5qgDnFhX0NAUatA_16)) { raiseOverflow(); };	if ((NU)((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_16)) >= (NU)(blkLen_0)){ raiseIndexError2((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_16),blkLen_0-1); }	pX60gensym83455012_ = (*((NU32*) ((&blk[(NI)(TM__uO9aur3E5qgDnFhX0NAUatA_16)]))));
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	tmpX60gensym39266348_ = __builtin_bswap32(pX60gensym48470012_);
+	tmpX60gensym58491308_ = __builtin_bswap32(pX60gensym83455012_);
 #line 23 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 7))- 0] = tmpX60gensym39266348_;
+	arr[(((NI) 7))- 0] = tmpX60gensym58491308_;
 #line 24 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 24 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -454,7 +454,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	C = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(C) + (NU32)(tmpX60gensym39266348_))) + (NU32)((NU32)((NU32)((NU32)(D) << (NU32)(((NU32) 5))) | (NU32)((NU32)(D) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(A ^ B) & E) ^ B)))) + (NU32)(((NU32) 1518500249)));
+	C = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(C) + (NU32)(tmpX60gensym58491308_))) + (NU32)((NU32)((NU32)((NU32)(D) << (NU32)(((NU32) 5))) | (NU32)((NU32)(D) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(A ^ B) & E) ^ B)))) + (NU32)(((NU32) 1518500249)));
 #line 25 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 25 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -468,13 +468,13 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 335 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 22 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	if (nimAddInt(offset, ((NI) 32), &TM__uO9aur3E5qgDnFhX0NAUatA_17)) { raiseOverflow(); };	if ((NU)((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_17)) >= (NU)(blkLen_0)){ raiseIndexError2((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_17),blkLen_0-1); }	pX60gensym48490012_ = (*((NU32*) ((&blk[(NI)(TM__uO9aur3E5qgDnFhX0NAUatA_17)]))));
+	if (nimAddInt(offset, ((NI) 32), &TM__uO9aur3E5qgDnFhX0NAUatA_17)) { raiseOverflow(); };	if ((NU)((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_17)) >= (NU)(blkLen_0)){ raiseIndexError2((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_17),blkLen_0-1); }	pX60gensym83475012_ = (*((NU32*) ((&blk[(NI)(TM__uO9aur3E5qgDnFhX0NAUatA_17)]))));
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	tmpX60gensym39266352_ = __builtin_bswap32(pX60gensym48490012_);
+	tmpX60gensym58491312_ = __builtin_bswap32(pX60gensym83475012_);
 #line 23 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 8))- 0] = tmpX60gensym39266352_;
+	arr[(((NI) 8))- 0] = tmpX60gensym58491312_;
 #line 24 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 24 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -496,7 +496,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	B = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(B) + (NU32)(tmpX60gensym39266352_))) + (NU32)((NU32)((NU32)((NU32)(C) << (NU32)(((NU32) 5))) | (NU32)((NU32)(C) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(E ^ A) & D) ^ A)))) + (NU32)(((NU32) 1518500249)));
+	B = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(B) + (NU32)(tmpX60gensym58491312_))) + (NU32)((NU32)((NU32)((NU32)(C) << (NU32)(((NU32) 5))) | (NU32)((NU32)(C) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(E ^ A) & D) ^ A)))) + (NU32)(((NU32) 1518500249)));
 #line 25 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 25 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -510,13 +510,13 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 335 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 22 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	if (nimAddInt(offset, ((NI) 36), &TM__uO9aur3E5qgDnFhX0NAUatA_18)) { raiseOverflow(); };	if ((NU)((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_18)) >= (NU)(blkLen_0)){ raiseIndexError2((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_18),blkLen_0-1); }	pX60gensym48510012_ = (*((NU32*) ((&blk[(NI)(TM__uO9aur3E5qgDnFhX0NAUatA_18)]))));
+	if (nimAddInt(offset, ((NI) 36), &TM__uO9aur3E5qgDnFhX0NAUatA_18)) { raiseOverflow(); };	if ((NU)((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_18)) >= (NU)(blkLen_0)){ raiseIndexError2((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_18),blkLen_0-1); }	pX60gensym83495012_ = (*((NU32*) ((&blk[(NI)(TM__uO9aur3E5qgDnFhX0NAUatA_18)]))));
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	tmpX60gensym39266356_ = __builtin_bswap32(pX60gensym48510012_);
+	tmpX60gensym58491316_ = __builtin_bswap32(pX60gensym83495012_);
 #line 23 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 9))- 0] = tmpX60gensym39266356_;
+	arr[(((NI) 9))- 0] = tmpX60gensym58491316_;
 #line 24 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 24 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -538,7 +538,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	A = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(A) + (NU32)(tmpX60gensym39266356_))) + (NU32)((NU32)((NU32)((NU32)(B) << (NU32)(((NU32) 5))) | (NU32)((NU32)(B) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(D ^ E) & C) ^ E)))) + (NU32)(((NU32) 1518500249)));
+	A = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(A) + (NU32)(tmpX60gensym58491316_))) + (NU32)((NU32)((NU32)((NU32)(B) << (NU32)(((NU32) 5))) | (NU32)((NU32)(B) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(D ^ E) & C) ^ E)))) + (NU32)(((NU32) 1518500249)));
 #line 25 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 25 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -552,13 +552,13 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 335 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 22 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	if (nimAddInt(offset, ((NI) 40), &TM__uO9aur3E5qgDnFhX0NAUatA_19)) { raiseOverflow(); };	if ((NU)((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_19)) >= (NU)(blkLen_0)){ raiseIndexError2((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_19),blkLen_0-1); }	pX60gensym48530012_ = (*((NU32*) ((&blk[(NI)(TM__uO9aur3E5qgDnFhX0NAUatA_19)]))));
+	if (nimAddInt(offset, ((NI) 40), &TM__uO9aur3E5qgDnFhX0NAUatA_19)) { raiseOverflow(); };	if ((NU)((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_19)) >= (NU)(blkLen_0)){ raiseIndexError2((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_19),blkLen_0-1); }	pX60gensym83515012_ = (*((NU32*) ((&blk[(NI)(TM__uO9aur3E5qgDnFhX0NAUatA_19)]))));
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	tmpX60gensym39266360_ = __builtin_bswap32(pX60gensym48530012_);
+	tmpX60gensym58491320_ = __builtin_bswap32(pX60gensym83515012_);
 #line 23 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 10))- 0] = tmpX60gensym39266360_;
+	arr[(((NI) 10))- 0] = tmpX60gensym58491320_;
 #line 24 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 24 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -580,7 +580,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	E = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(E) + (NU32)(tmpX60gensym39266360_))) + (NU32)((NU32)((NU32)((NU32)(A) << (NU32)(((NU32) 5))) | (NU32)((NU32)(A) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(C ^ D) & B) ^ D)))) + (NU32)(((NU32) 1518500249)));
+	E = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(E) + (NU32)(tmpX60gensym58491320_))) + (NU32)((NU32)((NU32)((NU32)(A) << (NU32)(((NU32) 5))) | (NU32)((NU32)(A) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(C ^ D) & B) ^ D)))) + (NU32)(((NU32) 1518500249)));
 #line 25 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 25 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -594,13 +594,13 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 335 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 22 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	if (nimAddInt(offset, ((NI) 44), &TM__uO9aur3E5qgDnFhX0NAUatA_20)) { raiseOverflow(); };	if ((NU)((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_20)) >= (NU)(blkLen_0)){ raiseIndexError2((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_20),blkLen_0-1); }	pX60gensym48550012_ = (*((NU32*) ((&blk[(NI)(TM__uO9aur3E5qgDnFhX0NAUatA_20)]))));
+	if (nimAddInt(offset, ((NI) 44), &TM__uO9aur3E5qgDnFhX0NAUatA_20)) { raiseOverflow(); };	if ((NU)((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_20)) >= (NU)(blkLen_0)){ raiseIndexError2((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_20),blkLen_0-1); }	pX60gensym83535012_ = (*((NU32*) ((&blk[(NI)(TM__uO9aur3E5qgDnFhX0NAUatA_20)]))));
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	tmpX60gensym39266364_ = __builtin_bswap32(pX60gensym48550012_);
+	tmpX60gensym58491324_ = __builtin_bswap32(pX60gensym83535012_);
 #line 23 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 11))- 0] = tmpX60gensym39266364_;
+	arr[(((NI) 11))- 0] = tmpX60gensym58491324_;
 #line 24 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 24 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -622,7 +622,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	D = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(D) + (NU32)(tmpX60gensym39266364_))) + (NU32)((NU32)((NU32)((NU32)(E) << (NU32)(((NU32) 5))) | (NU32)((NU32)(E) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(B ^ C) & A) ^ C)))) + (NU32)(((NU32) 1518500249)));
+	D = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(D) + (NU32)(tmpX60gensym58491324_))) + (NU32)((NU32)((NU32)((NU32)(E) << (NU32)(((NU32) 5))) | (NU32)((NU32)(E) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(B ^ C) & A) ^ C)))) + (NU32)(((NU32) 1518500249)));
 #line 25 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 25 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -636,13 +636,13 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 335 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 22 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	if (nimAddInt(offset, ((NI) 48), &TM__uO9aur3E5qgDnFhX0NAUatA_21)) { raiseOverflow(); };	if ((NU)((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_21)) >= (NU)(blkLen_0)){ raiseIndexError2((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_21),blkLen_0-1); }	pX60gensym48570012_ = (*((NU32*) ((&blk[(NI)(TM__uO9aur3E5qgDnFhX0NAUatA_21)]))));
+	if (nimAddInt(offset, ((NI) 48), &TM__uO9aur3E5qgDnFhX0NAUatA_21)) { raiseOverflow(); };	if ((NU)((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_21)) >= (NU)(blkLen_0)){ raiseIndexError2((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_21),blkLen_0-1); }	pX60gensym83555012_ = (*((NU32*) ((&blk[(NI)(TM__uO9aur3E5qgDnFhX0NAUatA_21)]))));
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	tmpX60gensym39266368_ = __builtin_bswap32(pX60gensym48570012_);
+	tmpX60gensym58491328_ = __builtin_bswap32(pX60gensym83555012_);
 #line 23 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 12))- 0] = tmpX60gensym39266368_;
+	arr[(((NI) 12))- 0] = tmpX60gensym58491328_;
 #line 24 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 24 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -664,7 +664,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	C = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(C) + (NU32)(tmpX60gensym39266368_))) + (NU32)((NU32)((NU32)((NU32)(D) << (NU32)(((NU32) 5))) | (NU32)((NU32)(D) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(A ^ B) & E) ^ B)))) + (NU32)(((NU32) 1518500249)));
+	C = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(C) + (NU32)(tmpX60gensym58491328_))) + (NU32)((NU32)((NU32)((NU32)(D) << (NU32)(((NU32) 5))) | (NU32)((NU32)(D) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(A ^ B) & E) ^ B)))) + (NU32)(((NU32) 1518500249)));
 #line 25 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 25 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -678,13 +678,13 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 335 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 22 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	if (nimAddInt(offset, ((NI) 52), &TM__uO9aur3E5qgDnFhX0NAUatA_22)) { raiseOverflow(); };	if ((NU)((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_22)) >= (NU)(blkLen_0)){ raiseIndexError2((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_22),blkLen_0-1); }	pX60gensym48590012_ = (*((NU32*) ((&blk[(NI)(TM__uO9aur3E5qgDnFhX0NAUatA_22)]))));
+	if (nimAddInt(offset, ((NI) 52), &TM__uO9aur3E5qgDnFhX0NAUatA_22)) { raiseOverflow(); };	if ((NU)((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_22)) >= (NU)(blkLen_0)){ raiseIndexError2((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_22),blkLen_0-1); }	pX60gensym83575012_ = (*((NU32*) ((&blk[(NI)(TM__uO9aur3E5qgDnFhX0NAUatA_22)]))));
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	tmpX60gensym39266372_ = __builtin_bswap32(pX60gensym48590012_);
+	tmpX60gensym58491332_ = __builtin_bswap32(pX60gensym83575012_);
 #line 23 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 13))- 0] = tmpX60gensym39266372_;
+	arr[(((NI) 13))- 0] = tmpX60gensym58491332_;
 #line 24 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 24 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -706,7 +706,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	B = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(B) + (NU32)(tmpX60gensym39266372_))) + (NU32)((NU32)((NU32)((NU32)(C) << (NU32)(((NU32) 5))) | (NU32)((NU32)(C) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(E ^ A) & D) ^ A)))) + (NU32)(((NU32) 1518500249)));
+	B = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(B) + (NU32)(tmpX60gensym58491332_))) + (NU32)((NU32)((NU32)((NU32)(C) << (NU32)(((NU32) 5))) | (NU32)((NU32)(C) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(E ^ A) & D) ^ A)))) + (NU32)(((NU32) 1518500249)));
 #line 25 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 25 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -720,13 +720,13 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 335 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 22 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	if (nimAddInt(offset, ((NI) 56), &TM__uO9aur3E5qgDnFhX0NAUatA_23)) { raiseOverflow(); };	if ((NU)((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_23)) >= (NU)(blkLen_0)){ raiseIndexError2((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_23),blkLen_0-1); }	pX60gensym48610012_ = (*((NU32*) ((&blk[(NI)(TM__uO9aur3E5qgDnFhX0NAUatA_23)]))));
+	if (nimAddInt(offset, ((NI) 56), &TM__uO9aur3E5qgDnFhX0NAUatA_23)) { raiseOverflow(); };	if ((NU)((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_23)) >= (NU)(blkLen_0)){ raiseIndexError2((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_23),blkLen_0-1); }	pX60gensym83595012_ = (*((NU32*) ((&blk[(NI)(TM__uO9aur3E5qgDnFhX0NAUatA_23)]))));
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	tmpX60gensym39266376_ = __builtin_bswap32(pX60gensym48610012_);
+	tmpX60gensym58491336_ = __builtin_bswap32(pX60gensym83595012_);
 #line 23 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 14))- 0] = tmpX60gensym39266376_;
+	arr[(((NI) 14))- 0] = tmpX60gensym58491336_;
 #line 24 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 24 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -748,7 +748,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	A = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(A) + (NU32)(tmpX60gensym39266376_))) + (NU32)((NU32)((NU32)((NU32)(B) << (NU32)(((NU32) 5))) | (NU32)((NU32)(B) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(D ^ E) & C) ^ E)))) + (NU32)(((NU32) 1518500249)));
+	A = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(A) + (NU32)(tmpX60gensym58491336_))) + (NU32)((NU32)((NU32)((NU32)(B) << (NU32)(((NU32) 5))) | (NU32)((NU32)(B) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(D ^ E) & C) ^ E)))) + (NU32)(((NU32) 1518500249)));
 #line 25 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 25 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -762,13 +762,13 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 335 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 22 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	if (nimAddInt(offset, ((NI) 60), &TM__uO9aur3E5qgDnFhX0NAUatA_24)) { raiseOverflow(); };	if ((NU)((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_24)) >= (NU)(blkLen_0)){ raiseIndexError2((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_24),blkLen_0-1); }	pX60gensym48630012_ = (*((NU32*) ((&blk[(NI)(TM__uO9aur3E5qgDnFhX0NAUatA_24)]))));
+	if (nimAddInt(offset, ((NI) 60), &TM__uO9aur3E5qgDnFhX0NAUatA_24)) { raiseOverflow(); };	if ((NU)((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_24)) >= (NU)(blkLen_0)){ raiseIndexError2((NI)(TM__uO9aur3E5qgDnFhX0NAUatA_24),blkLen_0-1); }	pX60gensym83615012_ = (*((NU32*) ((&blk[(NI)(TM__uO9aur3E5qgDnFhX0NAUatA_24)]))));
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	tmpX60gensym39266380_ = __builtin_bswap32(pX60gensym48630012_);
+	tmpX60gensym58491340_ = __builtin_bswap32(pX60gensym83615012_);
 #line 23 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 15))- 0] = tmpX60gensym39266380_;
+	arr[(((NI) 15))- 0] = tmpX60gensym58491340_;
 #line 24 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 24 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -790,7 +790,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	E = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(E) + (NU32)(tmpX60gensym39266380_))) + (NU32)((NU32)((NU32)((NU32)(A) << (NU32)(((NU32) 5))) | (NU32)((NU32)(A) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(C ^ D) & B) ^ D)))) + (NU32)(((NU32) 1518500249)));
+	E = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(E) + (NU32)(tmpX60gensym58491340_))) + (NU32)((NU32)((NU32)((NU32)(A) << (NU32)(((NU32) 5))) | (NU32)((NU32)(A) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(C ^ D) & B) ^ D)))) + (NU32)(((NU32) 1518500249)));
 #line 25 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 25 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -818,9 +818,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266384_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 13))- 0] ^ arr[(((NI) 8))- 0]) ^ arr[(((NI) 2))- 0]) ^ arr[(((NI) 0))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 13))- 0] ^ arr[(((NI) 8))- 0]) ^ arr[(((NI) 2))- 0]) ^ arr[(((NI) 0))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491344_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 13))- 0] ^ arr[(((NI) 8))- 0]) ^ arr[(((NI) 2))- 0]) ^ arr[(((NI) 0))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 13))- 0] ^ arr[(((NI) 8))- 0]) ^ arr[(((NI) 2))- 0]) ^ arr[(((NI) 0))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 0))- 0] = tmpX60gensym39266384_;
+	arr[(((NI) 0))- 0] = tmpX60gensym58491344_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -842,7 +842,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 38 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 38 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	D = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(D) + (NU32)(tmpX60gensym39266384_))) + (NU32)((NU32)((NU32)((NU32)(E) << (NU32)(((NU32) 5))) | (NU32)((NU32)(E) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(B ^ C) & A) ^ C)))) + (NU32)(((NU32) 1518500249)));
+	D = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(D) + (NU32)(tmpX60gensym58491344_))) + (NU32)((NU32)((NU32)((NU32)(E) << (NU32)(((NU32) 5))) | (NU32)((NU32)(E) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(B ^ C) & A) ^ C)))) + (NU32)(((NU32) 1518500249)));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -870,9 +870,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266388_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 14))- 0] ^ arr[(((NI) 9))- 0]) ^ arr[(((NI) 3))- 0]) ^ arr[(((NI) 1))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 14))- 0] ^ arr[(((NI) 9))- 0]) ^ arr[(((NI) 3))- 0]) ^ arr[(((NI) 1))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491348_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 14))- 0] ^ arr[(((NI) 9))- 0]) ^ arr[(((NI) 3))- 0]) ^ arr[(((NI) 1))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 14))- 0] ^ arr[(((NI) 9))- 0]) ^ arr[(((NI) 3))- 0]) ^ arr[(((NI) 1))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 1))- 0] = tmpX60gensym39266388_;
+	arr[(((NI) 1))- 0] = tmpX60gensym58491348_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -894,7 +894,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 38 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 38 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	C = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(C) + (NU32)(tmpX60gensym39266388_))) + (NU32)((NU32)((NU32)((NU32)(D) << (NU32)(((NU32) 5))) | (NU32)((NU32)(D) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(A ^ B) & E) ^ B)))) + (NU32)(((NU32) 1518500249)));
+	C = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(C) + (NU32)(tmpX60gensym58491348_))) + (NU32)((NU32)((NU32)((NU32)(D) << (NU32)(((NU32) 5))) | (NU32)((NU32)(D) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(A ^ B) & E) ^ B)))) + (NU32)(((NU32) 1518500249)));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -922,9 +922,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266392_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 15))- 0] ^ arr[(((NI) 10))- 0]) ^ arr[(((NI) 4))- 0]) ^ arr[(((NI) 2))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 15))- 0] ^ arr[(((NI) 10))- 0]) ^ arr[(((NI) 4))- 0]) ^ arr[(((NI) 2))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491352_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 15))- 0] ^ arr[(((NI) 10))- 0]) ^ arr[(((NI) 4))- 0]) ^ arr[(((NI) 2))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 15))- 0] ^ arr[(((NI) 10))- 0]) ^ arr[(((NI) 4))- 0]) ^ arr[(((NI) 2))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 2))- 0] = tmpX60gensym39266392_;
+	arr[(((NI) 2))- 0] = tmpX60gensym58491352_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -946,7 +946,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 38 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 38 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	B = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(B) + (NU32)(tmpX60gensym39266392_))) + (NU32)((NU32)((NU32)((NU32)(C) << (NU32)(((NU32) 5))) | (NU32)((NU32)(C) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(E ^ A) & D) ^ A)))) + (NU32)(((NU32) 1518500249)));
+	B = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(B) + (NU32)(tmpX60gensym58491352_))) + (NU32)((NU32)((NU32)((NU32)(C) << (NU32)(((NU32) 5))) | (NU32)((NU32)(C) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(E ^ A) & D) ^ A)))) + (NU32)(((NU32) 1518500249)));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -974,9 +974,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266396_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 0))- 0] ^ arr[(((NI) 11))- 0]) ^ arr[(((NI) 5))- 0]) ^ arr[(((NI) 3))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 0))- 0] ^ arr[(((NI) 11))- 0]) ^ arr[(((NI) 5))- 0]) ^ arr[(((NI) 3))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491356_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 0))- 0] ^ arr[(((NI) 11))- 0]) ^ arr[(((NI) 5))- 0]) ^ arr[(((NI) 3))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 0))- 0] ^ arr[(((NI) 11))- 0]) ^ arr[(((NI) 5))- 0]) ^ arr[(((NI) 3))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 3))- 0] = tmpX60gensym39266396_;
+	arr[(((NI) 3))- 0] = tmpX60gensym58491356_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -998,7 +998,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 38 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 38 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	A = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(A) + (NU32)(tmpX60gensym39266396_))) + (NU32)((NU32)((NU32)((NU32)(B) << (NU32)(((NU32) 5))) | (NU32)((NU32)(B) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(D ^ E) & C) ^ E)))) + (NU32)(((NU32) 1518500249)));
+	A = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(A) + (NU32)(tmpX60gensym58491356_))) + (NU32)((NU32)((NU32)((NU32)(B) << (NU32)(((NU32) 5))) | (NU32)((NU32)(B) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(D ^ E) & C) ^ E)))) + (NU32)(((NU32) 1518500249)));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -1026,9 +1026,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266400_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 1))- 0] ^ arr[(((NI) 12))- 0]) ^ arr[(((NI) 6))- 0]) ^ arr[(((NI) 4))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 1))- 0] ^ arr[(((NI) 12))- 0]) ^ arr[(((NI) 6))- 0]) ^ arr[(((NI) 4))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491360_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 1))- 0] ^ arr[(((NI) 12))- 0]) ^ arr[(((NI) 6))- 0]) ^ arr[(((NI) 4))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 1))- 0] ^ arr[(((NI) 12))- 0]) ^ arr[(((NI) 6))- 0]) ^ arr[(((NI) 4))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 4))- 0] = tmpX60gensym39266400_;
+	arr[(((NI) 4))- 0] = tmpX60gensym58491360_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -1048,7 +1048,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 42 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 42 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	E = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(E) + (NU32)(tmpX60gensym39266400_))) + (NU32)((NU32)((NU32)((NU32)(A) << (NU32)(((NU32) 5))) | (NU32)((NU32)(A) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(B ^ C) ^ D)))) + (NU32)(((NU32) 1859775393)));
+	E = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(E) + (NU32)(tmpX60gensym58491360_))) + (NU32)((NU32)((NU32)((NU32)(A) << (NU32)(((NU32) 5))) | (NU32)((NU32)(A) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(B ^ C) ^ D)))) + (NU32)(((NU32) 1859775393)));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -1076,9 +1076,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266404_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 2))- 0] ^ arr[(((NI) 13))- 0]) ^ arr[(((NI) 7))- 0]) ^ arr[(((NI) 5))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 2))- 0] ^ arr[(((NI) 13))- 0]) ^ arr[(((NI) 7))- 0]) ^ arr[(((NI) 5))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491364_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 2))- 0] ^ arr[(((NI) 13))- 0]) ^ arr[(((NI) 7))- 0]) ^ arr[(((NI) 5))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 2))- 0] ^ arr[(((NI) 13))- 0]) ^ arr[(((NI) 7))- 0]) ^ arr[(((NI) 5))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 5))- 0] = tmpX60gensym39266404_;
+	arr[(((NI) 5))- 0] = tmpX60gensym58491364_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -1098,7 +1098,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 42 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 42 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	D = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(D) + (NU32)(tmpX60gensym39266404_))) + (NU32)((NU32)((NU32)((NU32)(E) << (NU32)(((NU32) 5))) | (NU32)((NU32)(E) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(A ^ B) ^ C)))) + (NU32)(((NU32) 1859775393)));
+	D = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(D) + (NU32)(tmpX60gensym58491364_))) + (NU32)((NU32)((NU32)((NU32)(E) << (NU32)(((NU32) 5))) | (NU32)((NU32)(E) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(A ^ B) ^ C)))) + (NU32)(((NU32) 1859775393)));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -1126,9 +1126,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266408_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 3))- 0] ^ arr[(((NI) 14))- 0]) ^ arr[(((NI) 8))- 0]) ^ arr[(((NI) 6))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 3))- 0] ^ arr[(((NI) 14))- 0]) ^ arr[(((NI) 8))- 0]) ^ arr[(((NI) 6))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491368_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 3))- 0] ^ arr[(((NI) 14))- 0]) ^ arr[(((NI) 8))- 0]) ^ arr[(((NI) 6))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 3))- 0] ^ arr[(((NI) 14))- 0]) ^ arr[(((NI) 8))- 0]) ^ arr[(((NI) 6))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 6))- 0] = tmpX60gensym39266408_;
+	arr[(((NI) 6))- 0] = tmpX60gensym58491368_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -1148,7 +1148,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 42 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 42 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	C = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(C) + (NU32)(tmpX60gensym39266408_))) + (NU32)((NU32)((NU32)((NU32)(D) << (NU32)(((NU32) 5))) | (NU32)((NU32)(D) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(E ^ A) ^ B)))) + (NU32)(((NU32) 1859775393)));
+	C = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(C) + (NU32)(tmpX60gensym58491368_))) + (NU32)((NU32)((NU32)((NU32)(D) << (NU32)(((NU32) 5))) | (NU32)((NU32)(D) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(E ^ A) ^ B)))) + (NU32)(((NU32) 1859775393)));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -1176,9 +1176,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266412_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 4))- 0] ^ arr[(((NI) 15))- 0]) ^ arr[(((NI) 9))- 0]) ^ arr[(((NI) 7))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 4))- 0] ^ arr[(((NI) 15))- 0]) ^ arr[(((NI) 9))- 0]) ^ arr[(((NI) 7))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491372_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 4))- 0] ^ arr[(((NI) 15))- 0]) ^ arr[(((NI) 9))- 0]) ^ arr[(((NI) 7))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 4))- 0] ^ arr[(((NI) 15))- 0]) ^ arr[(((NI) 9))- 0]) ^ arr[(((NI) 7))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 7))- 0] = tmpX60gensym39266412_;
+	arr[(((NI) 7))- 0] = tmpX60gensym58491372_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -1198,7 +1198,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 42 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 42 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	B = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(B) + (NU32)(tmpX60gensym39266412_))) + (NU32)((NU32)((NU32)((NU32)(C) << (NU32)(((NU32) 5))) | (NU32)((NU32)(C) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(D ^ E) ^ A)))) + (NU32)(((NU32) 1859775393)));
+	B = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(B) + (NU32)(tmpX60gensym58491372_))) + (NU32)((NU32)((NU32)((NU32)(C) << (NU32)(((NU32) 5))) | (NU32)((NU32)(C) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(D ^ E) ^ A)))) + (NU32)(((NU32) 1859775393)));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -1226,9 +1226,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266416_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 5))- 0] ^ arr[(((NI) 0))- 0]) ^ arr[(((NI) 10))- 0]) ^ arr[(((NI) 8))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 5))- 0] ^ arr[(((NI) 0))- 0]) ^ arr[(((NI) 10))- 0]) ^ arr[(((NI) 8))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491376_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 5))- 0] ^ arr[(((NI) 0))- 0]) ^ arr[(((NI) 10))- 0]) ^ arr[(((NI) 8))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 5))- 0] ^ arr[(((NI) 0))- 0]) ^ arr[(((NI) 10))- 0]) ^ arr[(((NI) 8))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 8))- 0] = tmpX60gensym39266416_;
+	arr[(((NI) 8))- 0] = tmpX60gensym58491376_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -1248,7 +1248,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 42 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 42 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	A = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(A) + (NU32)(tmpX60gensym39266416_))) + (NU32)((NU32)((NU32)((NU32)(B) << (NU32)(((NU32) 5))) | (NU32)((NU32)(B) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(C ^ D) ^ E)))) + (NU32)(((NU32) 1859775393)));
+	A = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(A) + (NU32)(tmpX60gensym58491376_))) + (NU32)((NU32)((NU32)((NU32)(B) << (NU32)(((NU32) 5))) | (NU32)((NU32)(B) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(C ^ D) ^ E)))) + (NU32)(((NU32) 1859775393)));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -1276,9 +1276,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266420_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 6))- 0] ^ arr[(((NI) 1))- 0]) ^ arr[(((NI) 11))- 0]) ^ arr[(((NI) 9))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 6))- 0] ^ arr[(((NI) 1))- 0]) ^ arr[(((NI) 11))- 0]) ^ arr[(((NI) 9))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491380_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 6))- 0] ^ arr[(((NI) 1))- 0]) ^ arr[(((NI) 11))- 0]) ^ arr[(((NI) 9))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 6))- 0] ^ arr[(((NI) 1))- 0]) ^ arr[(((NI) 11))- 0]) ^ arr[(((NI) 9))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 9))- 0] = tmpX60gensym39266420_;
+	arr[(((NI) 9))- 0] = tmpX60gensym58491380_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -1298,7 +1298,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 42 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 42 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	E = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(E) + (NU32)(tmpX60gensym39266420_))) + (NU32)((NU32)((NU32)((NU32)(A) << (NU32)(((NU32) 5))) | (NU32)((NU32)(A) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(B ^ C) ^ D)))) + (NU32)(((NU32) 1859775393)));
+	E = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(E) + (NU32)(tmpX60gensym58491380_))) + (NU32)((NU32)((NU32)((NU32)(A) << (NU32)(((NU32) 5))) | (NU32)((NU32)(A) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(B ^ C) ^ D)))) + (NU32)(((NU32) 1859775393)));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -1326,9 +1326,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266424_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 7))- 0] ^ arr[(((NI) 2))- 0]) ^ arr[(((NI) 12))- 0]) ^ arr[(((NI) 10))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 7))- 0] ^ arr[(((NI) 2))- 0]) ^ arr[(((NI) 12))- 0]) ^ arr[(((NI) 10))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491384_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 7))- 0] ^ arr[(((NI) 2))- 0]) ^ arr[(((NI) 12))- 0]) ^ arr[(((NI) 10))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 7))- 0] ^ arr[(((NI) 2))- 0]) ^ arr[(((NI) 12))- 0]) ^ arr[(((NI) 10))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 10))- 0] = tmpX60gensym39266424_;
+	arr[(((NI) 10))- 0] = tmpX60gensym58491384_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -1348,7 +1348,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 42 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 42 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	D = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(D) + (NU32)(tmpX60gensym39266424_))) + (NU32)((NU32)((NU32)((NU32)(E) << (NU32)(((NU32) 5))) | (NU32)((NU32)(E) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(A ^ B) ^ C)))) + (NU32)(((NU32) 1859775393)));
+	D = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(D) + (NU32)(tmpX60gensym58491384_))) + (NU32)((NU32)((NU32)((NU32)(E) << (NU32)(((NU32) 5))) | (NU32)((NU32)(E) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(A ^ B) ^ C)))) + (NU32)(((NU32) 1859775393)));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -1376,9 +1376,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266428_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 8))- 0] ^ arr[(((NI) 3))- 0]) ^ arr[(((NI) 13))- 0]) ^ arr[(((NI) 11))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 8))- 0] ^ arr[(((NI) 3))- 0]) ^ arr[(((NI) 13))- 0]) ^ arr[(((NI) 11))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491388_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 8))- 0] ^ arr[(((NI) 3))- 0]) ^ arr[(((NI) 13))- 0]) ^ arr[(((NI) 11))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 8))- 0] ^ arr[(((NI) 3))- 0]) ^ arr[(((NI) 13))- 0]) ^ arr[(((NI) 11))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 11))- 0] = tmpX60gensym39266428_;
+	arr[(((NI) 11))- 0] = tmpX60gensym58491388_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -1398,7 +1398,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 42 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 42 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	C = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(C) + (NU32)(tmpX60gensym39266428_))) + (NU32)((NU32)((NU32)((NU32)(D) << (NU32)(((NU32) 5))) | (NU32)((NU32)(D) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(E ^ A) ^ B)))) + (NU32)(((NU32) 1859775393)));
+	C = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(C) + (NU32)(tmpX60gensym58491388_))) + (NU32)((NU32)((NU32)((NU32)(D) << (NU32)(((NU32) 5))) | (NU32)((NU32)(D) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(E ^ A) ^ B)))) + (NU32)(((NU32) 1859775393)));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -1426,9 +1426,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266432_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 9))- 0] ^ arr[(((NI) 4))- 0]) ^ arr[(((NI) 14))- 0]) ^ arr[(((NI) 12))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 9))- 0] ^ arr[(((NI) 4))- 0]) ^ arr[(((NI) 14))- 0]) ^ arr[(((NI) 12))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491392_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 9))- 0] ^ arr[(((NI) 4))- 0]) ^ arr[(((NI) 14))- 0]) ^ arr[(((NI) 12))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 9))- 0] ^ arr[(((NI) 4))- 0]) ^ arr[(((NI) 14))- 0]) ^ arr[(((NI) 12))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 12))- 0] = tmpX60gensym39266432_;
+	arr[(((NI) 12))- 0] = tmpX60gensym58491392_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -1448,7 +1448,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 42 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 42 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	B = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(B) + (NU32)(tmpX60gensym39266432_))) + (NU32)((NU32)((NU32)((NU32)(C) << (NU32)(((NU32) 5))) | (NU32)((NU32)(C) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(D ^ E) ^ A)))) + (NU32)(((NU32) 1859775393)));
+	B = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(B) + (NU32)(tmpX60gensym58491392_))) + (NU32)((NU32)((NU32)((NU32)(C) << (NU32)(((NU32) 5))) | (NU32)((NU32)(C) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(D ^ E) ^ A)))) + (NU32)(((NU32) 1859775393)));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -1476,9 +1476,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266436_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 10))- 0] ^ arr[(((NI) 5))- 0]) ^ arr[(((NI) 15))- 0]) ^ arr[(((NI) 13))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 10))- 0] ^ arr[(((NI) 5))- 0]) ^ arr[(((NI) 15))- 0]) ^ arr[(((NI) 13))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491396_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 10))- 0] ^ arr[(((NI) 5))- 0]) ^ arr[(((NI) 15))- 0]) ^ arr[(((NI) 13))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 10))- 0] ^ arr[(((NI) 5))- 0]) ^ arr[(((NI) 15))- 0]) ^ arr[(((NI) 13))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 13))- 0] = tmpX60gensym39266436_;
+	arr[(((NI) 13))- 0] = tmpX60gensym58491396_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -1498,7 +1498,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 42 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 42 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	A = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(A) + (NU32)(tmpX60gensym39266436_))) + (NU32)((NU32)((NU32)((NU32)(B) << (NU32)(((NU32) 5))) | (NU32)((NU32)(B) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(C ^ D) ^ E)))) + (NU32)(((NU32) 1859775393)));
+	A = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(A) + (NU32)(tmpX60gensym58491396_))) + (NU32)((NU32)((NU32)((NU32)(B) << (NU32)(((NU32) 5))) | (NU32)((NU32)(B) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(C ^ D) ^ E)))) + (NU32)(((NU32) 1859775393)));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -1526,9 +1526,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266440_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 11))- 0] ^ arr[(((NI) 6))- 0]) ^ arr[(((NI) 0))- 0]) ^ arr[(((NI) 14))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 11))- 0] ^ arr[(((NI) 6))- 0]) ^ arr[(((NI) 0))- 0]) ^ arr[(((NI) 14))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491400_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 11))- 0] ^ arr[(((NI) 6))- 0]) ^ arr[(((NI) 0))- 0]) ^ arr[(((NI) 14))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 11))- 0] ^ arr[(((NI) 6))- 0]) ^ arr[(((NI) 0))- 0]) ^ arr[(((NI) 14))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 14))- 0] = tmpX60gensym39266440_;
+	arr[(((NI) 14))- 0] = tmpX60gensym58491400_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -1548,7 +1548,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 42 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 42 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	E = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(E) + (NU32)(tmpX60gensym39266440_))) + (NU32)((NU32)((NU32)((NU32)(A) << (NU32)(((NU32) 5))) | (NU32)((NU32)(A) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(B ^ C) ^ D)))) + (NU32)(((NU32) 1859775393)));
+	E = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(E) + (NU32)(tmpX60gensym58491400_))) + (NU32)((NU32)((NU32)((NU32)(A) << (NU32)(((NU32) 5))) | (NU32)((NU32)(A) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(B ^ C) ^ D)))) + (NU32)(((NU32) 1859775393)));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -1576,9 +1576,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266444_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 12))- 0] ^ arr[(((NI) 7))- 0]) ^ arr[(((NI) 1))- 0]) ^ arr[(((NI) 15))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 12))- 0] ^ arr[(((NI) 7))- 0]) ^ arr[(((NI) 1))- 0]) ^ arr[(((NI) 15))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491404_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 12))- 0] ^ arr[(((NI) 7))- 0]) ^ arr[(((NI) 1))- 0]) ^ arr[(((NI) 15))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 12))- 0] ^ arr[(((NI) 7))- 0]) ^ arr[(((NI) 1))- 0]) ^ arr[(((NI) 15))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 15))- 0] = tmpX60gensym39266444_;
+	arr[(((NI) 15))- 0] = tmpX60gensym58491404_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -1598,7 +1598,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 42 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 42 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	D = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(D) + (NU32)(tmpX60gensym39266444_))) + (NU32)((NU32)((NU32)((NU32)(E) << (NU32)(((NU32) 5))) | (NU32)((NU32)(E) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(A ^ B) ^ C)))) + (NU32)(((NU32) 1859775393)));
+	D = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(D) + (NU32)(tmpX60gensym58491404_))) + (NU32)((NU32)((NU32)((NU32)(E) << (NU32)(((NU32) 5))) | (NU32)((NU32)(E) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(A ^ B) ^ C)))) + (NU32)(((NU32) 1859775393)));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -1626,9 +1626,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266448_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 13))- 0] ^ arr[(((NI) 8))- 0]) ^ arr[(((NI) 2))- 0]) ^ arr[(((NI) 0))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 13))- 0] ^ arr[(((NI) 8))- 0]) ^ arr[(((NI) 2))- 0]) ^ arr[(((NI) 0))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491408_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 13))- 0] ^ arr[(((NI) 8))- 0]) ^ arr[(((NI) 2))- 0]) ^ arr[(((NI) 0))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 13))- 0] ^ arr[(((NI) 8))- 0]) ^ arr[(((NI) 2))- 0]) ^ arr[(((NI) 0))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 0))- 0] = tmpX60gensym39266448_;
+	arr[(((NI) 0))- 0] = tmpX60gensym58491408_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -1648,7 +1648,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 42 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 42 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	C = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(C) + (NU32)(tmpX60gensym39266448_))) + (NU32)((NU32)((NU32)((NU32)(D) << (NU32)(((NU32) 5))) | (NU32)((NU32)(D) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(E ^ A) ^ B)))) + (NU32)(((NU32) 1859775393)));
+	C = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(C) + (NU32)(tmpX60gensym58491408_))) + (NU32)((NU32)((NU32)((NU32)(D) << (NU32)(((NU32) 5))) | (NU32)((NU32)(D) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(E ^ A) ^ B)))) + (NU32)(((NU32) 1859775393)));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -1676,9 +1676,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266452_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 14))- 0] ^ arr[(((NI) 9))- 0]) ^ arr[(((NI) 3))- 0]) ^ arr[(((NI) 1))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 14))- 0] ^ arr[(((NI) 9))- 0]) ^ arr[(((NI) 3))- 0]) ^ arr[(((NI) 1))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491412_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 14))- 0] ^ arr[(((NI) 9))- 0]) ^ arr[(((NI) 3))- 0]) ^ arr[(((NI) 1))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 14))- 0] ^ arr[(((NI) 9))- 0]) ^ arr[(((NI) 3))- 0]) ^ arr[(((NI) 1))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 1))- 0] = tmpX60gensym39266452_;
+	arr[(((NI) 1))- 0] = tmpX60gensym58491412_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -1698,7 +1698,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 42 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 42 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	B = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(B) + (NU32)(tmpX60gensym39266452_))) + (NU32)((NU32)((NU32)((NU32)(C) << (NU32)(((NU32) 5))) | (NU32)((NU32)(C) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(D ^ E) ^ A)))) + (NU32)(((NU32) 1859775393)));
+	B = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(B) + (NU32)(tmpX60gensym58491412_))) + (NU32)((NU32)((NU32)((NU32)(C) << (NU32)(((NU32) 5))) | (NU32)((NU32)(C) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(D ^ E) ^ A)))) + (NU32)(((NU32) 1859775393)));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -1726,9 +1726,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266456_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 15))- 0] ^ arr[(((NI) 10))- 0]) ^ arr[(((NI) 4))- 0]) ^ arr[(((NI) 2))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 15))- 0] ^ arr[(((NI) 10))- 0]) ^ arr[(((NI) 4))- 0]) ^ arr[(((NI) 2))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491416_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 15))- 0] ^ arr[(((NI) 10))- 0]) ^ arr[(((NI) 4))- 0]) ^ arr[(((NI) 2))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 15))- 0] ^ arr[(((NI) 10))- 0]) ^ arr[(((NI) 4))- 0]) ^ arr[(((NI) 2))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 2))- 0] = tmpX60gensym39266456_;
+	arr[(((NI) 2))- 0] = tmpX60gensym58491416_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -1748,7 +1748,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 42 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 42 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	A = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(A) + (NU32)(tmpX60gensym39266456_))) + (NU32)((NU32)((NU32)((NU32)(B) << (NU32)(((NU32) 5))) | (NU32)((NU32)(B) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(C ^ D) ^ E)))) + (NU32)(((NU32) 1859775393)));
+	A = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(A) + (NU32)(tmpX60gensym58491416_))) + (NU32)((NU32)((NU32)((NU32)(B) << (NU32)(((NU32) 5))) | (NU32)((NU32)(B) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(C ^ D) ^ E)))) + (NU32)(((NU32) 1859775393)));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -1776,9 +1776,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266460_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 0))- 0] ^ arr[(((NI) 11))- 0]) ^ arr[(((NI) 5))- 0]) ^ arr[(((NI) 3))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 0))- 0] ^ arr[(((NI) 11))- 0]) ^ arr[(((NI) 5))- 0]) ^ arr[(((NI) 3))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491420_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 0))- 0] ^ arr[(((NI) 11))- 0]) ^ arr[(((NI) 5))- 0]) ^ arr[(((NI) 3))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 0))- 0] ^ arr[(((NI) 11))- 0]) ^ arr[(((NI) 5))- 0]) ^ arr[(((NI) 3))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 3))- 0] = tmpX60gensym39266460_;
+	arr[(((NI) 3))- 0] = tmpX60gensym58491420_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -1798,7 +1798,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 42 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 42 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	E = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(E) + (NU32)(tmpX60gensym39266460_))) + (NU32)((NU32)((NU32)((NU32)(A) << (NU32)(((NU32) 5))) | (NU32)((NU32)(A) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(B ^ C) ^ D)))) + (NU32)(((NU32) 1859775393)));
+	E = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(E) + (NU32)(tmpX60gensym58491420_))) + (NU32)((NU32)((NU32)((NU32)(A) << (NU32)(((NU32) 5))) | (NU32)((NU32)(A) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(B ^ C) ^ D)))) + (NU32)(((NU32) 1859775393)));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -1826,9 +1826,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266464_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 1))- 0] ^ arr[(((NI) 12))- 0]) ^ arr[(((NI) 6))- 0]) ^ arr[(((NI) 4))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 1))- 0] ^ arr[(((NI) 12))- 0]) ^ arr[(((NI) 6))- 0]) ^ arr[(((NI) 4))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491424_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 1))- 0] ^ arr[(((NI) 12))- 0]) ^ arr[(((NI) 6))- 0]) ^ arr[(((NI) 4))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 1))- 0] ^ arr[(((NI) 12))- 0]) ^ arr[(((NI) 6))- 0]) ^ arr[(((NI) 4))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 4))- 0] = tmpX60gensym39266464_;
+	arr[(((NI) 4))- 0] = tmpX60gensym58491424_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -1848,7 +1848,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 42 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 42 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	D = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(D) + (NU32)(tmpX60gensym39266464_))) + (NU32)((NU32)((NU32)((NU32)(E) << (NU32)(((NU32) 5))) | (NU32)((NU32)(E) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(A ^ B) ^ C)))) + (NU32)(((NU32) 1859775393)));
+	D = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(D) + (NU32)(tmpX60gensym58491424_))) + (NU32)((NU32)((NU32)((NU32)(E) << (NU32)(((NU32) 5))) | (NU32)((NU32)(E) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(A ^ B) ^ C)))) + (NU32)(((NU32) 1859775393)));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -1876,9 +1876,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266468_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 2))- 0] ^ arr[(((NI) 13))- 0]) ^ arr[(((NI) 7))- 0]) ^ arr[(((NI) 5))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 2))- 0] ^ arr[(((NI) 13))- 0]) ^ arr[(((NI) 7))- 0]) ^ arr[(((NI) 5))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491428_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 2))- 0] ^ arr[(((NI) 13))- 0]) ^ arr[(((NI) 7))- 0]) ^ arr[(((NI) 5))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 2))- 0] ^ arr[(((NI) 13))- 0]) ^ arr[(((NI) 7))- 0]) ^ arr[(((NI) 5))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 5))- 0] = tmpX60gensym39266468_;
+	arr[(((NI) 5))- 0] = tmpX60gensym58491428_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -1898,7 +1898,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 42 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 42 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	C = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(C) + (NU32)(tmpX60gensym39266468_))) + (NU32)((NU32)((NU32)((NU32)(D) << (NU32)(((NU32) 5))) | (NU32)((NU32)(D) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(E ^ A) ^ B)))) + (NU32)(((NU32) 1859775393)));
+	C = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(C) + (NU32)(tmpX60gensym58491428_))) + (NU32)((NU32)((NU32)((NU32)(D) << (NU32)(((NU32) 5))) | (NU32)((NU32)(D) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(E ^ A) ^ B)))) + (NU32)(((NU32) 1859775393)));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -1926,9 +1926,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266472_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 3))- 0] ^ arr[(((NI) 14))- 0]) ^ arr[(((NI) 8))- 0]) ^ arr[(((NI) 6))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 3))- 0] ^ arr[(((NI) 14))- 0]) ^ arr[(((NI) 8))- 0]) ^ arr[(((NI) 6))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491432_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 3))- 0] ^ arr[(((NI) 14))- 0]) ^ arr[(((NI) 8))- 0]) ^ arr[(((NI) 6))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 3))- 0] ^ arr[(((NI) 14))- 0]) ^ arr[(((NI) 8))- 0]) ^ arr[(((NI) 6))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 6))- 0] = tmpX60gensym39266472_;
+	arr[(((NI) 6))- 0] = tmpX60gensym58491432_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -1948,7 +1948,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 42 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 42 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	B = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(B) + (NU32)(tmpX60gensym39266472_))) + (NU32)((NU32)((NU32)((NU32)(C) << (NU32)(((NU32) 5))) | (NU32)((NU32)(C) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(D ^ E) ^ A)))) + (NU32)(((NU32) 1859775393)));
+	B = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(B) + (NU32)(tmpX60gensym58491432_))) + (NU32)((NU32)((NU32)((NU32)(C) << (NU32)(((NU32) 5))) | (NU32)((NU32)(C) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(D ^ E) ^ A)))) + (NU32)(((NU32) 1859775393)));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -1976,9 +1976,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266476_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 4))- 0] ^ arr[(((NI) 15))- 0]) ^ arr[(((NI) 9))- 0]) ^ arr[(((NI) 7))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 4))- 0] ^ arr[(((NI) 15))- 0]) ^ arr[(((NI) 9))- 0]) ^ arr[(((NI) 7))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491436_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 4))- 0] ^ arr[(((NI) 15))- 0]) ^ arr[(((NI) 9))- 0]) ^ arr[(((NI) 7))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 4))- 0] ^ arr[(((NI) 15))- 0]) ^ arr[(((NI) 9))- 0]) ^ arr[(((NI) 7))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 7))- 0] = tmpX60gensym39266476_;
+	arr[(((NI) 7))- 0] = tmpX60gensym58491436_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -1998,7 +1998,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 42 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 42 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	A = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(A) + (NU32)(tmpX60gensym39266476_))) + (NU32)((NU32)((NU32)((NU32)(B) << (NU32)(((NU32) 5))) | (NU32)((NU32)(B) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(C ^ D) ^ E)))) + (NU32)(((NU32) 1859775393)));
+	A = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(A) + (NU32)(tmpX60gensym58491436_))) + (NU32)((NU32)((NU32)((NU32)(B) << (NU32)(((NU32) 5))) | (NU32)((NU32)(B) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(C ^ D) ^ E)))) + (NU32)(((NU32) 1859775393)));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -2026,9 +2026,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266480_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 5))- 0] ^ arr[(((NI) 0))- 0]) ^ arr[(((NI) 10))- 0]) ^ arr[(((NI) 8))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 5))- 0] ^ arr[(((NI) 0))- 0]) ^ arr[(((NI) 10))- 0]) ^ arr[(((NI) 8))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491440_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 5))- 0] ^ arr[(((NI) 0))- 0]) ^ arr[(((NI) 10))- 0]) ^ arr[(((NI) 8))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 5))- 0] ^ arr[(((NI) 0))- 0]) ^ arr[(((NI) 10))- 0]) ^ arr[(((NI) 8))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 8))- 0] = tmpX60gensym39266480_;
+	arr[(((NI) 8))- 0] = tmpX60gensym58491440_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -2052,7 +2052,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 45 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 45 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	E = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(E) + (NU32)(tmpX60gensym39266480_))) + (NU32)((NU32)((NU32)((NU32)(A) << (NU32)(((NU32) 5))) | (NU32)((NU32)(A) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(B & C)) + (NU32)((NU32)(D & (NU32)(B ^ C))))))) + (NU32)(((NU32) IL64(2400959708))));
+	E = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(E) + (NU32)(tmpX60gensym58491440_))) + (NU32)((NU32)((NU32)((NU32)(A) << (NU32)(((NU32) 5))) | (NU32)((NU32)(A) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(B & C)) + (NU32)((NU32)(D & (NU32)(B ^ C))))))) + (NU32)(((NU32) IL64(2400959708))));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -2080,9 +2080,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266484_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 6))- 0] ^ arr[(((NI) 1))- 0]) ^ arr[(((NI) 11))- 0]) ^ arr[(((NI) 9))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 6))- 0] ^ arr[(((NI) 1))- 0]) ^ arr[(((NI) 11))- 0]) ^ arr[(((NI) 9))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491444_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 6))- 0] ^ arr[(((NI) 1))- 0]) ^ arr[(((NI) 11))- 0]) ^ arr[(((NI) 9))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 6))- 0] ^ arr[(((NI) 1))- 0]) ^ arr[(((NI) 11))- 0]) ^ arr[(((NI) 9))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 9))- 0] = tmpX60gensym39266484_;
+	arr[(((NI) 9))- 0] = tmpX60gensym58491444_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -2106,7 +2106,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 45 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 45 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	D = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(D) + (NU32)(tmpX60gensym39266484_))) + (NU32)((NU32)((NU32)((NU32)(E) << (NU32)(((NU32) 5))) | (NU32)((NU32)(E) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(A & B)) + (NU32)((NU32)(C & (NU32)(A ^ B))))))) + (NU32)(((NU32) IL64(2400959708))));
+	D = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(D) + (NU32)(tmpX60gensym58491444_))) + (NU32)((NU32)((NU32)((NU32)(E) << (NU32)(((NU32) 5))) | (NU32)((NU32)(E) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(A & B)) + (NU32)((NU32)(C & (NU32)(A ^ B))))))) + (NU32)(((NU32) IL64(2400959708))));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -2134,9 +2134,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266488_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 7))- 0] ^ arr[(((NI) 2))- 0]) ^ arr[(((NI) 12))- 0]) ^ arr[(((NI) 10))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 7))- 0] ^ arr[(((NI) 2))- 0]) ^ arr[(((NI) 12))- 0]) ^ arr[(((NI) 10))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491448_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 7))- 0] ^ arr[(((NI) 2))- 0]) ^ arr[(((NI) 12))- 0]) ^ arr[(((NI) 10))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 7))- 0] ^ arr[(((NI) 2))- 0]) ^ arr[(((NI) 12))- 0]) ^ arr[(((NI) 10))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 10))- 0] = tmpX60gensym39266488_;
+	arr[(((NI) 10))- 0] = tmpX60gensym58491448_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -2160,7 +2160,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 45 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 45 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	C = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(C) + (NU32)(tmpX60gensym39266488_))) + (NU32)((NU32)((NU32)((NU32)(D) << (NU32)(((NU32) 5))) | (NU32)((NU32)(D) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(E & A)) + (NU32)((NU32)(B & (NU32)(E ^ A))))))) + (NU32)(((NU32) IL64(2400959708))));
+	C = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(C) + (NU32)(tmpX60gensym58491448_))) + (NU32)((NU32)((NU32)((NU32)(D) << (NU32)(((NU32) 5))) | (NU32)((NU32)(D) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(E & A)) + (NU32)((NU32)(B & (NU32)(E ^ A))))))) + (NU32)(((NU32) IL64(2400959708))));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -2188,9 +2188,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266492_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 8))- 0] ^ arr[(((NI) 3))- 0]) ^ arr[(((NI) 13))- 0]) ^ arr[(((NI) 11))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 8))- 0] ^ arr[(((NI) 3))- 0]) ^ arr[(((NI) 13))- 0]) ^ arr[(((NI) 11))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491452_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 8))- 0] ^ arr[(((NI) 3))- 0]) ^ arr[(((NI) 13))- 0]) ^ arr[(((NI) 11))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 8))- 0] ^ arr[(((NI) 3))- 0]) ^ arr[(((NI) 13))- 0]) ^ arr[(((NI) 11))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 11))- 0] = tmpX60gensym39266492_;
+	arr[(((NI) 11))- 0] = tmpX60gensym58491452_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -2214,7 +2214,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 45 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 45 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	B = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(B) + (NU32)(tmpX60gensym39266492_))) + (NU32)((NU32)((NU32)((NU32)(C) << (NU32)(((NU32) 5))) | (NU32)((NU32)(C) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(D & E)) + (NU32)((NU32)(A & (NU32)(D ^ E))))))) + (NU32)(((NU32) IL64(2400959708))));
+	B = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(B) + (NU32)(tmpX60gensym58491452_))) + (NU32)((NU32)((NU32)((NU32)(C) << (NU32)(((NU32) 5))) | (NU32)((NU32)(C) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(D & E)) + (NU32)((NU32)(A & (NU32)(D ^ E))))))) + (NU32)(((NU32) IL64(2400959708))));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -2242,9 +2242,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266496_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 9))- 0] ^ arr[(((NI) 4))- 0]) ^ arr[(((NI) 14))- 0]) ^ arr[(((NI) 12))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 9))- 0] ^ arr[(((NI) 4))- 0]) ^ arr[(((NI) 14))- 0]) ^ arr[(((NI) 12))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491456_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 9))- 0] ^ arr[(((NI) 4))- 0]) ^ arr[(((NI) 14))- 0]) ^ arr[(((NI) 12))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 9))- 0] ^ arr[(((NI) 4))- 0]) ^ arr[(((NI) 14))- 0]) ^ arr[(((NI) 12))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 12))- 0] = tmpX60gensym39266496_;
+	arr[(((NI) 12))- 0] = tmpX60gensym58491456_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -2268,7 +2268,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 45 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 45 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	A = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(A) + (NU32)(tmpX60gensym39266496_))) + (NU32)((NU32)((NU32)((NU32)(B) << (NU32)(((NU32) 5))) | (NU32)((NU32)(B) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(C & D)) + (NU32)((NU32)(E & (NU32)(C ^ D))))))) + (NU32)(((NU32) IL64(2400959708))));
+	A = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(A) + (NU32)(tmpX60gensym58491456_))) + (NU32)((NU32)((NU32)((NU32)(B) << (NU32)(((NU32) 5))) | (NU32)((NU32)(B) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(C & D)) + (NU32)((NU32)(E & (NU32)(C ^ D))))))) + (NU32)(((NU32) IL64(2400959708))));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -2296,9 +2296,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266500_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 10))- 0] ^ arr[(((NI) 5))- 0]) ^ arr[(((NI) 15))- 0]) ^ arr[(((NI) 13))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 10))- 0] ^ arr[(((NI) 5))- 0]) ^ arr[(((NI) 15))- 0]) ^ arr[(((NI) 13))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491460_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 10))- 0] ^ arr[(((NI) 5))- 0]) ^ arr[(((NI) 15))- 0]) ^ arr[(((NI) 13))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 10))- 0] ^ arr[(((NI) 5))- 0]) ^ arr[(((NI) 15))- 0]) ^ arr[(((NI) 13))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 13))- 0] = tmpX60gensym39266500_;
+	arr[(((NI) 13))- 0] = tmpX60gensym58491460_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -2322,7 +2322,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 45 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 45 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	E = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(E) + (NU32)(tmpX60gensym39266500_))) + (NU32)((NU32)((NU32)((NU32)(A) << (NU32)(((NU32) 5))) | (NU32)((NU32)(A) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(B & C)) + (NU32)((NU32)(D & (NU32)(B ^ C))))))) + (NU32)(((NU32) IL64(2400959708))));
+	E = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(E) + (NU32)(tmpX60gensym58491460_))) + (NU32)((NU32)((NU32)((NU32)(A) << (NU32)(((NU32) 5))) | (NU32)((NU32)(A) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(B & C)) + (NU32)((NU32)(D & (NU32)(B ^ C))))))) + (NU32)(((NU32) IL64(2400959708))));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -2350,9 +2350,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266504_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 11))- 0] ^ arr[(((NI) 6))- 0]) ^ arr[(((NI) 0))- 0]) ^ arr[(((NI) 14))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 11))- 0] ^ arr[(((NI) 6))- 0]) ^ arr[(((NI) 0))- 0]) ^ arr[(((NI) 14))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491464_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 11))- 0] ^ arr[(((NI) 6))- 0]) ^ arr[(((NI) 0))- 0]) ^ arr[(((NI) 14))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 11))- 0] ^ arr[(((NI) 6))- 0]) ^ arr[(((NI) 0))- 0]) ^ arr[(((NI) 14))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 14))- 0] = tmpX60gensym39266504_;
+	arr[(((NI) 14))- 0] = tmpX60gensym58491464_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -2376,7 +2376,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 45 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 45 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	D = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(D) + (NU32)(tmpX60gensym39266504_))) + (NU32)((NU32)((NU32)((NU32)(E) << (NU32)(((NU32) 5))) | (NU32)((NU32)(E) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(A & B)) + (NU32)((NU32)(C & (NU32)(A ^ B))))))) + (NU32)(((NU32) IL64(2400959708))));
+	D = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(D) + (NU32)(tmpX60gensym58491464_))) + (NU32)((NU32)((NU32)((NU32)(E) << (NU32)(((NU32) 5))) | (NU32)((NU32)(E) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(A & B)) + (NU32)((NU32)(C & (NU32)(A ^ B))))))) + (NU32)(((NU32) IL64(2400959708))));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -2404,9 +2404,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266508_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 12))- 0] ^ arr[(((NI) 7))- 0]) ^ arr[(((NI) 1))- 0]) ^ arr[(((NI) 15))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 12))- 0] ^ arr[(((NI) 7))- 0]) ^ arr[(((NI) 1))- 0]) ^ arr[(((NI) 15))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491468_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 12))- 0] ^ arr[(((NI) 7))- 0]) ^ arr[(((NI) 1))- 0]) ^ arr[(((NI) 15))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 12))- 0] ^ arr[(((NI) 7))- 0]) ^ arr[(((NI) 1))- 0]) ^ arr[(((NI) 15))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 15))- 0] = tmpX60gensym39266508_;
+	arr[(((NI) 15))- 0] = tmpX60gensym58491468_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -2430,7 +2430,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 45 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 45 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	C = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(C) + (NU32)(tmpX60gensym39266508_))) + (NU32)((NU32)((NU32)((NU32)(D) << (NU32)(((NU32) 5))) | (NU32)((NU32)(D) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(E & A)) + (NU32)((NU32)(B & (NU32)(E ^ A))))))) + (NU32)(((NU32) IL64(2400959708))));
+	C = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(C) + (NU32)(tmpX60gensym58491468_))) + (NU32)((NU32)((NU32)((NU32)(D) << (NU32)(((NU32) 5))) | (NU32)((NU32)(D) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(E & A)) + (NU32)((NU32)(B & (NU32)(E ^ A))))))) + (NU32)(((NU32) IL64(2400959708))));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -2458,9 +2458,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266512_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 13))- 0] ^ arr[(((NI) 8))- 0]) ^ arr[(((NI) 2))- 0]) ^ arr[(((NI) 0))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 13))- 0] ^ arr[(((NI) 8))- 0]) ^ arr[(((NI) 2))- 0]) ^ arr[(((NI) 0))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491472_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 13))- 0] ^ arr[(((NI) 8))- 0]) ^ arr[(((NI) 2))- 0]) ^ arr[(((NI) 0))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 13))- 0] ^ arr[(((NI) 8))- 0]) ^ arr[(((NI) 2))- 0]) ^ arr[(((NI) 0))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 0))- 0] = tmpX60gensym39266512_;
+	arr[(((NI) 0))- 0] = tmpX60gensym58491472_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -2484,7 +2484,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 45 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 45 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	B = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(B) + (NU32)(tmpX60gensym39266512_))) + (NU32)((NU32)((NU32)((NU32)(C) << (NU32)(((NU32) 5))) | (NU32)((NU32)(C) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(D & E)) + (NU32)((NU32)(A & (NU32)(D ^ E))))))) + (NU32)(((NU32) IL64(2400959708))));
+	B = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(B) + (NU32)(tmpX60gensym58491472_))) + (NU32)((NU32)((NU32)((NU32)(C) << (NU32)(((NU32) 5))) | (NU32)((NU32)(C) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(D & E)) + (NU32)((NU32)(A & (NU32)(D ^ E))))))) + (NU32)(((NU32) IL64(2400959708))));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -2512,9 +2512,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266516_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 14))- 0] ^ arr[(((NI) 9))- 0]) ^ arr[(((NI) 3))- 0]) ^ arr[(((NI) 1))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 14))- 0] ^ arr[(((NI) 9))- 0]) ^ arr[(((NI) 3))- 0]) ^ arr[(((NI) 1))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491476_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 14))- 0] ^ arr[(((NI) 9))- 0]) ^ arr[(((NI) 3))- 0]) ^ arr[(((NI) 1))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 14))- 0] ^ arr[(((NI) 9))- 0]) ^ arr[(((NI) 3))- 0]) ^ arr[(((NI) 1))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 1))- 0] = tmpX60gensym39266516_;
+	arr[(((NI) 1))- 0] = tmpX60gensym58491476_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -2538,7 +2538,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 45 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 45 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	A = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(A) + (NU32)(tmpX60gensym39266516_))) + (NU32)((NU32)((NU32)((NU32)(B) << (NU32)(((NU32) 5))) | (NU32)((NU32)(B) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(C & D)) + (NU32)((NU32)(E & (NU32)(C ^ D))))))) + (NU32)(((NU32) IL64(2400959708))));
+	A = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(A) + (NU32)(tmpX60gensym58491476_))) + (NU32)((NU32)((NU32)((NU32)(B) << (NU32)(((NU32) 5))) | (NU32)((NU32)(B) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(C & D)) + (NU32)((NU32)(E & (NU32)(C ^ D))))))) + (NU32)(((NU32) IL64(2400959708))));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -2566,9 +2566,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266520_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 15))- 0] ^ arr[(((NI) 10))- 0]) ^ arr[(((NI) 4))- 0]) ^ arr[(((NI) 2))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 15))- 0] ^ arr[(((NI) 10))- 0]) ^ arr[(((NI) 4))- 0]) ^ arr[(((NI) 2))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491480_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 15))- 0] ^ arr[(((NI) 10))- 0]) ^ arr[(((NI) 4))- 0]) ^ arr[(((NI) 2))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 15))- 0] ^ arr[(((NI) 10))- 0]) ^ arr[(((NI) 4))- 0]) ^ arr[(((NI) 2))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 2))- 0] = tmpX60gensym39266520_;
+	arr[(((NI) 2))- 0] = tmpX60gensym58491480_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -2592,7 +2592,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 45 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 45 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	E = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(E) + (NU32)(tmpX60gensym39266520_))) + (NU32)((NU32)((NU32)((NU32)(A) << (NU32)(((NU32) 5))) | (NU32)((NU32)(A) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(B & C)) + (NU32)((NU32)(D & (NU32)(B ^ C))))))) + (NU32)(((NU32) IL64(2400959708))));
+	E = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(E) + (NU32)(tmpX60gensym58491480_))) + (NU32)((NU32)((NU32)((NU32)(A) << (NU32)(((NU32) 5))) | (NU32)((NU32)(A) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(B & C)) + (NU32)((NU32)(D & (NU32)(B ^ C))))))) + (NU32)(((NU32) IL64(2400959708))));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -2620,9 +2620,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266524_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 0))- 0] ^ arr[(((NI) 11))- 0]) ^ arr[(((NI) 5))- 0]) ^ arr[(((NI) 3))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 0))- 0] ^ arr[(((NI) 11))- 0]) ^ arr[(((NI) 5))- 0]) ^ arr[(((NI) 3))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491484_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 0))- 0] ^ arr[(((NI) 11))- 0]) ^ arr[(((NI) 5))- 0]) ^ arr[(((NI) 3))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 0))- 0] ^ arr[(((NI) 11))- 0]) ^ arr[(((NI) 5))- 0]) ^ arr[(((NI) 3))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 3))- 0] = tmpX60gensym39266524_;
+	arr[(((NI) 3))- 0] = tmpX60gensym58491484_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -2646,7 +2646,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 45 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 45 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	D = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(D) + (NU32)(tmpX60gensym39266524_))) + (NU32)((NU32)((NU32)((NU32)(E) << (NU32)(((NU32) 5))) | (NU32)((NU32)(E) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(A & B)) + (NU32)((NU32)(C & (NU32)(A ^ B))))))) + (NU32)(((NU32) IL64(2400959708))));
+	D = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(D) + (NU32)(tmpX60gensym58491484_))) + (NU32)((NU32)((NU32)((NU32)(E) << (NU32)(((NU32) 5))) | (NU32)((NU32)(E) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(A & B)) + (NU32)((NU32)(C & (NU32)(A ^ B))))))) + (NU32)(((NU32) IL64(2400959708))));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -2674,9 +2674,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266528_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 1))- 0] ^ arr[(((NI) 12))- 0]) ^ arr[(((NI) 6))- 0]) ^ arr[(((NI) 4))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 1))- 0] ^ arr[(((NI) 12))- 0]) ^ arr[(((NI) 6))- 0]) ^ arr[(((NI) 4))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491488_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 1))- 0] ^ arr[(((NI) 12))- 0]) ^ arr[(((NI) 6))- 0]) ^ arr[(((NI) 4))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 1))- 0] ^ arr[(((NI) 12))- 0]) ^ arr[(((NI) 6))- 0]) ^ arr[(((NI) 4))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 4))- 0] = tmpX60gensym39266528_;
+	arr[(((NI) 4))- 0] = tmpX60gensym58491488_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -2700,7 +2700,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 45 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 45 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	C = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(C) + (NU32)(tmpX60gensym39266528_))) + (NU32)((NU32)((NU32)((NU32)(D) << (NU32)(((NU32) 5))) | (NU32)((NU32)(D) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(E & A)) + (NU32)((NU32)(B & (NU32)(E ^ A))))))) + (NU32)(((NU32) IL64(2400959708))));
+	C = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(C) + (NU32)(tmpX60gensym58491488_))) + (NU32)((NU32)((NU32)((NU32)(D) << (NU32)(((NU32) 5))) | (NU32)((NU32)(D) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(E & A)) + (NU32)((NU32)(B & (NU32)(E ^ A))))))) + (NU32)(((NU32) IL64(2400959708))));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -2728,9 +2728,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266532_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 2))- 0] ^ arr[(((NI) 13))- 0]) ^ arr[(((NI) 7))- 0]) ^ arr[(((NI) 5))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 2))- 0] ^ arr[(((NI) 13))- 0]) ^ arr[(((NI) 7))- 0]) ^ arr[(((NI) 5))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491492_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 2))- 0] ^ arr[(((NI) 13))- 0]) ^ arr[(((NI) 7))- 0]) ^ arr[(((NI) 5))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 2))- 0] ^ arr[(((NI) 13))- 0]) ^ arr[(((NI) 7))- 0]) ^ arr[(((NI) 5))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 5))- 0] = tmpX60gensym39266532_;
+	arr[(((NI) 5))- 0] = tmpX60gensym58491492_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -2754,7 +2754,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 45 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 45 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	B = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(B) + (NU32)(tmpX60gensym39266532_))) + (NU32)((NU32)((NU32)((NU32)(C) << (NU32)(((NU32) 5))) | (NU32)((NU32)(C) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(D & E)) + (NU32)((NU32)(A & (NU32)(D ^ E))))))) + (NU32)(((NU32) IL64(2400959708))));
+	B = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(B) + (NU32)(tmpX60gensym58491492_))) + (NU32)((NU32)((NU32)((NU32)(C) << (NU32)(((NU32) 5))) | (NU32)((NU32)(C) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(D & E)) + (NU32)((NU32)(A & (NU32)(D ^ E))))))) + (NU32)(((NU32) IL64(2400959708))));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -2782,9 +2782,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266536_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 3))- 0] ^ arr[(((NI) 14))- 0]) ^ arr[(((NI) 8))- 0]) ^ arr[(((NI) 6))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 3))- 0] ^ arr[(((NI) 14))- 0]) ^ arr[(((NI) 8))- 0]) ^ arr[(((NI) 6))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491496_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 3))- 0] ^ arr[(((NI) 14))- 0]) ^ arr[(((NI) 8))- 0]) ^ arr[(((NI) 6))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 3))- 0] ^ arr[(((NI) 14))- 0]) ^ arr[(((NI) 8))- 0]) ^ arr[(((NI) 6))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 6))- 0] = tmpX60gensym39266536_;
+	arr[(((NI) 6))- 0] = tmpX60gensym58491496_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -2808,7 +2808,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 45 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 45 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	A = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(A) + (NU32)(tmpX60gensym39266536_))) + (NU32)((NU32)((NU32)((NU32)(B) << (NU32)(((NU32) 5))) | (NU32)((NU32)(B) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(C & D)) + (NU32)((NU32)(E & (NU32)(C ^ D))))))) + (NU32)(((NU32) IL64(2400959708))));
+	A = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(A) + (NU32)(tmpX60gensym58491496_))) + (NU32)((NU32)((NU32)((NU32)(B) << (NU32)(((NU32) 5))) | (NU32)((NU32)(B) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(C & D)) + (NU32)((NU32)(E & (NU32)(C ^ D))))))) + (NU32)(((NU32) IL64(2400959708))));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -2836,9 +2836,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266540_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 4))- 0] ^ arr[(((NI) 15))- 0]) ^ arr[(((NI) 9))- 0]) ^ arr[(((NI) 7))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 4))- 0] ^ arr[(((NI) 15))- 0]) ^ arr[(((NI) 9))- 0]) ^ arr[(((NI) 7))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491500_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 4))- 0] ^ arr[(((NI) 15))- 0]) ^ arr[(((NI) 9))- 0]) ^ arr[(((NI) 7))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 4))- 0] ^ arr[(((NI) 15))- 0]) ^ arr[(((NI) 9))- 0]) ^ arr[(((NI) 7))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 7))- 0] = tmpX60gensym39266540_;
+	arr[(((NI) 7))- 0] = tmpX60gensym58491500_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -2862,7 +2862,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 45 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 45 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	E = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(E) + (NU32)(tmpX60gensym39266540_))) + (NU32)((NU32)((NU32)((NU32)(A) << (NU32)(((NU32) 5))) | (NU32)((NU32)(A) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(B & C)) + (NU32)((NU32)(D & (NU32)(B ^ C))))))) + (NU32)(((NU32) IL64(2400959708))));
+	E = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(E) + (NU32)(tmpX60gensym58491500_))) + (NU32)((NU32)((NU32)((NU32)(A) << (NU32)(((NU32) 5))) | (NU32)((NU32)(A) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(B & C)) + (NU32)((NU32)(D & (NU32)(B ^ C))))))) + (NU32)(((NU32) IL64(2400959708))));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -2890,9 +2890,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266544_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 5))- 0] ^ arr[(((NI) 0))- 0]) ^ arr[(((NI) 10))- 0]) ^ arr[(((NI) 8))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 5))- 0] ^ arr[(((NI) 0))- 0]) ^ arr[(((NI) 10))- 0]) ^ arr[(((NI) 8))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491504_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 5))- 0] ^ arr[(((NI) 0))- 0]) ^ arr[(((NI) 10))- 0]) ^ arr[(((NI) 8))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 5))- 0] ^ arr[(((NI) 0))- 0]) ^ arr[(((NI) 10))- 0]) ^ arr[(((NI) 8))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 8))- 0] = tmpX60gensym39266544_;
+	arr[(((NI) 8))- 0] = tmpX60gensym58491504_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -2916,7 +2916,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 45 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 45 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	D = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(D) + (NU32)(tmpX60gensym39266544_))) + (NU32)((NU32)((NU32)((NU32)(E) << (NU32)(((NU32) 5))) | (NU32)((NU32)(E) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(A & B)) + (NU32)((NU32)(C & (NU32)(A ^ B))))))) + (NU32)(((NU32) IL64(2400959708))));
+	D = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(D) + (NU32)(tmpX60gensym58491504_))) + (NU32)((NU32)((NU32)((NU32)(E) << (NU32)(((NU32) 5))) | (NU32)((NU32)(E) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(A & B)) + (NU32)((NU32)(C & (NU32)(A ^ B))))))) + (NU32)(((NU32) IL64(2400959708))));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -2944,9 +2944,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266548_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 6))- 0] ^ arr[(((NI) 1))- 0]) ^ arr[(((NI) 11))- 0]) ^ arr[(((NI) 9))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 6))- 0] ^ arr[(((NI) 1))- 0]) ^ arr[(((NI) 11))- 0]) ^ arr[(((NI) 9))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491508_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 6))- 0] ^ arr[(((NI) 1))- 0]) ^ arr[(((NI) 11))- 0]) ^ arr[(((NI) 9))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 6))- 0] ^ arr[(((NI) 1))- 0]) ^ arr[(((NI) 11))- 0]) ^ arr[(((NI) 9))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 9))- 0] = tmpX60gensym39266548_;
+	arr[(((NI) 9))- 0] = tmpX60gensym58491508_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -2970,7 +2970,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 45 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 45 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	C = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(C) + (NU32)(tmpX60gensym39266548_))) + (NU32)((NU32)((NU32)((NU32)(D) << (NU32)(((NU32) 5))) | (NU32)((NU32)(D) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(E & A)) + (NU32)((NU32)(B & (NU32)(E ^ A))))))) + (NU32)(((NU32) IL64(2400959708))));
+	C = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(C) + (NU32)(tmpX60gensym58491508_))) + (NU32)((NU32)((NU32)((NU32)(D) << (NU32)(((NU32) 5))) | (NU32)((NU32)(D) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(E & A)) + (NU32)((NU32)(B & (NU32)(E ^ A))))))) + (NU32)(((NU32) IL64(2400959708))));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -2998,9 +2998,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266552_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 7))- 0] ^ arr[(((NI) 2))- 0]) ^ arr[(((NI) 12))- 0]) ^ arr[(((NI) 10))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 7))- 0] ^ arr[(((NI) 2))- 0]) ^ arr[(((NI) 12))- 0]) ^ arr[(((NI) 10))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491512_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 7))- 0] ^ arr[(((NI) 2))- 0]) ^ arr[(((NI) 12))- 0]) ^ arr[(((NI) 10))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 7))- 0] ^ arr[(((NI) 2))- 0]) ^ arr[(((NI) 12))- 0]) ^ arr[(((NI) 10))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 10))- 0] = tmpX60gensym39266552_;
+	arr[(((NI) 10))- 0] = tmpX60gensym58491512_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -3024,7 +3024,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 45 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 45 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	B = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(B) + (NU32)(tmpX60gensym39266552_))) + (NU32)((NU32)((NU32)((NU32)(C) << (NU32)(((NU32) 5))) | (NU32)((NU32)(C) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(D & E)) + (NU32)((NU32)(A & (NU32)(D ^ E))))))) + (NU32)(((NU32) IL64(2400959708))));
+	B = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(B) + (NU32)(tmpX60gensym58491512_))) + (NU32)((NU32)((NU32)((NU32)(C) << (NU32)(((NU32) 5))) | (NU32)((NU32)(C) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(D & E)) + (NU32)((NU32)(A & (NU32)(D ^ E))))))) + (NU32)(((NU32) IL64(2400959708))));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -3052,9 +3052,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266556_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 8))- 0] ^ arr[(((NI) 3))- 0]) ^ arr[(((NI) 13))- 0]) ^ arr[(((NI) 11))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 8))- 0] ^ arr[(((NI) 3))- 0]) ^ arr[(((NI) 13))- 0]) ^ arr[(((NI) 11))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491516_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 8))- 0] ^ arr[(((NI) 3))- 0]) ^ arr[(((NI) 13))- 0]) ^ arr[(((NI) 11))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 8))- 0] ^ arr[(((NI) 3))- 0]) ^ arr[(((NI) 13))- 0]) ^ arr[(((NI) 11))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 11))- 0] = tmpX60gensym39266556_;
+	arr[(((NI) 11))- 0] = tmpX60gensym58491516_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -3078,7 +3078,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 45 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 45 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	A = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(A) + (NU32)(tmpX60gensym39266556_))) + (NU32)((NU32)((NU32)((NU32)(B) << (NU32)(((NU32) 5))) | (NU32)((NU32)(B) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(C & D)) + (NU32)((NU32)(E & (NU32)(C ^ D))))))) + (NU32)(((NU32) IL64(2400959708))));
+	A = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(A) + (NU32)(tmpX60gensym58491516_))) + (NU32)((NU32)((NU32)((NU32)(B) << (NU32)(((NU32) 5))) | (NU32)((NU32)(B) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)((NU32)(C & D)) + (NU32)((NU32)(E & (NU32)(C ^ D))))))) + (NU32)(((NU32) IL64(2400959708))));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -3106,9 +3106,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266560_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 9))- 0] ^ arr[(((NI) 4))- 0]) ^ arr[(((NI) 14))- 0]) ^ arr[(((NI) 12))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 9))- 0] ^ arr[(((NI) 4))- 0]) ^ arr[(((NI) 14))- 0]) ^ arr[(((NI) 12))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491520_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 9))- 0] ^ arr[(((NI) 4))- 0]) ^ arr[(((NI) 14))- 0]) ^ arr[(((NI) 12))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 9))- 0] ^ arr[(((NI) 4))- 0]) ^ arr[(((NI) 14))- 0]) ^ arr[(((NI) 12))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 12))- 0] = tmpX60gensym39266560_;
+	arr[(((NI) 12))- 0] = tmpX60gensym58491520_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -3128,7 +3128,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	E = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(E) + (NU32)(tmpX60gensym39266560_))) + (NU32)((NU32)((NU32)((NU32)(A) << (NU32)(((NU32) 5))) | (NU32)((NU32)(A) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(B ^ C) ^ D)))) + (NU32)(((NU32) IL64(3395469782))));
+	E = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(E) + (NU32)(tmpX60gensym58491520_))) + (NU32)((NU32)((NU32)((NU32)(A) << (NU32)(((NU32) 5))) | (NU32)((NU32)(A) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(B ^ C) ^ D)))) + (NU32)(((NU32) IL64(3395469782))));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -3156,9 +3156,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266564_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 10))- 0] ^ arr[(((NI) 5))- 0]) ^ arr[(((NI) 15))- 0]) ^ arr[(((NI) 13))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 10))- 0] ^ arr[(((NI) 5))- 0]) ^ arr[(((NI) 15))- 0]) ^ arr[(((NI) 13))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491524_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 10))- 0] ^ arr[(((NI) 5))- 0]) ^ arr[(((NI) 15))- 0]) ^ arr[(((NI) 13))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 10))- 0] ^ arr[(((NI) 5))- 0]) ^ arr[(((NI) 15))- 0]) ^ arr[(((NI) 13))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 13))- 0] = tmpX60gensym39266564_;
+	arr[(((NI) 13))- 0] = tmpX60gensym58491524_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -3178,7 +3178,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	D = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(D) + (NU32)(tmpX60gensym39266564_))) + (NU32)((NU32)((NU32)((NU32)(E) << (NU32)(((NU32) 5))) | (NU32)((NU32)(E) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(A ^ B) ^ C)))) + (NU32)(((NU32) IL64(3395469782))));
+	D = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(D) + (NU32)(tmpX60gensym58491524_))) + (NU32)((NU32)((NU32)((NU32)(E) << (NU32)(((NU32) 5))) | (NU32)((NU32)(E) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(A ^ B) ^ C)))) + (NU32)(((NU32) IL64(3395469782))));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -3206,9 +3206,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266568_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 11))- 0] ^ arr[(((NI) 6))- 0]) ^ arr[(((NI) 0))- 0]) ^ arr[(((NI) 14))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 11))- 0] ^ arr[(((NI) 6))- 0]) ^ arr[(((NI) 0))- 0]) ^ arr[(((NI) 14))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491528_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 11))- 0] ^ arr[(((NI) 6))- 0]) ^ arr[(((NI) 0))- 0]) ^ arr[(((NI) 14))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 11))- 0] ^ arr[(((NI) 6))- 0]) ^ arr[(((NI) 0))- 0]) ^ arr[(((NI) 14))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 14))- 0] = tmpX60gensym39266568_;
+	arr[(((NI) 14))- 0] = tmpX60gensym58491528_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -3228,7 +3228,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	C = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(C) + (NU32)(tmpX60gensym39266568_))) + (NU32)((NU32)((NU32)((NU32)(D) << (NU32)(((NU32) 5))) | (NU32)((NU32)(D) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(E ^ A) ^ B)))) + (NU32)(((NU32) IL64(3395469782))));
+	C = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(C) + (NU32)(tmpX60gensym58491528_))) + (NU32)((NU32)((NU32)((NU32)(D) << (NU32)(((NU32) 5))) | (NU32)((NU32)(D) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(E ^ A) ^ B)))) + (NU32)(((NU32) IL64(3395469782))));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -3256,9 +3256,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266572_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 12))- 0] ^ arr[(((NI) 7))- 0]) ^ arr[(((NI) 1))- 0]) ^ arr[(((NI) 15))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 12))- 0] ^ arr[(((NI) 7))- 0]) ^ arr[(((NI) 1))- 0]) ^ arr[(((NI) 15))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491532_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 12))- 0] ^ arr[(((NI) 7))- 0]) ^ arr[(((NI) 1))- 0]) ^ arr[(((NI) 15))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 12))- 0] ^ arr[(((NI) 7))- 0]) ^ arr[(((NI) 1))- 0]) ^ arr[(((NI) 15))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 15))- 0] = tmpX60gensym39266572_;
+	arr[(((NI) 15))- 0] = tmpX60gensym58491532_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -3278,7 +3278,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	B = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(B) + (NU32)(tmpX60gensym39266572_))) + (NU32)((NU32)((NU32)((NU32)(C) << (NU32)(((NU32) 5))) | (NU32)((NU32)(C) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(D ^ E) ^ A)))) + (NU32)(((NU32) IL64(3395469782))));
+	B = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(B) + (NU32)(tmpX60gensym58491532_))) + (NU32)((NU32)((NU32)((NU32)(C) << (NU32)(((NU32) 5))) | (NU32)((NU32)(C) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(D ^ E) ^ A)))) + (NU32)(((NU32) IL64(3395469782))));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -3306,9 +3306,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266576_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 13))- 0] ^ arr[(((NI) 8))- 0]) ^ arr[(((NI) 2))- 0]) ^ arr[(((NI) 0))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 13))- 0] ^ arr[(((NI) 8))- 0]) ^ arr[(((NI) 2))- 0]) ^ arr[(((NI) 0))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491536_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 13))- 0] ^ arr[(((NI) 8))- 0]) ^ arr[(((NI) 2))- 0]) ^ arr[(((NI) 0))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 13))- 0] ^ arr[(((NI) 8))- 0]) ^ arr[(((NI) 2))- 0]) ^ arr[(((NI) 0))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 0))- 0] = tmpX60gensym39266576_;
+	arr[(((NI) 0))- 0] = tmpX60gensym58491536_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -3328,7 +3328,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	A = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(A) + (NU32)(tmpX60gensym39266576_))) + (NU32)((NU32)((NU32)((NU32)(B) << (NU32)(((NU32) 5))) | (NU32)((NU32)(B) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(C ^ D) ^ E)))) + (NU32)(((NU32) IL64(3395469782))));
+	A = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(A) + (NU32)(tmpX60gensym58491536_))) + (NU32)((NU32)((NU32)((NU32)(B) << (NU32)(((NU32) 5))) | (NU32)((NU32)(B) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(C ^ D) ^ E)))) + (NU32)(((NU32) IL64(3395469782))));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -3356,9 +3356,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266580_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 14))- 0] ^ arr[(((NI) 9))- 0]) ^ arr[(((NI) 3))- 0]) ^ arr[(((NI) 1))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 14))- 0] ^ arr[(((NI) 9))- 0]) ^ arr[(((NI) 3))- 0]) ^ arr[(((NI) 1))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491540_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 14))- 0] ^ arr[(((NI) 9))- 0]) ^ arr[(((NI) 3))- 0]) ^ arr[(((NI) 1))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 14))- 0] ^ arr[(((NI) 9))- 0]) ^ arr[(((NI) 3))- 0]) ^ arr[(((NI) 1))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 1))- 0] = tmpX60gensym39266580_;
+	arr[(((NI) 1))- 0] = tmpX60gensym58491540_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -3378,7 +3378,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	E = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(E) + (NU32)(tmpX60gensym39266580_))) + (NU32)((NU32)((NU32)((NU32)(A) << (NU32)(((NU32) 5))) | (NU32)((NU32)(A) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(B ^ C) ^ D)))) + (NU32)(((NU32) IL64(3395469782))));
+	E = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(E) + (NU32)(tmpX60gensym58491540_))) + (NU32)((NU32)((NU32)((NU32)(A) << (NU32)(((NU32) 5))) | (NU32)((NU32)(A) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(B ^ C) ^ D)))) + (NU32)(((NU32) IL64(3395469782))));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -3406,9 +3406,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266584_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 15))- 0] ^ arr[(((NI) 10))- 0]) ^ arr[(((NI) 4))- 0]) ^ arr[(((NI) 2))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 15))- 0] ^ arr[(((NI) 10))- 0]) ^ arr[(((NI) 4))- 0]) ^ arr[(((NI) 2))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491544_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 15))- 0] ^ arr[(((NI) 10))- 0]) ^ arr[(((NI) 4))- 0]) ^ arr[(((NI) 2))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 15))- 0] ^ arr[(((NI) 10))- 0]) ^ arr[(((NI) 4))- 0]) ^ arr[(((NI) 2))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 2))- 0] = tmpX60gensym39266584_;
+	arr[(((NI) 2))- 0] = tmpX60gensym58491544_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -3428,7 +3428,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	D = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(D) + (NU32)(tmpX60gensym39266584_))) + (NU32)((NU32)((NU32)((NU32)(E) << (NU32)(((NU32) 5))) | (NU32)((NU32)(E) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(A ^ B) ^ C)))) + (NU32)(((NU32) IL64(3395469782))));
+	D = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(D) + (NU32)(tmpX60gensym58491544_))) + (NU32)((NU32)((NU32)((NU32)(E) << (NU32)(((NU32) 5))) | (NU32)((NU32)(E) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(A ^ B) ^ C)))) + (NU32)(((NU32) IL64(3395469782))));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -3456,9 +3456,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266588_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 0))- 0] ^ arr[(((NI) 11))- 0]) ^ arr[(((NI) 5))- 0]) ^ arr[(((NI) 3))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 0))- 0] ^ arr[(((NI) 11))- 0]) ^ arr[(((NI) 5))- 0]) ^ arr[(((NI) 3))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491548_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 0))- 0] ^ arr[(((NI) 11))- 0]) ^ arr[(((NI) 5))- 0]) ^ arr[(((NI) 3))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 0))- 0] ^ arr[(((NI) 11))- 0]) ^ arr[(((NI) 5))- 0]) ^ arr[(((NI) 3))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 3))- 0] = tmpX60gensym39266588_;
+	arr[(((NI) 3))- 0] = tmpX60gensym58491548_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -3478,7 +3478,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	C = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(C) + (NU32)(tmpX60gensym39266588_))) + (NU32)((NU32)((NU32)((NU32)(D) << (NU32)(((NU32) 5))) | (NU32)((NU32)(D) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(E ^ A) ^ B)))) + (NU32)(((NU32) IL64(3395469782))));
+	C = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(C) + (NU32)(tmpX60gensym58491548_))) + (NU32)((NU32)((NU32)((NU32)(D) << (NU32)(((NU32) 5))) | (NU32)((NU32)(D) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(E ^ A) ^ B)))) + (NU32)(((NU32) IL64(3395469782))));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -3506,9 +3506,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266592_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 1))- 0] ^ arr[(((NI) 12))- 0]) ^ arr[(((NI) 6))- 0]) ^ arr[(((NI) 4))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 1))- 0] ^ arr[(((NI) 12))- 0]) ^ arr[(((NI) 6))- 0]) ^ arr[(((NI) 4))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491552_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 1))- 0] ^ arr[(((NI) 12))- 0]) ^ arr[(((NI) 6))- 0]) ^ arr[(((NI) 4))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 1))- 0] ^ arr[(((NI) 12))- 0]) ^ arr[(((NI) 6))- 0]) ^ arr[(((NI) 4))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 4))- 0] = tmpX60gensym39266592_;
+	arr[(((NI) 4))- 0] = tmpX60gensym58491552_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -3528,7 +3528,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	B = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(B) + (NU32)(tmpX60gensym39266592_))) + (NU32)((NU32)((NU32)((NU32)(C) << (NU32)(((NU32) 5))) | (NU32)((NU32)(C) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(D ^ E) ^ A)))) + (NU32)(((NU32) IL64(3395469782))));
+	B = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(B) + (NU32)(tmpX60gensym58491552_))) + (NU32)((NU32)((NU32)((NU32)(C) << (NU32)(((NU32) 5))) | (NU32)((NU32)(C) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(D ^ E) ^ A)))) + (NU32)(((NU32) IL64(3395469782))));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -3556,9 +3556,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266596_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 2))- 0] ^ arr[(((NI) 13))- 0]) ^ arr[(((NI) 7))- 0]) ^ arr[(((NI) 5))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 2))- 0] ^ arr[(((NI) 13))- 0]) ^ arr[(((NI) 7))- 0]) ^ arr[(((NI) 5))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491556_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 2))- 0] ^ arr[(((NI) 13))- 0]) ^ arr[(((NI) 7))- 0]) ^ arr[(((NI) 5))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 2))- 0] ^ arr[(((NI) 13))- 0]) ^ arr[(((NI) 7))- 0]) ^ arr[(((NI) 5))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 5))- 0] = tmpX60gensym39266596_;
+	arr[(((NI) 5))- 0] = tmpX60gensym58491556_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -3578,7 +3578,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	A = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(A) + (NU32)(tmpX60gensym39266596_))) + (NU32)((NU32)((NU32)((NU32)(B) << (NU32)(((NU32) 5))) | (NU32)((NU32)(B) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(C ^ D) ^ E)))) + (NU32)(((NU32) IL64(3395469782))));
+	A = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(A) + (NU32)(tmpX60gensym58491556_))) + (NU32)((NU32)((NU32)((NU32)(B) << (NU32)(((NU32) 5))) | (NU32)((NU32)(B) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(C ^ D) ^ E)))) + (NU32)(((NU32) IL64(3395469782))));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -3606,9 +3606,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266600_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 3))- 0] ^ arr[(((NI) 14))- 0]) ^ arr[(((NI) 8))- 0]) ^ arr[(((NI) 6))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 3))- 0] ^ arr[(((NI) 14))- 0]) ^ arr[(((NI) 8))- 0]) ^ arr[(((NI) 6))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491560_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 3))- 0] ^ arr[(((NI) 14))- 0]) ^ arr[(((NI) 8))- 0]) ^ arr[(((NI) 6))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 3))- 0] ^ arr[(((NI) 14))- 0]) ^ arr[(((NI) 8))- 0]) ^ arr[(((NI) 6))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 6))- 0] = tmpX60gensym39266600_;
+	arr[(((NI) 6))- 0] = tmpX60gensym58491560_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -3628,7 +3628,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	E = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(E) + (NU32)(tmpX60gensym39266600_))) + (NU32)((NU32)((NU32)((NU32)(A) << (NU32)(((NU32) 5))) | (NU32)((NU32)(A) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(B ^ C) ^ D)))) + (NU32)(((NU32) IL64(3395469782))));
+	E = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(E) + (NU32)(tmpX60gensym58491560_))) + (NU32)((NU32)((NU32)((NU32)(A) << (NU32)(((NU32) 5))) | (NU32)((NU32)(A) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(B ^ C) ^ D)))) + (NU32)(((NU32) IL64(3395469782))));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -3656,9 +3656,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266604_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 4))- 0] ^ arr[(((NI) 15))- 0]) ^ arr[(((NI) 9))- 0]) ^ arr[(((NI) 7))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 4))- 0] ^ arr[(((NI) 15))- 0]) ^ arr[(((NI) 9))- 0]) ^ arr[(((NI) 7))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491564_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 4))- 0] ^ arr[(((NI) 15))- 0]) ^ arr[(((NI) 9))- 0]) ^ arr[(((NI) 7))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 4))- 0] ^ arr[(((NI) 15))- 0]) ^ arr[(((NI) 9))- 0]) ^ arr[(((NI) 7))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 7))- 0] = tmpX60gensym39266604_;
+	arr[(((NI) 7))- 0] = tmpX60gensym58491564_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -3678,7 +3678,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	D = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(D) + (NU32)(tmpX60gensym39266604_))) + (NU32)((NU32)((NU32)((NU32)(E) << (NU32)(((NU32) 5))) | (NU32)((NU32)(E) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(A ^ B) ^ C)))) + (NU32)(((NU32) IL64(3395469782))));
+	D = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(D) + (NU32)(tmpX60gensym58491564_))) + (NU32)((NU32)((NU32)((NU32)(E) << (NU32)(((NU32) 5))) | (NU32)((NU32)(E) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(A ^ B) ^ C)))) + (NU32)(((NU32) IL64(3395469782))));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -3706,9 +3706,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266608_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 5))- 0] ^ arr[(((NI) 0))- 0]) ^ arr[(((NI) 10))- 0]) ^ arr[(((NI) 8))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 5))- 0] ^ arr[(((NI) 0))- 0]) ^ arr[(((NI) 10))- 0]) ^ arr[(((NI) 8))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491568_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 5))- 0] ^ arr[(((NI) 0))- 0]) ^ arr[(((NI) 10))- 0]) ^ arr[(((NI) 8))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 5))- 0] ^ arr[(((NI) 0))- 0]) ^ arr[(((NI) 10))- 0]) ^ arr[(((NI) 8))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 8))- 0] = tmpX60gensym39266608_;
+	arr[(((NI) 8))- 0] = tmpX60gensym58491568_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -3728,7 +3728,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	C = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(C) + (NU32)(tmpX60gensym39266608_))) + (NU32)((NU32)((NU32)((NU32)(D) << (NU32)(((NU32) 5))) | (NU32)((NU32)(D) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(E ^ A) ^ B)))) + (NU32)(((NU32) IL64(3395469782))));
+	C = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(C) + (NU32)(tmpX60gensym58491568_))) + (NU32)((NU32)((NU32)((NU32)(D) << (NU32)(((NU32) 5))) | (NU32)((NU32)(D) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(E ^ A) ^ B)))) + (NU32)(((NU32) IL64(3395469782))));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -3756,9 +3756,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266612_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 6))- 0] ^ arr[(((NI) 1))- 0]) ^ arr[(((NI) 11))- 0]) ^ arr[(((NI) 9))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 6))- 0] ^ arr[(((NI) 1))- 0]) ^ arr[(((NI) 11))- 0]) ^ arr[(((NI) 9))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491572_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 6))- 0] ^ arr[(((NI) 1))- 0]) ^ arr[(((NI) 11))- 0]) ^ arr[(((NI) 9))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 6))- 0] ^ arr[(((NI) 1))- 0]) ^ arr[(((NI) 11))- 0]) ^ arr[(((NI) 9))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 9))- 0] = tmpX60gensym39266612_;
+	arr[(((NI) 9))- 0] = tmpX60gensym58491572_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -3778,7 +3778,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	B = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(B) + (NU32)(tmpX60gensym39266612_))) + (NU32)((NU32)((NU32)((NU32)(C) << (NU32)(((NU32) 5))) | (NU32)((NU32)(C) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(D ^ E) ^ A)))) + (NU32)(((NU32) IL64(3395469782))));
+	B = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(B) + (NU32)(tmpX60gensym58491572_))) + (NU32)((NU32)((NU32)((NU32)(C) << (NU32)(((NU32) 5))) | (NU32)((NU32)(C) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(D ^ E) ^ A)))) + (NU32)(((NU32) IL64(3395469782))));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -3806,9 +3806,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266616_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 7))- 0] ^ arr[(((NI) 2))- 0]) ^ arr[(((NI) 12))- 0]) ^ arr[(((NI) 10))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 7))- 0] ^ arr[(((NI) 2))- 0]) ^ arr[(((NI) 12))- 0]) ^ arr[(((NI) 10))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491576_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 7))- 0] ^ arr[(((NI) 2))- 0]) ^ arr[(((NI) 12))- 0]) ^ arr[(((NI) 10))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 7))- 0] ^ arr[(((NI) 2))- 0]) ^ arr[(((NI) 12))- 0]) ^ arr[(((NI) 10))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 10))- 0] = tmpX60gensym39266616_;
+	arr[(((NI) 10))- 0] = tmpX60gensym58491576_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -3828,7 +3828,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	A = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(A) + (NU32)(tmpX60gensym39266616_))) + (NU32)((NU32)((NU32)((NU32)(B) << (NU32)(((NU32) 5))) | (NU32)((NU32)(B) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(C ^ D) ^ E)))) + (NU32)(((NU32) IL64(3395469782))));
+	A = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(A) + (NU32)(tmpX60gensym58491576_))) + (NU32)((NU32)((NU32)((NU32)(B) << (NU32)(((NU32) 5))) | (NU32)((NU32)(B) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(C ^ D) ^ E)))) + (NU32)(((NU32) IL64(3395469782))));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -3856,9 +3856,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266620_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 8))- 0] ^ arr[(((NI) 3))- 0]) ^ arr[(((NI) 13))- 0]) ^ arr[(((NI) 11))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 8))- 0] ^ arr[(((NI) 3))- 0]) ^ arr[(((NI) 13))- 0]) ^ arr[(((NI) 11))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491580_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 8))- 0] ^ arr[(((NI) 3))- 0]) ^ arr[(((NI) 13))- 0]) ^ arr[(((NI) 11))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 8))- 0] ^ arr[(((NI) 3))- 0]) ^ arr[(((NI) 13))- 0]) ^ arr[(((NI) 11))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 11))- 0] = tmpX60gensym39266620_;
+	arr[(((NI) 11))- 0] = tmpX60gensym58491580_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -3878,7 +3878,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	E = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(E) + (NU32)(tmpX60gensym39266620_))) + (NU32)((NU32)((NU32)((NU32)(A) << (NU32)(((NU32) 5))) | (NU32)((NU32)(A) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(B ^ C) ^ D)))) + (NU32)(((NU32) IL64(3395469782))));
+	E = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(E) + (NU32)(tmpX60gensym58491580_))) + (NU32)((NU32)((NU32)((NU32)(A) << (NU32)(((NU32) 5))) | (NU32)((NU32)(A) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(B ^ C) ^ D)))) + (NU32)(((NU32) IL64(3395469782))));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -3906,9 +3906,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266624_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 9))- 0] ^ arr[(((NI) 4))- 0]) ^ arr[(((NI) 14))- 0]) ^ arr[(((NI) 12))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 9))- 0] ^ arr[(((NI) 4))- 0]) ^ arr[(((NI) 14))- 0]) ^ arr[(((NI) 12))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491584_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 9))- 0] ^ arr[(((NI) 4))- 0]) ^ arr[(((NI) 14))- 0]) ^ arr[(((NI) 12))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 9))- 0] ^ arr[(((NI) 4))- 0]) ^ arr[(((NI) 14))- 0]) ^ arr[(((NI) 12))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 12))- 0] = tmpX60gensym39266624_;
+	arr[(((NI) 12))- 0] = tmpX60gensym58491584_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -3928,7 +3928,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	D = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(D) + (NU32)(tmpX60gensym39266624_))) + (NU32)((NU32)((NU32)((NU32)(E) << (NU32)(((NU32) 5))) | (NU32)((NU32)(E) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(A ^ B) ^ C)))) + (NU32)(((NU32) IL64(3395469782))));
+	D = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(D) + (NU32)(tmpX60gensym58491584_))) + (NU32)((NU32)((NU32)((NU32)(E) << (NU32)(((NU32) 5))) | (NU32)((NU32)(E) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(A ^ B) ^ C)))) + (NU32)(((NU32) IL64(3395469782))));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -3956,9 +3956,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266628_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 10))- 0] ^ arr[(((NI) 5))- 0]) ^ arr[(((NI) 15))- 0]) ^ arr[(((NI) 13))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 10))- 0] ^ arr[(((NI) 5))- 0]) ^ arr[(((NI) 15))- 0]) ^ arr[(((NI) 13))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491588_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 10))- 0] ^ arr[(((NI) 5))- 0]) ^ arr[(((NI) 15))- 0]) ^ arr[(((NI) 13))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 10))- 0] ^ arr[(((NI) 5))- 0]) ^ arr[(((NI) 15))- 0]) ^ arr[(((NI) 13))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 13))- 0] = tmpX60gensym39266628_;
+	arr[(((NI) 13))- 0] = tmpX60gensym58491588_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -3978,7 +3978,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	C = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(C) + (NU32)(tmpX60gensym39266628_))) + (NU32)((NU32)((NU32)((NU32)(D) << (NU32)(((NU32) 5))) | (NU32)((NU32)(D) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(E ^ A) ^ B)))) + (NU32)(((NU32) IL64(3395469782))));
+	C = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(C) + (NU32)(tmpX60gensym58491588_))) + (NU32)((NU32)((NU32)((NU32)(D) << (NU32)(((NU32) 5))) | (NU32)((NU32)(D) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(E ^ A) ^ B)))) + (NU32)(((NU32) IL64(3395469782))));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -4006,9 +4006,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266632_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 11))- 0] ^ arr[(((NI) 6))- 0]) ^ arr[(((NI) 0))- 0]) ^ arr[(((NI) 14))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 11))- 0] ^ arr[(((NI) 6))- 0]) ^ arr[(((NI) 0))- 0]) ^ arr[(((NI) 14))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491592_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 11))- 0] ^ arr[(((NI) 6))- 0]) ^ arr[(((NI) 0))- 0]) ^ arr[(((NI) 14))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 11))- 0] ^ arr[(((NI) 6))- 0]) ^ arr[(((NI) 0))- 0]) ^ arr[(((NI) 14))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 14))- 0] = tmpX60gensym39266632_;
+	arr[(((NI) 14))- 0] = tmpX60gensym58491592_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -4028,7 +4028,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	B = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(B) + (NU32)(tmpX60gensym39266632_))) + (NU32)((NU32)((NU32)((NU32)(C) << (NU32)(((NU32) 5))) | (NU32)((NU32)(C) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(D ^ E) ^ A)))) + (NU32)(((NU32) IL64(3395469782))));
+	B = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(B) + (NU32)(tmpX60gensym58491592_))) + (NU32)((NU32)((NU32)((NU32)(C) << (NU32)(((NU32) 5))) | (NU32)((NU32)(C) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(D ^ E) ^ A)))) + (NU32)(((NU32) IL64(3395469782))));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -4056,9 +4056,9 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 18 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	tmpX60gensym39266636_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 12))- 0] ^ arr[(((NI) 7))- 0]) ^ arr[(((NI) 1))- 0]) ^ arr[(((NI) 15))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 12))- 0] ^ arr[(((NI) 7))- 0]) ^ arr[(((NI) 1))- 0]) ^ arr[(((NI) 15))- 0])) >> (NU32)(((NU32) 31))));
+	tmpX60gensym58491596_ = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 12))- 0] ^ arr[(((NI) 7))- 0]) ^ arr[(((NI) 1))- 0]) ^ arr[(((NI) 15))- 0])) << (NU32)(((NU32) 1))) | (NU32)((NU32)((NU32)((NU32)((NU32)(arr[(((NI) 12))- 0] ^ arr[(((NI) 7))- 0]) ^ arr[(((NI) 1))- 0]) ^ arr[(((NI) 15))- 0])) >> (NU32)(((NU32) 31))));
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	arr[(((NI) 15))- 0] = tmpX60gensym39266636_;
+	arr[(((NI) 15))- 0] = tmpX60gensym58491596_;
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
@@ -4078,7 +4078,7 @@ static N_INLINE(void, sha1Transform__ap4JvFa646AtUaeJcf6V9bwsha)(tyObject_Sha1Co
 #line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
-	A = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(A) + (NU32)(tmpX60gensym39266636_))) + (NU32)((NU32)((NU32)((NU32)(B) << (NU32)(((NU32) 5))) | (NU32)((NU32)(B) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(C ^ D) ^ E)))) + (NU32)(((NU32) IL64(3395469782))));
+	A = (NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)((NU32)(A) + (NU32)(tmpX60gensym58491596_))) + (NU32)((NU32)((NU32)((NU32)(B) << (NU32)(((NU32) 5))) | (NU32)((NU32)(B) >> (NU32)(((NU32) 27))))))) + (NU32)((NU32)((NU32)(C ^ D) ^ E)))) + (NU32)(((NU32) IL64(3395469782))));
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha.nim"

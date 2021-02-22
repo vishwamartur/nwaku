@@ -3,7 +3,7 @@
 /* The generated code is subject to the original license. */
 /* Compiled for: Linux, amd64, gcc */
 /* Command for C compiler:
-   gcc -c  -w -pthread -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace/install/usr/include -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1/src -DHAVE_CONFIG_H -DHAVE_BUILTIN_EXPECT -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/src -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/inc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/tools -DBR_USE_UNIX_TIME=1 -DBR_USE_URANDOM=1 -DBR_LE_UNALIGNED=1 -DBR_64=1  -DBR_amd64=1 -DBR_INT128=1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/miniupnp/miniupnpc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/libnatpmp-upstream -DENABLE_STRNATPMPERR -march=native -g3 -Og -O3 -fno-strict-aliasing -fno-ident  -I/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib -I/home/runner/work/nim-waku/nim-waku/waku/common -o nimcache/release/wakubridge/@m..@sv1@sprotocol@swaku_protocol.nim.c.o nimcache/release/wakubridge/@m..@sv1@sprotocol@swaku_protocol.nim.c */
+   gcc -c  -w -pthread -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace/install/usr/include -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1/src -DHAVE_CONFIG_H -DHAVE_BUILTIN_EXPECT -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/src -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/inc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/tools -DBR_USE_UNIX_TIME=1 -DBR_USE_URANDOM=1 -DBR_LE_UNALIGNED=1 -DBR_64=1  -DBR_amd64=1 -DBR_INT128=1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/miniupnp/miniupnpc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/libnatpmp-upstream -DENABLE_STRNATPMPERR -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/certs -march=native -g3 -Og -O3 -fno-strict-aliasing -fno-ident  -I/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib -I/home/runner/work/nim-waku/nim-waku/waku/common -o nimcache/release/wakubridge/@m..@sv1@sprotocol@swaku_protocol.nim.c.o nimcache/release/wakubridge/@m..@sv1@sprotocol@swaku_protocol.nim.c */
 #define NIM_INTBITS 64
 
 #include "nimbase.h"
@@ -1646,7 +1646,7 @@ static N_INLINE(NIM_BOOL, isSome__34ku381IU9bJbtYN9a06zGhAoptions)(tyObject_Opti
 N_LIB_PRIVATE N_NIMCALL(NIM_BOOL, sendP2PMessage__hw8bQUpRBttQynfyjMVN9bg)(tyObject_EthereumNodecolonObjectType___mgPxske6V9a9c4U2B9b7otGNQ* node, tyObject_StUint__zk9cGwjKuqNvWysDWG2FjHg* peerId, tyObject_Envelope__SvTrTIZs3cDneANW26dQlQ* envelopes, NI envelopesLen_0);
 N_LIB_PRIVATE N_NIMCALL(tyObject_FuturecolonObjectType___GXFSekg1U8JRoedGa2vBSA*, p2pMessage__ujGPuX5gKlMoM5W9cxBd6YA)(tyObject_PeercolonObjectType___c4Sh9b59ah4iBo8P3EU5lRFQ* peerOrResponder, tyObject_Envelope__SvTrTIZs3cDneANW26dQlQ* envelopes, NI envelopesLen_0);
 N_LIB_PRIVATE N_NIMCALL(void, appendImpl__w9co02FdkbMXPTlmLxtdB8Q)(tyObject_RlpWriter__5wlnwCMsmWR0hwp89bvcZqQ* self, tyObject_Envelope__SvTrTIZs3cDneANW26dQlQ* listOrBlob, NI listOrBlobLen_0);
-static N_INLINE(tyObject_StUint__zk9cGwjKuqNvWysDWG2FjHg, get__4soQEG6EYGx5DC4qBnwvQwoptions)(tyObject_Option__Y9bYoDed8m421UIHb473GAw* self);
+static N_INLINE(tyObject_StUint__zk9cGwjKuqNvWysDWG2FjHg, get__4soQEG6EYGx5DC4qBnwvQw_2options)(tyObject_Option__Y9bYoDed8m421UIHb473GAw* self);
 static N_INLINE(NIM_BOOL, isNone__34ku381IU9bJbtYN9a06zGhA_2options)(tyObject_Option__Y9bYoDed8m421UIHb473GAw* self);
 N_LIB_PRIVATE N_NIMCALL(NIM_BOOL, sealEnvelope__XXCStpU9al5xUxIyOU6n16g)(tyObject_Message__OGJGNvXIA7nb8o5cg404nA* msg, NF powTime, NF powTarget);
 N_LIB_PRIVATE N_NIMCALL(NIM_BOOL, queueMessage__YZHPhUKw1BOze9chAxa9a4bw)(tyObject_EthereumNodecolonObjectType___mgPxske6V9a9c4U2B9b7otGNQ* node, tyObject_Message__OGJGNvXIA7nb8o5cg404nA* msg);
@@ -10493,7 +10493,7 @@ static N_INLINE(NIM_BOOL, isNone__34ku381IU9bJbtYN9a06zGhA_2options)(tyObject_Op
 	result = !((*self).has);	return result;}
 
 #line 170 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/options.nim"
-static N_INLINE(tyObject_StUint__zk9cGwjKuqNvWysDWG2FjHg, get__4soQEG6EYGx5DC4qBnwvQwoptions)(tyObject_Option__Y9bYoDed8m421UIHb473GAw* self) {	tyObject_StUint__zk9cGwjKuqNvWysDWG2FjHg result;	nimZeroMem((void*)(&result), sizeof(tyObject_StUint__zk9cGwjKuqNvWysDWG2FjHg));
+static N_INLINE(tyObject_StUint__zk9cGwjKuqNvWysDWG2FjHg, get__4soQEG6EYGx5DC4qBnwvQw_2options)(tyObject_Option__Y9bYoDed8m421UIHb473GAw* self) {	tyObject_StUint__zk9cGwjKuqNvWysDWG2FjHg result;	nimZeroMem((void*)(&result), sizeof(tyObject_StUint__zk9cGwjKuqNvWysDWG2FjHg));
 #line 171 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/options.nim"
 
 #line 184 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/options.nim"
@@ -11115,7 +11115,7 @@ N_LIB_PRIVATE N_NIMCALL(NIM_BOOL, postMessage__9buA1oUNOpjwa8K1iAEHdtA)(tyObject
 #line 497 "/home/runner/work/nim-waku/nim-waku/waku/v1/protocol/waku_protocol.nim"
 
 #line 497 "/home/runner/work/nim-waku/nim-waku/waku/v1/protocol/waku_protocol.nim"
-			T14_ = get__4soQEG6EYGx5DC4qBnwvQwoptions(targetPeer);			nimZeroMem((void*)T15_, sizeof(tyArray__OUEK7ZKni8DEsgQnw1i5Lw));			genericAssign((void*)(&T15_[0]), (void*)(&env), (&NTI__SvTrTIZs3cDneANW26dQlQ_));
+			T14_ = get__4soQEG6EYGx5DC4qBnwvQw_2options(targetPeer);			nimZeroMem((void*)T15_, sizeof(tyArray__OUEK7ZKni8DEsgQnw1i5Lw));			genericAssign((void*)(&T15_[0]), (void*)(&env), (&NTI__SvTrTIZs3cDneANW26dQlQ_));
 #line 497 "/home/runner/work/nim-waku/nim-waku/waku/v1/protocol/waku_protocol.nim"
 			result = sendP2PMessage__hw8bQUpRBttQynfyjMVN9bg(node, (&T14_), T15_, 1);			goto BeforeRet_;
 		}

@@ -3,7 +3,7 @@
 /* The generated code is subject to the original license. */
 /* Compiled for: Linux, amd64, gcc */
 /* Command for C compiler:
-   gcc -c  -w -pthread -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace/install/usr/include -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1/src -DHAVE_CONFIG_H -DHAVE_BUILTIN_EXPECT -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/src -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/inc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/tools -DBR_USE_UNIX_TIME=1 -DBR_USE_URANDOM=1 -DBR_LE_UNALIGNED=1 -DBR_64=1  -DBR_amd64=1 -DBR_INT128=1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/miniupnp/miniupnpc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/libnatpmp-upstream -DENABLE_STRNATPMPERR -march=native -g3 -Og -O3 -fno-strict-aliasing -fno-ident  -I/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib -I/home/runner/work/nim-waku/nim-waku/waku/v2/node -o nimcache/release/wakunode2/stdlib_strformat.nim.c.o nimcache/release/wakunode2/stdlib_strformat.nim.c */
+   gcc -c  -w -pthread -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace/install/usr/include -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1/src -DHAVE_CONFIG_H -DHAVE_BUILTIN_EXPECT -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/src -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/inc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/tools -DBR_USE_UNIX_TIME=1 -DBR_USE_URANDOM=1 -DBR_LE_UNALIGNED=1 -DBR_64=1  -DBR_amd64=1 -DBR_INT128=1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/certs -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/miniupnp/miniupnpc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/libnatpmp-upstream -DENABLE_STRNATPMPERR -march=native -g3 -Og -O3 -fno-strict-aliasing -fno-ident  -I/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib -I/home/runner/work/nim-waku/nim-waku/waku/v2/node -o nimcache/release/wakunode2/stdlib_strformat.nim.c.o nimcache/release/wakunode2/stdlib_strformat.nim.c */
 #define NIM_INTBITS 64
 
 #include "nimbase.h"
@@ -196,12 +196,12 @@ tyObject_CellSeq__Axo1XVm9aaQueTOldv8le5w additionalRoots;
 tyObject_SharedList__JI9cx34TL8n3aOKF6tSMBUw toDispose;
 NI gcThreadId;
 };
+typedef NU8 tyEnum_TokKind__tFVERTiomAoorA9ajTuxnaQ;
+typedef NU8 tyEnum_ExpectedTokenCategory__BMaCL9adD39bTV7N7vDAL9cwA;
 struct tyObject_Oid__v0fX7UzOqz7toHgI0d87SA {NI32 time;
 NI32 fuzz;
 NI32 count;
 };
-typedef NU8 tyEnum_TokKind__tFVERTiomAoorA9ajTuxnaQ;
-typedef NU8 tyEnum_ExpectedTokenCategory__BMaCL9adD39bTV7N7vDAL9cwA;
 struct tyObject_StackTraceEntry__oLyohQ7O2XOvGnflOss8EA {NCSTRING procname;
 NI line;
 NCSTRING filename;
@@ -252,8 +252,8 @@ N_LIB_PRIVATE N_NIMCALL(void, failedAssertImpl__W9cjVocn1tjhW7p7xohJj6A)(NimStri
 N_LIB_PRIVATE N_NIMCALL(NimStringDesc*, nimCharToStr)(NIM_CHAR x_0);
 N_LIB_PRIVATE N_NIMCALL(NimStringDesc*, addChar)(NimStringDesc* s, NIM_CHAR c);
 N_LIB_PRIVATE N_NIMCALL(void, formatValue__3zjq9csYPBcIN7AqvyU5ZLA)(NimStringDesc** result, NimStringDesc* value_0, NimStringDesc* specifier);
-N_LIB_PRIVATE N_NIMCALL(NimStringDesc*, dollar___39cF9bFahdYMwI55nfkiIPqA)(tyObject_Oid__v0fX7UzOqz7toHgI0d87SA oid_0);
 N_LIB_PRIVATE N_NIMCALL(NimStringDesc*, reprEnum)(NI e_0, TNimType* typ);
+N_LIB_PRIVATE N_NIMCALL(NimStringDesc*, dollar___39cF9bFahdYMwI55nfkiIPqA)(tyObject_Oid__v0fX7UzOqz7toHgI0d87SA oid_0);
 extern TNimType NTI__Ie1m0dv1ZHg72IgPRr1cDw_;
 extern TNimType NTI__yoNlBGx0D2tRizIdhQuENw_;
 STRING_LITERAL(TM__qDXzsifTQdn8ucTam9cFp4w_16, "invalid format string, cannot parse: ", 37);
@@ -1295,18 +1295,6 @@ N_LIB_PRIVATE N_NIMCALL(void, formatValue__ACNJL1q6Oxfvi53i9bkeK6Q)(NimStringDes
 }
 
 #line 515 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strformat.nim"
-N_LIB_PRIVATE N_NIMCALL(void, formatValue__4Cb9cVfSGcgGpilK3qihKMg)(NimStringDesc** result, tyObject_Oid__v0fX7UzOqz7toHgI0d87SA value_0, NimStringDesc* specifier) {	NimStringDesc* T1_;
-#line 518 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strformat.nim"
-
-#line 518 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strformat.nim"
-
-#line 518 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strformat.nim"
-	T1_ = (NimStringDesc*)0;	T1_ = dollar___39cF9bFahdYMwI55nfkiIPqA(value_0);
-#line 518 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strformat.nim"
-	formatValue__3zjq9csYPBcIN7AqvyU5ZLA(result, T1_, specifier);
-}
-
-#line 515 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strformat.nim"
 N_LIB_PRIVATE N_NIMCALL(void, formatValue__tOsaR3r2YOUJrqv5YfECPQ)(NimStringDesc** result, tyEnum_TokKind__tFVERTiomAoorA9ajTuxnaQ value_0, NimStringDesc* specifier) {
 #line 518 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strformat.nim"
 
@@ -1324,4 +1312,16 @@ N_LIB_PRIVATE N_NIMCALL(void, formatValue__cN86y24u9bmA9cTsc1EdltJg)(NimStringDe
 
 #line 518 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strformat.nim"
 	formatValue__3zjq9csYPBcIN7AqvyU5ZLA(result, reprEnum((NI)value_0, (&NTI__BMaCL9adD39bTV7N7vDAL9cwA_)), specifier);
+}
+
+#line 515 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strformat.nim"
+N_LIB_PRIVATE N_NIMCALL(void, formatValue__4Cb9cVfSGcgGpilK3qihKMg)(NimStringDesc** result, tyObject_Oid__v0fX7UzOqz7toHgI0d87SA value_0, NimStringDesc* specifier) {	NimStringDesc* T1_;
+#line 518 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strformat.nim"
+
+#line 518 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strformat.nim"
+
+#line 518 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strformat.nim"
+	T1_ = (NimStringDesc*)0;	T1_ = dollar___39cF9bFahdYMwI55nfkiIPqA(value_0);
+#line 518 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strformat.nim"
+	formatValue__3zjq9csYPBcIN7AqvyU5ZLA(result, T1_, specifier);
 }

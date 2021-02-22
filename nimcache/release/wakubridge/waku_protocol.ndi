@@ -628,8 +628,6 @@ payload	payload_2	/home/runner/work/nim-waku/nim-waku/waku/v1/protocol/waku_prot
 rng	rng_0	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/rlpx_protocols/whisper/whisper_types.nim	232	13
 self	self	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/rlpx_protocols/whisper/whisper_types.nim	232	41
 env	env	/home/runner/work/nim-waku/nim-waku/waku/v1/protocol/waku_protocol.nim	492	8
-self	self	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/options.nim	143	16
-result	result	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/options.nim	143	0
 sendP2PMessage	sendP2PMessage__hw8bQUpRBttQynfyjMVN9bg	/home/runner/work/nim-waku/nim-waku/waku/v1/protocol/waku_protocol.nim	453	5
 node	node	/home/runner/work/nim-waku/nim-waku/waku/v1/protocol/waku_protocol.nim	453	20
 peerId	peerId	/home/runner/work/nim-waku/nim-waku/waku/v1/protocol/waku_protocol.nim	453	40
@@ -653,10 +651,6 @@ perPeerMsgId	perPeerMsgId	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth
 self	self	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp/writer.nim	172	19
 listOrBlob	listOrBlob	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/rlp/writer.nim	172	40
 msgBytes	msgBytes	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/rlpx.nim	777	24
-self	self	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/options.nim	170	13
-result	result	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/options.nim	170	0
-self	self	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/options.nim	157	16
-result	result	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/options.nim	157	0
 msg	msg	/home/runner/work/nim-waku/nim-waku/waku/v1/protocol/waku_protocol.nim	502	10
 msg	msg	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/rlpx_protocols/whisper/whisper_types.nim	493	19
 powTime	powTime	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/rlpx_protocols/whisper/whisper_types.nim	493	37

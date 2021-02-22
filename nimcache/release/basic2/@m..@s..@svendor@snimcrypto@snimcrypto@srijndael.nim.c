@@ -1103,23 +1103,23 @@ static N_INLINE(void, interleaveOut__gVjUV2nOFEtEtMHwdMHBhgrijndael)(NU32* w, NI
 	w[((NI) 3)] = (NU32)(((NU32) ((NU64)(x3 & 4294967295ULL))) | ((NU32) ((NU64)((NU64)((NU64)(x3) >> (NU64)(((NI) 16))) & 4294967295ULL))));}
 
 #line 1000 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/rijndael.nim"
-N_LIB_PRIVATE N_NIMCALL(void, encrypt__5IhSwNYMkLuIObwT9aTBOyQ)(tyObject_RijndaelContext__P9ctyX6u5ZjparlFDMKF09bg* ctx, NU8* input, NI inputLen_0, NU8* output, NI outputLen_0) {	tyArray__9cHI9ce3NOVpqam1bGmXg5vw q_1;	tyArray__FleBT9cC2nxhgiXmSYYnEKA w;	NU32 pX60gensym122825370_;	NU32 pX60gensym122835442_;	NU32 pX60gensym122845442_;	NU32 pX60gensym122855442_;	NI offset_2;	NI TM__Itz3Ieeumw4gvNsF79bkuCw_14;	NI TM__Itz3Ieeumw4gvNsF79bkuCw_15;	NI TM__Itz3Ieeumw4gvNsF79bkuCw_16;	NI TM__Itz3Ieeumw4gvNsF79bkuCw_17;	NI TM__Itz3Ieeumw4gvNsF79bkuCw_18;	NI TM__Itz3Ieeumw4gvNsF79bkuCw_19;	NI TM__Itz3Ieeumw4gvNsF79bkuCw_20;	NI TM__Itz3Ieeumw4gvNsF79bkuCw_21;	nimZeroMem((void*)q_1, sizeof(tyArray__9cHI9ce3NOVpqam1bGmXg5vw));	nimZeroMem((void*)w, sizeof(tyArray__FleBT9cC2nxhgiXmSYYnEKA));
+N_LIB_PRIVATE N_NIMCALL(void, encrypt__5IhSwNYMkLuIObwT9aTBOyQ)(tyObject_RijndaelContext__P9ctyX6u5ZjparlFDMKF09bg* ctx, NU8* input, NI inputLen_0, NU8* output, NI outputLen_0) {	tyArray__9cHI9ce3NOVpqam1bGmXg5vw q_1;	tyArray__FleBT9cC2nxhgiXmSYYnEKA w;	NU32 pX60gensym135255370_;	NU32 pX60gensym135265442_;	NU32 pX60gensym135275442_;	NU32 pX60gensym135285442_;	NI offset_2;	NI TM__Itz3Ieeumw4gvNsF79bkuCw_14;	NI TM__Itz3Ieeumw4gvNsF79bkuCw_15;	NI TM__Itz3Ieeumw4gvNsF79bkuCw_16;	NI TM__Itz3Ieeumw4gvNsF79bkuCw_17;	NI TM__Itz3Ieeumw4gvNsF79bkuCw_18;	NI TM__Itz3Ieeumw4gvNsF79bkuCw_19;	NI TM__Itz3Ieeumw4gvNsF79bkuCw_20;	NI TM__Itz3Ieeumw4gvNsF79bkuCw_21;	nimZeroMem((void*)q_1, sizeof(tyArray__9cHI9ce3NOVpqam1bGmXg5vw));	nimZeroMem((void*)w, sizeof(tyArray__FleBT9cC2nxhgiXmSYYnEKA));
 #line 1005 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/rijndael.nim"
 
 #line 343 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 0)) >= (NU)(inputLen_0)){ raiseIndexError2(((NI) 0),inputLen_0-1); }	pX60gensym122825370_ = (*((NU32*) ((&input[((NI) 0)]))));	w[(((NI) 0))- 0] = pX60gensym122825370_;
+	if ((NU)(((NI) 0)) >= (NU)(inputLen_0)){ raiseIndexError2(((NI) 0),inputLen_0-1); }	pX60gensym135255370_ = (*((NU32*) ((&input[((NI) 0)]))));	w[(((NI) 0))- 0] = pX60gensym135255370_;
 #line 1006 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/rijndael.nim"
 
 #line 343 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 4)) >= (NU)(inputLen_0)){ raiseIndexError2(((NI) 4),inputLen_0-1); }	pX60gensym122835442_ = (*((NU32*) ((&input[((NI) 4)]))));	w[(((NI) 1))- 0] = pX60gensym122835442_;
+	if ((NU)(((NI) 4)) >= (NU)(inputLen_0)){ raiseIndexError2(((NI) 4),inputLen_0-1); }	pX60gensym135265442_ = (*((NU32*) ((&input[((NI) 4)]))));	w[(((NI) 1))- 0] = pX60gensym135265442_;
 #line 1007 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/rijndael.nim"
 
 #line 343 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 8)) >= (NU)(inputLen_0)){ raiseIndexError2(((NI) 8),inputLen_0-1); }	pX60gensym122845442_ = (*((NU32*) ((&input[((NI) 8)]))));	w[(((NI) 2))- 0] = pX60gensym122845442_;
+	if ((NU)(((NI) 8)) >= (NU)(inputLen_0)){ raiseIndexError2(((NI) 8),inputLen_0-1); }	pX60gensym135275442_ = (*((NU32*) ((&input[((NI) 8)]))));	w[(((NI) 2))- 0] = pX60gensym135275442_;
 #line 1008 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/rijndael.nim"
 
 #line 343 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 12)) >= (NU)(inputLen_0)){ raiseIndexError2(((NI) 12),inputLen_0-1); }	pX60gensym122855442_ = (*((NU32*) ((&input[((NI) 12)]))));	w[(((NI) 3))- 0] = pX60gensym122855442_;
+	if ((NU)(((NI) 12)) >= (NU)(inputLen_0)){ raiseIndexError2(((NI) 12),inputLen_0-1); }	pX60gensym135285442_ = (*((NU32*) ((&input[((NI) 12)]))));	w[(((NI) 3))- 0] = pX60gensym135285442_;
 #line 1010 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/rijndael.nim"
 
 #line 1010 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/rijndael.nim"
@@ -1658,23 +1658,23 @@ N_LIB_PRIVATE N_NIMCALL(void, encrypt__5IhSwNYMkLuIObwT9aTBOyQ)(tyObject_Rijndae
 	(*((NU32*) ((&output[((NI) 12)])))) = w[(((NI) 3))- 0];}
 
 #line 1000 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/rijndael.nim"
-N_LIB_PRIVATE N_NIMCALL(void, encrypt__5IhSwNYMkLuIObwT9aTBOyQ_2)(tyObject_RijndaelContext__P9ctyX6u5ZjparlFDMKF09bg* ctx, NU8* input, NI inputLen_0, NU8* output, NI outputLen_0) {	tyArray__9cHI9ce3NOVpqam1bGmXg5vw q_1;	tyArray__FleBT9cC2nxhgiXmSYYnEKA w;	NU32 pX60gensym123015370_;	NU32 pX60gensym123025442_;	NU32 pX60gensym123035442_;	NU32 pX60gensym123045442_;	NI offset_2;	NI TM__Itz3Ieeumw4gvNsF79bkuCw_33;	NI TM__Itz3Ieeumw4gvNsF79bkuCw_34;	NI TM__Itz3Ieeumw4gvNsF79bkuCw_35;	NI TM__Itz3Ieeumw4gvNsF79bkuCw_36;	NI TM__Itz3Ieeumw4gvNsF79bkuCw_37;	NI TM__Itz3Ieeumw4gvNsF79bkuCw_38;	NI TM__Itz3Ieeumw4gvNsF79bkuCw_39;	NI TM__Itz3Ieeumw4gvNsF79bkuCw_40;	nimZeroMem((void*)q_1, sizeof(tyArray__9cHI9ce3NOVpqam1bGmXg5vw));	nimZeroMem((void*)w, sizeof(tyArray__FleBT9cC2nxhgiXmSYYnEKA));
+N_LIB_PRIVATE N_NIMCALL(void, encrypt__5IhSwNYMkLuIObwT9aTBOyQ_2)(tyObject_RijndaelContext__P9ctyX6u5ZjparlFDMKF09bg* ctx, NU8* input, NI inputLen_0, NU8* output, NI outputLen_0) {	tyArray__9cHI9ce3NOVpqam1bGmXg5vw q_1;	tyArray__FleBT9cC2nxhgiXmSYYnEKA w;	NU32 pX60gensym135445370_;	NU32 pX60gensym135455442_;	NU32 pX60gensym135465442_;	NU32 pX60gensym135475442_;	NI offset_2;	NI TM__Itz3Ieeumw4gvNsF79bkuCw_33;	NI TM__Itz3Ieeumw4gvNsF79bkuCw_34;	NI TM__Itz3Ieeumw4gvNsF79bkuCw_35;	NI TM__Itz3Ieeumw4gvNsF79bkuCw_36;	NI TM__Itz3Ieeumw4gvNsF79bkuCw_37;	NI TM__Itz3Ieeumw4gvNsF79bkuCw_38;	NI TM__Itz3Ieeumw4gvNsF79bkuCw_39;	NI TM__Itz3Ieeumw4gvNsF79bkuCw_40;	nimZeroMem((void*)q_1, sizeof(tyArray__9cHI9ce3NOVpqam1bGmXg5vw));	nimZeroMem((void*)w, sizeof(tyArray__FleBT9cC2nxhgiXmSYYnEKA));
 #line 1005 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/rijndael.nim"
 
 #line 343 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 0)) >= (NU)(inputLen_0)){ raiseIndexError2(((NI) 0),inputLen_0-1); }	pX60gensym123015370_ = (*((NU32*) ((&input[((NI) 0)]))));	w[(((NI) 0))- 0] = pX60gensym123015370_;
+	if ((NU)(((NI) 0)) >= (NU)(inputLen_0)){ raiseIndexError2(((NI) 0),inputLen_0-1); }	pX60gensym135445370_ = (*((NU32*) ((&input[((NI) 0)]))));	w[(((NI) 0))- 0] = pX60gensym135445370_;
 #line 1006 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/rijndael.nim"
 
 #line 343 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 4)) >= (NU)(inputLen_0)){ raiseIndexError2(((NI) 4),inputLen_0-1); }	pX60gensym123025442_ = (*((NU32*) ((&input[((NI) 4)]))));	w[(((NI) 1))- 0] = pX60gensym123025442_;
+	if ((NU)(((NI) 4)) >= (NU)(inputLen_0)){ raiseIndexError2(((NI) 4),inputLen_0-1); }	pX60gensym135455442_ = (*((NU32*) ((&input[((NI) 4)]))));	w[(((NI) 1))- 0] = pX60gensym135455442_;
 #line 1007 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/rijndael.nim"
 
 #line 343 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 8)) >= (NU)(inputLen_0)){ raiseIndexError2(((NI) 8),inputLen_0-1); }	pX60gensym123035442_ = (*((NU32*) ((&input[((NI) 8)]))));	w[(((NI) 2))- 0] = pX60gensym123035442_;
+	if ((NU)(((NI) 8)) >= (NU)(inputLen_0)){ raiseIndexError2(((NI) 8),inputLen_0-1); }	pX60gensym135465442_ = (*((NU32*) ((&input[((NI) 8)]))));	w[(((NI) 2))- 0] = pX60gensym135465442_;
 #line 1008 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/rijndael.nim"
 
 #line 343 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 12)) >= (NU)(inputLen_0)){ raiseIndexError2(((NI) 12),inputLen_0-1); }	pX60gensym123045442_ = (*((NU32*) ((&input[((NI) 12)]))));	w[(((NI) 3))- 0] = pX60gensym123045442_;
+	if ((NU)(((NI) 12)) >= (NU)(inputLen_0)){ raiseIndexError2(((NI) 12),inputLen_0-1); }	pX60gensym135475442_ = (*((NU32*) ((&input[((NI) 12)]))));	w[(((NI) 3))- 0] = pX60gensym135475442_;
 #line 1010 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/rijndael.nim"
 
 #line 1010 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/rijndael.nim"
@@ -2237,7 +2237,7 @@ N_LIB_PRIVATE N_NIMCALL(NU32, subWord__eIyaZ4Ej9atGVh4yLO6rJVQ)(NU32 x_0) {	NU32
 	result = ((NU32) ((NU64)(q_1[(((NI) 0))- 0] & 4294967295ULL)));	return result;}
 
 #line 805 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/rijndael.nim"
-N_LIB_PRIVATE N_NIMCALL(void, keySchedule__qU9ajSZATA3cjXxH4Ok65pw)(tyObject_RijndaelContext__P9ctyX6u5ZjparlFDMKF09bg* ctx, NU8* key_0, NI key_0Len_0) {	tyArray__wxrPEj3ds0gF7gOOzeVDEg skey_1;	tyArray__KQeR0r9bDDKxVxvGlo3W9aDg tkey;	NU32 tmp;	NI j;	NI k;	NU32 pX60gensym122400442_;	NU32 pX60gensym122410442_;	NU32 pX60gensym122420442_;	NU32 pX60gensym122430442_;	NI nk;	NI nkf;	NI TM__Itz3Ieeumw4gvNsF79bkuCw_41;	nimZeroMem((void*)skey_1, sizeof(tyArray__wxrPEj3ds0gF7gOOzeVDEg));	nimZeroMem((void*)tkey, sizeof(tyArray__KQeR0r9bDDKxVxvGlo3W9aDg));
+N_LIB_PRIVATE N_NIMCALL(void, keySchedule__qU9ajSZATA3cjXxH4Ok65pw)(tyObject_RijndaelContext__P9ctyX6u5ZjparlFDMKF09bg* ctx, NU8* key_0, NI key_0Len_0) {	tyArray__wxrPEj3ds0gF7gOOzeVDEg skey_1;	tyArray__KQeR0r9bDDKxVxvGlo3W9aDg tkey;	NU32 tmp;	NI j;	NI k;	NU32 pX60gensym134830442_;	NU32 pX60gensym134840442_;	NU32 pX60gensym134850442_;	NU32 pX60gensym134860442_;	NI nk;	NI nkf;	NI TM__Itz3Ieeumw4gvNsF79bkuCw_41;	nimZeroMem((void*)skey_1, sizeof(tyArray__wxrPEj3ds0gF7gOOzeVDEg));	nimZeroMem((void*)tkey, sizeof(tyArray__KQeR0r9bDDKxVxvGlo3W9aDg));
 #line 808 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/rijndael.nim"
 	tmp = ((NU32) 0);	j = (NI)0;	k = (NI)0;
 #line 812 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/rijndael.nim"
@@ -2245,19 +2245,19 @@ N_LIB_PRIVATE N_NIMCALL(void, keySchedule__qU9ajSZATA3cjXxH4Ok65pw)(tyObject_Rij
 #line 813 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/rijndael.nim"
 
 #line 343 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 0)) >= (NU)(key_0Len_0)){ raiseIndexError2(((NI) 0),key_0Len_0-1); }	pX60gensym122400442_ = (*((NU32*) ((&key_0[((NI) 0)]))));	skey_1[(((NI) 0))- 0] = pX60gensym122400442_;
+	if ((NU)(((NI) 0)) >= (NU)(key_0Len_0)){ raiseIndexError2(((NI) 0),key_0Len_0-1); }	pX60gensym134830442_ = (*((NU32*) ((&key_0[((NI) 0)]))));	skey_1[(((NI) 0))- 0] = pX60gensym134830442_;
 #line 814 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/rijndael.nim"
 
 #line 343 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 4)) >= (NU)(key_0Len_0)){ raiseIndexError2(((NI) 4),key_0Len_0-1); }	pX60gensym122410442_ = (*((NU32*) ((&key_0[((NI) 4)]))));	skey_1[(((NI) 1))- 0] = pX60gensym122410442_;
+	if ((NU)(((NI) 4)) >= (NU)(key_0Len_0)){ raiseIndexError2(((NI) 4),key_0Len_0-1); }	pX60gensym134840442_ = (*((NU32*) ((&key_0[((NI) 4)]))));	skey_1[(((NI) 1))- 0] = pX60gensym134840442_;
 #line 815 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/rijndael.nim"
 
 #line 343 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 8)) >= (NU)(key_0Len_0)){ raiseIndexError2(((NI) 8),key_0Len_0-1); }	pX60gensym122420442_ = (*((NU32*) ((&key_0[((NI) 8)]))));	skey_1[(((NI) 2))- 0] = pX60gensym122420442_;
+	if ((NU)(((NI) 8)) >= (NU)(key_0Len_0)){ raiseIndexError2(((NI) 8),key_0Len_0-1); }	pX60gensym134850442_ = (*((NU32*) ((&key_0[((NI) 8)]))));	skey_1[(((NI) 2))- 0] = pX60gensym134850442_;
 #line 816 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/rijndael.nim"
 
 #line 343 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 12)) >= (NU)(key_0Len_0)){ raiseIndexError2(((NI) 12),key_0Len_0-1); }	pX60gensym122430442_ = (*((NU32*) ((&key_0[((NI) 12)]))));	skey_1[(((NI) 3))- 0] = pX60gensym122430442_;
+	if ((NU)(((NI) 12)) >= (NU)(key_0Len_0)){ raiseIndexError2(((NI) 12),key_0Len_0-1); }	pX60gensym134860442_ = (*((NU32*) ((&key_0[((NI) 12)]))));	skey_1[(((NI) 3))- 0] = pX60gensym134860442_;
 #line 817 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/rijndael.nim"
 	tmp = skey_1[(((NI) 3))- 0];
 #line 839 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/rijndael.nim"
@@ -2505,7 +2505,7 @@ N_LIB_PRIVATE N_NIMCALL(void, keySchedule__qU9ajSZATA3cjXxH4Ok65pw)(tyObject_Rij
 }
 
 #line 805 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/rijndael.nim"
-N_LIB_PRIVATE N_NIMCALL(void, keySchedule__qU9ajSZATA3cjXxH4Ok65pw_2)(tyObject_RijndaelContext__P9ctyX6u5ZjparlFDMKF09bg* ctx, NU8* key_0, NI key_0Len_0) {	tyArray__wxrPEj3ds0gF7gOOzeVDEg skey_1;	tyArray__KQeR0r9bDDKxVxvGlo3W9aDg tkey;	NU32 tmp;	NI j;	NI k;	NU32 pX60gensym122535442_;	NU32 pX60gensym122545442_;	NU32 pX60gensym122555442_;	NU32 pX60gensym122565442_;	NU32 pX60gensym122575442_;	NU32 pX60gensym122585442_;	NU32 pX60gensym122595442_;	NU32 pX60gensym122605442_;	NI nk;	NI nkf;	NI TM__Itz3Ieeumw4gvNsF79bkuCw_58;	nimZeroMem((void*)skey_1, sizeof(tyArray__wxrPEj3ds0gF7gOOzeVDEg));	nimZeroMem((void*)tkey, sizeof(tyArray__KQeR0r9bDDKxVxvGlo3W9aDg));
+N_LIB_PRIVATE N_NIMCALL(void, keySchedule__qU9ajSZATA3cjXxH4Ok65pw_2)(tyObject_RijndaelContext__P9ctyX6u5ZjparlFDMKF09bg* ctx, NU8* key_0, NI key_0Len_0) {	tyArray__wxrPEj3ds0gF7gOOzeVDEg skey_1;	tyArray__KQeR0r9bDDKxVxvGlo3W9aDg tkey;	NU32 tmp;	NI j;	NI k;	NU32 pX60gensym134965442_;	NU32 pX60gensym134975442_;	NU32 pX60gensym134985442_;	NU32 pX60gensym134995442_;	NU32 pX60gensym135005442_;	NU32 pX60gensym135015442_;	NU32 pX60gensym135025442_;	NU32 pX60gensym135035442_;	NI nk;	NI nkf;	NI TM__Itz3Ieeumw4gvNsF79bkuCw_58;	nimZeroMem((void*)skey_1, sizeof(tyArray__wxrPEj3ds0gF7gOOzeVDEg));	nimZeroMem((void*)tkey, sizeof(tyArray__KQeR0r9bDDKxVxvGlo3W9aDg));
 #line 808 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/rijndael.nim"
 	tmp = ((NU32) 0);	j = (NI)0;	k = (NI)0;
 #line 828 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/rijndael.nim"
@@ -2513,35 +2513,35 @@ N_LIB_PRIVATE N_NIMCALL(void, keySchedule__qU9ajSZATA3cjXxH4Ok65pw_2)(tyObject_R
 #line 829 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/rijndael.nim"
 
 #line 343 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 0)) >= (NU)(key_0Len_0)){ raiseIndexError2(((NI) 0),key_0Len_0-1); }	pX60gensym122535442_ = (*((NU32*) ((&key_0[((NI) 0)]))));	skey_1[(((NI) 0))- 0] = pX60gensym122535442_;
+	if ((NU)(((NI) 0)) >= (NU)(key_0Len_0)){ raiseIndexError2(((NI) 0),key_0Len_0-1); }	pX60gensym134965442_ = (*((NU32*) ((&key_0[((NI) 0)]))));	skey_1[(((NI) 0))- 0] = pX60gensym134965442_;
 #line 830 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/rijndael.nim"
 
 #line 343 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 4)) >= (NU)(key_0Len_0)){ raiseIndexError2(((NI) 4),key_0Len_0-1); }	pX60gensym122545442_ = (*((NU32*) ((&key_0[((NI) 4)]))));	skey_1[(((NI) 1))- 0] = pX60gensym122545442_;
+	if ((NU)(((NI) 4)) >= (NU)(key_0Len_0)){ raiseIndexError2(((NI) 4),key_0Len_0-1); }	pX60gensym134975442_ = (*((NU32*) ((&key_0[((NI) 4)]))));	skey_1[(((NI) 1))- 0] = pX60gensym134975442_;
 #line 831 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/rijndael.nim"
 
 #line 343 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 8)) >= (NU)(key_0Len_0)){ raiseIndexError2(((NI) 8),key_0Len_0-1); }	pX60gensym122555442_ = (*((NU32*) ((&key_0[((NI) 8)]))));	skey_1[(((NI) 2))- 0] = pX60gensym122555442_;
+	if ((NU)(((NI) 8)) >= (NU)(key_0Len_0)){ raiseIndexError2(((NI) 8),key_0Len_0-1); }	pX60gensym134985442_ = (*((NU32*) ((&key_0[((NI) 8)]))));	skey_1[(((NI) 2))- 0] = pX60gensym134985442_;
 #line 832 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/rijndael.nim"
 
 #line 343 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 12)) >= (NU)(key_0Len_0)){ raiseIndexError2(((NI) 12),key_0Len_0-1); }	pX60gensym122565442_ = (*((NU32*) ((&key_0[((NI) 12)]))));	skey_1[(((NI) 3))- 0] = pX60gensym122565442_;
+	if ((NU)(((NI) 12)) >= (NU)(key_0Len_0)){ raiseIndexError2(((NI) 12),key_0Len_0-1); }	pX60gensym134995442_ = (*((NU32*) ((&key_0[((NI) 12)]))));	skey_1[(((NI) 3))- 0] = pX60gensym134995442_;
 #line 833 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/rijndael.nim"
 
 #line 343 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 16)) >= (NU)(key_0Len_0)){ raiseIndexError2(((NI) 16),key_0Len_0-1); }	pX60gensym122575442_ = (*((NU32*) ((&key_0[((NI) 16)]))));	skey_1[(((NI) 4))- 0] = pX60gensym122575442_;
+	if ((NU)(((NI) 16)) >= (NU)(key_0Len_0)){ raiseIndexError2(((NI) 16),key_0Len_0-1); }	pX60gensym135005442_ = (*((NU32*) ((&key_0[((NI) 16)]))));	skey_1[(((NI) 4))- 0] = pX60gensym135005442_;
 #line 834 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/rijndael.nim"
 
 #line 343 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 20)) >= (NU)(key_0Len_0)){ raiseIndexError2(((NI) 20),key_0Len_0-1); }	pX60gensym122585442_ = (*((NU32*) ((&key_0[((NI) 20)]))));	skey_1[(((NI) 5))- 0] = pX60gensym122585442_;
+	if ((NU)(((NI) 20)) >= (NU)(key_0Len_0)){ raiseIndexError2(((NI) 20),key_0Len_0-1); }	pX60gensym135015442_ = (*((NU32*) ((&key_0[((NI) 20)]))));	skey_1[(((NI) 5))- 0] = pX60gensym135015442_;
 #line 835 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/rijndael.nim"
 
 #line 343 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 24)) >= (NU)(key_0Len_0)){ raiseIndexError2(((NI) 24),key_0Len_0-1); }	pX60gensym122595442_ = (*((NU32*) ((&key_0[((NI) 24)]))));	skey_1[(((NI) 6))- 0] = pX60gensym122595442_;
+	if ((NU)(((NI) 24)) >= (NU)(key_0Len_0)){ raiseIndexError2(((NI) 24),key_0Len_0-1); }	pX60gensym135025442_ = (*((NU32*) ((&key_0[((NI) 24)]))));	skey_1[(((NI) 6))- 0] = pX60gensym135025442_;
 #line 836 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/rijndael.nim"
 
 #line 343 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 28)) >= (NU)(key_0Len_0)){ raiseIndexError2(((NI) 28),key_0Len_0-1); }	pX60gensym122605442_ = (*((NU32*) ((&key_0[((NI) 28)]))));	skey_1[(((NI) 7))- 0] = pX60gensym122605442_;
+	if ((NU)(((NI) 28)) >= (NU)(key_0Len_0)){ raiseIndexError2(((NI) 28),key_0Len_0-1); }	pX60gensym135035442_ = (*((NU32*) ((&key_0[((NI) 28)]))));	skey_1[(((NI) 7))- 0] = pX60gensym135035442_;
 #line 837 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/rijndael.nim"
 	tmp = skey_1[(((NI) 7))- 0];
 #line 839 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/rijndael.nim"

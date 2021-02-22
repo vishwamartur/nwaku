@@ -79,3 +79,6 @@ c	c	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/li
 i	i_3	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim	106	8
 popFirst	popFirst__nzwg1IuGgB6FasAOIuk9aHAdeques	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/deques.nim	369	5
 []	X5BX5D___brvV3NwXU6gNd4ItUBDNvQdeques	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/deques.nim	124	5
+initDeque	initDeque__Y9azsLOyZBUhHH9agV40jKtw	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/deques.nim	78	5
+popFirst	popFirst__Ih36EaA1BEnCR6OhWz9cUXgdeques	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/deques.nim	369	5
+addFirst	addFirst__gIby5vW5Il2x2MShko8Szg_2	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/deques.nim	286	5

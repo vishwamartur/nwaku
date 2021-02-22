@@ -3,7 +3,7 @@
 /* The generated code is subject to the original license. */
 /* Compiled for: Linux, amd64, gcc */
 /* Command for C compiler:
-   gcc -c  -w -pthread -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace/install/usr/include -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1/src -DHAVE_CONFIG_H -DHAVE_BUILTIN_EXPECT -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/src -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/inc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/tools -DBR_USE_UNIX_TIME=1 -DBR_USE_URANDOM=1 -DBR_LE_UNALIGNED=1 -DBR_64=1  -DBR_amd64=1 -DBR_INT128=1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/miniupnp/miniupnpc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/libnatpmp-upstream -DENABLE_STRNATPMPERR -march=native -g3 -Og -O3 -fno-strict-aliasing -fno-ident  -I/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib -I/home/runner/work/nim-waku/nim-waku/waku/common -o nimcache/release/wakubridge/@m..@s..@svendor@snim-json-rpc@sjson_rpc@srouter.nim.c.o nimcache/release/wakubridge/@m..@s..@svendor@snim-json-rpc@sjson_rpc@srouter.nim.c */
+   gcc -c  -w -pthread -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace/install/usr/include -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1/src -DHAVE_CONFIG_H -DHAVE_BUILTIN_EXPECT -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/src -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/inc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/tools -DBR_USE_UNIX_TIME=1 -DBR_USE_URANDOM=1 -DBR_LE_UNALIGNED=1 -DBR_64=1  -DBR_amd64=1 -DBR_INT128=1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/miniupnp/miniupnpc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/libnatpmp-upstream -DENABLE_STRNATPMPERR -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/certs -march=native -g3 -Og -O3 -fno-strict-aliasing -fno-ident  -I/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib -I/home/runner/work/nim-waku/nim-waku/waku/common -o nimcache/release/wakubridge/@m..@s..@svendor@snim-json-rpc@sjson_rpc@srouter.nim.c.o nimcache/release/wakubridge/@m..@s..@svendor@snim-json-rpc@sjson_rpc@srouter.nim.c */
 #define NIM_INTBITS 64
 
 #include "nimbase.h"
@@ -423,10 +423,10 @@ N_LIB_PRIVATE N_NIMCALL(void, logLoggingFailure__HTlKfqAl9c6Ci7zIH6cYlmg)(NCSTRI
 static N_INLINE(void, popCurrentException)(void);
 N_LIB_PRIVATE N_NIMCALL(void, reraiseException)(void);
 static N_INLINE(void, some__GRWgdPVYihYI1su9cT0tgQAoptions)(tyTuple__1RolsN21cBZ9aoZzj9c0Svww val_0, tyObject_Option__nSLGABHmw0ajmeOw0y7XJA* Result);
-N_LIB_PRIVATE N_NIMCALL(NIM_BOOL, hasKey__zrDHfVBiQiPv9bNJ29c1ZINg)(tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q* node, NimStringDesc* key_0);
+N_LIB_PRIVATE N_NIMCALL(NIM_BOOL, hasKey__zrDHfVBiQiPv9bNJ29c1ZINg_2)(tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q* node, NimStringDesc* key_0);
 N_LIB_PRIVATE N_NIMCALL(tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q*, X7BX7D___1nPmjyAL9b6mnG4pI59bUwSA)(tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q* node, NimStringDesc* key_0);
 N_LIB_PRIVATE N_NIMCALL(NIM_BOOL, eqeq___ufBNJwWgb20cY5Bv3NMT7A)(tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q* a, tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q* b);
-N_LIB_PRIVATE N_NIMCALL(tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q*, percent___19ag6cl4fMjxytc9arHmLIbw_2)(NimStringDesc* s_0);
+N_LIB_PRIVATE N_NIMCALL(tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q*, percent___19ag6cl4fMjxytc9arHmLIbw)(NimStringDesc* s_0);
 static N_INLINE(tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q*, X5BX5D___277k8m8OstpfbY4dHQex6wjson)(tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q* node, NimStringDesc* name_0);
 N_LIB_PRIVATE N_NIMCALL(void, failedAssertImpl__W9cjVocn1tjhW7p7xohJj6A)(NimStringDesc* msg);
 N_LIB_PRIVATE N_NIMCALL(tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q**, X5BX5D___l9atGRY9bA25fn4p5uueZfUQ)(tyObject_OrderedTable__ZZvSdVkA2s2sIyifu4cpkg* t, NimStringDesc* key_0);
@@ -436,7 +436,7 @@ static N_INLINE(NIM_BOOL, isSome__Q6UXetnPDA9cs39ctrYi9bJ8Aoptions)(tyObject_Opt
 static N_INLINE(tyTuple__1RolsN21cBZ9aoZzj9c0Svww*, get__GKj0MSZ3FVhK2CxZ9aBY26Aoptions)(tyObject_Option__nSLGABHmw0ajmeOw0y7XJA* self);
 static N_INLINE(NIM_BOOL, isNone__Q6UXetnPDA9cs39ctrYi9bJ8A_2options)(tyObject_Option__nSLGABHmw0ajmeOw0y7XJA self);
 N_LIB_PRIVATE N_NIMCALL(void, raiseExceptionEx)(Exception* e, NCSTRING ename, NCSTRING procname, NCSTRING filename, NI line);
-N_LIB_PRIVATE N_NIMCALL(tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q*, newJNull__nXwnFPu9beTnGPwglrr7ztA)(void);
+N_LIB_PRIVATE N_NIMCALL(tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q*, newJNull__nXwnFPu9beTnGPwglrr7ztA_3)(void);
 static N_INLINE(void, appendString)(NimStringDesc* dest, NimStringDesc* src);
 static N_INLINE(void, copyMem__i80o3k0SgEI5gTRCzYdyWAsystem)(void* dest, void* source, NI size);
 static N_INLINE(void, nimCopyMem)(void* dest, void* source, NI size);
@@ -962,7 +962,7 @@ N_LIB_PRIVATE N_NIMCALL(void, checkJsonState__NzRlbfbgsSjloaQHXV8jlQ)(NimStringD
 #line 89 "/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/router.nim"
 
 #line 89 "/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/router.nim"
-		T23_ = (NIM_BOOL)0;		T23_ = hasKey__zrDHfVBiQiPv9bNJ29c1ZINg((*node), ((NimStringDesc*) &TM__sL9a0IP5jXmhUnYMpoGZPrQ_16));		if (!!(T23_)) goto LA24_;
+		T23_ = (NIM_BOOL)0;		T23_ = hasKey__zrDHfVBiQiPv9bNJ29c1ZINg_2((*node), ((NimStringDesc*) &TM__sL9a0IP5jXmhUnYMpoGZPrQ_16));		if (!!(T23_)) goto LA24_;
 
 #line 90 "/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/router.nim"
 
@@ -1004,7 +1004,7 @@ N_LIB_PRIVATE N_NIMCALL(void, checkJsonState__NzRlbfbgsSjloaQHXV8jlQ)(NimStringD
 #line 92 "/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/router.nim"
 
 #line 92 "/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/router.nim"
-		T33_ = (tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q*)0;		T33_ = percent___19ag6cl4fMjxytc9arHmLIbw_2(((NimStringDesc*) &TM__sL9a0IP5jXmhUnYMpoGZPrQ_19));
+		T33_ = (tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q*)0;		T33_ = percent___19ag6cl4fMjxytc9arHmLIbw(((NimStringDesc*) &TM__sL9a0IP5jXmhUnYMpoGZPrQ_19));
 #line 92 "/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/router.nim"
 		T34_ = (NIM_BOOL)0;		T34_ = eqeq___ufBNJwWgb20cY5Bv3NMT7A(jVer, T33_);		T28_ = !(T34_);		LA32_: ;
 		if (!T28_) goto LA35_;
@@ -1028,7 +1028,7 @@ N_LIB_PRIVATE N_NIMCALL(void, checkJsonState__NzRlbfbgsSjloaQHXV8jlQ)(NimStringD
 #line 94 "/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/router.nim"
 
 #line 94 "/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/router.nim"
-		T40_ = (NIM_BOOL)0;		T40_ = hasKey__zrDHfVBiQiPv9bNJ29c1ZINg((*node), ((NimStringDesc*) &TM__sL9a0IP5jXmhUnYMpoGZPrQ_21));		T39_ = !(T40_);		if (T39_) goto LA41_;
+		T40_ = (NIM_BOOL)0;		T40_ = hasKey__zrDHfVBiQiPv9bNJ29c1ZINg_2((*node), ((NimStringDesc*) &TM__sL9a0IP5jXmhUnYMpoGZPrQ_21));		T39_ = !(T40_);		if (T39_) goto LA41_;
 
 #line 94 "/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/router.nim"
 
@@ -1057,7 +1057,7 @@ N_LIB_PRIVATE N_NIMCALL(void, checkJsonState__NzRlbfbgsSjloaQHXV8jlQ)(NimStringD
 #line 96 "/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/router.nim"
 
 #line 96 "/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/router.nim"
-		T47_ = (NIM_BOOL)0;		T47_ = hasKey__zrDHfVBiQiPv9bNJ29c1ZINg((*node), ((NimStringDesc*) &TM__sL9a0IP5jXmhUnYMpoGZPrQ_26));		if (!!(T47_)) goto LA48_;
+		T47_ = (NIM_BOOL)0;		T47_ = hasKey__zrDHfVBiQiPv9bNJ29c1ZINg_2((*node), ((NimStringDesc*) &TM__sL9a0IP5jXmhUnYMpoGZPrQ_26));		if (!!(T47_)) goto LA48_;
 
 #line 97 "/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/router.nim"
 
@@ -1376,7 +1376,7 @@ N_LIB_PRIVATE N_CLOSURE(tyObject_FutureBasecolonObjectType___V9aHQccB2Pyjfqk9bdE
 #line 126 "/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/router.nim"
 						T11_ = (NimStringDesc*)0;						T11_ = rawNewString(((*colonenvP_).methodName5 ? (*colonenvP_).methodName5->Sup.len : 0) + 32);appendString(T11_, (*colonenvP_).methodName5);appendString(T11_, ((NimStringDesc*) &TM__sL9a0IP5jXmhUnYMpoGZPrQ_45));
 #line 126 "/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/router.nim"
-						asgnRef((void**) (&(*colonenvP_).methodNotFound9), percent___19ag6cl4fMjxytc9arHmLIbw_2(T11_));
+						asgnRef((void**) (&(*colonenvP_).methodNotFound9), percent___19ag6cl4fMjxytc9arHmLIbw(T11_));
 #line 127 "/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/router.nim"
 
 #line 127 "/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/router.nim"
@@ -1898,7 +1898,7 @@ N_LIB_PRIVATE N_CLOSURE(tyObject_FutureBasecolonObjectType___V9aHQccB2Pyjfqk9bdE
 #line 154 "/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/router.nim"
 
 #line 154 "/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/router.nim"
-						asgnRef((void**) (&(*colonenvP_).id6), newJNull__nXwnFPu9beTnGPwglrr7ztA());					}
+						asgnRef((void**) (&(*colonenvP_).id6), newJNull__nXwnFPu9beTnGPwglrr7ztA_3());					}
 					goto LA11_;
 					LA17_: ;
 					{
@@ -1919,7 +1919,7 @@ N_LIB_PRIVATE N_CLOSURE(tyObject_FutureBasecolonObjectType___V9aHQccB2Pyjfqk9bdE
 #line 109 "/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/router.nim"
 
 #line 109 "/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/router.nim"
-					T22_ = (tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q*)0;					T22_ = newJNull__nXwnFPu9beTnGPwglrr7ztA();
+					T22_ = (tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q*)0;					T22_ = newJNull__nXwnFPu9beTnGPwglrr7ztA_3();
 #line 162 "/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/router.nim"
 					asgnRef((void**) (&(*colonenvP_).res9), wrapError__2naXxs6s6Kz3Dkt1EyXoeQ((*colonenvP_).errKind7.Field0, (*colonenvP_).fullMsg8, (*colonenvP_).id6, T22_));
 #line 164 "/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/router.nim"

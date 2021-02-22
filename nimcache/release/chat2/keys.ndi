@@ -2,6 +2,13 @@ newRng	newRng__9cKaYUOzNpI6Cw7CIYoErTQ	/home/runner/work/nim-waku/nim-waku/vendo
 result	result	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/keys.nim	54	0
 seeder	seeder	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/keys.nim	58	6
 rng	rng_1	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/keys.nim	62	6
+toCanonicalAddress	toCanonicalAddress__vn4kzxBmOg9cphvH55gBpSw	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/keys.nim	185	5
+hash	hash_1	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/keys.nim	187	6
 toRaw	toRaw__W9bYIkOOHQ8dZSTz9aIjEPEQ	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/keys.nim	103	5
+pubkey	pubkey	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/keys.nim	103	12
 tmp	tmp_1	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/keys.nim	104	6
 pubkey	pubkey	/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1.nim	286	12
+sign	sign__lPU7k80HwQHA1fuDIlCa3A	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/keys.nim	213	5
+result	result	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/keys.nim	213	0
+key	key_0	/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1.nim	437	22
+msg	msg	/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1.nim	437	40

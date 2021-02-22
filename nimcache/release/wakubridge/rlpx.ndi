@@ -846,9 +846,6 @@ encrypt	encrypt_0	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/aut
 transp	transp	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/transports/stream.nim	1907	12
 pbytes	pbytes	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/transports/stream.nim	1907	37
 nbytes	nbytes	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/transports/stream.nim	1908	12
-transp	transp	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/transports/stream.nim	2009	18
-pbytes	pbytes	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/transports/stream.nim	2009	43
-nbytes	nbytes	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/transports/stream.nim	2010	18
 h	h_0	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/auth.nim	472	23
 input	input	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/auth.nim	472	41
 self	self	/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/results.nim	536	18

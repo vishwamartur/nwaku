@@ -1,2 +1,4 @@
 bigEndian32	bigEndian32__Y7K2twSvEFXjEQtANWmrhgendians	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/endians.nim	112	7
 swapEndian32	swapEndian32__Y7K2twSvEFXjEQtANWmrhg_2endians	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/endians.nim	61	7
+bigEndian64	bigEndian64__Y7K2twSvEFXjEQtANWmrhg_3endians	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/endians.nim	111	7
+swapEndian64	swapEndian64__Y7K2twSvEFXjEQtANWmrhg_4endians	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/endians.nim	58	7

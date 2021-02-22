@@ -3,7 +3,7 @@
 /* The generated code is subject to the original license. */
 /* Compiled for: Linux, amd64, gcc */
 /* Command for C compiler:
-   gcc -c  -w -pthread -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace/install/usr/include -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1/src -DHAVE_CONFIG_H -DHAVE_BUILTIN_EXPECT -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/src -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/inc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/tools -DBR_USE_UNIX_TIME=1 -DBR_USE_URANDOM=1 -DBR_LE_UNALIGNED=1 -DBR_64=1  -DBR_amd64=1 -DBR_INT128=1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/miniupnp/miniupnpc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/libnatpmp-upstream -DENABLE_STRNATPMPERR -march=native -g3 -Og -O3 -fno-strict-aliasing -fno-ident  -I/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib -I/home/runner/work/nim-waku/nim-waku/examples/v2 -o nimcache/release/chat2/stdlib_tables.nim.c.o nimcache/release/chat2/stdlib_tables.nim.c */
+   gcc -c  -w -pthread -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace/install/usr/include -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1/src -DHAVE_CONFIG_H -DHAVE_BUILTIN_EXPECT -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/src -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/inc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/tools -DBR_USE_UNIX_TIME=1 -DBR_USE_URANDOM=1 -DBR_LE_UNALIGNED=1 -DBR_64=1  -DBR_amd64=1 -DBR_INT128=1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/certs -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/miniupnp/miniupnpc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/libnatpmp-upstream -DENABLE_STRNATPMPERR -march=native -g3 -Og -O3 -fno-strict-aliasing -fno-ident  -I/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib -I/home/runner/work/nim-waku/nim-waku/examples/v2 -o nimcache/release/chat2/stdlib_tables.nim.c.o nimcache/release/chat2/stdlib_tables.nim.c */
 #define NIM_INTBITS 64
 
 #include "nimbase.h"
@@ -79,6 +79,22 @@ typedef struct tyTuple__kuMQ1fbjJlHtwKTmBGAe6g tyTuple__kuMQ1fbjJlHtwKTmBGAe6g;
 typedef struct tyObject_Table__i55W8RrwGKsG9cl0sAKxgkQ tyObject_Table__i55W8RrwGKsG9cl0sAKxgkQ;
 typedef struct tySequence__pUxI6Ljo6IKKHXKOZkQ7Og tySequence__pUxI6Ljo6IKKHXKOZkQ7Og;
 typedef struct tyTuple__sr3s7uVHpu9cEbbDnCSg8yQ tyTuple__sr3s7uVHpu9cEbbDnCSg8yQ;
+typedef struct tyObject_OrderedTable__ZZvSdVkA2s2sIyifu4cpkg tyObject_OrderedTable__ZZvSdVkA2s2sIyifu4cpkg;
+typedef struct tySequence__MlAD6nAPq9bHKla9cWiIZP0g tySequence__MlAD6nAPq9bHKla9cWiIZP0g;
+typedef struct tyTuple__awOivLjlO76sGdHY7nQUjQ tyTuple__awOivLjlO76sGdHY7nQUjQ;
+typedef struct tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q;
+typedef struct tyObject_Table__BZfyXkROzX88W3JFME9aJ2Q tyObject_Table__BZfyXkROzX88W3JFME9aJ2Q;
+typedef struct tySequence__P7q4mRBU3fRhL1KHJGOBAQ tySequence__P7q4mRBU3fRhL1KHJGOBAQ;
+typedef struct tyTuple__PVXP7LYmC79cHLv3MgDW9cFw tyTuple__PVXP7LYmC79cHLv3MgDW9cFw;
+typedef struct tyObject_FuturecolonObjectType___V0L9cQCp4qvFI1wEA712A8w tyObject_FuturecolonObjectType___V0L9cQCp4qvFI1wEA712A8w;
+typedef struct tyObject_Table__k9cb4Qn3gUx6gxyGj3hd20w tyObject_Table__k9cb4Qn3gUx6gxyGj3hd20w;
+typedef struct tySequence__87DZdIc4Y9ccnDlJfZoyb5w tySequence__87DZdIc4Y9ccnDlJfZoyb5w;
+typedef struct tyTuple__FxWADhULcfihQn5gGVN7CQ tyTuple__FxWADhULcfihQn5gGVN7CQ;
+typedef struct tySequence__oLpBKXzW3hF9aCVMo5EymfQ tySequence__oLpBKXzW3hF9aCVMo5EymfQ;
+typedef struct tyObject_FutureBasecolonObjectType___V9aHQccB2Pyjfqk9bdE5ZRnw tyObject_FutureBasecolonObjectType___V9aHQccB2Pyjfqk9bdE5ZRnw;
+typedef struct tyObject_SrcLoc__9cugm8iqHlSb5d0xCTLlcbg tyObject_SrcLoc__9cugm8iqHlSb5d0xCTLlcbg;
+typedef struct tySequence__qkV9cggxceO9cpfUWIbCnvJg tySequence__qkV9cggxceO9cpfUWIbCnvJg;
+typedef struct tyTuple__UAPuRQmtqdlTp9cgdKiAY0g tyTuple__UAPuRQmtqdlTp9cgdKiAY0g;
 typedef struct tyObject_Table__lHpSn1a1LQne7Vijlza5tg tyObject_Table__lHpSn1a1LQne7Vijlza5tg;
 typedef struct tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw;
 typedef struct tySequence__6H5Oh5UUvVCLiakt9aTwtUQ tySequence__6H5Oh5UUvVCLiakt9aTwtUQ;
@@ -253,6 +269,11 @@ typedef struct tyTuple__RR9cGEKcLuRt2J0N36N9aV9aA tyTuple__RR9cGEKcLuRt2J0N36N9a
 typedef struct tyObject_MessageNotificationSubscription__0iE3wlvp8XLVCEqe9a69bBzA tyObject_MessageNotificationSubscription__0iE3wlvp8XLVCEqe9a69bBzA;
 typedef struct tyTuple__rViK9a9bqo0ixcIRVpyPlomg tyTuple__rViK9a9bqo0ixcIRVpyPlomg;
 typedef struct tyObject_LPProtocolcolonObjectType___5aL02d9bjOYDZmYD0dWxn2w tyObject_LPProtocolcolonObjectType___5aL02d9bjOYDZmYD0dWxn2w;
+typedef struct tyObject_Table__FdHpxIKbPNjlIbR9a4qcWpw tyObject_Table__FdHpxIKbPNjlIbR9a4qcWpw;
+typedef struct tySequence__rEAWhJSquAhdmub1uagmwg tySequence__rEAWhJSquAhdmub1uagmwg;
+typedef struct tyTuple__Wbu2O9clBpzS2iH9b4rBbnEw tyTuple__Wbu2O9clBpzS2iH9b4rBbnEw;
+typedef struct tyObject_SubscriptioncolonObjectType___DQFNW7lzE2Mw43vwAJXufQ tyObject_SubscriptioncolonObjectType___DQFNW7lzE2Mw43vwAJXufQ;
+typedef struct tyObject_Web3colonObjectType___Yv9cYJK9b8tDQ8t9aog3k8mEg tyObject_Web3colonObjectType___Yv9cYJK9b8tDQ8t9aog3k8mEg;
 typedef struct tySequence__T74QuWwr8h7Al0PS9cMqKwA tySequence__T74QuWwr8h7Al0PS9cMqKwA;
 typedef struct tyObject_ENode__bNRDNKJGQnqT2sH89bsDhBw tyObject_ENode__bNRDNKJGQnqT2sH89bsDhBw;
 typedef struct tyObject_Address__x5U8qnsjGWstAJoOadUZ9aA tyObject_Address__x5U8qnsjGWstAJoOadUZ9aA;
@@ -272,6 +293,7 @@ typedef struct tySequence__bZnlXjZxt9bKsfZvcpqpZDA tySequence__bZnlXjZxt9bKsfZvc
 typedef struct tySequence__brriflmYwGP9aQE3grVydoQ tySequence__brriflmYwGP9aQE3grVydoQ;
 typedef struct tySequence__TxR1UCdKYpvrwqom6m6ztg tySequence__TxR1UCdKYpvrwqom6m6ztg;
 typedef struct tyObject_StackTraceEntry__oLyohQ7O2XOvGnflOss8EA tyObject_StackTraceEntry__oLyohQ7O2XOvGnflOss8EA;
+typedef struct tyObject_AsyncCallback__Swoy2e9aGWZSpT0Jm9aqp3Zw tyObject_AsyncCallback__Swoy2e9aGWZSpT0Jm9aqp3Zw;
 typedef struct tySequence__RQAvfm3tUYD1QWb9c4P8NNA tySequence__RQAvfm3tUYD1QWb9c4P8NNA;
 typedef struct tySequence__oRzyI2tapcwoHwH1Bz2exA tySequence__oRzyI2tapcwoHwH1Bz2exA;
 typedef struct tyObject_Option__ChQnHuXLEQ5RD1fCRvT7YQ tyObject_Option__ChQnHuXLEQ5RD1fCRvT7YQ;
@@ -294,7 +316,6 @@ typedef struct tyObject_ContentFilter__zmS3UuJydVs2xUezA1n9akA tyObject_ContentF
 typedef struct tySequence__9bAGqSvkAaFL9bWjsEPslrFA tySequence__9bAGqSvkAaFL9bWjsEPslrFA;
 typedef struct tyObject_Deque__9al6d2TPsLxHbSTA9auxSt7A tyObject_Deque__9al6d2TPsLxHbSTA9auxSt7A;
 typedef struct tySequence__V7ShAorRgCSeV9b0QgCr9aAg tySequence__V7ShAorRgCSeV9b0QgCr9aAg;
-typedef struct tyObject_FutureBasecolonObjectType___V9aHQccB2Pyjfqk9bdE5ZRnw tyObject_FutureBasecolonObjectType___V9aHQccB2Pyjfqk9bdE5ZRnw;
 typedef struct tyObject_SubOpts__89cudN1q3YtAd8ENHWPechw tyObject_SubOpts__89cudN1q3YtAd8ENHWPechw;
 typedef struct tyObject_PeerInfoMsg__W4epI9boAZXsWE9avB49a5Zew tyObject_PeerInfoMsg__W4epI9boAZXsWE9avB49a5Zew;
 typedef struct tyObject_OutstandingRequest__ajbfRremPQNkuE39bpvmbHQ tyObject_OutstandingRequest__ajbfRremPQNkuE39bpvmbHQ;
@@ -506,6 +527,75 @@ struct tyTuple__sr3s7uVHpu9cEbbDnCSg8yQ {
 NI Field0;
 NimStringDesc* Field1;
 NI Field2;
+};
+struct tyObject_OrderedTable__ZZvSdVkA2s2sIyifu4cpkg {tySequence__MlAD6nAPq9bHKla9cWiIZP0g* data;
+NI counter;
+NI first;
+NI last;
+};
+struct tyTuple__awOivLjlO76sGdHY7nQUjQ {
+NI Field0;
+NI Field1;
+NimStringDesc* Field2;
+tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q* Field3;
+};
+struct tyObject_Table__BZfyXkROzX88W3JFME9aJ2Q {tySequence__P7q4mRBU3fRhL1KHJGOBAQ* data;
+NI counter;
+};
+struct tyTuple__PVXP7LYmC79cHLv3MgDW9cFw {
+NI Field0;
+NI64 Field1;
+tyObject_FuturecolonObjectType___V0L9cQCp4qvFI1wEA712A8w* Field2;
+};
+struct tyObject_Table__k9cb4Qn3gUx6gxyGj3hd20w {tySequence__87DZdIc4Y9ccnDlJfZoyb5w* data;
+NI counter;
+};
+typedef struct {
+N_NIMCALL_PTR(void, ClP_0) (tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q* j, void* ClE_0);
+void* ClE_0;
+} tyProc__ADCDtoN1AvOABxjfvZcWKw;
+struct tyTuple__FxWADhULcfihQn5gGVN7CQ {
+NI Field0;
+NimStringDesc* Field1;
+tyProc__ADCDtoN1AvOABxjfvZcWKw Field2;
+};
+typedef NU8 tyEnum_JsonNodeKind__RUngo7nCHe6O8aBGIcrhtg;
+struct tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q {tyEnum_JsonNodeKind__RUngo7nCHe6O8aBGIcrhtg kind;
+union{
+struct {NimStringDesc* str;
+} _kind_1;
+struct {NI64 num;
+} _kind_2;
+struct {NF fnum;
+} _kind_3;
+struct {NIM_BOOL bval;
+} _kind_4;
+struct {tyObject_OrderedTable__ZZvSdVkA2s2sIyifu4cpkg fields;
+} _kind_6;
+struct {tySequence__oLpBKXzW3hF9aCVMo5EymfQ* elems;
+} _kind_7;
+};
+};
+typedef tyObject_SrcLoc__9cugm8iqHlSb5d0xCTLlcbg* tyArray__06L8jjfbunFPxVliYUVjmQ[2];
+typedef struct {
+N_NIMCALL_PTR(void, ClP_0) (void* arg, void* ClE_0);
+void* ClE_0;
+} tyProc__9bqx36VxQxXejdrF09bFARDQ;
+typedef NU8 tyEnum_FutureState__WzRzKRS6S9aqphI4AiMjRNA;
+struct tyObject_FutureBasecolonObjectType___V9aHQccB2Pyjfqk9bdE5ZRnw {  RootObj Sup;tyArray__06L8jjfbunFPxVliYUVjmQ location;
+tySequence__qkV9cggxceO9cpfUWIbCnvJg* callbacks;
+tyProc__9bqx36VxQxXejdrF09bFARDQ cancelcb;
+tyObject_FutureBasecolonObjectType___V9aHQccB2Pyjfqk9bdE5ZRnw* child;
+tyEnum_FutureState__WzRzKRS6S9aqphI4AiMjRNA state;
+Exception* error;
+NIM_BOOL mustCancel;
+NI id;
+};
+struct tyTuple__UAPuRQmtqdlTp9cgdKiAY0g {
+NIM_BOOL Field0;
+tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q* Field1;
+};
+struct tyObject_FuturecolonObjectType___V0L9cQCp4qvFI1wEA712A8w {  tyObject_FutureBasecolonObjectType___V9aHQccB2Pyjfqk9bdE5ZRnw Sup;tyTuple__UAPuRQmtqdlTp9cgdKiAY0g value;
 };
 struct tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw {tySequence__6H5Oh5UUvVCLiakt9aTwtUQ* data;
 };
@@ -1030,6 +1120,26 @@ struct tyObject_MuxerProvidercolonObjectType___6GvwfaQ0wgXWyLWsW5UQUg {  tyObjec
 tyProc__z1SP1KQZYjnpZb76SJLOBA streamHandler;
 tyProc__syWZmSVgEgtT88lIceSd6w muxerHandler;
 };
+struct tyObject_Table__FdHpxIKbPNjlIbR9a4qcWpw {tySequence__rEAWhJSquAhdmub1uagmwg* data;
+NI counter;
+};
+struct tyTuple__Wbu2O9clBpzS2iH9b4rBbnEw {
+NI Field0;
+NimStringDesc* Field1;
+tyObject_SubscriptioncolonObjectType___DQFNW7lzE2Mw43vwAJXufQ* Field2;
+};
+typedef struct {
+N_NIMCALL_PTR(void, ClP_0) (tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* err_0, void* ClE_0);
+void* ClE_0;
+} tyProc__oIXiPE1cuiTSixqAP0yy9bA;
+struct tyObject_SubscriptioncolonObjectType___DQFNW7lzE2Mw43vwAJXufQ {NimStringDesc* id;
+tyObject_Web3colonObjectType___Yv9cYJK9b8tDQ8t9aog3k8mEg* web3;
+tyProc__ADCDtoN1AvOABxjfvZcWKw eventHandler;
+tyProc__oIXiPE1cuiTSixqAP0yy9bA errorHandler;
+tySequence__oLpBKXzW3hF9aCVMo5EymfQ* pendingEvents;
+NIM_BOOL historicalEventsProcessed;
+NIM_BOOL removed;
+};
 struct tyObject_AsyncLockcolonObjectType___ylxqsRlnjMa2tcH03hSGnw {  RootObj Sup;NIM_BOOL locked;
 NIM_BOOL acquired;
 tySequence__T74QuWwr8h7Al0PS9cMqKwA* waiters;
@@ -1099,6 +1209,9 @@ tySequence__TxR1UCdKYpvrwqom6m6ztg* awaitedMessages;
 struct tyObject_StackTraceEntry__oLyohQ7O2XOvGnflOss8EA {NCSTRING procname;
 NI line;
 NCSTRING filename;
+};
+struct tyObject_AsyncCallback__Swoy2e9aGWZSpT0Jm9aqp3Zw {tyProc__9bqx36VxQxXejdrF09bFARDQ function;
+void* udata;
 };
 typedef NU8 tyEnum_PubSubPeerEventKind__GhM8PiW9aeHEsdM78FiLyFQ;
 struct tyObject_PubsubPeerEvent__ZhAwnC4kBn9a68w1fRsGY4A {tyEnum_PubSubPeerEventKind__GhM8PiW9aeHEsdM78FiLyFQ kind;
@@ -1198,7 +1311,7 @@ struct tyObject_OutstandingRequest__ajbfRremPQNkuE39bpvmbHQ {NI id;
 tyObject_FutureBasecolonObjectType___V9aHQccB2Pyjfqk9bdE5ZRnw* future;
 tyObject_Moment__p19adwOigsIe5d3NlfPJOEw timeoutAt;
 };
-struct tySequence__DVX7Q9bz5RokjTwKGr5e9blQ {  TGenericSeq Sup;  tyTuple__rf9cosFcsB69bhAjFlgJVJww data[SEQ_DECL_SIZE];};struct tySequence__sM4lkSb7zS6F7OVMvW9cffQ {  TGenericSeq Sup;  NimStringDesc* data[SEQ_DECL_SIZE];};struct tySequence__VodmML9btsOO3nz0d6nbJsA {  TGenericSeq Sup;  tyObject_MetriccolonObjectType___recdHZbXZv9bB8u9aRHCM5Kg* data[SEQ_DECL_SIZE];};struct tySequence__RxtHNU9a7qROetEL3oUnKzA {  TGenericSeq Sup;  tyTuple__DJd8vJLOdD01l8V09cKBCnQ data[SEQ_DECL_SIZE];};struct tySequence__zErRN2SzhLehkt3ZQ6iUGw {  TGenericSeq Sup;  tyTuple__erhmQ9bg9bVSW9aS7eZ9bjowPQ data[SEQ_DECL_SIZE];};struct tySequence__1wSar3PFU59aNKLVhJL28FA {  TGenericSeq Sup;  tyTuple__9bln9aS7ibrNUp7yyUHGeBtg data[SEQ_DECL_SIZE];};struct tySequence__MZ7ub66T4nzKtipo9bkiB3g {  TGenericSeq Sup;  tyTuple__AVpnFhpPb9aWvyMugKAAGBg data[SEQ_DECL_SIZE];};struct tySequence__ECp2Vf3ySxXeY0xLJSyjyA {  TGenericSeq Sup;  tyTuple__JUntYUAYvYVuuVf5pRRi7Q data[SEQ_DECL_SIZE];};struct tySequence__O39cGnfZ9b59b9bpYt9c3ee9cnHw {  TGenericSeq Sup;  tyTuple__8jAQb69bzmxFvWOOIGMxFrQ data[SEQ_DECL_SIZE];};struct tySequence__6w9c7RGFri1n1hoa9bD335ZQ {  TGenericSeq Sup;  tyTuple__2IkxgbA59cuGazVFo6X8lMQ data[SEQ_DECL_SIZE];};struct tySequence__9bnMQh9b5oMSxlDf1K9buBp7w {  TGenericSeq Sup;  tyTuple__TdADeEae6PBWqr7qsUJvPg data[SEQ_DECL_SIZE];};struct tySequence__tZ2LP3xqCx8kcPyjrRkSuA {  TGenericSeq Sup;  tyTuple__lG9artYnG9a6GxqcmhxZJl6g data[SEQ_DECL_SIZE];};struct tySequence__4tnpefYRDGIct5y7RxC8KA {  TGenericSeq Sup;  tyTuple__9bU0L219b3fjpDIE6keMYb9bA data[SEQ_DECL_SIZE];};struct tySequence__1cmYA8zDV0s9c4gpLK2ygBg {  TGenericSeq Sup;  tyTuple__PtvwtIrL0rxEmrV5ypzN1w data[SEQ_DECL_SIZE];};struct tySequence__WM4lmj0QFNmzCn9a9cZ9cYt3g {  TGenericSeq Sup;  tyTuple__9b9aejOTD70mq52wgtBDEUtA data[SEQ_DECL_SIZE];};struct tySequence__maP5b4juf9aviaIdhhcTZbQ {  TGenericSeq Sup;  tyTuple__BHXjHcQw9b8D7j48q1Gcwzg data[SEQ_DECL_SIZE];};struct tySequence__9bUff3pvvg9b9bwSnutq8aJFQ {  TGenericSeq Sup;  tyTuple__5G2YOQcjDoTxOBDaB9cojOQ data[SEQ_DECL_SIZE];};struct tySequence__6H5Oh5UUvVCLiakt9aTwtUQ {  TGenericSeq Sup;  NU8 data[SEQ_DECL_SIZE];};struct tySequence__RHVAHq4hk7ajRY6ChL6jQg {  TGenericSeq Sup;  tyTuple__GJ2zXV257gwBkpQeeINxTA data[SEQ_DECL_SIZE];};struct tySequence__Y9bpibYYCq7U9bI2q2EkdjDA {  TGenericSeq Sup;  tyTuple__beecycqPiHJ0zV6hA4CDDw data[SEQ_DECL_SIZE];};struct tySequence__a9czYAVXtt3ELF2dd9apg7CA {  TGenericSeq Sup;  tyTuple__v1juhacNXUiTV7vBi4DL4w data[SEQ_DECL_SIZE];};struct tySequence__8MW0JodCedjay9anGTGrBmA {  TGenericSeq Sup;  tyObject_ControlIHave__CnOQkdAngH72aJYNy5NLDg data[SEQ_DECL_SIZE];};struct tySequence__UuxWsCxMkcgdpNKQqNagIQ {  TGenericSeq Sup;  tyTuple__9bJF9ckH2gKZ7rykNMUrUhZQ data[SEQ_DECL_SIZE];};struct tySequence__9c0dnHKqrAJoOYibqj28Tqw {  TGenericSeq Sup;  tyTuple__pf8EktL9bgDdy8y4sHgDywQ data[SEQ_DECL_SIZE];};struct tySequence__Fdd1zCc4iVW86c0yW4quCQ {  TGenericSeq Sup;  tyTuple__XoHou9cDncYHiFSYulm9bCbQ data[SEQ_DECL_SIZE];};struct tySequence__ePVkqZZoBAVzojrVYd6imA {  TGenericSeq Sup;  tyTuple__4BZjwrCbd7vt326dbqRhjA data[SEQ_DECL_SIZE];};struct tySequence__QGnz2z1Po9aOUxkS1gh8g9cQ {  TGenericSeq Sup;  tyTuple__dNR3eA37fNjmk6qLgrtFiA data[SEQ_DECL_SIZE];};struct tySequence__9bIYZNL3t229a9bbJxXEVTAsg {  TGenericSeq Sup;  tyTuple__Yuoja6yUlXaBRmF9bT9auYbg data[SEQ_DECL_SIZE];};struct tySequence__uWop5OFSkZe0GjlY2KeNCQ {  TGenericSeq Sup;  tyTuple__uga0iURbtDFb1ToQ8Jog2g data[SEQ_DECL_SIZE];};struct tySequence__9aslpbPC7Zz3Ti6qyChmX5w {  TGenericSeq Sup;  tyTuple__I8ZdXOd2bMB9bovPbBONdig data[SEQ_DECL_SIZE];};struct tySequence__0pNp33hfens5jJ9aLEr0T1A {  TGenericSeq Sup;  tyTuple__DoL6v1Q2bZcUIVTN9aDivzQ data[SEQ_DECL_SIZE];};struct tySequence__ZS1ahAVt82upPJYTV8RknQ {  TGenericSeq Sup;  tyTuple__yM4OgBQGbTtxtw9cQruEBmQ data[SEQ_DECL_SIZE];};struct tySequence__TwXs3G9bF9ad7BQkkskGRTCQ {  TGenericSeq Sup;  tyTuple__lZ89bmeObpNgv1XXCg37auA data[SEQ_DECL_SIZE];};struct tySequence__9cAdNiuOt3vPbm6XF7oLMIw {  TGenericSeq Sup;  tyTuple__HWxN9b9av4GWQkqrakko2iBw data[SEQ_DECL_SIZE];};struct tySequence__MA0zEHLrBVKsH6AAd9aPHDA {  TGenericSeq Sup;  tyTuple__IIcO09chBBRGVL39cP28NaLg data[SEQ_DECL_SIZE];};struct tySequence__ZGDdbXPD9bUBYNLtwtuTWrA {  TGenericSeq Sup;  tyTuple__Qptir78YkKhpx9ams3lvtsw data[SEQ_DECL_SIZE];};struct tySequence__bqBMFIjg0BA9aW4cUrDr4aw {  TGenericSeq Sup;  tyTuple__MsTR86jOxY4TjADGXDQ9cYw data[SEQ_DECL_SIZE];};struct tySequence__Yjh7j69bRJilZ9ctrRBprjIw {  TGenericSeq Sup;  tyTuple__beG4ILF8HR8pW2ufrKnHug data[SEQ_DECL_SIZE];};struct tySequence__6siov3Lsmvxd84pp09b2kFA {  TGenericSeq Sup;  tyTuple__OXuFTr0o0fEz2WdWON4kIQ data[SEQ_DECL_SIZE];};struct tySequence__9bws6EaVEE1bogDOSVwy9a9cA {  TGenericSeq Sup;  tyTuple__yF9c6feNXxQ6CPcRGg9a29bjw data[SEQ_DECL_SIZE];};struct tySequence__b15zLYqiMPkiLv2o00nNdA {  TGenericSeq Sup;  tyTuple__Ewr5dB9acm1XBOefHdkz32w data[SEQ_DECL_SIZE];};struct tySequence__NhrD4IueRTlBqNEpcAHOaw {  TGenericSeq Sup;  tyTuple__RR9cGEKcLuRt2J0N36N9aV9aA data[SEQ_DECL_SIZE];};struct tySequence__uB9b75OUPRENsBAu4AnoePA {  TGenericSeq Sup;  tyObject_StackTraceEntry__oLyohQ7O2XOvGnflOss8EA data[SEQ_DECL_SIZE];};struct tySequence__7s5HyddQ0f9bxMNILHrXwJQ {  TGenericSeq Sup;  tyTuple__kuMQ1fbjJlHtwKTmBGAe6g data[SEQ_DECL_SIZE];};struct tySequence__pUxI6Ljo6IKKHXKOZkQ7Og {  TGenericSeq Sup;  tyTuple__sr3s7uVHpu9cEbbDnCSg8yQ data[SEQ_DECL_SIZE];};struct tySequence__R269cpuasLo9bGSSlUkh07MA {  TGenericSeq Sup;  tyObject_ConnectioncolonObjectType___crfbBHXu3U647CckYkg9cYg* data[SEQ_DECL_SIZE];};struct tySequence__cqQjXlSu8KsGxE7CJO2mcA {  TGenericSeq Sup;  tyObject_PubSubObservercolonObjectType___OQ19cc5OePJcqC5N241nbAg* data[SEQ_DECL_SIZE];};struct tySequence__cW009cpGr48I9beZmtalOKSg {  TGenericSeq Sup;  tyTuple__bd6t8Ds9a9aWBzNys0M59beiA data[SEQ_DECL_SIZE];};struct tySequence__EkVrimW82Ya1QD19bWIZr9bA {  TGenericSeq Sup;  tyTuple__5wZ3RYgxHgH8u0byw8jABw data[SEQ_DECL_SIZE];};struct tySequence__aCTokZuK9bCn9cyd6uz54oPg {  TGenericSeq Sup;  tyTuple__UssV5gee9cZVFj9cWLEBVtGA data[SEQ_DECL_SIZE];};struct tySequence__El1HzcbAXI4FXRMy9aew4PA {  TGenericSeq Sup;  tyProc__QB1jgAgEgi4jeepzNCjHhQ data[SEQ_DECL_SIZE];};struct tySequence__2lQSxaq5eC9aWYzZNTJyZtA {  TGenericSeq Sup;  tyTuple__Yf43hwa7QhUGH1PCalZ0Uw data[SEQ_DECL_SIZE];};struct tySequence__fUw9czUTIZ9b39boL0IkeycMA {  TGenericSeq Sup;  tyTuple__RrUBWepzr5rTWSyPUXBpgg data[SEQ_DECL_SIZE];};struct tySequence__aLjCOs9bu5l2rz6ENM6m6Sg {  TGenericSeq Sup;  tySequence__6H5Oh5UUvVCLiakt9aTwtUQ* data[SEQ_DECL_SIZE];};struct tySequence__zAf2abIhMjaomS6jkKP9a8w {  TGenericSeq Sup;  tyObject_ControlIWant__geKK9cLMGr6gb7OdFvazkIQ data[SEQ_DECL_SIZE];};struct tySequence__IjDV3u39bZeDnOOTq5TAF5g {  TGenericSeq Sup;  tyObject_ControlGraft__Pu9bBse0c7O7IZRmRsi9b07w data[SEQ_DECL_SIZE];};struct tySequence__WSbLInFxGn0pnyF9cry8bUA {  TGenericSeq Sup;  tyObject_ControlPrune__FKVoWyfO9bQ2bdVQGPLNZvA data[SEQ_DECL_SIZE];};struct tySequence__noYiMxJQyusfKGmZZR7Pzw {  TGenericSeq Sup;  tyTuple__Woh9a244KremWsbQsGWkAnQ data[SEQ_DECL_SIZE];};struct tySequence__4eRCaZmrYLLw2k30GPTiMw {  TGenericSeq Sup;  tyTuple__QeWl6B6ffS4pU6WWrtcrDw data[SEQ_DECL_SIZE];};struct tySequence__Wq0ZcI6MO5RSp6EwbCW5fA {  TGenericSeq Sup;  tyObject_NodecolonObjectType___qHnzRdH4zCCluGzY2Ao49cg* data[SEQ_DECL_SIZE];};struct tySequence__xNHF59br19a2ddRDpm49b8z3A {  TGenericSeq Sup;  tyObject_ContentFilter__zmS3UuJydVs2xUezA1n9akA data[SEQ_DECL_SIZE];};struct tySequence__T74QuWwr8h7Al0PS9cMqKwA {  TGenericSeq Sup;  tyObject_FuturecolonObjectType___GXFSekg1U8JRoedGa2vBSA* data[SEQ_DECL_SIZE];};struct tySequence__bZnlXjZxt9bKsfZvcpqpZDA {  TGenericSeq Sup;  RootObj* data[SEQ_DECL_SIZE];};struct tySequence__brriflmYwGP9aQE3grVydoQ {  TGenericSeq Sup;  tyObject_Deque__9al6d2TPsLxHbSTA9auxSt7A data[SEQ_DECL_SIZE];};struct tySequence__TxR1UCdKYpvrwqom6m6ztg {  TGenericSeq Sup;  tyObject_FutureBasecolonObjectType___V9aHQccB2Pyjfqk9bdE5ZRnw* data[SEQ_DECL_SIZE];};struct tySequence__RQAvfm3tUYD1QWb9c4P8NNA {  TGenericSeq Sup;  tyObject_SubOpts__89cudN1q3YtAd8ENHWPechw data[SEQ_DECL_SIZE];};struct tySequence__oRzyI2tapcwoHwH1Bz2exA {  TGenericSeq Sup;  tyObject_Message__9bIfp9aTAZKB9cehqCItD41cg data[SEQ_DECL_SIZE];};struct tySequence__FEFXDzYbVdCsaxKNxgC9akw {  TGenericSeq Sup;  tyObject_PeerInfoMsg__W4epI9boAZXsWE9avB49a5Zew data[SEQ_DECL_SIZE];};struct tySequence__9bAGqSvkAaFL9bWjsEPslrFA {  TGenericSeq Sup;  NU32 data[SEQ_DECL_SIZE];};struct tySequence__V7ShAorRgCSeV9b0QgCr9aAg {  TGenericSeq Sup;  tyObject_OutstandingRequest__ajbfRremPQNkuE39bpvmbHQ data[SEQ_DECL_SIZE];};N_LIB_PRIVATE N_NIMCALL(void, nimGCvisit)(void* d, NI op);
+struct tySequence__DVX7Q9bz5RokjTwKGr5e9blQ {  TGenericSeq Sup;  tyTuple__rf9cosFcsB69bhAjFlgJVJww data[SEQ_DECL_SIZE];};struct tySequence__sM4lkSb7zS6F7OVMvW9cffQ {  TGenericSeq Sup;  NimStringDesc* data[SEQ_DECL_SIZE];};struct tySequence__VodmML9btsOO3nz0d6nbJsA {  TGenericSeq Sup;  tyObject_MetriccolonObjectType___recdHZbXZv9bB8u9aRHCM5Kg* data[SEQ_DECL_SIZE];};struct tySequence__RxtHNU9a7qROetEL3oUnKzA {  TGenericSeq Sup;  tyTuple__DJd8vJLOdD01l8V09cKBCnQ data[SEQ_DECL_SIZE];};struct tySequence__zErRN2SzhLehkt3ZQ6iUGw {  TGenericSeq Sup;  tyTuple__erhmQ9bg9bVSW9aS7eZ9bjowPQ data[SEQ_DECL_SIZE];};struct tySequence__1wSar3PFU59aNKLVhJL28FA {  TGenericSeq Sup;  tyTuple__9bln9aS7ibrNUp7yyUHGeBtg data[SEQ_DECL_SIZE];};struct tySequence__MlAD6nAPq9bHKla9cWiIZP0g {  TGenericSeq Sup;  tyTuple__awOivLjlO76sGdHY7nQUjQ data[SEQ_DECL_SIZE];};struct tySequence__P7q4mRBU3fRhL1KHJGOBAQ {  TGenericSeq Sup;  tyTuple__PVXP7LYmC79cHLv3MgDW9cFw data[SEQ_DECL_SIZE];};struct tySequence__87DZdIc4Y9ccnDlJfZoyb5w {  TGenericSeq Sup;  tyTuple__FxWADhULcfihQn5gGVN7CQ data[SEQ_DECL_SIZE];};struct tySequence__MZ7ub66T4nzKtipo9bkiB3g {  TGenericSeq Sup;  tyTuple__AVpnFhpPb9aWvyMugKAAGBg data[SEQ_DECL_SIZE];};struct tySequence__ECp2Vf3ySxXeY0xLJSyjyA {  TGenericSeq Sup;  tyTuple__JUntYUAYvYVuuVf5pRRi7Q data[SEQ_DECL_SIZE];};struct tySequence__O39cGnfZ9b59b9bpYt9c3ee9cnHw {  TGenericSeq Sup;  tyTuple__8jAQb69bzmxFvWOOIGMxFrQ data[SEQ_DECL_SIZE];};struct tySequence__6w9c7RGFri1n1hoa9bD335ZQ {  TGenericSeq Sup;  tyTuple__2IkxgbA59cuGazVFo6X8lMQ data[SEQ_DECL_SIZE];};struct tySequence__9bnMQh9b5oMSxlDf1K9buBp7w {  TGenericSeq Sup;  tyTuple__TdADeEae6PBWqr7qsUJvPg data[SEQ_DECL_SIZE];};struct tySequence__tZ2LP3xqCx8kcPyjrRkSuA {  TGenericSeq Sup;  tyTuple__lG9artYnG9a6GxqcmhxZJl6g data[SEQ_DECL_SIZE];};struct tySequence__4tnpefYRDGIct5y7RxC8KA {  TGenericSeq Sup;  tyTuple__9bU0L219b3fjpDIE6keMYb9bA data[SEQ_DECL_SIZE];};struct tySequence__1cmYA8zDV0s9c4gpLK2ygBg {  TGenericSeq Sup;  tyTuple__PtvwtIrL0rxEmrV5ypzN1w data[SEQ_DECL_SIZE];};struct tySequence__WM4lmj0QFNmzCn9a9cZ9cYt3g {  TGenericSeq Sup;  tyTuple__9b9aejOTD70mq52wgtBDEUtA data[SEQ_DECL_SIZE];};struct tySequence__maP5b4juf9aviaIdhhcTZbQ {  TGenericSeq Sup;  tyTuple__BHXjHcQw9b8D7j48q1Gcwzg data[SEQ_DECL_SIZE];};struct tySequence__9bUff3pvvg9b9bwSnutq8aJFQ {  TGenericSeq Sup;  tyTuple__5G2YOQcjDoTxOBDaB9cojOQ data[SEQ_DECL_SIZE];};struct tySequence__6H5Oh5UUvVCLiakt9aTwtUQ {  TGenericSeq Sup;  NU8 data[SEQ_DECL_SIZE];};struct tySequence__RHVAHq4hk7ajRY6ChL6jQg {  TGenericSeq Sup;  tyTuple__GJ2zXV257gwBkpQeeINxTA data[SEQ_DECL_SIZE];};struct tySequence__Y9bpibYYCq7U9bI2q2EkdjDA {  TGenericSeq Sup;  tyTuple__beecycqPiHJ0zV6hA4CDDw data[SEQ_DECL_SIZE];};struct tySequence__a9czYAVXtt3ELF2dd9apg7CA {  TGenericSeq Sup;  tyTuple__v1juhacNXUiTV7vBi4DL4w data[SEQ_DECL_SIZE];};struct tySequence__8MW0JodCedjay9anGTGrBmA {  TGenericSeq Sup;  tyObject_ControlIHave__CnOQkdAngH72aJYNy5NLDg data[SEQ_DECL_SIZE];};struct tySequence__UuxWsCxMkcgdpNKQqNagIQ {  TGenericSeq Sup;  tyTuple__9bJF9ckH2gKZ7rykNMUrUhZQ data[SEQ_DECL_SIZE];};struct tySequence__9c0dnHKqrAJoOYibqj28Tqw {  TGenericSeq Sup;  tyTuple__pf8EktL9bgDdy8y4sHgDywQ data[SEQ_DECL_SIZE];};struct tySequence__Fdd1zCc4iVW86c0yW4quCQ {  TGenericSeq Sup;  tyTuple__XoHou9cDncYHiFSYulm9bCbQ data[SEQ_DECL_SIZE];};struct tySequence__ePVkqZZoBAVzojrVYd6imA {  TGenericSeq Sup;  tyTuple__4BZjwrCbd7vt326dbqRhjA data[SEQ_DECL_SIZE];};struct tySequence__QGnz2z1Po9aOUxkS1gh8g9cQ {  TGenericSeq Sup;  tyTuple__dNR3eA37fNjmk6qLgrtFiA data[SEQ_DECL_SIZE];};struct tySequence__9bIYZNL3t229a9bbJxXEVTAsg {  TGenericSeq Sup;  tyTuple__Yuoja6yUlXaBRmF9bT9auYbg data[SEQ_DECL_SIZE];};struct tySequence__uWop5OFSkZe0GjlY2KeNCQ {  TGenericSeq Sup;  tyTuple__uga0iURbtDFb1ToQ8Jog2g data[SEQ_DECL_SIZE];};struct tySequence__9aslpbPC7Zz3Ti6qyChmX5w {  TGenericSeq Sup;  tyTuple__I8ZdXOd2bMB9bovPbBONdig data[SEQ_DECL_SIZE];};struct tySequence__0pNp33hfens5jJ9aLEr0T1A {  TGenericSeq Sup;  tyTuple__DoL6v1Q2bZcUIVTN9aDivzQ data[SEQ_DECL_SIZE];};struct tySequence__ZS1ahAVt82upPJYTV8RknQ {  TGenericSeq Sup;  tyTuple__yM4OgBQGbTtxtw9cQruEBmQ data[SEQ_DECL_SIZE];};struct tySequence__TwXs3G9bF9ad7BQkkskGRTCQ {  TGenericSeq Sup;  tyTuple__lZ89bmeObpNgv1XXCg37auA data[SEQ_DECL_SIZE];};struct tySequence__9cAdNiuOt3vPbm6XF7oLMIw {  TGenericSeq Sup;  tyTuple__HWxN9b9av4GWQkqrakko2iBw data[SEQ_DECL_SIZE];};struct tySequence__MA0zEHLrBVKsH6AAd9aPHDA {  TGenericSeq Sup;  tyTuple__IIcO09chBBRGVL39cP28NaLg data[SEQ_DECL_SIZE];};struct tySequence__ZGDdbXPD9bUBYNLtwtuTWrA {  TGenericSeq Sup;  tyTuple__Qptir78YkKhpx9ams3lvtsw data[SEQ_DECL_SIZE];};struct tySequence__bqBMFIjg0BA9aW4cUrDr4aw {  TGenericSeq Sup;  tyTuple__MsTR86jOxY4TjADGXDQ9cYw data[SEQ_DECL_SIZE];};struct tySequence__Yjh7j69bRJilZ9ctrRBprjIw {  TGenericSeq Sup;  tyTuple__beG4ILF8HR8pW2ufrKnHug data[SEQ_DECL_SIZE];};struct tySequence__6siov3Lsmvxd84pp09b2kFA {  TGenericSeq Sup;  tyTuple__OXuFTr0o0fEz2WdWON4kIQ data[SEQ_DECL_SIZE];};struct tySequence__9bws6EaVEE1bogDOSVwy9a9cA {  TGenericSeq Sup;  tyTuple__yF9c6feNXxQ6CPcRGg9a29bjw data[SEQ_DECL_SIZE];};struct tySequence__b15zLYqiMPkiLv2o00nNdA {  TGenericSeq Sup;  tyTuple__Ewr5dB9acm1XBOefHdkz32w data[SEQ_DECL_SIZE];};struct tySequence__NhrD4IueRTlBqNEpcAHOaw {  TGenericSeq Sup;  tyTuple__RR9cGEKcLuRt2J0N36N9aV9aA data[SEQ_DECL_SIZE];};struct tySequence__rEAWhJSquAhdmub1uagmwg {  TGenericSeq Sup;  tyTuple__Wbu2O9clBpzS2iH9b4rBbnEw data[SEQ_DECL_SIZE];};struct tySequence__uB9b75OUPRENsBAu4AnoePA {  TGenericSeq Sup;  tyObject_StackTraceEntry__oLyohQ7O2XOvGnflOss8EA data[SEQ_DECL_SIZE];};struct tySequence__7s5HyddQ0f9bxMNILHrXwJQ {  TGenericSeq Sup;  tyTuple__kuMQ1fbjJlHtwKTmBGAe6g data[SEQ_DECL_SIZE];};struct tySequence__pUxI6Ljo6IKKHXKOZkQ7Og {  TGenericSeq Sup;  tyTuple__sr3s7uVHpu9cEbbDnCSg8yQ data[SEQ_DECL_SIZE];};struct tySequence__oLpBKXzW3hF9aCVMo5EymfQ {  TGenericSeq Sup;  tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q* data[SEQ_DECL_SIZE];};struct tySequence__qkV9cggxceO9cpfUWIbCnvJg {  TGenericSeq Sup;  tyObject_AsyncCallback__Swoy2e9aGWZSpT0Jm9aqp3Zw data[SEQ_DECL_SIZE];};struct tySequence__R269cpuasLo9bGSSlUkh07MA {  TGenericSeq Sup;  tyObject_ConnectioncolonObjectType___crfbBHXu3U647CckYkg9cYg* data[SEQ_DECL_SIZE];};struct tySequence__cqQjXlSu8KsGxE7CJO2mcA {  TGenericSeq Sup;  tyObject_PubSubObservercolonObjectType___OQ19cc5OePJcqC5N241nbAg* data[SEQ_DECL_SIZE];};struct tySequence__cW009cpGr48I9beZmtalOKSg {  TGenericSeq Sup;  tyTuple__bd6t8Ds9a9aWBzNys0M59beiA data[SEQ_DECL_SIZE];};struct tySequence__EkVrimW82Ya1QD19bWIZr9bA {  TGenericSeq Sup;  tyTuple__5wZ3RYgxHgH8u0byw8jABw data[SEQ_DECL_SIZE];};struct tySequence__aCTokZuK9bCn9cyd6uz54oPg {  TGenericSeq Sup;  tyTuple__UssV5gee9cZVFj9cWLEBVtGA data[SEQ_DECL_SIZE];};struct tySequence__El1HzcbAXI4FXRMy9aew4PA {  TGenericSeq Sup;  tyProc__QB1jgAgEgi4jeepzNCjHhQ data[SEQ_DECL_SIZE];};struct tySequence__2lQSxaq5eC9aWYzZNTJyZtA {  TGenericSeq Sup;  tyTuple__Yf43hwa7QhUGH1PCalZ0Uw data[SEQ_DECL_SIZE];};struct tySequence__fUw9czUTIZ9b39boL0IkeycMA {  TGenericSeq Sup;  tyTuple__RrUBWepzr5rTWSyPUXBpgg data[SEQ_DECL_SIZE];};struct tySequence__aLjCOs9bu5l2rz6ENM6m6Sg {  TGenericSeq Sup;  tySequence__6H5Oh5UUvVCLiakt9aTwtUQ* data[SEQ_DECL_SIZE];};struct tySequence__zAf2abIhMjaomS6jkKP9a8w {  TGenericSeq Sup;  tyObject_ControlIWant__geKK9cLMGr6gb7OdFvazkIQ data[SEQ_DECL_SIZE];};struct tySequence__IjDV3u39bZeDnOOTq5TAF5g {  TGenericSeq Sup;  tyObject_ControlGraft__Pu9bBse0c7O7IZRmRsi9b07w data[SEQ_DECL_SIZE];};struct tySequence__WSbLInFxGn0pnyF9cry8bUA {  TGenericSeq Sup;  tyObject_ControlPrune__FKVoWyfO9bQ2bdVQGPLNZvA data[SEQ_DECL_SIZE];};struct tySequence__noYiMxJQyusfKGmZZR7Pzw {  TGenericSeq Sup;  tyTuple__Woh9a244KremWsbQsGWkAnQ data[SEQ_DECL_SIZE];};struct tySequence__4eRCaZmrYLLw2k30GPTiMw {  TGenericSeq Sup;  tyTuple__QeWl6B6ffS4pU6WWrtcrDw data[SEQ_DECL_SIZE];};struct tySequence__Wq0ZcI6MO5RSp6EwbCW5fA {  TGenericSeq Sup;  tyObject_NodecolonObjectType___qHnzRdH4zCCluGzY2Ao49cg* data[SEQ_DECL_SIZE];};struct tySequence__xNHF59br19a2ddRDpm49b8z3A {  TGenericSeq Sup;  tyObject_ContentFilter__zmS3UuJydVs2xUezA1n9akA data[SEQ_DECL_SIZE];};struct tySequence__T74QuWwr8h7Al0PS9cMqKwA {  TGenericSeq Sup;  tyObject_FuturecolonObjectType___GXFSekg1U8JRoedGa2vBSA* data[SEQ_DECL_SIZE];};struct tySequence__bZnlXjZxt9bKsfZvcpqpZDA {  TGenericSeq Sup;  RootObj* data[SEQ_DECL_SIZE];};struct tySequence__brriflmYwGP9aQE3grVydoQ {  TGenericSeq Sup;  tyObject_Deque__9al6d2TPsLxHbSTA9auxSt7A data[SEQ_DECL_SIZE];};struct tySequence__TxR1UCdKYpvrwqom6m6ztg {  TGenericSeq Sup;  tyObject_FutureBasecolonObjectType___V9aHQccB2Pyjfqk9bdE5ZRnw* data[SEQ_DECL_SIZE];};struct tySequence__RQAvfm3tUYD1QWb9c4P8NNA {  TGenericSeq Sup;  tyObject_SubOpts__89cudN1q3YtAd8ENHWPechw data[SEQ_DECL_SIZE];};struct tySequence__oRzyI2tapcwoHwH1Bz2exA {  TGenericSeq Sup;  tyObject_Message__9bIfp9aTAZKB9cehqCItD41cg data[SEQ_DECL_SIZE];};struct tySequence__FEFXDzYbVdCsaxKNxgC9akw {  TGenericSeq Sup;  tyObject_PeerInfoMsg__W4epI9boAZXsWE9avB49a5Zew data[SEQ_DECL_SIZE];};struct tySequence__9bAGqSvkAaFL9bWjsEPslrFA {  TGenericSeq Sup;  NU32 data[SEQ_DECL_SIZE];};struct tySequence__V7ShAorRgCSeV9b0QgCr9aAg {  TGenericSeq Sup;  tyObject_OutstandingRequest__ajbfRremPQNkuE39bpvmbHQ data[SEQ_DECL_SIZE];};N_LIB_PRIVATE N_NIMCALL(void, nimGCvisit)(void* d, NI op);
 static N_NIMCALL(void, Marker_tySequence__DVX7Q9bz5RokjTwKGr5e9blQ)(void* p, NI op);
 N_LIB_PRIVATE N_NOINLINE(void, chckNil)(void* p);
 N_LIB_PRIVATE N_NIMCALL(void, unsureAsgnRef)(void** dest, void* src);
@@ -1260,10 +1373,27 @@ static N_NIMCALL(void, Marker_tySequence__1wSar3PFU59aNKLVhJL28FA)(void* p, NI o
 static N_INLINE(NI, rawGet__yma67i9b6yA6zy2p7EesY1wtables)(tyObject_Table__31ocj9bgsJ0gGd8iUZbdeJQ t, NI key_0, NI* hc);
 N_LIB_PRIVATE N_NIMCALL(NimStringDesc*, copyString)(NimStringDesc* src);
 static N_INLINE(NI, rawGet__hi24HVDthGVUIUfuDpjqIQtables)(tyObject_Table__i55W8RrwGKsG9cl0sAKxgkQ t, NimStringDesc* key_0, NI* hc);
+static N_NIMCALL(void, Marker_tySequence__MlAD6nAPq9bHKla9cWiIZP0g)(void* p, NI op);
+static N_NIMCALL(void, Marker_tySequence__P7q4mRBU3fRhL1KHJGOBAQ)(void* p, NI op);
+static N_NIMCALL(void, Marker_tySequence__87DZdIc4Y9ccnDlJfZoyb5w)(void* p, NI op);
+N_LIB_PRIVATE N_NIMCALL(NI, rawGet__U8BE8F1hkorXEqb1x9baemQ)(tyObject_OrderedTable__ZZvSdVkA2s2sIyifu4cpkg* t, NimStringDesc* key_0, NI* hc);
+static N_INLINE(NIM_BOOL, mustRehash__8nOTuA2SxOsL8hlNzSF4Dwtables)(tyObject_OrderedTable__ZZvSdVkA2s2sIyifu4cpkg* t);
+N_LIB_PRIVATE N_NIMCALL(void, enlarge__9cAm9cItwB6y9bUzyB9bE1NBlA)(tyObject_OrderedTable__ZZvSdVkA2s2sIyifu4cpkg* t);
+N_LIB_PRIVATE N_NIMCALL(void, rawInsert__K9b9aplmUERncrp49bmzOdPnw)(tyObject_OrderedTable__ZZvSdVkA2s2sIyifu4cpkg* t, tySequence__MlAD6nAPq9bHKla9cWiIZP0g** data_0, NimStringDesc* key_0, tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q* val_0, NI hc, NI h_0);
+N_LIB_PRIVATE N_NIMCALL(NI, rawGetKnownHC__9cQeRP9bxZubT9bE5dfTSZEew)(tyObject_OrderedTable__ZZvSdVkA2s2sIyifu4cpkg* t, NimStringDesc* key_0, NI hc);
+static N_INLINE(NI, rawGet__yyntiie7QcUnYzdu7G9cqLQtables)(tyObject_Table__BZfyXkROzX88W3JFME9aJ2Q t, NI64 key_0, NI* hc);
+static N_INLINE(NI, hash__sTYVuBLDBQbglYNxcT9bWrghashes)(NI64 x_0);
+static N_INLINE(NIM_BOOL, mustRehash__mWouqGG4QTf2t9cGJRtN7EAtables)(tyObject_Table__BZfyXkROzX88W3JFME9aJ2Q t);
+N_LIB_PRIVATE N_NIMCALL(void, enlarge__79akMJ39b064yLsBG9cU9cGWmg)(tyObject_Table__BZfyXkROzX88W3JFME9aJ2Q* t);
+N_LIB_PRIVATE N_NIMCALL(void, rawInsert__Q46c7cg8fzMBKa5sW4yxRA)(tyObject_Table__BZfyXkROzX88W3JFME9aJ2Q* t, tySequence__P7q4mRBU3fRhL1KHJGOBAQ** data_0, NI64 key_0, tyObject_FuturecolonObjectType___V0L9cQCp4qvFI1wEA712A8w* val_0, NI hc, NI h_0);
+static N_INLINE(NI, rawGetKnownHC__C4Chxo9aiNXXRkE9bYenhM8wtables)(tyObject_Table__BZfyXkROzX88W3JFME9aJ2Q t, NI64 key_0, NI hc);
+static N_INLINE(NI, rawGet__B8emH5taC0NsYyBRssSIiwtables)(tyObject_OrderedTable__ZZvSdVkA2s2sIyifu4cpkg* t, NimStringDesc* key_0, NI* hc);
+static N_INLINE(NIM_BOOL, isEmpty__5Qpmu5QqwDY0esVXn6wf7w_2tables)(NI hcode);
+N_LIB_PRIVATE N_NIMCALL(NimStringDesc*, nimInt64ToStr)(NI64 x);
+static N_INLINE(NI, rawGet__YTXDaIou4WVxznTZQvMNcAtables)(tyObject_Table__k9cb4Qn3gUx6gxyGj3hd20w t, NimStringDesc* key_0, NI* hc);
 static N_INLINE(NI, rawGet__B0Q2IxFWoBivhITKKLmBNgtables)(tyObject_Table__lHpSn1a1LQne7Vijlza5tg t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0, NI* hc);
 N_LIB_PRIVATE N_NIMCALL(NI, hash__CiCiZV9c7F9alrF1xV3QD1ag_2)(NU8* x_0, NI x_0Len_0);
 N_LIB_PRIVATE N_NIMCALL(NI, cmp__ZNqz9bxrMN09bM1GezFNLRBQ)(tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw a, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw b);
-static N_INLINE(NIM_BOOL, isEmpty__5Qpmu5QqwDY0esVXn6wf7w_2tables)(NI hcode);
 static N_NIMCALL(void, Marker_tySequence__MZ7ub66T4nzKtipo9bkiB3g)(void* p, NI op);
 static N_NIMCALL(void, Marker_tySequence__ECp2Vf3ySxXeY0xLJSyjyA)(void* p, NI op);
 static N_NIMCALL(void, Marker_tySequence__O39cGnfZ9b59b9bpYt9c3ee9cnHw)(void* p, NI op);
@@ -1436,6 +1566,12 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__hKmV7spWjfiXpCLtsmQMLw)(tyObject_Table__R
 N_LIB_PRIVATE N_NIMCALL(void, rawInsert__CJk0ydSHIyqgEP80iEdO5g)(tyObject_Table__R0uaAE15CtLzKRaa3nIdMQ* t, tySequence__6w9c7RGFri1n1hoa9bD335ZQ** data_0, tyEnum_PeerEventKind__g6Y0xj8kFQNqwpb26iimZw key_0, tyObject_OrderedSet__cZ8RyO9bTAQg8kKXyLHwXYg* val_0, NI hc, NI h_0);
 static N_INLINE(NI, rawGetKnownHC__R9ak5N4lLKywWjkUmSJA18Qtables)(tyObject_Table__R0uaAE15CtLzKRaa3nIdMQ t, tyEnum_PeerEventKind__g6Y0xj8kFQNqwpb26iimZw key_0, NI hc);
 static N_INLINE(NI, rawGet__BHxS9cl6rp9czlay5Ps5j3Sgtables)(tyObject_Table__A9cYVcPOKBDYXmP0EJYObtA t, NimStringDesc* key_0, NI* hc);
+static N_NIMCALL(void, Marker_tySequence__rEAWhJSquAhdmub1uagmwg)(void* p, NI op);
+static N_INLINE(NIM_BOOL, mustRehash__Xbt3aJkhvztH9aYWZwSmTVQtables)(tyObject_Table__k9cb4Qn3gUx6gxyGj3hd20w t);
+N_LIB_PRIVATE N_NIMCALL(void, enlarge__Iov9aSIXFqsPWBKugiuD1QQ)(tyObject_Table__k9cb4Qn3gUx6gxyGj3hd20w* t);
+N_LIB_PRIVATE N_NIMCALL(void, rawInsert__d1S2NZxtIgpU1G7kBISECg)(tyObject_Table__k9cb4Qn3gUx6gxyGj3hd20w* t, tySequence__87DZdIc4Y9ccnDlJfZoyb5w** data_0, NimStringDesc* key_0, tyProc__ADCDtoN1AvOABxjfvZcWKw val_0, NI hc, NI h_0);
+static N_INLINE(NI, rawGetKnownHC__jbxgTJ9axUfZ9cAM61FzNT9aQtables)(tyObject_Table__k9cb4Qn3gUx6gxyGj3hd20w t, NimStringDesc* key_0, NI hc);
+static N_INLINE(NI, rawGet__CLc3EgQ72ndPPXUxdW7nzQtables)(tyObject_Table__FdHpxIKbPNjlIbR9a4qcWpw t, NimStringDesc* key_0, NI* hc);
 static N_INLINE(NI, rawGet__cAt8UDFiAelZhKwYOAnlJAtables)(tyObject_Table__pGGeaOra9csl069baTSs3CJg t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0, NI* hc);
 static N_INLINE(NI, rawGet__9cx2AJCKSrTAiP4NLfl74Qwtables)(tyObject_Table__Y0c2zaBMalZGAwyJIQOIWQ t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0, NI* hc);
 static N_INLINE(NI, rawGet__lzGP04a9bwHNRiBWU0Pf59cAtables)(tyObject_Table__52v4sP86ruZliir3KafpPQ t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0, NI* hc);
@@ -1503,6 +1639,19 @@ N_LIB_PRIVATE TNimType NTI__zErRN2SzhLehkt3ZQ6iUGw_;
 N_LIB_PRIVATE TNimType NTI__9bln9aS7ibrNUp7yyUHGeBtg_;
 extern TNimType NTI__OxIffpYaxIua3k1C6do2Ew_;
 N_LIB_PRIVATE TNimType NTI__1wSar3PFU59aNKLVhJL28FA_;
+N_LIB_PRIVATE TNimType NTI__ZZvSdVkA2s2sIyifu4cpkg_;
+N_LIB_PRIVATE TNimType NTI__awOivLjlO76sGdHY7nQUjQ_;
+extern TNimType NTI__zfzzuQ8txrdZAYK0WGWpHg_;
+N_LIB_PRIVATE TNimType NTI__MlAD6nAPq9bHKla9cWiIZP0g_;
+N_LIB_PRIVATE TNimType NTI__BZfyXkROzX88W3JFME9aJ2Q_;
+N_LIB_PRIVATE TNimType NTI__PVXP7LYmC79cHLv3MgDW9cFw_;
+extern TNimType NTI__Aav8dQoMlCFnZRxA0IhTHQ_;
+extern TNimType NTI__xJEcXnG5UPm6fVzzYYL3Gw_;
+N_LIB_PRIVATE TNimType NTI__P7q4mRBU3fRhL1KHJGOBAQ_;
+N_LIB_PRIVATE TNimType NTI__k9cb4Qn3gUx6gxyGj3hd20w_;
+N_LIB_PRIVATE TNimType NTI__FxWADhULcfihQn5gGVN7CQ_;
+extern TNimType NTI__ADCDtoN1AvOABxjfvZcWKw_;
+N_LIB_PRIVATE TNimType NTI__87DZdIc4Y9ccnDlJfZoyb5w_;
 N_LIB_PRIVATE TNimType NTI__I17elwrgUkVdxGLUkHiM7w_;
 N_LIB_PRIVATE TNimType NTI__AVpnFhpPb9aWvyMugKAAGBg_;
 extern TNimType NTI__Se8YyoPxzDpFnTeAyeCVCw_;
@@ -1543,7 +1692,7 @@ N_LIB_PRIVATE TNimType NTI__BMmOa89bg4RjA9b9bHqGsOJSQ_;
 N_LIB_PRIVATE TNimType NTI__9b9aejOTD70mq52wgtBDEUtA_;
 extern TNimType NTI__PM9aM6DsVafGgKfhr9bQcNSA_;
 N_LIB_PRIVATE TNimType NTI__WM4lmj0QFNmzCn9a9cZ9cYt3g_;
-STRING_LITERAL(TM__4SoG2KRQy3oMm9aUzSLtGrA_57, "key not found", 13);
+STRING_LITERAL(TM__4SoG2KRQy3oMm9aUzSLtGrA_84, "key not found", 13);
 extern TNimType NTI__cW009cpGr48I9beZmtalOKSg_;
 extern TNimType NTI__6H5Oh5UUvVCLiakt9aTwtUQ_;
 extern TNimType NTI__El1HzcbAXI4FXRMy9aew4PA_;
@@ -1655,6 +1804,10 @@ N_LIB_PRIVATE TNimType NTI__WVXdlbpZMc1zwgdXod13jA_;
 extern TNimType NTI__EkVrimW82Ya1QD19bWIZr9bA_;
 extern TNimType NTI__aCTokZuK9bCn9cyd6uz54oPg_;
 extern TNimType NTI__xNHF59br19a2ddRDpm49b8z3A_;
+N_LIB_PRIVATE TNimType NTI__FdHpxIKbPNjlIbR9a4qcWpw_;
+N_LIB_PRIVATE TNimType NTI__Wbu2O9clBpzS2iH9b4rBbnEw_;
+extern TNimType NTI__R4PEl9bZRSkSI2Ikls9czoYA_;
+N_LIB_PRIVATE TNimType NTI__rEAWhJSquAhdmub1uagmwg_;
 extern TNimType NTI__noYiMxJQyusfKGmZZR7Pzw_;
 extern TNimType NTI__4eRCaZmrYLLw2k30GPTiMw_;
 extern TNimType* nimTypeRoot;
@@ -3255,9 +3408,1180 @@ N_LIB_PRIVATE N_NIMCALL(NI, getOrDefault__qgo9cgqD8vYVDoCXNnnS9a9bg)(tyObject_Ta
 	{		result = default_0;	}
 	LA1_: ;
 	return result;}
+static N_NIMCALL(void, Marker_tySequence__MlAD6nAPq9bHKla9cWiIZP0g)(void* p, NI op) {
+	tySequence__MlAD6nAPq9bHKla9cWiIZP0g* a;
+	NI T1_;	a = (tySequence__MlAD6nAPq9bHKla9cWiIZP0g*)p;
+	T1_ = (NI)0;	for (T1_ = 0; T1_ < (a ? a->Sup.len : 0); T1_++) {
+	nimGCvisit((void*)a->data[T1_].Field2, op);	nimGCvisit((void*)a->data[T1_].Field3, op);	}
+}
+static N_NIMCALL(void, Marker_tySequence__P7q4mRBU3fRhL1KHJGOBAQ)(void* p, NI op) {
+	tySequence__P7q4mRBU3fRhL1KHJGOBAQ* a;
+	NI T1_;	a = (tySequence__P7q4mRBU3fRhL1KHJGOBAQ*)p;
+	T1_ = (NI)0;	for (T1_ = 0; T1_ < (a ? a->Sup.len : 0); T1_++) {
+	nimGCvisit((void*)a->data[T1_].Field2, op);	}
+}
+static N_NIMCALL(void, Marker_tySequence__87DZdIc4Y9ccnDlJfZoyb5w)(void* p, NI op) {
+	tySequence__87DZdIc4Y9ccnDlJfZoyb5w* a;
+	NI T1_;	a = (tySequence__87DZdIc4Y9ccnDlJfZoyb5w*)p;
+	T1_ = (NI)0;	for (T1_ = 0; T1_ < (a ? a->Sup.len : 0); T1_++) {
+	nimGCvisit((void*)a->data[T1_].Field1, op);	nimGCvisit((void*)a->data[T1_].Field2.ClE_0, op);	}
+}
+
+#line 1264 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+N_LIB_PRIVATE N_NIMCALL(void, initOrderedTable__Xnq4D4mCe8fymnuh9c7PQlw)(NI initialSize, tyObject_OrderedTable__ZZvSdVkA2s2sIyifu4cpkg* Result) {	chckNil((void*)Result);	unsureAsgnRef((void**)&(*Result).data, NIM_NIL);	(*Result).counter = 0;	(*Result).first = 0;	(*Result).last = 0;
+#line 166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+	{		NIM_BOOL T3_;
+#line 166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		T3_ = (NIM_BOOL)0;		T3_ = isPowerOfTwo__1xdTQapFveM9bImKot7h9cdw(initialSize);		if (!!(T3_)) goto LA4_;
+
+#line 166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		failedAssertImpl__W9cjVocn1tjhW7p7xohJj6A(((NimStringDesc*) &TM__4SoG2KRQy3oMm9aUzSLtGrA_4));
+	}
+	LA4_: ;
+
+#line 167 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+	(*Result).counter = ((NI) 0);
+#line 168 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+	if ((initialSize) < ((NI) 0) || (initialSize) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI(initialSize, ((NI) 0), ((NI) IL64(9223372036854775807))); }	unsureAsgnRef((void**) (&(*Result).data), (tySequence__MlAD6nAPq9bHKla9cWiIZP0g*) newSeq((&NTI__MlAD6nAPq9bHKla9cWiIZP0g_), ((NI) (initialSize))));
+#line 170 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+	(*Result).first = ((NI) -1);
+#line 171 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+	(*Result).last = ((NI) -1);}
+
+#line 1224 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+N_LIB_PRIVATE N_NIMCALL(NI, rawGet__U8BE8F1hkorXEqb1x9baemQ)(tyObject_OrderedTable__ZZvSdVkA2s2sIyifu4cpkg* t, NimStringDesc* key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_41;{	result = (NI)0;
+#line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	(*hc) = hash__6PCYkKlCNhq9cnRLnqWKkwQ(key_0);
+#line 73 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	{
+#line 64 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		if (!((*hc) == ((NI) 0))) goto LA3_;
+
+#line 65 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		(*hc) = ((NI) 314159265);	}
+	LA3_: ;
+
+#line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	{		NI T7_;
+#line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		T7_ = ((*t).data ? (*t).data->Sup.len : 0);		if (!(T7_ == ((NI) 0))) goto LA8_;
+
+#line 47 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 47 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		result = ((NI) -1);		goto BeforeRet_;
+	}
+	LA8_: ;
+
+#line 48 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 48 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 48 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	T10_ = (((*t).data ? (*t).data->Sup.len : 0)-1);	h_1 = (NI)((*hc) & T10_);	{
+#line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		while (1) {			NIM_BOOL T13_;			NI T20_;
+#line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			if ((NU)(h_1) >= (NU)((*t).data ? (*t).data->Sup.len : 0)){ raiseIndexError2(h_1,((*t).data ? (*t).data->Sup.len : 0)-1); }
+#line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			T13_ = (NIM_BOOL)0;			T13_ = isFilled__5Qpmu5QqwDY0esVXn6wf7wtables((*t).data->data[h_1].Field0);			if (!T13_) goto LA12;
+
+#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			{				NIM_BOOL T16_;
+#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+				T16_ = (NIM_BOOL)0;
+#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+				if ((NU)(h_1) >= (NU)((*t).data ? (*t).data->Sup.len : 0)){ raiseIndexError2(h_1,((*t).data ? (*t).data->Sup.len : 0)-1); }				T16_ = ((*t).data->data[h_1].Field0 == (*hc));				if (!(T16_)) goto LA17_;
+
+#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+				if ((NU)(h_1) >= (NU)((*t).data ? (*t).data->Sup.len : 0)){ raiseIndexError2(h_1,((*t).data ? (*t).data->Sup.len : 0)-1); }				T16_ = eqStrings((*t).data->data[h_1].Field2, key_0);				LA17_: ;
+				if (!T16_) goto LA18_;
+
+#line 55 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 55 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+				result = h_1;				goto BeforeRet_;
+			}
+			LA18_: ;
+
+#line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			T20_ = (((*t).data ? (*t).data->Sup.len : 0)-1);
+#line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			h_1 = nextTry__rkF6R1GhqjFh3qSAPaT2Cwtables(h_1, T20_);		} LA12: ;
+	}
+
+#line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_41)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_41);	}BeforeRet_: ;
+	return result;}
+
+#line 32 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+static N_INLINE(NIM_BOOL, mustRehash__8nOTuA2SxOsL8hlNzSF4Dwtables)(tyObject_OrderedTable__ZZvSdVkA2s2sIyifu4cpkg* t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_42;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_43;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_44;	result = (NIM_BOOL)0;
+#line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	{		NI T3_;
+#line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		T3_ = ((*t).data ? (*t).data->Sup.len : 0);		if (!!(((*t).counter < T3_))) goto LA4_;
+
+#line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		failedAssertImpl__W9cjVocn1tjhW7p7xohJj6A(((NimStringDesc*) &TM__4SoG2KRQy3oMm9aUzSLtGrA_10));
+	}
+	LA4_: ;
+
+#line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	T6_ = (NIM_BOOL)0;
+#line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	T7_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_42)) { raiseOverflow(); };
+#line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	if (nimMulInt((*t).counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_43)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_42) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_43));	if (T6_) goto LA8_;
+
+#line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	T9_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimSubInt(T9_, (*t).counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_44)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_44) < ((NI) 4));	LA8_: ;
+	result = T6_;	return result;}
+
+#line 1227 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+N_LIB_PRIVATE N_NIMCALL(void, rawInsert__K9b9aplmUERncrp49bmzOdPnw)(tyObject_OrderedTable__ZZvSdVkA2s2sIyifu4cpkg* t, tySequence__MlAD6nAPq9bHKla9cWiIZP0g** data_0, NimStringDesc* key_0, tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q* val_0, NI hc, NI h_0) {	NimStringDesc* T1_;	if ((NU)(h_0) >= (NU)((*data_0) ? (*data_0)->Sup.len : 0)){ raiseIndexError2(h_0,((*data_0) ? (*data_0)->Sup.len : 0)-1); }
+#line 22 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+	T1_ = (NimStringDesc*)0;	T1_ = (*data_0)->data[h_0].Field2; (*data_0)->data[h_0].Field2 = copyStringRC1(key_0);	if (T1_) nimGCunrefNoCycle(T1_);	if ((NU)(h_0) >= (NU)((*data_0) ? (*data_0)->Sup.len : 0)){ raiseIndexError2(h_0,((*data_0) ? (*data_0)->Sup.len : 0)-1); }
+#line 23 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+	asgnRef((void**) (&(*data_0)->data[h_0].Field3), val_0);	if ((NU)(h_0) >= (NU)((*data_0) ? (*data_0)->Sup.len : 0)){ raiseIndexError2(h_0,((*data_0) ? (*data_0)->Sup.len : 0)-1); }
+#line 24 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+	(*data_0)->data[h_0].Field0 = hc;	if ((NU)(h_0) >= (NU)((*data_0) ? (*data_0)->Sup.len : 0)){ raiseIndexError2(h_0,((*data_0) ? (*data_0)->Sup.len : 0)-1); }
+#line 1231 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+	(*data_0)->data[h_0].Field1 = ((NI) -1);
+#line 1232 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+	{
+#line 1232 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+		if (!((*t).first < ((NI) 0))) goto LA4_;
+
+#line 1232 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+		(*t).first = h_0;	}
+	LA4_: ;
+
+#line 1233 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+	{
+#line 1233 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+		if (!(((NI) 0) <= (*t).last)) goto LA8_;
+		if ((NU)((*t).last) >= (NU)((*data_0) ? (*data_0)->Sup.len : 0)){ raiseIndexError2((*t).last,((*data_0) ? (*data_0)->Sup.len : 0)-1); }
+#line 1233 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+		(*data_0)->data[(*t).last].Field1 = h_0;	}
+	LA8_: ;
+
+#line 1234 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+	(*t).last = h_0;}
+
+#line 1236 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+N_LIB_PRIVATE N_NIMCALL(void, enlarge__9cAm9cItwB6y9bUzyB9bE1NBlA)(tyObject_OrderedTable__ZZvSdVkA2s2sIyifu4cpkg* t) {	tySequence__MlAD6nAPq9bHKla9cWiIZP0g* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_45;	NI h_1;	tySequence__MlAD6nAPq9bHKla9cWiIZP0g* T2_;	n_1 = (tySequence__MlAD6nAPq9bHKla9cWiIZP0g*)0;
+#line 1238 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+
+#line 1238 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+
+#line 1238 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_45)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_45)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_45)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_45), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__MlAD6nAPq9bHKla9cWiIZP0g*) newSeq((&NTI__MlAD6nAPq9bHKla9cWiIZP0g_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_45))));
+#line 1239 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+	h_1 = (*t).first;
+#line 1240 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+	(*t).first = ((NI) -1);
+#line 1241 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+	(*t).last = ((NI) -1);
+#line 1242 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+	T2_ = (tySequence__MlAD6nAPq9bHKla9cWiIZP0g*)0;	T2_ = (*t).data;	unsureAsgnRef((void**) (&(*t).data), n_1);	n_1 = T2_;	{
+#line 1243 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+		while (1) {			NI nxt;			NI eh;
+#line 1243 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+			if (!(((NI) 0) <= h_1)) goto LA4;
+
+#line 1244 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+			if ((NU)(h_1) >= (NU)(n_1 ? n_1->Sup.len : 0)){ raiseIndexError2(h_1,(n_1 ? n_1->Sup.len : 0)-1); }			nxt = n_1->data[h_1].Field1;
+#line 1245 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+			if ((NU)(h_1) >= (NU)(n_1 ? n_1->Sup.len : 0)){ raiseIndexError2(h_1,(n_1 ? n_1->Sup.len : 0)-1); }			eh = n_1->data[h_1].Field0;
+#line 1246 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+			{				NIM_BOOL T7_;				NI j;				NI T10_;				NimStringDesc* T15_;				tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q* T16_;
+#line 1246 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+
+#line 1246 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+				T7_ = (NIM_BOOL)0;				T7_ = isFilled__5Qpmu5QqwDY0esVXn6wf7wtables(eh);				if (!T7_) goto LA8_;
+
+#line 1247 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+
+#line 1247 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+
+#line 1247 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+				T10_ = (((*t).data ? (*t).data->Sup.len : 0)-1);				j = (NI)(eh & T10_);				{
+#line 1248 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+					while (1) {						NIM_BOOL T13_;						NI T14_;
+#line 1248 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+						if ((NU)(j) >= (NU)((*t).data ? (*t).data->Sup.len : 0)){ raiseIndexError2(j,((*t).data ? (*t).data->Sup.len : 0)-1); }
+#line 1248 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+						T13_ = (NIM_BOOL)0;						T13_ = isFilled__5Qpmu5QqwDY0esVXn6wf7wtables((*t).data->data[j].Field0);						if (!T13_) goto LA12;
+
+#line 1249 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+
+#line 1249 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+						T14_ = (((*t).data ? (*t).data->Sup.len : 0)-1);
+#line 1249 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+						j = nextTry__rkF6R1GhqjFh3qSAPaT2Cwtables(j, T14_);					} LA12: ;
+				}
+
+#line 1250 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+
+#line 1250 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+				if ((NU)(h_1) >= (NU)(n_1 ? n_1->Sup.len : 0)){ raiseIndexError2(h_1,(n_1 ? n_1->Sup.len : 0)-1); }				T15_ = (NimStringDesc*)0;				T15_ = n_1->data[h_1].Field2;				asgnRef((void**) (&n_1->data[h_1].Field2), NIM_NIL);
+#line 1250 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+				if ((NU)(h_1) >= (NU)(n_1 ? n_1->Sup.len : 0)){ raiseIndexError2(h_1,(n_1 ? n_1->Sup.len : 0)-1); }				T16_ = (tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q*)0;				T16_ = n_1->data[h_1].Field3;				asgnRef((void**) (&n_1->data[h_1].Field3), NIM_NIL);				if ((NU)(h_1) >= (NU)(n_1 ? n_1->Sup.len : 0)){ raiseIndexError2(h_1,(n_1 ? n_1->Sup.len : 0)-1); }
+#line 1250 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+				rawInsert__K9b9aplmUERncrp49bmzOdPnw(t, (&(*t).data), T15_, T16_, n_1->data[h_1].Field0, j);
+			}
+			LA8_: ;
+
+#line 1251 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+			h_1 = nxt;		} LA4: ;
+	}
+}
+
+#line 1218 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+N_LIB_PRIVATE N_NIMCALL(NI, rawGetKnownHC__9cQeRP9bxZubT9bE5dfTSZEew)(tyObject_OrderedTable__ZZvSdVkA2s2sIyifu4cpkg* t, NimStringDesc* key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_46;{	result = (NI)0;
+#line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	{		NI T3_;
+#line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		T3_ = ((*t).data ? (*t).data->Sup.len : 0);		if (!(T3_ == ((NI) 0))) goto LA4_;
+
+#line 47 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 47 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		result = ((NI) -1);		goto BeforeRet_;
+	}
+	LA4_: ;
+
+#line 48 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 48 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 48 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	T6_ = (((*t).data ? (*t).data->Sup.len : 0)-1);	h_1 = (NI)(hc & T6_);	{
+#line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		while (1) {			NIM_BOOL T9_;			NI T16_;
+#line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			if ((NU)(h_1) >= (NU)((*t).data ? (*t).data->Sup.len : 0)){ raiseIndexError2(h_1,((*t).data ? (*t).data->Sup.len : 0)-1); }
+#line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			T9_ = (NIM_BOOL)0;			T9_ = isFilled__5Qpmu5QqwDY0esVXn6wf7wtables((*t).data->data[h_1].Field0);			if (!T9_) goto LA8;
+
+#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			{				NIM_BOOL T12_;
+#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+				T12_ = (NIM_BOOL)0;
+#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+				if ((NU)(h_1) >= (NU)((*t).data ? (*t).data->Sup.len : 0)){ raiseIndexError2(h_1,((*t).data ? (*t).data->Sup.len : 0)-1); }				T12_ = ((*t).data->data[h_1].Field0 == hc);				if (!(T12_)) goto LA13_;
+
+#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+				if ((NU)(h_1) >= (NU)((*t).data ? (*t).data->Sup.len : 0)){ raiseIndexError2(h_1,((*t).data ? (*t).data->Sup.len : 0)-1); }				T12_ = eqStrings((*t).data->data[h_1].Field2, key_0);				LA13_: ;
+				if (!T12_) goto LA14_;
+
+#line 55 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 55 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+				result = h_1;				goto BeforeRet_;
+			}
+			LA14_: ;
+
+#line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			T16_ = (((*t).data ? (*t).data->Sup.len : 0)-1);
+#line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			h_1 = nextTry__rkF6R1GhqjFh3qSAPaT2Cwtables(h_1, T16_);		} LA8: ;
+	}
+
+#line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_46)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_46);	}BeforeRet_: ;
+	return result;}
+
+#line 1286 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+N_LIB_PRIVATE N_NIMCALL(void, X5BX5Deq___vlnBr1uIbtu0ntnZh6Askg)(tyObject_OrderedTable__ZZvSdVkA2s2sIyifu4cpkg* t, NimStringDesc* key_0, tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q* val_0) {	NI hc;	NI index;
+#line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+	{		NI T3_;
+#line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		T3_ = ((*t).data ? (*t).data->Sup.len : 0);		if (!(T3_ == ((NI) 0))) goto LA4_;
+
+#line 166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		{			NIM_BOOL T8_;
+#line 166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+			T8_ = (NIM_BOOL)0;			T8_ = isPowerOfTwo__1xdTQapFveM9bImKot7h9cdw(((NI) 64));			if (!!(T8_)) goto LA9_;
+
+#line 166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+			failedAssertImpl__W9cjVocn1tjhW7p7xohJj6A(((NimStringDesc*) &TM__4SoG2KRQy3oMm9aUzSLtGrA_7));
+		}
+		LA9_: ;
+
+#line 167 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		(*t).counter = ((NI) 0);
+#line 168 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		unsureAsgnRef((void**) (&(*t).data), (tySequence__MlAD6nAPq9bHKla9cWiIZP0g*) newSeq((&NTI__MlAD6nAPq9bHKla9cWiIZP0g_), ((NI) 64)));
+#line 170 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		(*t).first = ((NI) -1);
+#line 171 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		(*t).last = ((NI) -1);	}
+	LA4_: ;
+	hc = (NI)0;
+#line 58 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 58 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+	index = rawGet__U8BE8F1hkorXEqb1x9baemQ((&(*t)), key_0, (&hc));
+#line 1300 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+	{
+#line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		if (!(((NI) 0) <= index)) goto LA13_;
+		if ((NU)(index) >= (NU)((*t).data ? (*t).data->Sup.len : 0)){ raiseIndexError2(index,((*t).data ? (*t).data->Sup.len : 0)-1); }
+#line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		asgnRef((void**) (&(*t).data->data[index].Field3), val_0);	}
+	goto LA11_;
+	LA13_: ;
+	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_47;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_48;
+#line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		{			NI T18_;
+#line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+			T18_ = ((*t).data ? (*t).data->Sup.len : 0);			if (!(T18_ == ((NI) 0))) goto LA19_;
+
+#line 166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+			{				NIM_BOOL T23_;
+#line 166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+				T23_ = (NIM_BOOL)0;				T23_ = isPowerOfTwo__1xdTQapFveM9bImKot7h9cdw(((NI) 64));				if (!!(T23_)) goto LA24_;
+
+#line 166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+				failedAssertImpl__W9cjVocn1tjhW7p7xohJj6A(((NimStringDesc*) &TM__4SoG2KRQy3oMm9aUzSLtGrA_7));
+			}
+			LA24_: ;
+
+#line 167 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+			(*t).counter = ((NI) 0);
+#line 168 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+			unsureAsgnRef((void**) (&(*t).data), (tySequence__MlAD6nAPq9bHKla9cWiIZP0g*) newSeq((&NTI__MlAD6nAPq9bHKla9cWiIZP0g_), ((NI) 64)));
+#line 170 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+			(*t).first = ((NI) -1);
+#line 171 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+			(*t).last = ((NI) -1);		}
+		LA19_: ;
+
+#line 48 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		{			NIM_BOOL T28_;
+#line 48 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 48 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+			T28_ = (NIM_BOOL)0;			T28_ = mustRehash__8nOTuA2SxOsL8hlNzSF4Dwtables((&(*t)));			if (!T28_) goto LA29_;
+
+#line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+			enlarge__9cAm9cItwB6y9bUzyB9bE1NBlA(t);
+
+#line 50 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 50 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+			index = rawGetKnownHC__9cQeRP9bxZubT9bE5dfTSZEew((&(*t)), key_0, hc);		}
+		LA29_: ;
+
+#line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_47)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_47);
+#line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		rawInsert__K9b9aplmUERncrp49bmzOdPnw(t, (&(*t).data), key_0, val_0, hc, index);
+
+#line 60 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_48)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_48);	}
+	LA11_: ;
+}
+
+#line 115 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/hashes.nim"
+static N_INLINE(NI, hash__sTYVuBLDBQbglYNxcT9bWrghashes)(NI64 x_0) {	NI result;	result = (NI)0;
+#line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/hashes.nim"
+
+#line 117 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/hashes.nim"
+	result = ((NI) (x_0));	return result;}
 
 #line 76 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGet__B0Q2IxFWoBivhITKKLmBNgtables)(tyObject_Table__lHpSn1a1LQne7Vijlza5tg t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_35;{	result = (NI)0;
+static N_INLINE(NI, rawGet__yyntiie7QcUnYzdu7G9cqLQtables)(tyObject_Table__BZfyXkROzX88W3JFME9aJ2Q t, NI64 key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_49;{	result = (NI)0;
+#line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	(*hc) = hash__sTYVuBLDBQbglYNxcT9bWrghashes(key_0);
+#line 73 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	{
+#line 64 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		if (!((*hc) == ((NI) 0))) goto LA3_;
+
+#line 65 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		(*hc) = ((NI) 314159265);	}
+	LA3_: ;
+
+#line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	{		NI T7_;
+#line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		T7_ = (t.data ? t.data->Sup.len : 0);		if (!(T7_ == ((NI) 0))) goto LA8_;
+
+#line 47 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 47 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		result = ((NI) -1);		goto BeforeRet_;
+	}
+	LA8_: ;
+
+#line 48 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 48 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 48 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	T10_ = ((t.data ? t.data->Sup.len : 0)-1);	h_1 = (NI)((*hc) & T10_);	{
+#line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		while (1) {			NIM_BOOL T13_;			NI T20_;
+#line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			if ((NU)(h_1) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(h_1,(t.data ? t.data->Sup.len : 0)-1); }
+#line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			T13_ = (NIM_BOOL)0;			T13_ = isFilled__5Qpmu5QqwDY0esVXn6wf7wtables(t.data->data[h_1].Field0);			if (!T13_) goto LA12;
+
+#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			{				NIM_BOOL T16_;
+#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+				T16_ = (NIM_BOOL)0;
+#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+				if ((NU)(h_1) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(h_1,(t.data ? t.data->Sup.len : 0)-1); }				T16_ = (t.data->data[h_1].Field0 == (*hc));				if (!(T16_)) goto LA17_;
+
+#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+				if ((NU)(h_1) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(h_1,(t.data ? t.data->Sup.len : 0)-1); }				T16_ = (t.data->data[h_1].Field1 == key_0);				LA17_: ;
+				if (!T16_) goto LA18_;
+
+#line 55 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 55 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+				result = h_1;				goto BeforeRet_;
+			}
+			LA18_: ;
+
+#line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			T20_ = ((t.data ? t.data->Sup.len : 0)-1);
+#line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			h_1 = nextTry__rkF6R1GhqjFh3qSAPaT2Cwtables(h_1, T20_);		} LA12: ;
+	}
+
+#line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_49)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_49);	}BeforeRet_: ;
+	return result;}
+
+#line 32 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+static N_INLINE(NIM_BOOL, mustRehash__mWouqGG4QTf2t9cGJRtN7EAtables)(tyObject_Table__BZfyXkROzX88W3JFME9aJ2Q t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_50;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_51;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_52;	result = (NIM_BOOL)0;
+#line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	{		NI T3_;
+#line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		T3_ = (t.data ? t.data->Sup.len : 0);		if (!!((t.counter < T3_))) goto LA4_;
+
+#line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		failedAssertImpl__W9cjVocn1tjhW7p7xohJj6A(((NimStringDesc*) &TM__4SoG2KRQy3oMm9aUzSLtGrA_10));
+	}
+	LA4_: ;
+
+#line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	T6_ = (NIM_BOOL)0;
+#line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_50)) { raiseOverflow(); };
+#line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_51)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_50) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_51));	if (T6_) goto LA8_;
+
+#line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_52)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_52) < ((NI) 4));	LA8_: ;
+	result = T6_;	return result;}
+
+#line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+N_LIB_PRIVATE N_NIMCALL(void, rawInsert__Q46c7cg8fzMBKa5sW4yxRA)(tyObject_Table__BZfyXkROzX88W3JFME9aJ2Q* t, tySequence__P7q4mRBU3fRhL1KHJGOBAQ** data_0, NI64 key_0, tyObject_FuturecolonObjectType___V0L9cQCp4qvFI1wEA712A8w* val_0, NI hc, NI h_0) {	if ((NU)(h_0) >= (NU)((*data_0) ? (*data_0)->Sup.len : 0)){ raiseIndexError2(h_0,((*data_0) ? (*data_0)->Sup.len : 0)-1); }
+#line 22 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+	(*data_0)->data[h_0].Field1 = key_0;	if ((NU)(h_0) >= (NU)((*data_0) ? (*data_0)->Sup.len : 0)){ raiseIndexError2(h_0,((*data_0) ? (*data_0)->Sup.len : 0)-1); }
+#line 23 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+	asgnRef((void**) (&(*data_0)->data[h_0].Field2), val_0);	if ((NU)(h_0) >= (NU)((*data_0) ? (*data_0)->Sup.len : 0)){ raiseIndexError2(h_0,((*data_0) ? (*data_0)->Sup.len : 0)-1); }
+#line 24 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+	(*data_0)->data[h_0].Field0 = hc;}
+
+#line 266 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+N_LIB_PRIVATE N_NIMCALL(void, enlarge__79akMJ39b064yLsBG9cU9cGWmg)(tyObject_Table__BZfyXkROzX88W3JFME9aJ2Q* t) {	tySequence__P7q4mRBU3fRhL1KHJGOBAQ* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_53;	tySequence__P7q4mRBU3fRhL1KHJGOBAQ* T2_;	n_1 = (tySequence__P7q4mRBU3fRhL1KHJGOBAQ*)0;
+#line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+
+#line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+
+#line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_53)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_53)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_53)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_53), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__P7q4mRBU3fRhL1KHJGOBAQ*) newSeq((&NTI__P7q4mRBU3fRhL1KHJGOBAQ_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_53))));
+#line 269 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+	T2_ = (tySequence__P7q4mRBU3fRhL1KHJGOBAQ*)0;	T2_ = (*t).data;	unsureAsgnRef((void**) (&(*t).data), n_1);	n_1 = T2_;	{		NI i;		NI colontmp_;		NI T4_;		NI res;		i = (NI)0;		colontmp_ = (NI)0;
+#line 270 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+
+#line 270 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+		T4_ = ((n_1 ? n_1->Sup.len : 0)-1);		colontmp_ = T4_;
+#line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
+		res = ((NI) 0);		{
+#line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
+			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_54;
+#line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
+				if (!(res <= colontmp_)) goto LA6;
+
+#line 270 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+				i = res;
+#line 271 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+				if ((NU)(i) >= (NU)(n_1 ? n_1->Sup.len : 0)){ raiseIndexError2(i,(n_1 ? n_1->Sup.len : 0)-1); }				eh = n_1->data[i].Field0;
+#line 272 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+				{					NIM_BOOL T9_;					NI j;					NI T12_;					NI64 T17_;					tyObject_FuturecolonObjectType___V0L9cQCp4qvFI1wEA712A8w* T18_;
+#line 272 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+
+#line 272 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+					T9_ = (NIM_BOOL)0;					T9_ = isFilled__5Qpmu5QqwDY0esVXn6wf7wtables(eh);					if (!T9_) goto LA10_;
+
+#line 273 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+
+#line 273 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+
+#line 273 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+					T12_ = (((*t).data ? (*t).data->Sup.len : 0)-1);					j = (NI)(eh & T12_);					{
+#line 274 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+						while (1) {							NIM_BOOL T15_;							NI T16_;
+#line 274 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+							if ((NU)(j) >= (NU)((*t).data ? (*t).data->Sup.len : 0)){ raiseIndexError2(j,((*t).data ? (*t).data->Sup.len : 0)-1); }
+#line 274 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+							T15_ = (NIM_BOOL)0;							T15_ = isFilled__5Qpmu5QqwDY0esVXn6wf7wtables((*t).data->data[j].Field0);							if (!T15_) goto LA14;
+
+#line 275 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+
+#line 275 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+							T16_ = (((*t).data ? (*t).data->Sup.len : 0)-1);
+#line 275 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+							j = nextTry__rkF6R1GhqjFh3qSAPaT2Cwtables(j, T16_);						} LA14: ;
+					}
+
+#line 279 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+
+#line 279 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+					if ((NU)(i) >= (NU)(n_1 ? n_1->Sup.len : 0)){ raiseIndexError2(i,(n_1 ? n_1->Sup.len : 0)-1); }					T17_ = (NI64)0;					T17_ = n_1->data[i].Field1;					n_1->data[i].Field1 = 0;
+#line 279 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+					if ((NU)(i) >= (NU)(n_1 ? n_1->Sup.len : 0)){ raiseIndexError2(i,(n_1 ? n_1->Sup.len : 0)-1); }					T18_ = (tyObject_FuturecolonObjectType___V0L9cQCp4qvFI1wEA712A8w*)0;					T18_ = n_1->data[i].Field2;					asgnRef((void**) (&n_1->data[i].Field2), NIM_NIL);
+#line 279 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+					rawInsert__Q46c7cg8fzMBKa5sW4yxRA(t, (&(*t).data), T17_, T18_, eh, j);
+				}
+				LA10_: ;
+
+#line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
+				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_54)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_54);			} LA6: ;
+		}
+	}
+}
+
+#line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+static N_INLINE(NI, rawGetKnownHC__C4Chxo9aiNXXRkE9bYenhM8wtables)(tyObject_Table__BZfyXkROzX88W3JFME9aJ2Q t, NI64 key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_55;{	result = (NI)0;
+#line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	{		NI T3_;
+#line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		T3_ = (t.data ? t.data->Sup.len : 0);		if (!(T3_ == ((NI) 0))) goto LA4_;
+
+#line 47 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 47 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		result = ((NI) -1);		goto BeforeRet_;
+	}
+	LA4_: ;
+
+#line 48 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 48 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 48 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	T6_ = ((t.data ? t.data->Sup.len : 0)-1);	h_1 = (NI)(hc & T6_);	{
+#line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		while (1) {			NIM_BOOL T9_;			NI T16_;
+#line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			if ((NU)(h_1) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(h_1,(t.data ? t.data->Sup.len : 0)-1); }
+#line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			T9_ = (NIM_BOOL)0;			T9_ = isFilled__5Qpmu5QqwDY0esVXn6wf7wtables(t.data->data[h_1].Field0);			if (!T9_) goto LA8;
+
+#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			{				NIM_BOOL T12_;
+#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+				T12_ = (NIM_BOOL)0;
+#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+				if ((NU)(h_1) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(h_1,(t.data ? t.data->Sup.len : 0)-1); }				T12_ = (t.data->data[h_1].Field0 == hc);				if (!(T12_)) goto LA13_;
+
+#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+				if ((NU)(h_1) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(h_1,(t.data ? t.data->Sup.len : 0)-1); }				T12_ = (t.data->data[h_1].Field1 == key_0);				LA13_: ;
+				if (!T12_) goto LA14_;
+
+#line 55 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 55 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+				result = h_1;				goto BeforeRet_;
+			}
+			LA14_: ;
+
+#line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			T16_ = ((t.data ? t.data->Sup.len : 0)-1);
+#line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			h_1 = nextTry__rkF6R1GhqjFh3qSAPaT2Cwtables(h_1, T16_);		} LA8: ;
+	}
+
+#line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_55)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_55);	}BeforeRet_: ;
+	return result;}
+
+#line 309 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+N_LIB_PRIVATE N_NIMCALL(void, X5BX5Deq___oo39cX0ztR028FFk0ffQPbA)(tyObject_Table__BZfyXkROzX88W3JFME9aJ2Q* t, NI64 key_0, tyObject_FuturecolonObjectType___V0L9cQCp4qvFI1wEA712A8w* val_0) {	NI hc;	NI index;
+#line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+	{		NI T3_;
+#line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		T3_ = ((*t).data ? (*t).data->Sup.len : 0);		if (!(T3_ == ((NI) 0))) goto LA4_;
+
+#line 166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		{			NIM_BOOL T8_;
+#line 166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+			T8_ = (NIM_BOOL)0;			T8_ = isPowerOfTwo__1xdTQapFveM9bImKot7h9cdw(((NI) 64));			if (!!(T8_)) goto LA9_;
+
+#line 166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+			failedAssertImpl__W9cjVocn1tjhW7p7xohJj6A(((NimStringDesc*) &TM__4SoG2KRQy3oMm9aUzSLtGrA_7));
+		}
+		LA9_: ;
+
+#line 167 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		(*t).counter = ((NI) 0);
+#line 168 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		unsureAsgnRef((void**) (&(*t).data), (tySequence__P7q4mRBU3fRhL1KHJGOBAQ*) newSeq((&NTI__P7q4mRBU3fRhL1KHJGOBAQ_), ((NI) 64)));	}
+	LA4_: ;
+	hc = (NI)0;
+#line 58 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 58 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+	index = rawGet__yyntiie7QcUnYzdu7G9cqLQtables((*t), key_0, (&hc));
+#line 323 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+	{
+#line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		if (!(((NI) 0) <= index)) goto LA13_;
+		if ((NU)(index) >= (NU)((*t).data ? (*t).data->Sup.len : 0)){ raiseIndexError2(index,((*t).data ? (*t).data->Sup.len : 0)-1); }
+#line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		asgnRef((void**) (&(*t).data->data[index].Field2), val_0);	}
+	goto LA11_;
+	LA13_: ;
+	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_56;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_57;
+#line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		{			NI T18_;
+#line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+			T18_ = ((*t).data ? (*t).data->Sup.len : 0);			if (!(T18_ == ((NI) 0))) goto LA19_;
+
+#line 166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+			{				NIM_BOOL T23_;
+#line 166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+				T23_ = (NIM_BOOL)0;				T23_ = isPowerOfTwo__1xdTQapFveM9bImKot7h9cdw(((NI) 64));				if (!!(T23_)) goto LA24_;
+
+#line 166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+				failedAssertImpl__W9cjVocn1tjhW7p7xohJj6A(((NimStringDesc*) &TM__4SoG2KRQy3oMm9aUzSLtGrA_7));
+			}
+			LA24_: ;
+
+#line 167 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+			(*t).counter = ((NI) 0);
+#line 168 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+			unsureAsgnRef((void**) (&(*t).data), (tySequence__P7q4mRBU3fRhL1KHJGOBAQ*) newSeq((&NTI__P7q4mRBU3fRhL1KHJGOBAQ_), ((NI) 64)));		}
+		LA19_: ;
+
+#line 48 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		{			NIM_BOOL T28_;
+#line 48 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 48 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+			T28_ = (NIM_BOOL)0;			T28_ = mustRehash__mWouqGG4QTf2t9cGJRtN7EAtables((*t));			if (!T28_) goto LA29_;
+
+#line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+			enlarge__79akMJ39b064yLsBG9cU9cGWmg(t);
+
+#line 50 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 50 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+			index = rawGetKnownHC__C4Chxo9aiNXXRkE9bYenhM8wtables((*t), key_0, hc);		}
+		LA29_: ;
+
+#line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_56)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_56);
+#line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		rawInsert__Q46c7cg8fzMBKa5sW4yxRA(t, (&(*t).data), key_0, val_0, hc, index);
+
+#line 60 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_57)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_57);	}
+	LA11_: ;
+}
+
+#line 1359 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+N_LIB_PRIVATE N_NIMCALL(NIM_BOOL, hasKey__UX29cFESnmC3SpxKAQuMIcg)(tyObject_OrderedTable__ZZvSdVkA2s2sIyifu4cpkg* t, NimStringDesc* key_0) {	NIM_BOOL result;	NI hc;	NI T1_;	result = (NIM_BOOL)0;	hc = (NI)0;
+#line 1376 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+
+#line 1376 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+
+#line 1376 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+
+#line 1376 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+	T1_ = (NI)0;	T1_ = rawGet__U8BE8F1hkorXEqb1x9baemQ(t, key_0, (&hc));	result = (((NI) 0) <= T1_);	return result;}
+
+#line 76 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+static N_INLINE(NI, rawGet__B8emH5taC0NsYyBRssSIiwtables)(tyObject_OrderedTable__ZZvSdVkA2s2sIyifu4cpkg* t, NimStringDesc* key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_58;{	result = (NI)0;
+#line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	(*hc) = hash__6PCYkKlCNhq9cnRLnqWKkwQ(key_0);
+#line 73 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	{
+#line 64 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		if (!((*hc) == ((NI) 0))) goto LA3_;
+
+#line 65 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		(*hc) = ((NI) 314159265);	}
+	LA3_: ;
+
+#line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	{		NI T7_;
+#line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		T7_ = ((*t).data ? (*t).data->Sup.len : 0);		if (!(T7_ == ((NI) 0))) goto LA8_;
+
+#line 47 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 47 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		result = ((NI) -1);		goto BeforeRet_;
+	}
+	LA8_: ;
+
+#line 48 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 48 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 48 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	T10_ = (((*t).data ? (*t).data->Sup.len : 0)-1);	h_1 = (NI)((*hc) & T10_);	{
+#line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		while (1) {			NIM_BOOL T13_;			NI T20_;
+#line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			if ((NU)(h_1) >= (NU)((*t).data ? (*t).data->Sup.len : 0)){ raiseIndexError2(h_1,((*t).data ? (*t).data->Sup.len : 0)-1); }
+#line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			T13_ = (NIM_BOOL)0;			T13_ = isFilled__5Qpmu5QqwDY0esVXn6wf7wtables((*t).data->data[h_1].Field0);			if (!T13_) goto LA12;
+
+#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			{				NIM_BOOL T16_;
+#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+				T16_ = (NIM_BOOL)0;
+#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+				if ((NU)(h_1) >= (NU)((*t).data ? (*t).data->Sup.len : 0)){ raiseIndexError2(h_1,((*t).data ? (*t).data->Sup.len : 0)-1); }				T16_ = ((*t).data->data[h_1].Field0 == (*hc));				if (!(T16_)) goto LA17_;
+
+#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+				if ((NU)(h_1) >= (NU)((*t).data ? (*t).data->Sup.len : 0)){ raiseIndexError2(h_1,((*t).data ? (*t).data->Sup.len : 0)-1); }				T16_ = eqStrings((*t).data->data[h_1].Field2, key_0);				LA17_: ;
+				if (!T16_) goto LA18_;
+
+#line 55 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 55 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+				result = h_1;				goto BeforeRet_;
+			}
+			LA18_: ;
+
+#line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			T20_ = (((*t).data ? (*t).data->Sup.len : 0)-1);
+#line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			h_1 = nextTry__rkF6R1GhqjFh3qSAPaT2Cwtables(h_1, T20_);		} LA12: ;
+	}
+
+#line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_58)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_58);	}BeforeRet_: ;
+	return result;}
+
+#line 1408 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+N_LIB_PRIVATE N_NIMCALL(tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q*, getOrDefault__qYO3MyG9a6z7kzCiS8EqLpA)(tyObject_OrderedTable__ZZvSdVkA2s2sIyifu4cpkg* t, NimStringDesc* key_0) {	tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q* result;	NI hcX60gensym32715200_;	NI indexX60gensym32715201_;	result = (tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q*)0;	hcX60gensym32715200_ = (NI)0;
+#line 182 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 182 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+	indexX60gensym32715201_ = rawGet__B8emH5taC0NsYyBRssSIiwtables(t, key_0, (&hcX60gensym32715200_));
+#line 1425 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+	{
+#line 183 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		if (!(((NI) 0) <= indexX60gensym32715201_)) goto LA3_;
+
+#line 183 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		if ((NU)(indexX60gensym32715201_) >= (NU)((*t).data ? (*t).data->Sup.len : 0)){ raiseIndexError2(indexX60gensym32715201_,((*t).data ? (*t).data->Sup.len : 0)-1); }		result = (*t).data->data[indexX60gensym32715201_].Field3;	}
+	LA3_: ;
+	return result;}
+
+#line 23 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+static N_INLINE(NIM_BOOL, isEmpty__5Qpmu5QqwDY0esVXn6wf7w_2tables)(NI hcode) {	NIM_BOOL result;	result = (NIM_BOOL)0;
+#line 24 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 24 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	result = (hcode == ((NI) 0));	return result;}
+
+#line 521 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+N_LIB_PRIVATE N_NIMCALL(NIM_BOOL, pop__wKBTDwRBu9aNtErGiwoRV9cw)(tyObject_Table__BZfyXkROzX88W3JFME9aJ2Q* t, NI64 key_0, tyObject_FuturecolonObjectType___V0L9cQCp4qvFI1wEA712A8w** val_0) {	NIM_BOOL result;	NI hc;	NI index;	result = (NIM_BOOL)0;	hc = (NI)0;
+#line 543 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+
+#line 543 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+	index = rawGet__yyntiie7QcUnYzdu7G9cqLQtables((*t), key_0, (&hc));
+#line 544 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+
+#line 544 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+	result = (((NI) 0) <= index);
+#line 545 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+	{		NI mskX60gensym17450623_;		NI T5_;		if (!result) goto LA3_;
+
+#line 546 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+
+#line 546 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+		if ((NU)(index) >= (NU)((*t).data ? (*t).data->Sup.len : 0)){ raiseIndexError2(index,((*t).data ? (*t).data->Sup.len : 0)-1); }		unsureAsgnRef((void**) (&(*val_0)), (*t).data->data[index].Field2);		asgnRef((void**) (&(*t).data->data[index].Field2), NIM_NIL);
+#line 112 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 112 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		T5_ = (((*t).data ? (*t).data->Sup.len : 0)-1);		mskX60gensym17450623_ = T5_;
+#line 547 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+		{			NI TM__4SoG2KRQy3oMm9aUzSLtGrA_59;
+#line 113 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+			if (!(((NI) 0) <= index)) goto LA8_;
+
+#line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+			if (nimSubInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_59)) { raiseOverflow(); };			(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_59);			{				{
+#line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+					while (1) {						NI jX60gensym17450625_;						NI rX60gensym17450626_;
+#line 117 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+						jX60gensym17450625_ = index;
+#line 118 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+						rX60gensym17450626_ = jX60gensym17450625_;						if ((NU)(index) >= (NU)((*t).data ? (*t).data->Sup.len : 0)){ raiseIndexError2(index,((*t).data ? (*t).data->Sup.len : 0)-1); }
+#line 502 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+						(*t).data->data[index].Field0 = ((NI) 0);						if ((NU)(index) >= (NU)((*t).data ? (*t).data->Sup.len : 0)){ raiseIndexError2(index,((*t).data ? (*t).data->Sup.len : 0)-1); }
+#line 120 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 120 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+						(*t).data->data[index].Field1 = 0;						if ((NU)(index) >= (NU)((*t).data ? (*t).data->Sup.len : 0)){ raiseIndexError2(index,((*t).data ? (*t).data->Sup.len : 0)-1); }
+#line 121 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 121 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+						asgnRef((void**) (&(*t).data->data[index].Field2), NIM_NIL);						{
+#line 122 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+							while (1) {								NI TM__4SoG2KRQy3oMm9aUzSLtGrA_60;
+#line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+								if (nimAddInt(index, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_60)) { raiseOverflow(); };								index = (NI)((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_60) & mskX60gensym17450623_);
+#line 124 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+								{									NIM_BOOL T17_;
+#line 124 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+									if ((NU)(index) >= (NU)((*t).data ? (*t).data->Sup.len : 0)){ raiseIndexError2(index,((*t).data ? (*t).data->Sup.len : 0)-1); }
+#line 124 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+									T17_ = (NIM_BOOL)0;									T17_ = isEmpty__5Qpmu5QqwDY0esVXn6wf7w_2tables((*t).data->data[index].Field0);									if (!T17_) goto LA18_;
+
+#line 125 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+									goto LA10;
+								}
+								LA18_: ;
+
+#line 126 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 126 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+								if ((NU)(index) >= (NU)((*t).data ? (*t).data->Sup.len : 0)){ raiseIndexError2(index,((*t).data ? (*t).data->Sup.len : 0)-1); }								rX60gensym17450626_ = (NI)((*t).data->data[index].Field0 & mskX60gensym17450623_);
+#line 127 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+								{									NIM_BOOL T22_;									NIM_BOOL T23_;									NIM_BOOL T24_;									NIM_BOOL T27_;									NIM_BOOL T30_;
+#line 127 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 127 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+									T22_ = (NIM_BOOL)0;
+#line 127 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+									T23_ = (NIM_BOOL)0;
+#line 127 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+									T24_ = (NIM_BOOL)0;
+#line 127 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+									T24_ = (rX60gensym17450626_ <= index);									if (!(T24_)) goto LA25_;
+
+#line 127 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+									T24_ = (jX60gensym17450625_ < rX60gensym17450626_);									LA25_: ;
+									T23_ = T24_;									if (T23_) goto LA26_;
+
+#line 127 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+									T27_ = (NIM_BOOL)0;
+#line 127 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+									T27_ = (jX60gensym17450625_ < rX60gensym17450626_);									if (!(T27_)) goto LA28_;
+
+#line 127 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+									T27_ = (index < jX60gensym17450625_);									LA28_: ;
+									T23_ = T27_;									LA26_: ;
+									T22_ = T23_;									if (T22_) goto LA29_;
+
+#line 127 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+									T30_ = (NIM_BOOL)0;
+#line 127 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+									T30_ = (index < jX60gensym17450625_);									if (!(T30_)) goto LA31_;
+
+#line 127 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+									T30_ = (rX60gensym17450626_ <= index);									LA31_: ;
+									T22_ = T30_;									LA29_: ;
+									if (!!(T22_)) goto LA32_;
+
+#line 128 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+									goto LA13;
+								}
+								LA32_: ;
+							}
+						} LA13: ;
+						if ((NU)(jX60gensym17450625_) >= (NU)((*t).data ? (*t).data->Sup.len : 0)){ raiseIndexError2(jX60gensym17450625_,((*t).data ? (*t).data->Sup.len : 0)-1); }
+#line 132 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 132 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+						if ((NU)(index) >= (NU)((*t).data ? (*t).data->Sup.len : 0)){ raiseIndexError2(index,((*t).data ? (*t).data->Sup.len : 0)-1); }						(*t).data->data[jX60gensym17450625_].Field0 = (*t).data->data[index].Field0;						(*t).data->data[jX60gensym17450625_].Field1 = (*t).data->data[index].Field1;						asgnRef((void**) (&(*t).data->data[jX60gensym17450625_].Field2), (*t).data->data[index].Field2);						chckNil((void*)(&(*t).data->data[index]));						(*t).data->data[index].Field0 = 0;						(*t).data->data[index].Field1 = 0;						unsureAsgnRef((void**)&(*t).data->data[index].Field2, NIM_NIL);					}
+				}
+			} LA10: ;
+		}
+		LA8_: ;
+	}
+	LA3_: ;
+	return result;}
+
+#line 1343 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+N_LIB_PRIVATE N_NIMCALL(tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q**, X5BX5D___l9atGRY9bA25fn4p5uueZfUQ)(tyObject_OrderedTable__ZZvSdVkA2s2sIyifu4cpkg* t, NimStringDesc* key_0) {	tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q** result;	NI hcX60gensym17465595_;	NI indexX60gensym17465596_;	result = (tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q**)0;	hcX60gensym17465595_ = (NI)0;
+#line 258 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+
+#line 258 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+	indexX60gensym17465596_ = rawGet__B8emH5taC0NsYyBRssSIiwtables((&(*t)), key_0, (&hcX60gensym17465595_));
+#line 1357 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+	{
+#line 259 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+		if (!(((NI) 0) <= indexX60gensym17465596_)) goto LA3_;
+
+#line 259 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+		if ((NU)(indexX60gensym17465596_) >= (NU)((*t).data ? (*t).data->Sup.len : 0)){ raiseIndexError2(indexX60gensym17465596_,((*t).data ? (*t).data->Sup.len : 0)-1); }		result = &(*t).data->data[indexX60gensym17465596_].Field3;	}
+	goto LA1_;
+	LA3_: ;
+	{		tyObject_KeyError__t7nhKLvXTQS9cS8ByJU9bIag* T6_;		NimStringDesc* T7_;		T6_ = (tyObject_KeyError__t7nhKLvXTQS9cS8ByJU9bIag*)0;		T6_ = (tyObject_KeyError__t7nhKLvXTQS9cS8ByJU9bIag*) newObj((&NTI__8SzoIAgLw9ci2v0yafHj9b6Q_), sizeof(tyObject_KeyError__t7nhKLvXTQS9cS8ByJU9bIag));		(*T6_).Sup.Sup.Sup.Sup.m_type = (&NTI__t7nhKLvXTQS9cS8ByJU9bIag_);		(*T6_).Sup.Sup.Sup.name = "KeyError";
+#line 262 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+		T7_ = (NimStringDesc*)0;		T7_ = rawNewString((key_0 ? key_0->Sup.len : 0) + 15);appendString(T7_, ((NimStringDesc*) &TM__4SoG2KRQy3oMm9aUzSLtGrA_19));appendString(T7_, key_0);		asgnRef((void**) (&(*T6_).Sup.Sup.Sup.message), T7_);		asgnRef((void**) (&(*T6_).Sup.Sup.Sup.parent), NIM_NIL);
+#line 262 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+		raiseExceptionEx((Exception*)T6_, "KeyError", "[]", "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/"
+"vendor/Nim/lib/pure/collections/tables.nim", 262);	}
+	LA1_: ;
+	return result;}
+
+#line 364 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+N_LIB_PRIVATE N_NIMCALL(tyObject_FuturecolonObjectType___V0L9cQCp4qvFI1wEA712A8w**, X5BX5D___tpfRDjaqWalp9a9bBK0q4iEA)(tyObject_Table__BZfyXkROzX88W3JFME9aJ2Q* t, NI64 key_0) {	tyObject_FuturecolonObjectType___V0L9cQCp4qvFI1wEA712A8w** result;	NI hcX60gensym17450424_;	NI indexX60gensym17450425_;	result = (tyObject_FuturecolonObjectType___V0L9cQCp4qvFI1wEA712A8w**)0;	hcX60gensym17450424_ = (NI)0;
+#line 258 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+
+#line 258 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+	indexX60gensym17450425_ = rawGet__yyntiie7QcUnYzdu7G9cqLQtables((*t), key_0, (&hcX60gensym17450424_));
+#line 378 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+	{
+#line 259 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+		if (!(((NI) 0) <= indexX60gensym17450425_)) goto LA3_;
+
+#line 259 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+		if ((NU)(indexX60gensym17450425_) >= (NU)((*t).data ? (*t).data->Sup.len : 0)){ raiseIndexError2(indexX60gensym17450425_,((*t).data ? (*t).data->Sup.len : 0)-1); }		result = &(*t).data->data[indexX60gensym17450425_].Field2;	}
+	goto LA1_;
+	LA3_: ;
+	{		tyObject_KeyError__t7nhKLvXTQS9cS8ByJU9bIag* T6_;		NimStringDesc* T7_;		NimStringDesc* T8_;		T6_ = (tyObject_KeyError__t7nhKLvXTQS9cS8ByJU9bIag*)0;		T6_ = (tyObject_KeyError__t7nhKLvXTQS9cS8ByJU9bIag*) newObj((&NTI__8SzoIAgLw9ci2v0yafHj9b6Q_), sizeof(tyObject_KeyError__t7nhKLvXTQS9cS8ByJU9bIag));		(*T6_).Sup.Sup.Sup.Sup.m_type = (&NTI__t7nhKLvXTQS9cS8ByJU9bIag_);		(*T6_).Sup.Sup.Sup.name = "KeyError";
+#line 262 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+		T7_ = (NimStringDesc*)0;
+#line 262 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+		T8_ = (NimStringDesc*)0;		T8_ = nimInt64ToStr(key_0);		T7_ = rawNewString((T8_ ? T8_->Sup.len : 0) + 15);appendString(T7_, ((NimStringDesc*) &TM__4SoG2KRQy3oMm9aUzSLtGrA_19));appendString(T7_, T8_);		asgnRef((void**) (&(*T6_).Sup.Sup.Sup.message), T7_);		asgnRef((void**) (&(*T6_).Sup.Sup.Sup.parent), NIM_NIL);
+#line 262 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+		raiseExceptionEx((Exception*)T6_, "KeyError", "[]", "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/"
+"vendor/Nim/lib/pure/collections/tables.nim", 262);	}
+	LA1_: ;
+	return result;}
+
+#line 76 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+static N_INLINE(NI, rawGet__YTXDaIou4WVxznTZQvMNcAtables)(tyObject_Table__k9cb4Qn3gUx6gxyGj3hd20w t, NimStringDesc* key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_61;{	result = (NI)0;
+#line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	(*hc) = hash__6PCYkKlCNhq9cnRLnqWKkwQ(key_0);
+#line 73 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	{
+#line 64 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		if (!((*hc) == ((NI) 0))) goto LA3_;
+
+#line 65 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		(*hc) = ((NI) 314159265);	}
+	LA3_: ;
+
+#line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	{		NI T7_;
+#line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		T7_ = (t.data ? t.data->Sup.len : 0);		if (!(T7_ == ((NI) 0))) goto LA8_;
+
+#line 47 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 47 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		result = ((NI) -1);		goto BeforeRet_;
+	}
+	LA8_: ;
+
+#line 48 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 48 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 48 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	T10_ = ((t.data ? t.data->Sup.len : 0)-1);	h_1 = (NI)((*hc) & T10_);	{
+#line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		while (1) {			NIM_BOOL T13_;			NI T20_;
+#line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			if ((NU)(h_1) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(h_1,(t.data ? t.data->Sup.len : 0)-1); }
+#line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			T13_ = (NIM_BOOL)0;			T13_ = isFilled__5Qpmu5QqwDY0esVXn6wf7wtables(t.data->data[h_1].Field0);			if (!T13_) goto LA12;
+
+#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			{				NIM_BOOL T16_;
+#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+				T16_ = (NIM_BOOL)0;
+#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+				if ((NU)(h_1) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(h_1,(t.data ? t.data->Sup.len : 0)-1); }				T16_ = (t.data->data[h_1].Field0 == (*hc));				if (!(T16_)) goto LA17_;
+
+#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+				if ((NU)(h_1) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(h_1,(t.data ? t.data->Sup.len : 0)-1); }				T16_ = eqStrings(t.data->data[h_1].Field1, key_0);				LA17_: ;
+				if (!T16_) goto LA18_;
+
+#line 55 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 55 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+				result = h_1;				goto BeforeRet_;
+			}
+			LA18_: ;
+
+#line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			T20_ = ((t.data ? t.data->Sup.len : 0)-1);
+#line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			h_1 = nextTry__rkF6R1GhqjFh3qSAPaT2Cwtables(h_1, T20_);		} LA12: ;
+	}
+
+#line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_61)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_61);	}BeforeRet_: ;
+	return result;}
+
+#line 428 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+N_LIB_PRIVATE N_NIMCALL(void, getOrDefault__sQoMsjENLNs8DNuYSclEUg)(tyObject_Table__k9cb4Qn3gUx6gxyGj3hd20w t, NimStringDesc* key_0, tyProc__ADCDtoN1AvOABxjfvZcWKw* Result) {	NI hcX60gensym99785196_;	NI indexX60gensym99785197_;	chckNil((void*)Result);	unsureAsgnRef((void**)&(*Result).ClE_0, NIM_NIL);	(*Result).ClP_0 = NIM_NIL;	hcX60gensym99785196_ = (NI)0;
+#line 182 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 182 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+	indexX60gensym99785197_ = rawGet__YTXDaIou4WVxznTZQvMNcAtables(t, key_0, (&hcX60gensym99785196_));
+#line 445 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+	{
+#line 183 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		if (!(((NI) 0) <= indexX60gensym99785197_)) goto LA3_;
+
+#line 183 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		if ((NU)(indexX60gensym99785197_) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(indexX60gensym99785197_,(t.data ? t.data->Sup.len : 0)-1); }		unsureAsgnRef((void**) (&(*Result).ClE_0), t.data->data[indexX60gensym99785197_].Field2.ClE_0);		(*Result).ClP_0 = t.data->data[indexX60gensym99785197_].Field2.ClP_0;	}
+	LA3_: ;
+}
+
+#line 76 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+static N_INLINE(NI, rawGet__B0Q2IxFWoBivhITKKLmBNgtables)(tyObject_Table__lHpSn1a1LQne7Vijlza5tg t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_62;{	result = (NI)0;
 #line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -3331,15 +4655,8 @@ static N_INLINE(NI, rawGet__B0Q2IxFWoBivhITKKLmBNgtables)(tyObject_Table__lHpSn1
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_35)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_35);	}BeforeRet_: ;
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_62)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_62);	}BeforeRet_: ;
 	return result;}
-
-#line 23 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NIM_BOOL, isEmpty__5Qpmu5QqwDY0esVXn6wf7w_2tables)(NI hcode) {	NIM_BOOL result;	result = (NIM_BOOL)0;
-#line 24 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-
-#line 24 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	result = (hcode == ((NI) 0));	return result;}
 
 #line 506 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 N_LIB_PRIVATE N_NIMCALL(void, del__1mn6ML9bKbqHSu0Hid4qe8w)(tyObject_Table__lHpSn1a1LQne7Vijlza5tg* t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0) {	NI hc;	NI i;	NI mskX60gensym17450588_;	NI T1_;	hc = (NI)0;
@@ -3352,12 +4669,12 @@ N_LIB_PRIVATE N_NIMCALL(void, del__1mn6ML9bKbqHSu0Hid4qe8w)(tyObject_Table__lHpS
 #line 112 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 	T1_ = (((*t).data ? (*t).data->Sup.len : 0)-1);	mskX60gensym17450588_ = T1_;
 #line 519 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_36;
+	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_63;
 #line 113 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		if (!(((NI) 0) <= i)) goto LA4_;
 
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimSubInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_36)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_36);		{			{
+		if (nimSubInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_63)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_63);		{			{
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 				while (1) {					NI jX60gensym17450590_;					NI rX60gensym17450591_;
 #line 117 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -3375,13 +4692,13 @@ N_LIB_PRIVATE N_NIMCALL(void, del__1mn6ML9bKbqHSu0Hid4qe8w)(tyObject_Table__lHpS
 #line 121 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 					asgnRef((void**) (&(*t).data->data[i].Field2), NIM_NIL);					{
 #line 122 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-						while (1) {							NI TM__4SoG2KRQy3oMm9aUzSLtGrA_37;
+						while (1) {							NI TM__4SoG2KRQy3oMm9aUzSLtGrA_64;
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-							if (nimAddInt(i, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_37)) { raiseOverflow(); };							i = (NI)((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_37) & mskX60gensym17450588_);
+							if (nimAddInt(i, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_64)) { raiseOverflow(); };							i = (NI)((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_64) & mskX60gensym17450588_);
 #line 124 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 							{								NIM_BOOL T13_;
 #line 124 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -3567,7 +4884,7 @@ N_LIB_PRIVATE N_NIMCALL(tyObject_PubSubPeercolonObjectType___6rsvBHOjeRkx0KPoUqs
 	return result;}
 
 #line 76 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGet__mzx9cR5dSPtlnX9blkMlpNYgtables)(tyObject_Table__8uqzpFmoqV4exdDArFo5wQ t, tyObject_ConnectioncolonObjectType___crfbBHXu3U647CckYkg9cYg* key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_56;{	result = (NI)0;
+static N_INLINE(NI, rawGet__mzx9cR5dSPtlnX9blkMlpNYgtables)(tyObject_Table__8uqzpFmoqV4exdDArFo5wQ t, tyObject_ConnectioncolonObjectType___crfbBHXu3U647CckYkg9cYg* key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_83;{	result = (NI)0;
 #line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -3637,7 +4954,7 @@ static N_INLINE(NI, rawGet__mzx9cR5dSPtlnX9blkMlpNYgtables)(tyObject_Table__8uqz
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_56)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_56);	}BeforeRet_: ;
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_83)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_83);	}BeforeRet_: ;
 	return result;}
 
 #line 380 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -3677,7 +4994,7 @@ N_LIB_PRIVATE N_NIMCALL(tyObject_MuxerHolder__jkZf9bt8D9bH6jQnKwX8Noxw*, X5BX5D_
 		if ((NU)(indexX60gensym17450425_) >= (NU)((*t).data ? (*t).data->Sup.len : 0)){ raiseIndexError2(indexX60gensym17450425_,((*t).data ? (*t).data->Sup.len : 0)-1); }		result = (&(*t).data->data[indexX60gensym17450425_].Field2);	}
 	goto LA1_;
 	LA3_: ;
-	{		tyObject_KeyError__t7nhKLvXTQS9cS8ByJU9bIag* T6_;		NimStringDesc* T7_;		T6_ = (tyObject_KeyError__t7nhKLvXTQS9cS8ByJU9bIag*)0;		T6_ = (tyObject_KeyError__t7nhKLvXTQS9cS8ByJU9bIag*) newObj((&NTI__8SzoIAgLw9ci2v0yafHj9b6Q_), sizeof(tyObject_KeyError__t7nhKLvXTQS9cS8ByJU9bIag));		(*T6_).Sup.Sup.Sup.Sup.m_type = (&NTI__t7nhKLvXTQS9cS8ByJU9bIag_);		(*T6_).Sup.Sup.Sup.name = "KeyError";		T7_ = (NimStringDesc*)0;		T7_ = (*T6_).Sup.Sup.Sup.message; (*T6_).Sup.Sup.Sup.message = copyStringRC1(((NimStringDesc*) &TM__4SoG2KRQy3oMm9aUzSLtGrA_57));		if (T7_) nimGCunrefNoCycle(T7_);		asgnRef((void**) (&(*T6_).Sup.Sup.Sup.parent), NIM_NIL);
+	{		tyObject_KeyError__t7nhKLvXTQS9cS8ByJU9bIag* T6_;		NimStringDesc* T7_;		T6_ = (tyObject_KeyError__t7nhKLvXTQS9cS8ByJU9bIag*)0;		T6_ = (tyObject_KeyError__t7nhKLvXTQS9cS8ByJU9bIag*) newObj((&NTI__8SzoIAgLw9ci2v0yafHj9b6Q_), sizeof(tyObject_KeyError__t7nhKLvXTQS9cS8ByJU9bIag));		(*T6_).Sup.Sup.Sup.Sup.m_type = (&NTI__t7nhKLvXTQS9cS8ByJU9bIag_);		(*T6_).Sup.Sup.Sup.name = "KeyError";		T7_ = (NimStringDesc*)0;		T7_ = (*T6_).Sup.Sup.Sup.message; (*T6_).Sup.Sup.Sup.message = copyStringRC1(((NimStringDesc*) &TM__4SoG2KRQy3oMm9aUzSLtGrA_84));		if (T7_) nimGCunrefNoCycle(T7_);		asgnRef((void**) (&(*T6_).Sup.Sup.Sup.parent), NIM_NIL);
 #line 264 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 		raiseExceptionEx((Exception*)T6_, "KeyError", "[]", "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/"
 "vendor/Nim/lib/pure/collections/tables.nim", 264);	}
@@ -3685,7 +5002,7 @@ N_LIB_PRIVATE N_NIMCALL(tyObject_MuxerHolder__jkZf9bt8D9bH6jQnKwX8Noxw*, X5BX5D_
 	return result;}
 
 #line 76 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGet__gviLmV9bYNLrAyNHIKDoXUQtables)(tyObject_Table__I17elwrgUkVdxGLUkHiM7w t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_58;{	result = (NI)0;
+static N_INLINE(NI, rawGet__gviLmV9bYNLrAyNHIKDoXUQtables)(tyObject_Table__I17elwrgUkVdxGLUkHiM7w t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_85;{	result = (NI)0;
 #line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -3759,7 +5076,7 @@ static N_INLINE(NI, rawGet__gviLmV9bYNLrAyNHIKDoXUQtables)(tyObject_Table__I17el
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_58)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_58);	}BeforeRet_: ;
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_85)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_85);	}BeforeRet_: ;
 	return result;}
 
 #line 428 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -3779,7 +5096,7 @@ N_LIB_PRIVATE N_NIMCALL(void, getOrDefault__Hy9bmJay4eA4EMWVa8B9ckow)(tyObject_T
 }
 
 #line 32 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NIM_BOOL, mustRehash__GTKnSB2MbGsAa1OJfsSl7Atables)(tyObject_Table__lHpSn1a1LQne7Vijlza5tg t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_59;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_60;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_61;	result = (NIM_BOOL)0;
+static N_INLINE(NIM_BOOL, mustRehash__GTKnSB2MbGsAa1OJfsSl7Atables)(tyObject_Table__lHpSn1a1LQne7Vijlza5tg t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_86;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_87;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_88;	result = (NIM_BOOL)0;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -3805,16 +5122,16 @@ static N_INLINE(NIM_BOOL, mustRehash__GTKnSB2MbGsAa1OJfsSl7Atables)(tyObject_Tab
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_59)) { raiseOverflow(); };
+	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_86)) { raiseOverflow(); };
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_60)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_59) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_60));	if (T6_) goto LA8_;
+	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_87)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_86) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_87));	if (T6_) goto LA8_;
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_61)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_61) < ((NI) 4));	LA8_: ;
+	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_88)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_88) < ((NI) 4));	LA8_: ;
 	result = T6_;	return result;}
 
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -3827,13 +5144,13 @@ N_LIB_PRIVATE N_NIMCALL(void, rawInsert__Law1odk4sdPudZIT6Oy9b4w)(tyObject_Table
 	(*data_0)->data[h_0].Field0 = hc;}
 
 #line 266 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-N_LIB_PRIVATE N_NIMCALL(void, enlarge__m3WF72kPRX9bF8f9aRfHOtTg)(tyObject_Table__lHpSn1a1LQne7Vijlza5tg* t) {	tySequence__1cmYA8zDV0s9c4gpLK2ygBg* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_62;	tySequence__1cmYA8zDV0s9c4gpLK2ygBg* T2_;	n_1 = (tySequence__1cmYA8zDV0s9c4gpLK2ygBg*)0;
+N_LIB_PRIVATE N_NIMCALL(void, enlarge__m3WF72kPRX9bF8f9aRfHOtTg)(tyObject_Table__lHpSn1a1LQne7Vijlza5tg* t) {	tySequence__1cmYA8zDV0s9c4gpLK2ygBg* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_89;	tySequence__1cmYA8zDV0s9c4gpLK2ygBg* T2_;	n_1 = (tySequence__1cmYA8zDV0s9c4gpLK2ygBg*)0;
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_62)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_62)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_62)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_62), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__1cmYA8zDV0s9c4gpLK2ygBg*) newSeq((&NTI__1cmYA8zDV0s9c4gpLK2ygBg_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_62))));
+	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_89)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_89)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_89)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_89), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__1cmYA8zDV0s9c4gpLK2ygBg*) newSeq((&NTI__1cmYA8zDV0s9c4gpLK2ygBg_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_89))));
 #line 269 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 	T2_ = (tySequence__1cmYA8zDV0s9c4gpLK2ygBg*)0;	T2_ = (*t).data;	unsureAsgnRef((void**) (&(*t).data), n_1);	n_1 = T2_;	{		NI i;		NI colontmp_;		NI T4_;		NI res;		i = (NI)0;		colontmp_ = (NI)0;
 #line 270 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -3843,7 +5160,7 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__m3WF72kPRX9bF8f9aRfHOtTg)(tyObject_Table_
 #line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 		res = ((NI) 0);		{
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_63;
+			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_90;
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 				if (!(res <= colontmp_)) goto LA6;
 
@@ -3891,13 +5208,13 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__m3WF72kPRX9bF8f9aRfHOtTg)(tyObject_Table_
 				LA10_: ;
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_63)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_63);			} LA6: ;
+				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_90)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_90);			} LA6: ;
 		}
 	}
 }
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGetKnownHC__udOVr83PBdj8W6YyFT3Hegtables)(tyObject_Table__lHpSn1a1LQne7Vijlza5tg t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_64;{	result = (NI)0;
+static N_INLINE(NI, rawGetKnownHC__udOVr83PBdj8W6YyFT3Hegtables)(tyObject_Table__lHpSn1a1LQne7Vijlza5tg t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_91;{	result = (NI)0;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -3958,7 +5275,7 @@ static N_INLINE(NI, rawGetKnownHC__udOVr83PBdj8W6YyFT3Hegtables)(tyObject_Table_
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_64)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_64);	}BeforeRet_: ;
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_91)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_91);	}BeforeRet_: ;
 	return result;}
 
 #line 309 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -4005,7 +5322,7 @@ N_LIB_PRIVATE N_NIMCALL(void, X5BX5Deq___z69cyEU7zYW9bmiE9czdZKciw)(tyObject_Tab
 		asgnRef((void**) (&(*t).data->data[index].Field2), val_0);	}
 	goto LA11_;
 	LA13_: ;
-	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_65;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_66;
+	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_92;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_93;
 #line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		{			NI T18_;
 #line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -4056,19 +5373,19 @@ N_LIB_PRIVATE N_NIMCALL(void, X5BX5Deq___z69cyEU7zYW9bmiE9czdZKciw)(tyObject_Tab
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_65)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_65);
+		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_92)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_92);
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		rawInsert__Law1odk4sdPudZIT6Oy9b4w(t, (&(*t).data), key_0, val_0, hc, index);
 
 #line 60 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_66)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_66);	}
+		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_93)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_93);	}
 	LA11_: ;
 }
 
 #line 76 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGet__uuSs4Pio2JtxqrsgwJwAZAtables)(tyObject_Table__wcpR9aWZKIUY9bs3oFi6HIsQ t, NimStringDesc* key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_67;{	result = (NI)0;
+static N_INLINE(NI, rawGet__uuSs4Pio2JtxqrsgwJwAZAtables)(tyObject_Table__wcpR9aWZKIUY9bs3oFi6HIsQ t, NimStringDesc* key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_94;{	result = (NI)0;
 #line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -4138,7 +5455,7 @@ static N_INLINE(NI, rawGet__uuSs4Pio2JtxqrsgwJwAZAtables)(tyObject_Table__wcpR9a
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_67)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_67);	}BeforeRet_: ;
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_94)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_94);	}BeforeRet_: ;
 	return result;}
 
 #line 506 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -4152,12 +5469,12 @@ N_LIB_PRIVATE N_NIMCALL(void, del__g8RHBTTVREgFsyqCtJWx1w)(tyObject_Table__wcpR9
 #line 112 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 	T1_ = (((*t).data ? (*t).data->Sup.len : 0)-1);	mskX60gensym17450588_ = T1_;
 #line 519 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_68;
+	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_95;
 #line 113 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		if (!(((NI) 0) <= i)) goto LA4_;
 
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimSubInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_68)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_68);		{			{
+		if (nimSubInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_95)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_95);		{			{
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 				while (1) {					NI jX60gensym17450590_;					NI rX60gensym17450591_;
 #line 117 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -4175,13 +5492,13 @@ N_LIB_PRIVATE N_NIMCALL(void, del__g8RHBTTVREgFsyqCtJWx1w)(tyObject_Table__wcpR9
 #line 121 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 					chckNil((void*)(&(*t).data->data[i].Field2));					unsureAsgnRef((void**)&(*t).data->data[i].Field2.name, NIM_NIL);					unsureAsgnRef((void**)&(*t).data->data[i].Field2.handler, NIM_NIL);					{
 #line 122 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-						while (1) {							NI TM__4SoG2KRQy3oMm9aUzSLtGrA_69;
+						while (1) {							NI TM__4SoG2KRQy3oMm9aUzSLtGrA_96;
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-							if (nimAddInt(i, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_69)) { raiseOverflow(); };							i = (NI)((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_69) & mskX60gensym17450588_);
+							if (nimAddInt(i, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_96)) { raiseOverflow(); };							i = (NI)((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_96) & mskX60gensym17450588_);
 #line 124 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 							{								NIM_BOOL T13_;
 #line 124 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -4299,7 +5616,7 @@ N_LIB_PRIVATE N_NIMCALL(NIM_BOOL, contains__wsF3Mf3BqREb9bpCjkRxq0w)(tyObject_Ta
 	return result;}
 
 #line 32 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NIM_BOOL, mustRehash__fKlM0HJVTpwCpx1e8PopCgtables)(tyObject_Table__wcpR9aWZKIUY9bs3oFi6HIsQ t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_70;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_71;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_72;	result = (NIM_BOOL)0;
+static N_INLINE(NIM_BOOL, mustRehash__fKlM0HJVTpwCpx1e8PopCgtables)(tyObject_Table__wcpR9aWZKIUY9bs3oFi6HIsQ t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_97;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_98;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_99;	result = (NIM_BOOL)0;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -4325,16 +5642,16 @@ static N_INLINE(NIM_BOOL, mustRehash__fKlM0HJVTpwCpx1e8PopCgtables)(tyObject_Tab
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_70)) { raiseOverflow(); };
+	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_97)) { raiseOverflow(); };
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_71)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_70) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_71));	if (T6_) goto LA8_;
+	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_98)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_97) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_98));	if (T6_) goto LA8_;
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_72)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_72) < ((NI) 4));	LA8_: ;
+	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_99)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_99) < ((NI) 4));	LA8_: ;
 	result = T6_;	return result;}
 
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -4347,13 +5664,13 @@ N_LIB_PRIVATE N_NIMCALL(void, rawInsert__VRKzoZ9bZLa9cxcPa0T0Z8aw)(tyObject_Tabl
 	(*data_0)->data[h_0].Field0 = hc;}
 
 #line 266 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-N_LIB_PRIVATE N_NIMCALL(void, enlarge__L5cb6eBFhge2gcEHNie8Kg)(tyObject_Table__wcpR9aWZKIUY9bs3oFi6HIsQ* t) {	tySequence__4tnpefYRDGIct5y7RxC8KA* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_73;	tySequence__4tnpefYRDGIct5y7RxC8KA* T2_;	n_1 = (tySequence__4tnpefYRDGIct5y7RxC8KA*)0;
+N_LIB_PRIVATE N_NIMCALL(void, enlarge__L5cb6eBFhge2gcEHNie8Kg)(tyObject_Table__wcpR9aWZKIUY9bs3oFi6HIsQ* t) {	tySequence__4tnpefYRDGIct5y7RxC8KA* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_100;	tySequence__4tnpefYRDGIct5y7RxC8KA* T2_;	n_1 = (tySequence__4tnpefYRDGIct5y7RxC8KA*)0;
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_73)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_73)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_73)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_73), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__4tnpefYRDGIct5y7RxC8KA*) newSeq((&NTI__4tnpefYRDGIct5y7RxC8KA_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_73))));
+	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_100)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_100)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_100)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_100), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__4tnpefYRDGIct5y7RxC8KA*) newSeq((&NTI__4tnpefYRDGIct5y7RxC8KA_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_100))));
 #line 269 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 	T2_ = (tySequence__4tnpefYRDGIct5y7RxC8KA*)0;	T2_ = (*t).data;	unsureAsgnRef((void**) (&(*t).data), n_1);	n_1 = T2_;	{		NI i;		NI colontmp_;		NI T4_;		NI res;		i = (NI)0;		colontmp_ = (NI)0;
 #line 270 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -4363,7 +5680,7 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__L5cb6eBFhge2gcEHNie8Kg)(tyObject_Table__w
 #line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 		res = ((NI) 0);		{
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_74;
+			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_101;
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 				if (!(res <= colontmp_)) goto LA6;
 
@@ -4411,13 +5728,13 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__L5cb6eBFhge2gcEHNie8Kg)(tyObject_Table__w
 				LA10_: ;
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_74)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_74);			} LA6: ;
+				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_101)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_101);			} LA6: ;
 		}
 	}
 }
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGetKnownHC__s9a9c2z8OehwJV5xnyfm1ARQtables)(tyObject_Table__wcpR9aWZKIUY9bs3oFi6HIsQ t, NimStringDesc* key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_75;{	result = (NI)0;
+static N_INLINE(NI, rawGetKnownHC__s9a9c2z8OehwJV5xnyfm1ARQtables)(tyObject_Table__wcpR9aWZKIUY9bs3oFi6HIsQ t, NimStringDesc* key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_102;{	result = (NI)0;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -4474,7 +5791,7 @@ static N_INLINE(NI, rawGetKnownHC__s9a9c2z8OehwJV5xnyfm1ARQtables)(tyObject_Tabl
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_75)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_75);	}BeforeRet_: ;
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_102)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_102);	}BeforeRet_: ;
 	return result;}
 
 #line 309 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -4521,7 +5838,7 @@ N_LIB_PRIVATE N_NIMCALL(void, X5BX5Deq___mE5dAYM8xGX9b3MIatQCCXQ)(tyObject_Table
 		T15_ = (NimStringDesc*)0;		T15_ = (*t).data->data[index].Field2.name; (*t).data->data[index].Field2.name = copyStringRC1(val_0.name);		if (T15_) nimGCunrefNoCycle(T15_);		genericSeqAssign((&(*t).data->data[index].Field2.handler), val_0.handler, (&NTI__El1HzcbAXI4FXRMy9aew4PA_));	}
 	goto LA11_;
 	LA13_: ;
-	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_76;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_77;
+	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_103;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_104;
 #line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		{			NI T19_;
 #line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -4572,19 +5889,19 @@ N_LIB_PRIVATE N_NIMCALL(void, X5BX5Deq___mE5dAYM8xGX9b3MIatQCCXQ)(tyObject_Table
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_76)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_76);
+		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_103)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_103);
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		rawInsert__VRKzoZ9bZLa9cxcPa0T0Z8aw(t, (&(*t).data), key_0, val_0, hc, index);
 
 #line 60 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_77)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_77);	}
+		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_104)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_104);	}
 	LA11_: ;
 }
 
 #line 76 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGet__zov5AkBxbot9aiAgvs2J7gQtables)(tyObject_Table__BMmOa89bg4RjA9b9bHqGsOJSQ t, NimStringDesc* key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_78;{	result = (NI)0;
+static N_INLINE(NI, rawGet__zov5AkBxbot9aiAgvs2J7gQtables)(tyObject_Table__BMmOa89bg4RjA9b9bHqGsOJSQ t, NimStringDesc* key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_105;{	result = (NI)0;
 #line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -4654,7 +5971,7 @@ static N_INLINE(NI, rawGet__zov5AkBxbot9aiAgvs2J7gQtables)(tyObject_Table__BMmOa
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_78)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_78);	}BeforeRet_: ;
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_105)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_105);	}BeforeRet_: ;
 	return result;}
 
 #line 380 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -4680,7 +5997,7 @@ N_LIB_PRIVATE N_NIMCALL(NIM_BOOL, contains__snyDAvStmRmkLSCNgnlJZg)(tyObject_Tab
 	return result;}
 
 #line 32 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NIM_BOOL, mustRehash__yNyhcRMuLWgELHQo9bUILawtables)(tyObject_Table__BMmOa89bg4RjA9b9bHqGsOJSQ t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_79;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_80;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_81;	result = (NIM_BOOL)0;
+static N_INLINE(NIM_BOOL, mustRehash__yNyhcRMuLWgELHQo9bUILawtables)(tyObject_Table__BMmOa89bg4RjA9b9bHqGsOJSQ t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_106;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_107;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_108;	result = (NIM_BOOL)0;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -4706,16 +6023,16 @@ static N_INLINE(NIM_BOOL, mustRehash__yNyhcRMuLWgELHQo9bUILawtables)(tyObject_Ta
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_79)) { raiseOverflow(); };
+	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_106)) { raiseOverflow(); };
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_80)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_79) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_80));	if (T6_) goto LA8_;
+	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_107)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_106) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_107));	if (T6_) goto LA8_;
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_81)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_81) < ((NI) 4));	LA8_: ;
+	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_108)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_108) < ((NI) 4));	LA8_: ;
 	result = T6_;	return result;}
 
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -4728,13 +6045,13 @@ N_LIB_PRIVATE N_NIMCALL(void, rawInsert__oXvs9cq5Qvc9aVkw5cVIQNKQ)(tyObject_Tabl
 	(*data_0)->data[h_0].Field0 = hc;}
 
 #line 266 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-N_LIB_PRIVATE N_NIMCALL(void, enlarge__XnlDl4TRLGYdi7foOjiwBQ)(tyObject_Table__BMmOa89bg4RjA9b9bHqGsOJSQ* t) {	tySequence__WM4lmj0QFNmzCn9a9cZ9cYt3g* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_82;	tySequence__WM4lmj0QFNmzCn9a9cZ9cYt3g* T2_;	n_1 = (tySequence__WM4lmj0QFNmzCn9a9cZ9cYt3g*)0;
+N_LIB_PRIVATE N_NIMCALL(void, enlarge__XnlDl4TRLGYdi7foOjiwBQ)(tyObject_Table__BMmOa89bg4RjA9b9bHqGsOJSQ* t) {	tySequence__WM4lmj0QFNmzCn9a9cZ9cYt3g* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_109;	tySequence__WM4lmj0QFNmzCn9a9cZ9cYt3g* T2_;	n_1 = (tySequence__WM4lmj0QFNmzCn9a9cZ9cYt3g*)0;
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_82)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_82)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_82)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_82), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__WM4lmj0QFNmzCn9a9cZ9cYt3g*) newSeq((&NTI__WM4lmj0QFNmzCn9a9cZ9cYt3g_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_82))));
+	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_109)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_109)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_109)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_109), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__WM4lmj0QFNmzCn9a9cZ9cYt3g*) newSeq((&NTI__WM4lmj0QFNmzCn9a9cZ9cYt3g_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_109))));
 #line 269 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 	T2_ = (tySequence__WM4lmj0QFNmzCn9a9cZ9cYt3g*)0;	T2_ = (*t).data;	unsureAsgnRef((void**) (&(*t).data), n_1);	n_1 = T2_;	{		NI i;		NI colontmp_;		NI T4_;		NI res;		i = (NI)0;		colontmp_ = (NI)0;
 #line 270 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -4744,7 +6061,7 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__XnlDl4TRLGYdi7foOjiwBQ)(tyObject_Table__B
 #line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 		res = ((NI) 0);		{
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_83;
+			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_110;
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 				if (!(res <= colontmp_)) goto LA6;
 
@@ -4792,13 +6109,13 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__XnlDl4TRLGYdi7foOjiwBQ)(tyObject_Table__B
 				LA10_: ;
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_83)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_83);			} LA6: ;
+				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_110)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_110);			} LA6: ;
 		}
 	}
 }
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGetKnownHC__TRHyz8CqW9auRJqYe7NEQgwtables)(tyObject_Table__BMmOa89bg4RjA9b9bHqGsOJSQ t, NimStringDesc* key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_84;{	result = (NI)0;
+static N_INLINE(NI, rawGetKnownHC__TRHyz8CqW9auRJqYe7NEQgwtables)(tyObject_Table__BMmOa89bg4RjA9b9bHqGsOJSQ t, NimStringDesc* key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_111;{	result = (NI)0;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -4855,7 +6172,7 @@ static N_INLINE(NI, rawGetKnownHC__TRHyz8CqW9auRJqYe7NEQgwtables)(tyObject_Table
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_84)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_84);	}BeforeRet_: ;
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_111)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_111);	}BeforeRet_: ;
 	return result;}
 
 #line 309 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -4902,7 +6219,7 @@ N_LIB_PRIVATE N_NIMCALL(void, X5BX5Deq___qDQMKSgHj4a8BzQy0xtyOw)(tyObject_Table_
 		genericSeqAssign((&(*t).data->data[index].Field2.data), val_0.data, (&NTI__2lQSxaq5eC9aWYzZNTJyZtA_));		(*t).data->data[index].Field2.counter = val_0.counter;	}
 	goto LA11_;
 	LA13_: ;
-	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_85;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_86;
+	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_112;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_113;
 #line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		{			NI T18_;
 #line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -4953,14 +6270,14 @@ N_LIB_PRIVATE N_NIMCALL(void, X5BX5Deq___qDQMKSgHj4a8BzQy0xtyOw)(tyObject_Table_
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_85)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_85);
+		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_112)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_112);
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		rawInsert__oXvs9cq5Qvc9aVkw5cVIQNKQ(t, (&(*t).data), key_0, val_0, hc, index);
 
 #line 60 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_86)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_86);	}
+		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_113)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_113);	}
 	LA11_: ;
 }
 
@@ -5007,7 +6324,7 @@ static N_INLINE(NI, hash__AN9c8V1UY1ZE7b8ldNRftRQhashes)(NU64 x_0) {	NI result;	
 	result = ((NI) (x_0));	return result;}
 
 #line 76 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGet__I39aPLzJrKvmT8vgTTA9b2Pwtables)(tyObject_Table__XjARj5fPfOXv4uQ0CZdKyQ t, NU64 key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_89;{	result = (NI)0;
+static N_INLINE(NI, rawGet__I39aPLzJrKvmT8vgTTA9b2Pwtables)(tyObject_Table__XjARj5fPfOXv4uQ0CZdKyQ t, NU64 key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_116;{	result = (NI)0;
 #line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -5077,22 +6394,22 @@ static N_INLINE(NI, rawGet__I39aPLzJrKvmT8vgTTA9b2Pwtables)(tyObject_Table__XjAR
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_89)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_89);	}BeforeRet_: ;
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_116)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_116);	}BeforeRet_: ;
 	return result;}
 
 #line 447 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-N_LIB_PRIVATE N_NIMCALL(tyObject_LPChannelcolonObjectType___tnXRbRRlWnt7UoqCRh9b5Nw*, getOrDefault__pHWZQMODBj1zIMT1KXb9bbQ)(tyObject_Table__XjARj5fPfOXv4uQ0CZdKyQ t, NU64 key_0, tyObject_LPChannelcolonObjectType___tnXRbRRlWnt7UoqCRh9b5Nw* default_0) {	tyObject_LPChannelcolonObjectType___tnXRbRRlWnt7UoqCRh9b5Nw* result;	NI hcX60gensym112420201_;	NI indexX60gensym112420202_;	result = (tyObject_LPChannelcolonObjectType___tnXRbRRlWnt7UoqCRh9b5Nw*)0;	hcX60gensym112420201_ = (NI)0;
+N_LIB_PRIVATE N_NIMCALL(tyObject_LPChannelcolonObjectType___tnXRbRRlWnt7UoqCRh9b5Nw*, getOrDefault__pHWZQMODBj1zIMT1KXb9bbQ)(tyObject_Table__XjARj5fPfOXv4uQ0CZdKyQ t, NU64 key_0, tyObject_LPChannelcolonObjectType___tnXRbRRlWnt7UoqCRh9b5Nw* default_0) {	tyObject_LPChannelcolonObjectType___tnXRbRRlWnt7UoqCRh9b5Nw* result;	NI hcX60gensym135520201_;	NI indexX60gensym135520202_;	result = (tyObject_LPChannelcolonObjectType___tnXRbRRlWnt7UoqCRh9b5Nw*)0;	hcX60gensym135520201_ = (NI)0;
 #line 188 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 188 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-	indexX60gensym112420202_ = rawGet__I39aPLzJrKvmT8vgTTA9b2Pwtables(t, key_0, (&hcX60gensym112420201_));
+	indexX60gensym135520202_ = rawGet__I39aPLzJrKvmT8vgTTA9b2Pwtables(t, key_0, (&hcX60gensym135520201_));
 #line 189 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 189 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 	{
 #line 189 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (!(((NI) 0) <= indexX60gensym112420202_)) goto LA3_;
-		if ((NU)(indexX60gensym112420202_) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(indexX60gensym112420202_,(t.data ? t.data->Sup.len : 0)-1); }		result = t.data->data[indexX60gensym112420202_].Field2;	}
+		if (!(((NI) 0) <= indexX60gensym135520202_)) goto LA3_;
+		if ((NU)(indexX60gensym135520202_) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(indexX60gensym135520202_,(t.data ? t.data->Sup.len : 0)-1); }		result = t.data->data[indexX60gensym135520202_].Field2;	}
 	goto LA1_;
 	LA3_: ;
 	{		result = default_0;	}
@@ -5127,7 +6444,7 @@ N_LIB_PRIVATE N_NIMCALL(NIM_BOOL, contains__szG9bMDcJG6TrfarpEBOC8A)(tyObject_Ta
 	return result;}
 
 #line 32 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NIM_BOOL, mustRehash__NtF9cOaSXRbBK1fMIb2Lrewtables)(tyObject_Table__XjARj5fPfOXv4uQ0CZdKyQ t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_90;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_91;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_92;	result = (NIM_BOOL)0;
+static N_INLINE(NIM_BOOL, mustRehash__NtF9cOaSXRbBK1fMIb2Lrewtables)(tyObject_Table__XjARj5fPfOXv4uQ0CZdKyQ t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_117;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_118;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_119;	result = (NIM_BOOL)0;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -5153,16 +6470,16 @@ static N_INLINE(NIM_BOOL, mustRehash__NtF9cOaSXRbBK1fMIb2Lrewtables)(tyObject_Ta
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_90)) { raiseOverflow(); };
+	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_117)) { raiseOverflow(); };
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_91)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_90) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_91));	if (T6_) goto LA8_;
+	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_118)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_117) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_118));	if (T6_) goto LA8_;
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_92)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_92) < ((NI) 4));	LA8_: ;
+	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_119)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_119) < ((NI) 4));	LA8_: ;
 	result = T6_;	return result;}
 
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -5175,13 +6492,13 @@ N_LIB_PRIVATE N_NIMCALL(void, rawInsert__DPfHUnJYo3kjX74LK2gaoQ)(tyObject_Table_
 	(*data_0)->data[h_0].Field0 = hc;}
 
 #line 266 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-N_LIB_PRIVATE N_NIMCALL(void, enlarge__9aWBlXUKm5hkZA1icwHVc8Q)(tyObject_Table__XjARj5fPfOXv4uQ0CZdKyQ* t) {	tySequence__maP5b4juf9aviaIdhhcTZbQ* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_93;	tySequence__maP5b4juf9aviaIdhhcTZbQ* T2_;	n_1 = (tySequence__maP5b4juf9aviaIdhhcTZbQ*)0;
+N_LIB_PRIVATE N_NIMCALL(void, enlarge__9aWBlXUKm5hkZA1icwHVc8Q)(tyObject_Table__XjARj5fPfOXv4uQ0CZdKyQ* t) {	tySequence__maP5b4juf9aviaIdhhcTZbQ* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_120;	tySequence__maP5b4juf9aviaIdhhcTZbQ* T2_;	n_1 = (tySequence__maP5b4juf9aviaIdhhcTZbQ*)0;
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_93)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_93)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_93)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_93), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__maP5b4juf9aviaIdhhcTZbQ*) newSeq((&NTI__maP5b4juf9aviaIdhhcTZbQ_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_93))));
+	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_120)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_120)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_120)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_120), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__maP5b4juf9aviaIdhhcTZbQ*) newSeq((&NTI__maP5b4juf9aviaIdhhcTZbQ_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_120))));
 #line 269 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 	T2_ = (tySequence__maP5b4juf9aviaIdhhcTZbQ*)0;	T2_ = (*t).data;	unsureAsgnRef((void**) (&(*t).data), n_1);	n_1 = T2_;	{		NI i;		NI colontmp_;		NI T4_;		NI res;		i = (NI)0;		colontmp_ = (NI)0;
 #line 270 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -5191,7 +6508,7 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__9aWBlXUKm5hkZA1icwHVc8Q)(tyObject_Table__
 #line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 		res = ((NI) 0);		{
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_94;
+			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_121;
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 				if (!(res <= colontmp_)) goto LA6;
 
@@ -5239,13 +6556,13 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__9aWBlXUKm5hkZA1icwHVc8Q)(tyObject_Table__
 				LA10_: ;
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_94)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_94);			} LA6: ;
+				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_121)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_121);			} LA6: ;
 		}
 	}
 }
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGetKnownHC__8zuFAMShTZ9crf9ba1I7Q4pgtables)(tyObject_Table__XjARj5fPfOXv4uQ0CZdKyQ t, NU64 key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_95;{	result = (NI)0;
+static N_INLINE(NI, rawGetKnownHC__8zuFAMShTZ9crf9ba1I7Q4pgtables)(tyObject_Table__XjARj5fPfOXv4uQ0CZdKyQ t, NU64 key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_122;{	result = (NI)0;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -5302,7 +6619,7 @@ static N_INLINE(NI, rawGetKnownHC__8zuFAMShTZ9crf9ba1I7Q4pgtables)(tyObject_Tabl
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_95)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_95);	}BeforeRet_: ;
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_122)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_122);	}BeforeRet_: ;
 	return result;}
 
 #line 309 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -5349,7 +6666,7 @@ N_LIB_PRIVATE N_NIMCALL(void, X5BX5Deq___VD9b1xrD9bDhjx9b7TV7pK2Rw)(tyObject_Tab
 		asgnRef((void**) (&(*t).data->data[index].Field2), val_0);	}
 	goto LA11_;
 	LA13_: ;
-	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_96;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_97;
+	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_123;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_124;
 #line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		{			NI T18_;
 #line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -5400,14 +6717,14 @@ N_LIB_PRIVATE N_NIMCALL(void, X5BX5Deq___VD9b1xrD9bDhjx9b7TV7pK2Rw)(tyObject_Tab
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_96)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_96);
+		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_123)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_123);
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		rawInsert__DPfHUnJYo3kjX74LK2gaoQ(t, (&(*t).data), key_0, val_0, hc, index);
 
 #line 60 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_97)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_97);	}
+		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_124)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_124);	}
 	LA11_: ;
 }
 
@@ -5422,12 +6739,12 @@ N_LIB_PRIVATE N_NIMCALL(void, del__kK9bRacPsB2B9aL19cjUY0BDQ)(tyObject_Table__Xj
 #line 112 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 	T1_ = (((*t).data ? (*t).data->Sup.len : 0)-1);	mskX60gensym17450588_ = T1_;
 #line 519 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_98;
+	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_125;
 #line 113 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		if (!(((NI) 0) <= i)) goto LA4_;
 
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimSubInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_98)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_98);		{			{
+		if (nimSubInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_125)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_125);		{			{
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 				while (1) {					NI jX60gensym17450590_;					NI rX60gensym17450591_;
 #line 117 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -5445,13 +6762,13 @@ N_LIB_PRIVATE N_NIMCALL(void, del__kK9bRacPsB2B9aL19cjUY0BDQ)(tyObject_Table__Xj
 #line 121 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 					asgnRef((void**) (&(*t).data->data[i].Field2), NIM_NIL);					{
 #line 122 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-						while (1) {							NI TM__4SoG2KRQy3oMm9aUzSLtGrA_99;
+						while (1) {							NI TM__4SoG2KRQy3oMm9aUzSLtGrA_126;
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-							if (nimAddInt(i, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_99)) { raiseOverflow(); };							i = (NI)((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_99) & mskX60gensym17450588_);
+							if (nimAddInt(i, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_126)) { raiseOverflow(); };							i = (NI)((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_126) & mskX60gensym17450588_);
 #line 124 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 							{								NIM_BOOL T13_;
 #line 124 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -5531,7 +6848,7 @@ N_LIB_PRIVATE N_NIMCALL(void, clear__9aWBlXUKm5hkZA1icwHVc8Q_2)(tyObject_Table__
 #line 106 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 		i_2 = ((NI) 0);		{
 #line 107 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-			while (1) {				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_100;
+			while (1) {				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_127;
 #line 107 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 				if (!(i_2 < colontmp_)) goto LA4;
 
@@ -5548,7 +6865,7 @@ N_LIB_PRIVATE N_NIMCALL(void, clear__9aWBlXUKm5hkZA1icwHVc8Q_2)(tyObject_Table__
 #line 153 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 				asgnRef((void**) (&(*t).data->data[i].Field2), NIM_NIL);
 #line 109 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-				if (nimAddInt(i_2, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_100)) { raiseOverflow(); };				i_2 = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_100);			} LA4: ;
+				if (nimAddInt(i_2, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_127)) { raiseOverflow(); };				i_2 = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_127);			} LA4: ;
 		}
 	}
 
@@ -5556,7 +6873,7 @@ N_LIB_PRIVATE N_NIMCALL(void, clear__9aWBlXUKm5hkZA1icwHVc8Q_2)(tyObject_Table__
 	(*t).counter = ((NI) 0);}
 
 #line 76 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGet__PM9btsJmhNOJ7EUfpwXlHZwtables)(tyObject_Table__t1GIbsENi89cp9cMuggZaXQg t, NimStringDesc* key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_101;{	result = (NI)0;
+static N_INLINE(NI, rawGet__PM9btsJmhNOJ7EUfpwXlHZwtables)(tyObject_Table__t1GIbsENi89cp9cMuggZaXQg t, NimStringDesc* key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_128;{	result = (NI)0;
 #line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -5626,7 +6943,7 @@ static N_INLINE(NI, rawGet__PM9btsJmhNOJ7EUfpwXlHZwtables)(tyObject_Table__t1GIb
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_101)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_101);	}BeforeRet_: ;
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_128)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_128);	}BeforeRet_: ;
 	return result;}
 
 #line 380 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -5658,7 +6975,7 @@ static N_NIMCALL(void, Marker_tySequence__9bUff3pvvg9b9bwSnutq8aJFQ)(void* p, NI
 }
 
 #line 32 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NIM_BOOL, mustRehash__M4l9bZOYknOzxX1cBg2UNAwtables)(tyObject_Table__t1GIbsENi89cp9cMuggZaXQg t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_103;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_104;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_105;	result = (NIM_BOOL)0;
+static N_INLINE(NIM_BOOL, mustRehash__M4l9bZOYknOzxX1cBg2UNAwtables)(tyObject_Table__t1GIbsENi89cp9cMuggZaXQg t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_130;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_131;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_132;	result = (NIM_BOOL)0;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -5684,16 +7001,16 @@ static N_INLINE(NIM_BOOL, mustRehash__M4l9bZOYknOzxX1cBg2UNAwtables)(tyObject_Ta
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_103)) { raiseOverflow(); };
+	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_130)) { raiseOverflow(); };
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_104)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_103) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_104));	if (T6_) goto LA8_;
+	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_131)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_130) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_131));	if (T6_) goto LA8_;
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_105)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_105) < ((NI) 4));	LA8_: ;
+	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_132)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_132) < ((NI) 4));	LA8_: ;
 	result = T6_;	return result;}
 
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -5706,13 +7023,13 @@ N_LIB_PRIVATE N_NIMCALL(void, rawInsert__kTzRecZSn9aTYJJPQH5iAPA)(tyObject_Table
 	(*data_0)->data[h_0].Field0 = hc;}
 
 #line 266 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-N_LIB_PRIVATE N_NIMCALL(void, enlarge__bwNeSkAK4eUglKJ6FGbWuw)(tyObject_Table__t1GIbsENi89cp9cMuggZaXQg* t) {	tySequence__9bUff3pvvg9b9bwSnutq8aJFQ* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_106;	tySequence__9bUff3pvvg9b9bwSnutq8aJFQ* T2_;	n_1 = (tySequence__9bUff3pvvg9b9bwSnutq8aJFQ*)0;
+N_LIB_PRIVATE N_NIMCALL(void, enlarge__bwNeSkAK4eUglKJ6FGbWuw)(tyObject_Table__t1GIbsENi89cp9cMuggZaXQg* t) {	tySequence__9bUff3pvvg9b9bwSnutq8aJFQ* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_133;	tySequence__9bUff3pvvg9b9bwSnutq8aJFQ* T2_;	n_1 = (tySequence__9bUff3pvvg9b9bwSnutq8aJFQ*)0;
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_106)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_106)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_106)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_106), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__9bUff3pvvg9b9bwSnutq8aJFQ*) newSeq((&NTI__9bUff3pvvg9b9bwSnutq8aJFQ_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_106))));
+	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_133)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_133)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_133)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_133), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__9bUff3pvvg9b9bwSnutq8aJFQ*) newSeq((&NTI__9bUff3pvvg9b9bwSnutq8aJFQ_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_133))));
 #line 269 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 	T2_ = (tySequence__9bUff3pvvg9b9bwSnutq8aJFQ*)0;	T2_ = (*t).data;	unsureAsgnRef((void**) (&(*t).data), n_1);	n_1 = T2_;	{		NI i;		NI colontmp_;		NI T4_;		NI res;		i = (NI)0;		colontmp_ = (NI)0;
 #line 270 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -5722,7 +7039,7 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__bwNeSkAK4eUglKJ6FGbWuw)(tyObject_Table__t
 #line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 		res = ((NI) 0);		{
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_107;
+			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_134;
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 				if (!(res <= colontmp_)) goto LA6;
 
@@ -5770,13 +7087,13 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__bwNeSkAK4eUglKJ6FGbWuw)(tyObject_Table__t
 				LA10_: ;
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_107)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_107);			} LA6: ;
+				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_134)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_134);			} LA6: ;
 		}
 	}
 }
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGetKnownHC__Fblsv3kbpFayLQjF5L5p0Atables)(tyObject_Table__t1GIbsENi89cp9cMuggZaXQg t, NimStringDesc* key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_108;{	result = (NI)0;
+static N_INLINE(NI, rawGetKnownHC__Fblsv3kbpFayLQjF5L5p0Atables)(tyObject_Table__t1GIbsENi89cp9cMuggZaXQg t, NimStringDesc* key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_135;{	result = (NI)0;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -5833,7 +7150,7 @@ static N_INLINE(NI, rawGetKnownHC__Fblsv3kbpFayLQjF5L5p0Atables)(tyObject_Table_
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_108)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_108);	}BeforeRet_: ;
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_135)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_135);	}BeforeRet_: ;
 	return result;}
 
 #line 309 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -5880,7 +7197,7 @@ N_LIB_PRIVATE N_NIMCALL(void, X5BX5Deq___Q9bUcPXyYaA7YNj9a9aJpFsQg)(tyObject_Tab
 		genericSeqAssign((&(*t).data->data[index].Field2.data), val_0.data, (&NTI__fUw9czUTIZ9b39boL0IkeycMA_));		(*t).data->data[index].Field2.counter = val_0.counter;	}
 	goto LA11_;
 	LA13_: ;
-	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_109;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_110;
+	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_136;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_137;
 #line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		{			NI T18_;
 #line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -5931,14 +7248,14 @@ N_LIB_PRIVATE N_NIMCALL(void, X5BX5Deq___Q9bUcPXyYaA7YNj9a9aJpFsQg)(tyObject_Tab
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_109)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_109);
+		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_136)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_136);
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		rawInsert__kTzRecZSn9aTYJJPQH5iAPA(t, (&(*t).data), key_0, val_0, hc, index);
 
 #line 60 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_110)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_110);	}
+		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_137)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_137);	}
 	LA11_: ;
 }
 
@@ -5967,18 +7284,18 @@ N_LIB_PRIVATE N_NIMCALL(tyObject_HashSet__SjkKNmUxUCmHfJyMk9aPJ9cw*, X5BX5D___EZ
 	return result;}
 
 #line 428 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-N_LIB_PRIVATE N_NIMCALL(tyObject_PubSubPeercolonObjectType___6rsvBHOjeRkx0KPoUqsmsw*, getOrDefault__e9butkEzCIfVVPRMG7D80VQ)(tyObject_Table__lHpSn1a1LQne7Vijlza5tg t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0) {	tyObject_PubSubPeercolonObjectType___6rsvBHOjeRkx0KPoUqsmsw* result;	NI hcX60gensym117810394_;	NI indexX60gensym117810395_;	result = (tyObject_PubSubPeercolonObjectType___6rsvBHOjeRkx0KPoUqsmsw*)0;	hcX60gensym117810394_ = (NI)0;
+N_LIB_PRIVATE N_NIMCALL(tyObject_PubSubPeercolonObjectType___6rsvBHOjeRkx0KPoUqsmsw*, getOrDefault__e9butkEzCIfVVPRMG7D80VQ)(tyObject_Table__lHpSn1a1LQne7Vijlza5tg t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0) {	tyObject_PubSubPeercolonObjectType___6rsvBHOjeRkx0KPoUqsmsw* result;	NI hcX60gensym140870394_;	NI indexX60gensym140870395_;	result = (tyObject_PubSubPeercolonObjectType___6rsvBHOjeRkx0KPoUqsmsw*)0;	hcX60gensym140870394_ = (NI)0;
 #line 182 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 182 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-	indexX60gensym117810395_ = rawGet__B0Q2IxFWoBivhITKKLmBNgtables(t, key_0, (&hcX60gensym117810394_));
+	indexX60gensym140870395_ = rawGet__B0Q2IxFWoBivhITKKLmBNgtables(t, key_0, (&hcX60gensym140870394_));
 #line 445 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 	{
 #line 183 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (!(((NI) 0) <= indexX60gensym117810395_)) goto LA3_;
+		if (!(((NI) 0) <= indexX60gensym140870395_)) goto LA3_;
 
 #line 183 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if ((NU)(indexX60gensym117810395_) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(indexX60gensym117810395_,(t.data ? t.data->Sup.len : 0)-1); }		result = t.data->data[indexX60gensym117810395_].Field2;	}
+		if ((NU)(indexX60gensym140870395_) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(indexX60gensym140870395_,(t.data ? t.data->Sup.len : 0)-1); }		result = t.data->data[indexX60gensym140870395_].Field2;	}
 	LA3_: ;
 	return result;}
 
@@ -5994,7 +7311,7 @@ static N_NIMCALL(void, Marker_tySequence__RHVAHq4hk7ajRY6ChL6jQg)(void* p, NI op
 }
 
 #line 76 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGet__ez9a4xgJyMSq4U8ifsBBZIAtables)(tyObject_Table__pnmPCe7tCYTM7iCHSlEfQA t, tySequence__6H5Oh5UUvVCLiakt9aTwtUQ* key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_114;{	result = (NI)0;
+static N_INLINE(NI, rawGet__ez9a4xgJyMSq4U8ifsBBZIAtables)(tyObject_Table__pnmPCe7tCYTM7iCHSlEfQA t, tySequence__6H5Oh5UUvVCLiakt9aTwtUQ* key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_141;{	result = (NI)0;
 #line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -6066,7 +7383,7 @@ static N_INLINE(NI, rawGet__ez9a4xgJyMSq4U8ifsBBZIAtables)(tyObject_Table__pnmPC
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_114)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_114);	}BeforeRet_: ;
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_141)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_141);	}BeforeRet_: ;
 	return result;}
 
 #line 506 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -6080,12 +7397,12 @@ N_LIB_PRIVATE N_NIMCALL(void, del__AAYdmjZgHDavEtYOkE3y8A)(tyObject_Table__pnmPC
 #line 112 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 	T1_ = (((*t).data ? (*t).data->Sup.len : 0)-1);	mskX60gensym17450588_ = T1_;
 #line 519 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_115;
+	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_142;
 #line 113 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		if (!(((NI) 0) <= i)) goto LA4_;
 
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimSubInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_115)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_115);		{			{
+		if (nimSubInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_142)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_142);		{			{
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 				while (1) {					NI jX60gensym17450590_;					NI rX60gensym17450591_;
 #line 117 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -6103,13 +7420,13 @@ N_LIB_PRIVATE N_NIMCALL(void, del__AAYdmjZgHDavEtYOkE3y8A)(tyObject_Table__pnmPC
 #line 121 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 					asgnRef((void**) (&(*t).data->data[i].Field2), NIM_NIL);					{
 #line 122 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-						while (1) {							NI TM__4SoG2KRQy3oMm9aUzSLtGrA_116;
+						while (1) {							NI TM__4SoG2KRQy3oMm9aUzSLtGrA_143;
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-							if (nimAddInt(i, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_116)) { raiseOverflow(); };							i = (NI)((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_116) & mskX60gensym17450588_);
+							if (nimAddInt(i, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_143)) { raiseOverflow(); };							i = (NI)((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_143) & mskX60gensym17450588_);
 #line 124 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 							{								NIM_BOOL T13_;
 #line 124 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -6202,12 +7519,12 @@ N_LIB_PRIVATE N_NIMCALL(NIM_BOOL, pop__CCqFZwYE5ZtpJq1qxo66ag)(tyObject_Table__p
 #line 112 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		T5_ = (((*t).data ? (*t).data->Sup.len : 0)-1);		mskX60gensym17450623_ = T5_;
 #line 547 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-		{			NI TM__4SoG2KRQy3oMm9aUzSLtGrA_117;
+		{			NI TM__4SoG2KRQy3oMm9aUzSLtGrA_144;
 #line 113 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 			if (!(((NI) 0) <= index)) goto LA8_;
 
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-			if (nimSubInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_117)) { raiseOverflow(); };			(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_117);			{				{
+			if (nimSubInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_144)) { raiseOverflow(); };			(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_144);			{				{
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 					while (1) {						NI jX60gensym17450625_;						NI rX60gensym17450626_;
 #line 117 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -6225,13 +7542,13 @@ N_LIB_PRIVATE N_NIMCALL(NIM_BOOL, pop__CCqFZwYE5ZtpJq1qxo66ag)(tyObject_Table__p
 #line 121 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 						asgnRef((void**) (&(*t).data->data[index].Field2), NIM_NIL);						{
 #line 122 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-							while (1) {								NI TM__4SoG2KRQy3oMm9aUzSLtGrA_118;
+							while (1) {								NI TM__4SoG2KRQy3oMm9aUzSLtGrA_145;
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-								if (nimAddInt(index, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_118)) { raiseOverflow(); };								index = (NI)((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_118) & mskX60gensym17450623_);
+								if (nimAddInt(index, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_145)) { raiseOverflow(); };								index = (NI)((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_145) & mskX60gensym17450623_);
 #line 124 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 								{									NIM_BOOL T17_;
 #line 124 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -6305,7 +7622,7 @@ N_LIB_PRIVATE N_NIMCALL(NIM_BOOL, pop__CCqFZwYE5ZtpJq1qxo66ag)(tyObject_Table__p
 	return result;}
 
 #line 32 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NIM_BOOL, mustRehash__pHoXwahzQQ8Hbh2bGvpLLgtables)(tyObject_Table__pnmPCe7tCYTM7iCHSlEfQA t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_119;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_120;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_121;	result = (NIM_BOOL)0;
+static N_INLINE(NIM_BOOL, mustRehash__pHoXwahzQQ8Hbh2bGvpLLgtables)(tyObject_Table__pnmPCe7tCYTM7iCHSlEfQA t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_146;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_147;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_148;	result = (NIM_BOOL)0;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -6331,16 +7648,16 @@ static N_INLINE(NIM_BOOL, mustRehash__pHoXwahzQQ8Hbh2bGvpLLgtables)(tyObject_Tab
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_119)) { raiseOverflow(); };
+	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_146)) { raiseOverflow(); };
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_120)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_119) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_120));	if (T6_) goto LA8_;
+	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_147)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_146) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_147));	if (T6_) goto LA8_;
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_121)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_121) < ((NI) 4));	LA8_: ;
+	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_148)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_148) < ((NI) 4));	LA8_: ;
 	result = T6_;	return result;}
 
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -6353,13 +7670,13 @@ N_LIB_PRIVATE N_NIMCALL(void, rawInsert__m1Gt4hUhm1Qf2zidECPGXg)(tyObject_Table_
 	(*data_0)->data[h_0].Field0 = hc;}
 
 #line 266 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-N_LIB_PRIVATE N_NIMCALL(void, enlarge__WvEgYrLkZgGpZdF9bjNjU4Q)(tyObject_Table__pnmPCe7tCYTM7iCHSlEfQA* t) {	tySequence__RHVAHq4hk7ajRY6ChL6jQg* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_122;	tySequence__RHVAHq4hk7ajRY6ChL6jQg* T2_;	n_1 = (tySequence__RHVAHq4hk7ajRY6ChL6jQg*)0;
+N_LIB_PRIVATE N_NIMCALL(void, enlarge__WvEgYrLkZgGpZdF9bjNjU4Q)(tyObject_Table__pnmPCe7tCYTM7iCHSlEfQA* t) {	tySequence__RHVAHq4hk7ajRY6ChL6jQg* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_149;	tySequence__RHVAHq4hk7ajRY6ChL6jQg* T2_;	n_1 = (tySequence__RHVAHq4hk7ajRY6ChL6jQg*)0;
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_122)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_122)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_122)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_122), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__RHVAHq4hk7ajRY6ChL6jQg*) newSeq((&NTI__RHVAHq4hk7ajRY6ChL6jQg_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_122))));
+	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_149)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_149)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_149)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_149), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__RHVAHq4hk7ajRY6ChL6jQg*) newSeq((&NTI__RHVAHq4hk7ajRY6ChL6jQg_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_149))));
 #line 269 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 	T2_ = (tySequence__RHVAHq4hk7ajRY6ChL6jQg*)0;	T2_ = (*t).data;	unsureAsgnRef((void**) (&(*t).data), n_1);	n_1 = T2_;	{		NI i;		NI colontmp_;		NI T4_;		NI res;		i = (NI)0;		colontmp_ = (NI)0;
 #line 270 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -6369,7 +7686,7 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__WvEgYrLkZgGpZdF9bjNjU4Q)(tyObject_Table__
 #line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 		res = ((NI) 0);		{
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_123;
+			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_150;
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 				if (!(res <= colontmp_)) goto LA6;
 
@@ -6417,13 +7734,13 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__WvEgYrLkZgGpZdF9bjNjU4Q)(tyObject_Table__
 				LA10_: ;
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_123)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_123);			} LA6: ;
+				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_150)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_150);			} LA6: ;
 		}
 	}
 }
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGetKnownHC__G9azok9aFer9bajpv49akAzSngtables)(tyObject_Table__pnmPCe7tCYTM7iCHSlEfQA t, tySequence__6H5Oh5UUvVCLiakt9aTwtUQ* key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_124;{	result = (NI)0;
+static N_INLINE(NI, rawGetKnownHC__G9azok9aFer9bajpv49akAzSngtables)(tyObject_Table__pnmPCe7tCYTM7iCHSlEfQA t, tySequence__6H5Oh5UUvVCLiakt9aTwtUQ* key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_151;{	result = (NI)0;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -6482,7 +7799,7 @@ static N_INLINE(NI, rawGetKnownHC__G9azok9aFer9bajpv49akAzSngtables)(tyObject_Ta
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_124)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_124);	}BeforeRet_: ;
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_151)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_151);	}BeforeRet_: ;
 	return result;}
 
 #line 309 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -6529,7 +7846,7 @@ N_LIB_PRIVATE N_NIMCALL(void, X5BX5Deq___qhOB9b7heK9cMZ75ekYppnFw)(tyObject_Tabl
 		asgnRef((void**) (&(*t).data->data[index].Field2), val_0);	}
 	goto LA11_;
 	LA13_: ;
-	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_125;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_126;
+	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_152;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_153;
 #line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		{			NI T18_;
 #line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -6580,30 +7897,30 @@ N_LIB_PRIVATE N_NIMCALL(void, X5BX5Deq___qhOB9b7heK9cMZ75ekYppnFw)(tyObject_Tabl
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_125)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_125);
+		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_152)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_152);
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		rawInsert__m1Gt4hUhm1Qf2zidECPGXg(t, (&(*t).data), key_0, val_0, hc, index);
 
 #line 60 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_126)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_126);	}
+		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_153)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_153);	}
 	LA11_: ;
 }
 
 #line 428 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-N_LIB_PRIVATE N_NIMCALL(void, getOrDefault__D9a9c9a0Q7g3Wf0nuglUeZZvQ)(tyObject_Table__t1GIbsENi89cp9cMuggZaXQg t, NimStringDesc* key_0, tyObject_HashSet__SjkKNmUxUCmHfJyMk9aPJ9cw* Result) {	NI hcX60gensym118925594_;	NI indexX60gensym118925595_;	chckNil((void*)Result);	unsureAsgnRef((void**)&(*Result).data, NIM_NIL);	(*Result).counter = 0;	hcX60gensym118925594_ = (NI)0;
+N_LIB_PRIVATE N_NIMCALL(void, getOrDefault__D9a9c9a0Q7g3Wf0nuglUeZZvQ)(tyObject_Table__t1GIbsENi89cp9cMuggZaXQg t, NimStringDesc* key_0, tyObject_HashSet__SjkKNmUxUCmHfJyMk9aPJ9cw* Result) {	NI hcX60gensym141985594_;	NI indexX60gensym141985595_;	chckNil((void*)Result);	unsureAsgnRef((void**)&(*Result).data, NIM_NIL);	(*Result).counter = 0;	hcX60gensym141985594_ = (NI)0;
 #line 182 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 182 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-	indexX60gensym118925595_ = rawGet__PM9btsJmhNOJ7EUfpwXlHZwtables(t, key_0, (&hcX60gensym118925594_));
+	indexX60gensym141985595_ = rawGet__PM9btsJmhNOJ7EUfpwXlHZwtables(t, key_0, (&hcX60gensym141985594_));
 #line 445 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 	{
 #line 183 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (!(((NI) 0) <= indexX60gensym118925595_)) goto LA3_;
+		if (!(((NI) 0) <= indexX60gensym141985595_)) goto LA3_;
 
 #line 183 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if ((NU)(indexX60gensym118925595_) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(indexX60gensym118925595_,(t.data ? t.data->Sup.len : 0)-1); }		genericSeqAssign((&(*Result).data), t.data->data[indexX60gensym118925595_].Field2.data, (&NTI__fUw9czUTIZ9b39boL0IkeycMA_));		(*Result).counter = t.data->data[indexX60gensym118925595_].Field2.counter;	}
+		if ((NU)(indexX60gensym141985595_) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(indexX60gensym141985595_,(t.data ? t.data->Sup.len : 0)-1); }		genericSeqAssign((&(*Result).data), t.data->data[indexX60gensym141985595_].Field2.data, (&NTI__fUw9czUTIZ9b39boL0IkeycMA_));		(*Result).counter = t.data->data[indexX60gensym141985595_].Field2.counter;	}
 	LA3_: ;
 }
 
@@ -6685,7 +8002,7 @@ static N_NIMCALL(void, Marker_tySequence__uWop5OFSkZe0GjlY2KeNCQ)(void* p, NI op
 }
 
 #line 76 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGet__vJ02aY7HBk05EaJuEQaJQgtables)(tyObject_Table__7jF9cWTJuKouswppQdViGuQ t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_145;{	result = (NI)0;
+static N_INLINE(NI, rawGet__vJ02aY7HBk05EaJuEQaJQgtables)(tyObject_Table__7jF9cWTJuKouswppQdViGuQ t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_172;{	result = (NI)0;
 #line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -6759,7 +8076,7 @@ static N_INLINE(NI, rawGet__vJ02aY7HBk05EaJuEQaJQgtables)(tyObject_Table__7jF9cW
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_145)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_145);	}BeforeRet_: ;
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_172)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_172);	}BeforeRet_: ;
 	return result;}
 
 #line 380 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -6785,7 +8102,7 @@ N_LIB_PRIVATE N_NIMCALL(NIM_BOOL, contains__9b78WRTj9atUVET9aLaazG4Wg)(tyObject_
 	return result;}
 
 #line 32 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NIM_BOOL, mustRehash__1jsXYrwRFUGLlG2BeelqrAtables)(tyObject_Table__7jF9cWTJuKouswppQdViGuQ t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_146;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_147;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_148;	result = (NIM_BOOL)0;
+static N_INLINE(NIM_BOOL, mustRehash__1jsXYrwRFUGLlG2BeelqrAtables)(tyObject_Table__7jF9cWTJuKouswppQdViGuQ t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_173;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_174;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_175;	result = (NIM_BOOL)0;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -6811,16 +8128,16 @@ static N_INLINE(NIM_BOOL, mustRehash__1jsXYrwRFUGLlG2BeelqrAtables)(tyObject_Tab
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_146)) { raiseOverflow(); };
+	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_173)) { raiseOverflow(); };
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_147)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_146) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_147));	if (T6_) goto LA8_;
+	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_174)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_173) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_174));	if (T6_) goto LA8_;
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_148)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_148) < ((NI) 4));	LA8_: ;
+	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_175)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_175) < ((NI) 4));	LA8_: ;
 	result = T6_;	return result;}
 
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -6833,13 +8150,13 @@ N_LIB_PRIVATE N_NIMCALL(void, rawInsert__GckEoeMFUV3YlaYZHA9ctUQ)(tyObject_Table
 	(*data_0)->data[h_0].Field0 = hc;}
 
 #line 266 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-N_LIB_PRIVATE N_NIMCALL(void, enlarge__WQDZidLzl1aNsdDF6kVTPw)(tyObject_Table__7jF9cWTJuKouswppQdViGuQ* t) {	tySequence__QGnz2z1Po9aOUxkS1gh8g9cQ* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_149;	tySequence__QGnz2z1Po9aOUxkS1gh8g9cQ* T2_;	n_1 = (tySequence__QGnz2z1Po9aOUxkS1gh8g9cQ*)0;
+N_LIB_PRIVATE N_NIMCALL(void, enlarge__WQDZidLzl1aNsdDF6kVTPw)(tyObject_Table__7jF9cWTJuKouswppQdViGuQ* t) {	tySequence__QGnz2z1Po9aOUxkS1gh8g9cQ* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_176;	tySequence__QGnz2z1Po9aOUxkS1gh8g9cQ* T2_;	n_1 = (tySequence__QGnz2z1Po9aOUxkS1gh8g9cQ*)0;
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_149)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_149)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_149)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_149), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__QGnz2z1Po9aOUxkS1gh8g9cQ*) newSeq((&NTI__QGnz2z1Po9aOUxkS1gh8g9cQ_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_149))));
+	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_176)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_176)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_176)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_176), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__QGnz2z1Po9aOUxkS1gh8g9cQ*) newSeq((&NTI__QGnz2z1Po9aOUxkS1gh8g9cQ_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_176))));
 #line 269 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 	T2_ = (tySequence__QGnz2z1Po9aOUxkS1gh8g9cQ*)0;	T2_ = (*t).data;	unsureAsgnRef((void**) (&(*t).data), n_1);	n_1 = T2_;	{		NI i;		NI colontmp_;		NI T4_;		NI res;		i = (NI)0;		colontmp_ = (NI)0;
 #line 270 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -6849,7 +8166,7 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__WQDZidLzl1aNsdDF6kVTPw)(tyObject_Table__7
 #line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 		res = ((NI) 0);		{
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_150;
+			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_177;
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 				if (!(res <= colontmp_)) goto LA6;
 
@@ -6897,13 +8214,13 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__WQDZidLzl1aNsdDF6kVTPw)(tyObject_Table__7
 				LA10_: ;
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_150)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_150);			} LA6: ;
+				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_177)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_177);			} LA6: ;
 		}
 	}
 }
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGetKnownHC__rM9aZUoRI7rNyEKc8uRPl9cgtables)(tyObject_Table__7jF9cWTJuKouswppQdViGuQ t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_151;{	result = (NI)0;
+static N_INLINE(NI, rawGetKnownHC__rM9aZUoRI7rNyEKc8uRPl9cgtables)(tyObject_Table__7jF9cWTJuKouswppQdViGuQ t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_178;{	result = (NI)0;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -6964,7 +8281,7 @@ static N_INLINE(NI, rawGetKnownHC__rM9aZUoRI7rNyEKc8uRPl9cgtables)(tyObject_Tabl
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_151)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_151);	}BeforeRet_: ;
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_178)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_178);	}BeforeRet_: ;
 	return result;}
 
 #line 309 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -7011,7 +8328,7 @@ N_LIB_PRIVATE N_NIMCALL(void, X5BX5Deq___xzxLNZV2c3Bsgb13gx6tMA)(tyObject_Table_
 		genericAssign((void*)(&(*t).data->data[index].Field2), (void*)val_0, (&NTI__yaPo43V0YO5LtJo439a78nQ_));	}
 	goto LA11_;
 	LA13_: ;
-	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_152;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_153;
+	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_179;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_180;
 #line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		{			NI T18_;
 #line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -7062,14 +8379,14 @@ N_LIB_PRIVATE N_NIMCALL(void, X5BX5Deq___xzxLNZV2c3Bsgb13gx6tMA)(tyObject_Table_
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_152)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_152);
+		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_179)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_179);
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		rawInsert__GckEoeMFUV3YlaYZHA9ctUQ(t, (&(*t).data), key_0, val_0, hc, index);
 
 #line 60 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_153)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_153);	}
+		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_180)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_180);	}
 	LA11_: ;
 }
 
@@ -7102,7 +8419,7 @@ N_LIB_PRIVATE N_NIMCALL(tyObject_PeerStats__yaPo43V0YO5LtJo439a78nQ*, X5BX5D___W
 	return result;}
 
 #line 76 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGet__FrKZhysisZSGodXCzM29aYgtables)(tyObject_Table__ReFeylL0eiJIdl1nbdaLZQ t, NimStringDesc* key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_154;{	result = (NI)0;
+static N_INLINE(NI, rawGet__FrKZhysisZSGodXCzM29aYgtables)(tyObject_Table__ReFeylL0eiJIdl1nbdaLZQ t, NimStringDesc* key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_181;{	result = (NI)0;
 #line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -7172,7 +8489,7 @@ static N_INLINE(NI, rawGet__FrKZhysisZSGodXCzM29aYgtables)(tyObject_Table__ReFey
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_154)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_154);	}BeforeRet_: ;
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_181)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_181);	}BeforeRet_: ;
 	return result;}
 
 #line 380 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -7222,7 +8539,7 @@ N_LIB_PRIVATE N_NIMCALL(tyObject_TopicInfo__NDsrn7kILwUb4UgmJKODgg*, X5BX5D___hp
 	return result;}
 
 #line 76 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGet__btqUwgnn19cnj5V6SWLn0Fwtables)(tyObject_Table__09cVyV7B9bBs9cDUs3KsRxDvw t, NimStringDesc* key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_155;{	result = (NI)0;
+static N_INLINE(NI, rawGet__btqUwgnn19cnj5V6SWLn0Fwtables)(tyObject_Table__09cVyV7B9bBs9cDUs3KsRxDvw t, NimStringDesc* key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_182;{	result = (NI)0;
 #line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -7292,11 +8609,11 @@ static N_INLINE(NI, rawGet__btqUwgnn19cnj5V6SWLn0Fwtables)(tyObject_Table__09cVy
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_155)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_155);	}BeforeRet_: ;
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_182)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_182);	}BeforeRet_: ;
 	return result;}
 
 #line 32 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NIM_BOOL, mustRehash__M6TwvyofEydpecc39a5W6MQtables)(tyObject_Table__09cVyV7B9bBs9cDUs3KsRxDvw t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_156;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_157;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_158;	result = (NIM_BOOL)0;
+static N_INLINE(NIM_BOOL, mustRehash__M6TwvyofEydpecc39a5W6MQtables)(tyObject_Table__09cVyV7B9bBs9cDUs3KsRxDvw t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_183;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_184;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_185;	result = (NIM_BOOL)0;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -7322,16 +8639,16 @@ static N_INLINE(NIM_BOOL, mustRehash__M6TwvyofEydpecc39a5W6MQtables)(tyObject_Ta
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_156)) { raiseOverflow(); };
+	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_183)) { raiseOverflow(); };
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_157)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_156) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_157));	if (T6_) goto LA8_;
+	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_184)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_183) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_184));	if (T6_) goto LA8_;
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_158)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_158) < ((NI) 4));	LA8_: ;
+	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_185)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_185) < ((NI) 4));	LA8_: ;
 	result = T6_;	return result;}
 
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -7344,13 +8661,13 @@ N_LIB_PRIVATE N_NIMCALL(void, rawInsert__7GlQiwrefpRvJvYwYhMgLw)(tyObject_Table_
 	(*data_0)->data[h_0].Field0 = hc;}
 
 #line 266 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-N_LIB_PRIVATE N_NIMCALL(void, enlarge__yMTsabl7yAtsHomwbnk3ng)(tyObject_Table__09cVyV7B9bBs9cDUs3KsRxDvw* t) {	tySequence__9bIYZNL3t229a9bbJxXEVTAsg* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_159;	tySequence__9bIYZNL3t229a9bbJxXEVTAsg* T2_;	n_1 = (tySequence__9bIYZNL3t229a9bbJxXEVTAsg*)0;
+N_LIB_PRIVATE N_NIMCALL(void, enlarge__yMTsabl7yAtsHomwbnk3ng)(tyObject_Table__09cVyV7B9bBs9cDUs3KsRxDvw* t) {	tySequence__9bIYZNL3t229a9bbJxXEVTAsg* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_186;	tySequence__9bIYZNL3t229a9bbJxXEVTAsg* T2_;	n_1 = (tySequence__9bIYZNL3t229a9bbJxXEVTAsg*)0;
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_159)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_159)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_159)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_159), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__9bIYZNL3t229a9bbJxXEVTAsg*) newSeq((&NTI__9bIYZNL3t229a9bbJxXEVTAsg_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_159))));
+	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_186)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_186)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_186)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_186), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__9bIYZNL3t229a9bbJxXEVTAsg*) newSeq((&NTI__9bIYZNL3t229a9bbJxXEVTAsg_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_186))));
 #line 269 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 	T2_ = (tySequence__9bIYZNL3t229a9bbJxXEVTAsg*)0;	T2_ = (*t).data;	unsureAsgnRef((void**) (&(*t).data), n_1);	n_1 = T2_;	{		NI i;		NI colontmp_;		NI T4_;		NI res;		i = (NI)0;		colontmp_ = (NI)0;
 #line 270 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -7360,7 +8677,7 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__yMTsabl7yAtsHomwbnk3ng)(tyObject_Table__0
 #line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 		res = ((NI) 0);		{
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_160;
+			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_187;
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 				if (!(res <= colontmp_)) goto LA6;
 
@@ -7408,13 +8725,13 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__yMTsabl7yAtsHomwbnk3ng)(tyObject_Table__0
 				LA10_: ;
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_160)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_160);			} LA6: ;
+				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_187)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_187);			} LA6: ;
 		}
 	}
 }
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGetKnownHC__XwO2yG6E9ahJZSPI2vn39aRQtables)(tyObject_Table__09cVyV7B9bBs9cDUs3KsRxDvw t, NimStringDesc* key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_161;{	result = (NI)0;
+static N_INLINE(NI, rawGetKnownHC__XwO2yG6E9ahJZSPI2vn39aRQtables)(tyObject_Table__09cVyV7B9bBs9cDUs3KsRxDvw t, NimStringDesc* key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_188;{	result = (NI)0;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -7471,7 +8788,7 @@ static N_INLINE(NI, rawGetKnownHC__XwO2yG6E9ahJZSPI2vn39aRQtables)(tyObject_Tabl
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_161)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_161);	}BeforeRet_: ;
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_188)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_188);	}BeforeRet_: ;
 	return result;}
 
 #line 465 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -7510,7 +8827,7 @@ N_LIB_PRIVATE N_NIMCALL(tyObject_TopicParams__jdn46FRYYVNk4P5zTR8myQ*, mgetOrPut
 #line 65 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 	index = rawGet__btqUwgnn19cnj5V6SWLn0Fwtables((*t), key_0, (&hc));
 #line 66 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_162;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_163;
+	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_189;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_190;
 #line 66 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		if (!(index < ((NI) 0))) goto LA13_;
 
@@ -7564,21 +8881,21 @@ N_LIB_PRIVATE N_NIMCALL(tyObject_TopicParams__jdn46FRYYVNk4P5zTR8myQ*, mgetOrPut
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_162)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_162);
+		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_189)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_189);
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		rawInsert__7GlQiwrefpRvJvYwYhMgLw(t, (&(*t).data), key_0, val_0, hc, index);
 
 #line 68 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_163)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_163);	}
+		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_190)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_190);	}
 	LA13_: ;
 
 #line 70 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 	if ((NU)(index) >= (NU)((*t).data ? (*t).data->Sup.len : 0)){ raiseIndexError2(index,((*t).data ? (*t).data->Sup.len : 0)-1); }	result = (&(*t).data->data[index].Field2);	return result;}
 
 #line 32 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NIM_BOOL, mustRehash__iwmhIAWQRjBezsCBsAXW9cwtables)(tyObject_Table__ReFeylL0eiJIdl1nbdaLZQ t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_164;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_165;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_166;	result = (NIM_BOOL)0;
+static N_INLINE(NIM_BOOL, mustRehash__iwmhIAWQRjBezsCBsAXW9cwtables)(tyObject_Table__ReFeylL0eiJIdl1nbdaLZQ t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_191;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_192;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_193;	result = (NIM_BOOL)0;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -7604,16 +8921,16 @@ static N_INLINE(NIM_BOOL, mustRehash__iwmhIAWQRjBezsCBsAXW9cwtables)(tyObject_Ta
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_164)) { raiseOverflow(); };
+	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_191)) { raiseOverflow(); };
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_165)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_164) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_165));	if (T6_) goto LA8_;
+	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_192)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_191) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_192));	if (T6_) goto LA8_;
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_166)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_166) < ((NI) 4));	LA8_: ;
+	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_193)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_193) < ((NI) 4));	LA8_: ;
 	result = T6_;	return result;}
 
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -7626,13 +8943,13 @@ N_LIB_PRIVATE N_NIMCALL(void, rawInsert__q9acNsGKDYv530f5vZvYAPA)(tyObject_Table
 	(*data_0)->data[h_0].Field0 = hc;}
 
 #line 266 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-N_LIB_PRIVATE N_NIMCALL(void, enlarge__WzjAaigl7LtLm3CJBE9cGog)(tyObject_Table__ReFeylL0eiJIdl1nbdaLZQ* t) {	tySequence__ePVkqZZoBAVzojrVYd6imA* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_167;	tySequence__ePVkqZZoBAVzojrVYd6imA* T2_;	n_1 = (tySequence__ePVkqZZoBAVzojrVYd6imA*)0;
+N_LIB_PRIVATE N_NIMCALL(void, enlarge__WzjAaigl7LtLm3CJBE9cGog)(tyObject_Table__ReFeylL0eiJIdl1nbdaLZQ* t) {	tySequence__ePVkqZZoBAVzojrVYd6imA* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_194;	tySequence__ePVkqZZoBAVzojrVYd6imA* T2_;	n_1 = (tySequence__ePVkqZZoBAVzojrVYd6imA*)0;
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_167)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_167)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_167)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_167), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__ePVkqZZoBAVzojrVYd6imA*) newSeq((&NTI__ePVkqZZoBAVzojrVYd6imA_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_167))));
+	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_194)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_194)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_194)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_194), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__ePVkqZZoBAVzojrVYd6imA*) newSeq((&NTI__ePVkqZZoBAVzojrVYd6imA_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_194))));
 #line 269 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 	T2_ = (tySequence__ePVkqZZoBAVzojrVYd6imA*)0;	T2_ = (*t).data;	unsureAsgnRef((void**) (&(*t).data), n_1);	n_1 = T2_;	{		NI i;		NI colontmp_;		NI T4_;		NI res;		i = (NI)0;		colontmp_ = (NI)0;
 #line 270 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -7642,7 +8959,7 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__WzjAaigl7LtLm3CJBE9cGog)(tyObject_Table__
 #line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 		res = ((NI) 0);		{
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_168;
+			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_195;
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 				if (!(res <= colontmp_)) goto LA6;
 
@@ -7690,13 +9007,13 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__WzjAaigl7LtLm3CJBE9cGog)(tyObject_Table__
 				LA10_: ;
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_168)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_168);			} LA6: ;
+				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_195)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_195);			} LA6: ;
 		}
 	}
 }
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGetKnownHC__AwgKfNsin9bAS9bMydZAUHAgtables)(tyObject_Table__ReFeylL0eiJIdl1nbdaLZQ t, NimStringDesc* key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_169;{	result = (NI)0;
+static N_INLINE(NI, rawGetKnownHC__AwgKfNsin9bAS9bMydZAUHAgtables)(tyObject_Table__ReFeylL0eiJIdl1nbdaLZQ t, NimStringDesc* key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_196;{	result = (NI)0;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -7753,7 +9070,7 @@ static N_INLINE(NI, rawGetKnownHC__AwgKfNsin9bAS9bMydZAUHAgtables)(tyObject_Tabl
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_169)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_169);	}BeforeRet_: ;
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_196)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_196);	}BeforeRet_: ;
 	return result;}
 
 #line 309 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -7800,7 +9117,7 @@ N_LIB_PRIVATE N_NIMCALL(void, X5BX5Deq___nUqrovATG7qtF09chrJe1GQ)(tyObject_Table
 		(*t).data->data[index].Field2 = (*val_0);	}
 	goto LA11_;
 	LA13_: ;
-	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_170;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_171;
+	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_197;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_198;
 #line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		{			NI T18_;
 #line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -7851,14 +9168,14 @@ N_LIB_PRIVATE N_NIMCALL(void, X5BX5Deq___nUqrovATG7qtF09chrJe1GQ)(tyObject_Table
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_170)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_170);
+		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_197)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_197);
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		rawInsert__q9acNsGKDYv530f5vZvYAPA(t, (&(*t).data), key_0, val_0, hc, index);
 
 #line 60 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_171)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_171);	}
+		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_198)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_198);	}
 	LA11_: ;
 }
 
@@ -7873,12 +9190,12 @@ N_LIB_PRIVATE N_NIMCALL(void, del__EiB3KQ9aUf7qCEvToovfzDA)(tyObject_Table__t1GI
 #line 112 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 	T1_ = (((*t).data ? (*t).data->Sup.len : 0)-1);	mskX60gensym17450588_ = T1_;
 #line 519 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_172;
+	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_199;
 #line 113 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		if (!(((NI) 0) <= i)) goto LA4_;
 
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimSubInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_172)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_172);		{			{
+		if (nimSubInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_199)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_199);		{			{
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 				while (1) {					NI jX60gensym17450590_;					NI rX60gensym17450591_;
 #line 117 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -7896,13 +9213,13 @@ N_LIB_PRIVATE N_NIMCALL(void, del__EiB3KQ9aUf7qCEvToovfzDA)(tyObject_Table__t1GI
 #line 121 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 					chckNil((void*)(&(*t).data->data[i].Field2));					unsureAsgnRef((void**)&(*t).data->data[i].Field2.data, NIM_NIL);					(*t).data->data[i].Field2.counter = 0;					{
 #line 122 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-						while (1) {							NI TM__4SoG2KRQy3oMm9aUzSLtGrA_173;
+						while (1) {							NI TM__4SoG2KRQy3oMm9aUzSLtGrA_200;
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-							if (nimAddInt(i, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_173)) { raiseOverflow(); };							i = (NI)((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_173) & mskX60gensym17450588_);
+							if (nimAddInt(i, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_200)) { raiseOverflow(); };							i = (NI)((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_200) & mskX60gensym17450588_);
 #line 124 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 							{								NIM_BOOL T13_;
 #line 124 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -8014,7 +9331,7 @@ N_LIB_PRIVATE N_NIMCALL(tyObject_HashSet__SjkKNmUxUCmHfJyMk9aPJ9cw*, mgetOrPut__
 #line 65 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 	index = rawGet__PM9btsJmhNOJ7EUfpwXlHZwtables((*t), key_0, (&hc));
 #line 66 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_174;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_175;
+	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_201;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_202;
 #line 66 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		if (!(index < ((NI) 0))) goto LA13_;
 
@@ -8068,14 +9385,14 @@ N_LIB_PRIVATE N_NIMCALL(tyObject_HashSet__SjkKNmUxUCmHfJyMk9aPJ9cw*, mgetOrPut__
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_174)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_174);
+		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_201)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_201);
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		rawInsert__kTzRecZSn9aTYJJPQH5iAPA(t, (&(*t).data), key_0, val_0, hc, index);
 
 #line 68 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_175)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_175);	}
+		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_202)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_202);	}
 	LA13_: ;
 
 #line 70 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -8106,7 +9423,7 @@ N_LIB_PRIVATE N_NIMCALL(void, X5BX5D___D9a9c9a0Q7g3Wf0nuglUeZZvQ_2)(tyObject_Tab
 }
 
 #line 76 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGet__Y6uWRTnvze6UjWwPlQcwtwtables)(tyObject_Table__uch9bhpeVGvQNw5ZevH84ig t, tySequence__6H5Oh5UUvVCLiakt9aTwtUQ* key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_176;{	result = (NI)0;
+static N_INLINE(NI, rawGet__Y6uWRTnvze6UjWwPlQcwtwtables)(tyObject_Table__uch9bhpeVGvQNw5ZevH84ig t, tySequence__6H5Oh5UUvVCLiakt9aTwtUQ* key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_203;{	result = (NI)0;
 #line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -8178,11 +9495,11 @@ static N_INLINE(NI, rawGet__Y6uWRTnvze6UjWwPlQcwtwtables)(tyObject_Table__uch9bh
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_176)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_176);	}BeforeRet_: ;
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_203)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_203);	}BeforeRet_: ;
 	return result;}
 
 #line 32 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NIM_BOOL, mustRehash__hvQmfCDUcowU4AG5rGoe4Atables)(tyObject_Table__uch9bhpeVGvQNw5ZevH84ig t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_177;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_178;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_179;	result = (NIM_BOOL)0;
+static N_INLINE(NIM_BOOL, mustRehash__hvQmfCDUcowU4AG5rGoe4Atables)(tyObject_Table__uch9bhpeVGvQNw5ZevH84ig t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_204;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_205;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_206;	result = (NIM_BOOL)0;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -8208,16 +9525,16 @@ static N_INLINE(NIM_BOOL, mustRehash__hvQmfCDUcowU4AG5rGoe4Atables)(tyObject_Tab
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_177)) { raiseOverflow(); };
+	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_204)) { raiseOverflow(); };
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_178)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_177) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_178));	if (T6_) goto LA8_;
+	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_205)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_204) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_205));	if (T6_) goto LA8_;
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_179)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_179) < ((NI) 4));	LA8_: ;
+	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_206)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_206) < ((NI) 4));	LA8_: ;
 	result = T6_;	return result;}
 
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -8230,13 +9547,13 @@ N_LIB_PRIVATE N_NIMCALL(void, rawInsert__9cglu9bfmTfUfrER6aDEjenA)(tyObject_Tabl
 	(*data_0)->data[h_0].Field0 = hc;}
 
 #line 266 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-N_LIB_PRIVATE N_NIMCALL(void, enlarge__ZAP9cTx3WaWg9b9bWAfNfIW5w)(tyObject_Table__uch9bhpeVGvQNw5ZevH84ig* t) {	tySequence__Fdd1zCc4iVW86c0yW4quCQ* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_180;	tySequence__Fdd1zCc4iVW86c0yW4quCQ* T2_;	n_1 = (tySequence__Fdd1zCc4iVW86c0yW4quCQ*)0;
+N_LIB_PRIVATE N_NIMCALL(void, enlarge__ZAP9cTx3WaWg9b9bWAfNfIW5w)(tyObject_Table__uch9bhpeVGvQNw5ZevH84ig* t) {	tySequence__Fdd1zCc4iVW86c0yW4quCQ* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_207;	tySequence__Fdd1zCc4iVW86c0yW4quCQ* T2_;	n_1 = (tySequence__Fdd1zCc4iVW86c0yW4quCQ*)0;
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_180)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_180)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_180)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_180), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__Fdd1zCc4iVW86c0yW4quCQ*) newSeq((&NTI__Fdd1zCc4iVW86c0yW4quCQ_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_180))));
+	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_207)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_207)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_207)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_207), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__Fdd1zCc4iVW86c0yW4quCQ*) newSeq((&NTI__Fdd1zCc4iVW86c0yW4quCQ_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_207))));
 #line 269 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 	T2_ = (tySequence__Fdd1zCc4iVW86c0yW4quCQ*)0;	T2_ = (*t).data;	unsureAsgnRef((void**) (&(*t).data), n_1);	n_1 = T2_;	{		NI i;		NI colontmp_;		NI T4_;		NI res;		i = (NI)0;		colontmp_ = (NI)0;
 #line 270 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -8246,7 +9563,7 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__ZAP9cTx3WaWg9b9bWAfNfIW5w)(tyObject_Table
 #line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 		res = ((NI) 0);		{
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_181;
+			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_208;
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 				if (!(res <= colontmp_)) goto LA6;
 
@@ -8294,13 +9611,13 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__ZAP9cTx3WaWg9b9bWAfNfIW5w)(tyObject_Table
 				LA10_: ;
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_181)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_181);			} LA6: ;
+				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_208)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_208);			} LA6: ;
 		}
 	}
 }
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGetKnownHC__8IAAU649bTY12dqm86cdfowtables)(tyObject_Table__uch9bhpeVGvQNw5ZevH84ig t, tySequence__6H5Oh5UUvVCLiakt9aTwtUQ* key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_182;{	result = (NI)0;
+static N_INLINE(NI, rawGetKnownHC__8IAAU649bTY12dqm86cdfowtables)(tyObject_Table__uch9bhpeVGvQNw5ZevH84ig t, tySequence__6H5Oh5UUvVCLiakt9aTwtUQ* key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_209;{	result = (NI)0;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -8359,7 +9676,7 @@ static N_INLINE(NI, rawGetKnownHC__8IAAU649bTY12dqm86cdfowtables)(tyObject_Table
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_182)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_182);	}BeforeRet_: ;
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_209)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_209);	}BeforeRet_: ;
 	return result;}
 
 #line 408 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -8398,7 +9715,7 @@ N_LIB_PRIVATE N_NIMCALL(NIM_BOOL, hasKeyOrPut__gIFadV49cgzlPo4J2dvlKsQ)(tyObject
 #line 75 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 	index = rawGet__Y6uWRTnvze6UjWwPlQcwtwtables((*t), key_0, (&hc));
 #line 426 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_183;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_184;
+	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_210;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_211;
 #line 76 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		if (!(index < ((NI) 0))) goto LA13_;
 
@@ -8454,14 +9771,14 @@ N_LIB_PRIVATE N_NIMCALL(NIM_BOOL, hasKeyOrPut__gIFadV49cgzlPo4J2dvlKsQ)(tyObject
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_183)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_183);
+		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_210)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_210);
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		rawInsert__9cglu9bfmTfUfrER6aDEjenA(t, (&(*t).data), key_0, val_0, hc, index);
 
 #line 78 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_184)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_184);	}
+		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_211)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_211);	}
 	goto LA11_;
 	LA13_: ;
 	{
@@ -8471,7 +9788,7 @@ N_LIB_PRIVATE N_NIMCALL(NIM_BOOL, hasKeyOrPut__gIFadV49cgzlPo4J2dvlKsQ)(tyObject
 	return result;}
 
 #line 76 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGet__StBMRrg9avXY1PFmhw9cPKEgtables)(tyObject_Table__fiNjm9awTH2rESOsTX1tq6g t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_185;{	result = (NI)0;
+static N_INLINE(NI, rawGet__StBMRrg9avXY1PFmhw9cPKEgtables)(tyObject_Table__fiNjm9awTH2rESOsTX1tq6g t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_212;{	result = (NI)0;
 #line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -8545,27 +9862,27 @@ static N_INLINE(NI, rawGet__StBMRrg9avXY1PFmhw9cPKEgtables)(tyObject_Table__fiNj
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_185)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_185);	}BeforeRet_: ;
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_212)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_212);	}BeforeRet_: ;
 	return result;}
 
 #line 428 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-N_LIB_PRIVATE N_NIMCALL(tyObject_Moment__p19adwOigsIe5d3NlfPJOEw, getOrDefault__er9bVZY8IMN9cXFoTWG9czGJw)(tyObject_Table__fiNjm9awTH2rESOsTX1tq6g t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0) {	tyObject_Moment__p19adwOigsIe5d3NlfPJOEw result;	NI hcX60gensym126165219_;	NI indexX60gensym126165220_;	nimZeroMem((void*)(&result), sizeof(tyObject_Moment__p19adwOigsIe5d3NlfPJOEw));	hcX60gensym126165219_ = (NI)0;
+N_LIB_PRIVATE N_NIMCALL(tyObject_Moment__p19adwOigsIe5d3NlfPJOEw, getOrDefault__er9bVZY8IMN9cXFoTWG9czGJw)(tyObject_Table__fiNjm9awTH2rESOsTX1tq6g t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0) {	tyObject_Moment__p19adwOigsIe5d3NlfPJOEw result;	NI hcX60gensym149140219_;	NI indexX60gensym149140220_;	nimZeroMem((void*)(&result), sizeof(tyObject_Moment__p19adwOigsIe5d3NlfPJOEw));	hcX60gensym149140219_ = (NI)0;
 #line 182 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 182 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-	indexX60gensym126165220_ = rawGet__StBMRrg9avXY1PFmhw9cPKEgtables(t, key_0, (&hcX60gensym126165219_));
+	indexX60gensym149140220_ = rawGet__StBMRrg9avXY1PFmhw9cPKEgtables(t, key_0, (&hcX60gensym149140219_));
 #line 445 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 	{
 #line 183 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (!(((NI) 0) <= indexX60gensym126165220_)) goto LA3_;
+		if (!(((NI) 0) <= indexX60gensym149140220_)) goto LA3_;
 
 #line 183 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if ((NU)(indexX60gensym126165220_) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(indexX60gensym126165220_,(t.data ? t.data->Sup.len : 0)-1); }		result = t.data->data[indexX60gensym126165220_].Field2;	}
+		if ((NU)(indexX60gensym149140220_) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(indexX60gensym149140220_,(t.data ? t.data->Sup.len : 0)-1); }		result = t.data->data[indexX60gensym149140220_].Field2;	}
 	LA3_: ;
 	return result;}
 
 #line 32 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NIM_BOOL, mustRehash__0cTJ2e7yg5HjeHX72c0klQtables)(tyObject_Table__fiNjm9awTH2rESOsTX1tq6g t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_186;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_187;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_188;	result = (NIM_BOOL)0;
+static N_INLINE(NIM_BOOL, mustRehash__0cTJ2e7yg5HjeHX72c0klQtables)(tyObject_Table__fiNjm9awTH2rESOsTX1tq6g t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_213;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_214;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_215;	result = (NIM_BOOL)0;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -8591,16 +9908,16 @@ static N_INLINE(NIM_BOOL, mustRehash__0cTJ2e7yg5HjeHX72c0klQtables)(tyObject_Tab
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_186)) { raiseOverflow(); };
+	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_213)) { raiseOverflow(); };
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_187)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_186) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_187));	if (T6_) goto LA8_;
+	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_214)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_213) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_214));	if (T6_) goto LA8_;
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_188)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_188) < ((NI) 4));	LA8_: ;
+	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_215)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_215) < ((NI) 4));	LA8_: ;
 	result = T6_;	return result;}
 
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -8613,13 +9930,13 @@ N_LIB_PRIVATE N_NIMCALL(void, rawInsert__dkvugU9aha3FN80zZRCvJug)(tyObject_Table
 	(*data_0)->data[h_0].Field0 = hc;}
 
 #line 266 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-N_LIB_PRIVATE N_NIMCALL(void, enlarge__JhoaJsFdpdGn7AonJKG3oQ)(tyObject_Table__fiNjm9awTH2rESOsTX1tq6g* t) {	tySequence__Y9bpibYYCq7U9bI2q2EkdjDA* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_189;	tySequence__Y9bpibYYCq7U9bI2q2EkdjDA* T2_;	n_1 = (tySequence__Y9bpibYYCq7U9bI2q2EkdjDA*)0;
+N_LIB_PRIVATE N_NIMCALL(void, enlarge__JhoaJsFdpdGn7AonJKG3oQ)(tyObject_Table__fiNjm9awTH2rESOsTX1tq6g* t) {	tySequence__Y9bpibYYCq7U9bI2q2EkdjDA* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_216;	tySequence__Y9bpibYYCq7U9bI2q2EkdjDA* T2_;	n_1 = (tySequence__Y9bpibYYCq7U9bI2q2EkdjDA*)0;
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_189)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_189)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_189)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_189), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__Y9bpibYYCq7U9bI2q2EkdjDA*) newSeq((&NTI__Y9bpibYYCq7U9bI2q2EkdjDA_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_189))));
+	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_216)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_216)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_216)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_216), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__Y9bpibYYCq7U9bI2q2EkdjDA*) newSeq((&NTI__Y9bpibYYCq7U9bI2q2EkdjDA_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_216))));
 #line 269 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 	T2_ = (tySequence__Y9bpibYYCq7U9bI2q2EkdjDA*)0;	T2_ = (*t).data;	unsureAsgnRef((void**) (&(*t).data), n_1);	n_1 = T2_;	{		NI i;		NI colontmp_;		NI T4_;		NI res;		i = (NI)0;		colontmp_ = (NI)0;
 #line 270 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -8629,7 +9946,7 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__JhoaJsFdpdGn7AonJKG3oQ)(tyObject_Table__f
 #line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 		res = ((NI) 0);		{
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_190;
+			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_217;
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 				if (!(res <= colontmp_)) goto LA6;
 
@@ -8677,13 +9994,13 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__JhoaJsFdpdGn7AonJKG3oQ)(tyObject_Table__f
 				LA10_: ;
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_190)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_190);			} LA6: ;
+				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_217)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_217);			} LA6: ;
 		}
 	}
 }
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGetKnownHC__lklbNvGsmgX0vJaD9b2f3EAtables)(tyObject_Table__fiNjm9awTH2rESOsTX1tq6g t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_191;{	result = (NI)0;
+static N_INLINE(NI, rawGetKnownHC__lklbNvGsmgX0vJaD9b2f3EAtables)(tyObject_Table__fiNjm9awTH2rESOsTX1tq6g t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_218;{	result = (NI)0;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -8744,7 +10061,7 @@ static N_INLINE(NI, rawGetKnownHC__lklbNvGsmgX0vJaD9b2f3EAtables)(tyObject_Table
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_191)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_191);	}BeforeRet_: ;
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_218)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_218);	}BeforeRet_: ;
 	return result;}
 
 #line 309 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -8791,7 +10108,7 @@ N_LIB_PRIVATE N_NIMCALL(void, X5BX5Deq___qUx3CQ0Te8q7c7izmsXPxg)(tyObject_Table_
 		(*t).data->data[index].Field2 = val_0;	}
 	goto LA11_;
 	LA13_: ;
-	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_192;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_193;
+	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_219;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_220;
 #line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		{			NI T18_;
 #line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -8842,14 +10159,14 @@ N_LIB_PRIVATE N_NIMCALL(void, X5BX5Deq___qUx3CQ0Te8q7c7izmsXPxg)(tyObject_Table_
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_192)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_192);
+		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_219)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_219);
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		rawInsert__dkvugU9aha3FN80zZRCvJug(t, (&(*t).data), key_0, val_0, hc, index);
 
 #line 60 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_193)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_193);	}
+		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_220)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_220);	}
 	LA11_: ;
 }
 
@@ -8926,34 +10243,34 @@ N_LIB_PRIVATE N_NIMCALL(tyObject_Moment__p19adwOigsIe5d3NlfPJOEw*, X5BX5D___mqdV
 	return result;}
 
 #line 428 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-N_LIB_PRIVATE N_NIMCALL(tyObject_TopicInfo__NDsrn7kILwUb4UgmJKODgg, getOrDefault__tQf70Lslv7MteHEZn4j6OA)(tyObject_Table__ReFeylL0eiJIdl1nbdaLZQ t, NimStringDesc* key_0) {	tyObject_TopicInfo__NDsrn7kILwUb4UgmJKODgg result;	NI hcX60gensym120385397_;	NI indexX60gensym120385398_;	nimZeroMem((void*)(&result), sizeof(tyObject_TopicInfo__NDsrn7kILwUb4UgmJKODgg));	hcX60gensym120385397_ = (NI)0;
+N_LIB_PRIVATE N_NIMCALL(tyObject_TopicInfo__NDsrn7kILwUb4UgmJKODgg, getOrDefault__tQf70Lslv7MteHEZn4j6OA)(tyObject_Table__ReFeylL0eiJIdl1nbdaLZQ t, NimStringDesc* key_0) {	tyObject_TopicInfo__NDsrn7kILwUb4UgmJKODgg result;	NI hcX60gensym143360397_;	NI indexX60gensym143360398_;	nimZeroMem((void*)(&result), sizeof(tyObject_TopicInfo__NDsrn7kILwUb4UgmJKODgg));	hcX60gensym143360397_ = (NI)0;
 #line 182 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 182 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-	indexX60gensym120385398_ = rawGet__FrKZhysisZSGodXCzM29aYgtables(t, key_0, (&hcX60gensym120385397_));
+	indexX60gensym143360398_ = rawGet__FrKZhysisZSGodXCzM29aYgtables(t, key_0, (&hcX60gensym143360397_));
 #line 445 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 	{
 #line 183 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (!(((NI) 0) <= indexX60gensym120385398_)) goto LA3_;
+		if (!(((NI) 0) <= indexX60gensym143360398_)) goto LA3_;
 
 #line 183 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if ((NU)(indexX60gensym120385398_) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(indexX60gensym120385398_,(t.data ? t.data->Sup.len : 0)-1); }		result = t.data->data[indexX60gensym120385398_].Field2;	}
+		if ((NU)(indexX60gensym143360398_) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(indexX60gensym143360398_,(t.data ? t.data->Sup.len : 0)-1); }		result = t.data->data[indexX60gensym143360398_].Field2;	}
 	LA3_: ;
 	return result;}
 
 #line 447 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-N_LIB_PRIVATE N_NIMCALL(void, getOrDefault__U7HR00XiiC4tOJ39csPgf9cg)(tyObject_Table__t1GIbsENi89cp9cMuggZaXQg t, NimStringDesc* key_0, tyObject_HashSet__SjkKNmUxUCmHfJyMk9aPJ9cw default_0, tyObject_HashSet__SjkKNmUxUCmHfJyMk9aPJ9cw* Result) {	NI hcX60gensym120755420_;	NI indexX60gensym120755421_;	hcX60gensym120755420_ = (NI)0;
+N_LIB_PRIVATE N_NIMCALL(void, getOrDefault__U7HR00XiiC4tOJ39csPgf9cg)(tyObject_Table__t1GIbsENi89cp9cMuggZaXQg t, NimStringDesc* key_0, tyObject_HashSet__SjkKNmUxUCmHfJyMk9aPJ9cw default_0, tyObject_HashSet__SjkKNmUxUCmHfJyMk9aPJ9cw* Result) {	NI hcX60gensym143730420_;	NI indexX60gensym143730421_;	hcX60gensym143730420_ = (NI)0;
 #line 188 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 188 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-	indexX60gensym120755421_ = rawGet__PM9btsJmhNOJ7EUfpwXlHZwtables(t, key_0, (&hcX60gensym120755420_));
+	indexX60gensym143730421_ = rawGet__PM9btsJmhNOJ7EUfpwXlHZwtables(t, key_0, (&hcX60gensym143730420_));
 #line 189 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 189 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 	{
 #line 189 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (!(((NI) 0) <= indexX60gensym120755421_)) goto LA3_;
-		if ((NU)(indexX60gensym120755421_) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(indexX60gensym120755421_,(t.data ? t.data->Sup.len : 0)-1); }		genericSeqAssign((&(*Result).data), t.data->data[indexX60gensym120755421_].Field2.data, (&NTI__fUw9czUTIZ9b39boL0IkeycMA_));		(*Result).counter = t.data->data[indexX60gensym120755421_].Field2.counter;	}
+		if (!(((NI) 0) <= indexX60gensym143730421_)) goto LA3_;
+		if ((NU)(indexX60gensym143730421_) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(indexX60gensym143730421_,(t.data ? t.data->Sup.len : 0)-1); }		genericSeqAssign((&(*Result).data), t.data->data[indexX60gensym143730421_].Field2.data, (&NTI__fUw9czUTIZ9b39boL0IkeycMA_));		(*Result).counter = t.data->data[indexX60gensym143730421_].Field2.counter;	}
 	goto LA1_;
 	LA3_: ;
 	{		genericSeqAssign((&(*Result).data), default_0.data, (&NTI__fUw9czUTIZ9b39boL0IkeycMA_));		(*Result).counter = default_0.counter;	}
@@ -9011,7 +10328,7 @@ N_LIB_PRIVATE N_NIMCALL(void, X5BX5D___dm23K4Ff1CuyQ5LhLLjcrQ)(tyObject_Table__u
 }
 
 #line 76 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGet__pNb3Fa7BkaQ2OM9akLoFz4wtables)(tyObject_Table__30SNsEhxoOsalydUEsCtnQ t, NimStringDesc* key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_194;{	result = (NI)0;
+static N_INLINE(NI, rawGet__pNb3Fa7BkaQ2OM9akLoFz4wtables)(tyObject_Table__30SNsEhxoOsalydUEsCtnQ t, NimStringDesc* key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_221;{	result = (NI)0;
 #line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -9081,11 +10398,11 @@ static N_INLINE(NI, rawGet__pNb3Fa7BkaQ2OM9akLoFz4wtables)(tyObject_Table__30SNs
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_194)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_194);	}BeforeRet_: ;
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_221)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_221);	}BeforeRet_: ;
 	return result;}
 
 #line 32 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NIM_BOOL, mustRehash__Hk9cTz5MsSIzoOzG2xVr8PAtables)(tyObject_Table__30SNsEhxoOsalydUEsCtnQ t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_195;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_196;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_197;	result = (NIM_BOOL)0;
+static N_INLINE(NIM_BOOL, mustRehash__Hk9cTz5MsSIzoOzG2xVr8PAtables)(tyObject_Table__30SNsEhxoOsalydUEsCtnQ t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_222;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_223;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_224;	result = (NIM_BOOL)0;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -9111,16 +10428,16 @@ static N_INLINE(NIM_BOOL, mustRehash__Hk9cTz5MsSIzoOzG2xVr8PAtables)(tyObject_Ta
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_195)) { raiseOverflow(); };
+	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_222)) { raiseOverflow(); };
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_196)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_195) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_196));	if (T6_) goto LA8_;
+	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_223)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_222) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_223));	if (T6_) goto LA8_;
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_197)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_197) < ((NI) 4));	LA8_: ;
+	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_224)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_224) < ((NI) 4));	LA8_: ;
 	result = T6_;	return result;}
 
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -9133,13 +10450,13 @@ N_LIB_PRIVATE N_NIMCALL(void, rawInsert__6j4JKj0tjurPQFG1YkzFRw)(tyObject_Table_
 	(*data_0)->data[h_0].Field0 = hc;}
 
 #line 266 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-N_LIB_PRIVATE N_NIMCALL(void, enlarge__0kI9bxxnmlaAmVmIlBsJDNA)(tyObject_Table__30SNsEhxoOsalydUEsCtnQ* t) {	tySequence__a9czYAVXtt3ELF2dd9apg7CA* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_198;	tySequence__a9czYAVXtt3ELF2dd9apg7CA* T2_;	n_1 = (tySequence__a9czYAVXtt3ELF2dd9apg7CA*)0;
+N_LIB_PRIVATE N_NIMCALL(void, enlarge__0kI9bxxnmlaAmVmIlBsJDNA)(tyObject_Table__30SNsEhxoOsalydUEsCtnQ* t) {	tySequence__a9czYAVXtt3ELF2dd9apg7CA* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_225;	tySequence__a9czYAVXtt3ELF2dd9apg7CA* T2_;	n_1 = (tySequence__a9czYAVXtt3ELF2dd9apg7CA*)0;
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_198)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_198)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_198)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_198), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__a9czYAVXtt3ELF2dd9apg7CA*) newSeq((&NTI__a9czYAVXtt3ELF2dd9apg7CA_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_198))));
+	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_225)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_225)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_225)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_225), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__a9czYAVXtt3ELF2dd9apg7CA*) newSeq((&NTI__a9czYAVXtt3ELF2dd9apg7CA_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_225))));
 #line 269 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 	T2_ = (tySequence__a9czYAVXtt3ELF2dd9apg7CA*)0;	T2_ = (*t).data;	unsureAsgnRef((void**) (&(*t).data), n_1);	n_1 = T2_;	{		NI i;		NI colontmp_;		NI T4_;		NI res;		i = (NI)0;		colontmp_ = (NI)0;
 #line 270 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -9149,7 +10466,7 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__0kI9bxxnmlaAmVmIlBsJDNA)(tyObject_Table__
 #line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 		res = ((NI) 0);		{
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_199;
+			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_226;
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 				if (!(res <= colontmp_)) goto LA6;
 
@@ -9197,13 +10514,13 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__0kI9bxxnmlaAmVmIlBsJDNA)(tyObject_Table__
 				LA10_: ;
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_199)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_199);			} LA6: ;
+				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_226)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_226);			} LA6: ;
 		}
 	}
 }
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGetKnownHC__CAfoi9aQc1fAAYpGg71zEJgtables)(tyObject_Table__30SNsEhxoOsalydUEsCtnQ t, NimStringDesc* key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_200;{	result = (NI)0;
+static N_INLINE(NI, rawGetKnownHC__CAfoi9aQc1fAAYpGg71zEJgtables)(tyObject_Table__30SNsEhxoOsalydUEsCtnQ t, NimStringDesc* key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_227;{	result = (NI)0;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -9260,7 +10577,7 @@ static N_INLINE(NI, rawGetKnownHC__CAfoi9aQc1fAAYpGg71zEJgtables)(tyObject_Table
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_200)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_200);	}BeforeRet_: ;
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_227)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_227);	}BeforeRet_: ;
 	return result;}
 
 #line 309 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -9307,7 +10624,7 @@ N_LIB_PRIVATE N_NIMCALL(void, X5BX5Deq___Yf5SXizONERQCK2yVmC8HQ)(tyObject_Table_
 		(*t).data->data[index].Field2 = val_0;	}
 	goto LA11_;
 	LA13_: ;
-	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_201;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_202;
+	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_228;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_229;
 #line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		{			NI T18_;
 #line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -9358,14 +10675,14 @@ N_LIB_PRIVATE N_NIMCALL(void, X5BX5Deq___Yf5SXizONERQCK2yVmC8HQ)(tyObject_Table_
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_201)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_201);
+		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_228)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_228);
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		rawInsert__6j4JKj0tjurPQFG1YkzFRw(t, (&(*t).data), key_0, val_0, hc, index);
 
 #line 60 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_202)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_202);	}
+		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_229)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_229);	}
 	LA11_: ;
 }
 static N_NIMCALL(void, Marker_tySequence__9aslpbPC7Zz3Ti6qyChmX5w)(void* p, NI op) {
@@ -9391,12 +10708,12 @@ N_LIB_PRIVATE N_NIMCALL(void, del__wmgwqGOqQ6W7LvLoxcbsVA)(tyObject_Table__fiNjm
 #line 112 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 	T1_ = (((*t).data ? (*t).data->Sup.len : 0)-1);	mskX60gensym17450588_ = T1_;
 #line 519 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_206;
+	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_233;
 #line 113 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		if (!(((NI) 0) <= i)) goto LA4_;
 
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimSubInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_206)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_206);		{			{
+		if (nimSubInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_233)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_233);		{			{
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 				while (1) {					NI jX60gensym17450590_;					NI rX60gensym17450591_;
 #line 117 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -9414,13 +10731,13 @@ N_LIB_PRIVATE N_NIMCALL(void, del__wmgwqGOqQ6W7LvLoxcbsVA)(tyObject_Table__fiNjm
 #line 121 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 					chckNil((void*)(&(*t).data->data[i].Field2));					nimZeroMem((void*)(&(*t).data->data[i].Field2), sizeof(tyObject_Moment__p19adwOigsIe5d3NlfPJOEw));					{
 #line 122 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-						while (1) {							NI TM__4SoG2KRQy3oMm9aUzSLtGrA_207;
+						while (1) {							NI TM__4SoG2KRQy3oMm9aUzSLtGrA_234;
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-							if (nimAddInt(i, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_207)) { raiseOverflow(); };							i = (NI)((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_207) & mskX60gensym17450588_);
+							if (nimAddInt(i, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_234)) { raiseOverflow(); };							i = (NI)((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_234) & mskX60gensym17450588_);
 #line 124 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 							{								NIM_BOOL T13_;
 #line 124 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -9502,7 +10819,7 @@ N_LIB_PRIVATE N_NIMCALL(NI, len__jRPPXsWF4rzSK31fvXCaRA)(tyObject_Table__09cVyV7
 	result = t.counter;	return result;}
 
 #line 76 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGet__Thqo7usZdbVrQqOvuHQk1Qtables)(tyObject_Table__S9b1UeZr3QU8sqYKviX9ajmw t, tyObject_MultiAddress__MntiKgxV52rXueBQXpXCJw key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_208;{	result = (NI)0;
+static N_INLINE(NI, rawGet__Thqo7usZdbVrQqOvuHQk1Qtables)(tyObject_Table__S9b1UeZr3QU8sqYKviX9ajmw t, tyObject_MultiAddress__MntiKgxV52rXueBQXpXCJw key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_235;{	result = (NI)0;
 #line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -9574,22 +10891,22 @@ static N_INLINE(NI, rawGet__Thqo7usZdbVrQqOvuHQk1Qtables)(tyObject_Table__S9b1Ue
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_208)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_208);	}BeforeRet_: ;
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_235)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_235);	}BeforeRet_: ;
 	return result;}
 
 #line 428 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-N_LIB_PRIVATE N_NIMCALL(void, getOrDefault__Buhxs4BN159c0tVGPdoNJHA)(tyObject_Table__S9b1UeZr3QU8sqYKviX9ajmw t, tyObject_MultiAddress__MntiKgxV52rXueBQXpXCJw key_0, tyObject_HashSet__SjkKNmUxUCmHfJyMk9aPJ9cw* Result) {	NI hcX60gensym123160395_;	NI indexX60gensym123160396_;	chckNil((void*)Result);	unsureAsgnRef((void**)&(*Result).data, NIM_NIL);	(*Result).counter = 0;	hcX60gensym123160395_ = (NI)0;
+N_LIB_PRIVATE N_NIMCALL(void, getOrDefault__Buhxs4BN159c0tVGPdoNJHA)(tyObject_Table__S9b1UeZr3QU8sqYKviX9ajmw t, tyObject_MultiAddress__MntiKgxV52rXueBQXpXCJw key_0, tyObject_HashSet__SjkKNmUxUCmHfJyMk9aPJ9cw* Result) {	NI hcX60gensym146135395_;	NI indexX60gensym146135396_;	chckNil((void*)Result);	unsureAsgnRef((void**)&(*Result).data, NIM_NIL);	(*Result).counter = 0;	hcX60gensym146135395_ = (NI)0;
 #line 182 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 182 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-	indexX60gensym123160396_ = rawGet__Thqo7usZdbVrQqOvuHQk1Qtables(t, key_0, (&hcX60gensym123160395_));
+	indexX60gensym146135396_ = rawGet__Thqo7usZdbVrQqOvuHQk1Qtables(t, key_0, (&hcX60gensym146135395_));
 #line 445 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 	{
 #line 183 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (!(((NI) 0) <= indexX60gensym123160396_)) goto LA3_;
+		if (!(((NI) 0) <= indexX60gensym146135396_)) goto LA3_;
 
 #line 183 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if ((NU)(indexX60gensym123160396_) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(indexX60gensym123160396_,(t.data ? t.data->Sup.len : 0)-1); }		genericSeqAssign((&(*Result).data), t.data->data[indexX60gensym123160396_].Field2.data, (&NTI__fUw9czUTIZ9b39boL0IkeycMA_));		(*Result).counter = t.data->data[indexX60gensym123160396_].Field2.counter;	}
+		if ((NU)(indexX60gensym146135396_) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(indexX60gensym146135396_,(t.data ? t.data->Sup.len : 0)-1); }		genericSeqAssign((&(*Result).data), t.data->data[indexX60gensym146135396_].Field2.data, (&NTI__fUw9czUTIZ9b39boL0IkeycMA_));		(*Result).counter = t.data->data[indexX60gensym146135396_].Field2.counter;	}
 	LA3_: ;
 }
 
@@ -9616,7 +10933,7 @@ N_LIB_PRIVATE N_NIMCALL(NIM_BOOL, contains__CN9bMYx03mEPFq8RQwQzSbA)(tyObject_Ta
 	return result;}
 
 #line 32 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NIM_BOOL, mustRehash__hsAwvfZVmO8CXMKwQmQFIQtables)(tyObject_Table__S9b1UeZr3QU8sqYKviX9ajmw t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_209;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_210;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_211;	result = (NIM_BOOL)0;
+static N_INLINE(NIM_BOOL, mustRehash__hsAwvfZVmO8CXMKwQmQFIQtables)(tyObject_Table__S9b1UeZr3QU8sqYKviX9ajmw t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_236;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_237;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_238;	result = (NIM_BOOL)0;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -9642,16 +10959,16 @@ static N_INLINE(NIM_BOOL, mustRehash__hsAwvfZVmO8CXMKwQmQFIQtables)(tyObject_Tab
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_209)) { raiseOverflow(); };
+	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_236)) { raiseOverflow(); };
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_210)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_209) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_210));	if (T6_) goto LA8_;
+	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_237)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_236) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_237));	if (T6_) goto LA8_;
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_211)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_211) < ((NI) 4));	LA8_: ;
+	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_238)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_238) < ((NI) 4));	LA8_: ;
 	result = T6_;	return result;}
 
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -9664,13 +10981,13 @@ N_LIB_PRIVATE N_NIMCALL(void, rawInsert__weoE469canJV0e9cwuW8DXUA)(tyObject_Tabl
 	(*data_0)->data[h_0].Field0 = hc;}
 
 #line 266 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-N_LIB_PRIVATE N_NIMCALL(void, enlarge__mCNkbRt6reLJd0LmA86eoQ)(tyObject_Table__S9b1UeZr3QU8sqYKviX9ajmw* t) {	tySequence__uWop5OFSkZe0GjlY2KeNCQ* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_212;	tySequence__uWop5OFSkZe0GjlY2KeNCQ* T2_;	n_1 = (tySequence__uWop5OFSkZe0GjlY2KeNCQ*)0;
+N_LIB_PRIVATE N_NIMCALL(void, enlarge__mCNkbRt6reLJd0LmA86eoQ)(tyObject_Table__S9b1UeZr3QU8sqYKviX9ajmw* t) {	tySequence__uWop5OFSkZe0GjlY2KeNCQ* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_239;	tySequence__uWop5OFSkZe0GjlY2KeNCQ* T2_;	n_1 = (tySequence__uWop5OFSkZe0GjlY2KeNCQ*)0;
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_212)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_212)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_212)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_212), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__uWop5OFSkZe0GjlY2KeNCQ*) newSeq((&NTI__uWop5OFSkZe0GjlY2KeNCQ_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_212))));
+	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_239)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_239)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_239)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_239), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__uWop5OFSkZe0GjlY2KeNCQ*) newSeq((&NTI__uWop5OFSkZe0GjlY2KeNCQ_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_239))));
 #line 269 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 	T2_ = (tySequence__uWop5OFSkZe0GjlY2KeNCQ*)0;	T2_ = (*t).data;	unsureAsgnRef((void**) (&(*t).data), n_1);	n_1 = T2_;	{		NI i;		NI colontmp_;		NI T4_;		NI res;		i = (NI)0;		colontmp_ = (NI)0;
 #line 270 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -9680,7 +10997,7 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__mCNkbRt6reLJd0LmA86eoQ)(tyObject_Table__S
 #line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 		res = ((NI) 0);		{
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_213;
+			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_240;
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 				if (!(res <= colontmp_)) goto LA6;
 
@@ -9728,13 +11045,13 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__mCNkbRt6reLJd0LmA86eoQ)(tyObject_Table__S
 				LA10_: ;
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_213)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_213);			} LA6: ;
+				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_240)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_240);			} LA6: ;
 		}
 	}
 }
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGetKnownHC__jBkYnA6RifODwa9bOf0icSgtables)(tyObject_Table__S9b1UeZr3QU8sqYKviX9ajmw t, tyObject_MultiAddress__MntiKgxV52rXueBQXpXCJw key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_214;{	result = (NI)0;
+static N_INLINE(NI, rawGetKnownHC__jBkYnA6RifODwa9bOf0icSgtables)(tyObject_Table__S9b1UeZr3QU8sqYKviX9ajmw t, tyObject_MultiAddress__MntiKgxV52rXueBQXpXCJw key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_241;{	result = (NI)0;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -9793,7 +11110,7 @@ static N_INLINE(NI, rawGetKnownHC__jBkYnA6RifODwa9bOf0icSgtables)(tyObject_Table
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_214)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_214);	}BeforeRet_: ;
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_241)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_241);	}BeforeRet_: ;
 	return result;}
 
 #line 309 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -9840,7 +11157,7 @@ N_LIB_PRIVATE N_NIMCALL(void, X5BX5Deq___T8DTSGl5KPkZQmhgSHDOhQ)(tyObject_Table_
 		genericSeqAssign((&(*t).data->data[index].Field2.data), val_0.data, (&NTI__fUw9czUTIZ9b39boL0IkeycMA_));		(*t).data->data[index].Field2.counter = val_0.counter;	}
 	goto LA11_;
 	LA13_: ;
-	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_215;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_216;
+	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_242;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_243;
 #line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		{			NI T18_;
 #line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -9891,14 +11208,14 @@ N_LIB_PRIVATE N_NIMCALL(void, X5BX5Deq___T8DTSGl5KPkZQmhgSHDOhQ)(tyObject_Table_
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_215)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_215);
+		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_242)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_242);
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		rawInsert__weoE469canJV0e9cwuW8DXUA(t, (&(*t).data), key_0, val_0, hc, index);
 
 #line 60 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_216)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_216);	}
+		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_243)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_243);	}
 	LA11_: ;
 }
 
@@ -9941,12 +11258,12 @@ N_LIB_PRIVATE N_NIMCALL(void, del__Rf1UFHBn2Z8HOPBcRt5H3g)(tyObject_Table__7jF9c
 #line 112 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 	T1_ = (((*t).data ? (*t).data->Sup.len : 0)-1);	mskX60gensym17450588_ = T1_;
 #line 519 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_217;
+	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_244;
 #line 113 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		if (!(((NI) 0) <= i)) goto LA4_;
 
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimSubInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_217)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_217);		{			{
+		if (nimSubInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_244)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_244);		{			{
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 				while (1) {					NI jX60gensym17450590_;					NI rX60gensym17450591_;
 #line 117 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -9964,13 +11281,13 @@ N_LIB_PRIVATE N_NIMCALL(void, del__Rf1UFHBn2Z8HOPBcRt5H3g)(tyObject_Table__7jF9c
 #line 121 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 					chckNil((void*)(&(*t).data->data[i].Field2));					unsureAsgnRef((void**)&(*t).data->data[i].Field2.topicInfos.data, NIM_NIL);					(*t).data->data[i].Field2.topicInfos.counter = 0;					(*t).data->data[i].Field2.expire.value = 0;					(*t).data->data[i].Field2.score = 0;					(*t).data->data[i].Field2.appScore = 0;					(*t).data->data[i].Field2.behaviourPenalty = 0;					{
 #line 122 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-						while (1) {							NI TM__4SoG2KRQy3oMm9aUzSLtGrA_218;
+						while (1) {							NI TM__4SoG2KRQy3oMm9aUzSLtGrA_245;
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-							if (nimAddInt(i, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_218)) { raiseOverflow(); };							i = (NI)((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_218) & mskX60gensym17450588_);
+							if (nimAddInt(i, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_245)) { raiseOverflow(); };							i = (NI)((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_245) & mskX60gensym17450588_);
 #line 124 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 							{								NIM_BOOL T13_;
 #line 124 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -10081,12 +11398,12 @@ N_LIB_PRIVATE N_NIMCALL(void, del__Us6zCNTSkMAAVBtp0fOn6g)(tyObject_Table__30SNs
 #line 112 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 	T1_ = (((*t).data ? (*t).data->Sup.len : 0)-1);	mskX60gensym17450588_ = T1_;
 #line 519 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_219;
+	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_246;
 #line 113 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		if (!(((NI) 0) <= i)) goto LA4_;
 
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimSubInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_219)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_219);		{			{
+		if (nimSubInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_246)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_246);		{			{
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 				while (1) {					NI jX60gensym17450590_;					NI rX60gensym17450591_;
 #line 117 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -10104,13 +11421,13 @@ N_LIB_PRIVATE N_NIMCALL(void, del__Us6zCNTSkMAAVBtp0fOn6g)(tyObject_Table__30SNs
 #line 121 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 					chckNil((void*)(&(*t).data->data[i].Field2));					nimZeroMem((void*)(&(*t).data->data[i].Field2), sizeof(tyObject_Moment__p19adwOigsIe5d3NlfPJOEw));					{
 #line 122 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-						while (1) {							NI TM__4SoG2KRQy3oMm9aUzSLtGrA_220;
+						while (1) {							NI TM__4SoG2KRQy3oMm9aUzSLtGrA_247;
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-							if (nimAddInt(i, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_220)) { raiseOverflow(); };							i = (NI)((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_220) & mskX60gensym17450588_);
+							if (nimAddInt(i, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_247)) { raiseOverflow(); };							i = (NI)((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_247) & mskX60gensym17450588_);
 #line 124 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 							{								NIM_BOOL T13_;
 #line 124 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -10182,7 +11499,7 @@ N_LIB_PRIVATE N_NIMCALL(void, del__Us6zCNTSkMAAVBtp0fOn6g)(tyObject_Table__30SNs
 }
 
 #line 76 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGet__KgRG73yfrnFf79a5jALavMwtables)(tyObject_Table__u5L4byG0svNLA0OYq4TmxA t, tyObject_PubSubPeercolonObjectType___6rsvBHOjeRkx0KPoUqsmsw* key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_221;{	result = (NI)0;
+static N_INLINE(NI, rawGet__KgRG73yfrnFf79a5jALavMwtables)(tyObject_Table__u5L4byG0svNLA0OYq4TmxA t, tyObject_PubSubPeercolonObjectType___6rsvBHOjeRkx0KPoUqsmsw* key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_248;{	result = (NI)0;
 #line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -10252,7 +11569,7 @@ static N_INLINE(NI, rawGet__KgRG73yfrnFf79a5jALavMwtables)(tyObject_Table__u5L4b
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_221)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_221);	}BeforeRet_: ;
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_248)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_248);	}BeforeRet_: ;
 	return result;}
 
 #line 380 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -10278,7 +11595,7 @@ N_LIB_PRIVATE N_NIMCALL(NIM_BOOL, contains__GOgpmOMatHa4W9ahQGQgqCQ)(tyObject_Ta
 	return result;}
 
 #line 32 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NIM_BOOL, mustRehash__IRsKfuJRpa7JHu9axcxIAJgtables)(tyObject_Table__u5L4byG0svNLA0OYq4TmxA t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_222;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_223;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_224;	result = (NIM_BOOL)0;
+static N_INLINE(NIM_BOOL, mustRehash__IRsKfuJRpa7JHu9axcxIAJgtables)(tyObject_Table__u5L4byG0svNLA0OYq4TmxA t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_249;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_250;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_251;	result = (NIM_BOOL)0;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -10304,16 +11621,16 @@ static N_INLINE(NIM_BOOL, mustRehash__IRsKfuJRpa7JHu9axcxIAJgtables)(tyObject_Ta
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_222)) { raiseOverflow(); };
+	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_249)) { raiseOverflow(); };
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_223)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_222) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_223));	if (T6_) goto LA8_;
+	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_250)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_249) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_250));	if (T6_) goto LA8_;
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_224)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_224) < ((NI) 4));	LA8_: ;
+	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_251)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_251) < ((NI) 4));	LA8_: ;
 	result = T6_;	return result;}
 
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -10326,13 +11643,13 @@ N_LIB_PRIVATE N_NIMCALL(void, rawInsert__3dkp9cqtD49b9aQIW4K5PXYQw)(tyObject_Tab
 	(*data_0)->data[h_0].Field0 = hc;}
 
 #line 266 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-N_LIB_PRIVATE N_NIMCALL(void, enlarge__wrX4d0eOkvUv6kvpGZ6ewg)(tyObject_Table__u5L4byG0svNLA0OYq4TmxA* t) {	tySequence__9aslpbPC7Zz3Ti6qyChmX5w* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_225;	tySequence__9aslpbPC7Zz3Ti6qyChmX5w* T2_;	n_1 = (tySequence__9aslpbPC7Zz3Ti6qyChmX5w*)0;
+N_LIB_PRIVATE N_NIMCALL(void, enlarge__wrX4d0eOkvUv6kvpGZ6ewg)(tyObject_Table__u5L4byG0svNLA0OYq4TmxA* t) {	tySequence__9aslpbPC7Zz3Ti6qyChmX5w* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_252;	tySequence__9aslpbPC7Zz3Ti6qyChmX5w* T2_;	n_1 = (tySequence__9aslpbPC7Zz3Ti6qyChmX5w*)0;
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_225)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_225)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_225)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_225), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__9aslpbPC7Zz3Ti6qyChmX5w*) newSeq((&NTI__9aslpbPC7Zz3Ti6qyChmX5w_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_225))));
+	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_252)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_252)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_252)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_252), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__9aslpbPC7Zz3Ti6qyChmX5w*) newSeq((&NTI__9aslpbPC7Zz3Ti6qyChmX5w_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_252))));
 #line 269 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 	T2_ = (tySequence__9aslpbPC7Zz3Ti6qyChmX5w*)0;	T2_ = (*t).data;	unsureAsgnRef((void**) (&(*t).data), n_1);	n_1 = T2_;	{		NI i;		NI colontmp_;		NI T4_;		NI res;		i = (NI)0;		colontmp_ = (NI)0;
 #line 270 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -10342,7 +11659,7 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__wrX4d0eOkvUv6kvpGZ6ewg)(tyObject_Table__u
 #line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 		res = ((NI) 0);		{
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_226;
+			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_253;
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 				if (!(res <= colontmp_)) goto LA6;
 
@@ -10390,13 +11707,13 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__wrX4d0eOkvUv6kvpGZ6ewg)(tyObject_Table__u
 				LA10_: ;
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_226)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_226);			} LA6: ;
+				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_253)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_253);			} LA6: ;
 		}
 	}
 }
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGetKnownHC__LiJf9a8HP6arhUaTPxvS4LAtables)(tyObject_Table__u5L4byG0svNLA0OYq4TmxA t, tyObject_PubSubPeercolonObjectType___6rsvBHOjeRkx0KPoUqsmsw* key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_227;{	result = (NI)0;
+static N_INLINE(NI, rawGetKnownHC__LiJf9a8HP6arhUaTPxvS4LAtables)(tyObject_Table__u5L4byG0svNLA0OYq4TmxA t, tyObject_PubSubPeercolonObjectType___6rsvBHOjeRkx0KPoUqsmsw* key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_254;{	result = (NI)0;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -10453,7 +11770,7 @@ static N_INLINE(NI, rawGetKnownHC__LiJf9a8HP6arhUaTPxvS4LAtables)(tyObject_Table
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_227)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_227);	}BeforeRet_: ;
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_254)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_254);	}BeforeRet_: ;
 	return result;}
 
 #line 309 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -10500,7 +11817,7 @@ N_LIB_PRIVATE N_NIMCALL(void, X5BX5Deq___9bwSTc7JgRplEYSWsN9bfUrw)(tyObject_Tabl
 		genericSeqAssign((&(*t).data->data[index].Field2.ihave), (*val_0).ihave, (&NTI__8MW0JodCedjay9anGTGrBmA_));		genericSeqAssign((&(*t).data->data[index].Field2.iwant), (*val_0).iwant, (&NTI__zAf2abIhMjaomS6jkKP9a8w_));		genericSeqAssign((&(*t).data->data[index].Field2.graft), (*val_0).graft, (&NTI__IjDV3u39bZeDnOOTq5TAF5g_));		genericSeqAssign((&(*t).data->data[index].Field2.prune), (*val_0).prune, (&NTI__WSbLInFxGn0pnyF9cry8bUA_));	}
 	goto LA11_;
 	LA13_: ;
-	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_228;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_229;
+	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_255;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_256;
 #line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		{			NI T18_;
 #line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -10551,14 +11868,14 @@ N_LIB_PRIVATE N_NIMCALL(void, X5BX5Deq___9bwSTc7JgRplEYSWsN9bfUrw)(tyObject_Tabl
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_228)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_228);
+		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_255)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_255);
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		rawInsert__3dkp9cqtD49b9aQIW4K5PXYQw(t, (&(*t).data), key_0, val_0, hc, index);
 
 #line 60 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_229)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_229);	}
+		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_256)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_256);	}
 	LA11_: ;
 }
 
@@ -10577,7 +11894,7 @@ N_LIB_PRIVATE N_NIMCALL(tyObject_ControlMessage__R2iwvkxFY4f0aLqyHsJIng*, X5BX5D
 		if ((NU)(indexX60gensym17450425_) >= (NU)((*t).data ? (*t).data->Sup.len : 0)){ raiseIndexError2(indexX60gensym17450425_,((*t).data ? (*t).data->Sup.len : 0)-1); }		result = (&(*t).data->data[indexX60gensym17450425_].Field2);	}
 	goto LA1_;
 	LA3_: ;
-	{		tyObject_KeyError__t7nhKLvXTQS9cS8ByJU9bIag* T6_;		NimStringDesc* T7_;		T6_ = (tyObject_KeyError__t7nhKLvXTQS9cS8ByJU9bIag*)0;		T6_ = (tyObject_KeyError__t7nhKLvXTQS9cS8ByJU9bIag*) newObj((&NTI__8SzoIAgLw9ci2v0yafHj9b6Q_), sizeof(tyObject_KeyError__t7nhKLvXTQS9cS8ByJU9bIag));		(*T6_).Sup.Sup.Sup.Sup.m_type = (&NTI__t7nhKLvXTQS9cS8ByJU9bIag_);		(*T6_).Sup.Sup.Sup.name = "KeyError";		T7_ = (NimStringDesc*)0;		T7_ = (*T6_).Sup.Sup.Sup.message; (*T6_).Sup.Sup.Sup.message = copyStringRC1(((NimStringDesc*) &TM__4SoG2KRQy3oMm9aUzSLtGrA_57));		if (T7_) nimGCunrefNoCycle(T7_);		asgnRef((void**) (&(*T6_).Sup.Sup.Sup.parent), NIM_NIL);
+	{		tyObject_KeyError__t7nhKLvXTQS9cS8ByJU9bIag* T6_;		NimStringDesc* T7_;		T6_ = (tyObject_KeyError__t7nhKLvXTQS9cS8ByJU9bIag*)0;		T6_ = (tyObject_KeyError__t7nhKLvXTQS9cS8ByJU9bIag*) newObj((&NTI__8SzoIAgLw9ci2v0yafHj9b6Q_), sizeof(tyObject_KeyError__t7nhKLvXTQS9cS8ByJU9bIag));		(*T6_).Sup.Sup.Sup.Sup.m_type = (&NTI__t7nhKLvXTQS9cS8ByJU9bIag_);		(*T6_).Sup.Sup.Sup.name = "KeyError";		T7_ = (NimStringDesc*)0;		T7_ = (*T6_).Sup.Sup.Sup.message; (*T6_).Sup.Sup.Sup.message = copyStringRC1(((NimStringDesc*) &TM__4SoG2KRQy3oMm9aUzSLtGrA_84));		if (T7_) nimGCunrefNoCycle(T7_);		asgnRef((void**) (&(*T6_).Sup.Sup.Sup.parent), NIM_NIL);
 #line 264 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 		raiseExceptionEx((Exception*)T6_, "KeyError", "[]", "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/"
 "vendor/Nim/lib/pure/collections/tables.nim", 264);	}
@@ -10600,12 +11917,12 @@ N_LIB_PRIVATE N_NIMCALL(void, del__VjBjf9bpfj9b9b0Zyr0XQWo8w)(tyObject_Table__uc
 #line 112 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 	T1_ = (((*t).data ? (*t).data->Sup.len : 0)-1);	mskX60gensym17450588_ = T1_;
 #line 519 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_230;
+	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_257;
 #line 113 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		if (!(((NI) 0) <= i)) goto LA4_;
 
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimSubInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_230)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_230);		{			{
+		if (nimSubInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_257)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_257);		{			{
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 				while (1) {					NI jX60gensym17450590_;					NI rX60gensym17450591_;
 #line 117 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -10623,13 +11940,13 @@ N_LIB_PRIVATE N_NIMCALL(void, del__VjBjf9bpfj9b9b0Zyr0XQWo8w)(tyObject_Table__uc
 #line 121 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 					chckNil((void*)(&(*t).data->data[i].Field2));					unsureAsgnRef((void**)&(*t).data->data[i].Field2.fromPeer.data, NIM_NIL);					unsureAsgnRef((void**)&(*t).data->data[i].Field2.data, NIM_NIL);					unsureAsgnRef((void**)&(*t).data->data[i].Field2.seqno, NIM_NIL);					unsureAsgnRef((void**)&(*t).data->data[i].Field2.topicIDs, NIM_NIL);					unsureAsgnRef((void**)&(*t).data->data[i].Field2.signature, NIM_NIL);					unsureAsgnRef((void**)&(*t).data->data[i].Field2.key, NIM_NIL);					{
 #line 122 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-						while (1) {							NI TM__4SoG2KRQy3oMm9aUzSLtGrA_231;
+						while (1) {							NI TM__4SoG2KRQy3oMm9aUzSLtGrA_258;
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-							if (nimAddInt(i, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_231)) { raiseOverflow(); };							i = (NI)((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_231) & mskX60gensym17450588_);
+							if (nimAddInt(i, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_258)) { raiseOverflow(); };							i = (NI)((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_258) & mskX60gensym17450588_);
 #line 124 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 							{								NIM_BOOL T13_;
 #line 124 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -10904,7 +12221,7 @@ static N_INLINE(NIM_BOOL, nimDivInt)(NI a, NI b, NI* res) {	NIM_BOOL result;	res
 	return result;}
 
 #line 36 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rightSize__LvRw9cAKRC9b1pD3bnSd1DdAtables)(NI count_0) {	NI result;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_256;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_257;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_258;	result = (NI)0;
+static N_INLINE(NI, rightSize__LvRw9cAKRC9b1pD3bnSd1DdAtables)(NI count_0) {	NI result;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_283;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_284;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_285;	result = (NI)0;
 #line 43 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 43 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -10912,12 +12229,12 @@ static N_INLINE(NI, rightSize__LvRw9cAKRC9b1pD3bnSd1DdAtables)(NI count_0) {	NI 
 #line 43 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 43 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimMulInt(((NI) (count_0)), ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_256)) { raiseOverflow(); };	if (((NI) 2) == 0){ raiseDivByZero(); }	if (nimDivInt((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_256), ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_257)) { raiseOverflow(); };	if (nimAddInt((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_257), ((NI) 4), &TM__4SoG2KRQy3oMm9aUzSLtGrA_258)) { raiseOverflow(); };
+	if (nimMulInt(((NI) (count_0)), ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_283)) { raiseOverflow(); };	if (((NI) 2) == 0){ raiseDivByZero(); }	if (nimDivInt((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_283), ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_284)) { raiseOverflow(); };	if (nimAddInt((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_284), ((NI) 4), &TM__4SoG2KRQy3oMm9aUzSLtGrA_285)) { raiseOverflow(); };
 #line 43 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	result = nextPowerOfTwo__v2qC0V55wqa9bmqc7eHTz8A((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_258));	return result;}
+	result = nextPowerOfTwo__v2qC0V55wqa9bmqc7eHTz8A((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_285));	return result;}
 
 #line 76 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGet__rtOJIKZRkH0ye0O3ElqOJwtables)(tyObject_Table__UvSlGqDg4nWNM1wskOFQeg t, NimStringDesc* key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_259;{	result = (NI)0;
+static N_INLINE(NI, rawGet__rtOJIKZRkH0ye0O3ElqOJwtables)(tyObject_Table__UvSlGqDg4nWNM1wskOFQeg t, NimStringDesc* key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_286;{	result = (NI)0;
 #line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -10987,11 +12304,11 @@ static N_INLINE(NI, rawGet__rtOJIKZRkH0ye0O3ElqOJwtables)(tyObject_Table__UvSlGq
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_259)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_259);	}BeforeRet_: ;
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_286)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_286);	}BeforeRet_: ;
 	return result;}
 
 #line 32 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NIM_BOOL, mustRehash__DV49a9a0OytLJSFaGswukobAtables)(tyObject_Table__UvSlGqDg4nWNM1wskOFQeg t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_260;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_261;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_262;	result = (NIM_BOOL)0;
+static N_INLINE(NIM_BOOL, mustRehash__DV49a9a0OytLJSFaGswukobAtables)(tyObject_Table__UvSlGqDg4nWNM1wskOFQeg t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_287;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_288;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_289;	result = (NIM_BOOL)0;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -11017,16 +12334,16 @@ static N_INLINE(NIM_BOOL, mustRehash__DV49a9a0OytLJSFaGswukobAtables)(tyObject_T
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_260)) { raiseOverflow(); };
+	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_287)) { raiseOverflow(); };
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_261)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_260) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_261));	if (T6_) goto LA8_;
+	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_288)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_287) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_288));	if (T6_) goto LA8_;
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_262)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_262) < ((NI) 4));	LA8_: ;
+	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_289)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_289) < ((NI) 4));	LA8_: ;
 	result = T6_;	return result;}
 
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -11039,13 +12356,13 @@ N_LIB_PRIVATE N_NIMCALL(void, rawInsert__4H4yydyNilvrrY9brz0MN9cw)(tyObject_Tabl
 	(*data_0)->data[h_0].Field0 = hc;}
 
 #line 266 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-N_LIB_PRIVATE N_NIMCALL(void, enlarge__1ET8xYnHokqyfFvbcKUKVQ)(tyObject_Table__UvSlGqDg4nWNM1wskOFQeg* t) {	tySequence__9bnMQh9b5oMSxlDf1K9buBp7w* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_263;	tySequence__9bnMQh9b5oMSxlDf1K9buBp7w* T2_;	n_1 = (tySequence__9bnMQh9b5oMSxlDf1K9buBp7w*)0;
+N_LIB_PRIVATE N_NIMCALL(void, enlarge__1ET8xYnHokqyfFvbcKUKVQ)(tyObject_Table__UvSlGqDg4nWNM1wskOFQeg* t) {	tySequence__9bnMQh9b5oMSxlDf1K9buBp7w* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_290;	tySequence__9bnMQh9b5oMSxlDf1K9buBp7w* T2_;	n_1 = (tySequence__9bnMQh9b5oMSxlDf1K9buBp7w*)0;
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_263)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_263)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_263)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_263), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__9bnMQh9b5oMSxlDf1K9buBp7w*) newSeq((&NTI__9bnMQh9b5oMSxlDf1K9buBp7w_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_263))));
+	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_290)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_290)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_290)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_290), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__9bnMQh9b5oMSxlDf1K9buBp7w*) newSeq((&NTI__9bnMQh9b5oMSxlDf1K9buBp7w_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_290))));
 #line 269 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 	T2_ = (tySequence__9bnMQh9b5oMSxlDf1K9buBp7w*)0;	T2_ = (*t).data;	unsureAsgnRef((void**) (&(*t).data), n_1);	n_1 = T2_;	{		NI i;		NI colontmp_;		NI T4_;		NI res;		i = (NI)0;		colontmp_ = (NI)0;
 #line 270 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -11055,7 +12372,7 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__1ET8xYnHokqyfFvbcKUKVQ)(tyObject_Table__U
 #line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 		res = ((NI) 0);		{
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_264;
+			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_291;
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 				if (!(res <= colontmp_)) goto LA6;
 
@@ -11103,13 +12420,13 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__1ET8xYnHokqyfFvbcKUKVQ)(tyObject_Table__U
 				LA10_: ;
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_264)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_264);			} LA6: ;
+				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_291)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_291);			} LA6: ;
 		}
 	}
 }
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGetKnownHC__fXLx2UAHt9aAo9bmwgg8DpbQtables)(tyObject_Table__UvSlGqDg4nWNM1wskOFQeg t, NimStringDesc* key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_265;{	result = (NI)0;
+static N_INLINE(NI, rawGetKnownHC__fXLx2UAHt9aAo9bmwgg8DpbQtables)(tyObject_Table__UvSlGqDg4nWNM1wskOFQeg t, NimStringDesc* key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_292;{	result = (NI)0;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -11166,7 +12483,7 @@ static N_INLINE(NI, rawGetKnownHC__fXLx2UAHt9aAo9bmwgg8DpbQtables)(tyObject_Tabl
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_265)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_265);	}BeforeRet_: ;
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_292)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_292);	}BeforeRet_: ;
 	return result;}
 
 #line 309 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -11213,7 +12530,7 @@ N_LIB_PRIVATE N_NIMCALL(void, X5BX5Deq___BJPSOJGEKNMWOH9aXCfoahA)(tyObject_Table
 		asgnRef((void**) (&(*t).data->data[index].Field2), val_0);	}
 	goto LA11_;
 	LA13_: ;
-	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_266;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_267;
+	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_293;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_294;
 #line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		{			NI T18_;
 #line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -11264,14 +12581,14 @@ N_LIB_PRIVATE N_NIMCALL(void, X5BX5Deq___BJPSOJGEKNMWOH9aXCfoahA)(tyObject_Table
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_266)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_266);
+		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_293)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_293);
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		rawInsert__4H4yydyNilvrrY9brz0MN9cw(t, (&(*t).data), key_0, val_0, hc, index);
 
 #line 60 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_267)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_267);	}
+		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_294)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_294);	}
 	LA11_: ;
 }
 
@@ -11291,7 +12608,7 @@ N_LIB_PRIVATE N_NIMCALL(void, toTable__t08hRJpLxUjAQmB2SFOxVg)(tyTuple__rViK9a9b
 #line 3 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators.nim"
 		i = ((NI) 0);		{
 #line 4 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators.nim"
-			while (1) {				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_268;
+			while (1) {				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_295;
 #line 4 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators.nim"
 
 #line 4 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators.nim"
@@ -11307,7 +12624,7 @@ N_LIB_PRIVATE N_NIMCALL(void, toTable__t08hRJpLxUjAQmB2SFOxVg)(tyTuple__rViK9a9b
 				X5BX5Deq___BJPSOJGEKNMWOH9aXCfoahA(Result, key_1, val_1);
 
 #line 6 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators.nim"
-				if (nimAddInt(i, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_268)) { raiseOverflow(); };				i = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_268);			} LA4: ;
+				if (nimAddInt(i, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_295)) { raiseOverflow(); };				i = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_295);			} LA4: ;
 		}
 	}
 }
@@ -11386,7 +12703,7 @@ N_LIB_PRIVATE N_NIMCALL(NIM_BOOL, contains__HKEIQLMrjpe1lPhrNEbV5Q)(tyObject_Tab
 	return result;}
 
 #line 32 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NIM_BOOL, mustRehash__hSSBEzti0CsM39a7bZNbwvQtables)(tyObject_Table__I17elwrgUkVdxGLUkHiM7w t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_269;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_270;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_271;	result = (NIM_BOOL)0;
+static N_INLINE(NIM_BOOL, mustRehash__hSSBEzti0CsM39a7bZNbwvQtables)(tyObject_Table__I17elwrgUkVdxGLUkHiM7w t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_296;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_297;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_298;	result = (NIM_BOOL)0;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -11412,16 +12729,16 @@ static N_INLINE(NIM_BOOL, mustRehash__hSSBEzti0CsM39a7bZNbwvQtables)(tyObject_Ta
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_269)) { raiseOverflow(); };
+	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_296)) { raiseOverflow(); };
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_270)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_269) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_270));	if (T6_) goto LA8_;
+	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_297)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_296) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_297));	if (T6_) goto LA8_;
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_271)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_271) < ((NI) 4));	LA8_: ;
+	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_298)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_298) < ((NI) 4));	LA8_: ;
 	result = T6_;	return result;}
 
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -11434,13 +12751,13 @@ N_LIB_PRIVATE N_NIMCALL(void, rawInsert__lkCP9bQ1GqS0RiN6Q419aFTQ)(tyObject_Tabl
 	(*data_0)->data[h_0].Field0 = hc;}
 
 #line 266 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-N_LIB_PRIVATE N_NIMCALL(void, enlarge__vWvVtKqI3CuNEkWtS1b6MQ)(tyObject_Table__I17elwrgUkVdxGLUkHiM7w* t) {	tySequence__MZ7ub66T4nzKtipo9bkiB3g* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_272;	tySequence__MZ7ub66T4nzKtipo9bkiB3g* T2_;	n_1 = (tySequence__MZ7ub66T4nzKtipo9bkiB3g*)0;
+N_LIB_PRIVATE N_NIMCALL(void, enlarge__vWvVtKqI3CuNEkWtS1b6MQ)(tyObject_Table__I17elwrgUkVdxGLUkHiM7w* t) {	tySequence__MZ7ub66T4nzKtipo9bkiB3g* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_299;	tySequence__MZ7ub66T4nzKtipo9bkiB3g* T2_;	n_1 = (tySequence__MZ7ub66T4nzKtipo9bkiB3g*)0;
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_272)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_272)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_272)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_272), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__MZ7ub66T4nzKtipo9bkiB3g*) newSeq((&NTI__MZ7ub66T4nzKtipo9bkiB3g_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_272))));
+	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_299)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_299)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_299)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_299), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__MZ7ub66T4nzKtipo9bkiB3g*) newSeq((&NTI__MZ7ub66T4nzKtipo9bkiB3g_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_299))));
 #line 269 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 	T2_ = (tySequence__MZ7ub66T4nzKtipo9bkiB3g*)0;	T2_ = (*t).data;	unsureAsgnRef((void**) (&(*t).data), n_1);	n_1 = T2_;	{		NI i;		NI colontmp_;		NI T4_;		NI res;		i = (NI)0;		colontmp_ = (NI)0;
 #line 270 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -11450,7 +12767,7 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__vWvVtKqI3CuNEkWtS1b6MQ)(tyObject_Table__I
 #line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 		res = ((NI) 0);		{
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_273;
+			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_300;
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 				if (!(res <= colontmp_)) goto LA6;
 
@@ -11498,13 +12815,13 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__vWvVtKqI3CuNEkWtS1b6MQ)(tyObject_Table__I
 				LA10_: ;
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_273)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_273);			} LA6: ;
+				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_300)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_300);			} LA6: ;
 		}
 	}
 }
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGetKnownHC__6OMDgzv2w9basCuwoKhMdLAtables)(tyObject_Table__I17elwrgUkVdxGLUkHiM7w t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_274;{	result = (NI)0;
+static N_INLINE(NI, rawGetKnownHC__6OMDgzv2w9basCuwoKhMdLAtables)(tyObject_Table__I17elwrgUkVdxGLUkHiM7w t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_301;{	result = (NI)0;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -11565,7 +12882,7 @@ static N_INLINE(NI, rawGetKnownHC__6OMDgzv2w9basCuwoKhMdLAtables)(tyObject_Table
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_274)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_274);	}BeforeRet_: ;
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_301)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_301);	}BeforeRet_: ;
 	return result;}
 
 #line 309 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -11612,7 +12929,7 @@ N_LIB_PRIVATE N_NIMCALL(void, X5BX5Deq___gXqHofgivyLCmsb39cj9aQ9cg)(tyObject_Tab
 		genericSeqAssign((&(*t).data->data[index].Field2.data), val_0.data, (&NTI__cW009cpGr48I9beZmtalOKSg_));		(*t).data->data[index].Field2.counter = val_0.counter;	}
 	goto LA11_;
 	LA13_: ;
-	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_275;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_276;
+	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_302;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_303;
 #line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		{			NI T18_;
 #line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -11663,14 +12980,14 @@ N_LIB_PRIVATE N_NIMCALL(void, X5BX5Deq___gXqHofgivyLCmsb39cj9aQ9cg)(tyObject_Tab
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_275)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_275);
+		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_302)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_302);
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		rawInsert__lkCP9bQ1GqS0RiN6Q419aFTQ(t, (&(*t).data), key_0, val_0, hc, index);
 
 #line 60 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_276)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_276);	}
+		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_303)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_303);	}
 	LA11_: ;
 }
 
@@ -11710,7 +13027,7 @@ static N_INLINE(NI, hash__RKI9au2OZxHuwA0kRnJ1hbwhashes)(tyEnum_ConnEventKind__o
 	result = ((NI) (x_0));	return result;}
 
 #line 76 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGet__ukimJBVSAr9bQ7v6w9aShlrQtables)(tyObject_Table__20RES39b6cbF1gUxzrH9b8Yg t, tyEnum_ConnEventKind__oN5wkUyGVn1qXLGZW9c7EIQ key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_277;{	result = (NI)0;
+static N_INLINE(NI, rawGet__ukimJBVSAr9bQ7v6w9aShlrQtables)(tyObject_Table__20RES39b6cbF1gUxzrH9b8Yg t, tyEnum_ConnEventKind__oN5wkUyGVn1qXLGZW9c7EIQ key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_304;{	result = (NI)0;
 #line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -11780,7 +13097,7 @@ static N_INLINE(NI, rawGet__ukimJBVSAr9bQ7v6w9aShlrQtables)(tyObject_Table__20RE
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_277)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_277);	}BeforeRet_: ;
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_304)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_304);	}BeforeRet_: ;
 	return result;}
 
 #line 380 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -11839,7 +13156,7 @@ static N_INLINE(NI, hash__mCvNMfD9adv2RP7TUrHtT3ghashes)(tyEnum_PeerEventKind__g
 	result = ((NI) (x_0));	return result;}
 
 #line 76 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGet__F57tOLo2NWfYOWEZLISHSgtables)(tyObject_Table__R0uaAE15CtLzKRaa3nIdMQ t, tyEnum_PeerEventKind__g6Y0xj8kFQNqwpb26iimZw key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_278;{	result = (NI)0;
+static N_INLINE(NI, rawGet__F57tOLo2NWfYOWEZLISHSgtables)(tyObject_Table__R0uaAE15CtLzKRaa3nIdMQ t, tyEnum_PeerEventKind__g6Y0xj8kFQNqwpb26iimZw key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_305;{	result = (NI)0;
 #line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -11909,7 +13226,7 @@ static N_INLINE(NI, rawGet__F57tOLo2NWfYOWEZLISHSgtables)(tyObject_Table__R0uaAE
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_278)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_278);	}BeforeRet_: ;
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_305)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_305);	}BeforeRet_: ;
 	return result;}
 
 #line 380 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -11982,12 +13299,12 @@ N_LIB_PRIVATE N_NIMCALL(NIM_BOOL, pop__8yVx0o18Nq2ssY7wXGB5zA)(tyObject_Table__8
 #line 112 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		T5_ = (((*t).data ? (*t).data->Sup.len : 0)-1);		mskX60gensym17450623_ = T5_;
 #line 547 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-		{			NI TM__4SoG2KRQy3oMm9aUzSLtGrA_279;
+		{			NI TM__4SoG2KRQy3oMm9aUzSLtGrA_306;
 #line 113 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 			if (!(((NI) 0) <= index)) goto LA8_;
 
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-			if (nimSubInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_279)) { raiseOverflow(); };			(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_279);			{				{
+			if (nimSubInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_306)) { raiseOverflow(); };			(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_306);			{				{
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 					while (1) {						NI jX60gensym17450625_;						NI rX60gensym17450626_;
 #line 117 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -12005,13 +13322,13 @@ N_LIB_PRIVATE N_NIMCALL(NIM_BOOL, pop__8yVx0o18Nq2ssY7wXGB5zA)(tyObject_Table__8
 #line 121 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 						chckNil((void*)(&(*t).data->data[index].Field2));						unsureAsgnRef((void**)&(*t).data->data[index].Field2.muxer, NIM_NIL);						unsureAsgnRef((void**)&(*t).data->data[index].Field2.handle, NIM_NIL);						{
 #line 122 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-							while (1) {								NI TM__4SoG2KRQy3oMm9aUzSLtGrA_280;
+							while (1) {								NI TM__4SoG2KRQy3oMm9aUzSLtGrA_307;
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-								if (nimAddInt(index, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_280)) { raiseOverflow(); };								index = (NI)((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_280) & mskX60gensym17450623_);
+								if (nimAddInt(index, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_307)) { raiseOverflow(); };								index = (NI)((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_307) & mskX60gensym17450623_);
 #line 124 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 								{									NIM_BOOL T17_;
 #line 124 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -12095,12 +13412,12 @@ N_LIB_PRIVATE N_NIMCALL(void, del__TLH9bu1repD9cmVsXU263b7A)(tyObject_Table__I17
 #line 112 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 	T1_ = (((*t).data ? (*t).data->Sup.len : 0)-1);	mskX60gensym17450588_ = T1_;
 #line 519 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_281;
+	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_308;
 #line 113 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		if (!(((NI) 0) <= i)) goto LA4_;
 
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimSubInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_281)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_281);		{			{
+		if (nimSubInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_308)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_308);		{			{
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 				while (1) {					NI jX60gensym17450590_;					NI rX60gensym17450591_;
 #line 117 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -12118,13 +13435,13 @@ N_LIB_PRIVATE N_NIMCALL(void, del__TLH9bu1repD9cmVsXU263b7A)(tyObject_Table__I17
 #line 121 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 					chckNil((void*)(&(*t).data->data[i].Field2));					unsureAsgnRef((void**)&(*t).data->data[i].Field2.data, NIM_NIL);					(*t).data->data[i].Field2.counter = 0;					{
 #line 122 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-						while (1) {							NI TM__4SoG2KRQy3oMm9aUzSLtGrA_282;
+						while (1) {							NI TM__4SoG2KRQy3oMm9aUzSLtGrA_309;
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-							if (nimAddInt(i, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_282)) { raiseOverflow(); };							i = (NI)((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_282) & mskX60gensym17450588_);
+							if (nimAddInt(i, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_309)) { raiseOverflow(); };							i = (NI)((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_309) & mskX60gensym17450588_);
 #line 124 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 							{								NIM_BOOL T13_;
 #line 124 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -12201,7 +13518,7 @@ N_LIB_PRIVATE N_NIMCALL(NI, len__ro2cCh6pNoqGlW9c41NHvtw)(tyObject_Table__I17elw
 	result = t.counter;	return result;}
 
 #line 32 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NIM_BOOL, mustRehash__BehosKjLA2BYBi8OmomwGQtables)(tyObject_Table__8uqzpFmoqV4exdDArFo5wQ t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_283;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_284;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_285;	result = (NIM_BOOL)0;
+static N_INLINE(NIM_BOOL, mustRehash__BehosKjLA2BYBi8OmomwGQtables)(tyObject_Table__8uqzpFmoqV4exdDArFo5wQ t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_310;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_311;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_312;	result = (NIM_BOOL)0;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -12227,16 +13544,16 @@ static N_INLINE(NIM_BOOL, mustRehash__BehosKjLA2BYBi8OmomwGQtables)(tyObject_Tab
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_283)) { raiseOverflow(); };
+	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_310)) { raiseOverflow(); };
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_284)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_283) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_284));	if (T6_) goto LA8_;
+	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_311)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_310) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_311));	if (T6_) goto LA8_;
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_285)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_285) < ((NI) 4));	LA8_: ;
+	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_312)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_312) < ((NI) 4));	LA8_: ;
 	result = T6_;	return result;}
 
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -12249,13 +13566,13 @@ N_LIB_PRIVATE N_NIMCALL(void, rawInsert__ICwlWIYcawr9a9aJh765WSvw)(tyObject_Tabl
 	(*data_0)->data[h_0].Field0 = hc;}
 
 #line 266 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-N_LIB_PRIVATE N_NIMCALL(void, enlarge__wIe9atLq4NBpD9a6UPlIPdqA)(tyObject_Table__8uqzpFmoqV4exdDArFo5wQ* t) {	tySequence__ECp2Vf3ySxXeY0xLJSyjyA* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_286;	tySequence__ECp2Vf3ySxXeY0xLJSyjyA* T2_;	n_1 = (tySequence__ECp2Vf3ySxXeY0xLJSyjyA*)0;
+N_LIB_PRIVATE N_NIMCALL(void, enlarge__wIe9atLq4NBpD9a6UPlIPdqA)(tyObject_Table__8uqzpFmoqV4exdDArFo5wQ* t) {	tySequence__ECp2Vf3ySxXeY0xLJSyjyA* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_313;	tySequence__ECp2Vf3ySxXeY0xLJSyjyA* T2_;	n_1 = (tySequence__ECp2Vf3ySxXeY0xLJSyjyA*)0;
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_286)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_286)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_286)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_286), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__ECp2Vf3ySxXeY0xLJSyjyA*) newSeq((&NTI__ECp2Vf3ySxXeY0xLJSyjyA_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_286))));
+	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_313)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_313)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_313)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_313), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__ECp2Vf3ySxXeY0xLJSyjyA*) newSeq((&NTI__ECp2Vf3ySxXeY0xLJSyjyA_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_313))));
 #line 269 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 	T2_ = (tySequence__ECp2Vf3ySxXeY0xLJSyjyA*)0;	T2_ = (*t).data;	unsureAsgnRef((void**) (&(*t).data), n_1);	n_1 = T2_;	{		NI i;		NI colontmp_;		NI T4_;		NI res;		i = (NI)0;		colontmp_ = (NI)0;
 #line 270 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -12265,7 +13582,7 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__wIe9atLq4NBpD9a6UPlIPdqA)(tyObject_Table_
 #line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 		res = ((NI) 0);		{
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_287;
+			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_314;
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 				if (!(res <= colontmp_)) goto LA6;
 
@@ -12313,13 +13630,13 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__wIe9atLq4NBpD9a6UPlIPdqA)(tyObject_Table_
 				LA10_: ;
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_287)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_287);			} LA6: ;
+				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_314)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_314);			} LA6: ;
 		}
 	}
 }
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGetKnownHC__gI4T3T9bd07P9aLODPSMyHlgtables)(tyObject_Table__8uqzpFmoqV4exdDArFo5wQ t, tyObject_ConnectioncolonObjectType___crfbBHXu3U647CckYkg9cYg* key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_288;{	result = (NI)0;
+static N_INLINE(NI, rawGetKnownHC__gI4T3T9bd07P9aLODPSMyHlgtables)(tyObject_Table__8uqzpFmoqV4exdDArFo5wQ t, tyObject_ConnectioncolonObjectType___crfbBHXu3U647CckYkg9cYg* key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_315;{	result = (NI)0;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -12376,7 +13693,7 @@ static N_INLINE(NI, rawGetKnownHC__gI4T3T9bd07P9aLODPSMyHlgtables)(tyObject_Tabl
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_288)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_288);	}BeforeRet_: ;
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_315)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_315);	}BeforeRet_: ;
 	return result;}
 
 #line 309 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -12423,7 +13740,7 @@ N_LIB_PRIVATE N_NIMCALL(void, X5BX5Deq___aBH6rzacLutU2vAkcF7xlg)(tyObject_Table_
 		asgnRef((void**) (&(*t).data->data[index].Field2.muxer), val_0.muxer);		asgnRef((void**) (&(*t).data->data[index].Field2.handle), val_0.handle);	}
 	goto LA11_;
 	LA13_: ;
-	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_289;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_290;
+	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_316;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_317;
 #line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		{			NI T18_;
 #line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -12474,19 +13791,19 @@ N_LIB_PRIVATE N_NIMCALL(void, X5BX5Deq___aBH6rzacLutU2vAkcF7xlg)(tyObject_Table_
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_289)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_289);
+		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_316)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_316);
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		rawInsert__ICwlWIYcawr9a9aJh765WSvw(t, (&(*t).data), key_0, val_0, hc, index);
 
 #line 60 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_290)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_290);	}
+		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_317)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_317);	}
 	LA11_: ;
 }
 
 #line 32 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NIM_BOOL, mustRehash__9ctm2nQxTGpwCRf9agDxLAUgtables)(tyObject_Table__20RES39b6cbF1gUxzrH9b8Yg t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_291;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_292;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_293;	result = (NIM_BOOL)0;
+static N_INLINE(NIM_BOOL, mustRehash__9ctm2nQxTGpwCRf9agDxLAUgtables)(tyObject_Table__20RES39b6cbF1gUxzrH9b8Yg t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_318;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_319;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_320;	result = (NIM_BOOL)0;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -12512,16 +13829,16 @@ static N_INLINE(NIM_BOOL, mustRehash__9ctm2nQxTGpwCRf9agDxLAUgtables)(tyObject_T
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_291)) { raiseOverflow(); };
+	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_318)) { raiseOverflow(); };
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_292)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_291) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_292));	if (T6_) goto LA8_;
+	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_319)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_318) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_319));	if (T6_) goto LA8_;
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_293)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_293) < ((NI) 4));	LA8_: ;
+	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_320)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_320) < ((NI) 4));	LA8_: ;
 	result = T6_;	return result;}
 
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -12534,13 +13851,13 @@ N_LIB_PRIVATE N_NIMCALL(void, rawInsert__jqu6UqzzU3Gm2NmBzAp8Pw)(tyObject_Table_
 	(*data_0)->data[h_0].Field0 = hc;}
 
 #line 266 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-N_LIB_PRIVATE N_NIMCALL(void, enlarge__tYUNSi1oDt0Wia2l9aqsvvQ)(tyObject_Table__20RES39b6cbF1gUxzrH9b8Yg* t) {	tySequence__O39cGnfZ9b59b9bpYt9c3ee9cnHw* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_294;	tySequence__O39cGnfZ9b59b9bpYt9c3ee9cnHw* T2_;	n_1 = (tySequence__O39cGnfZ9b59b9bpYt9c3ee9cnHw*)0;
+N_LIB_PRIVATE N_NIMCALL(void, enlarge__tYUNSi1oDt0Wia2l9aqsvvQ)(tyObject_Table__20RES39b6cbF1gUxzrH9b8Yg* t) {	tySequence__O39cGnfZ9b59b9bpYt9c3ee9cnHw* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_321;	tySequence__O39cGnfZ9b59b9bpYt9c3ee9cnHw* T2_;	n_1 = (tySequence__O39cGnfZ9b59b9bpYt9c3ee9cnHw*)0;
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_294)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_294)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_294)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_294), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__O39cGnfZ9b59b9bpYt9c3ee9cnHw*) newSeq((&NTI__O39cGnfZ9b59b9bpYt9c3ee9cnHw_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_294))));
+	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_321)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_321)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_321)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_321), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__O39cGnfZ9b59b9bpYt9c3ee9cnHw*) newSeq((&NTI__O39cGnfZ9b59b9bpYt9c3ee9cnHw_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_321))));
 #line 269 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 	T2_ = (tySequence__O39cGnfZ9b59b9bpYt9c3ee9cnHw*)0;	T2_ = (*t).data;	unsureAsgnRef((void**) (&(*t).data), n_1);	n_1 = T2_;	{		NI i;		NI colontmp_;		NI T4_;		NI res;		i = (NI)0;		colontmp_ = (NI)0;
 #line 270 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -12550,7 +13867,7 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__tYUNSi1oDt0Wia2l9aqsvvQ)(tyObject_Table__
 #line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 		res = ((NI) 0);		{
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_295;
+			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_322;
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 				if (!(res <= colontmp_)) goto LA6;
 
@@ -12598,13 +13915,13 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__tYUNSi1oDt0Wia2l9aqsvvQ)(tyObject_Table__
 				LA10_: ;
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_295)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_295);			} LA6: ;
+				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_322)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_322);			} LA6: ;
 		}
 	}
 }
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGetKnownHC__P1ikX6C44nKb4piWK2GzFAtables)(tyObject_Table__20RES39b6cbF1gUxzrH9b8Yg t, tyEnum_ConnEventKind__oN5wkUyGVn1qXLGZW9c7EIQ key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_296;{	result = (NI)0;
+static N_INLINE(NI, rawGetKnownHC__P1ikX6C44nKb4piWK2GzFAtables)(tyObject_Table__20RES39b6cbF1gUxzrH9b8Yg t, tyEnum_ConnEventKind__oN5wkUyGVn1qXLGZW9c7EIQ key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_323;{	result = (NI)0;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -12661,7 +13978,7 @@ static N_INLINE(NI, rawGetKnownHC__P1ikX6C44nKb4piWK2GzFAtables)(tyObject_Table_
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_296)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_296);	}BeforeRet_: ;
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_323)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_323);	}BeforeRet_: ;
 	return result;}
 
 #line 465 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -12700,7 +14017,7 @@ N_LIB_PRIVATE N_NIMCALL(tyObject_OrderedSet__DjcJvTVLhu1GVCpTORQfDQ*, mgetOrPut_
 #line 65 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 	index = rawGet__ukimJBVSAr9bQ7v6w9aShlrQtables((*t), key_0, (&hc));
 #line 66 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_297;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_298;
+	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_324;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_325;
 #line 66 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		if (!(index < ((NI) 0))) goto LA13_;
 
@@ -12754,21 +14071,21 @@ N_LIB_PRIVATE N_NIMCALL(tyObject_OrderedSet__DjcJvTVLhu1GVCpTORQfDQ*, mgetOrPut_
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_297)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_297);
+		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_324)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_324);
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		rawInsert__jqu6UqzzU3Gm2NmBzAp8Pw(t, (&(*t).data), key_0, val_0, hc, index);
 
 #line 68 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_298)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_298);	}
+		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_325)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_325);	}
 	LA13_: ;
 
 #line 70 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 	if ((NU)(index) >= (NU)((*t).data ? (*t).data->Sup.len : 0)){ raiseIndexError2(index,((*t).data ? (*t).data->Sup.len : 0)-1); }	result = (&(*t).data->data[index].Field2);	return result;}
 
 #line 76 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGet__Kf9bn1rDJDWL1P2h76oO6Kgtables)(tyObject_Table__HDUOEieUs1GSseLU5qS67Q t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_299;{	result = (NI)0;
+static N_INLINE(NI, rawGet__Kf9bn1rDJDWL1P2h76oO6Kgtables)(tyObject_Table__HDUOEieUs1GSseLU5qS67Q t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_326;{	result = (NI)0;
 #line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -12842,11 +14159,11 @@ static N_INLINE(NI, rawGet__Kf9bn1rDJDWL1P2h76oO6Kgtables)(tyObject_Table__HDUOE
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_299)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_299);	}BeforeRet_: ;
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_326)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_326);	}BeforeRet_: ;
 	return result;}
 
 #line 32 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NIM_BOOL, mustRehash__XT49ajHml1WoMVqlola8axgtables)(tyObject_Table__HDUOEieUs1GSseLU5qS67Q t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_300;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_301;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_302;	result = (NIM_BOOL)0;
+static N_INLINE(NIM_BOOL, mustRehash__XT49ajHml1WoMVqlola8axgtables)(tyObject_Table__HDUOEieUs1GSseLU5qS67Q t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_327;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_328;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_329;	result = (NIM_BOOL)0;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -12872,16 +14189,16 @@ static N_INLINE(NIM_BOOL, mustRehash__XT49ajHml1WoMVqlola8axgtables)(tyObject_Ta
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_300)) { raiseOverflow(); };
+	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_327)) { raiseOverflow(); };
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_301)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_300) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_301));	if (T6_) goto LA8_;
+	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_328)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_327) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_328));	if (T6_) goto LA8_;
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_302)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_302) < ((NI) 4));	LA8_: ;
+	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_329)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_329) < ((NI) 4));	LA8_: ;
 	result = T6_;	return result;}
 
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -12894,13 +14211,13 @@ N_LIB_PRIVATE N_NIMCALL(void, rawInsert__aLF779aVYTm4b33ReH09a58w)(tyObject_Tabl
 	(*data_0)->data[h_0].Field0 = hc;}
 
 #line 266 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-N_LIB_PRIVATE N_NIMCALL(void, enlarge__MLgGfQL17a5FF1e69cuphAA)(tyObject_Table__HDUOEieUs1GSseLU5qS67Q* t) {	tySequence__9cAdNiuOt3vPbm6XF7oLMIw* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_303;	tySequence__9cAdNiuOt3vPbm6XF7oLMIw* T2_;	n_1 = (tySequence__9cAdNiuOt3vPbm6XF7oLMIw*)0;
+N_LIB_PRIVATE N_NIMCALL(void, enlarge__MLgGfQL17a5FF1e69cuphAA)(tyObject_Table__HDUOEieUs1GSseLU5qS67Q* t) {	tySequence__9cAdNiuOt3vPbm6XF7oLMIw* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_330;	tySequence__9cAdNiuOt3vPbm6XF7oLMIw* T2_;	n_1 = (tySequence__9cAdNiuOt3vPbm6XF7oLMIw*)0;
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_303)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_303)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_303)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_303), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__9cAdNiuOt3vPbm6XF7oLMIw*) newSeq((&NTI__9cAdNiuOt3vPbm6XF7oLMIw_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_303))));
+	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_330)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_330)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_330)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_330), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__9cAdNiuOt3vPbm6XF7oLMIw*) newSeq((&NTI__9cAdNiuOt3vPbm6XF7oLMIw_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_330))));
 #line 269 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 	T2_ = (tySequence__9cAdNiuOt3vPbm6XF7oLMIw*)0;	T2_ = (*t).data;	unsureAsgnRef((void**) (&(*t).data), n_1);	n_1 = T2_;	{		NI i;		NI colontmp_;		NI T4_;		NI res;		i = (NI)0;		colontmp_ = (NI)0;
 #line 270 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -12910,7 +14227,7 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__MLgGfQL17a5FF1e69cuphAA)(tyObject_Table__
 #line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 		res = ((NI) 0);		{
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_304;
+			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_331;
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 				if (!(res <= colontmp_)) goto LA6;
 
@@ -12958,13 +14275,13 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__MLgGfQL17a5FF1e69cuphAA)(tyObject_Table__
 				LA10_: ;
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_304)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_304);			} LA6: ;
+				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_331)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_331);			} LA6: ;
 		}
 	}
 }
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGetKnownHC__01SMeJbo7K3PJfimIN5ySQtables)(tyObject_Table__HDUOEieUs1GSseLU5qS67Q t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_305;{	result = (NI)0;
+static N_INLINE(NI, rawGetKnownHC__01SMeJbo7K3PJfimIN5ySQtables)(tyObject_Table__HDUOEieUs1GSseLU5qS67Q t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_332;{	result = (NI)0;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -13025,7 +14342,7 @@ static N_INLINE(NI, rawGetKnownHC__01SMeJbo7K3PJfimIN5ySQtables)(tyObject_Table_
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_305)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_305);	}BeforeRet_: ;
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_332)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_332);	}BeforeRet_: ;
 	return result;}
 
 #line 309 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -13072,7 +14389,7 @@ N_LIB_PRIVATE N_NIMCALL(void, X5BX5Deq___jk4xpkYawFX2Il00LH1mYw)(tyObject_Table_
 		(*t).data->data[index].Field2 = val_0;	}
 	goto LA11_;
 	LA13_: ;
-	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_306;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_307;
+	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_333;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_334;
 #line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		{			NI T18_;
 #line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -13123,30 +14440,30 @@ N_LIB_PRIVATE N_NIMCALL(void, X5BX5Deq___jk4xpkYawFX2Il00LH1mYw)(tyObject_Table_
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_306)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_306);
+		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_333)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_333);
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		rawInsert__aLF779aVYTm4b33ReH09a58w(t, (&(*t).data), key_0, val_0, hc, index);
 
 #line 60 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_307)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_307);	}
+		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_334)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_334);	}
 	LA11_: ;
 }
 
 #line 428 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-N_LIB_PRIVATE N_NIMCALL(tyEnum_Connectedness__iDFxVyVC6AVm9aJUnmmoakw, getOrDefault__eEyaT8yscSERZNgbhPHddA)(tyObject_Table__HDUOEieUs1GSseLU5qS67Q t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0) {	tyEnum_Connectedness__iDFxVyVC6AVm9aJUnmmoakw result;	NI hcX60gensym131070538_;	NI indexX60gensym131070539_;	result = (tyEnum_Connectedness__iDFxVyVC6AVm9aJUnmmoakw)0;	hcX60gensym131070538_ = (NI)0;
+N_LIB_PRIVATE N_NIMCALL(tyEnum_Connectedness__iDFxVyVC6AVm9aJUnmmoakw, getOrDefault__eEyaT8yscSERZNgbhPHddA)(tyObject_Table__HDUOEieUs1GSseLU5qS67Q t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0) {	tyEnum_Connectedness__iDFxVyVC6AVm9aJUnmmoakw result;	NI hcX60gensym154045538_;	NI indexX60gensym154045539_;	result = (tyEnum_Connectedness__iDFxVyVC6AVm9aJUnmmoakw)0;	hcX60gensym154045538_ = (NI)0;
 #line 182 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 182 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-	indexX60gensym131070539_ = rawGet__Kf9bn1rDJDWL1P2h76oO6Kgtables(t, key_0, (&hcX60gensym131070538_));
+	indexX60gensym154045539_ = rawGet__Kf9bn1rDJDWL1P2h76oO6Kgtables(t, key_0, (&hcX60gensym154045538_));
 #line 445 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 	{
 #line 183 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (!(((NI) 0) <= indexX60gensym131070539_)) goto LA3_;
+		if (!(((NI) 0) <= indexX60gensym154045539_)) goto LA3_;
 
 #line 183 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if ((NU)(indexX60gensym131070539_) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(indexX60gensym131070539_,(t.data ? t.data->Sup.len : 0)-1); }		result = t.data->data[indexX60gensym131070539_].Field2;	}
+		if ((NU)(indexX60gensym154045539_) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(indexX60gensym154045539_,(t.data ? t.data->Sup.len : 0)-1); }		result = t.data->data[indexX60gensym154045539_].Field2;	}
 	LA3_: ;
 	return result;}
 
@@ -13253,7 +14570,7 @@ N_LIB_PRIVATE N_NIMCALL(void, initTable__DJ6A9bLM16E7rxSo27B13KA)(NI initialSize
 	if ((initialSize) < ((NI) 0) || (initialSize) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI(initialSize, ((NI) 0), ((NI) IL64(9223372036854775807))); }	unsureAsgnRef((void**) (&(*Result).data), (tySequence__4tnpefYRDGIct5y7RxC8KA*) newSeq((&NTI__4tnpefYRDGIct5y7RxC8KA_), ((NI) (initialSize))));}
 
 #line 32 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NIM_BOOL, mustRehash__mM9cGM2VV9bUNpu4CYgTDTegtables)(tyObject_Table__R0uaAE15CtLzKRaa3nIdMQ t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_308;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_309;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_310;	result = (NIM_BOOL)0;
+static N_INLINE(NIM_BOOL, mustRehash__mM9cGM2VV9bUNpu4CYgTDTegtables)(tyObject_Table__R0uaAE15CtLzKRaa3nIdMQ t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_335;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_336;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_337;	result = (NIM_BOOL)0;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -13279,16 +14596,16 @@ static N_INLINE(NIM_BOOL, mustRehash__mM9cGM2VV9bUNpu4CYgTDTegtables)(tyObject_T
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_308)) { raiseOverflow(); };
+	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_335)) { raiseOverflow(); };
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_309)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_308) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_309));	if (T6_) goto LA8_;
+	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_336)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_335) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_336));	if (T6_) goto LA8_;
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_310)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_310) < ((NI) 4));	LA8_: ;
+	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_337)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_337) < ((NI) 4));	LA8_: ;
 	result = T6_;	return result;}
 
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -13301,13 +14618,13 @@ N_LIB_PRIVATE N_NIMCALL(void, rawInsert__CJk0ydSHIyqgEP80iEdO5g)(tyObject_Table_
 	(*data_0)->data[h_0].Field0 = hc;}
 
 #line 266 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-N_LIB_PRIVATE N_NIMCALL(void, enlarge__hKmV7spWjfiXpCLtsmQMLw)(tyObject_Table__R0uaAE15CtLzKRaa3nIdMQ* t) {	tySequence__6w9c7RGFri1n1hoa9bD335ZQ* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_311;	tySequence__6w9c7RGFri1n1hoa9bD335ZQ* T2_;	n_1 = (tySequence__6w9c7RGFri1n1hoa9bD335ZQ*)0;
+N_LIB_PRIVATE N_NIMCALL(void, enlarge__hKmV7spWjfiXpCLtsmQMLw)(tyObject_Table__R0uaAE15CtLzKRaa3nIdMQ* t) {	tySequence__6w9c7RGFri1n1hoa9bD335ZQ* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_338;	tySequence__6w9c7RGFri1n1hoa9bD335ZQ* T2_;	n_1 = (tySequence__6w9c7RGFri1n1hoa9bD335ZQ*)0;
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_311)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_311)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_311)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_311), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__6w9c7RGFri1n1hoa9bD335ZQ*) newSeq((&NTI__6w9c7RGFri1n1hoa9bD335ZQ_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_311))));
+	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_338)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_338)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_338)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_338), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__6w9c7RGFri1n1hoa9bD335ZQ*) newSeq((&NTI__6w9c7RGFri1n1hoa9bD335ZQ_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_338))));
 #line 269 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 	T2_ = (tySequence__6w9c7RGFri1n1hoa9bD335ZQ*)0;	T2_ = (*t).data;	unsureAsgnRef((void**) (&(*t).data), n_1);	n_1 = T2_;	{		NI i;		NI colontmp_;		NI T4_;		NI res;		i = (NI)0;		colontmp_ = (NI)0;
 #line 270 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -13317,7 +14634,7 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__hKmV7spWjfiXpCLtsmQMLw)(tyObject_Table__R
 #line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 		res = ((NI) 0);		{
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_312;
+			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_339;
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 				if (!(res <= colontmp_)) goto LA6;
 
@@ -13365,13 +14682,13 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__hKmV7spWjfiXpCLtsmQMLw)(tyObject_Table__R
 				LA10_: ;
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_312)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_312);			} LA6: ;
+				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_339)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_339);			} LA6: ;
 		}
 	}
 }
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGetKnownHC__R9ak5N4lLKywWjkUmSJA18Qtables)(tyObject_Table__R0uaAE15CtLzKRaa3nIdMQ t, tyEnum_PeerEventKind__g6Y0xj8kFQNqwpb26iimZw key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_313;{	result = (NI)0;
+static N_INLINE(NI, rawGetKnownHC__R9ak5N4lLKywWjkUmSJA18Qtables)(tyObject_Table__R0uaAE15CtLzKRaa3nIdMQ t, tyEnum_PeerEventKind__g6Y0xj8kFQNqwpb26iimZw key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_340;{	result = (NI)0;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -13428,7 +14745,7 @@ static N_INLINE(NI, rawGetKnownHC__R9ak5N4lLKywWjkUmSJA18Qtables)(tyObject_Table
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_313)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_313);	}BeforeRet_: ;
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_340)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_340);	}BeforeRet_: ;
 	return result;}
 
 #line 465 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -13467,7 +14784,7 @@ N_LIB_PRIVATE N_NIMCALL(tyObject_OrderedSet__cZ8RyO9bTAQg8kKXyLHwXYg*, mgetOrPut
 #line 65 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 	index = rawGet__F57tOLo2NWfYOWEZLISHSgtables((*t), key_0, (&hc));
 #line 66 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_314;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_315;
+	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_341;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_342;
 #line 66 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		if (!(index < ((NI) 0))) goto LA13_;
 
@@ -13521,14 +14838,14 @@ N_LIB_PRIVATE N_NIMCALL(tyObject_OrderedSet__cZ8RyO9bTAQg8kKXyLHwXYg*, mgetOrPut
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_314)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_314);
+		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_341)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_341);
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		rawInsert__CJk0ydSHIyqgEP80iEdO5g(t, (&(*t).data), key_0, val_0, hc, index);
 
 #line 68 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_315)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_315);	}
+		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_342)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_342);	}
 	LA13_: ;
 
 #line 70 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -13540,7 +14857,7 @@ N_LIB_PRIVATE N_NIMCALL(NI, len__ZA0fyy7MKgu9b7GDksFVIXg)(tyObject_Table__A9cYVc
 	result = t.counter;	return result;}
 
 #line 76 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGet__BHxS9cl6rp9czlay5Ps5j3Sgtables)(tyObject_Table__A9cYVcPOKBDYXmP0EJYObtA t, NimStringDesc* key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_316;{	result = (NI)0;
+static N_INLINE(NI, rawGet__BHxS9cl6rp9czlay5Ps5j3Sgtables)(tyObject_Table__A9cYVcPOKBDYXmP0EJYObtA t, NimStringDesc* key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_343;{	result = (NI)0;
 #line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -13610,7 +14927,7 @@ static N_INLINE(NI, rawGet__BHxS9cl6rp9czlay5Ps5j3Sgtables)(tyObject_Table__A9cY
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_316)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_316);	}BeforeRet_: ;
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_343)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_343);	}BeforeRet_: ;
 	return result;}
 
 #line 341 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -13641,303 +14958,76 @@ N_LIB_PRIVATE N_NIMCALL(void, X5BX5D___aMRj1OB7hL8Bqlt0mZDwkw)(tyObject_Table__A
 N_LIB_PRIVATE N_NIMCALL(NI, len__gs1geWct9bvYuusDnRbHMiw)(tyObject_Table__PYPLWlmg3RnSxA1NrOVJFw* t) {	NI result;	result = (NI)0;
 #line 979 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 	result = (*t).counter;	return result;}
-
-#line 76 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGet__cAt8UDFiAelZhKwYOAnlJAtables)(tyObject_Table__pGGeaOra9csl069baTSs3CJg t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_317;{	result = (NI)0;
-#line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-
-#line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	(*hc) = hash__CiCiZV9c7F9alrF1xV3QD1ag_2(key_0.data->data, (key_0.data ? key_0.data->Sup.len : 0));
-#line 73 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	{
-#line 64 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-		if (!((*hc) == ((NI) 0))) goto LA3_;
-
-#line 65 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-		(*hc) = ((NI) 314159265);	}
-	LA3_: ;
-
-#line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	{		NI T7_;
-#line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-
-#line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-		T7_ = (t.data ? t.data->Sup.len : 0);		if (!(T7_ == ((NI) 0))) goto LA8_;
-
-#line 47 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-
-#line 47 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-		result = ((NI) -1);		goto BeforeRet_;
-	}
-	LA8_: ;
-
-#line 48 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-
-#line 48 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-
-#line 48 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T10_ = ((t.data ? t.data->Sup.len : 0)-1);	h_1 = (NI)((*hc) & T10_);	{
-#line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-		while (1) {			NIM_BOOL T13_;			NI T21_;
-#line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-			if ((NU)(h_1) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(h_1,(t.data ? t.data->Sup.len : 0)-1); }
-#line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-			T13_ = (NIM_BOOL)0;			T13_ = isFilled__5Qpmu5QqwDY0esVXn6wf7wtables(t.data->data[h_1].Field0);			if (!T13_) goto LA12;
-
-#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-			{				NIM_BOOL T16_;				NI T18_;
-#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-				T16_ = (NIM_BOOL)0;
-#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-				if ((NU)(h_1) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(h_1,(t.data ? t.data->Sup.len : 0)-1); }				T16_ = (t.data->data[h_1].Field0 == (*hc));				if (!(T16_)) goto LA17_;
-
-#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-
-#line 94 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/peerid.nim"
-				if ((NU)(h_1) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(h_1,(t.data ? t.data->Sup.len : 0)-1); }
-#line 94 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/peerid.nim"
-				T18_ = (NI)0;				T18_ = cmp__ZNqz9bxrMN09bM1GezFNLRBQ(t.data->data[h_1].Field1, key_0);				T16_ = (T18_ == ((NI) 0));				LA17_: ;
-				if (!T16_) goto LA19_;
-
-#line 55 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-
-#line 55 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-				result = h_1;				goto BeforeRet_;
-			}
-			LA19_: ;
-
-#line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-
-#line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-			T21_ = ((t.data ? t.data->Sup.len : 0)-1);
-#line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-			h_1 = nextTry__rkF6R1GhqjFh3qSAPaT2Cwtables(h_1, T21_);		} LA12: ;
-	}
-
-#line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-
-#line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_317)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_317);	}BeforeRet_: ;
-	return result;}
-
-#line 428 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-N_LIB_PRIVATE N_NIMCALL(void, getOrDefault__qVhwtA6m25ZpwgcQZo1DiA)(tyObject_Table__pGGeaOra9csl069baTSs3CJg t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0, tyObject_HashSet__o1ej6dBUQnezVPAEZ8Ad9bA* Result) {	NI hcX60gensym130590416_;	NI indexX60gensym130590417_;	chckNil((void*)Result);	unsureAsgnRef((void**)&(*Result).data, NIM_NIL);	(*Result).counter = 0;	hcX60gensym130590416_ = (NI)0;
-#line 182 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-
-#line 182 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-	indexX60gensym130590417_ = rawGet__cAt8UDFiAelZhKwYOAnlJAtables(t, key_0, (&hcX60gensym130590416_));
-#line 445 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-	{
-#line 183 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (!(((NI) 0) <= indexX60gensym130590417_)) goto LA3_;
-
-#line 183 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if ((NU)(indexX60gensym130590417_) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(indexX60gensym130590417_,(t.data ? t.data->Sup.len : 0)-1); }		genericSeqAssign((&(*Result).data), t.data->data[indexX60gensym130590417_].Field2.data, (&NTI__noYiMxJQyusfKGmZZR7Pzw_));		(*Result).counter = t.data->data[indexX60gensym130590417_].Field2.counter;	}
-	LA3_: ;
+static N_NIMCALL(void, Marker_tySequence__rEAWhJSquAhdmub1uagmwg)(void* p, NI op) {
+	tySequence__rEAWhJSquAhdmub1uagmwg* a;
+	NI T1_;	a = (tySequence__rEAWhJSquAhdmub1uagmwg*)p;
+	T1_ = (NI)0;	for (T1_ = 0; T1_ < (a ? a->Sup.len : 0); T1_++) {
+	nimGCvisit((void*)a->data[T1_].Field1, op);	nimGCvisit((void*)a->data[T1_].Field2, op);	}
 }
 
-#line 76 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGet__9cx2AJCKSrTAiP4NLfl74Qwtables)(tyObject_Table__Y0c2zaBMalZGAwyJIQOIWQ t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_318;{	result = (NI)0;
-#line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+#line 485 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+N_LIB_PRIVATE N_NIMCALL(NI, len__ZhHZtK9bNBrfgsY9bC1uXBkA)(tyObject_Table__BZfyXkROzX88W3JFME9aJ2Q t) {	NI result;	result = (NI)0;
+#line 491 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+	result = t.counter;	return result;}
 
-#line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	(*hc) = hash__CiCiZV9c7F9alrF1xV3QD1ag_2(key_0.data->data, (key_0.data ? key_0.data->Sup.len : 0));
-#line 73 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	{
-#line 64 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-		if (!((*hc) == ((NI) 0))) goto LA3_;
+#line 554 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+N_LIB_PRIVATE N_NIMCALL(void, clear__79akMJ39b064yLsBG9cU9cGWmg_2)(tyObject_Table__BZfyXkROzX88W3JFME9aJ2Q* t) {	{		NI i;		NI colontmp_;		NI T2_;		NI i_2;		i = (NI)0;		colontmp_ = (NI)0;
+#line 149 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
-#line 65 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-		(*hc) = ((NI) 314159265);	}
-	LA3_: ;
+#line 149 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		T2_ = ((*t).data ? (*t).data->Sup.len : 0);		colontmp_ = T2_;
+#line 106 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
+		i_2 = ((NI) 0);		{
+#line 107 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
+			while (1) {				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_346;
+#line 107 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
+				if (!(i_2 < colontmp_)) goto LA4;
 
-#line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	{		NI T7_;
-#line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+#line 149 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+				i = i_2;				if ((NU)(i) >= (NU)((*t).data ? (*t).data->Sup.len : 0)){ raiseIndexError2(i,((*t).data ? (*t).data->Sup.len : 0)-1); }
+#line 151 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+				(*t).data->data[i].Field0 = ((NI) 0);				if ((NU)(i) >= (NU)((*t).data ? (*t).data->Sup.len : 0)){ raiseIndexError2(i,((*t).data ? (*t).data->Sup.len : 0)-1); }
+#line 152 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
-#line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-		T7_ = (t.data ? t.data->Sup.len : 0);		if (!(T7_ == ((NI) 0))) goto LA8_;
+#line 152 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+				(*t).data->data[i].Field1 = 0;				if ((NU)(i) >= (NU)((*t).data ? (*t).data->Sup.len : 0)){ raiseIndexError2(i,((*t).data ? (*t).data->Sup.len : 0)-1); }
+#line 153 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
-#line 47 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-
-#line 47 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-		result = ((NI) -1);		goto BeforeRet_;
-	}
-	LA8_: ;
-
-#line 48 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-
-#line 48 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-
-#line 48 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T10_ = ((t.data ? t.data->Sup.len : 0)-1);	h_1 = (NI)((*hc) & T10_);	{
-#line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-		while (1) {			NIM_BOOL T13_;			NI T21_;
-#line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-			if ((NU)(h_1) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(h_1,(t.data ? t.data->Sup.len : 0)-1); }
-#line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-			T13_ = (NIM_BOOL)0;			T13_ = isFilled__5Qpmu5QqwDY0esVXn6wf7wtables(t.data->data[h_1].Field0);			if (!T13_) goto LA12;
-
-#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-			{				NIM_BOOL T16_;				NI T18_;
-#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-				T16_ = (NIM_BOOL)0;
-#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-				if ((NU)(h_1) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(h_1,(t.data ? t.data->Sup.len : 0)-1); }				T16_ = (t.data->data[h_1].Field0 == (*hc));				if (!(T16_)) goto LA17_;
-
-#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-
-#line 94 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/peerid.nim"
-				if ((NU)(h_1) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(h_1,(t.data ? t.data->Sup.len : 0)-1); }
-#line 94 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/peerid.nim"
-				T18_ = (NI)0;				T18_ = cmp__ZNqz9bxrMN09bM1GezFNLRBQ(t.data->data[h_1].Field1, key_0);				T16_ = (T18_ == ((NI) 0));				LA17_: ;
-				if (!T16_) goto LA19_;
-
-#line 55 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-
-#line 55 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-				result = h_1;				goto BeforeRet_;
-			}
-			LA19_: ;
-
-#line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-
-#line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-			T21_ = ((t.data ? t.data->Sup.len : 0)-1);
-#line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-			h_1 = nextTry__rkF6R1GhqjFh3qSAPaT2Cwtables(h_1, T21_);		} LA12: ;
+#line 153 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+				asgnRef((void**) (&(*t).data->data[i].Field2), NIM_NIL);
+#line 109 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
+				if (nimAddInt(i_2, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_346)) { raiseOverflow(); };				i_2 = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_346);			} LA4: ;
+		}
 	}
 
-#line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+#line 154 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+	(*t).counter = ((NI) 0);}
 
-#line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_318)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_318);	}BeforeRet_: ;
-	return result;}
+#line 288 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+N_LIB_PRIVATE N_NIMCALL(void, initTable__lFTKmuZ5uGl9ca7wcJclqzw)(NI initialSize, tyObject_Table__FdHpxIKbPNjlIbR9a4qcWpw* Result) {	chckNil((void*)Result);	unsureAsgnRef((void**)&(*Result).data, NIM_NIL);	(*Result).counter = 0;
+#line 166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+	{		NIM_BOOL T3_;
+#line 166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
-#line 428 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-N_LIB_PRIVATE N_NIMCALL(void, getOrDefault__FZ5sTM9aho0bqdppxTHr8iA)(tyObject_Table__Y0c2zaBMalZGAwyJIQOIWQ t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0, tyObject_HashSet__CD8Dpv0WGmASelVaNSo6zg* Result) {	NI hcX60gensym130715416_;	NI indexX60gensym130715417_;	chckNil((void*)Result);	unsureAsgnRef((void**)&(*Result).data, NIM_NIL);	(*Result).counter = 0;	hcX60gensym130715416_ = (NI)0;
-#line 182 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+#line 166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
-#line 182 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-	indexX60gensym130715417_ = rawGet__9cx2AJCKSrTAiP4NLfl74Qwtables(t, key_0, (&hcX60gensym130715416_));
-#line 445 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-	{
-#line 183 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (!(((NI) 0) <= indexX60gensym130715417_)) goto LA3_;
+#line 166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		T3_ = (NIM_BOOL)0;		T3_ = isPowerOfTwo__1xdTQapFveM9bImKot7h9cdw(initialSize);		if (!!(T3_)) goto LA4_;
 
-#line 183 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if ((NU)(indexX60gensym130715417_) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(indexX60gensym130715417_,(t.data ? t.data->Sup.len : 0)-1); }		genericSeqAssign((&(*Result).data), t.data->data[indexX60gensym130715417_].Field2.data, (&NTI__4eRCaZmrYLLw2k30GPTiMw_));		(*Result).counter = t.data->data[indexX60gensym130715417_].Field2.counter;	}
-	LA3_: ;
-}
+#line 166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
-#line 76 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGet__lzGP04a9bwHNRiBWU0Pf59cAtables)(tyObject_Table__52v4sP86ruZliir3KafpPQ t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_319;{	result = (NI)0;
-#line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-
-#line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	(*hc) = hash__CiCiZV9c7F9alrF1xV3QD1ag_2(key_0.data->data, (key_0.data ? key_0.data->Sup.len : 0));
-#line 73 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	{
-#line 64 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-		if (!((*hc) == ((NI) 0))) goto LA3_;
-
-#line 65 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-		(*hc) = ((NI) 314159265);	}
-	LA3_: ;
-
-#line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	{		NI T7_;
-#line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-
-#line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-		T7_ = (t.data ? t.data->Sup.len : 0);		if (!(T7_ == ((NI) 0))) goto LA8_;
-
-#line 47 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-
-#line 47 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-		result = ((NI) -1);		goto BeforeRet_;
+#line 166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		failedAssertImpl__W9cjVocn1tjhW7p7xohJj6A(((NimStringDesc*) &TM__4SoG2KRQy3oMm9aUzSLtGrA_4));
 	}
-	LA8_: ;
+	LA4_: ;
 
-#line 48 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-
-#line 48 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-
-#line 48 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T10_ = ((t.data ? t.data->Sup.len : 0)-1);	h_1 = (NI)((*hc) & T10_);	{
-#line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-		while (1) {			NIM_BOOL T13_;			NI T21_;
-#line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-			if ((NU)(h_1) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(h_1,(t.data ? t.data->Sup.len : 0)-1); }
-#line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-			T13_ = (NIM_BOOL)0;			T13_ = isFilled__5Qpmu5QqwDY0esVXn6wf7wtables(t.data->data[h_1].Field0);			if (!T13_) goto LA12;
-
-#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-			{				NIM_BOOL T16_;				NI T18_;
-#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-				T16_ = (NIM_BOOL)0;
-#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-				if ((NU)(h_1) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(h_1,(t.data ? t.data->Sup.len : 0)-1); }				T16_ = (t.data->data[h_1].Field0 == (*hc));				if (!(T16_)) goto LA17_;
-
-#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-
-#line 94 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/peerid.nim"
-				if ((NU)(h_1) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(h_1,(t.data ? t.data->Sup.len : 0)-1); }
-#line 94 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/peerid.nim"
-				T18_ = (NI)0;				T18_ = cmp__ZNqz9bxrMN09bM1GezFNLRBQ(t.data->data[h_1].Field1, key_0);				T16_ = (T18_ == ((NI) 0));				LA17_: ;
-				if (!T16_) goto LA19_;
-
-#line 55 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-
-#line 55 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-				result = h_1;				goto BeforeRet_;
-			}
-			LA19_: ;
-
-#line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-
-#line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-			T21_ = ((t.data ? t.data->Sup.len : 0)-1);
-#line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-			h_1 = nextTry__rkF6R1GhqjFh3qSAPaT2Cwtables(h_1, T21_);		} LA12: ;
-	}
-
-#line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-
-#line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_319)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_319);	}BeforeRet_: ;
-	return result;}
-
-#line 428 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-N_LIB_PRIVATE N_NIMCALL(void, getOrDefault__Yhog9cibr6AiEqszuJsqd3A)(tyObject_Table__52v4sP86ruZliir3KafpPQ t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0, tyObject_PublicKey__mVKS59bRpscItosS0oN9a4zA* Result) {	NI T1_;	NI T2_;	NI hcX60gensym130747112_;	NI indexX60gensym130747113_;	chckNil((void*)Result);	switch ((*Result).scheme) {
-	case ((tyEnum_PKScheme__GeN4EiKxd9aXAvv5y1lfmHg) 0):
-	unsureAsgnRef((void**)&(*Result)._scheme_1.rsakey, NIM_NIL);	break;
-	case ((tyEnum_PKScheme__GeN4EiKxd9aXAvv5y1lfmHg) 1):
-	T1_ = (NI)0;	for (T1_ = 0; T1_ < 32; T1_++) {	(*Result)._scheme_2.edkey.data[T1_] = 0;	}
-	break;
-	case ((tyEnum_PKScheme__GeN4EiKxd9aXAvv5y1lfmHg) 2):
-	T2_ = (NI)0;	for (T2_ = 0; T2_ < 64; T2_++) {	(*Result)._scheme_3.skkey.data.data[T2_] = 0;	}
-	break;
-	case ((tyEnum_PKScheme__GeN4EiKxd9aXAvv5y1lfmHg) 3):
-	unsureAsgnRef((void**)&(*Result)._scheme_4.eckey, NIM_NIL);	break;
-	} 
-	(*Result).scheme = 0;	hcX60gensym130747112_ = (NI)0;
-#line 182 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-
-#line 182 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-	indexX60gensym130747113_ = rawGet__lzGP04a9bwHNRiBWU0Pf59cAtables(t, key_0, (&hcX60gensym130747112_));
-#line 445 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-	{
-#line 183 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (!(((NI) 0) <= indexX60gensym130747113_)) goto LA5_;
-
-#line 183 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if ((NU)(indexX60gensym130747113_) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(indexX60gensym130747113_,(t.data ? t.data->Sup.len : 0)-1); }		genericAssign((void*)Result, (void*)(&t.data->data[indexX60gensym130747113_].Field2), (&NTI__mVKS59bRpscItosS0oN9a4zA_));	}
-	LA5_: ;
-}
+#line 167 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+	(*Result).counter = ((NI) 0);
+#line 168 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+	if ((initialSize) < ((NI) 0) || (initialSize) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI(initialSize, ((NI) 0), ((NI) IL64(9223372036854775807))); }	unsureAsgnRef((void**) (&(*Result).data), (tySequence__rEAWhJSquAhdmub1uagmwg*) newSeq((&NTI__rEAWhJSquAhdmub1uagmwg_), ((NI) (initialSize))));}
 
 #line 32 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NIM_BOOL, mustRehash__S5gIS6xBieCu4dJrjbp6Egtables)(tyObject_Table__pGGeaOra9csl069baTSs3CJg t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_320;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_321;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_322;	result = (NIM_BOOL)0;
+static N_INLINE(NIM_BOOL, mustRehash__Xbt3aJkhvztH9aYWZwSmTVQtables)(tyObject_Table__k9cb4Qn3gUx6gxyGj3hd20w t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_347;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_348;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_349;	result = (NIM_BOOL)0;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -13963,16 +15053,718 @@ static N_INLINE(NIM_BOOL, mustRehash__S5gIS6xBieCu4dJrjbp6Egtables)(tyObject_Tab
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_320)) { raiseOverflow(); };
+	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_347)) { raiseOverflow(); };
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_321)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_320) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_321));	if (T6_) goto LA8_;
+	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_348)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_347) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_348));	if (T6_) goto LA8_;
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_322)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_322) < ((NI) 4));	LA8_: ;
+	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_349)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_349) < ((NI) 4));	LA8_: ;
+	result = T6_;	return result;}
+
+#line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+N_LIB_PRIVATE N_NIMCALL(void, rawInsert__d1S2NZxtIgpU1G7kBISECg)(tyObject_Table__k9cb4Qn3gUx6gxyGj3hd20w* t, tySequence__87DZdIc4Y9ccnDlJfZoyb5w** data_0, NimStringDesc* key_0, tyProc__ADCDtoN1AvOABxjfvZcWKw val_0, NI hc, NI h_0) {	NimStringDesc* T1_;	if ((NU)(h_0) >= (NU)((*data_0) ? (*data_0)->Sup.len : 0)){ raiseIndexError2(h_0,((*data_0) ? (*data_0)->Sup.len : 0)-1); }
+#line 22 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+	T1_ = (NimStringDesc*)0;	T1_ = (*data_0)->data[h_0].Field1; (*data_0)->data[h_0].Field1 = copyStringRC1(key_0);	if (T1_) nimGCunrefNoCycle(T1_);	if ((NU)(h_0) >= (NU)((*data_0) ? (*data_0)->Sup.len : 0)){ raiseIndexError2(h_0,((*data_0) ? (*data_0)->Sup.len : 0)-1); }
+#line 23 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+	asgnRef((void**) (&(*data_0)->data[h_0].Field2.ClE_0), val_0.ClE_0);	(*data_0)->data[h_0].Field2.ClP_0 = val_0.ClP_0;	if ((NU)(h_0) >= (NU)((*data_0) ? (*data_0)->Sup.len : 0)){ raiseIndexError2(h_0,((*data_0) ? (*data_0)->Sup.len : 0)-1); }
+#line 24 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+	(*data_0)->data[h_0].Field0 = hc;}
+
+#line 266 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+N_LIB_PRIVATE N_NIMCALL(void, enlarge__Iov9aSIXFqsPWBKugiuD1QQ)(tyObject_Table__k9cb4Qn3gUx6gxyGj3hd20w* t) {	tySequence__87DZdIc4Y9ccnDlJfZoyb5w* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_350;	tySequence__87DZdIc4Y9ccnDlJfZoyb5w* T2_;	n_1 = (tySequence__87DZdIc4Y9ccnDlJfZoyb5w*)0;
+#line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+
+#line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+
+#line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_350)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_350)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_350)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_350), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__87DZdIc4Y9ccnDlJfZoyb5w*) newSeq((&NTI__87DZdIc4Y9ccnDlJfZoyb5w_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_350))));
+#line 269 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+	T2_ = (tySequence__87DZdIc4Y9ccnDlJfZoyb5w*)0;	T2_ = (*t).data;	unsureAsgnRef((void**) (&(*t).data), n_1);	n_1 = T2_;	{		NI i;		NI colontmp_;		NI T4_;		NI res;		i = (NI)0;		colontmp_ = (NI)0;
+#line 270 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+
+#line 270 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+		T4_ = ((n_1 ? n_1->Sup.len : 0)-1);		colontmp_ = T4_;
+#line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
+		res = ((NI) 0);		{
+#line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
+			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_351;
+#line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
+				if (!(res <= colontmp_)) goto LA6;
+
+#line 270 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+				i = res;
+#line 271 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+				if ((NU)(i) >= (NU)(n_1 ? n_1->Sup.len : 0)){ raiseIndexError2(i,(n_1 ? n_1->Sup.len : 0)-1); }				eh = n_1->data[i].Field0;
+#line 272 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+				{					NIM_BOOL T9_;					NI j;					NI T12_;					NimStringDesc* T17_;					tyProc__ADCDtoN1AvOABxjfvZcWKw T18_;
+#line 272 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+
+#line 272 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+					T9_ = (NIM_BOOL)0;					T9_ = isFilled__5Qpmu5QqwDY0esVXn6wf7wtables(eh);					if (!T9_) goto LA10_;
+
+#line 273 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+
+#line 273 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+
+#line 273 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+					T12_ = (((*t).data ? (*t).data->Sup.len : 0)-1);					j = (NI)(eh & T12_);					{
+#line 274 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+						while (1) {							NIM_BOOL T15_;							NI T16_;
+#line 274 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+							if ((NU)(j) >= (NU)((*t).data ? (*t).data->Sup.len : 0)){ raiseIndexError2(j,((*t).data ? (*t).data->Sup.len : 0)-1); }
+#line 274 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+							T15_ = (NIM_BOOL)0;							T15_ = isFilled__5Qpmu5QqwDY0esVXn6wf7wtables((*t).data->data[j].Field0);							if (!T15_) goto LA14;
+
+#line 275 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+
+#line 275 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+							T16_ = (((*t).data ? (*t).data->Sup.len : 0)-1);
+#line 275 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+							j = nextTry__rkF6R1GhqjFh3qSAPaT2Cwtables(j, T16_);						} LA14: ;
+					}
+
+#line 279 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+
+#line 279 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+					if ((NU)(i) >= (NU)(n_1 ? n_1->Sup.len : 0)){ raiseIndexError2(i,(n_1 ? n_1->Sup.len : 0)-1); }					T17_ = (NimStringDesc*)0;					T17_ = n_1->data[i].Field1;					asgnRef((void**) (&n_1->data[i].Field1), NIM_NIL);
+#line 279 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+					if ((NU)(i) >= (NU)(n_1 ? n_1->Sup.len : 0)){ raiseIndexError2(i,(n_1 ? n_1->Sup.len : 0)-1); }					nimZeroMem((void*)(&T18_), sizeof(tyProc__ADCDtoN1AvOABxjfvZcWKw));					T18_.ClE_0 = n_1->data[i].Field2.ClE_0;					T18_.ClP_0 = n_1->data[i].Field2.ClP_0;					chckNil((void*)(&n_1->data[i].Field2));					unsureAsgnRef((void**)&n_1->data[i].Field2.ClE_0, NIM_NIL);					n_1->data[i].Field2.ClP_0 = NIM_NIL;
+#line 279 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+					rawInsert__d1S2NZxtIgpU1G7kBISECg(t, (&(*t).data), T17_, T18_, eh, j);
+				}
+				LA10_: ;
+
+#line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
+				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_351)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_351);			} LA6: ;
+		}
+	}
+}
+
+#line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+static N_INLINE(NI, rawGetKnownHC__jbxgTJ9axUfZ9cAM61FzNT9aQtables)(tyObject_Table__k9cb4Qn3gUx6gxyGj3hd20w t, NimStringDesc* key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_352;{	result = (NI)0;
+#line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	{		NI T3_;
+#line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		T3_ = (t.data ? t.data->Sup.len : 0);		if (!(T3_ == ((NI) 0))) goto LA4_;
+
+#line 47 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 47 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		result = ((NI) -1);		goto BeforeRet_;
+	}
+	LA4_: ;
+
+#line 48 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 48 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 48 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	T6_ = ((t.data ? t.data->Sup.len : 0)-1);	h_1 = (NI)(hc & T6_);	{
+#line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		while (1) {			NIM_BOOL T9_;			NI T16_;
+#line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			if ((NU)(h_1) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(h_1,(t.data ? t.data->Sup.len : 0)-1); }
+#line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			T9_ = (NIM_BOOL)0;			T9_ = isFilled__5Qpmu5QqwDY0esVXn6wf7wtables(t.data->data[h_1].Field0);			if (!T9_) goto LA8;
+
+#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			{				NIM_BOOL T12_;
+#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+				T12_ = (NIM_BOOL)0;
+#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+				if ((NU)(h_1) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(h_1,(t.data ? t.data->Sup.len : 0)-1); }				T12_ = (t.data->data[h_1].Field0 == hc);				if (!(T12_)) goto LA13_;
+
+#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+				if ((NU)(h_1) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(h_1,(t.data ? t.data->Sup.len : 0)-1); }				T12_ = eqStrings(t.data->data[h_1].Field1, key_0);				LA13_: ;
+				if (!T12_) goto LA14_;
+
+#line 55 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 55 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+				result = h_1;				goto BeforeRet_;
+			}
+			LA14_: ;
+
+#line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			T16_ = ((t.data ? t.data->Sup.len : 0)-1);
+#line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			h_1 = nextTry__rkF6R1GhqjFh3qSAPaT2Cwtables(h_1, T16_);		} LA8: ;
+	}
+
+#line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_352)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_352);	}BeforeRet_: ;
+	return result;}
+
+#line 309 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+N_LIB_PRIVATE N_NIMCALL(void, X5BX5Deq___09bAq9cIFbuhsTph9bIc7WYRQ)(tyObject_Table__k9cb4Qn3gUx6gxyGj3hd20w* t, NimStringDesc* key_0, tyProc__ADCDtoN1AvOABxjfvZcWKw val_0) {	NI hc;	NI index;
+#line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+	{		NI T3_;
+#line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		T3_ = ((*t).data ? (*t).data->Sup.len : 0);		if (!(T3_ == ((NI) 0))) goto LA4_;
+
+#line 166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		{			NIM_BOOL T8_;
+#line 166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+			T8_ = (NIM_BOOL)0;			T8_ = isPowerOfTwo__1xdTQapFveM9bImKot7h9cdw(((NI) 64));			if (!!(T8_)) goto LA9_;
+
+#line 166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+			failedAssertImpl__W9cjVocn1tjhW7p7xohJj6A(((NimStringDesc*) &TM__4SoG2KRQy3oMm9aUzSLtGrA_7));
+		}
+		LA9_: ;
+
+#line 167 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		(*t).counter = ((NI) 0);
+#line 168 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		unsureAsgnRef((void**) (&(*t).data), (tySequence__87DZdIc4Y9ccnDlJfZoyb5w*) newSeq((&NTI__87DZdIc4Y9ccnDlJfZoyb5w_), ((NI) 64)));	}
+	LA4_: ;
+	hc = (NI)0;
+#line 58 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 58 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+	index = rawGet__YTXDaIou4WVxznTZQvMNcAtables((*t), key_0, (&hc));
+#line 323 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+	{
+#line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		if (!(((NI) 0) <= index)) goto LA13_;
+		if ((NU)(index) >= (NU)((*t).data ? (*t).data->Sup.len : 0)){ raiseIndexError2(index,((*t).data ? (*t).data->Sup.len : 0)-1); }
+#line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		asgnRef((void**) (&(*t).data->data[index].Field2.ClE_0), val_0.ClE_0);		(*t).data->data[index].Field2.ClP_0 = val_0.ClP_0;	}
+	goto LA11_;
+	LA13_: ;
+	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_353;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_354;
+#line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		{			NI T18_;
+#line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+			T18_ = ((*t).data ? (*t).data->Sup.len : 0);			if (!(T18_ == ((NI) 0))) goto LA19_;
+
+#line 166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+			{				NIM_BOOL T23_;
+#line 166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+				T23_ = (NIM_BOOL)0;				T23_ = isPowerOfTwo__1xdTQapFveM9bImKot7h9cdw(((NI) 64));				if (!!(T23_)) goto LA24_;
+
+#line 166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 166 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+				failedAssertImpl__W9cjVocn1tjhW7p7xohJj6A(((NimStringDesc*) &TM__4SoG2KRQy3oMm9aUzSLtGrA_7));
+			}
+			LA24_: ;
+
+#line 167 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+			(*t).counter = ((NI) 0);
+#line 168 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+			unsureAsgnRef((void**) (&(*t).data), (tySequence__87DZdIc4Y9ccnDlJfZoyb5w*) newSeq((&NTI__87DZdIc4Y9ccnDlJfZoyb5w_), ((NI) 64)));		}
+		LA19_: ;
+
+#line 48 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		{			NIM_BOOL T28_;
+#line 48 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 48 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+			T28_ = (NIM_BOOL)0;			T28_ = mustRehash__Xbt3aJkhvztH9aYWZwSmTVQtables((*t));			if (!T28_) goto LA29_;
+
+#line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+			enlarge__Iov9aSIXFqsPWBKugiuD1QQ(t);
+
+#line 50 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 50 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+			index = rawGetKnownHC__jbxgTJ9axUfZ9cAM61FzNT9aQtables((*t), key_0, hc);		}
+		LA29_: ;
+
+#line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_353)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_353);
+#line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		rawInsert__d1S2NZxtIgpU1G7kBISECg(t, (&(*t).data), key_0, val_0, hc, index);
+
+#line 60 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_354)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_354);	}
+	LA11_: ;
+}
+
+#line 76 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+static N_INLINE(NI, rawGet__CLc3EgQ72ndPPXUxdW7nzQtables)(tyObject_Table__FdHpxIKbPNjlIbR9a4qcWpw t, NimStringDesc* key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_355;{	result = (NI)0;
+#line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	(*hc) = hash__6PCYkKlCNhq9cnRLnqWKkwQ(key_0);
+#line 73 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	{
+#line 64 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		if (!((*hc) == ((NI) 0))) goto LA3_;
+
+#line 65 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		(*hc) = ((NI) 314159265);	}
+	LA3_: ;
+
+#line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	{		NI T7_;
+#line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		T7_ = (t.data ? t.data->Sup.len : 0);		if (!(T7_ == ((NI) 0))) goto LA8_;
+
+#line 47 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 47 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		result = ((NI) -1);		goto BeforeRet_;
+	}
+	LA8_: ;
+
+#line 48 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 48 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 48 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	T10_ = ((t.data ? t.data->Sup.len : 0)-1);	h_1 = (NI)((*hc) & T10_);	{
+#line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		while (1) {			NIM_BOOL T13_;			NI T20_;
+#line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			if ((NU)(h_1) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(h_1,(t.data ? t.data->Sup.len : 0)-1); }
+#line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			T13_ = (NIM_BOOL)0;			T13_ = isFilled__5Qpmu5QqwDY0esVXn6wf7wtables(t.data->data[h_1].Field0);			if (!T13_) goto LA12;
+
+#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			{				NIM_BOOL T16_;
+#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+				T16_ = (NIM_BOOL)0;
+#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+				if ((NU)(h_1) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(h_1,(t.data ? t.data->Sup.len : 0)-1); }				T16_ = (t.data->data[h_1].Field0 == (*hc));				if (!(T16_)) goto LA17_;
+
+#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+				if ((NU)(h_1) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(h_1,(t.data ? t.data->Sup.len : 0)-1); }				T16_ = eqStrings(t.data->data[h_1].Field1, key_0);				LA17_: ;
+				if (!T16_) goto LA18_;
+
+#line 55 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 55 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+				result = h_1;				goto BeforeRet_;
+			}
+			LA18_: ;
+
+#line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			T20_ = ((t.data ? t.data->Sup.len : 0)-1);
+#line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			h_1 = nextTry__rkF6R1GhqjFh3qSAPaT2Cwtables(h_1, T20_);		} LA12: ;
+	}
+
+#line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_355)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_355);	}BeforeRet_: ;
+	return result;}
+
+#line 428 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+N_LIB_PRIVATE N_NIMCALL(tyObject_SubscriptioncolonObjectType___DQFNW7lzE2Mw43vwAJXufQ*, getOrDefault__OU7B9ckb7amd9ajS4cRaVzYg)(tyObject_Table__FdHpxIKbPNjlIbR9a4qcWpw t, NimStringDesc* key_0) {	tyObject_SubscriptioncolonObjectType___DQFNW7lzE2Mw43vwAJXufQ* result;	NI hcX60gensym118195405_;	NI indexX60gensym118195406_;	result = (tyObject_SubscriptioncolonObjectType___DQFNW7lzE2Mw43vwAJXufQ*)0;	hcX60gensym118195405_ = (NI)0;
+#line 182 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 182 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+	indexX60gensym118195406_ = rawGet__CLc3EgQ72ndPPXUxdW7nzQtables(t, key_0, (&hcX60gensym118195405_));
+#line 445 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+	{
+#line 183 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		if (!(((NI) 0) <= indexX60gensym118195406_)) goto LA3_;
+
+#line 183 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		if ((NU)(indexX60gensym118195406_) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(indexX60gensym118195406_,(t.data ? t.data->Sup.len : 0)-1); }		result = t.data->data[indexX60gensym118195406_].Field2;	}
+	LA3_: ;
+	return result;}
+
+#line 554 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+N_LIB_PRIVATE N_NIMCALL(void, clear__Biqk5dFHYuGOO3S6Qydf7A)(tyObject_Table__FdHpxIKbPNjlIbR9a4qcWpw* t) {	{		NI i;		NI colontmp_;		NI T2_;		NI i_2;		i = (NI)0;		colontmp_ = (NI)0;
+#line 149 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 149 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		T2_ = ((*t).data ? (*t).data->Sup.len : 0);		colontmp_ = T2_;
+#line 106 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
+		i_2 = ((NI) 0);		{
+#line 107 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
+			while (1) {				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_356;
+#line 107 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
+				if (!(i_2 < colontmp_)) goto LA4;
+
+#line 149 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+				i = i_2;				if ((NU)(i) >= (NU)((*t).data ? (*t).data->Sup.len : 0)){ raiseIndexError2(i,((*t).data ? (*t).data->Sup.len : 0)-1); }
+#line 151 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+				(*t).data->data[i].Field0 = ((NI) 0);				if ((NU)(i) >= (NU)((*t).data ? (*t).data->Sup.len : 0)){ raiseIndexError2(i,((*t).data ? (*t).data->Sup.len : 0)-1); }
+#line 152 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 152 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+				asgnRef((void**) (&(*t).data->data[i].Field1), NIM_NIL);				if ((NU)(i) >= (NU)((*t).data ? (*t).data->Sup.len : 0)){ raiseIndexError2(i,((*t).data ? (*t).data->Sup.len : 0)-1); }
+#line 153 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 153 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+				asgnRef((void**) (&(*t).data->data[i].Field2), NIM_NIL);
+#line 109 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
+				if (nimAddInt(i_2, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_356)) { raiseOverflow(); };				i_2 = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_356);			} LA4: ;
+		}
+	}
+
+#line 154 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+	(*t).counter = ((NI) 0);}
+
+#line 76 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+static N_INLINE(NI, rawGet__cAt8UDFiAelZhKwYOAnlJAtables)(tyObject_Table__pGGeaOra9csl069baTSs3CJg t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_357;{	result = (NI)0;
+#line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	(*hc) = hash__CiCiZV9c7F9alrF1xV3QD1ag_2(key_0.data->data, (key_0.data ? key_0.data->Sup.len : 0));
+#line 73 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	{
+#line 64 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		if (!((*hc) == ((NI) 0))) goto LA3_;
+
+#line 65 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		(*hc) = ((NI) 314159265);	}
+	LA3_: ;
+
+#line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	{		NI T7_;
+#line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		T7_ = (t.data ? t.data->Sup.len : 0);		if (!(T7_ == ((NI) 0))) goto LA8_;
+
+#line 47 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 47 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		result = ((NI) -1);		goto BeforeRet_;
+	}
+	LA8_: ;
+
+#line 48 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 48 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 48 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	T10_ = ((t.data ? t.data->Sup.len : 0)-1);	h_1 = (NI)((*hc) & T10_);	{
+#line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		while (1) {			NIM_BOOL T13_;			NI T21_;
+#line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			if ((NU)(h_1) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(h_1,(t.data ? t.data->Sup.len : 0)-1); }
+#line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			T13_ = (NIM_BOOL)0;			T13_ = isFilled__5Qpmu5QqwDY0esVXn6wf7wtables(t.data->data[h_1].Field0);			if (!T13_) goto LA12;
+
+#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			{				NIM_BOOL T16_;				NI T18_;
+#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+				T16_ = (NIM_BOOL)0;
+#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+				if ((NU)(h_1) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(h_1,(t.data ? t.data->Sup.len : 0)-1); }				T16_ = (t.data->data[h_1].Field0 == (*hc));				if (!(T16_)) goto LA17_;
+
+#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 94 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/peerid.nim"
+				if ((NU)(h_1) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(h_1,(t.data ? t.data->Sup.len : 0)-1); }
+#line 94 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/peerid.nim"
+				T18_ = (NI)0;				T18_ = cmp__ZNqz9bxrMN09bM1GezFNLRBQ(t.data->data[h_1].Field1, key_0);				T16_ = (T18_ == ((NI) 0));				LA17_: ;
+				if (!T16_) goto LA19_;
+
+#line 55 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 55 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+				result = h_1;				goto BeforeRet_;
+			}
+			LA19_: ;
+
+#line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			T21_ = ((t.data ? t.data->Sup.len : 0)-1);
+#line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			h_1 = nextTry__rkF6R1GhqjFh3qSAPaT2Cwtables(h_1, T21_);		} LA12: ;
+	}
+
+#line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_357)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_357);	}BeforeRet_: ;
+	return result;}
+
+#line 428 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+N_LIB_PRIVATE N_NIMCALL(void, getOrDefault__qVhwtA6m25ZpwgcQZo1DiA)(tyObject_Table__pGGeaOra9csl069baTSs3CJg t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0, tyObject_HashSet__o1ej6dBUQnezVPAEZ8Ad9bA* Result) {	NI hcX60gensym153565416_;	NI indexX60gensym153565417_;	chckNil((void*)Result);	unsureAsgnRef((void**)&(*Result).data, NIM_NIL);	(*Result).counter = 0;	hcX60gensym153565416_ = (NI)0;
+#line 182 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 182 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+	indexX60gensym153565417_ = rawGet__cAt8UDFiAelZhKwYOAnlJAtables(t, key_0, (&hcX60gensym153565416_));
+#line 445 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+	{
+#line 183 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		if (!(((NI) 0) <= indexX60gensym153565417_)) goto LA3_;
+
+#line 183 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		if ((NU)(indexX60gensym153565417_) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(indexX60gensym153565417_,(t.data ? t.data->Sup.len : 0)-1); }		genericSeqAssign((&(*Result).data), t.data->data[indexX60gensym153565417_].Field2.data, (&NTI__noYiMxJQyusfKGmZZR7Pzw_));		(*Result).counter = t.data->data[indexX60gensym153565417_].Field2.counter;	}
+	LA3_: ;
+}
+
+#line 76 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+static N_INLINE(NI, rawGet__9cx2AJCKSrTAiP4NLfl74Qwtables)(tyObject_Table__Y0c2zaBMalZGAwyJIQOIWQ t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_358;{	result = (NI)0;
+#line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	(*hc) = hash__CiCiZV9c7F9alrF1xV3QD1ag_2(key_0.data->data, (key_0.data ? key_0.data->Sup.len : 0));
+#line 73 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	{
+#line 64 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		if (!((*hc) == ((NI) 0))) goto LA3_;
+
+#line 65 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		(*hc) = ((NI) 314159265);	}
+	LA3_: ;
+
+#line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	{		NI T7_;
+#line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		T7_ = (t.data ? t.data->Sup.len : 0);		if (!(T7_ == ((NI) 0))) goto LA8_;
+
+#line 47 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 47 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		result = ((NI) -1);		goto BeforeRet_;
+	}
+	LA8_: ;
+
+#line 48 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 48 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 48 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	T10_ = ((t.data ? t.data->Sup.len : 0)-1);	h_1 = (NI)((*hc) & T10_);	{
+#line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		while (1) {			NIM_BOOL T13_;			NI T21_;
+#line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			if ((NU)(h_1) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(h_1,(t.data ? t.data->Sup.len : 0)-1); }
+#line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			T13_ = (NIM_BOOL)0;			T13_ = isFilled__5Qpmu5QqwDY0esVXn6wf7wtables(t.data->data[h_1].Field0);			if (!T13_) goto LA12;
+
+#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			{				NIM_BOOL T16_;				NI T18_;
+#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+				T16_ = (NIM_BOOL)0;
+#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+				if ((NU)(h_1) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(h_1,(t.data ? t.data->Sup.len : 0)-1); }				T16_ = (t.data->data[h_1].Field0 == (*hc));				if (!(T16_)) goto LA17_;
+
+#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 94 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/peerid.nim"
+				if ((NU)(h_1) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(h_1,(t.data ? t.data->Sup.len : 0)-1); }
+#line 94 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/peerid.nim"
+				T18_ = (NI)0;				T18_ = cmp__ZNqz9bxrMN09bM1GezFNLRBQ(t.data->data[h_1].Field1, key_0);				T16_ = (T18_ == ((NI) 0));				LA17_: ;
+				if (!T16_) goto LA19_;
+
+#line 55 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 55 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+				result = h_1;				goto BeforeRet_;
+			}
+			LA19_: ;
+
+#line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			T21_ = ((t.data ? t.data->Sup.len : 0)-1);
+#line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			h_1 = nextTry__rkF6R1GhqjFh3qSAPaT2Cwtables(h_1, T21_);		} LA12: ;
+	}
+
+#line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_358)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_358);	}BeforeRet_: ;
+	return result;}
+
+#line 428 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+N_LIB_PRIVATE N_NIMCALL(void, getOrDefault__FZ5sTM9aho0bqdppxTHr8iA)(tyObject_Table__Y0c2zaBMalZGAwyJIQOIWQ t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0, tyObject_HashSet__CD8Dpv0WGmASelVaNSo6zg* Result) {	NI hcX60gensym153690416_;	NI indexX60gensym153690417_;	chckNil((void*)Result);	unsureAsgnRef((void**)&(*Result).data, NIM_NIL);	(*Result).counter = 0;	hcX60gensym153690416_ = (NI)0;
+#line 182 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 182 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+	indexX60gensym153690417_ = rawGet__9cx2AJCKSrTAiP4NLfl74Qwtables(t, key_0, (&hcX60gensym153690416_));
+#line 445 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+	{
+#line 183 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		if (!(((NI) 0) <= indexX60gensym153690417_)) goto LA3_;
+
+#line 183 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		if ((NU)(indexX60gensym153690417_) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(indexX60gensym153690417_,(t.data ? t.data->Sup.len : 0)-1); }		genericSeqAssign((&(*Result).data), t.data->data[indexX60gensym153690417_].Field2.data, (&NTI__4eRCaZmrYLLw2k30GPTiMw_));		(*Result).counter = t.data->data[indexX60gensym153690417_].Field2.counter;	}
+	LA3_: ;
+}
+
+#line 76 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+static N_INLINE(NI, rawGet__lzGP04a9bwHNRiBWU0Pf59cAtables)(tyObject_Table__52v4sP86ruZliir3KafpPQ t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_359;{	result = (NI)0;
+#line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	(*hc) = hash__CiCiZV9c7F9alrF1xV3QD1ag_2(key_0.data->data, (key_0.data ? key_0.data->Sup.len : 0));
+#line 73 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	{
+#line 64 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		if (!((*hc) == ((NI) 0))) goto LA3_;
+
+#line 65 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		(*hc) = ((NI) 314159265);	}
+	LA3_: ;
+
+#line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	{		NI T7_;
+#line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		T7_ = (t.data ? t.data->Sup.len : 0);		if (!(T7_ == ((NI) 0))) goto LA8_;
+
+#line 47 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 47 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		result = ((NI) -1);		goto BeforeRet_;
+	}
+	LA8_: ;
+
+#line 48 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 48 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 48 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	T10_ = ((t.data ? t.data->Sup.len : 0)-1);	h_1 = (NI)((*hc) & T10_);	{
+#line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		while (1) {			NIM_BOOL T13_;			NI T21_;
+#line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			if ((NU)(h_1) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(h_1,(t.data ? t.data->Sup.len : 0)-1); }
+#line 49 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			T13_ = (NIM_BOOL)0;			T13_ = isFilled__5Qpmu5QqwDY0esVXn6wf7wtables(t.data->data[h_1].Field0);			if (!T13_) goto LA12;
+
+#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			{				NIM_BOOL T16_;				NI T18_;
+#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+				T16_ = (NIM_BOOL)0;
+#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+				if ((NU)(h_1) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(h_1,(t.data ? t.data->Sup.len : 0)-1); }				T16_ = (t.data->data[h_1].Field0 == (*hc));				if (!(T16_)) goto LA17_;
+
+#line 54 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 94 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/peerid.nim"
+				if ((NU)(h_1) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(h_1,(t.data ? t.data->Sup.len : 0)-1); }
+#line 94 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/peerid.nim"
+				T18_ = (NI)0;				T18_ = cmp__ZNqz9bxrMN09bM1GezFNLRBQ(t.data->data[h_1].Field1, key_0);				T16_ = (T18_ == ((NI) 0));				LA17_: ;
+				if (!T16_) goto LA19_;
+
+#line 55 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 55 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+				result = h_1;				goto BeforeRet_;
+			}
+			LA19_: ;
+
+#line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			T21_ = ((t.data ? t.data->Sup.len : 0)-1);
+#line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+			h_1 = nextTry__rkF6R1GhqjFh3qSAPaT2Cwtables(h_1, T21_);		} LA12: ;
+	}
+
+#line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_359)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_359);	}BeforeRet_: ;
+	return result;}
+
+#line 428 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+N_LIB_PRIVATE N_NIMCALL(void, getOrDefault__Yhog9cibr6AiEqszuJsqd3A)(tyObject_Table__52v4sP86ruZliir3KafpPQ t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0, tyObject_PublicKey__mVKS59bRpscItosS0oN9a4zA* Result) {	NI T1_;	NI T2_;	NI hcX60gensym153722112_;	NI indexX60gensym153722113_;	chckNil((void*)Result);	switch ((*Result).scheme) {
+	case ((tyEnum_PKScheme__GeN4EiKxd9aXAvv5y1lfmHg) 0):
+	unsureAsgnRef((void**)&(*Result)._scheme_1.rsakey, NIM_NIL);	break;
+	case ((tyEnum_PKScheme__GeN4EiKxd9aXAvv5y1lfmHg) 1):
+	T1_ = (NI)0;	for (T1_ = 0; T1_ < 32; T1_++) {	(*Result)._scheme_2.edkey.data[T1_] = 0;	}
+	break;
+	case ((tyEnum_PKScheme__GeN4EiKxd9aXAvv5y1lfmHg) 2):
+	T2_ = (NI)0;	for (T2_ = 0; T2_ < 64; T2_++) {	(*Result)._scheme_3.skkey.data.data[T2_] = 0;	}
+	break;
+	case ((tyEnum_PKScheme__GeN4EiKxd9aXAvv5y1lfmHg) 3):
+	unsureAsgnRef((void**)&(*Result)._scheme_4.eckey, NIM_NIL);	break;
+	} 
+	(*Result).scheme = 0;	hcX60gensym153722112_ = (NI)0;
+#line 182 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+
+#line 182 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+	indexX60gensym153722113_ = rawGet__lzGP04a9bwHNRiBWU0Pf59cAtables(t, key_0, (&hcX60gensym153722112_));
+#line 445 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
+	{
+#line 183 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		if (!(((NI) 0) <= indexX60gensym153722113_)) goto LA5_;
+
+#line 183 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
+		if ((NU)(indexX60gensym153722113_) >= (NU)(t.data ? t.data->Sup.len : 0)){ raiseIndexError2(indexX60gensym153722113_,(t.data ? t.data->Sup.len : 0)-1); }		genericAssign((void*)Result, (void*)(&t.data->data[indexX60gensym153722113_].Field2), (&NTI__mVKS59bRpscItosS0oN9a4zA_));	}
+	LA5_: ;
+}
+
+#line 32 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+static N_INLINE(NIM_BOOL, mustRehash__S5gIS6xBieCu4dJrjbp6Egtables)(tyObject_Table__pGGeaOra9csl069baTSs3CJg t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_360;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_361;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_362;	result = (NIM_BOOL)0;
+#line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	{		NI T3_;
+#line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		T3_ = (t.data ? t.data->Sup.len : 0);		if (!!((t.counter < T3_))) goto LA4_;
+
+#line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+		failedAssertImpl__W9cjVocn1tjhW7p7xohJj6A(((NimStringDesc*) &TM__4SoG2KRQy3oMm9aUzSLtGrA_10));
+	}
+	LA4_: ;
+
+#line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	T6_ = (NIM_BOOL)0;
+#line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_360)) { raiseOverflow(); };
+#line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_361)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_360) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_361));	if (T6_) goto LA8_;
+
+#line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+
+#line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
+	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_362)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_362) < ((NI) 4));	LA8_: ;
 	result = T6_;	return result;}
 
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -13985,13 +15777,13 @@ N_LIB_PRIVATE N_NIMCALL(void, rawInsert__0cXXsrty7iMM9bm1id59c49bg)(tyObject_Tab
 	(*data_0)->data[h_0].Field0 = hc;}
 
 #line 266 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-N_LIB_PRIVATE N_NIMCALL(void, enlarge__s9bPLSQpIqX9cjC1G9cA82q4Q)(tyObject_Table__pGGeaOra9csl069baTSs3CJg* t) {	tySequence__0pNp33hfens5jJ9aLEr0T1A* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_323;	tySequence__0pNp33hfens5jJ9aLEr0T1A* T2_;	n_1 = (tySequence__0pNp33hfens5jJ9aLEr0T1A*)0;
+N_LIB_PRIVATE N_NIMCALL(void, enlarge__s9bPLSQpIqX9cjC1G9cA82q4Q)(tyObject_Table__pGGeaOra9csl069baTSs3CJg* t) {	tySequence__0pNp33hfens5jJ9aLEr0T1A* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_363;	tySequence__0pNp33hfens5jJ9aLEr0T1A* T2_;	n_1 = (tySequence__0pNp33hfens5jJ9aLEr0T1A*)0;
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_323)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_323)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_323)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_323), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__0pNp33hfens5jJ9aLEr0T1A*) newSeq((&NTI__0pNp33hfens5jJ9aLEr0T1A_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_323))));
+	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_363)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_363)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_363)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_363), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__0pNp33hfens5jJ9aLEr0T1A*) newSeq((&NTI__0pNp33hfens5jJ9aLEr0T1A_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_363))));
 #line 269 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 	T2_ = (tySequence__0pNp33hfens5jJ9aLEr0T1A*)0;	T2_ = (*t).data;	unsureAsgnRef((void**) (&(*t).data), n_1);	n_1 = T2_;	{		NI i;		NI colontmp_;		NI T4_;		NI res;		i = (NI)0;		colontmp_ = (NI)0;
 #line 270 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -14001,7 +15793,7 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__s9bPLSQpIqX9cjC1G9cA82q4Q)(tyObject_Table
 #line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 		res = ((NI) 0);		{
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_324;
+			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_364;
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 				if (!(res <= colontmp_)) goto LA6;
 
@@ -14049,13 +15841,13 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__s9bPLSQpIqX9cjC1G9cA82q4Q)(tyObject_Table
 				LA10_: ;
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_324)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_324);			} LA6: ;
+				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_364)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_364);			} LA6: ;
 		}
 	}
 }
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGetKnownHC__skQWS8mO0pRC4eWb9ap3r9bAtables)(tyObject_Table__pGGeaOra9csl069baTSs3CJg t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_325;{	result = (NI)0;
+static N_INLINE(NI, rawGetKnownHC__skQWS8mO0pRC4eWb9ap3r9bAtables)(tyObject_Table__pGGeaOra9csl069baTSs3CJg t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_365;{	result = (NI)0;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -14116,7 +15908,7 @@ static N_INLINE(NI, rawGetKnownHC__skQWS8mO0pRC4eWb9ap3r9bAtables)(tyObject_Tabl
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_325)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_325);	}BeforeRet_: ;
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_365)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_365);	}BeforeRet_: ;
 	return result;}
 
 #line 465 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -14155,7 +15947,7 @@ N_LIB_PRIVATE N_NIMCALL(tyObject_HashSet__o1ej6dBUQnezVPAEZ8Ad9bA*, mgetOrPut__c
 #line 65 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 	index = rawGet__cAt8UDFiAelZhKwYOAnlJAtables((*t), key_0, (&hc));
 #line 66 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_326;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_327;
+	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_366;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_367;
 #line 66 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		if (!(index < ((NI) 0))) goto LA13_;
 
@@ -14209,21 +16001,21 @@ N_LIB_PRIVATE N_NIMCALL(tyObject_HashSet__o1ej6dBUQnezVPAEZ8Ad9bA*, mgetOrPut__c
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_326)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_326);
+		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_366)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_366);
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		rawInsert__0cXXsrty7iMM9bm1id59c49bg(t, (&(*t).data), key_0, val_0, hc, index);
 
 #line 68 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_327)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_327);	}
+		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_367)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_367);	}
 	LA13_: ;
 
 #line 70 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 	if ((NU)(index) >= (NU)((*t).data ? (*t).data->Sup.len : 0)){ raiseIndexError2(index,((*t).data ? (*t).data->Sup.len : 0)-1); }	result = (&(*t).data->data[index].Field2);	return result;}
 
 #line 32 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NIM_BOOL, mustRehash__Bg6vsNQULUDiNhOqTw4GIAtables)(tyObject_Table__52v4sP86ruZliir3KafpPQ t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_328;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_329;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_330;	result = (NIM_BOOL)0;
+static N_INLINE(NIM_BOOL, mustRehash__Bg6vsNQULUDiNhOqTw4GIAtables)(tyObject_Table__52v4sP86ruZliir3KafpPQ t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_368;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_369;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_370;	result = (NIM_BOOL)0;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -14249,16 +16041,16 @@ static N_INLINE(NIM_BOOL, mustRehash__Bg6vsNQULUDiNhOqTw4GIAtables)(tyObject_Tab
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_328)) { raiseOverflow(); };
+	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_368)) { raiseOverflow(); };
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_329)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_328) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_329));	if (T6_) goto LA8_;
+	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_369)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_368) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_369));	if (T6_) goto LA8_;
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_330)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_330) < ((NI) 4));	LA8_: ;
+	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_370)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_370) < ((NI) 4));	LA8_: ;
 	result = T6_;	return result;}
 
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -14271,13 +16063,13 @@ N_LIB_PRIVATE N_NIMCALL(void, rawInsert__PGDsDuK2ay1ZjSgxdPSUqg)(tyObject_Table_
 	(*data_0)->data[h_0].Field0 = hc;}
 
 #line 266 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-N_LIB_PRIVATE N_NIMCALL(void, enlarge__PsR8oq83VKt3bi177XzRBQ)(tyObject_Table__52v4sP86ruZliir3KafpPQ* t) {	tySequence__TwXs3G9bF9ad7BQkkskGRTCQ* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_331;	tySequence__TwXs3G9bF9ad7BQkkskGRTCQ* T2_;	n_1 = (tySequence__TwXs3G9bF9ad7BQkkskGRTCQ*)0;
+N_LIB_PRIVATE N_NIMCALL(void, enlarge__PsR8oq83VKt3bi177XzRBQ)(tyObject_Table__52v4sP86ruZliir3KafpPQ* t) {	tySequence__TwXs3G9bF9ad7BQkkskGRTCQ* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_371;	tySequence__TwXs3G9bF9ad7BQkkskGRTCQ* T2_;	n_1 = (tySequence__TwXs3G9bF9ad7BQkkskGRTCQ*)0;
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_331)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_331)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_331)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_331), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__TwXs3G9bF9ad7BQkkskGRTCQ*) newSeq((&NTI__TwXs3G9bF9ad7BQkkskGRTCQ_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_331))));
+	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_371)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_371)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_371)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_371), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__TwXs3G9bF9ad7BQkkskGRTCQ*) newSeq((&NTI__TwXs3G9bF9ad7BQkkskGRTCQ_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_371))));
 #line 269 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 	T2_ = (tySequence__TwXs3G9bF9ad7BQkkskGRTCQ*)0;	T2_ = (*t).data;	unsureAsgnRef((void**) (&(*t).data), n_1);	n_1 = T2_;	{		NI i;		NI colontmp_;		NI T4_;		NI res;		i = (NI)0;		colontmp_ = (NI)0;
 #line 270 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -14287,7 +16079,7 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__PsR8oq83VKt3bi177XzRBQ)(tyObject_Table__5
 #line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 		res = ((NI) 0);		{
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_332;
+			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_372;
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 				if (!(res <= colontmp_)) goto LA6;
 
@@ -14347,13 +16139,13 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__PsR8oq83VKt3bi177XzRBQ)(tyObject_Table__5
 				LA10_: ;
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_332)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_332);			} LA6: ;
+				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_372)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_372);			} LA6: ;
 		}
 	}
 }
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGetKnownHC__ZWHCgt9aeNwd6cRN4uf2M2gtables)(tyObject_Table__52v4sP86ruZliir3KafpPQ t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_333;{	result = (NI)0;
+static N_INLINE(NI, rawGetKnownHC__ZWHCgt9aeNwd6cRN4uf2M2gtables)(tyObject_Table__52v4sP86ruZliir3KafpPQ t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_373;{	result = (NI)0;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -14414,7 +16206,7 @@ static N_INLINE(NI, rawGetKnownHC__ZWHCgt9aeNwd6cRN4uf2M2gtables)(tyObject_Table
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_333)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_333);	}BeforeRet_: ;
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_373)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_373);	}BeforeRet_: ;
 	return result;}
 
 #line 309 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -14461,7 +16253,7 @@ N_LIB_PRIVATE N_NIMCALL(void, X5BX5Deq___4sYz81NjerKsc6hcTcA8tg)(tyObject_Table_
 		genericAssign((void*)(&(*t).data->data[index].Field2), (void*)val_0, (&NTI__mVKS59bRpscItosS0oN9a4zA_));	}
 	goto LA11_;
 	LA13_: ;
-	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_334;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_335;
+	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_374;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_375;
 #line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		{			NI T18_;
 #line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -14512,19 +16304,19 @@ N_LIB_PRIVATE N_NIMCALL(void, X5BX5Deq___4sYz81NjerKsc6hcTcA8tg)(tyObject_Table_
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_334)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_334);
+		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_374)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_374);
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		rawInsert__PGDsDuK2ay1ZjSgxdPSUqg(t, (&(*t).data), key_0, val_0, hc, index);
 
 #line 60 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_335)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_335);	}
+		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_375)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_375);	}
 	LA11_: ;
 }
 
 #line 32 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NIM_BOOL, mustRehash__QXUBJ1RFaZ7GT8EX9bvp6pAtables)(tyObject_Table__Y0c2zaBMalZGAwyJIQOIWQ t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_336;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_337;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_338;	result = (NIM_BOOL)0;
+static N_INLINE(NIM_BOOL, mustRehash__QXUBJ1RFaZ7GT8EX9bvp6pAtables)(tyObject_Table__Y0c2zaBMalZGAwyJIQOIWQ t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_376;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_377;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_378;	result = (NIM_BOOL)0;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -14550,16 +16342,16 @@ static N_INLINE(NIM_BOOL, mustRehash__QXUBJ1RFaZ7GT8EX9bvp6pAtables)(tyObject_Ta
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_336)) { raiseOverflow(); };
+	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_376)) { raiseOverflow(); };
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_337)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_336) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_337));	if (T6_) goto LA8_;
+	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_377)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_376) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_377));	if (T6_) goto LA8_;
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_338)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_338) < ((NI) 4));	LA8_: ;
+	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_378)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_378) < ((NI) 4));	LA8_: ;
 	result = T6_;	return result;}
 
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -14572,13 +16364,13 @@ N_LIB_PRIVATE N_NIMCALL(void, rawInsert__srsR9aQxmvHp0QWC7zuZ8vg)(tyObject_Table
 	(*data_0)->data[h_0].Field0 = hc;}
 
 #line 266 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-N_LIB_PRIVATE N_NIMCALL(void, enlarge__hbR7ylouOj0WahrBpsDCAA)(tyObject_Table__Y0c2zaBMalZGAwyJIQOIWQ* t) {	tySequence__ZS1ahAVt82upPJYTV8RknQ* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_339;	tySequence__ZS1ahAVt82upPJYTV8RknQ* T2_;	n_1 = (tySequence__ZS1ahAVt82upPJYTV8RknQ*)0;
+N_LIB_PRIVATE N_NIMCALL(void, enlarge__hbR7ylouOj0WahrBpsDCAA)(tyObject_Table__Y0c2zaBMalZGAwyJIQOIWQ* t) {	tySequence__ZS1ahAVt82upPJYTV8RknQ* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_379;	tySequence__ZS1ahAVt82upPJYTV8RknQ* T2_;	n_1 = (tySequence__ZS1ahAVt82upPJYTV8RknQ*)0;
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_339)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_339)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_339)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_339), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__ZS1ahAVt82upPJYTV8RknQ*) newSeq((&NTI__ZS1ahAVt82upPJYTV8RknQ_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_339))));
+	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_379)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_379)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_379)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_379), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__ZS1ahAVt82upPJYTV8RknQ*) newSeq((&NTI__ZS1ahAVt82upPJYTV8RknQ_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_379))));
 #line 269 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 	T2_ = (tySequence__ZS1ahAVt82upPJYTV8RknQ*)0;	T2_ = (*t).data;	unsureAsgnRef((void**) (&(*t).data), n_1);	n_1 = T2_;	{		NI i;		NI colontmp_;		NI T4_;		NI res;		i = (NI)0;		colontmp_ = (NI)0;
 #line 270 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -14588,7 +16380,7 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__hbR7ylouOj0WahrBpsDCAA)(tyObject_Table__Y
 #line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 		res = ((NI) 0);		{
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_340;
+			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_380;
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 				if (!(res <= colontmp_)) goto LA6;
 
@@ -14636,13 +16428,13 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__hbR7ylouOj0WahrBpsDCAA)(tyObject_Table__Y
 				LA10_: ;
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_340)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_340);			} LA6: ;
+				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_380)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_380);			} LA6: ;
 		}
 	}
 }
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGetKnownHC__fDNiobzLxsqqnAQnfX9aggQtables)(tyObject_Table__Y0c2zaBMalZGAwyJIQOIWQ t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_341;{	result = (NI)0;
+static N_INLINE(NI, rawGetKnownHC__fDNiobzLxsqqnAQnfX9aggQtables)(tyObject_Table__Y0c2zaBMalZGAwyJIQOIWQ t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_381;{	result = (NI)0;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -14703,7 +16495,7 @@ static N_INLINE(NI, rawGetKnownHC__fDNiobzLxsqqnAQnfX9aggQtables)(tyObject_Table
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_341)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_341);	}BeforeRet_: ;
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_381)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_381);	}BeforeRet_: ;
 	return result;}
 
 #line 465 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -14742,7 +16534,7 @@ N_LIB_PRIVATE N_NIMCALL(tyObject_HashSet__CD8Dpv0WGmASelVaNSo6zg*, mgetOrPut__68
 #line 65 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 	index = rawGet__9cx2AJCKSrTAiP4NLfl74Qwtables((*t), key_0, (&hc));
 #line 66 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_342;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_343;
+	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_382;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_383;
 #line 66 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		if (!(index < ((NI) 0))) goto LA13_;
 
@@ -14796,21 +16588,21 @@ N_LIB_PRIVATE N_NIMCALL(tyObject_HashSet__CD8Dpv0WGmASelVaNSo6zg*, mgetOrPut__68
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_342)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_342);
+		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_382)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_382);
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		rawInsert__srsR9aQxmvHp0QWC7zuZ8vg(t, (&(*t).data), key_0, val_0, hc, index);
 
 #line 68 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_343)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_343);	}
+		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_383)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_383);	}
 	LA13_: ;
 
 #line 70 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 	if ((NU)(index) >= (NU)((*t).data ? (*t).data->Sup.len : 0)){ raiseIndexError2(index,((*t).data ? (*t).data->Sup.len : 0)-1); }	result = (&(*t).data->data[index].Field2);	return result;}
 
 #line 76 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGet__C49cc47TU8R7HomI3qZnt9cAtables)(tyObject_Table__puwZz39aIr9cdB5WlFICYPgw t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_344;{	result = (NI)0;
+static N_INLINE(NI, rawGet__C49cc47TU8R7HomI3qZnt9cAtables)(tyObject_Table__puwZz39aIr9cdB5WlFICYPgw t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_384;{	result = (NI)0;
 #line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -14884,11 +16676,11 @@ static N_INLINE(NI, rawGet__C49cc47TU8R7HomI3qZnt9cAtables)(tyObject_Table__puwZ
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_344)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_344);	}BeforeRet_: ;
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_384)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_384);	}BeforeRet_: ;
 	return result;}
 
 #line 32 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NIM_BOOL, mustRehash__Cq3PofsbUA565GY1VC5GPQtables)(tyObject_Table__puwZz39aIr9cdB5WlFICYPgw t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_345;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_346;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_347;	result = (NIM_BOOL)0;
+static N_INLINE(NIM_BOOL, mustRehash__Cq3PofsbUA565GY1VC5GPQtables)(tyObject_Table__puwZz39aIr9cdB5WlFICYPgw t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_385;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_386;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_387;	result = (NIM_BOOL)0;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -14914,16 +16706,16 @@ static N_INLINE(NIM_BOOL, mustRehash__Cq3PofsbUA565GY1VC5GPQtables)(tyObject_Tab
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_345)) { raiseOverflow(); };
+	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_385)) { raiseOverflow(); };
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_346)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_345) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_346));	if (T6_) goto LA8_;
+	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_386)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_385) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_386));	if (T6_) goto LA8_;
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_347)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_347) < ((NI) 4));	LA8_: ;
+	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_387)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_387) < ((NI) 4));	LA8_: ;
 	result = T6_;	return result;}
 
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -14936,13 +16728,13 @@ N_LIB_PRIVATE N_NIMCALL(void, rawInsert__m8Wsbu6hezAYMmam4arrpA)(tyObject_Table_
 	(*data_0)->data[h_0].Field0 = hc;}
 
 #line 266 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-N_LIB_PRIVATE N_NIMCALL(void, enlarge__PsilsrPF3BOShuDl2coYmA)(tyObject_Table__puwZz39aIr9cdB5WlFICYPgw* t) {	tySequence__tZ2LP3xqCx8kcPyjrRkSuA* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_348;	tySequence__tZ2LP3xqCx8kcPyjrRkSuA* T2_;	n_1 = (tySequence__tZ2LP3xqCx8kcPyjrRkSuA*)0;
+N_LIB_PRIVATE N_NIMCALL(void, enlarge__PsilsrPF3BOShuDl2coYmA)(tyObject_Table__puwZz39aIr9cdB5WlFICYPgw* t) {	tySequence__tZ2LP3xqCx8kcPyjrRkSuA* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_388;	tySequence__tZ2LP3xqCx8kcPyjrRkSuA* T2_;	n_1 = (tySequence__tZ2LP3xqCx8kcPyjrRkSuA*)0;
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_348)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_348)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_348)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_348), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__tZ2LP3xqCx8kcPyjrRkSuA*) newSeq((&NTI__tZ2LP3xqCx8kcPyjrRkSuA_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_348))));
+	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_388)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_388)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_388)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_388), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__tZ2LP3xqCx8kcPyjrRkSuA*) newSeq((&NTI__tZ2LP3xqCx8kcPyjrRkSuA_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_388))));
 #line 269 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 	T2_ = (tySequence__tZ2LP3xqCx8kcPyjrRkSuA*)0;	T2_ = (*t).data;	unsureAsgnRef((void**) (&(*t).data), n_1);	n_1 = T2_;	{		NI i;		NI colontmp_;		NI T4_;		NI res;		i = (NI)0;		colontmp_ = (NI)0;
 #line 270 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -14952,7 +16744,7 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__PsilsrPF3BOShuDl2coYmA)(tyObject_Table__p
 #line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 		res = ((NI) 0);		{
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_349;
+			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_389;
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 				if (!(res <= colontmp_)) goto LA6;
 
@@ -15000,13 +16792,13 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__PsilsrPF3BOShuDl2coYmA)(tyObject_Table__p
 				LA10_: ;
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_349)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_349);			} LA6: ;
+				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_389)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_389);			} LA6: ;
 		}
 	}
 }
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGetKnownHC__4Ginzj7ukeMJmE4aK76AwQtables)(tyObject_Table__puwZz39aIr9cdB5WlFICYPgw t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_350;{	result = (NI)0;
+static N_INLINE(NI, rawGetKnownHC__4Ginzj7ukeMJmE4aK76AwQtables)(tyObject_Table__puwZz39aIr9cdB5WlFICYPgw t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_390;{	result = (NI)0;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -15067,7 +16859,7 @@ static N_INLINE(NI, rawGetKnownHC__4Ginzj7ukeMJmE4aK76AwQtables)(tyObject_Table_
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_350)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_350);	}BeforeRet_: ;
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_390)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_390);	}BeforeRet_: ;
 	return result;}
 
 #line 465 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -15106,7 +16898,7 @@ N_LIB_PRIVATE N_NIMCALL(tyObject_AsyncLockcolonObjectType___ylxqsRlnjMa2tcH03hSG
 #line 65 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 	index = rawGet__C49cc47TU8R7HomI3qZnt9cAtables((*t), key_0, (&hc));
 #line 66 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_351;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_352;
+	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_391;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_392;
 #line 66 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		if (!(index < ((NI) 0))) goto LA13_;
 
@@ -15160,14 +16952,14 @@ N_LIB_PRIVATE N_NIMCALL(tyObject_AsyncLockcolonObjectType___ylxqsRlnjMa2tcH03hSG
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_351)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_351);
+		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_391)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_391);
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		rawInsert__m8Wsbu6hezAYMmam4arrpA(t, (&(*t).data), key_0, val_0, hc, index);
 
 #line 68 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_352)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_352);	}
+		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_392)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_392);	}
 	LA13_: ;
 
 #line 70 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -15236,7 +17028,7 @@ N_LIB_PRIVATE N_NIMCALL(NI, len__9cJxOPw9bRNmYRNLWys9c64jg)(tyObject_Table__52v4
 	result = t.counter;	return result;}
 
 #line 76 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGet__wo7cHcxb8TISKcYzsxgOrAtables)(tyObject_Table__h8cNvChU6yNAdM6bChlFYA t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_353;{	result = (NI)0;
+static N_INLINE(NI, rawGet__wo7cHcxb8TISKcYzsxgOrAtables)(tyObject_Table__h8cNvChU6yNAdM6bChlFYA t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_393;{	result = (NI)0;
 #line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -15310,7 +17102,7 @@ static N_INLINE(NI, rawGet__wo7cHcxb8TISKcYzsxgOrAtables)(tyObject_Table__h8cNvC
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_353)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_353);	}BeforeRet_: ;
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_393)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_393);	}BeforeRet_: ;
 	return result;}
 
 #line 364 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -15353,7 +17145,7 @@ N_LIB_PRIVATE N_NIMCALL(NIM_BOOL, hasKey__QM56tYF6vfEsVe8gcld7kQ)(tyObject_Table
 	T1_ = (NI)0;	T1_ = rawGet__wo7cHcxb8TISKcYzsxgOrAtables(t, key_0, (&hc));	result = (((NI) 0) <= T1_);	return result;}
 
 #line 32 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NIM_BOOL, mustRehash__APRckygo9aeaNxNEVGtzlTAtables)(tyObject_Table__h8cNvChU6yNAdM6bChlFYA t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_354;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_355;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_356;	result = (NIM_BOOL)0;
+static N_INLINE(NIM_BOOL, mustRehash__APRckygo9aeaNxNEVGtzlTAtables)(tyObject_Table__h8cNvChU6yNAdM6bChlFYA t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_394;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_395;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_396;	result = (NIM_BOOL)0;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -15379,16 +17171,16 @@ static N_INLINE(NIM_BOOL, mustRehash__APRckygo9aeaNxNEVGtzlTAtables)(tyObject_Ta
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_354)) { raiseOverflow(); };
+	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_394)) { raiseOverflow(); };
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_355)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_354) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_355));	if (T6_) goto LA8_;
+	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_395)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_394) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_395));	if (T6_) goto LA8_;
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_356)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_356) < ((NI) 4));	LA8_: ;
+	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_396)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_396) < ((NI) 4));	LA8_: ;
 	result = T6_;	return result;}
 
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -15401,13 +17193,13 @@ N_LIB_PRIVATE N_NIMCALL(void, rawInsert__TYBUSWS49aw8nZWL9aMm9a9bKw)(tyObject_Ta
 	(*data_0)->data[h_0].Field0 = hc;}
 
 #line 266 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-N_LIB_PRIVATE N_NIMCALL(void, enlarge__SOg3sHI59bTi9cTBbvKS2HcQ)(tyObject_Table__h8cNvChU6yNAdM6bChlFYA* t) {	tySequence__MA0zEHLrBVKsH6AAd9aPHDA* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_357;	tySequence__MA0zEHLrBVKsH6AAd9aPHDA* T2_;	n_1 = (tySequence__MA0zEHLrBVKsH6AAd9aPHDA*)0;
+N_LIB_PRIVATE N_NIMCALL(void, enlarge__SOg3sHI59bTi9cTBbvKS2HcQ)(tyObject_Table__h8cNvChU6yNAdM6bChlFYA* t) {	tySequence__MA0zEHLrBVKsH6AAd9aPHDA* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_397;	tySequence__MA0zEHLrBVKsH6AAd9aPHDA* T2_;	n_1 = (tySequence__MA0zEHLrBVKsH6AAd9aPHDA*)0;
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_357)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_357)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_357)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_357), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__MA0zEHLrBVKsH6AAd9aPHDA*) newSeq((&NTI__MA0zEHLrBVKsH6AAd9aPHDA_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_357))));
+	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_397)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_397)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_397)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_397), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__MA0zEHLrBVKsH6AAd9aPHDA*) newSeq((&NTI__MA0zEHLrBVKsH6AAd9aPHDA_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_397))));
 #line 269 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 	T2_ = (tySequence__MA0zEHLrBVKsH6AAd9aPHDA*)0;	T2_ = (*t).data;	unsureAsgnRef((void**) (&(*t).data), n_1);	n_1 = T2_;	{		NI i;		NI colontmp_;		NI T4_;		NI res;		i = (NI)0;		colontmp_ = (NI)0;
 #line 270 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -15417,7 +17209,7 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__SOg3sHI59bTi9cTBbvKS2HcQ)(tyObject_Table_
 #line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 		res = ((NI) 0);		{
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_358;
+			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_398;
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 				if (!(res <= colontmp_)) goto LA6;
 
@@ -15465,13 +17257,13 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__SOg3sHI59bTi9cTBbvKS2HcQ)(tyObject_Table_
 				LA10_: ;
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_358)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_358);			} LA6: ;
+				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_398)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_398);			} LA6: ;
 		}
 	}
 }
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGetKnownHC__5NA1z7VSV5OMVbfxDFHSlgtables)(tyObject_Table__h8cNvChU6yNAdM6bChlFYA t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_359;{	result = (NI)0;
+static N_INLINE(NI, rawGetKnownHC__5NA1z7VSV5OMVbfxDFHSlgtables)(tyObject_Table__h8cNvChU6yNAdM6bChlFYA t, tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_399;{	result = (NI)0;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -15532,7 +17324,7 @@ static N_INLINE(NI, rawGetKnownHC__5NA1z7VSV5OMVbfxDFHSlgtables)(tyObject_Table_
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_359)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_359);	}BeforeRet_: ;
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_399)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_399);	}BeforeRet_: ;
 	return result;}
 
 #line 309 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -15579,7 +17371,7 @@ N_LIB_PRIVATE N_NIMCALL(void, X5BX5Deq___tcJv4lzoxct9cAN5L419azzg)(tyObject_Tabl
 		(*t).data->data[index].Field2 = val_0;	}
 	goto LA11_;
 	LA13_: ;
-	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_360;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_361;
+	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_400;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_401;
 #line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		{			NI T18_;
 #line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -15630,19 +17422,19 @@ N_LIB_PRIVATE N_NIMCALL(void, X5BX5Deq___tcJv4lzoxct9cAN5L419azzg)(tyObject_Tabl
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_360)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_360);
+		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_400)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_400);
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		rawInsert__TYBUSWS49aw8nZWL9aMm9a9bKw(t, (&(*t).data), key_0, val_0, hc, index);
 
 #line 60 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_361)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_361);	}
+		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_401)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_401);	}
 	LA11_: ;
 }
 
 #line 32 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NIM_BOOL, mustRehash__CvcEOi5NPfRZwQVj2v89aEAtables)(tyObject_Table__PYPLWlmg3RnSxA1NrOVJFw t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_362;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_363;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_364;	result = (NIM_BOOL)0;
+static N_INLINE(NIM_BOOL, mustRehash__CvcEOi5NPfRZwQVj2v89aEAtables)(tyObject_Table__PYPLWlmg3RnSxA1NrOVJFw t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_402;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_403;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_404;	result = (NIM_BOOL)0;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -15668,16 +17460,16 @@ static N_INLINE(NIM_BOOL, mustRehash__CvcEOi5NPfRZwQVj2v89aEAtables)(tyObject_Ta
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_362)) { raiseOverflow(); };
+	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_402)) { raiseOverflow(); };
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_363)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_362) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_363));	if (T6_) goto LA8_;
+	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_403)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_402) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_403));	if (T6_) goto LA8_;
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_364)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_364) < ((NI) 4));	LA8_: ;
+	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_404)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_404) < ((NI) 4));	LA8_: ;
 	result = T6_;	return result;}
 
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -15690,13 +17482,13 @@ N_LIB_PRIVATE N_NIMCALL(void, rawInsert__9bynYfgEUEqWih5bDrKwLyg)(tyObject_Table
 	(*data_0)->data[h_0].Field0 = hc;}
 
 #line 266 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-N_LIB_PRIVATE N_NIMCALL(void, enlarge__rBhZcpKYj1so4s1MQVJhYg)(tyObject_Table__PYPLWlmg3RnSxA1NrOVJFw* t) {	tySequence__NhrD4IueRTlBqNEpcAHOaw* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_365;	tySequence__NhrD4IueRTlBqNEpcAHOaw* T2_;	n_1 = (tySequence__NhrD4IueRTlBqNEpcAHOaw*)0;
+N_LIB_PRIVATE N_NIMCALL(void, enlarge__rBhZcpKYj1so4s1MQVJhYg)(tyObject_Table__PYPLWlmg3RnSxA1NrOVJFw* t) {	tySequence__NhrD4IueRTlBqNEpcAHOaw* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_405;	tySequence__NhrD4IueRTlBqNEpcAHOaw* T2_;	n_1 = (tySequence__NhrD4IueRTlBqNEpcAHOaw*)0;
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_365)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_365)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_365)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_365), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__NhrD4IueRTlBqNEpcAHOaw*) newSeq((&NTI__NhrD4IueRTlBqNEpcAHOaw_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_365))));
+	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_405)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_405)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_405)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_405), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__NhrD4IueRTlBqNEpcAHOaw*) newSeq((&NTI__NhrD4IueRTlBqNEpcAHOaw_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_405))));
 #line 269 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 	T2_ = (tySequence__NhrD4IueRTlBqNEpcAHOaw*)0;	T2_ = (*t).data;	unsureAsgnRef((void**) (&(*t).data), n_1);	n_1 = T2_;	{		NI i;		NI colontmp_;		NI T4_;		NI res;		i = (NI)0;		colontmp_ = (NI)0;
 #line 270 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -15706,7 +17498,7 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__rBhZcpKYj1so4s1MQVJhYg)(tyObject_Table__P
 #line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 		res = ((NI) 0);		{
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_366;
+			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_406;
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 				if (!(res <= colontmp_)) goto LA6;
 
@@ -15754,7 +17546,7 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__rBhZcpKYj1so4s1MQVJhYg)(tyObject_Table__P
 				LA10_: ;
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_366)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_366);			} LA6: ;
+				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_406)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_406);			} LA6: ;
 		}
 	}
 }
@@ -15799,7 +17591,7 @@ static N_INLINE(NI, rawGetDeep__kPlpH9aOXwPkb5CtWnH1Pnwtables)(tyObject_Table__P
 	result = h_1;	return result;}
 
 #line 493 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-N_LIB_PRIVATE N_NIMCALL(void, add__IX4o6GsExND3BZnAkrUdSQ)(tyObject_Table__PYPLWlmg3RnSxA1NrOVJFw* t, NimStringDesc* key_0, tyObject_MessageNotificationSubscription__0iE3wlvp8XLVCEqe9a69bBzA val_0) {	NI hc;	NI j;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_367;
+N_LIB_PRIVATE N_NIMCALL(void, add__IX4o6GsExND3BZnAkrUdSQ)(tyObject_Table__PYPLWlmg3RnSxA1NrOVJFw* t, NimStringDesc* key_0, tyObject_MessageNotificationSubscription__0iE3wlvp8XLVCEqe9a69bBzA val_0) {	NI hc;	NI j;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_407;
 #line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 	{		NI T3_;
 #line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -15853,7 +17645,7 @@ N_LIB_PRIVATE N_NIMCALL(void, add__IX4o6GsExND3BZnAkrUdSQ)(tyObject_Table__PYPLW
 	rawInsert__9bynYfgEUEqWih5bDrKwLyg(t, (&(*t).data), key_0, val_0, hc, j);
 
 #line 500 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-	if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_367)) { raiseOverflow(); };	(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_367);}
+	if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_407)) { raiseOverflow(); };	(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_407);}
 
 #line 981 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 N_LIB_PRIVATE N_NIMCALL(void, add__VIi9aNPdOc9cAoP8LdQpEGeg)(tyObject_Table__PYPLWlmg3RnSxA1NrOVJFw* t, NimStringDesc* key_0, tyObject_MessageNotificationSubscription__0iE3wlvp8XLVCEqe9a69bBzA val_0) {
@@ -15864,7 +17656,7 @@ N_LIB_PRIVATE N_NIMCALL(void, add__VIi9aNPdOc9cAoP8LdQpEGeg)(tyObject_Table__PYP
 }
 
 #line 32 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NIM_BOOL, mustRehash__CyzmBPkfGb9b9c79c7JcvdL9cQtables)(tyObject_Table__A9cYVcPOKBDYXmP0EJYObtA t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_368;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_369;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_370;	result = (NIM_BOOL)0;
+static N_INLINE(NIM_BOOL, mustRehash__CyzmBPkfGb9b9c79c7JcvdL9cQtables)(tyObject_Table__A9cYVcPOKBDYXmP0EJYObtA t) {	NIM_BOOL result;	NIM_BOOL T6_;	NI T7_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_408;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_409;	NI T9_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_410;	result = (NIM_BOOL)0;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 33 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -15890,16 +17682,16 @@ static N_INLINE(NIM_BOOL, mustRehash__CyzmBPkfGb9b9c79c7JcvdL9cQtables)(tyObject
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_368)) { raiseOverflow(); };
+	T7_ = (t.data ? t.data->Sup.len : 0);	if (nimMulInt(T7_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_408)) { raiseOverflow(); };
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_369)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_368) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_369));	if (T6_) goto LA8_;
+	if (nimMulInt(t.counter, ((NI) 3), &TM__4SoG2KRQy3oMm9aUzSLtGrA_409)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_408) < (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_409));	if (T6_) goto LA8_;
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 34 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_370)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_370) < ((NI) 4));	LA8_: ;
+	T9_ = (t.data ? t.data->Sup.len : 0);	if (nimSubInt(T9_, t.counter, &TM__4SoG2KRQy3oMm9aUzSLtGrA_410)) { raiseOverflow(); };	T6_ = ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_410) < ((NI) 4));	LA8_: ;
 	result = T6_;	return result;}
 
 #line 29 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -15912,13 +17704,13 @@ N_LIB_PRIVATE N_NIMCALL(void, rawInsert__21qeRfngr8Vv0D2rq4hj3w)(tyObject_Table_
 	(*data_0)->data[h_0].Field0 = hc;}
 
 #line 266 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-N_LIB_PRIVATE N_NIMCALL(void, enlarge__Fwmhtp8g8smcdZy2eAcKkA)(tyObject_Table__A9cYVcPOKBDYXmP0EJYObtA* t) {	tySequence__b15zLYqiMPkiLv2o00nNdA* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_371;	tySequence__b15zLYqiMPkiLv2o00nNdA* T2_;	n_1 = (tySequence__b15zLYqiMPkiLv2o00nNdA*)0;
+N_LIB_PRIVATE N_NIMCALL(void, enlarge__Fwmhtp8g8smcdZy2eAcKkA)(tyObject_Table__A9cYVcPOKBDYXmP0EJYObtA* t) {	tySequence__b15zLYqiMPkiLv2o00nNdA* n_1;	NI T1_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_411;	tySequence__b15zLYqiMPkiLv2o00nNdA* T2_;	n_1 = (tySequence__b15zLYqiMPkiLv2o00nNdA*)0;
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_371)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_371)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_371)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_371), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__b15zLYqiMPkiLv2o00nNdA*) newSeq((&NTI__b15zLYqiMPkiLv2o00nNdA_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_371))));
+	T1_ = ((*t).data ? (*t).data->Sup.len : 0);	if (nimMulInt(T1_, ((NI) 2), &TM__4SoG2KRQy3oMm9aUzSLtGrA_411)) { raiseOverflow(); };	if (((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_411)) < ((NI) 0) || ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_411)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_411), ((NI) 0), ((NI) IL64(9223372036854775807))); }	n_1 = (tySequence__b15zLYqiMPkiLv2o00nNdA*) newSeq((&NTI__b15zLYqiMPkiLv2o00nNdA_), ((NI) ((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_411))));
 #line 269 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 	T2_ = (tySequence__b15zLYqiMPkiLv2o00nNdA*)0;	T2_ = (*t).data;	unsureAsgnRef((void**) (&(*t).data), n_1);	n_1 = T2_;	{		NI i;		NI colontmp_;		NI T4_;		NI res;		i = (NI)0;		colontmp_ = (NI)0;
 #line 270 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -15928,7 +17720,7 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__Fwmhtp8g8smcdZy2eAcKkA)(tyObject_Table__A
 #line 56 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 		res = ((NI) 0);		{
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_372;
+			while (1) {				NI eh;				NI TM__4SoG2KRQy3oMm9aUzSLtGrA_412;
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 				if (!(res <= colontmp_)) goto LA6;
 
@@ -15976,13 +17768,13 @@ N_LIB_PRIVATE N_NIMCALL(void, enlarge__Fwmhtp8g8smcdZy2eAcKkA)(tyObject_Table__A
 				LA10_: ;
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_372)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_372);			} LA6: ;
+				if (nimAddInt(res, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_412)) { raiseOverflow(); };				res = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_412);			} LA6: ;
 		}
 	}
 }
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGetKnownHC__9cYbSkNpEZfqCz1HaN8qEcQtables)(tyObject_Table__A9cYVcPOKBDYXmP0EJYObtA t, NimStringDesc* key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_373;{	result = (NI)0;
+static N_INLINE(NI, rawGetKnownHC__9cYbSkNpEZfqCz1HaN8qEcQtables)(tyObject_Table__A9cYVcPOKBDYXmP0EJYObtA t, NimStringDesc* key_0, NI hc) {	NI result;	NI h_1;	NI T6_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_413;{	result = (NI)0;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 	{		NI T3_;
 #line 46 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -16039,7 +17831,7 @@ static N_INLINE(NI, rawGetKnownHC__9cYbSkNpEZfqCz1HaN8qEcQtables)(tyObject_Table
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_373)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_373);	}BeforeRet_: ;
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_413)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_413);	}BeforeRet_: ;
 	return result;}
 
 #line 309 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -16086,7 +17878,7 @@ N_LIB_PRIVATE N_NIMCALL(void, X5BX5Deq___eK8xAlkyOhlA9bPxqckbVeg)(tyObject_Table
 		genericSeqAssign((&(*t).data->data[index].Field2.contentFilters), val_0.contentFilters, (&NTI__xNHF59br19a2ddRDpm49b8z3A_));		asgnRef((void**) (&(*t).data->data[index].Field2.handler.ClE_0), val_0.handler.ClE_0);		(*t).data->data[index].Field2.handler.ClP_0 = val_0.handler.ClP_0;	}
 	goto LA11_;
 	LA13_: ;
-	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_374;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_375;
+	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_414;		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_415;
 #line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		{			NI T18_;
 #line 35 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -16137,19 +17929,19 @@ N_LIB_PRIVATE N_NIMCALL(void, X5BX5Deq___eK8xAlkyOhlA9bPxqckbVeg)(tyObject_Table
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 51 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_374)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_374);
+		if (nimSubInt(((NI) -1), index, &TM__4SoG2KRQy3oMm9aUzSLtGrA_414)) { raiseOverflow(); };		index = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_414);
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 52 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		rawInsert__21qeRfngr8Vv0D2rq4hj3w(t, (&(*t).data), key_0, val_0, hc, index);
 
 #line 60 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_375)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_375);	}
+		if (nimAddInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_415)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_415);	}
 	LA11_: ;
 }
 
 #line 76 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-static N_INLINE(NI, rawGet__ofNEKCYvRbLbMIu2mdmaHwtables)(tyObject_Table__JQs6mFuSYGTO9bUC9aLU6i1g t, tyObject_NodecolonObjectType___qHnzRdH4zCCluGzY2Ao49cg* key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_376;{	result = (NI)0;
+static N_INLINE(NI, rawGet__ofNEKCYvRbLbMIu2mdmaHwtables)(tyObject_Table__JQs6mFuSYGTO9bUC9aLU6i1g t, tyObject_NodecolonObjectType___qHnzRdH4zCCluGzY2Ao49cg* key_0, NI* hc) {	NI result;	NI h_1;	NI T10_;	NI TM__4SoG2KRQy3oMm9aUzSLtGrA_416;{	result = (NI)0;
 #line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 63 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
@@ -16221,7 +18013,7 @@ static N_INLINE(NI, rawGet__ofNEKCYvRbLbMIu2mdmaHwtables)(tyObject_Table__JQs6mF
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
 
 #line 57 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/hashcommon.nim"
-	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_376)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_376);	}BeforeRet_: ;
+	if (nimSubInt(((NI) -1), h_1, &TM__4SoG2KRQy3oMm9aUzSLtGrA_416)) { raiseOverflow(); };	result = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_416);	}BeforeRet_: ;
 	return result;}
 
 #line 380 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
@@ -16257,12 +18049,12 @@ N_LIB_PRIVATE N_NIMCALL(void, del__E1SmoJqMgaZVrSptBt7HXg)(tyObject_Table__JQs6m
 #line 112 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 	T1_ = (((*t).data ? (*t).data->Sup.len : 0)-1);	mskX60gensym17450588_ = T1_;
 #line 519 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_377;
+	{		NI TM__4SoG2KRQy3oMm9aUzSLtGrA_417;
 #line 113 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 		if (!(((NI) 0) <= i)) goto LA4_;
 
 #line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-		if (nimSubInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_377)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_377);		{			{
+		if (nimSubInt((*t).counter, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_417)) { raiseOverflow(); };		(*t).counter = (NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_417);		{			{
 #line 116 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 				while (1) {					NI jX60gensym17450590_;					NI rX60gensym17450591_;
 #line 117 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -16280,13 +18072,13 @@ N_LIB_PRIVATE N_NIMCALL(void, del__E1SmoJqMgaZVrSptBt7HXg)(tyObject_Table__JQs6m
 #line 121 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 					asgnRef((void**) (&(*t).data->data[i].Field2), NIM_NIL);					{
 #line 122 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-						while (1) {							NI TM__4SoG2KRQy3oMm9aUzSLtGrA_378;
+						while (1) {							NI TM__4SoG2KRQy3oMm9aUzSLtGrA_418;
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 
 #line 123 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
-							if (nimAddInt(i, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_378)) { raiseOverflow(); };							i = (NI)((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_378) & mskX60gensym17450588_);
+							if (nimAddInt(i, ((NI) 1), &TM__4SoG2KRQy3oMm9aUzSLtGrA_418)) { raiseOverflow(); };							i = (NI)((NI)(TM__4SoG2KRQy3oMm9aUzSLtGrA_418) & mskX60gensym17450588_);
 #line 124 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
 							{								NIM_BOOL T13_;
 #line 124 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tableimpl.nim"
@@ -16370,76 +18162,84 @@ static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_5_4[4];
 static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_6_4[4];
 static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_30_3[3];
 static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_32_3[3];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_38_2[2];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_39_3[3];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_40_2[2];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_41_3[3];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_42_2[2];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_43_3[3];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_44_2[2];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_45_3[3];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_46_2[2];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_47_3[3];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_48_2[2];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_49_3[3];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_50_2[2];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_51_3[3];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_52_2[2];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_53_3[3];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_54_2[2];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_55_3[3];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_87_2[2];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_88_3[3];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_102_3[3];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_111_2[2];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_112_2[2];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_113_3[3];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_127_2[2];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_128_3[3];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_129_2[2];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_130_3[3];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_131_2[2];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_132_3[3];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_133_2[2];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_134_3[3];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_135_2[2];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_136_3[3];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_137_2[2];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_138_3[3];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_35_4[4];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_36_4[4];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_37_2[2];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_38_3[3];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_39_2[2];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_40_3[3];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_65_2[2];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_66_3[3];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_67_2[2];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_68_3[3];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_69_2[2];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_70_3[3];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_71_2[2];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_72_3[3];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_73_2[2];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_74_3[3];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_75_2[2];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_76_3[3];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_77_2[2];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_78_3[3];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_79_2[2];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_80_3[3];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_81_2[2];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_82_3[3];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_114_2[2];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_115_3[3];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_129_3[3];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_138_2[2];
 static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_139_2[2];
 static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_140_3[3];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_141_2[2];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_142_3[3];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_143_2[2];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_144_3[3];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_203_2[2];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_204_2[2];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_205_3[3];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_232_2[2];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_233_3[3];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_234_2[2];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_235_3[3];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_236_2[2];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_237_3[3];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_238_2[2];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_239_3[3];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_240_2[2];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_241_3[3];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_242_2[2];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_243_3[3];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_244_2[2];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_245_3[3];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_246_2[2];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_247_3[3];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_248_2[2];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_249_3[3];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_250_2[2];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_251_3[3];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_252_2[2];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_253_3[3];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_254_2[2];
-static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_255_3[3];
-static TNimNode TM__4SoG2KRQy3oMm9aUzSLtGrA_0[266];NTI__TE5saucQBAeG7QXcN7Ilrw_.size = sizeof(tyObject_Table__TE5saucQBAeG7QXcN7Ilrw);
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_154_2[2];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_155_3[3];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_156_2[2];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_157_3[3];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_158_2[2];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_159_3[3];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_160_2[2];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_161_3[3];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_162_2[2];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_163_3[3];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_164_2[2];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_165_3[3];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_166_2[2];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_167_3[3];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_168_2[2];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_169_3[3];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_170_2[2];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_171_3[3];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_230_2[2];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_231_2[2];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_232_3[3];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_259_2[2];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_260_3[3];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_261_2[2];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_262_3[3];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_263_2[2];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_264_3[3];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_265_2[2];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_266_3[3];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_267_2[2];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_268_3[3];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_269_2[2];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_270_3[3];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_271_2[2];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_272_3[3];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_273_2[2];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_274_3[3];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_275_2[2];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_276_3[3];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_277_2[2];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_278_3[3];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_279_2[2];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_280_3[3];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_281_2[2];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_282_3[3];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_344_2[2];
+static TNimNode* TM__4SoG2KRQy3oMm9aUzSLtGrA_345_3[3];
+static TNimNode TM__4SoG2KRQy3oMm9aUzSLtGrA_0[297];NTI__TE5saucQBAeG7QXcN7Ilrw_.size = sizeof(tyObject_Table__TE5saucQBAeG7QXcN7Ilrw);
 NTI__TE5saucQBAeG7QXcN7Ilrw_.kind = 18;
 NTI__TE5saucQBAeG7QXcN7Ilrw_.base = 0;
 NTI__TE5saucQBAeG7QXcN7Ilrw_.name = "Table[system.string, asyncloop.TrackerBase]";
@@ -16604,126 +18404,281 @@ NTI__1wSar3PFU59aNKLVhJL28FA_.flags = 2;
 NTI__1wSar3PFU59aNKLVhJL28FA_.name = "KeyValuePairSeq[multicodec.MultiCodec, multihash.MHash]";
 NTI__1wSar3PFU59aNKLVhJL28FA_.nextType = nimTypeRoot; nimTypeRoot=&NTI__1wSar3PFU59aNKLVhJL28FA_;
 NTI__1wSar3PFU59aNKLVhJL28FA_.marker = Marker_tySequence__1wSar3PFU59aNKLVhJL28FA;
+NTI__ZZvSdVkA2s2sIyifu4cpkg_.size = sizeof(tyObject_OrderedTable__ZZvSdVkA2s2sIyifu4cpkg);
+NTI__ZZvSdVkA2s2sIyifu4cpkg_.kind = 18;
+NTI__ZZvSdVkA2s2sIyifu4cpkg_.base = 0;
+NTI__ZZvSdVkA2s2sIyifu4cpkg_.flags = 2;
+NTI__ZZvSdVkA2s2sIyifu4cpkg_.name = "OrderedTable[system.string, json.JsonNode]";
+NTI__ZZvSdVkA2s2sIyifu4cpkg_.nextType = nimTypeRoot; nimTypeRoot=&NTI__ZZvSdVkA2s2sIyifu4cpkg_;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_35_4[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[26];
+NTI__awOivLjlO76sGdHY7nQUjQ_.size = sizeof(tyTuple__awOivLjlO76sGdHY7nQUjQ);
+NTI__awOivLjlO76sGdHY7nQUjQ_.kind = 18;
+NTI__awOivLjlO76sGdHY7nQUjQ_.base = 0;
+NTI__awOivLjlO76sGdHY7nQUjQ_.flags = 2;
+NTI__awOivLjlO76sGdHY7nQUjQ_.name = "OrderedKeyValuePair[system.string, json.JsonNode]";
+NTI__awOivLjlO76sGdHY7nQUjQ_.nextType = nimTypeRoot; nimTypeRoot=&NTI__awOivLjlO76sGdHY7nQUjQ_;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_36_4[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[28];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[28].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[28].offset = offsetof(tyTuple__awOivLjlO76sGdHY7nQUjQ, Field0);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[28].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[28].name = "Field0";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_36_4[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[29];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[29].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[29].offset = offsetof(tyTuple__awOivLjlO76sGdHY7nQUjQ, Field1);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[29].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[29].name = "Field1";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_36_4[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[30];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[30].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[30].offset = offsetof(tyTuple__awOivLjlO76sGdHY7nQUjQ, Field2);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[30].typ = (&NTI__77mFvmsOLKik79ci2hXkHEg_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[30].name = "Field2";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_36_4[3] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[31];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[31].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[31].offset = offsetof(tyTuple__awOivLjlO76sGdHY7nQUjQ, Field3);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[31].typ = (&NTI__zfzzuQ8txrdZAYK0WGWpHg_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[31].name = "Field3";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[27].len = 4; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[27].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[27].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_36_4[0];
+NTI__awOivLjlO76sGdHY7nQUjQ_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[27];
+NTI__MlAD6nAPq9bHKla9cWiIZP0g_.size = sizeof(tySequence__MlAD6nAPq9bHKla9cWiIZP0g*);
+NTI__MlAD6nAPq9bHKla9cWiIZP0g_.kind = 24;
+NTI__MlAD6nAPq9bHKla9cWiIZP0g_.base = (&NTI__awOivLjlO76sGdHY7nQUjQ_);
+NTI__MlAD6nAPq9bHKla9cWiIZP0g_.flags = 2;
+NTI__MlAD6nAPq9bHKla9cWiIZP0g_.name = "OrderedKeyValuePairSeq[system.string, json.JsonNode]";
+NTI__MlAD6nAPq9bHKla9cWiIZP0g_.nextType = nimTypeRoot; nimTypeRoot=&NTI__MlAD6nAPq9bHKla9cWiIZP0g_;
+NTI__MlAD6nAPq9bHKla9cWiIZP0g_.marker = Marker_tySequence__MlAD6nAPq9bHKla9cWiIZP0g;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[26].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[26].offset = offsetof(tyObject_OrderedTable__ZZvSdVkA2s2sIyifu4cpkg, data);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[26].typ = (&NTI__MlAD6nAPq9bHKla9cWiIZP0g_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[26].name = "data";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_35_4[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[32];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[32].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[32].offset = offsetof(tyObject_OrderedTable__ZZvSdVkA2s2sIyifu4cpkg, counter);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[32].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[32].name = "counter";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_35_4[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[33];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[33].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[33].offset = offsetof(tyObject_OrderedTable__ZZvSdVkA2s2sIyifu4cpkg, first);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[33].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[33].name = "first";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_35_4[3] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[34];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[34].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[34].offset = offsetof(tyObject_OrderedTable__ZZvSdVkA2s2sIyifu4cpkg, last);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[34].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[34].name = "last";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[25].len = 4; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[25].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[25].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_35_4[0];
+NTI__ZZvSdVkA2s2sIyifu4cpkg_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[25];
+NTI__BZfyXkROzX88W3JFME9aJ2Q_.size = sizeof(tyObject_Table__BZfyXkROzX88W3JFME9aJ2Q);
+NTI__BZfyXkROzX88W3JFME9aJ2Q_.kind = 18;
+NTI__BZfyXkROzX88W3JFME9aJ2Q_.base = 0;
+NTI__BZfyXkROzX88W3JFME9aJ2Q_.name = "Table[client.ClientId, Future[client.Response]]";
+NTI__BZfyXkROzX88W3JFME9aJ2Q_.nextType = nimTypeRoot; nimTypeRoot=&NTI__BZfyXkROzX88W3JFME9aJ2Q_;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_37_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[36];
+NTI__PVXP7LYmC79cHLv3MgDW9cFw_.size = sizeof(tyTuple__PVXP7LYmC79cHLv3MgDW9cFw);
+NTI__PVXP7LYmC79cHLv3MgDW9cFw_.kind = 18;
+NTI__PVXP7LYmC79cHLv3MgDW9cFw_.base = 0;
+NTI__PVXP7LYmC79cHLv3MgDW9cFw_.name = "KeyValuePair[client.ClientId, Future[client.Response]]";
+NTI__PVXP7LYmC79cHLv3MgDW9cFw_.nextType = nimTypeRoot; nimTypeRoot=&NTI__PVXP7LYmC79cHLv3MgDW9cFw_;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_38_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[38];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[38].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[38].offset = offsetof(tyTuple__PVXP7LYmC79cHLv3MgDW9cFw, Field0);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[38].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[38].name = "Field0";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_38_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[39];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[39].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[39].offset = offsetof(tyTuple__PVXP7LYmC79cHLv3MgDW9cFw, Field1);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[39].typ = (&NTI__Aav8dQoMlCFnZRxA0IhTHQ_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[39].name = "Field1";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_38_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[40];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[40].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[40].offset = offsetof(tyTuple__PVXP7LYmC79cHLv3MgDW9cFw, Field2);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[40].typ = (&NTI__xJEcXnG5UPm6fVzzYYL3Gw_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[40].name = "Field2";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[37].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[37].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[37].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_38_3[0];
+NTI__PVXP7LYmC79cHLv3MgDW9cFw_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[37];
+NTI__P7q4mRBU3fRhL1KHJGOBAQ_.size = sizeof(tySequence__P7q4mRBU3fRhL1KHJGOBAQ*);
+NTI__P7q4mRBU3fRhL1KHJGOBAQ_.kind = 24;
+NTI__P7q4mRBU3fRhL1KHJGOBAQ_.base = (&NTI__PVXP7LYmC79cHLv3MgDW9cFw_);
+NTI__P7q4mRBU3fRhL1KHJGOBAQ_.name = "KeyValuePairSeq[client.ClientId, Future[client.Response]]";
+NTI__P7q4mRBU3fRhL1KHJGOBAQ_.nextType = nimTypeRoot; nimTypeRoot=&NTI__P7q4mRBU3fRhL1KHJGOBAQ_;
+NTI__P7q4mRBU3fRhL1KHJGOBAQ_.marker = Marker_tySequence__P7q4mRBU3fRhL1KHJGOBAQ;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[36].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[36].offset = offsetof(tyObject_Table__BZfyXkROzX88W3JFME9aJ2Q, data);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[36].typ = (&NTI__P7q4mRBU3fRhL1KHJGOBAQ_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[36].name = "data";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_37_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[41];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[41].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[41].offset = offsetof(tyObject_Table__BZfyXkROzX88W3JFME9aJ2Q, counter);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[41].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[41].name = "counter";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[35].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[35].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[35].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_37_2[0];
+NTI__BZfyXkROzX88W3JFME9aJ2Q_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[35];
+NTI__k9cb4Qn3gUx6gxyGj3hd20w_.size = sizeof(tyObject_Table__k9cb4Qn3gUx6gxyGj3hd20w);
+NTI__k9cb4Qn3gUx6gxyGj3hd20w_.kind = 18;
+NTI__k9cb4Qn3gUx6gxyGj3hd20w_.base = 0;
+NTI__k9cb4Qn3gUx6gxyGj3hd20w_.name = "Table[system.string, proc (j: JsonNode){.closure, gcsafe.}]";
+NTI__k9cb4Qn3gUx6gxyGj3hd20w_.nextType = nimTypeRoot; nimTypeRoot=&NTI__k9cb4Qn3gUx6gxyGj3hd20w_;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_39_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[43];
+NTI__FxWADhULcfihQn5gGVN7CQ_.size = sizeof(tyTuple__FxWADhULcfihQn5gGVN7CQ);
+NTI__FxWADhULcfihQn5gGVN7CQ_.kind = 18;
+NTI__FxWADhULcfihQn5gGVN7CQ_.base = 0;
+NTI__FxWADhULcfihQn5gGVN7CQ_.name = "KeyValuePair[system.string, proc (j: JsonNode){.closure, gcsafe"
+".}]";
+NTI__FxWADhULcfihQn5gGVN7CQ_.nextType = nimTypeRoot; nimTypeRoot=&NTI__FxWADhULcfihQn5gGVN7CQ_;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_40_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[45];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[45].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[45].offset = offsetof(tyTuple__FxWADhULcfihQn5gGVN7CQ, Field0);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[45].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[45].name = "Field0";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_40_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[46];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[46].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[46].offset = offsetof(tyTuple__FxWADhULcfihQn5gGVN7CQ, Field1);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[46].typ = (&NTI__77mFvmsOLKik79ci2hXkHEg_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[46].name = "Field1";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_40_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[47];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[47].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[47].offset = offsetof(tyTuple__FxWADhULcfihQn5gGVN7CQ, Field2);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[47].typ = (&NTI__ADCDtoN1AvOABxjfvZcWKw_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[47].name = "Field2";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[44].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[44].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[44].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_40_3[0];
+NTI__FxWADhULcfihQn5gGVN7CQ_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[44];
+NTI__87DZdIc4Y9ccnDlJfZoyb5w_.size = sizeof(tySequence__87DZdIc4Y9ccnDlJfZoyb5w*);
+NTI__87DZdIc4Y9ccnDlJfZoyb5w_.kind = 24;
+NTI__87DZdIc4Y9ccnDlJfZoyb5w_.base = (&NTI__FxWADhULcfihQn5gGVN7CQ_);
+NTI__87DZdIc4Y9ccnDlJfZoyb5w_.name = "KeyValuePairSeq[system.string, proc (j: JsonNode){.closure, gcs"
+"afe.}]";
+NTI__87DZdIc4Y9ccnDlJfZoyb5w_.nextType = nimTypeRoot; nimTypeRoot=&NTI__87DZdIc4Y9ccnDlJfZoyb5w_;
+NTI__87DZdIc4Y9ccnDlJfZoyb5w_.marker = Marker_tySequence__87DZdIc4Y9ccnDlJfZoyb5w;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[43].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[43].offset = offsetof(tyObject_Table__k9cb4Qn3gUx6gxyGj3hd20w, data);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[43].typ = (&NTI__87DZdIc4Y9ccnDlJfZoyb5w_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[43].name = "data";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_39_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[48];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[48].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[48].offset = offsetof(tyObject_Table__k9cb4Qn3gUx6gxyGj3hd20w, counter);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[48].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[48].name = "counter";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[42].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[42].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[42].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_39_2[0];
+NTI__k9cb4Qn3gUx6gxyGj3hd20w_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[42];
 NTI__I17elwrgUkVdxGLUkHiM7w_.size = sizeof(tyObject_Table__I17elwrgUkVdxGLUkHiM7w);
 NTI__I17elwrgUkVdxGLUkHiM7w_.kind = 18;
 NTI__I17elwrgUkVdxGLUkHiM7w_.base = 0;
 NTI__I17elwrgUkVdxGLUkHiM7w_.name = "Table[peerid.PeerID, HashSet[connection.Connection]]";
 NTI__I17elwrgUkVdxGLUkHiM7w_.nextType = nimTypeRoot; nimTypeRoot=&NTI__I17elwrgUkVdxGLUkHiM7w_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_38_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[26];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_65_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[50];
 NTI__AVpnFhpPb9aWvyMugKAAGBg_.size = sizeof(tyTuple__AVpnFhpPb9aWvyMugKAAGBg);
 NTI__AVpnFhpPb9aWvyMugKAAGBg_.kind = 18;
 NTI__AVpnFhpPb9aWvyMugKAAGBg_.base = 0;
 NTI__AVpnFhpPb9aWvyMugKAAGBg_.name = "KeyValuePair[peerid.PeerID, HashSet[connection.Connection]]";
 NTI__AVpnFhpPb9aWvyMugKAAGBg_.nextType = nimTypeRoot; nimTypeRoot=&NTI__AVpnFhpPb9aWvyMugKAAGBg_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_39_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[28];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[28].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[28].offset = offsetof(tyTuple__AVpnFhpPb9aWvyMugKAAGBg, Field0);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[28].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[28].name = "Field0";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_39_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[29];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[29].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[29].offset = offsetof(tyTuple__AVpnFhpPb9aWvyMugKAAGBg, Field1);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[29].typ = (&NTI__Se8YyoPxzDpFnTeAyeCVCw_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[29].name = "Field1";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_39_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[30];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[30].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[30].offset = offsetof(tyTuple__AVpnFhpPb9aWvyMugKAAGBg, Field2);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[30].typ = (&NTI__tGTRcVq4wuz7sk9bKm2XoBw_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[30].name = "Field2";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[27].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[27].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[27].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_39_3[0];
-NTI__AVpnFhpPb9aWvyMugKAAGBg_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[27];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_66_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[52];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[52].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[52].offset = offsetof(tyTuple__AVpnFhpPb9aWvyMugKAAGBg, Field0);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[52].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[52].name = "Field0";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_66_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[53];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[53].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[53].offset = offsetof(tyTuple__AVpnFhpPb9aWvyMugKAAGBg, Field1);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[53].typ = (&NTI__Se8YyoPxzDpFnTeAyeCVCw_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[53].name = "Field1";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_66_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[54];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[54].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[54].offset = offsetof(tyTuple__AVpnFhpPb9aWvyMugKAAGBg, Field2);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[54].typ = (&NTI__tGTRcVq4wuz7sk9bKm2XoBw_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[54].name = "Field2";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[51].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[51].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[51].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_66_3[0];
+NTI__AVpnFhpPb9aWvyMugKAAGBg_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[51];
 NTI__MZ7ub66T4nzKtipo9bkiB3g_.size = sizeof(tySequence__MZ7ub66T4nzKtipo9bkiB3g*);
 NTI__MZ7ub66T4nzKtipo9bkiB3g_.kind = 24;
 NTI__MZ7ub66T4nzKtipo9bkiB3g_.base = (&NTI__AVpnFhpPb9aWvyMugKAAGBg_);
 NTI__MZ7ub66T4nzKtipo9bkiB3g_.name = "KeyValuePairSeq[peerid.PeerID, HashSet[connection.Connection]]";
 NTI__MZ7ub66T4nzKtipo9bkiB3g_.nextType = nimTypeRoot; nimTypeRoot=&NTI__MZ7ub66T4nzKtipo9bkiB3g_;
 NTI__MZ7ub66T4nzKtipo9bkiB3g_.marker = Marker_tySequence__MZ7ub66T4nzKtipo9bkiB3g;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[26].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[26].offset = offsetof(tyObject_Table__I17elwrgUkVdxGLUkHiM7w, data);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[26].typ = (&NTI__MZ7ub66T4nzKtipo9bkiB3g_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[26].name = "data";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_38_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[31];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[31].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[31].offset = offsetof(tyObject_Table__I17elwrgUkVdxGLUkHiM7w, counter);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[31].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[31].name = "counter";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[25].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[25].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[25].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_38_2[0];
-NTI__I17elwrgUkVdxGLUkHiM7w_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[25];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[50].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[50].offset = offsetof(tyObject_Table__I17elwrgUkVdxGLUkHiM7w, data);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[50].typ = (&NTI__MZ7ub66T4nzKtipo9bkiB3g_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[50].name = "data";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_65_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[55];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[55].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[55].offset = offsetof(tyObject_Table__I17elwrgUkVdxGLUkHiM7w, counter);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[55].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[55].name = "counter";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[49].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[49].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[49].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_65_2[0];
+NTI__I17elwrgUkVdxGLUkHiM7w_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[49];
 NTI__8uqzpFmoqV4exdDArFo5wQ_.size = sizeof(tyObject_Table__8uqzpFmoqV4exdDArFo5wQ);
 NTI__8uqzpFmoqV4exdDArFo5wQ_.kind = 18;
 NTI__8uqzpFmoqV4exdDArFo5wQ_.base = 0;
 NTI__8uqzpFmoqV4exdDArFo5wQ_.name = "Table[connection.Connection, connmanager.MuxerHolder]";
 NTI__8uqzpFmoqV4exdDArFo5wQ_.nextType = nimTypeRoot; nimTypeRoot=&NTI__8uqzpFmoqV4exdDArFo5wQ_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_40_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[33];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_67_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[57];
 NTI__JUntYUAYvYVuuVf5pRRi7Q_.size = sizeof(tyTuple__JUntYUAYvYVuuVf5pRRi7Q);
 NTI__JUntYUAYvYVuuVf5pRRi7Q_.kind = 18;
 NTI__JUntYUAYvYVuuVf5pRRi7Q_.base = 0;
 NTI__JUntYUAYvYVuuVf5pRRi7Q_.name = "KeyValuePair[connection.Connection, connmanager.MuxerHolder]";
 NTI__JUntYUAYvYVuuVf5pRRi7Q_.nextType = nimTypeRoot; nimTypeRoot=&NTI__JUntYUAYvYVuuVf5pRRi7Q_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_41_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[35];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[35].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[35].offset = offsetof(tyTuple__JUntYUAYvYVuuVf5pRRi7Q, Field0);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[35].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[35].name = "Field0";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_41_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[36];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[36].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[36].offset = offsetof(tyTuple__JUntYUAYvYVuuVf5pRRi7Q, Field1);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[36].typ = (&NTI__ZerMcZkaRbhs8wv4M9cMNuw_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[36].name = "Field1";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_41_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[37];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[37].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[37].offset = offsetof(tyTuple__JUntYUAYvYVuuVf5pRRi7Q, Field2);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[37].typ = (&NTI__jkZf9bt8D9bH6jQnKwX8Noxw_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[37].name = "Field2";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[34].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[34].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[34].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_41_3[0];
-NTI__JUntYUAYvYVuuVf5pRRi7Q_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[34];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_68_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[59];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[59].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[59].offset = offsetof(tyTuple__JUntYUAYvYVuuVf5pRRi7Q, Field0);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[59].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[59].name = "Field0";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_68_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[60];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[60].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[60].offset = offsetof(tyTuple__JUntYUAYvYVuuVf5pRRi7Q, Field1);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[60].typ = (&NTI__ZerMcZkaRbhs8wv4M9cMNuw_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[60].name = "Field1";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_68_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[61];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[61].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[61].offset = offsetof(tyTuple__JUntYUAYvYVuuVf5pRRi7Q, Field2);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[61].typ = (&NTI__jkZf9bt8D9bH6jQnKwX8Noxw_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[61].name = "Field2";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[58].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[58].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[58].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_68_3[0];
+NTI__JUntYUAYvYVuuVf5pRRi7Q_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[58];
 NTI__ECp2Vf3ySxXeY0xLJSyjyA_.size = sizeof(tySequence__ECp2Vf3ySxXeY0xLJSyjyA*);
 NTI__ECp2Vf3ySxXeY0xLJSyjyA_.kind = 24;
 NTI__ECp2Vf3ySxXeY0xLJSyjyA_.base = (&NTI__JUntYUAYvYVuuVf5pRRi7Q_);
 NTI__ECp2Vf3ySxXeY0xLJSyjyA_.name = "KeyValuePairSeq[connection.Connection, connmanager.MuxerHolder]";
 NTI__ECp2Vf3ySxXeY0xLJSyjyA_.nextType = nimTypeRoot; nimTypeRoot=&NTI__ECp2Vf3ySxXeY0xLJSyjyA_;
 NTI__ECp2Vf3ySxXeY0xLJSyjyA_.marker = Marker_tySequence__ECp2Vf3ySxXeY0xLJSyjyA;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[33].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[33].offset = offsetof(tyObject_Table__8uqzpFmoqV4exdDArFo5wQ, data);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[33].typ = (&NTI__ECp2Vf3ySxXeY0xLJSyjyA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[33].name = "data";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_40_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[38];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[38].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[38].offset = offsetof(tyObject_Table__8uqzpFmoqV4exdDArFo5wQ, counter);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[38].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[38].name = "counter";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[32].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[32].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[32].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_40_2[0];
-NTI__8uqzpFmoqV4exdDArFo5wQ_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[32];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[57].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[57].offset = offsetof(tyObject_Table__8uqzpFmoqV4exdDArFo5wQ, data);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[57].typ = (&NTI__ECp2Vf3ySxXeY0xLJSyjyA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[57].name = "data";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_67_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[62];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[62].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[62].offset = offsetof(tyObject_Table__8uqzpFmoqV4exdDArFo5wQ, counter);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[62].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[62].name = "counter";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[56].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[56].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[56].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_67_2[0];
+NTI__8uqzpFmoqV4exdDArFo5wQ_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[56];
 NTI__20RES39b6cbF1gUxzrH9b8Yg_.size = sizeof(tyObject_Table__20RES39b6cbF1gUxzrH9b8Yg);
 NTI__20RES39b6cbF1gUxzrH9b8Yg_.kind = 18;
 NTI__20RES39b6cbF1gUxzrH9b8Yg_.base = 0;
 NTI__20RES39b6cbF1gUxzrH9b8Yg_.name = "Table[connmanager.ConnEventKind, OrderedSet[connmanager.ConnEve"
 "ntHandler]]";
 NTI__20RES39b6cbF1gUxzrH9b8Yg_.nextType = nimTypeRoot; nimTypeRoot=&NTI__20RES39b6cbF1gUxzrH9b8Yg_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_42_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[40];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_69_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[64];
 NTI__8jAQb69bzmxFvWOOIGMxFrQ_.size = sizeof(tyTuple__8jAQb69bzmxFvWOOIGMxFrQ);
 NTI__8jAQb69bzmxFvWOOIGMxFrQ_.kind = 18;
 NTI__8jAQb69bzmxFvWOOIGMxFrQ_.base = 0;
 NTI__8jAQb69bzmxFvWOOIGMxFrQ_.name = "KeyValuePair[connmanager.ConnEventKind, OrderedSet[connmanager."
 "ConnEventHandler]]";
 NTI__8jAQb69bzmxFvWOOIGMxFrQ_.nextType = nimTypeRoot; nimTypeRoot=&NTI__8jAQb69bzmxFvWOOIGMxFrQ_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_43_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[42];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[42].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[42].offset = offsetof(tyTuple__8jAQb69bzmxFvWOOIGMxFrQ, Field0);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[42].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[42].name = "Field0";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_43_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[43];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[43].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[43].offset = offsetof(tyTuple__8jAQb69bzmxFvWOOIGMxFrQ, Field1);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[43].typ = (&NTI__oN5wkUyGVn1qXLGZW9c7EIQ_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[43].name = "Field1";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_43_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[44];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[44].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[44].offset = offsetof(tyTuple__8jAQb69bzmxFvWOOIGMxFrQ, Field2);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[44].typ = (&NTI__DjcJvTVLhu1GVCpTORQfDQ_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[44].name = "Field2";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[41].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[41].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[41].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_43_3[0];
-NTI__8jAQb69bzmxFvWOOIGMxFrQ_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[41];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_70_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[66];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[66].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[66].offset = offsetof(tyTuple__8jAQb69bzmxFvWOOIGMxFrQ, Field0);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[66].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[66].name = "Field0";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_70_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[67];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[67].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[67].offset = offsetof(tyTuple__8jAQb69bzmxFvWOOIGMxFrQ, Field1);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[67].typ = (&NTI__oN5wkUyGVn1qXLGZW9c7EIQ_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[67].name = "Field1";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_70_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[68];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[68].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[68].offset = offsetof(tyTuple__8jAQb69bzmxFvWOOIGMxFrQ, Field2);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[68].typ = (&NTI__DjcJvTVLhu1GVCpTORQfDQ_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[68].name = "Field2";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[65].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[65].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[65].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_70_3[0];
+NTI__8jAQb69bzmxFvWOOIGMxFrQ_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[65];
 NTI__O39cGnfZ9b59b9bpYt9c3ee9cnHw_.size = sizeof(tySequence__O39cGnfZ9b59b9bpYt9c3ee9cnHw*);
 NTI__O39cGnfZ9b59b9bpYt9c3ee9cnHw_.kind = 24;
 NTI__O39cGnfZ9b59b9bpYt9c3ee9cnHw_.base = (&NTI__8jAQb69bzmxFvWOOIGMxFrQ_);
@@ -16731,47 +18686,47 @@ NTI__O39cGnfZ9b59b9bpYt9c3ee9cnHw_.name = "KeyValuePairSeq[connmanager.ConnEvent
 "er.ConnEventHandler]]";
 NTI__O39cGnfZ9b59b9bpYt9c3ee9cnHw_.nextType = nimTypeRoot; nimTypeRoot=&NTI__O39cGnfZ9b59b9bpYt9c3ee9cnHw_;
 NTI__O39cGnfZ9b59b9bpYt9c3ee9cnHw_.marker = Marker_tySequence__O39cGnfZ9b59b9bpYt9c3ee9cnHw;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[40].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[40].offset = offsetof(tyObject_Table__20RES39b6cbF1gUxzrH9b8Yg, data);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[40].typ = (&NTI__O39cGnfZ9b59b9bpYt9c3ee9cnHw_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[40].name = "data";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_42_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[45];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[45].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[45].offset = offsetof(tyObject_Table__20RES39b6cbF1gUxzrH9b8Yg, counter);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[45].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[45].name = "counter";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[39].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[39].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[39].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_42_2[0];
-NTI__20RES39b6cbF1gUxzrH9b8Yg_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[39];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[64].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[64].offset = offsetof(tyObject_Table__20RES39b6cbF1gUxzrH9b8Yg, data);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[64].typ = (&NTI__O39cGnfZ9b59b9bpYt9c3ee9cnHw_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[64].name = "data";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_69_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[69];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[69].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[69].offset = offsetof(tyObject_Table__20RES39b6cbF1gUxzrH9b8Yg, counter);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[69].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[69].name = "counter";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[63].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[63].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[63].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_69_2[0];
+NTI__20RES39b6cbF1gUxzrH9b8Yg_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[63];
 NTI__R0uaAE15CtLzKRaa3nIdMQ_.size = sizeof(tyObject_Table__R0uaAE15CtLzKRaa3nIdMQ);
 NTI__R0uaAE15CtLzKRaa3nIdMQ_.kind = 18;
 NTI__R0uaAE15CtLzKRaa3nIdMQ_.base = 0;
 NTI__R0uaAE15CtLzKRaa3nIdMQ_.name = "Table[connmanager.PeerEventKind, OrderedSet[connmanager.PeerEve"
 "ntHandler]]";
 NTI__R0uaAE15CtLzKRaa3nIdMQ_.nextType = nimTypeRoot; nimTypeRoot=&NTI__R0uaAE15CtLzKRaa3nIdMQ_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_44_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[47];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_71_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[71];
 NTI__2IkxgbA59cuGazVFo6X8lMQ_.size = sizeof(tyTuple__2IkxgbA59cuGazVFo6X8lMQ);
 NTI__2IkxgbA59cuGazVFo6X8lMQ_.kind = 18;
 NTI__2IkxgbA59cuGazVFo6X8lMQ_.base = 0;
 NTI__2IkxgbA59cuGazVFo6X8lMQ_.name = "KeyValuePair[connmanager.PeerEventKind, OrderedSet[connmanager."
 "PeerEventHandler]]";
 NTI__2IkxgbA59cuGazVFo6X8lMQ_.nextType = nimTypeRoot; nimTypeRoot=&NTI__2IkxgbA59cuGazVFo6X8lMQ_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_45_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[49];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[49].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[49].offset = offsetof(tyTuple__2IkxgbA59cuGazVFo6X8lMQ, Field0);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[49].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[49].name = "Field0";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_45_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[50];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[50].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[50].offset = offsetof(tyTuple__2IkxgbA59cuGazVFo6X8lMQ, Field1);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[50].typ = (&NTI__g6Y0xj8kFQNqwpb26iimZw_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[50].name = "Field1";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_45_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[51];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[51].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[51].offset = offsetof(tyTuple__2IkxgbA59cuGazVFo6X8lMQ, Field2);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[51].typ = (&NTI__cZ8RyO9bTAQg8kKXyLHwXYg_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[51].name = "Field2";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[48].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[48].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[48].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_45_3[0];
-NTI__2IkxgbA59cuGazVFo6X8lMQ_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[48];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_72_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[73];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[73].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[73].offset = offsetof(tyTuple__2IkxgbA59cuGazVFo6X8lMQ, Field0);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[73].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[73].name = "Field0";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_72_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[74];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[74].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[74].offset = offsetof(tyTuple__2IkxgbA59cuGazVFo6X8lMQ, Field1);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[74].typ = (&NTI__g6Y0xj8kFQNqwpb26iimZw_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[74].name = "Field1";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_72_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[75];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[75].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[75].offset = offsetof(tyTuple__2IkxgbA59cuGazVFo6X8lMQ, Field2);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[75].typ = (&NTI__cZ8RyO9bTAQg8kKXyLHwXYg_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[75].name = "Field2";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[72].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[72].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[72].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_72_3[0];
+NTI__2IkxgbA59cuGazVFo6X8lMQ_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[72];
 NTI__6w9c7RGFri1n1hoa9bD335ZQ_.size = sizeof(tySequence__6w9c7RGFri1n1hoa9bD335ZQ*);
 NTI__6w9c7RGFri1n1hoa9bD335ZQ_.kind = 24;
 NTI__6w9c7RGFri1n1hoa9bD335ZQ_.base = (&NTI__2IkxgbA59cuGazVFo6X8lMQ_);
@@ -16779,225 +18734,225 @@ NTI__6w9c7RGFri1n1hoa9bD335ZQ_.name = "KeyValuePairSeq[connmanager.PeerEventKind
 "er.PeerEventHandler]]";
 NTI__6w9c7RGFri1n1hoa9bD335ZQ_.nextType = nimTypeRoot; nimTypeRoot=&NTI__6w9c7RGFri1n1hoa9bD335ZQ_;
 NTI__6w9c7RGFri1n1hoa9bD335ZQ_.marker = Marker_tySequence__6w9c7RGFri1n1hoa9bD335ZQ;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[47].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[47].offset = offsetof(tyObject_Table__R0uaAE15CtLzKRaa3nIdMQ, data);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[47].typ = (&NTI__6w9c7RGFri1n1hoa9bD335ZQ_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[47].name = "data";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_44_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[52];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[52].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[52].offset = offsetof(tyObject_Table__R0uaAE15CtLzKRaa3nIdMQ, counter);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[52].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[52].name = "counter";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[46].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[46].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[46].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_44_2[0];
-NTI__R0uaAE15CtLzKRaa3nIdMQ_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[46];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[71].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[71].offset = offsetof(tyObject_Table__R0uaAE15CtLzKRaa3nIdMQ, data);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[71].typ = (&NTI__6w9c7RGFri1n1hoa9bD335ZQ_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[71].name = "data";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_71_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[76];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[76].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[76].offset = offsetof(tyObject_Table__R0uaAE15CtLzKRaa3nIdMQ, counter);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[76].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[76].name = "counter";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[70].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[70].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[70].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_71_2[0];
+NTI__R0uaAE15CtLzKRaa3nIdMQ_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[70];
 NTI__UvSlGqDg4nWNM1wskOFQeg_.size = sizeof(tyObject_Table__UvSlGqDg4nWNM1wskOFQeg);
 NTI__UvSlGqDg4nWNM1wskOFQeg_.kind = 18;
 NTI__UvSlGqDg4nWNM1wskOFQeg_.base = 0;
 NTI__UvSlGqDg4nWNM1wskOFQeg_.name = "Table[system.string, muxer.MuxerProvider]";
 NTI__UvSlGqDg4nWNM1wskOFQeg_.nextType = nimTypeRoot; nimTypeRoot=&NTI__UvSlGqDg4nWNM1wskOFQeg_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_46_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[54];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_73_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[78];
 NTI__TdADeEae6PBWqr7qsUJvPg_.size = sizeof(tyTuple__TdADeEae6PBWqr7qsUJvPg);
 NTI__TdADeEae6PBWqr7qsUJvPg_.kind = 18;
 NTI__TdADeEae6PBWqr7qsUJvPg_.base = 0;
 NTI__TdADeEae6PBWqr7qsUJvPg_.name = "KeyValuePair[system.string, muxer.MuxerProvider]";
 NTI__TdADeEae6PBWqr7qsUJvPg_.nextType = nimTypeRoot; nimTypeRoot=&NTI__TdADeEae6PBWqr7qsUJvPg_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_47_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[56];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[56].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[56].offset = offsetof(tyTuple__TdADeEae6PBWqr7qsUJvPg, Field0);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[56].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[56].name = "Field0";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_47_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[57];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[57].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[57].offset = offsetof(tyTuple__TdADeEae6PBWqr7qsUJvPg, Field1);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[57].typ = (&NTI__77mFvmsOLKik79ci2hXkHEg_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[57].name = "Field1";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_47_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[58];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[58].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[58].offset = offsetof(tyTuple__TdADeEae6PBWqr7qsUJvPg, Field2);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[58].typ = (&NTI__ezq8q2zoLivocZ0qJ9aLYJg_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[58].name = "Field2";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[55].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[55].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[55].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_47_3[0];
-NTI__TdADeEae6PBWqr7qsUJvPg_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[55];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_74_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[80];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[80].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[80].offset = offsetof(tyTuple__TdADeEae6PBWqr7qsUJvPg, Field0);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[80].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[80].name = "Field0";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_74_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[81];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[81].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[81].offset = offsetof(tyTuple__TdADeEae6PBWqr7qsUJvPg, Field1);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[81].typ = (&NTI__77mFvmsOLKik79ci2hXkHEg_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[81].name = "Field1";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_74_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[82];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[82].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[82].offset = offsetof(tyTuple__TdADeEae6PBWqr7qsUJvPg, Field2);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[82].typ = (&NTI__ezq8q2zoLivocZ0qJ9aLYJg_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[82].name = "Field2";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[79].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[79].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[79].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_74_3[0];
+NTI__TdADeEae6PBWqr7qsUJvPg_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[79];
 NTI__9bnMQh9b5oMSxlDf1K9buBp7w_.size = sizeof(tySequence__9bnMQh9b5oMSxlDf1K9buBp7w*);
 NTI__9bnMQh9b5oMSxlDf1K9buBp7w_.kind = 24;
 NTI__9bnMQh9b5oMSxlDf1K9buBp7w_.base = (&NTI__TdADeEae6PBWqr7qsUJvPg_);
 NTI__9bnMQh9b5oMSxlDf1K9buBp7w_.name = "KeyValuePairSeq[system.string, muxer.MuxerProvider]";
 NTI__9bnMQh9b5oMSxlDf1K9buBp7w_.nextType = nimTypeRoot; nimTypeRoot=&NTI__9bnMQh9b5oMSxlDf1K9buBp7w_;
 NTI__9bnMQh9b5oMSxlDf1K9buBp7w_.marker = Marker_tySequence__9bnMQh9b5oMSxlDf1K9buBp7w;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[54].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[54].offset = offsetof(tyObject_Table__UvSlGqDg4nWNM1wskOFQeg, data);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[54].typ = (&NTI__9bnMQh9b5oMSxlDf1K9buBp7w_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[54].name = "data";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_46_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[59];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[59].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[59].offset = offsetof(tyObject_Table__UvSlGqDg4nWNM1wskOFQeg, counter);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[59].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[59].name = "counter";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[53].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[53].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[53].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_46_2[0];
-NTI__UvSlGqDg4nWNM1wskOFQeg_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[53];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[78].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[78].offset = offsetof(tyObject_Table__UvSlGqDg4nWNM1wskOFQeg, data);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[78].typ = (&NTI__9bnMQh9b5oMSxlDf1K9buBp7w_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[78].name = "data";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_73_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[83];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[83].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[83].offset = offsetof(tyObject_Table__UvSlGqDg4nWNM1wskOFQeg, counter);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[83].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[83].name = "counter";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[77].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[77].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[77].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_73_2[0];
+NTI__UvSlGqDg4nWNM1wskOFQeg_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[77];
 NTI__puwZz39aIr9cdB5WlFICYPgw_.size = sizeof(tyObject_Table__puwZz39aIr9cdB5WlFICYPgw);
 NTI__puwZz39aIr9cdB5WlFICYPgw_.kind = 18;
 NTI__puwZz39aIr9cdB5WlFICYPgw_.base = 0;
 NTI__puwZz39aIr9cdB5WlFICYPgw_.name = "Table[peerid.PeerID, asyncsync.AsyncLock]";
 NTI__puwZz39aIr9cdB5WlFICYPgw_.nextType = nimTypeRoot; nimTypeRoot=&NTI__puwZz39aIr9cdB5WlFICYPgw_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_48_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[61];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_75_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[85];
 NTI__lG9artYnG9a6GxqcmhxZJl6g_.size = sizeof(tyTuple__lG9artYnG9a6GxqcmhxZJl6g);
 NTI__lG9artYnG9a6GxqcmhxZJl6g_.kind = 18;
 NTI__lG9artYnG9a6GxqcmhxZJl6g_.base = 0;
 NTI__lG9artYnG9a6GxqcmhxZJl6g_.name = "KeyValuePair[peerid.PeerID, asyncsync.AsyncLock]";
 NTI__lG9artYnG9a6GxqcmhxZJl6g_.nextType = nimTypeRoot; nimTypeRoot=&NTI__lG9artYnG9a6GxqcmhxZJl6g_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_49_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[63];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[63].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[63].offset = offsetof(tyTuple__lG9artYnG9a6GxqcmhxZJl6g, Field0);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[63].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[63].name = "Field0";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_49_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[64];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[64].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[64].offset = offsetof(tyTuple__lG9artYnG9a6GxqcmhxZJl6g, Field1);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[64].typ = (&NTI__Se8YyoPxzDpFnTeAyeCVCw_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[64].name = "Field1";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_49_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[65];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[65].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[65].offset = offsetof(tyTuple__lG9artYnG9a6GxqcmhxZJl6g, Field2);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[65].typ = (&NTI__AfrMeDg1y2UMF9alA3jx8Uw_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[65].name = "Field2";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[62].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[62].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[62].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_49_3[0];
-NTI__lG9artYnG9a6GxqcmhxZJl6g_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[62];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_76_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[87];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[87].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[87].offset = offsetof(tyTuple__lG9artYnG9a6GxqcmhxZJl6g, Field0);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[87].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[87].name = "Field0";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_76_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[88];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[88].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[88].offset = offsetof(tyTuple__lG9artYnG9a6GxqcmhxZJl6g, Field1);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[88].typ = (&NTI__Se8YyoPxzDpFnTeAyeCVCw_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[88].name = "Field1";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_76_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[89];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[89].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[89].offset = offsetof(tyTuple__lG9artYnG9a6GxqcmhxZJl6g, Field2);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[89].typ = (&NTI__AfrMeDg1y2UMF9alA3jx8Uw_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[89].name = "Field2";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[86].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[86].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[86].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_76_3[0];
+NTI__lG9artYnG9a6GxqcmhxZJl6g_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[86];
 NTI__tZ2LP3xqCx8kcPyjrRkSuA_.size = sizeof(tySequence__tZ2LP3xqCx8kcPyjrRkSuA*);
 NTI__tZ2LP3xqCx8kcPyjrRkSuA_.kind = 24;
 NTI__tZ2LP3xqCx8kcPyjrRkSuA_.base = (&NTI__lG9artYnG9a6GxqcmhxZJl6g_);
 NTI__tZ2LP3xqCx8kcPyjrRkSuA_.name = "KeyValuePairSeq[peerid.PeerID, asyncsync.AsyncLock]";
 NTI__tZ2LP3xqCx8kcPyjrRkSuA_.nextType = nimTypeRoot; nimTypeRoot=&NTI__tZ2LP3xqCx8kcPyjrRkSuA_;
 NTI__tZ2LP3xqCx8kcPyjrRkSuA_.marker = Marker_tySequence__tZ2LP3xqCx8kcPyjrRkSuA;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[61].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[61].offset = offsetof(tyObject_Table__puwZz39aIr9cdB5WlFICYPgw, data);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[61].typ = (&NTI__tZ2LP3xqCx8kcPyjrRkSuA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[61].name = "data";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_48_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[66];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[66].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[66].offset = offsetof(tyObject_Table__puwZz39aIr9cdB5WlFICYPgw, counter);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[66].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[66].name = "counter";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[60].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[60].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[60].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_48_2[0];
-NTI__puwZz39aIr9cdB5WlFICYPgw_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[60];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[85].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[85].offset = offsetof(tyObject_Table__puwZz39aIr9cdB5WlFICYPgw, data);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[85].typ = (&NTI__tZ2LP3xqCx8kcPyjrRkSuA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[85].name = "data";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_75_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[90];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[90].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[90].offset = offsetof(tyObject_Table__puwZz39aIr9cdB5WlFICYPgw, counter);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[90].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[90].name = "counter";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[84].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[84].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[84].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_75_2[0];
+NTI__puwZz39aIr9cdB5WlFICYPgw_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[84];
 NTI__wcpR9aWZKIUY9bs3oFi6HIsQ_.size = sizeof(tyObject_Table__wcpR9aWZKIUY9bs3oFi6HIsQ);
 NTI__wcpR9aWZKIUY9bs3oFi6HIsQ_.kind = 18;
 NTI__wcpR9aWZKIUY9bs3oFi6HIsQ_.base = 0;
 NTI__wcpR9aWZKIUY9bs3oFi6HIsQ_.name = "Table[system.string, pubsub.Topic]";
 NTI__wcpR9aWZKIUY9bs3oFi6HIsQ_.nextType = nimTypeRoot; nimTypeRoot=&NTI__wcpR9aWZKIUY9bs3oFi6HIsQ_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_50_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[68];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_77_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[92];
 NTI__9bU0L219b3fjpDIE6keMYb9bA_.size = sizeof(tyTuple__9bU0L219b3fjpDIE6keMYb9bA);
 NTI__9bU0L219b3fjpDIE6keMYb9bA_.kind = 18;
 NTI__9bU0L219b3fjpDIE6keMYb9bA_.base = 0;
 NTI__9bU0L219b3fjpDIE6keMYb9bA_.name = "KeyValuePair[system.string, pubsub.Topic]";
 NTI__9bU0L219b3fjpDIE6keMYb9bA_.nextType = nimTypeRoot; nimTypeRoot=&NTI__9bU0L219b3fjpDIE6keMYb9bA_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_51_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[70];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[70].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[70].offset = offsetof(tyTuple__9bU0L219b3fjpDIE6keMYb9bA, Field0);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[70].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[70].name = "Field0";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_51_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[71];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[71].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[71].offset = offsetof(tyTuple__9bU0L219b3fjpDIE6keMYb9bA, Field1);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[71].typ = (&NTI__77mFvmsOLKik79ci2hXkHEg_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[71].name = "Field1";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_51_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[72];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[72].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[72].offset = offsetof(tyTuple__9bU0L219b3fjpDIE6keMYb9bA, Field2);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[72].typ = (&NTI__KLsnabaqPzbVsZlEwqe1cA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[72].name = "Field2";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[69].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[69].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[69].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_51_3[0];
-NTI__9bU0L219b3fjpDIE6keMYb9bA_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[69];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_78_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[94];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[94].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[94].offset = offsetof(tyTuple__9bU0L219b3fjpDIE6keMYb9bA, Field0);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[94].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[94].name = "Field0";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_78_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[95];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[95].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[95].offset = offsetof(tyTuple__9bU0L219b3fjpDIE6keMYb9bA, Field1);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[95].typ = (&NTI__77mFvmsOLKik79ci2hXkHEg_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[95].name = "Field1";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_78_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[96];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[96].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[96].offset = offsetof(tyTuple__9bU0L219b3fjpDIE6keMYb9bA, Field2);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[96].typ = (&NTI__KLsnabaqPzbVsZlEwqe1cA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[96].name = "Field2";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[93].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[93].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[93].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_78_3[0];
+NTI__9bU0L219b3fjpDIE6keMYb9bA_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[93];
 NTI__4tnpefYRDGIct5y7RxC8KA_.size = sizeof(tySequence__4tnpefYRDGIct5y7RxC8KA*);
 NTI__4tnpefYRDGIct5y7RxC8KA_.kind = 24;
 NTI__4tnpefYRDGIct5y7RxC8KA_.base = (&NTI__9bU0L219b3fjpDIE6keMYb9bA_);
 NTI__4tnpefYRDGIct5y7RxC8KA_.name = "KeyValuePairSeq[system.string, pubsub.Topic]";
 NTI__4tnpefYRDGIct5y7RxC8KA_.nextType = nimTypeRoot; nimTypeRoot=&NTI__4tnpefYRDGIct5y7RxC8KA_;
 NTI__4tnpefYRDGIct5y7RxC8KA_.marker = Marker_tySequence__4tnpefYRDGIct5y7RxC8KA;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[68].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[68].offset = offsetof(tyObject_Table__wcpR9aWZKIUY9bs3oFi6HIsQ, data);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[68].typ = (&NTI__4tnpefYRDGIct5y7RxC8KA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[68].name = "data";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_50_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[73];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[73].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[73].offset = offsetof(tyObject_Table__wcpR9aWZKIUY9bs3oFi6HIsQ, counter);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[73].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[73].name = "counter";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[67].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[67].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[67].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_50_2[0];
-NTI__wcpR9aWZKIUY9bs3oFi6HIsQ_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[67];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[92].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[92].offset = offsetof(tyObject_Table__wcpR9aWZKIUY9bs3oFi6HIsQ, data);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[92].typ = (&NTI__4tnpefYRDGIct5y7RxC8KA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[92].name = "data";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_77_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[97];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[97].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[97].offset = offsetof(tyObject_Table__wcpR9aWZKIUY9bs3oFi6HIsQ, counter);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[97].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[97].name = "counter";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[91].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[91].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[91].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_77_2[0];
+NTI__wcpR9aWZKIUY9bs3oFi6HIsQ_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[91];
 NTI__lHpSn1a1LQne7Vijlza5tg_.size = sizeof(tyObject_Table__lHpSn1a1LQne7Vijlza5tg);
 NTI__lHpSn1a1LQne7Vijlza5tg_.kind = 18;
 NTI__lHpSn1a1LQne7Vijlza5tg_.base = 0;
 NTI__lHpSn1a1LQne7Vijlza5tg_.name = "Table[peerid.PeerID, pubsubpeer.PubSubPeer]";
 NTI__lHpSn1a1LQne7Vijlza5tg_.nextType = nimTypeRoot; nimTypeRoot=&NTI__lHpSn1a1LQne7Vijlza5tg_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_52_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[75];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_79_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[99];
 NTI__PtvwtIrL0rxEmrV5ypzN1w_.size = sizeof(tyTuple__PtvwtIrL0rxEmrV5ypzN1w);
 NTI__PtvwtIrL0rxEmrV5ypzN1w_.kind = 18;
 NTI__PtvwtIrL0rxEmrV5ypzN1w_.base = 0;
 NTI__PtvwtIrL0rxEmrV5ypzN1w_.name = "KeyValuePair[peerid.PeerID, pubsubpeer.PubSubPeer]";
 NTI__PtvwtIrL0rxEmrV5ypzN1w_.nextType = nimTypeRoot; nimTypeRoot=&NTI__PtvwtIrL0rxEmrV5ypzN1w_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_53_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[77];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[77].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[77].offset = offsetof(tyTuple__PtvwtIrL0rxEmrV5ypzN1w, Field0);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[77].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[77].name = "Field0";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_53_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[78];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[78].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[78].offset = offsetof(tyTuple__PtvwtIrL0rxEmrV5ypzN1w, Field1);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[78].typ = (&NTI__Se8YyoPxzDpFnTeAyeCVCw_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[78].name = "Field1";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_53_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[79];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[79].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[79].offset = offsetof(tyTuple__PtvwtIrL0rxEmrV5ypzN1w, Field2);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[79].typ = (&NTI__ams67lohM6AwmrGQ2Ilzsg_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[79].name = "Field2";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[76].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[76].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[76].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_53_3[0];
-NTI__PtvwtIrL0rxEmrV5ypzN1w_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[76];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_80_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[101];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[101].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[101].offset = offsetof(tyTuple__PtvwtIrL0rxEmrV5ypzN1w, Field0);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[101].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[101].name = "Field0";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_80_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[102];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[102].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[102].offset = offsetof(tyTuple__PtvwtIrL0rxEmrV5ypzN1w, Field1);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[102].typ = (&NTI__Se8YyoPxzDpFnTeAyeCVCw_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[102].name = "Field1";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_80_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[103];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[103].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[103].offset = offsetof(tyTuple__PtvwtIrL0rxEmrV5ypzN1w, Field2);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[103].typ = (&NTI__ams67lohM6AwmrGQ2Ilzsg_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[103].name = "Field2";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[100].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[100].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[100].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_80_3[0];
+NTI__PtvwtIrL0rxEmrV5ypzN1w_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[100];
 NTI__1cmYA8zDV0s9c4gpLK2ygBg_.size = sizeof(tySequence__1cmYA8zDV0s9c4gpLK2ygBg*);
 NTI__1cmYA8zDV0s9c4gpLK2ygBg_.kind = 24;
 NTI__1cmYA8zDV0s9c4gpLK2ygBg_.base = (&NTI__PtvwtIrL0rxEmrV5ypzN1w_);
 NTI__1cmYA8zDV0s9c4gpLK2ygBg_.name = "KeyValuePairSeq[peerid.PeerID, pubsubpeer.PubSubPeer]";
 NTI__1cmYA8zDV0s9c4gpLK2ygBg_.nextType = nimTypeRoot; nimTypeRoot=&NTI__1cmYA8zDV0s9c4gpLK2ygBg_;
 NTI__1cmYA8zDV0s9c4gpLK2ygBg_.marker = Marker_tySequence__1cmYA8zDV0s9c4gpLK2ygBg;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[75].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[75].offset = offsetof(tyObject_Table__lHpSn1a1LQne7Vijlza5tg, data);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[75].typ = (&NTI__1cmYA8zDV0s9c4gpLK2ygBg_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[75].name = "data";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_52_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[80];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[80].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[80].offset = offsetof(tyObject_Table__lHpSn1a1LQne7Vijlza5tg, counter);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[80].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[80].name = "counter";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[74].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[74].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[74].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_52_2[0];
-NTI__lHpSn1a1LQne7Vijlza5tg_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[74];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[99].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[99].offset = offsetof(tyObject_Table__lHpSn1a1LQne7Vijlza5tg, data);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[99].typ = (&NTI__1cmYA8zDV0s9c4gpLK2ygBg_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[99].name = "data";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_79_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[104];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[104].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[104].offset = offsetof(tyObject_Table__lHpSn1a1LQne7Vijlza5tg, counter);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[104].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[104].name = "counter";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[98].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[98].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[98].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_79_2[0];
+NTI__lHpSn1a1LQne7Vijlza5tg_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[98];
 NTI__BMmOa89bg4RjA9b9bHqGsOJSQ_.size = sizeof(tyObject_Table__BMmOa89bg4RjA9b9bHqGsOJSQ);
 NTI__BMmOa89bg4RjA9b9bHqGsOJSQ_.kind = 18;
 NTI__BMmOa89bg4RjA9b9bHqGsOJSQ_.base = 0;
 NTI__BMmOa89bg4RjA9b9bHqGsOJSQ_.name = "Table[system.string, HashSet[pubsub.ValidatorHandler]]";
 NTI__BMmOa89bg4RjA9b9bHqGsOJSQ_.nextType = nimTypeRoot; nimTypeRoot=&NTI__BMmOa89bg4RjA9b9bHqGsOJSQ_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_54_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[82];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_81_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[106];
 NTI__9b9aejOTD70mq52wgtBDEUtA_.size = sizeof(tyTuple__9b9aejOTD70mq52wgtBDEUtA);
 NTI__9b9aejOTD70mq52wgtBDEUtA_.kind = 18;
 NTI__9b9aejOTD70mq52wgtBDEUtA_.base = 0;
 NTI__9b9aejOTD70mq52wgtBDEUtA_.name = "KeyValuePair[system.string, HashSet[pubsub.ValidatorHandler]]";
 NTI__9b9aejOTD70mq52wgtBDEUtA_.nextType = nimTypeRoot; nimTypeRoot=&NTI__9b9aejOTD70mq52wgtBDEUtA_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_55_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[84];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[84].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[84].offset = offsetof(tyTuple__9b9aejOTD70mq52wgtBDEUtA, Field0);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[84].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[84].name = "Field0";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_55_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[85];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[85].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[85].offset = offsetof(tyTuple__9b9aejOTD70mq52wgtBDEUtA, Field1);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[85].typ = (&NTI__77mFvmsOLKik79ci2hXkHEg_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[85].name = "Field1";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_55_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[86];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[86].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[86].offset = offsetof(tyTuple__9b9aejOTD70mq52wgtBDEUtA, Field2);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[86].typ = (&NTI__PM9aM6DsVafGgKfhr9bQcNSA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[86].name = "Field2";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[83].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[83].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[83].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_55_3[0];
-NTI__9b9aejOTD70mq52wgtBDEUtA_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[83];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_82_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[108];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[108].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[108].offset = offsetof(tyTuple__9b9aejOTD70mq52wgtBDEUtA, Field0);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[108].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[108].name = "Field0";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_82_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[109];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[109].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[109].offset = offsetof(tyTuple__9b9aejOTD70mq52wgtBDEUtA, Field1);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[109].typ = (&NTI__77mFvmsOLKik79ci2hXkHEg_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[109].name = "Field1";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_82_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[110];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[110].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[110].offset = offsetof(tyTuple__9b9aejOTD70mq52wgtBDEUtA, Field2);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[110].typ = (&NTI__PM9aM6DsVafGgKfhr9bQcNSA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[110].name = "Field2";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[107].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[107].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[107].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_82_3[0];
+NTI__9b9aejOTD70mq52wgtBDEUtA_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[107];
 NTI__WM4lmj0QFNmzCn9a9cZ9cYt3g_.size = sizeof(tySequence__WM4lmj0QFNmzCn9a9cZ9cYt3g*);
 NTI__WM4lmj0QFNmzCn9a9cZ9cYt3g_.kind = 24;
 NTI__WM4lmj0QFNmzCn9a9cZ9cYt3g_.base = (&NTI__9b9aejOTD70mq52wgtBDEUtA_);
@@ -17005,84 +18960,84 @@ NTI__WM4lmj0QFNmzCn9a9cZ9cYt3g_.name = "KeyValuePairSeq[system.string, HashSet[p
 "]";
 NTI__WM4lmj0QFNmzCn9a9cZ9cYt3g_.nextType = nimTypeRoot; nimTypeRoot=&NTI__WM4lmj0QFNmzCn9a9cZ9cYt3g_;
 NTI__WM4lmj0QFNmzCn9a9cZ9cYt3g_.marker = Marker_tySequence__WM4lmj0QFNmzCn9a9cZ9cYt3g;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[82].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[82].offset = offsetof(tyObject_Table__BMmOa89bg4RjA9b9bHqGsOJSQ, data);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[82].typ = (&NTI__WM4lmj0QFNmzCn9a9cZ9cYt3g_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[82].name = "data";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_54_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[87];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[87].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[87].offset = offsetof(tyObject_Table__BMmOa89bg4RjA9b9bHqGsOJSQ, counter);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[87].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[87].name = "counter";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[81].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[81].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[81].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_54_2[0];
-NTI__BMmOa89bg4RjA9b9bHqGsOJSQ_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[81];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[106].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[106].offset = offsetof(tyObject_Table__BMmOa89bg4RjA9b9bHqGsOJSQ, data);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[106].typ = (&NTI__WM4lmj0QFNmzCn9a9cZ9cYt3g_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[106].name = "data";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_81_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[111];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[111].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[111].offset = offsetof(tyObject_Table__BMmOa89bg4RjA9b9bHqGsOJSQ, counter);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[111].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[111].name = "counter";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[105].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[105].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[105].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_81_2[0];
+NTI__BMmOa89bg4RjA9b9bHqGsOJSQ_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[105];
 NTI__XjARj5fPfOXv4uQ0CZdKyQ_.size = sizeof(tyObject_Table__XjARj5fPfOXv4uQ0CZdKyQ);
 NTI__XjARj5fPfOXv4uQ0CZdKyQ_.kind = 18;
 NTI__XjARj5fPfOXv4uQ0CZdKyQ_.base = 0;
 NTI__XjARj5fPfOXv4uQ0CZdKyQ_.name = "Table[system.uint64, lpchannel.LPChannel]";
 NTI__XjARj5fPfOXv4uQ0CZdKyQ_.nextType = nimTypeRoot; nimTypeRoot=&NTI__XjARj5fPfOXv4uQ0CZdKyQ_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_87_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[89];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_114_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[113];
 NTI__BHXjHcQw9b8D7j48q1Gcwzg_.size = sizeof(tyTuple__BHXjHcQw9b8D7j48q1Gcwzg);
 NTI__BHXjHcQw9b8D7j48q1Gcwzg_.kind = 18;
 NTI__BHXjHcQw9b8D7j48q1Gcwzg_.base = 0;
 NTI__BHXjHcQw9b8D7j48q1Gcwzg_.name = "KeyValuePair[system.uint64, lpchannel.LPChannel]";
 NTI__BHXjHcQw9b8D7j48q1Gcwzg_.nextType = nimTypeRoot; nimTypeRoot=&NTI__BHXjHcQw9b8D7j48q1Gcwzg_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_88_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[91];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[91].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[91].offset = offsetof(tyTuple__BHXjHcQw9b8D7j48q1Gcwzg, Field0);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[91].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[91].name = "Field0";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_88_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[92];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[92].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[92].offset = offsetof(tyTuple__BHXjHcQw9b8D7j48q1Gcwzg, Field1);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[92].typ = (&NTI__wMtfD88jmrPZwfzTH9c8e9cA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[92].name = "Field1";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_88_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[93];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[93].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[93].offset = offsetof(tyTuple__BHXjHcQw9b8D7j48q1Gcwzg, Field2);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[93].typ = (&NTI__tq9aOL9cg8g274B67LdBqSbQ_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[93].name = "Field2";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[90].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[90].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[90].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_88_3[0];
-NTI__BHXjHcQw9b8D7j48q1Gcwzg_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[90];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_115_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[115];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[115].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[115].offset = offsetof(tyTuple__BHXjHcQw9b8D7j48q1Gcwzg, Field0);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[115].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[115].name = "Field0";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_115_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[116];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[116].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[116].offset = offsetof(tyTuple__BHXjHcQw9b8D7j48q1Gcwzg, Field1);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[116].typ = (&NTI__wMtfD88jmrPZwfzTH9c8e9cA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[116].name = "Field1";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_115_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[117];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[117].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[117].offset = offsetof(tyTuple__BHXjHcQw9b8D7j48q1Gcwzg, Field2);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[117].typ = (&NTI__tq9aOL9cg8g274B67LdBqSbQ_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[117].name = "Field2";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[114].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[114].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[114].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_115_3[0];
+NTI__BHXjHcQw9b8D7j48q1Gcwzg_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[114];
 NTI__maP5b4juf9aviaIdhhcTZbQ_.size = sizeof(tySequence__maP5b4juf9aviaIdhhcTZbQ*);
 NTI__maP5b4juf9aviaIdhhcTZbQ_.kind = 24;
 NTI__maP5b4juf9aviaIdhhcTZbQ_.base = (&NTI__BHXjHcQw9b8D7j48q1Gcwzg_);
 NTI__maP5b4juf9aviaIdhhcTZbQ_.name = "KeyValuePairSeq[system.uint64, lpchannel.LPChannel]";
 NTI__maP5b4juf9aviaIdhhcTZbQ_.nextType = nimTypeRoot; nimTypeRoot=&NTI__maP5b4juf9aviaIdhhcTZbQ_;
 NTI__maP5b4juf9aviaIdhhcTZbQ_.marker = Marker_tySequence__maP5b4juf9aviaIdhhcTZbQ;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[89].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[89].offset = offsetof(tyObject_Table__XjARj5fPfOXv4uQ0CZdKyQ, data);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[89].typ = (&NTI__maP5b4juf9aviaIdhhcTZbQ_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[89].name = "data";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_87_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[94];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[94].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[94].offset = offsetof(tyObject_Table__XjARj5fPfOXv4uQ0CZdKyQ, counter);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[94].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[94].name = "counter";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[88].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[88].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[88].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_87_2[0];
-NTI__XjARj5fPfOXv4uQ0CZdKyQ_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[88];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[113].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[113].offset = offsetof(tyObject_Table__XjARj5fPfOXv4uQ0CZdKyQ, data);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[113].typ = (&NTI__maP5b4juf9aviaIdhhcTZbQ_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[113].name = "data";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_114_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[118];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[118].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[118].offset = offsetof(tyObject_Table__XjARj5fPfOXv4uQ0CZdKyQ, counter);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[118].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[118].name = "counter";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[112].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[112].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[112].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_114_2[0];
+NTI__XjARj5fPfOXv4uQ0CZdKyQ_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[112];
 NTI__5G2YOQcjDoTxOBDaB9cojOQ_.size = sizeof(tyTuple__5G2YOQcjDoTxOBDaB9cojOQ);
 NTI__5G2YOQcjDoTxOBDaB9cojOQ_.kind = 18;
 NTI__5G2YOQcjDoTxOBDaB9cojOQ_.base = 0;
 NTI__5G2YOQcjDoTxOBDaB9cojOQ_.name = "KeyValuePair[system.string, HashSet[pubsubpeer.PubSubPeer]]";
 NTI__5G2YOQcjDoTxOBDaB9cojOQ_.nextType = nimTypeRoot; nimTypeRoot=&NTI__5G2YOQcjDoTxOBDaB9cojOQ_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_102_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[96];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[96].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[96].offset = offsetof(tyTuple__5G2YOQcjDoTxOBDaB9cojOQ, Field0);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[96].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[96].name = "Field0";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_102_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[97];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[97].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[97].offset = offsetof(tyTuple__5G2YOQcjDoTxOBDaB9cojOQ, Field1);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[97].typ = (&NTI__77mFvmsOLKik79ci2hXkHEg_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[97].name = "Field1";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_102_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[98];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[98].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[98].offset = offsetof(tyTuple__5G2YOQcjDoTxOBDaB9cojOQ, Field2);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[98].typ = (&NTI__SjkKNmUxUCmHfJyMk9aPJ9cw_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[98].name = "Field2";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[95].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[95].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[95].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_102_3[0];
-NTI__5G2YOQcjDoTxOBDaB9cojOQ_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[95];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_129_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[120];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[120].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[120].offset = offsetof(tyTuple__5G2YOQcjDoTxOBDaB9cojOQ, Field0);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[120].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[120].name = "Field0";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_129_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[121];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[121].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[121].offset = offsetof(tyTuple__5G2YOQcjDoTxOBDaB9cojOQ, Field1);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[121].typ = (&NTI__77mFvmsOLKik79ci2hXkHEg_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[121].name = "Field1";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_129_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[122];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[122].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[122].offset = offsetof(tyTuple__5G2YOQcjDoTxOBDaB9cojOQ, Field2);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[122].typ = (&NTI__SjkKNmUxUCmHfJyMk9aPJ9cw_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[122].name = "Field2";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[119].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[119].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[119].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_129_3[0];
+NTI__5G2YOQcjDoTxOBDaB9cojOQ_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[119];
 NTI__9bUff3pvvg9b9bwSnutq8aJFQ_.size = sizeof(tySequence__9bUff3pvvg9b9bwSnutq8aJFQ*);
 NTI__9bUff3pvvg9b9bwSnutq8aJFQ_.kind = 24;
 NTI__9bUff3pvvg9b9bwSnutq8aJFQ_.base = (&NTI__5G2YOQcjDoTxOBDaB9cojOQ_);
@@ -17094,93 +19049,93 @@ NTI__t1GIbsENi89cp9cMuggZaXQg_.kind = 18;
 NTI__t1GIbsENi89cp9cMuggZaXQg_.base = 0;
 NTI__t1GIbsENi89cp9cMuggZaXQg_.name = "PeerTable";
 NTI__t1GIbsENi89cp9cMuggZaXQg_.nextType = nimTypeRoot; nimTypeRoot=&NTI__t1GIbsENi89cp9cMuggZaXQg_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_111_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[100];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[100].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[100].offset = offsetof(tyObject_Table__t1GIbsENi89cp9cMuggZaXQg, data);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[100].typ = (&NTI__9bUff3pvvg9b9bwSnutq8aJFQ_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[100].name = "data";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_111_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[101];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[101].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[101].offset = offsetof(tyObject_Table__t1GIbsENi89cp9cMuggZaXQg, counter);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[101].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[101].name = "counter";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[99].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[99].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[99].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_111_2[0];
-NTI__t1GIbsENi89cp9cMuggZaXQg_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[99];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_138_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[124];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[124].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[124].offset = offsetof(tyObject_Table__t1GIbsENi89cp9cMuggZaXQg, data);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[124].typ = (&NTI__9bUff3pvvg9b9bwSnutq8aJFQ_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[124].name = "data";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_138_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[125];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[125].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[125].offset = offsetof(tyObject_Table__t1GIbsENi89cp9cMuggZaXQg, counter);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[125].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[125].name = "counter";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[123].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[123].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[123].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_138_2[0];
+NTI__t1GIbsENi89cp9cMuggZaXQg_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[123];
 NTI__pnmPCe7tCYTM7iCHSlEfQA_.size = sizeof(tyObject_Table__pnmPCe7tCYTM7iCHSlEfQA);
 NTI__pnmPCe7tCYTM7iCHSlEfQA_.kind = 18;
 NTI__pnmPCe7tCYTM7iCHSlEfQA_.base = 0;
 NTI__pnmPCe7tCYTM7iCHSlEfQA_.name = "Table[MessageID, TimedEntry[MessageID]]";
 NTI__pnmPCe7tCYTM7iCHSlEfQA_.nextType = nimTypeRoot; nimTypeRoot=&NTI__pnmPCe7tCYTM7iCHSlEfQA_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_112_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[103];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_139_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[127];
 NTI__GJ2zXV257gwBkpQeeINxTA_.size = sizeof(tyTuple__GJ2zXV257gwBkpQeeINxTA);
 NTI__GJ2zXV257gwBkpQeeINxTA_.kind = 18;
 NTI__GJ2zXV257gwBkpQeeINxTA_.base = 0;
 NTI__GJ2zXV257gwBkpQeeINxTA_.name = "KeyValuePair[MessageID, TimedEntry[MessageID]]";
 NTI__GJ2zXV257gwBkpQeeINxTA_.nextType = nimTypeRoot; nimTypeRoot=&NTI__GJ2zXV257gwBkpQeeINxTA_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_113_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[105];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[105].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[105].offset = offsetof(tyTuple__GJ2zXV257gwBkpQeeINxTA, Field0);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[105].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[105].name = "Field0";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_113_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[106];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[106].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[106].offset = offsetof(tyTuple__GJ2zXV257gwBkpQeeINxTA, Field1);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[106].typ = (&NTI__6H5Oh5UUvVCLiakt9aTwtUQ_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[106].name = "Field1";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_113_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[107];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[107].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[107].offset = offsetof(tyTuple__GJ2zXV257gwBkpQeeINxTA, Field2);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[107].typ = (&NTI__ySEsyL3qiVsEYtOYlLpUoQ_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[107].name = "Field2";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[104].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[104].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[104].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_113_3[0];
-NTI__GJ2zXV257gwBkpQeeINxTA_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[104];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_140_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[129];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[129].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[129].offset = offsetof(tyTuple__GJ2zXV257gwBkpQeeINxTA, Field0);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[129].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[129].name = "Field0";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_140_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[130];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[130].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[130].offset = offsetof(tyTuple__GJ2zXV257gwBkpQeeINxTA, Field1);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[130].typ = (&NTI__6H5Oh5UUvVCLiakt9aTwtUQ_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[130].name = "Field1";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_140_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[131];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[131].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[131].offset = offsetof(tyTuple__GJ2zXV257gwBkpQeeINxTA, Field2);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[131].typ = (&NTI__ySEsyL3qiVsEYtOYlLpUoQ_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[131].name = "Field2";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[128].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[128].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[128].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_140_3[0];
+NTI__GJ2zXV257gwBkpQeeINxTA_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[128];
 NTI__RHVAHq4hk7ajRY6ChL6jQg_.size = sizeof(tySequence__RHVAHq4hk7ajRY6ChL6jQg*);
 NTI__RHVAHq4hk7ajRY6ChL6jQg_.kind = 24;
 NTI__RHVAHq4hk7ajRY6ChL6jQg_.base = (&NTI__GJ2zXV257gwBkpQeeINxTA_);
 NTI__RHVAHq4hk7ajRY6ChL6jQg_.name = "KeyValuePairSeq[MessageID, TimedEntry[MessageID]]";
 NTI__RHVAHq4hk7ajRY6ChL6jQg_.nextType = nimTypeRoot; nimTypeRoot=&NTI__RHVAHq4hk7ajRY6ChL6jQg_;
 NTI__RHVAHq4hk7ajRY6ChL6jQg_.marker = Marker_tySequence__RHVAHq4hk7ajRY6ChL6jQg;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[103].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[103].offset = offsetof(tyObject_Table__pnmPCe7tCYTM7iCHSlEfQA, data);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[103].typ = (&NTI__RHVAHq4hk7ajRY6ChL6jQg_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[103].name = "data";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_112_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[108];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[108].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[108].offset = offsetof(tyObject_Table__pnmPCe7tCYTM7iCHSlEfQA, counter);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[108].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[108].name = "counter";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[102].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[102].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[102].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_112_2[0];
-NTI__pnmPCe7tCYTM7iCHSlEfQA_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[102];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[127].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[127].offset = offsetof(tyObject_Table__pnmPCe7tCYTM7iCHSlEfQA, data);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[127].typ = (&NTI__RHVAHq4hk7ajRY6ChL6jQg_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[127].name = "data";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_139_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[132];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[132].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[132].offset = offsetof(tyObject_Table__pnmPCe7tCYTM7iCHSlEfQA, counter);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[132].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[132].name = "counter";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[126].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[126].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[126].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_139_2[0];
+NTI__pnmPCe7tCYTM7iCHSlEfQA_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[126];
 NTI__fiNjm9awTH2rESOsTX1tq6g_.size = sizeof(tyObject_Table__fiNjm9awTH2rESOsTX1tq6g);
 NTI__fiNjm9awTH2rESOsTX1tq6g_.kind = 18;
 NTI__fiNjm9awTH2rESOsTX1tq6g_.base = 0;
 NTI__fiNjm9awTH2rESOsTX1tq6g_.flags = 2;
 NTI__fiNjm9awTH2rESOsTX1tq6g_.name = "Table[peerid.PeerID, timer.Moment]";
 NTI__fiNjm9awTH2rESOsTX1tq6g_.nextType = nimTypeRoot; nimTypeRoot=&NTI__fiNjm9awTH2rESOsTX1tq6g_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_127_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[110];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_154_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[134];
 NTI__beecycqPiHJ0zV6hA4CDDw_.size = sizeof(tyTuple__beecycqPiHJ0zV6hA4CDDw);
 NTI__beecycqPiHJ0zV6hA4CDDw_.kind = 18;
 NTI__beecycqPiHJ0zV6hA4CDDw_.base = 0;
 NTI__beecycqPiHJ0zV6hA4CDDw_.flags = 2;
 NTI__beecycqPiHJ0zV6hA4CDDw_.name = "KeyValuePair[peerid.PeerID, timer.Moment]";
 NTI__beecycqPiHJ0zV6hA4CDDw_.nextType = nimTypeRoot; nimTypeRoot=&NTI__beecycqPiHJ0zV6hA4CDDw_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_128_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[112];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[112].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[112].offset = offsetof(tyTuple__beecycqPiHJ0zV6hA4CDDw, Field0);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[112].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[112].name = "Field0";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_128_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[113];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[113].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[113].offset = offsetof(tyTuple__beecycqPiHJ0zV6hA4CDDw, Field1);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[113].typ = (&NTI__Se8YyoPxzDpFnTeAyeCVCw_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[113].name = "Field1";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_128_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[114];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[114].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[114].offset = offsetof(tyTuple__beecycqPiHJ0zV6hA4CDDw, Field2);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[114].typ = (&NTI__p19adwOigsIe5d3NlfPJOEw_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[114].name = "Field2";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[111].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[111].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[111].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_128_3[0];
-NTI__beecycqPiHJ0zV6hA4CDDw_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[111];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_155_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[136];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[136].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[136].offset = offsetof(tyTuple__beecycqPiHJ0zV6hA4CDDw, Field0);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[136].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[136].name = "Field0";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_155_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[137];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[137].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[137].offset = offsetof(tyTuple__beecycqPiHJ0zV6hA4CDDw, Field1);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[137].typ = (&NTI__Se8YyoPxzDpFnTeAyeCVCw_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[137].name = "Field1";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_155_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[138];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[138].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[138].offset = offsetof(tyTuple__beecycqPiHJ0zV6hA4CDDw, Field2);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[138].typ = (&NTI__p19adwOigsIe5d3NlfPJOEw_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[138].name = "Field2";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[135].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[135].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[135].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_155_3[0];
+NTI__beecycqPiHJ0zV6hA4CDDw_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[135];
 NTI__Y9bpibYYCq7U9bI2q2EkdjDA_.size = sizeof(tySequence__Y9bpibYYCq7U9bI2q2EkdjDA*);
 NTI__Y9bpibYYCq7U9bI2q2EkdjDA_.kind = 24;
 NTI__Y9bpibYYCq7U9bI2q2EkdjDA_.base = (&NTI__beecycqPiHJ0zV6hA4CDDw_);
@@ -17188,47 +19143,47 @@ NTI__Y9bpibYYCq7U9bI2q2EkdjDA_.flags = 2;
 NTI__Y9bpibYYCq7U9bI2q2EkdjDA_.name = "KeyValuePairSeq[peerid.PeerID, timer.Moment]";
 NTI__Y9bpibYYCq7U9bI2q2EkdjDA_.nextType = nimTypeRoot; nimTypeRoot=&NTI__Y9bpibYYCq7U9bI2q2EkdjDA_;
 NTI__Y9bpibYYCq7U9bI2q2EkdjDA_.marker = Marker_tySequence__Y9bpibYYCq7U9bI2q2EkdjDA;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[110].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[110].offset = offsetof(tyObject_Table__fiNjm9awTH2rESOsTX1tq6g, data);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[110].typ = (&NTI__Y9bpibYYCq7U9bI2q2EkdjDA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[110].name = "data";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_127_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[115];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[115].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[115].offset = offsetof(tyObject_Table__fiNjm9awTH2rESOsTX1tq6g, counter);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[115].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[115].name = "counter";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[109].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[109].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[109].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_127_2[0];
-NTI__fiNjm9awTH2rESOsTX1tq6g_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[109];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[134].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[134].offset = offsetof(tyObject_Table__fiNjm9awTH2rESOsTX1tq6g, data);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[134].typ = (&NTI__Y9bpibYYCq7U9bI2q2EkdjDA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[134].name = "data";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_154_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[139];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[139].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[139].offset = offsetof(tyObject_Table__fiNjm9awTH2rESOsTX1tq6g, counter);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[139].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[139].name = "counter";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[133].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[133].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[133].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_154_2[0];
+NTI__fiNjm9awTH2rESOsTX1tq6g_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[133];
 NTI__30SNsEhxoOsalydUEsCtnQ_.size = sizeof(tyObject_Table__30SNsEhxoOsalydUEsCtnQ);
 NTI__30SNsEhxoOsalydUEsCtnQ_.kind = 18;
 NTI__30SNsEhxoOsalydUEsCtnQ_.base = 0;
 NTI__30SNsEhxoOsalydUEsCtnQ_.flags = 2;
 NTI__30SNsEhxoOsalydUEsCtnQ_.name = "Table[system.string, timer.Moment]";
 NTI__30SNsEhxoOsalydUEsCtnQ_.nextType = nimTypeRoot; nimTypeRoot=&NTI__30SNsEhxoOsalydUEsCtnQ_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_129_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[117];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_156_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[141];
 NTI__v1juhacNXUiTV7vBi4DL4w_.size = sizeof(tyTuple__v1juhacNXUiTV7vBi4DL4w);
 NTI__v1juhacNXUiTV7vBi4DL4w_.kind = 18;
 NTI__v1juhacNXUiTV7vBi4DL4w_.base = 0;
 NTI__v1juhacNXUiTV7vBi4DL4w_.flags = 2;
 NTI__v1juhacNXUiTV7vBi4DL4w_.name = "KeyValuePair[system.string, timer.Moment]";
 NTI__v1juhacNXUiTV7vBi4DL4w_.nextType = nimTypeRoot; nimTypeRoot=&NTI__v1juhacNXUiTV7vBi4DL4w_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_130_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[119];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[119].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[119].offset = offsetof(tyTuple__v1juhacNXUiTV7vBi4DL4w, Field0);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[119].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[119].name = "Field0";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_130_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[120];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[120].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[120].offset = offsetof(tyTuple__v1juhacNXUiTV7vBi4DL4w, Field1);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[120].typ = (&NTI__77mFvmsOLKik79ci2hXkHEg_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[120].name = "Field1";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_130_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[121];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[121].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[121].offset = offsetof(tyTuple__v1juhacNXUiTV7vBi4DL4w, Field2);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[121].typ = (&NTI__p19adwOigsIe5d3NlfPJOEw_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[121].name = "Field2";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[118].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[118].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[118].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_130_3[0];
-NTI__v1juhacNXUiTV7vBi4DL4w_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[118];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_157_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[143];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[143].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[143].offset = offsetof(tyTuple__v1juhacNXUiTV7vBi4DL4w, Field0);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[143].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[143].name = "Field0";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_157_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[144];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[144].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[144].offset = offsetof(tyTuple__v1juhacNXUiTV7vBi4DL4w, Field1);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[144].typ = (&NTI__77mFvmsOLKik79ci2hXkHEg_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[144].name = "Field1";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_157_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[145];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[145].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[145].offset = offsetof(tyTuple__v1juhacNXUiTV7vBi4DL4w, Field2);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[145].typ = (&NTI__p19adwOigsIe5d3NlfPJOEw_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[145].name = "Field2";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[142].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[142].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[142].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_157_3[0];
+NTI__v1juhacNXUiTV7vBi4DL4w_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[142];
 NTI__a9czYAVXtt3ELF2dd9apg7CA_.size = sizeof(tySequence__a9czYAVXtt3ELF2dd9apg7CA*);
 NTI__a9czYAVXtt3ELF2dd9apg7CA_.kind = 24;
 NTI__a9czYAVXtt3ELF2dd9apg7CA_.base = (&NTI__v1juhacNXUiTV7vBi4DL4w_);
@@ -17236,47 +19191,47 @@ NTI__a9czYAVXtt3ELF2dd9apg7CA_.flags = 2;
 NTI__a9czYAVXtt3ELF2dd9apg7CA_.name = "KeyValuePairSeq[system.string, timer.Moment]";
 NTI__a9czYAVXtt3ELF2dd9apg7CA_.nextType = nimTypeRoot; nimTypeRoot=&NTI__a9czYAVXtt3ELF2dd9apg7CA_;
 NTI__a9czYAVXtt3ELF2dd9apg7CA_.marker = Marker_tySequence__a9czYAVXtt3ELF2dd9apg7CA;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[117].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[117].offset = offsetof(tyObject_Table__30SNsEhxoOsalydUEsCtnQ, data);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[117].typ = (&NTI__a9czYAVXtt3ELF2dd9apg7CA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[117].name = "data";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_129_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[122];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[122].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[122].offset = offsetof(tyObject_Table__30SNsEhxoOsalydUEsCtnQ, counter);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[122].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[122].name = "counter";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[116].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[116].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[116].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_129_2[0];
-NTI__30SNsEhxoOsalydUEsCtnQ_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[116];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[141].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[141].offset = offsetof(tyObject_Table__30SNsEhxoOsalydUEsCtnQ, data);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[141].typ = (&NTI__a9czYAVXtt3ELF2dd9apg7CA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[141].name = "data";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_156_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[146];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[146].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[146].offset = offsetof(tyObject_Table__30SNsEhxoOsalydUEsCtnQ, counter);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[146].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[146].name = "counter";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[140].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[140].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[140].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_156_2[0];
+NTI__30SNsEhxoOsalydUEsCtnQ_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[140];
 NTI__VywK0TFMYrwvnQ1FNvT9bTg_.size = sizeof(tyObject_Table__VywK0TFMYrwvnQ1FNvT9bTg);
 NTI__VywK0TFMYrwvnQ1FNvT9bTg_.kind = 18;
 NTI__VywK0TFMYrwvnQ1FNvT9bTg_.base = 0;
 NTI__VywK0TFMYrwvnQ1FNvT9bTg_.flags = 2;
 NTI__VywK0TFMYrwvnQ1FNvT9bTg_.name = "Table[system.string, seq[ControlIHave]]";
 NTI__VywK0TFMYrwvnQ1FNvT9bTg_.nextType = nimTypeRoot; nimTypeRoot=&NTI__VywK0TFMYrwvnQ1FNvT9bTg_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_131_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[124];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_158_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[148];
 NTI__9bJF9ckH2gKZ7rykNMUrUhZQ_.size = sizeof(tyTuple__9bJF9ckH2gKZ7rykNMUrUhZQ);
 NTI__9bJF9ckH2gKZ7rykNMUrUhZQ_.kind = 18;
 NTI__9bJF9ckH2gKZ7rykNMUrUhZQ_.base = 0;
 NTI__9bJF9ckH2gKZ7rykNMUrUhZQ_.flags = 2;
 NTI__9bJF9ckH2gKZ7rykNMUrUhZQ_.name = "KeyValuePair[system.string, seq[ControlIHave]]";
 NTI__9bJF9ckH2gKZ7rykNMUrUhZQ_.nextType = nimTypeRoot; nimTypeRoot=&NTI__9bJF9ckH2gKZ7rykNMUrUhZQ_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_132_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[126];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[126].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[126].offset = offsetof(tyTuple__9bJF9ckH2gKZ7rykNMUrUhZQ, Field0);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[126].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[126].name = "Field0";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_132_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[127];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[127].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[127].offset = offsetof(tyTuple__9bJF9ckH2gKZ7rykNMUrUhZQ, Field1);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[127].typ = (&NTI__77mFvmsOLKik79ci2hXkHEg_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[127].name = "Field1";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_132_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[128];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[128].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[128].offset = offsetof(tyTuple__9bJF9ckH2gKZ7rykNMUrUhZQ, Field2);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[128].typ = (&NTI__8MW0JodCedjay9anGTGrBmA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[128].name = "Field2";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[125].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[125].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[125].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_132_3[0];
-NTI__9bJF9ckH2gKZ7rykNMUrUhZQ_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[125];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_159_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[150];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[150].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[150].offset = offsetof(tyTuple__9bJF9ckH2gKZ7rykNMUrUhZQ, Field0);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[150].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[150].name = "Field0";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_159_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[151];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[151].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[151].offset = offsetof(tyTuple__9bJF9ckH2gKZ7rykNMUrUhZQ, Field1);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[151].typ = (&NTI__77mFvmsOLKik79ci2hXkHEg_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[151].name = "Field1";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_159_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[152];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[152].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[152].offset = offsetof(tyTuple__9bJF9ckH2gKZ7rykNMUrUhZQ, Field2);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[152].typ = (&NTI__8MW0JodCedjay9anGTGrBmA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[152].name = "Field2";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[149].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[149].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[149].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_159_3[0];
+NTI__9bJF9ckH2gKZ7rykNMUrUhZQ_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[149];
 NTI__UuxWsCxMkcgdpNKQqNagIQ_.size = sizeof(tySequence__UuxWsCxMkcgdpNKQqNagIQ*);
 NTI__UuxWsCxMkcgdpNKQqNagIQ_.kind = 24;
 NTI__UuxWsCxMkcgdpNKQqNagIQ_.base = (&NTI__9bJF9ckH2gKZ7rykNMUrUhZQ_);
@@ -17284,47 +19239,47 @@ NTI__UuxWsCxMkcgdpNKQqNagIQ_.flags = 2;
 NTI__UuxWsCxMkcgdpNKQqNagIQ_.name = "KeyValuePairSeq[system.string, seq[ControlIHave]]";
 NTI__UuxWsCxMkcgdpNKQqNagIQ_.nextType = nimTypeRoot; nimTypeRoot=&NTI__UuxWsCxMkcgdpNKQqNagIQ_;
 NTI__UuxWsCxMkcgdpNKQqNagIQ_.marker = Marker_tySequence__UuxWsCxMkcgdpNKQqNagIQ;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[124].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[124].offset = offsetof(tyObject_Table__VywK0TFMYrwvnQ1FNvT9bTg, data);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[124].typ = (&NTI__UuxWsCxMkcgdpNKQqNagIQ_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[124].name = "data";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_131_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[129];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[129].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[129].offset = offsetof(tyObject_Table__VywK0TFMYrwvnQ1FNvT9bTg, counter);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[129].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[129].name = "counter";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[123].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[123].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[123].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_131_2[0];
-NTI__VywK0TFMYrwvnQ1FNvT9bTg_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[123];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[148].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[148].offset = offsetof(tyObject_Table__VywK0TFMYrwvnQ1FNvT9bTg, data);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[148].typ = (&NTI__UuxWsCxMkcgdpNKQqNagIQ_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[148].name = "data";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_158_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[153];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[153].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[153].offset = offsetof(tyObject_Table__VywK0TFMYrwvnQ1FNvT9bTg, counter);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[153].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[153].name = "counter";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[147].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[147].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[147].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_158_2[0];
+NTI__VywK0TFMYrwvnQ1FNvT9bTg_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[147];
 NTI__A9aF9cstnMLLmIKPt77JKPXA_.size = sizeof(tyObject_Table__A9aF9cstnMLLmIKPt77JKPXA);
 NTI__A9aF9cstnMLLmIKPt77JKPXA_.kind = 18;
 NTI__A9aF9cstnMLLmIKPt77JKPXA_.base = 0;
 NTI__A9aF9cstnMLLmIKPt77JKPXA_.flags = 2;
 NTI__A9aF9cstnMLLmIKPt77JKPXA_.name = "Table[system.string, messages.ControlMessage]";
 NTI__A9aF9cstnMLLmIKPt77JKPXA_.nextType = nimTypeRoot; nimTypeRoot=&NTI__A9aF9cstnMLLmIKPt77JKPXA_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_133_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[131];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_160_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[155];
 NTI__pf8EktL9bgDdy8y4sHgDywQ_.size = sizeof(tyTuple__pf8EktL9bgDdy8y4sHgDywQ);
 NTI__pf8EktL9bgDdy8y4sHgDywQ_.kind = 18;
 NTI__pf8EktL9bgDdy8y4sHgDywQ_.base = 0;
 NTI__pf8EktL9bgDdy8y4sHgDywQ_.flags = 2;
 NTI__pf8EktL9bgDdy8y4sHgDywQ_.name = "KeyValuePair[system.string, messages.ControlMessage]";
 NTI__pf8EktL9bgDdy8y4sHgDywQ_.nextType = nimTypeRoot; nimTypeRoot=&NTI__pf8EktL9bgDdy8y4sHgDywQ_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_134_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[133];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[133].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[133].offset = offsetof(tyTuple__pf8EktL9bgDdy8y4sHgDywQ, Field0);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[133].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[133].name = "Field0";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_134_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[134];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[134].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[134].offset = offsetof(tyTuple__pf8EktL9bgDdy8y4sHgDywQ, Field1);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[134].typ = (&NTI__77mFvmsOLKik79ci2hXkHEg_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[134].name = "Field1";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_134_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[135];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[135].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[135].offset = offsetof(tyTuple__pf8EktL9bgDdy8y4sHgDywQ, Field2);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[135].typ = (&NTI__R2iwvkxFY4f0aLqyHsJIng_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[135].name = "Field2";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[132].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[132].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[132].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_134_3[0];
-NTI__pf8EktL9bgDdy8y4sHgDywQ_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[132];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_161_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[157];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[157].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[157].offset = offsetof(tyTuple__pf8EktL9bgDdy8y4sHgDywQ, Field0);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[157].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[157].name = "Field0";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_161_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[158];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[158].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[158].offset = offsetof(tyTuple__pf8EktL9bgDdy8y4sHgDywQ, Field1);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[158].typ = (&NTI__77mFvmsOLKik79ci2hXkHEg_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[158].name = "Field1";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_161_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[159];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[159].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[159].offset = offsetof(tyTuple__pf8EktL9bgDdy8y4sHgDywQ, Field2);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[159].typ = (&NTI__R2iwvkxFY4f0aLqyHsJIng_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[159].name = "Field2";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[156].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[156].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[156].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_161_3[0];
+NTI__pf8EktL9bgDdy8y4sHgDywQ_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[156];
 NTI__9c0dnHKqrAJoOYibqj28Tqw_.size = sizeof(tySequence__9c0dnHKqrAJoOYibqj28Tqw*);
 NTI__9c0dnHKqrAJoOYibqj28Tqw_.kind = 24;
 NTI__9c0dnHKqrAJoOYibqj28Tqw_.base = (&NTI__pf8EktL9bgDdy8y4sHgDywQ_);
@@ -17332,47 +19287,47 @@ NTI__9c0dnHKqrAJoOYibqj28Tqw_.flags = 2;
 NTI__9c0dnHKqrAJoOYibqj28Tqw_.name = "KeyValuePairSeq[system.string, messages.ControlMessage]";
 NTI__9c0dnHKqrAJoOYibqj28Tqw_.nextType = nimTypeRoot; nimTypeRoot=&NTI__9c0dnHKqrAJoOYibqj28Tqw_;
 NTI__9c0dnHKqrAJoOYibqj28Tqw_.marker = Marker_tySequence__9c0dnHKqrAJoOYibqj28Tqw;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[131].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[131].offset = offsetof(tyObject_Table__A9aF9cstnMLLmIKPt77JKPXA, data);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[131].typ = (&NTI__9c0dnHKqrAJoOYibqj28Tqw_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[131].name = "data";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_133_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[136];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[136].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[136].offset = offsetof(tyObject_Table__A9aF9cstnMLLmIKPt77JKPXA, counter);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[136].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[136].name = "counter";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[130].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[130].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[130].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_133_2[0];
-NTI__A9aF9cstnMLLmIKPt77JKPXA_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[130];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[155].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[155].offset = offsetof(tyObject_Table__A9aF9cstnMLLmIKPt77JKPXA, data);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[155].typ = (&NTI__9c0dnHKqrAJoOYibqj28Tqw_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[155].name = "data";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_160_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[160];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[160].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[160].offset = offsetof(tyObject_Table__A9aF9cstnMLLmIKPt77JKPXA, counter);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[160].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[160].name = "counter";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[154].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[154].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[154].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_160_2[0];
+NTI__A9aF9cstnMLLmIKPt77JKPXA_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[154];
 NTI__uch9bhpeVGvQNw5ZevH84ig_.size = sizeof(tyObject_Table__uch9bhpeVGvQNw5ZevH84ig);
 NTI__uch9bhpeVGvQNw5ZevH84ig_.kind = 18;
 NTI__uch9bhpeVGvQNw5ZevH84ig_.base = 0;
 NTI__uch9bhpeVGvQNw5ZevH84ig_.flags = 2;
 NTI__uch9bhpeVGvQNw5ZevH84ig_.name = "Table[MessageID, messages.Message]";
 NTI__uch9bhpeVGvQNw5ZevH84ig_.nextType = nimTypeRoot; nimTypeRoot=&NTI__uch9bhpeVGvQNw5ZevH84ig_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_135_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[138];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_162_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[162];
 NTI__XoHou9cDncYHiFSYulm9bCbQ_.size = sizeof(tyTuple__XoHou9cDncYHiFSYulm9bCbQ);
 NTI__XoHou9cDncYHiFSYulm9bCbQ_.kind = 18;
 NTI__XoHou9cDncYHiFSYulm9bCbQ_.base = 0;
 NTI__XoHou9cDncYHiFSYulm9bCbQ_.flags = 2;
 NTI__XoHou9cDncYHiFSYulm9bCbQ_.name = "KeyValuePair[MessageID, messages.Message]";
 NTI__XoHou9cDncYHiFSYulm9bCbQ_.nextType = nimTypeRoot; nimTypeRoot=&NTI__XoHou9cDncYHiFSYulm9bCbQ_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_136_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[140];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[140].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[140].offset = offsetof(tyTuple__XoHou9cDncYHiFSYulm9bCbQ, Field0);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[140].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[140].name = "Field0";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_136_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[141];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[141].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[141].offset = offsetof(tyTuple__XoHou9cDncYHiFSYulm9bCbQ, Field1);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[141].typ = (&NTI__6H5Oh5UUvVCLiakt9aTwtUQ_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[141].name = "Field1";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_136_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[142];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[142].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[142].offset = offsetof(tyTuple__XoHou9cDncYHiFSYulm9bCbQ, Field2);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[142].typ = (&NTI__9bIfp9aTAZKB9cehqCItD41cg_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[142].name = "Field2";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[139].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[139].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[139].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_136_3[0];
-NTI__XoHou9cDncYHiFSYulm9bCbQ_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[139];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_163_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[164];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[164].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[164].offset = offsetof(tyTuple__XoHou9cDncYHiFSYulm9bCbQ, Field0);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[164].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[164].name = "Field0";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_163_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[165];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[165].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[165].offset = offsetof(tyTuple__XoHou9cDncYHiFSYulm9bCbQ, Field1);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[165].typ = (&NTI__6H5Oh5UUvVCLiakt9aTwtUQ_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[165].name = "Field1";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_163_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[166];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[166].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[166].offset = offsetof(tyTuple__XoHou9cDncYHiFSYulm9bCbQ, Field2);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[166].typ = (&NTI__9bIfp9aTAZKB9cehqCItD41cg_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[166].name = "Field2";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[163].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[163].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[163].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_163_3[0];
+NTI__XoHou9cDncYHiFSYulm9bCbQ_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[163];
 NTI__Fdd1zCc4iVW86c0yW4quCQ_.size = sizeof(tySequence__Fdd1zCc4iVW86c0yW4quCQ*);
 NTI__Fdd1zCc4iVW86c0yW4quCQ_.kind = 24;
 NTI__Fdd1zCc4iVW86c0yW4quCQ_.base = (&NTI__XoHou9cDncYHiFSYulm9bCbQ_);
@@ -17380,71 +19335,71 @@ NTI__Fdd1zCc4iVW86c0yW4quCQ_.flags = 2;
 NTI__Fdd1zCc4iVW86c0yW4quCQ_.name = "KeyValuePairSeq[MessageID, messages.Message]";
 NTI__Fdd1zCc4iVW86c0yW4quCQ_.nextType = nimTypeRoot; nimTypeRoot=&NTI__Fdd1zCc4iVW86c0yW4quCQ_;
 NTI__Fdd1zCc4iVW86c0yW4quCQ_.marker = Marker_tySequence__Fdd1zCc4iVW86c0yW4quCQ;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[138].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[138].offset = offsetof(tyObject_Table__uch9bhpeVGvQNw5ZevH84ig, data);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[138].typ = (&NTI__Fdd1zCc4iVW86c0yW4quCQ_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[138].name = "data";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_135_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[143];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[143].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[143].offset = offsetof(tyObject_Table__uch9bhpeVGvQNw5ZevH84ig, counter);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[143].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[143].name = "counter";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[137].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[137].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[137].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_135_2[0];
-NTI__uch9bhpeVGvQNw5ZevH84ig_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[137];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[162].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[162].offset = offsetof(tyObject_Table__uch9bhpeVGvQNw5ZevH84ig, data);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[162].typ = (&NTI__Fdd1zCc4iVW86c0yW4quCQ_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[162].name = "data";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_162_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[167];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[167].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[167].offset = offsetof(tyObject_Table__uch9bhpeVGvQNw5ZevH84ig, counter);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[167].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[167].name = "counter";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[161].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[161].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[161].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_162_2[0];
+NTI__uch9bhpeVGvQNw5ZevH84ig_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[161];
 NTI__7jF9cWTJuKouswppQdViGuQ_.size = sizeof(tyObject_Table__7jF9cWTJuKouswppQdViGuQ);
 NTI__7jF9cWTJuKouswppQdViGuQ_.kind = 18;
 NTI__7jF9cWTJuKouswppQdViGuQ_.base = 0;
 NTI__7jF9cWTJuKouswppQdViGuQ_.flags = 2;
 NTI__7jF9cWTJuKouswppQdViGuQ_.name = "Table[peerid.PeerID, gossipsub.PeerStats]";
 NTI__7jF9cWTJuKouswppQdViGuQ_.nextType = nimTypeRoot; nimTypeRoot=&NTI__7jF9cWTJuKouswppQdViGuQ_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_137_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[145];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_164_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[169];
 NTI__dNR3eA37fNjmk6qLgrtFiA_.size = sizeof(tyTuple__dNR3eA37fNjmk6qLgrtFiA);
 NTI__dNR3eA37fNjmk6qLgrtFiA_.kind = 18;
 NTI__dNR3eA37fNjmk6qLgrtFiA_.base = 0;
 NTI__dNR3eA37fNjmk6qLgrtFiA_.flags = 2;
 NTI__dNR3eA37fNjmk6qLgrtFiA_.name = "KeyValuePair[peerid.PeerID, gossipsub.PeerStats]";
 NTI__dNR3eA37fNjmk6qLgrtFiA_.nextType = nimTypeRoot; nimTypeRoot=&NTI__dNR3eA37fNjmk6qLgrtFiA_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_138_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[147];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[147].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[147].offset = offsetof(tyTuple__dNR3eA37fNjmk6qLgrtFiA, Field0);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[147].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[147].name = "Field0";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_138_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[148];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[148].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[148].offset = offsetof(tyTuple__dNR3eA37fNjmk6qLgrtFiA, Field1);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[148].typ = (&NTI__Se8YyoPxzDpFnTeAyeCVCw_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[148].name = "Field1";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_138_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[149];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_165_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[171];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[171].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[171].offset = offsetof(tyTuple__dNR3eA37fNjmk6qLgrtFiA, Field0);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[171].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[171].name = "Field0";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_165_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[172];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[172].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[172].offset = offsetof(tyTuple__dNR3eA37fNjmk6qLgrtFiA, Field1);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[172].typ = (&NTI__Se8YyoPxzDpFnTeAyeCVCw_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[172].name = "Field1";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_165_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[173];
 NTI__ReFeylL0eiJIdl1nbdaLZQ_.size = sizeof(tyObject_Table__ReFeylL0eiJIdl1nbdaLZQ);
 NTI__ReFeylL0eiJIdl1nbdaLZQ_.kind = 18;
 NTI__ReFeylL0eiJIdl1nbdaLZQ_.base = 0;
 NTI__ReFeylL0eiJIdl1nbdaLZQ_.flags = 2;
 NTI__ReFeylL0eiJIdl1nbdaLZQ_.name = "Table[system.string, gossipsub.TopicInfo]";
 NTI__ReFeylL0eiJIdl1nbdaLZQ_.nextType = nimTypeRoot; nimTypeRoot=&NTI__ReFeylL0eiJIdl1nbdaLZQ_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_139_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[151];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_166_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[175];
 NTI__4BZjwrCbd7vt326dbqRhjA_.size = sizeof(tyTuple__4BZjwrCbd7vt326dbqRhjA);
 NTI__4BZjwrCbd7vt326dbqRhjA_.kind = 18;
 NTI__4BZjwrCbd7vt326dbqRhjA_.base = 0;
 NTI__4BZjwrCbd7vt326dbqRhjA_.flags = 2;
 NTI__4BZjwrCbd7vt326dbqRhjA_.name = "KeyValuePair[system.string, gossipsub.TopicInfo]";
 NTI__4BZjwrCbd7vt326dbqRhjA_.nextType = nimTypeRoot; nimTypeRoot=&NTI__4BZjwrCbd7vt326dbqRhjA_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_140_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[153];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[153].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[153].offset = offsetof(tyTuple__4BZjwrCbd7vt326dbqRhjA, Field0);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[153].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[153].name = "Field0";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_140_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[154];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[154].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[154].offset = offsetof(tyTuple__4BZjwrCbd7vt326dbqRhjA, Field1);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[154].typ = (&NTI__77mFvmsOLKik79ci2hXkHEg_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[154].name = "Field1";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_140_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[155];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[155].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[155].offset = offsetof(tyTuple__4BZjwrCbd7vt326dbqRhjA, Field2);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[155].typ = (&NTI__NDsrn7kILwUb4UgmJKODgg_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[155].name = "Field2";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[152].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[152].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[152].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_140_3[0];
-NTI__4BZjwrCbd7vt326dbqRhjA_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[152];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_167_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[177];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[177].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[177].offset = offsetof(tyTuple__4BZjwrCbd7vt326dbqRhjA, Field0);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[177].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[177].name = "Field0";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_167_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[178];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[178].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[178].offset = offsetof(tyTuple__4BZjwrCbd7vt326dbqRhjA, Field1);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[178].typ = (&NTI__77mFvmsOLKik79ci2hXkHEg_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[178].name = "Field1";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_167_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[179];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[179].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[179].offset = offsetof(tyTuple__4BZjwrCbd7vt326dbqRhjA, Field2);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[179].typ = (&NTI__NDsrn7kILwUb4UgmJKODgg_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[179].name = "Field2";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[176].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[176].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[176].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_167_3[0];
+NTI__4BZjwrCbd7vt326dbqRhjA_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[176];
 NTI__ePVkqZZoBAVzojrVYd6imA_.size = sizeof(tySequence__ePVkqZZoBAVzojrVYd6imA*);
 NTI__ePVkqZZoBAVzojrVYd6imA_.kind = 24;
 NTI__ePVkqZZoBAVzojrVYd6imA_.base = (&NTI__4BZjwrCbd7vt326dbqRhjA_);
@@ -17452,23 +19407,23 @@ NTI__ePVkqZZoBAVzojrVYd6imA_.flags = 2;
 NTI__ePVkqZZoBAVzojrVYd6imA_.name = "KeyValuePairSeq[system.string, gossipsub.TopicInfo]";
 NTI__ePVkqZZoBAVzojrVYd6imA_.nextType = nimTypeRoot; nimTypeRoot=&NTI__ePVkqZZoBAVzojrVYd6imA_;
 NTI__ePVkqZZoBAVzojrVYd6imA_.marker = Marker_tySequence__ePVkqZZoBAVzojrVYd6imA;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[151].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[151].offset = offsetof(tyObject_Table__ReFeylL0eiJIdl1nbdaLZQ, data);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[151].typ = (&NTI__ePVkqZZoBAVzojrVYd6imA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[151].name = "data";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_139_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[156];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[156].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[156].offset = offsetof(tyObject_Table__ReFeylL0eiJIdl1nbdaLZQ, counter);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[156].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[156].name = "counter";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[150].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[150].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[150].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_139_2[0];
-NTI__ReFeylL0eiJIdl1nbdaLZQ_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[150];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[149].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[149].offset = offsetof(tyTuple__dNR3eA37fNjmk6qLgrtFiA, Field2);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[149].typ = (&NTI__yaPo43V0YO5LtJo439a78nQ_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[149].name = "Field2";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[146].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[146].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[146].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_138_3[0];
-NTI__dNR3eA37fNjmk6qLgrtFiA_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[146];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[175].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[175].offset = offsetof(tyObject_Table__ReFeylL0eiJIdl1nbdaLZQ, data);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[175].typ = (&NTI__ePVkqZZoBAVzojrVYd6imA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[175].name = "data";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_166_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[180];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[180].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[180].offset = offsetof(tyObject_Table__ReFeylL0eiJIdl1nbdaLZQ, counter);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[180].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[180].name = "counter";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[174].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[174].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[174].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_166_2[0];
+NTI__ReFeylL0eiJIdl1nbdaLZQ_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[174];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[173].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[173].offset = offsetof(tyTuple__dNR3eA37fNjmk6qLgrtFiA, Field2);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[173].typ = (&NTI__yaPo43V0YO5LtJo439a78nQ_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[173].name = "Field2";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[170].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[170].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[170].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_165_3[0];
+NTI__dNR3eA37fNjmk6qLgrtFiA_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[170];
 NTI__QGnz2z1Po9aOUxkS1gh8g9cQ_.size = sizeof(tySequence__QGnz2z1Po9aOUxkS1gh8g9cQ*);
 NTI__QGnz2z1Po9aOUxkS1gh8g9cQ_.kind = 24;
 NTI__QGnz2z1Po9aOUxkS1gh8g9cQ_.base = (&NTI__dNR3eA37fNjmk6qLgrtFiA_);
@@ -17476,47 +19431,47 @@ NTI__QGnz2z1Po9aOUxkS1gh8g9cQ_.flags = 2;
 NTI__QGnz2z1Po9aOUxkS1gh8g9cQ_.name = "KeyValuePairSeq[peerid.PeerID, gossipsub.PeerStats]";
 NTI__QGnz2z1Po9aOUxkS1gh8g9cQ_.nextType = nimTypeRoot; nimTypeRoot=&NTI__QGnz2z1Po9aOUxkS1gh8g9cQ_;
 NTI__QGnz2z1Po9aOUxkS1gh8g9cQ_.marker = Marker_tySequence__QGnz2z1Po9aOUxkS1gh8g9cQ;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[145].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[145].offset = offsetof(tyObject_Table__7jF9cWTJuKouswppQdViGuQ, data);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[145].typ = (&NTI__QGnz2z1Po9aOUxkS1gh8g9cQ_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[145].name = "data";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_137_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[157];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[157].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[157].offset = offsetof(tyObject_Table__7jF9cWTJuKouswppQdViGuQ, counter);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[157].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[157].name = "counter";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[144].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[144].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[144].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_137_2[0];
-NTI__7jF9cWTJuKouswppQdViGuQ_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[144];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[169].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[169].offset = offsetof(tyObject_Table__7jF9cWTJuKouswppQdViGuQ, data);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[169].typ = (&NTI__QGnz2z1Po9aOUxkS1gh8g9cQ_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[169].name = "data";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_164_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[181];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[181].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[181].offset = offsetof(tyObject_Table__7jF9cWTJuKouswppQdViGuQ, counter);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[181].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[181].name = "counter";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[168].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[168].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[168].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_164_2[0];
+NTI__7jF9cWTJuKouswppQdViGuQ_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[168];
 NTI__09cVyV7B9bBs9cDUs3KsRxDvw_.size = sizeof(tyObject_Table__09cVyV7B9bBs9cDUs3KsRxDvw);
 NTI__09cVyV7B9bBs9cDUs3KsRxDvw_.kind = 18;
 NTI__09cVyV7B9bBs9cDUs3KsRxDvw_.base = 0;
 NTI__09cVyV7B9bBs9cDUs3KsRxDvw_.flags = 2;
 NTI__09cVyV7B9bBs9cDUs3KsRxDvw_.name = "Table[system.string, gossipsub.TopicParams]";
 NTI__09cVyV7B9bBs9cDUs3KsRxDvw_.nextType = nimTypeRoot; nimTypeRoot=&NTI__09cVyV7B9bBs9cDUs3KsRxDvw_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_141_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[159];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_168_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[183];
 NTI__Yuoja6yUlXaBRmF9bT9auYbg_.size = sizeof(tyTuple__Yuoja6yUlXaBRmF9bT9auYbg);
 NTI__Yuoja6yUlXaBRmF9bT9auYbg_.kind = 18;
 NTI__Yuoja6yUlXaBRmF9bT9auYbg_.base = 0;
 NTI__Yuoja6yUlXaBRmF9bT9auYbg_.flags = 2;
 NTI__Yuoja6yUlXaBRmF9bT9auYbg_.name = "KeyValuePair[system.string, gossipsub.TopicParams]";
 NTI__Yuoja6yUlXaBRmF9bT9auYbg_.nextType = nimTypeRoot; nimTypeRoot=&NTI__Yuoja6yUlXaBRmF9bT9auYbg_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_142_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[161];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[161].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[161].offset = offsetof(tyTuple__Yuoja6yUlXaBRmF9bT9auYbg, Field0);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[161].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[161].name = "Field0";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_142_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[162];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[162].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[162].offset = offsetof(tyTuple__Yuoja6yUlXaBRmF9bT9auYbg, Field1);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[162].typ = (&NTI__77mFvmsOLKik79ci2hXkHEg_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[162].name = "Field1";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_142_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[163];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[163].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[163].offset = offsetof(tyTuple__Yuoja6yUlXaBRmF9bT9auYbg, Field2);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[163].typ = (&NTI__jdn46FRYYVNk4P5zTR8myQ_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[163].name = "Field2";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[160].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[160].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[160].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_142_3[0];
-NTI__Yuoja6yUlXaBRmF9bT9auYbg_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[160];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_169_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[185];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[185].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[185].offset = offsetof(tyTuple__Yuoja6yUlXaBRmF9bT9auYbg, Field0);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[185].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[185].name = "Field0";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_169_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[186];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[186].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[186].offset = offsetof(tyTuple__Yuoja6yUlXaBRmF9bT9auYbg, Field1);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[186].typ = (&NTI__77mFvmsOLKik79ci2hXkHEg_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[186].name = "Field1";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_169_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[187];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[187].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[187].offset = offsetof(tyTuple__Yuoja6yUlXaBRmF9bT9auYbg, Field2);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[187].typ = (&NTI__jdn46FRYYVNk4P5zTR8myQ_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[187].name = "Field2";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[184].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[184].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[184].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_169_3[0];
+NTI__Yuoja6yUlXaBRmF9bT9auYbg_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[184];
 NTI__9bIYZNL3t229a9bbJxXEVTAsg_.size = sizeof(tySequence__9bIYZNL3t229a9bbJxXEVTAsg*);
 NTI__9bIYZNL3t229a9bbJxXEVTAsg_.kind = 24;
 NTI__9bIYZNL3t229a9bbJxXEVTAsg_.base = (&NTI__Yuoja6yUlXaBRmF9bT9auYbg_);
@@ -17524,47 +19479,47 @@ NTI__9bIYZNL3t229a9bbJxXEVTAsg_.flags = 2;
 NTI__9bIYZNL3t229a9bbJxXEVTAsg_.name = "KeyValuePairSeq[system.string, gossipsub.TopicParams]";
 NTI__9bIYZNL3t229a9bbJxXEVTAsg_.nextType = nimTypeRoot; nimTypeRoot=&NTI__9bIYZNL3t229a9bbJxXEVTAsg_;
 NTI__9bIYZNL3t229a9bbJxXEVTAsg_.marker = Marker_tySequence__9bIYZNL3t229a9bbJxXEVTAsg;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[159].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[159].offset = offsetof(tyObject_Table__09cVyV7B9bBs9cDUs3KsRxDvw, data);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[159].typ = (&NTI__9bIYZNL3t229a9bbJxXEVTAsg_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[159].name = "data";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_141_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[164];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[164].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[164].offset = offsetof(tyObject_Table__09cVyV7B9bBs9cDUs3KsRxDvw, counter);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[164].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[164].name = "counter";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[158].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[158].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[158].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_141_2[0];
-NTI__09cVyV7B9bBs9cDUs3KsRxDvw_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[158];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[183].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[183].offset = offsetof(tyObject_Table__09cVyV7B9bBs9cDUs3KsRxDvw, data);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[183].typ = (&NTI__9bIYZNL3t229a9bbJxXEVTAsg_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[183].name = "data";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_168_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[188];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[188].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[188].offset = offsetof(tyObject_Table__09cVyV7B9bBs9cDUs3KsRxDvw, counter);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[188].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[188].name = "counter";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[182].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[182].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[182].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_168_2[0];
+NTI__09cVyV7B9bBs9cDUs3KsRxDvw_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[182];
 NTI__S9b1UeZr3QU8sqYKviX9ajmw_.size = sizeof(tyObject_Table__S9b1UeZr3QU8sqYKviX9ajmw);
 NTI__S9b1UeZr3QU8sqYKviX9ajmw_.kind = 18;
 NTI__S9b1UeZr3QU8sqYKviX9ajmw_.base = 0;
 NTI__S9b1UeZr3QU8sqYKviX9ajmw_.name = "Table[multiaddress.MultiAddress, HashSet[pubsubpeer.PubSubPeer]"
 "]";
 NTI__S9b1UeZr3QU8sqYKviX9ajmw_.nextType = nimTypeRoot; nimTypeRoot=&NTI__S9b1UeZr3QU8sqYKviX9ajmw_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_143_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[166];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_170_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[190];
 NTI__uga0iURbtDFb1ToQ8Jog2g_.size = sizeof(tyTuple__uga0iURbtDFb1ToQ8Jog2g);
 NTI__uga0iURbtDFb1ToQ8Jog2g_.kind = 18;
 NTI__uga0iURbtDFb1ToQ8Jog2g_.base = 0;
 NTI__uga0iURbtDFb1ToQ8Jog2g_.name = "KeyValuePair[multiaddress.MultiAddress, HashSet[pubsubpeer.PubS"
 "ubPeer]]";
 NTI__uga0iURbtDFb1ToQ8Jog2g_.nextType = nimTypeRoot; nimTypeRoot=&NTI__uga0iURbtDFb1ToQ8Jog2g_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_144_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[168];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[168].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[168].offset = offsetof(tyTuple__uga0iURbtDFb1ToQ8Jog2g, Field0);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[168].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[168].name = "Field0";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_144_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[169];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[169].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[169].offset = offsetof(tyTuple__uga0iURbtDFb1ToQ8Jog2g, Field1);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[169].typ = (&NTI__MntiKgxV52rXueBQXpXCJw_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[169].name = "Field1";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_144_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[170];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[170].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[170].offset = offsetof(tyTuple__uga0iURbtDFb1ToQ8Jog2g, Field2);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[170].typ = (&NTI__SjkKNmUxUCmHfJyMk9aPJ9cw_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[170].name = "Field2";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[167].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[167].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[167].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_144_3[0];
-NTI__uga0iURbtDFb1ToQ8Jog2g_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[167];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_171_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[192];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[192].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[192].offset = offsetof(tyTuple__uga0iURbtDFb1ToQ8Jog2g, Field0);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[192].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[192].name = "Field0";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_171_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[193];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[193].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[193].offset = offsetof(tyTuple__uga0iURbtDFb1ToQ8Jog2g, Field1);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[193].typ = (&NTI__MntiKgxV52rXueBQXpXCJw_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[193].name = "Field1";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_171_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[194];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[194].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[194].offset = offsetof(tyTuple__uga0iURbtDFb1ToQ8Jog2g, Field2);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[194].typ = (&NTI__SjkKNmUxUCmHfJyMk9aPJ9cw_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[194].name = "Field2";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[191].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[191].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[191].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_171_3[0];
+NTI__uga0iURbtDFb1ToQ8Jog2g_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[191];
 NTI__uWop5OFSkZe0GjlY2KeNCQ_.size = sizeof(tySequence__uWop5OFSkZe0GjlY2KeNCQ*);
 NTI__uWop5OFSkZe0GjlY2KeNCQ_.kind = 24;
 NTI__uWop5OFSkZe0GjlY2KeNCQ_.base = (&NTI__uga0iURbtDFb1ToQ8Jog2g_);
@@ -17572,110 +19527,110 @@ NTI__uWop5OFSkZe0GjlY2KeNCQ_.name = "KeyValuePairSeq[multiaddress.MultiAddress, 
 "ubSubPeer]]";
 NTI__uWop5OFSkZe0GjlY2KeNCQ_.nextType = nimTypeRoot; nimTypeRoot=&NTI__uWop5OFSkZe0GjlY2KeNCQ_;
 NTI__uWop5OFSkZe0GjlY2KeNCQ_.marker = Marker_tySequence__uWop5OFSkZe0GjlY2KeNCQ;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[166].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[166].offset = offsetof(tyObject_Table__S9b1UeZr3QU8sqYKviX9ajmw, data);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[166].typ = (&NTI__uWop5OFSkZe0GjlY2KeNCQ_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[166].name = "data";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_143_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[171];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[171].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[171].offset = offsetof(tyObject_Table__S9b1UeZr3QU8sqYKviX9ajmw, counter);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[171].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[171].name = "counter";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[165].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[165].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[165].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_143_2[0];
-NTI__S9b1UeZr3QU8sqYKviX9ajmw_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[165];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[190].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[190].offset = offsetof(tyObject_Table__S9b1UeZr3QU8sqYKviX9ajmw, data);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[190].typ = (&NTI__uWop5OFSkZe0GjlY2KeNCQ_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[190].name = "data";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_170_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[195];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[195].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[195].offset = offsetof(tyObject_Table__S9b1UeZr3QU8sqYKviX9ajmw, counter);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[195].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[195].name = "counter";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[189].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[189].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[189].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_170_2[0];
+NTI__S9b1UeZr3QU8sqYKviX9ajmw_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[189];
 NTI__wGJnGo9cmuqur9bBUyMJL4NQ_.size = sizeof(tyTuple__wGJnGo9cmuqur9bBUyMJL4NQ);
 NTI__wGJnGo9cmuqur9bBUyMJL4NQ_.kind = 18;
 NTI__wGJnGo9cmuqur9bBUyMJL4NQ_.base = 0;
 NTI__wGJnGo9cmuqur9bBUyMJL4NQ_.flags = 2;
 NTI__wGJnGo9cmuqur9bBUyMJL4NQ_.name = "tuple of (PeerID, Moment)";
 NTI__wGJnGo9cmuqur9bBUyMJL4NQ_.nextType = nimTypeRoot; nimTypeRoot=&NTI__wGJnGo9cmuqur9bBUyMJL4NQ_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_203_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[173];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[173].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[173].offset = offsetof(tyTuple__wGJnGo9cmuqur9bBUyMJL4NQ, Field0);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[173].typ = (&NTI__Se8YyoPxzDpFnTeAyeCVCw_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[173].name = "Field0";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_203_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[174];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[174].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[174].offset = offsetof(tyTuple__wGJnGo9cmuqur9bBUyMJL4NQ, Field1);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[174].typ = (&NTI__p19adwOigsIe5d3NlfPJOEw_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[174].name = "Field1";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[172].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[172].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[172].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_203_2[0];
-NTI__wGJnGo9cmuqur9bBUyMJL4NQ_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[172];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_230_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[197];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[197].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[197].offset = offsetof(tyTuple__wGJnGo9cmuqur9bBUyMJL4NQ, Field0);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[197].typ = (&NTI__Se8YyoPxzDpFnTeAyeCVCw_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[197].name = "Field0";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_230_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[198];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[198].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[198].offset = offsetof(tyTuple__wGJnGo9cmuqur9bBUyMJL4NQ, Field1);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[198].typ = (&NTI__p19adwOigsIe5d3NlfPJOEw_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[198].name = "Field1";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[196].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[196].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[196].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_230_2[0];
+NTI__wGJnGo9cmuqur9bBUyMJL4NQ_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[196];
 NTI__u5L4byG0svNLA0OYq4TmxA_.size = sizeof(tyObject_Table__u5L4byG0svNLA0OYq4TmxA);
 NTI__u5L4byG0svNLA0OYq4TmxA_.kind = 18;
 NTI__u5L4byG0svNLA0OYq4TmxA_.base = 0;
 NTI__u5L4byG0svNLA0OYq4TmxA_.name = "Table[pubsubpeer.PubSubPeer, messages.ControlMessage]";
 NTI__u5L4byG0svNLA0OYq4TmxA_.nextType = nimTypeRoot; nimTypeRoot=&NTI__u5L4byG0svNLA0OYq4TmxA_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_204_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[176];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_231_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[200];
 NTI__I8ZdXOd2bMB9bovPbBONdig_.size = sizeof(tyTuple__I8ZdXOd2bMB9bovPbBONdig);
 NTI__I8ZdXOd2bMB9bovPbBONdig_.kind = 18;
 NTI__I8ZdXOd2bMB9bovPbBONdig_.base = 0;
 NTI__I8ZdXOd2bMB9bovPbBONdig_.name = "KeyValuePair[pubsubpeer.PubSubPeer, messages.ControlMessage]";
 NTI__I8ZdXOd2bMB9bovPbBONdig_.nextType = nimTypeRoot; nimTypeRoot=&NTI__I8ZdXOd2bMB9bovPbBONdig_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_205_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[178];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[178].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[178].offset = offsetof(tyTuple__I8ZdXOd2bMB9bovPbBONdig, Field0);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[178].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[178].name = "Field0";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_205_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[179];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[179].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[179].offset = offsetof(tyTuple__I8ZdXOd2bMB9bovPbBONdig, Field1);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[179].typ = (&NTI__ams67lohM6AwmrGQ2Ilzsg_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[179].name = "Field1";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_205_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[180];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[180].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[180].offset = offsetof(tyTuple__I8ZdXOd2bMB9bovPbBONdig, Field2);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[180].typ = (&NTI__R2iwvkxFY4f0aLqyHsJIng_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[180].name = "Field2";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[177].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[177].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[177].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_205_3[0];
-NTI__I8ZdXOd2bMB9bovPbBONdig_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[177];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_232_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[202];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[202].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[202].offset = offsetof(tyTuple__I8ZdXOd2bMB9bovPbBONdig, Field0);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[202].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[202].name = "Field0";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_232_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[203];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[203].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[203].offset = offsetof(tyTuple__I8ZdXOd2bMB9bovPbBONdig, Field1);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[203].typ = (&NTI__ams67lohM6AwmrGQ2Ilzsg_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[203].name = "Field1";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_232_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[204];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[204].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[204].offset = offsetof(tyTuple__I8ZdXOd2bMB9bovPbBONdig, Field2);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[204].typ = (&NTI__R2iwvkxFY4f0aLqyHsJIng_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[204].name = "Field2";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[201].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[201].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[201].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_232_3[0];
+NTI__I8ZdXOd2bMB9bovPbBONdig_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[201];
 NTI__9aslpbPC7Zz3Ti6qyChmX5w_.size = sizeof(tySequence__9aslpbPC7Zz3Ti6qyChmX5w*);
 NTI__9aslpbPC7Zz3Ti6qyChmX5w_.kind = 24;
 NTI__9aslpbPC7Zz3Ti6qyChmX5w_.base = (&NTI__I8ZdXOd2bMB9bovPbBONdig_);
 NTI__9aslpbPC7Zz3Ti6qyChmX5w_.name = "KeyValuePairSeq[pubsubpeer.PubSubPeer, messages.ControlMessage]";
 NTI__9aslpbPC7Zz3Ti6qyChmX5w_.nextType = nimTypeRoot; nimTypeRoot=&NTI__9aslpbPC7Zz3Ti6qyChmX5w_;
 NTI__9aslpbPC7Zz3Ti6qyChmX5w_.marker = Marker_tySequence__9aslpbPC7Zz3Ti6qyChmX5w;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[176].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[176].offset = offsetof(tyObject_Table__u5L4byG0svNLA0OYq4TmxA, data);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[176].typ = (&NTI__9aslpbPC7Zz3Ti6qyChmX5w_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[176].name = "data";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_204_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[181];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[181].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[181].offset = offsetof(tyObject_Table__u5L4byG0svNLA0OYq4TmxA, counter);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[181].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[181].name = "counter";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[175].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[175].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[175].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_204_2[0];
-NTI__u5L4byG0svNLA0OYq4TmxA_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[175];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[200].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[200].offset = offsetof(tyObject_Table__u5L4byG0svNLA0OYq4TmxA, data);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[200].typ = (&NTI__9aslpbPC7Zz3Ti6qyChmX5w_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[200].name = "data";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_231_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[205];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[205].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[205].offset = offsetof(tyObject_Table__u5L4byG0svNLA0OYq4TmxA, counter);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[205].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[205].name = "counter";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[199].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[199].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[199].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_231_2[0];
+NTI__u5L4byG0svNLA0OYq4TmxA_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[199];
 NTI__pGGeaOra9csl069baTSs3CJg_.size = sizeof(tyObject_Table__pGGeaOra9csl069baTSs3CJg);
 NTI__pGGeaOra9csl069baTSs3CJg_.kind = 18;
 NTI__pGGeaOra9csl069baTSs3CJg_.base = 0;
 NTI__pGGeaOra9csl069baTSs3CJg_.flags = 2;
 NTI__pGGeaOra9csl069baTSs3CJg_.name = "Table[peerid.PeerID, HashSet[multiaddress.MultiAddress]]";
 NTI__pGGeaOra9csl069baTSs3CJg_.nextType = nimTypeRoot; nimTypeRoot=&NTI__pGGeaOra9csl069baTSs3CJg_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_232_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[183];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_259_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[207];
 NTI__DoL6v1Q2bZcUIVTN9aDivzQ_.size = sizeof(tyTuple__DoL6v1Q2bZcUIVTN9aDivzQ);
 NTI__DoL6v1Q2bZcUIVTN9aDivzQ_.kind = 18;
 NTI__DoL6v1Q2bZcUIVTN9aDivzQ_.base = 0;
 NTI__DoL6v1Q2bZcUIVTN9aDivzQ_.flags = 2;
 NTI__DoL6v1Q2bZcUIVTN9aDivzQ_.name = "KeyValuePair[peerid.PeerID, HashSet[multiaddress.MultiAddress]]";
 NTI__DoL6v1Q2bZcUIVTN9aDivzQ_.nextType = nimTypeRoot; nimTypeRoot=&NTI__DoL6v1Q2bZcUIVTN9aDivzQ_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_233_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[185];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[185].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[185].offset = offsetof(tyTuple__DoL6v1Q2bZcUIVTN9aDivzQ, Field0);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[185].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[185].name = "Field0";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_233_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[186];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[186].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[186].offset = offsetof(tyTuple__DoL6v1Q2bZcUIVTN9aDivzQ, Field1);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[186].typ = (&NTI__Se8YyoPxzDpFnTeAyeCVCw_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[186].name = "Field1";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_233_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[187];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[187].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[187].offset = offsetof(tyTuple__DoL6v1Q2bZcUIVTN9aDivzQ, Field2);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[187].typ = (&NTI__o1ej6dBUQnezVPAEZ8Ad9bA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[187].name = "Field2";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[184].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[184].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[184].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_233_3[0];
-NTI__DoL6v1Q2bZcUIVTN9aDivzQ_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[184];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_260_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[209];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[209].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[209].offset = offsetof(tyTuple__DoL6v1Q2bZcUIVTN9aDivzQ, Field0);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[209].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[209].name = "Field0";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_260_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[210];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[210].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[210].offset = offsetof(tyTuple__DoL6v1Q2bZcUIVTN9aDivzQ, Field1);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[210].typ = (&NTI__Se8YyoPxzDpFnTeAyeCVCw_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[210].name = "Field1";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_260_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[211];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[211].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[211].offset = offsetof(tyTuple__DoL6v1Q2bZcUIVTN9aDivzQ, Field2);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[211].typ = (&NTI__o1ej6dBUQnezVPAEZ8Ad9bA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[211].name = "Field2";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[208].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[208].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[208].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_260_3[0];
+NTI__DoL6v1Q2bZcUIVTN9aDivzQ_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[208];
 NTI__0pNp33hfens5jJ9aLEr0T1A_.size = sizeof(tySequence__0pNp33hfens5jJ9aLEr0T1A*);
 NTI__0pNp33hfens5jJ9aLEr0T1A_.kind = 24;
 NTI__0pNp33hfens5jJ9aLEr0T1A_.base = (&NTI__DoL6v1Q2bZcUIVTN9aDivzQ_);
@@ -17684,47 +19639,47 @@ NTI__0pNp33hfens5jJ9aLEr0T1A_.name = "KeyValuePairSeq[peerid.PeerID, HashSet[mul
 "s]]";
 NTI__0pNp33hfens5jJ9aLEr0T1A_.nextType = nimTypeRoot; nimTypeRoot=&NTI__0pNp33hfens5jJ9aLEr0T1A_;
 NTI__0pNp33hfens5jJ9aLEr0T1A_.marker = Marker_tySequence__0pNp33hfens5jJ9aLEr0T1A;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[183].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[183].offset = offsetof(tyObject_Table__pGGeaOra9csl069baTSs3CJg, data);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[183].typ = (&NTI__0pNp33hfens5jJ9aLEr0T1A_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[183].name = "data";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_232_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[188];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[188].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[188].offset = offsetof(tyObject_Table__pGGeaOra9csl069baTSs3CJg, counter);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[188].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[188].name = "counter";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[182].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[182].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[182].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_232_2[0];
-NTI__pGGeaOra9csl069baTSs3CJg_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[182];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[207].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[207].offset = offsetof(tyObject_Table__pGGeaOra9csl069baTSs3CJg, data);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[207].typ = (&NTI__0pNp33hfens5jJ9aLEr0T1A_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[207].name = "data";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_259_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[212];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[212].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[212].offset = offsetof(tyObject_Table__pGGeaOra9csl069baTSs3CJg, counter);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[212].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[212].name = "counter";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[206].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[206].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[206].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_259_2[0];
+NTI__pGGeaOra9csl069baTSs3CJg_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[206];
 NTI__Y0c2zaBMalZGAwyJIQOIWQ_.size = sizeof(tyObject_Table__Y0c2zaBMalZGAwyJIQOIWQ);
 NTI__Y0c2zaBMalZGAwyJIQOIWQ_.kind = 18;
 NTI__Y0c2zaBMalZGAwyJIQOIWQ_.base = 0;
 NTI__Y0c2zaBMalZGAwyJIQOIWQ_.flags = 2;
 NTI__Y0c2zaBMalZGAwyJIQOIWQ_.name = "Table[peerid.PeerID, HashSet[system.string]]";
 NTI__Y0c2zaBMalZGAwyJIQOIWQ_.nextType = nimTypeRoot; nimTypeRoot=&NTI__Y0c2zaBMalZGAwyJIQOIWQ_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_234_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[190];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_261_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[214];
 NTI__yM4OgBQGbTtxtw9cQruEBmQ_.size = sizeof(tyTuple__yM4OgBQGbTtxtw9cQruEBmQ);
 NTI__yM4OgBQGbTtxtw9cQruEBmQ_.kind = 18;
 NTI__yM4OgBQGbTtxtw9cQruEBmQ_.base = 0;
 NTI__yM4OgBQGbTtxtw9cQruEBmQ_.flags = 2;
 NTI__yM4OgBQGbTtxtw9cQruEBmQ_.name = "KeyValuePair[peerid.PeerID, HashSet[system.string]]";
 NTI__yM4OgBQGbTtxtw9cQruEBmQ_.nextType = nimTypeRoot; nimTypeRoot=&NTI__yM4OgBQGbTtxtw9cQruEBmQ_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_235_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[192];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[192].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[192].offset = offsetof(tyTuple__yM4OgBQGbTtxtw9cQruEBmQ, Field0);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[192].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[192].name = "Field0";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_235_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[193];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[193].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[193].offset = offsetof(tyTuple__yM4OgBQGbTtxtw9cQruEBmQ, Field1);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[193].typ = (&NTI__Se8YyoPxzDpFnTeAyeCVCw_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[193].name = "Field1";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_235_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[194];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[194].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[194].offset = offsetof(tyTuple__yM4OgBQGbTtxtw9cQruEBmQ, Field2);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[194].typ = (&NTI__CD8Dpv0WGmASelVaNSo6zg_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[194].name = "Field2";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[191].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[191].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[191].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_235_3[0];
-NTI__yM4OgBQGbTtxtw9cQruEBmQ_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[191];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_262_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[216];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[216].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[216].offset = offsetof(tyTuple__yM4OgBQGbTtxtw9cQruEBmQ, Field0);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[216].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[216].name = "Field0";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_262_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[217];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[217].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[217].offset = offsetof(tyTuple__yM4OgBQGbTtxtw9cQruEBmQ, Field1);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[217].typ = (&NTI__Se8YyoPxzDpFnTeAyeCVCw_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[217].name = "Field1";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_262_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[218];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[218].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[218].offset = offsetof(tyTuple__yM4OgBQGbTtxtw9cQruEBmQ, Field2);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[218].typ = (&NTI__CD8Dpv0WGmASelVaNSo6zg_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[218].name = "Field2";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[215].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[215].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[215].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_262_3[0];
+NTI__yM4OgBQGbTtxtw9cQruEBmQ_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[215];
 NTI__ZS1ahAVt82upPJYTV8RknQ_.size = sizeof(tySequence__ZS1ahAVt82upPJYTV8RknQ*);
 NTI__ZS1ahAVt82upPJYTV8RknQ_.kind = 24;
 NTI__ZS1ahAVt82upPJYTV8RknQ_.base = (&NTI__yM4OgBQGbTtxtw9cQruEBmQ_);
@@ -17732,47 +19687,47 @@ NTI__ZS1ahAVt82upPJYTV8RknQ_.flags = 2;
 NTI__ZS1ahAVt82upPJYTV8RknQ_.name = "KeyValuePairSeq[peerid.PeerID, HashSet[system.string]]";
 NTI__ZS1ahAVt82upPJYTV8RknQ_.nextType = nimTypeRoot; nimTypeRoot=&NTI__ZS1ahAVt82upPJYTV8RknQ_;
 NTI__ZS1ahAVt82upPJYTV8RknQ_.marker = Marker_tySequence__ZS1ahAVt82upPJYTV8RknQ;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[190].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[190].offset = offsetof(tyObject_Table__Y0c2zaBMalZGAwyJIQOIWQ, data);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[190].typ = (&NTI__ZS1ahAVt82upPJYTV8RknQ_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[190].name = "data";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_234_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[195];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[195].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[195].offset = offsetof(tyObject_Table__Y0c2zaBMalZGAwyJIQOIWQ, counter);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[195].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[195].name = "counter";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[189].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[189].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[189].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_234_2[0];
-NTI__Y0c2zaBMalZGAwyJIQOIWQ_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[189];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[214].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[214].offset = offsetof(tyObject_Table__Y0c2zaBMalZGAwyJIQOIWQ, data);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[214].typ = (&NTI__ZS1ahAVt82upPJYTV8RknQ_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[214].name = "data";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_261_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[219];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[219].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[219].offset = offsetof(tyObject_Table__Y0c2zaBMalZGAwyJIQOIWQ, counter);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[219].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[219].name = "counter";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[213].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[213].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[213].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_261_2[0];
+NTI__Y0c2zaBMalZGAwyJIQOIWQ_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[213];
 NTI__52v4sP86ruZliir3KafpPQ_.size = sizeof(tyObject_Table__52v4sP86ruZliir3KafpPQ);
 NTI__52v4sP86ruZliir3KafpPQ_.kind = 18;
 NTI__52v4sP86ruZliir3KafpPQ_.base = 0;
 NTI__52v4sP86ruZliir3KafpPQ_.flags = 2;
 NTI__52v4sP86ruZliir3KafpPQ_.name = "Table[peerid.PeerID, crypto.PublicKey]";
 NTI__52v4sP86ruZliir3KafpPQ_.nextType = nimTypeRoot; nimTypeRoot=&NTI__52v4sP86ruZliir3KafpPQ_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_236_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[197];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_263_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[221];
 NTI__lZ89bmeObpNgv1XXCg37auA_.size = sizeof(tyTuple__lZ89bmeObpNgv1XXCg37auA);
 NTI__lZ89bmeObpNgv1XXCg37auA_.kind = 18;
 NTI__lZ89bmeObpNgv1XXCg37auA_.base = 0;
 NTI__lZ89bmeObpNgv1XXCg37auA_.flags = 2;
 NTI__lZ89bmeObpNgv1XXCg37auA_.name = "KeyValuePair[peerid.PeerID, crypto.PublicKey]";
 NTI__lZ89bmeObpNgv1XXCg37auA_.nextType = nimTypeRoot; nimTypeRoot=&NTI__lZ89bmeObpNgv1XXCg37auA_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_237_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[199];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[199].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[199].offset = offsetof(tyTuple__lZ89bmeObpNgv1XXCg37auA, Field0);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[199].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[199].name = "Field0";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_237_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[200];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[200].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[200].offset = offsetof(tyTuple__lZ89bmeObpNgv1XXCg37auA, Field1);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[200].typ = (&NTI__Se8YyoPxzDpFnTeAyeCVCw_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[200].name = "Field1";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_237_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[201];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[201].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[201].offset = offsetof(tyTuple__lZ89bmeObpNgv1XXCg37auA, Field2);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[201].typ = (&NTI__mVKS59bRpscItosS0oN9a4zA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[201].name = "Field2";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[198].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[198].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[198].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_237_3[0];
-NTI__lZ89bmeObpNgv1XXCg37auA_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[198];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_264_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[223];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[223].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[223].offset = offsetof(tyTuple__lZ89bmeObpNgv1XXCg37auA, Field0);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[223].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[223].name = "Field0";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_264_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[224];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[224].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[224].offset = offsetof(tyTuple__lZ89bmeObpNgv1XXCg37auA, Field1);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[224].typ = (&NTI__Se8YyoPxzDpFnTeAyeCVCw_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[224].name = "Field1";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_264_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[225];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[225].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[225].offset = offsetof(tyTuple__lZ89bmeObpNgv1XXCg37auA, Field2);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[225].typ = (&NTI__mVKS59bRpscItosS0oN9a4zA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[225].name = "Field2";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[222].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[222].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[222].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_264_3[0];
+NTI__lZ89bmeObpNgv1XXCg37auA_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[222];
 NTI__TwXs3G9bF9ad7BQkkskGRTCQ_.size = sizeof(tySequence__TwXs3G9bF9ad7BQkkskGRTCQ*);
 NTI__TwXs3G9bF9ad7BQkkskGRTCQ_.kind = 24;
 NTI__TwXs3G9bF9ad7BQkkskGRTCQ_.base = (&NTI__lZ89bmeObpNgv1XXCg37auA_);
@@ -17780,47 +19735,47 @@ NTI__TwXs3G9bF9ad7BQkkskGRTCQ_.flags = 2;
 NTI__TwXs3G9bF9ad7BQkkskGRTCQ_.name = "KeyValuePairSeq[peerid.PeerID, crypto.PublicKey]";
 NTI__TwXs3G9bF9ad7BQkkskGRTCQ_.nextType = nimTypeRoot; nimTypeRoot=&NTI__TwXs3G9bF9ad7BQkkskGRTCQ_;
 NTI__TwXs3G9bF9ad7BQkkskGRTCQ_.marker = Marker_tySequence__TwXs3G9bF9ad7BQkkskGRTCQ;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[197].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[197].offset = offsetof(tyObject_Table__52v4sP86ruZliir3KafpPQ, data);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[197].typ = (&NTI__TwXs3G9bF9ad7BQkkskGRTCQ_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[197].name = "data";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_236_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[202];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[202].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[202].offset = offsetof(tyObject_Table__52v4sP86ruZliir3KafpPQ, counter);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[202].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[202].name = "counter";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[196].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[196].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[196].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_236_2[0];
-NTI__52v4sP86ruZliir3KafpPQ_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[196];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[221].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[221].offset = offsetof(tyObject_Table__52v4sP86ruZliir3KafpPQ, data);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[221].typ = (&NTI__TwXs3G9bF9ad7BQkkskGRTCQ_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[221].name = "data";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_263_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[226];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[226].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[226].offset = offsetof(tyObject_Table__52v4sP86ruZliir3KafpPQ, counter);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[226].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[226].name = "counter";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[220].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[220].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[220].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_263_2[0];
+NTI__52v4sP86ruZliir3KafpPQ_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[220];
 NTI__HDUOEieUs1GSseLU5qS67Q_.size = sizeof(tyObject_Table__HDUOEieUs1GSseLU5qS67Q);
 NTI__HDUOEieUs1GSseLU5qS67Q_.kind = 18;
 NTI__HDUOEieUs1GSseLU5qS67Q_.base = 0;
 NTI__HDUOEieUs1GSseLU5qS67Q_.flags = 2;
 NTI__HDUOEieUs1GSseLU5qS67Q_.name = "Table[peerid.PeerID, peer_manager.Connectedness]";
 NTI__HDUOEieUs1GSseLU5qS67Q_.nextType = nimTypeRoot; nimTypeRoot=&NTI__HDUOEieUs1GSseLU5qS67Q_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_238_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[204];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_265_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[228];
 NTI__HWxN9b9av4GWQkqrakko2iBw_.size = sizeof(tyTuple__HWxN9b9av4GWQkqrakko2iBw);
 NTI__HWxN9b9av4GWQkqrakko2iBw_.kind = 18;
 NTI__HWxN9b9av4GWQkqrakko2iBw_.base = 0;
 NTI__HWxN9b9av4GWQkqrakko2iBw_.flags = 2;
 NTI__HWxN9b9av4GWQkqrakko2iBw_.name = "KeyValuePair[peerid.PeerID, peer_manager.Connectedness]";
 NTI__HWxN9b9av4GWQkqrakko2iBw_.nextType = nimTypeRoot; nimTypeRoot=&NTI__HWxN9b9av4GWQkqrakko2iBw_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_239_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[206];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[206].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[206].offset = offsetof(tyTuple__HWxN9b9av4GWQkqrakko2iBw, Field0);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[206].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[206].name = "Field0";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_239_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[207];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[207].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[207].offset = offsetof(tyTuple__HWxN9b9av4GWQkqrakko2iBw, Field1);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[207].typ = (&NTI__Se8YyoPxzDpFnTeAyeCVCw_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[207].name = "Field1";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_239_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[208];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[208].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[208].offset = offsetof(tyTuple__HWxN9b9av4GWQkqrakko2iBw, Field2);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[208].typ = (&NTI__iDFxVyVC6AVm9aJUnmmoakw_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[208].name = "Field2";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[205].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[205].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[205].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_239_3[0];
-NTI__HWxN9b9av4GWQkqrakko2iBw_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[205];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_266_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[230];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[230].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[230].offset = offsetof(tyTuple__HWxN9b9av4GWQkqrakko2iBw, Field0);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[230].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[230].name = "Field0";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_266_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[231];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[231].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[231].offset = offsetof(tyTuple__HWxN9b9av4GWQkqrakko2iBw, Field1);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[231].typ = (&NTI__Se8YyoPxzDpFnTeAyeCVCw_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[231].name = "Field1";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_266_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[232];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[232].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[232].offset = offsetof(tyTuple__HWxN9b9av4GWQkqrakko2iBw, Field2);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[232].typ = (&NTI__iDFxVyVC6AVm9aJUnmmoakw_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[232].name = "Field2";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[229].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[229].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[229].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_266_3[0];
+NTI__HWxN9b9av4GWQkqrakko2iBw_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[229];
 NTI__9cAdNiuOt3vPbm6XF7oLMIw_.size = sizeof(tySequence__9cAdNiuOt3vPbm6XF7oLMIw*);
 NTI__9cAdNiuOt3vPbm6XF7oLMIw_.kind = 24;
 NTI__9cAdNiuOt3vPbm6XF7oLMIw_.base = (&NTI__HWxN9b9av4GWQkqrakko2iBw_);
@@ -17828,47 +19783,47 @@ NTI__9cAdNiuOt3vPbm6XF7oLMIw_.flags = 2;
 NTI__9cAdNiuOt3vPbm6XF7oLMIw_.name = "KeyValuePairSeq[peerid.PeerID, peer_manager.Connectedness]";
 NTI__9cAdNiuOt3vPbm6XF7oLMIw_.nextType = nimTypeRoot; nimTypeRoot=&NTI__9cAdNiuOt3vPbm6XF7oLMIw_;
 NTI__9cAdNiuOt3vPbm6XF7oLMIw_.marker = Marker_tySequence__9cAdNiuOt3vPbm6XF7oLMIw;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[204].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[204].offset = offsetof(tyObject_Table__HDUOEieUs1GSseLU5qS67Q, data);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[204].typ = (&NTI__9cAdNiuOt3vPbm6XF7oLMIw_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[204].name = "data";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_238_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[209];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[209].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[209].offset = offsetof(tyObject_Table__HDUOEieUs1GSseLU5qS67Q, counter);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[209].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[209].name = "counter";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[203].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[203].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[203].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_238_2[0];
-NTI__HDUOEieUs1GSseLU5qS67Q_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[203];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[228].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[228].offset = offsetof(tyObject_Table__HDUOEieUs1GSseLU5qS67Q, data);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[228].typ = (&NTI__9cAdNiuOt3vPbm6XF7oLMIw_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[228].name = "data";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_265_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[233];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[233].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[233].offset = offsetof(tyObject_Table__HDUOEieUs1GSseLU5qS67Q, counter);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[233].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[233].name = "counter";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[227].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[227].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[227].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_265_2[0];
+NTI__HDUOEieUs1GSseLU5qS67Q_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[227];
 NTI__h8cNvChU6yNAdM6bChlFYA_.size = sizeof(tyObject_Table__h8cNvChU6yNAdM6bChlFYA);
 NTI__h8cNvChU6yNAdM6bChlFYA_.kind = 18;
 NTI__h8cNvChU6yNAdM6bChlFYA_.base = 0;
 NTI__h8cNvChU6yNAdM6bChlFYA_.flags = 2;
 NTI__h8cNvChU6yNAdM6bChlFYA_.name = "Table[peerid.PeerID, system.int]";
 NTI__h8cNvChU6yNAdM6bChlFYA_.nextType = nimTypeRoot; nimTypeRoot=&NTI__h8cNvChU6yNAdM6bChlFYA_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_240_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[211];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_267_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[235];
 NTI__IIcO09chBBRGVL39cP28NaLg_.size = sizeof(tyTuple__IIcO09chBBRGVL39cP28NaLg);
 NTI__IIcO09chBBRGVL39cP28NaLg_.kind = 18;
 NTI__IIcO09chBBRGVL39cP28NaLg_.base = 0;
 NTI__IIcO09chBBRGVL39cP28NaLg_.flags = 2;
 NTI__IIcO09chBBRGVL39cP28NaLg_.name = "KeyValuePair[peerid.PeerID, system.int]";
 NTI__IIcO09chBBRGVL39cP28NaLg_.nextType = nimTypeRoot; nimTypeRoot=&NTI__IIcO09chBBRGVL39cP28NaLg_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_241_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[213];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[213].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[213].offset = offsetof(tyTuple__IIcO09chBBRGVL39cP28NaLg, Field0);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[213].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[213].name = "Field0";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_241_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[214];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[214].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[214].offset = offsetof(tyTuple__IIcO09chBBRGVL39cP28NaLg, Field1);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[214].typ = (&NTI__Se8YyoPxzDpFnTeAyeCVCw_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[214].name = "Field1";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_241_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[215];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[215].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[215].offset = offsetof(tyTuple__IIcO09chBBRGVL39cP28NaLg, Field2);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[215].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[215].name = "Field2";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[212].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[212].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[212].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_241_3[0];
-NTI__IIcO09chBBRGVL39cP28NaLg_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[212];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_268_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[237];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[237].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[237].offset = offsetof(tyTuple__IIcO09chBBRGVL39cP28NaLg, Field0);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[237].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[237].name = "Field0";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_268_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[238];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[238].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[238].offset = offsetof(tyTuple__IIcO09chBBRGVL39cP28NaLg, Field1);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[238].typ = (&NTI__Se8YyoPxzDpFnTeAyeCVCw_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[238].name = "Field1";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_268_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[239];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[239].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[239].offset = offsetof(tyTuple__IIcO09chBBRGVL39cP28NaLg, Field2);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[239].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[239].name = "Field2";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[236].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[236].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[236].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_268_3[0];
+NTI__IIcO09chBBRGVL39cP28NaLg_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[236];
 NTI__MA0zEHLrBVKsH6AAd9aPHDA_.size = sizeof(tySequence__MA0zEHLrBVKsH6AAd9aPHDA*);
 NTI__MA0zEHLrBVKsH6AAd9aPHDA_.kind = 24;
 NTI__MA0zEHLrBVKsH6AAd9aPHDA_.base = (&NTI__IIcO09chBBRGVL39cP28NaLg_);
@@ -17876,136 +19831,136 @@ NTI__MA0zEHLrBVKsH6AAd9aPHDA_.flags = 2;
 NTI__MA0zEHLrBVKsH6AAd9aPHDA_.name = "KeyValuePairSeq[peerid.PeerID, system.int]";
 NTI__MA0zEHLrBVKsH6AAd9aPHDA_.nextType = nimTypeRoot; nimTypeRoot=&NTI__MA0zEHLrBVKsH6AAd9aPHDA_;
 NTI__MA0zEHLrBVKsH6AAd9aPHDA_.marker = Marker_tySequence__MA0zEHLrBVKsH6AAd9aPHDA;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[211].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[211].offset = offsetof(tyObject_Table__h8cNvChU6yNAdM6bChlFYA, data);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[211].typ = (&NTI__MA0zEHLrBVKsH6AAd9aPHDA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[211].name = "data";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_240_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[216];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[216].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[216].offset = offsetof(tyObject_Table__h8cNvChU6yNAdM6bChlFYA, counter);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[216].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[216].name = "counter";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[210].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[210].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[210].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_240_2[0];
-NTI__h8cNvChU6yNAdM6bChlFYA_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[210];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[235].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[235].offset = offsetof(tyObject_Table__h8cNvChU6yNAdM6bChlFYA, data);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[235].typ = (&NTI__MA0zEHLrBVKsH6AAd9aPHDA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[235].name = "data";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_267_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[240];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[240].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[240].offset = offsetof(tyObject_Table__h8cNvChU6yNAdM6bChlFYA, counter);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[240].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[240].name = "counter";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[234].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[234].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[234].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_267_2[0];
+NTI__h8cNvChU6yNAdM6bChlFYA_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[234];
 NTI__gZoQEO4V3muc0g6lD9aIb2Q_.size = sizeof(tyObject_Table__gZoQEO4V3muc0g6lD9aIb2Q);
 NTI__gZoQEO4V3muc0g6lD9aIb2Q_.kind = 18;
 NTI__gZoQEO4V3muc0g6lD9aIb2Q_.base = 0;
 NTI__gZoQEO4V3muc0g6lD9aIb2Q_.name = "Table[seq[byte], Future[system.bool]]";
 NTI__gZoQEO4V3muc0g6lD9aIb2Q_.nextType = nimTypeRoot; nimTypeRoot=&NTI__gZoQEO4V3muc0g6lD9aIb2Q_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_242_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[218];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_269_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[242];
 NTI__Qptir78YkKhpx9ams3lvtsw_.size = sizeof(tyTuple__Qptir78YkKhpx9ams3lvtsw);
 NTI__Qptir78YkKhpx9ams3lvtsw_.kind = 18;
 NTI__Qptir78YkKhpx9ams3lvtsw_.base = 0;
 NTI__Qptir78YkKhpx9ams3lvtsw_.name = "KeyValuePair[seq[byte], Future[system.bool]]";
 NTI__Qptir78YkKhpx9ams3lvtsw_.nextType = nimTypeRoot; nimTypeRoot=&NTI__Qptir78YkKhpx9ams3lvtsw_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_243_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[220];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[220].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[220].offset = offsetof(tyTuple__Qptir78YkKhpx9ams3lvtsw, Field0);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[220].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[220].name = "Field0";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_243_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[221];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[221].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[221].offset = offsetof(tyTuple__Qptir78YkKhpx9ams3lvtsw, Field1);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[221].typ = (&NTI__6H5Oh5UUvVCLiakt9aTwtUQ_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[221].name = "Field1";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_243_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[222];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[222].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[222].offset = offsetof(tyTuple__Qptir78YkKhpx9ams3lvtsw, Field2);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[222].typ = (&NTI__rI4CttOsQJLhGB50KE3n9cA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[222].name = "Field2";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[219].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[219].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[219].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_243_3[0];
-NTI__Qptir78YkKhpx9ams3lvtsw_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[219];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_270_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[244];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[244].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[244].offset = offsetof(tyTuple__Qptir78YkKhpx9ams3lvtsw, Field0);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[244].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[244].name = "Field0";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_270_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[245];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[245].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[245].offset = offsetof(tyTuple__Qptir78YkKhpx9ams3lvtsw, Field1);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[245].typ = (&NTI__6H5Oh5UUvVCLiakt9aTwtUQ_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[245].name = "Field1";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_270_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[246];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[246].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[246].offset = offsetof(tyTuple__Qptir78YkKhpx9ams3lvtsw, Field2);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[246].typ = (&NTI__rI4CttOsQJLhGB50KE3n9cA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[246].name = "Field2";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[243].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[243].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[243].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_270_3[0];
+NTI__Qptir78YkKhpx9ams3lvtsw_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[243];
 NTI__ZGDdbXPD9bUBYNLtwtuTWrA_.size = sizeof(tySequence__ZGDdbXPD9bUBYNLtwtuTWrA*);
 NTI__ZGDdbXPD9bUBYNLtwtuTWrA_.kind = 24;
 NTI__ZGDdbXPD9bUBYNLtwtuTWrA_.base = (&NTI__Qptir78YkKhpx9ams3lvtsw_);
 NTI__ZGDdbXPD9bUBYNLtwtuTWrA_.name = "KeyValuePairSeq[seq[byte], Future[system.bool]]";
 NTI__ZGDdbXPD9bUBYNLtwtuTWrA_.nextType = nimTypeRoot; nimTypeRoot=&NTI__ZGDdbXPD9bUBYNLtwtuTWrA_;
 NTI__ZGDdbXPD9bUBYNLtwtuTWrA_.marker = Marker_tySequence__ZGDdbXPD9bUBYNLtwtuTWrA;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[218].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[218].offset = offsetof(tyObject_Table__gZoQEO4V3muc0g6lD9aIb2Q, data);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[218].typ = (&NTI__ZGDdbXPD9bUBYNLtwtuTWrA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[218].name = "data";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_242_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[223];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[223].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[223].offset = offsetof(tyObject_Table__gZoQEO4V3muc0g6lD9aIb2Q, counter);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[223].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[223].name = "counter";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[217].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[217].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[217].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_242_2[0];
-NTI__gZoQEO4V3muc0g6lD9aIb2Q_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[217];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[242].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[242].offset = offsetof(tyObject_Table__gZoQEO4V3muc0g6lD9aIb2Q, data);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[242].typ = (&NTI__ZGDdbXPD9bUBYNLtwtuTWrA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[242].name = "data";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_269_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[247];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[247].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[247].offset = offsetof(tyObject_Table__gZoQEO4V3muc0g6lD9aIb2Q, counter);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[247].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[247].name = "counter";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[241].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[241].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[241].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_269_2[0];
+NTI__gZoQEO4V3muc0g6lD9aIb2Q_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[241];
 NTI__G9cDI1Dr3nt9bkFZ69cYb2hpA_.size = sizeof(tyObject_Table__G9cDI1Dr3nt9bkFZ69cYb2hpA);
 NTI__G9cDI1Dr3nt9bkFZ69cYb2hpA_.kind = 18;
 NTI__G9cDI1Dr3nt9bkFZ69cYb2hpA_.base = 0;
 NTI__G9cDI1Dr3nt9bkFZ69cYb2hpA_.name = "Table[kademlia.Node, Future[system.bool]]";
 NTI__G9cDI1Dr3nt9bkFZ69cYb2hpA_.nextType = nimTypeRoot; nimTypeRoot=&NTI__G9cDI1Dr3nt9bkFZ69cYb2hpA_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_244_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[225];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_271_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[249];
 NTI__MsTR86jOxY4TjADGXDQ9cYw_.size = sizeof(tyTuple__MsTR86jOxY4TjADGXDQ9cYw);
 NTI__MsTR86jOxY4TjADGXDQ9cYw_.kind = 18;
 NTI__MsTR86jOxY4TjADGXDQ9cYw_.base = 0;
 NTI__MsTR86jOxY4TjADGXDQ9cYw_.name = "KeyValuePair[kademlia.Node, Future[system.bool]]";
 NTI__MsTR86jOxY4TjADGXDQ9cYw_.nextType = nimTypeRoot; nimTypeRoot=&NTI__MsTR86jOxY4TjADGXDQ9cYw_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_245_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[227];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[227].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[227].offset = offsetof(tyTuple__MsTR86jOxY4TjADGXDQ9cYw, Field0);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[227].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[227].name = "Field0";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_245_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[228];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[228].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[228].offset = offsetof(tyTuple__MsTR86jOxY4TjADGXDQ9cYw, Field1);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[228].typ = (&NTI__dXv1y2c2nNbnKs59aRY70QA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[228].name = "Field1";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_245_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[229];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[229].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[229].offset = offsetof(tyTuple__MsTR86jOxY4TjADGXDQ9cYw, Field2);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[229].typ = (&NTI__rI4CttOsQJLhGB50KE3n9cA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[229].name = "Field2";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[226].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[226].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[226].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_245_3[0];
-NTI__MsTR86jOxY4TjADGXDQ9cYw_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[226];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_272_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[251];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[251].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[251].offset = offsetof(tyTuple__MsTR86jOxY4TjADGXDQ9cYw, Field0);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[251].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[251].name = "Field0";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_272_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[252];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[252].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[252].offset = offsetof(tyTuple__MsTR86jOxY4TjADGXDQ9cYw, Field1);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[252].typ = (&NTI__dXv1y2c2nNbnKs59aRY70QA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[252].name = "Field1";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_272_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[253];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[253].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[253].offset = offsetof(tyTuple__MsTR86jOxY4TjADGXDQ9cYw, Field2);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[253].typ = (&NTI__rI4CttOsQJLhGB50KE3n9cA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[253].name = "Field2";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[250].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[250].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[250].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_272_3[0];
+NTI__MsTR86jOxY4TjADGXDQ9cYw_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[250];
 NTI__bqBMFIjg0BA9aW4cUrDr4aw_.size = sizeof(tySequence__bqBMFIjg0BA9aW4cUrDr4aw*);
 NTI__bqBMFIjg0BA9aW4cUrDr4aw_.kind = 24;
 NTI__bqBMFIjg0BA9aW4cUrDr4aw_.base = (&NTI__MsTR86jOxY4TjADGXDQ9cYw_);
 NTI__bqBMFIjg0BA9aW4cUrDr4aw_.name = "KeyValuePairSeq[kademlia.Node, Future[system.bool]]";
 NTI__bqBMFIjg0BA9aW4cUrDr4aw_.nextType = nimTypeRoot; nimTypeRoot=&NTI__bqBMFIjg0BA9aW4cUrDr4aw_;
 NTI__bqBMFIjg0BA9aW4cUrDr4aw_.marker = Marker_tySequence__bqBMFIjg0BA9aW4cUrDr4aw;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[225].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[225].offset = offsetof(tyObject_Table__G9cDI1Dr3nt9bkFZ69cYb2hpA, data);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[225].typ = (&NTI__bqBMFIjg0BA9aW4cUrDr4aw_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[225].name = "data";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_244_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[230];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[230].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[230].offset = offsetof(tyObject_Table__G9cDI1Dr3nt9bkFZ69cYb2hpA, counter);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[230].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[230].name = "counter";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[224].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[224].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[224].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_244_2[0];
-NTI__G9cDI1Dr3nt9bkFZ69cYb2hpA_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[224];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[249].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[249].offset = offsetof(tyObject_Table__G9cDI1Dr3nt9bkFZ69cYb2hpA, data);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[249].typ = (&NTI__bqBMFIjg0BA9aW4cUrDr4aw_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[249].name = "data";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_271_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[254];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[254].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[254].offset = offsetof(tyObject_Table__G9cDI1Dr3nt9bkFZ69cYb2hpA, counter);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[254].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[254].name = "counter";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[248].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[248].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[248].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_271_2[0];
+NTI__G9cDI1Dr3nt9bkFZ69cYb2hpA_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[248];
 NTI__4n5kcfi9ae2XAgDxZKNVtjg_.size = sizeof(tyObject_Table__4n5kcfi9ae2XAgDxZKNVtjg);
 NTI__4n5kcfi9ae2XAgDxZKNVtjg_.kind = 18;
 NTI__4n5kcfi9ae2XAgDxZKNVtjg_.base = 0;
 NTI__4n5kcfi9ae2XAgDxZKNVtjg_.name = "Table[kademlia.Node, proc (n: seq[Node]){.closure, gcsafe.}]";
 NTI__4n5kcfi9ae2XAgDxZKNVtjg_.nextType = nimTypeRoot; nimTypeRoot=&NTI__4n5kcfi9ae2XAgDxZKNVtjg_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_246_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[232];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_273_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[256];
 NTI__beG4ILF8HR8pW2ufrKnHug_.size = sizeof(tyTuple__beG4ILF8HR8pW2ufrKnHug);
 NTI__beG4ILF8HR8pW2ufrKnHug_.kind = 18;
 NTI__beG4ILF8HR8pW2ufrKnHug_.base = 0;
 NTI__beG4ILF8HR8pW2ufrKnHug_.name = "KeyValuePair[kademlia.Node, proc (n: seq[Node]){.closure, gcsaf"
 "e.}]";
 NTI__beG4ILF8HR8pW2ufrKnHug_.nextType = nimTypeRoot; nimTypeRoot=&NTI__beG4ILF8HR8pW2ufrKnHug_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_247_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[234];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[234].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[234].offset = offsetof(tyTuple__beG4ILF8HR8pW2ufrKnHug, Field0);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[234].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[234].name = "Field0";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_247_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[235];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[235].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[235].offset = offsetof(tyTuple__beG4ILF8HR8pW2ufrKnHug, Field1);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[235].typ = (&NTI__dXv1y2c2nNbnKs59aRY70QA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[235].name = "Field1";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_247_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[236];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[236].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[236].offset = offsetof(tyTuple__beG4ILF8HR8pW2ufrKnHug, Field2);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[236].typ = (&NTI__Vj8L5mSqv3cWTixxMAusYg_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[236].name = "Field2";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[233].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[233].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[233].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_247_3[0];
-NTI__beG4ILF8HR8pW2ufrKnHug_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[233];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_274_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[258];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[258].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[258].offset = offsetof(tyTuple__beG4ILF8HR8pW2ufrKnHug, Field0);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[258].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[258].name = "Field0";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_274_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[259];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[259].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[259].offset = offsetof(tyTuple__beG4ILF8HR8pW2ufrKnHug, Field1);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[259].typ = (&NTI__dXv1y2c2nNbnKs59aRY70QA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[259].name = "Field1";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_274_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[260];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[260].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[260].offset = offsetof(tyTuple__beG4ILF8HR8pW2ufrKnHug, Field2);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[260].typ = (&NTI__Vj8L5mSqv3cWTixxMAusYg_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[260].name = "Field2";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[257].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[257].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[257].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_274_3[0];
+NTI__beG4ILF8HR8pW2ufrKnHug_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[257];
 NTI__Yjh7j69bRJilZ9ctrRBprjIw_.size = sizeof(tySequence__Yjh7j69bRJilZ9ctrRBprjIw*);
 NTI__Yjh7j69bRJilZ9ctrRBprjIw_.kind = 24;
 NTI__Yjh7j69bRJilZ9ctrRBprjIw_.base = (&NTI__beG4ILF8HR8pW2ufrKnHug_);
@@ -18013,182 +19968,182 @@ NTI__Yjh7j69bRJilZ9ctrRBprjIw_.name = "KeyValuePairSeq[kademlia.Node, proc (n: s
 "safe.}]";
 NTI__Yjh7j69bRJilZ9ctrRBprjIw_.nextType = nimTypeRoot; nimTypeRoot=&NTI__Yjh7j69bRJilZ9ctrRBprjIw_;
 NTI__Yjh7j69bRJilZ9ctrRBprjIw_.marker = Marker_tySequence__Yjh7j69bRJilZ9ctrRBprjIw;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[232].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[232].offset = offsetof(tyObject_Table__4n5kcfi9ae2XAgDxZKNVtjg, data);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[232].typ = (&NTI__Yjh7j69bRJilZ9ctrRBprjIw_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[232].name = "data";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_246_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[237];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[237].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[237].offset = offsetof(tyObject_Table__4n5kcfi9ae2XAgDxZKNVtjg, counter);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[237].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[237].name = "counter";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[231].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[231].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[231].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_246_2[0];
-NTI__4n5kcfi9ae2XAgDxZKNVtjg_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[231];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[256].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[256].offset = offsetof(tyObject_Table__4n5kcfi9ae2XAgDxZKNVtjg, data);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[256].typ = (&NTI__Yjh7j69bRJilZ9ctrRBprjIw_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[256].name = "data";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_273_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[261];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[261].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[261].offset = offsetof(tyObject_Table__4n5kcfi9ae2XAgDxZKNVtjg, counter);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[261].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[261].name = "counter";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[255].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[255].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[255].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_273_2[0];
+NTI__4n5kcfi9ae2XAgDxZKNVtjg_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[255];
 NTI__JQs6mFuSYGTO9bUC9aLU6i1g_.size = sizeof(tyObject_Table__JQs6mFuSYGTO9bUC9aLU6i1g);
 NTI__JQs6mFuSYGTO9bUC9aLU6i1g_.kind = 18;
 NTI__JQs6mFuSYGTO9bUC9aLU6i1g_.base = 0;
 NTI__JQs6mFuSYGTO9bUC9aLU6i1g_.name = "Table[kademlia.Node, p2p_types.Peer]";
 NTI__JQs6mFuSYGTO9bUC9aLU6i1g_.nextType = nimTypeRoot; nimTypeRoot=&NTI__JQs6mFuSYGTO9bUC9aLU6i1g_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_248_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[239];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_275_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[263];
 NTI__OXuFTr0o0fEz2WdWON4kIQ_.size = sizeof(tyTuple__OXuFTr0o0fEz2WdWON4kIQ);
 NTI__OXuFTr0o0fEz2WdWON4kIQ_.kind = 18;
 NTI__OXuFTr0o0fEz2WdWON4kIQ_.base = 0;
 NTI__OXuFTr0o0fEz2WdWON4kIQ_.name = "KeyValuePair[kademlia.Node, p2p_types.Peer]";
 NTI__OXuFTr0o0fEz2WdWON4kIQ_.nextType = nimTypeRoot; nimTypeRoot=&NTI__OXuFTr0o0fEz2WdWON4kIQ_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_249_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[241];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[241].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[241].offset = offsetof(tyTuple__OXuFTr0o0fEz2WdWON4kIQ, Field0);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[241].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[241].name = "Field0";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_249_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[242];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[242].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[242].offset = offsetof(tyTuple__OXuFTr0o0fEz2WdWON4kIQ, Field1);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[242].typ = (&NTI__dXv1y2c2nNbnKs59aRY70QA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[242].name = "Field1";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_249_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[243];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[243].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[243].offset = offsetof(tyTuple__OXuFTr0o0fEz2WdWON4kIQ, Field2);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[243].typ = (&NTI__ilId79baDi1OHxxGAxmTreg_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[243].name = "Field2";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[240].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[240].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[240].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_249_3[0];
-NTI__OXuFTr0o0fEz2WdWON4kIQ_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[240];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_276_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[265];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[265].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[265].offset = offsetof(tyTuple__OXuFTr0o0fEz2WdWON4kIQ, Field0);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[265].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[265].name = "Field0";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_276_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[266];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[266].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[266].offset = offsetof(tyTuple__OXuFTr0o0fEz2WdWON4kIQ, Field1);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[266].typ = (&NTI__dXv1y2c2nNbnKs59aRY70QA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[266].name = "Field1";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_276_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[267];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[267].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[267].offset = offsetof(tyTuple__OXuFTr0o0fEz2WdWON4kIQ, Field2);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[267].typ = (&NTI__ilId79baDi1OHxxGAxmTreg_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[267].name = "Field2";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[264].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[264].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[264].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_276_3[0];
+NTI__OXuFTr0o0fEz2WdWON4kIQ_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[264];
 NTI__6siov3Lsmvxd84pp09b2kFA_.size = sizeof(tySequence__6siov3Lsmvxd84pp09b2kFA*);
 NTI__6siov3Lsmvxd84pp09b2kFA_.kind = 24;
 NTI__6siov3Lsmvxd84pp09b2kFA_.base = (&NTI__OXuFTr0o0fEz2WdWON4kIQ_);
 NTI__6siov3Lsmvxd84pp09b2kFA_.name = "KeyValuePairSeq[kademlia.Node, p2p_types.Peer]";
 NTI__6siov3Lsmvxd84pp09b2kFA_.nextType = nimTypeRoot; nimTypeRoot=&NTI__6siov3Lsmvxd84pp09b2kFA_;
 NTI__6siov3Lsmvxd84pp09b2kFA_.marker = Marker_tySequence__6siov3Lsmvxd84pp09b2kFA;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[239].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[239].offset = offsetof(tyObject_Table__JQs6mFuSYGTO9bUC9aLU6i1g, data);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[239].typ = (&NTI__6siov3Lsmvxd84pp09b2kFA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[239].name = "data";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_248_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[244];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[244].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[244].offset = offsetof(tyObject_Table__JQs6mFuSYGTO9bUC9aLU6i1g, counter);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[244].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[244].name = "counter";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[238].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[238].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[238].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_248_2[0];
-NTI__JQs6mFuSYGTO9bUC9aLU6i1g_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[238];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[263].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[263].offset = offsetof(tyObject_Table__JQs6mFuSYGTO9bUC9aLU6i1g, data);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[263].typ = (&NTI__6siov3Lsmvxd84pp09b2kFA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[263].name = "data";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_275_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[268];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[268].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[268].offset = offsetof(tyObject_Table__JQs6mFuSYGTO9bUC9aLU6i1g, counter);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[268].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[268].name = "counter";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[262].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[262].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[262].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_275_2[0];
+NTI__JQs6mFuSYGTO9bUC9aLU6i1g_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[262];
 NTI__zmO5q5EIRgSoRBBKm9a9cDfA_.size = sizeof(tyObject_Table__zmO5q5EIRgSoRBBKm9a9cDfA);
 NTI__zmO5q5EIRgSoRBBKm9a9cDfA_.kind = 18;
 NTI__zmO5q5EIRgSoRBBKm9a9cDfA_.base = 0;
 NTI__zmO5q5EIRgSoRBBKm9a9cDfA_.name = "Table[system.int, p2p_types.PeerObserver]";
 NTI__zmO5q5EIRgSoRBBKm9a9cDfA_.nextType = nimTypeRoot; nimTypeRoot=&NTI__zmO5q5EIRgSoRBBKm9a9cDfA_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_250_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[246];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_277_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[270];
 NTI__yF9c6feNXxQ6CPcRGg9a29bjw_.size = sizeof(tyTuple__yF9c6feNXxQ6CPcRGg9a29bjw);
 NTI__yF9c6feNXxQ6CPcRGg9a29bjw_.kind = 18;
 NTI__yF9c6feNXxQ6CPcRGg9a29bjw_.base = 0;
 NTI__yF9c6feNXxQ6CPcRGg9a29bjw_.name = "KeyValuePair[system.int, p2p_types.PeerObserver]";
 NTI__yF9c6feNXxQ6CPcRGg9a29bjw_.nextType = nimTypeRoot; nimTypeRoot=&NTI__yF9c6feNXxQ6CPcRGg9a29bjw_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_251_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[248];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[248].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[248].offset = offsetof(tyTuple__yF9c6feNXxQ6CPcRGg9a29bjw, Field0);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[248].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[248].name = "Field0";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_251_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[249];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[249].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[249].offset = offsetof(tyTuple__yF9c6feNXxQ6CPcRGg9a29bjw, Field1);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[249].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[249].name = "Field1";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_251_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[250];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[250].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[250].offset = offsetof(tyTuple__yF9c6feNXxQ6CPcRGg9a29bjw, Field2);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[250].typ = (&NTI__jiG6LWCyHKJmWqcArkLgzQ_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[250].name = "Field2";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[247].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[247].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[247].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_251_3[0];
-NTI__yF9c6feNXxQ6CPcRGg9a29bjw_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[247];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_278_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[272];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[272].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[272].offset = offsetof(tyTuple__yF9c6feNXxQ6CPcRGg9a29bjw, Field0);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[272].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[272].name = "Field0";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_278_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[273];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[273].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[273].offset = offsetof(tyTuple__yF9c6feNXxQ6CPcRGg9a29bjw, Field1);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[273].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[273].name = "Field1";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_278_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[274];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[274].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[274].offset = offsetof(tyTuple__yF9c6feNXxQ6CPcRGg9a29bjw, Field2);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[274].typ = (&NTI__jiG6LWCyHKJmWqcArkLgzQ_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[274].name = "Field2";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[271].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[271].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[271].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_278_3[0];
+NTI__yF9c6feNXxQ6CPcRGg9a29bjw_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[271];
 NTI__9bws6EaVEE1bogDOSVwy9a9cA_.size = sizeof(tySequence__9bws6EaVEE1bogDOSVwy9a9cA*);
 NTI__9bws6EaVEE1bogDOSVwy9a9cA_.kind = 24;
 NTI__9bws6EaVEE1bogDOSVwy9a9cA_.base = (&NTI__yF9c6feNXxQ6CPcRGg9a29bjw_);
 NTI__9bws6EaVEE1bogDOSVwy9a9cA_.name = "KeyValuePairSeq[system.int, p2p_types.PeerObserver]";
 NTI__9bws6EaVEE1bogDOSVwy9a9cA_.nextType = nimTypeRoot; nimTypeRoot=&NTI__9bws6EaVEE1bogDOSVwy9a9cA_;
 NTI__9bws6EaVEE1bogDOSVwy9a9cA_.marker = Marker_tySequence__9bws6EaVEE1bogDOSVwy9a9cA;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[246].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[246].offset = offsetof(tyObject_Table__zmO5q5EIRgSoRBBKm9a9cDfA, data);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[246].typ = (&NTI__9bws6EaVEE1bogDOSVwy9a9cA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[246].name = "data";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_250_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[251];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[251].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[251].offset = offsetof(tyObject_Table__zmO5q5EIRgSoRBBKm9a9cDfA, counter);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[251].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[251].name = "counter";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[245].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[245].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[245].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_250_2[0];
-NTI__zmO5q5EIRgSoRBBKm9a9cDfA_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[245];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[270].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[270].offset = offsetof(tyObject_Table__zmO5q5EIRgSoRBBKm9a9cDfA, data);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[270].typ = (&NTI__9bws6EaVEE1bogDOSVwy9a9cA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[270].name = "data";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_277_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[275];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[275].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[275].offset = offsetof(tyObject_Table__zmO5q5EIRgSoRBBKm9a9cDfA, counter);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[275].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[275].name = "counter";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[269].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[269].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[269].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_277_2[0];
+NTI__zmO5q5EIRgSoRBBKm9a9cDfA_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[269];
 NTI__A9cYVcPOKBDYXmP0EJYObtA_.size = sizeof(tyObject_Table__A9cYVcPOKBDYXmP0EJYObtA);
 NTI__A9cYVcPOKBDYXmP0EJYObtA_.kind = 18;
 NTI__A9cYVcPOKBDYXmP0EJYObtA_.base = 0;
 NTI__A9cYVcPOKBDYXmP0EJYObtA_.name = "Filters";
 NTI__A9cYVcPOKBDYXmP0EJYObtA_.nextType = nimTypeRoot; nimTypeRoot=&NTI__A9cYVcPOKBDYXmP0EJYObtA_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_252_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[253];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_279_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[277];
 NTI__Ewr5dB9acm1XBOefHdkz32w_.size = sizeof(tyTuple__Ewr5dB9acm1XBOefHdkz32w);
 NTI__Ewr5dB9acm1XBOefHdkz32w_.kind = 18;
 NTI__Ewr5dB9acm1XBOefHdkz32w_.base = 0;
 NTI__Ewr5dB9acm1XBOefHdkz32w_.name = "KeyValuePair[system.string, waku_filter_types.Filter]";
 NTI__Ewr5dB9acm1XBOefHdkz32w_.nextType = nimTypeRoot; nimTypeRoot=&NTI__Ewr5dB9acm1XBOefHdkz32w_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_253_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[255];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[255].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[255].offset = offsetof(tyTuple__Ewr5dB9acm1XBOefHdkz32w, Field0);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[255].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[255].name = "Field0";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_253_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[256];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[256].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[256].offset = offsetof(tyTuple__Ewr5dB9acm1XBOefHdkz32w, Field1);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[256].typ = (&NTI__77mFvmsOLKik79ci2hXkHEg_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[256].name = "Field1";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_253_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[257];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[257].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[257].offset = offsetof(tyTuple__Ewr5dB9acm1XBOefHdkz32w, Field2);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[257].typ = (&NTI__llJHO4n7JfCluCvVce9c9cDw_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[257].name = "Field2";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[254].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[254].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[254].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_253_3[0];
-NTI__Ewr5dB9acm1XBOefHdkz32w_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[254];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_280_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[279];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[279].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[279].offset = offsetof(tyTuple__Ewr5dB9acm1XBOefHdkz32w, Field0);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[279].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[279].name = "Field0";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_280_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[280];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[280].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[280].offset = offsetof(tyTuple__Ewr5dB9acm1XBOefHdkz32w, Field1);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[280].typ = (&NTI__77mFvmsOLKik79ci2hXkHEg_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[280].name = "Field1";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_280_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[281];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[281].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[281].offset = offsetof(tyTuple__Ewr5dB9acm1XBOefHdkz32w, Field2);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[281].typ = (&NTI__llJHO4n7JfCluCvVce9c9cDw_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[281].name = "Field2";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[278].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[278].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[278].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_280_3[0];
+NTI__Ewr5dB9acm1XBOefHdkz32w_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[278];
 NTI__b15zLYqiMPkiLv2o00nNdA_.size = sizeof(tySequence__b15zLYqiMPkiLv2o00nNdA*);
 NTI__b15zLYqiMPkiLv2o00nNdA_.kind = 24;
 NTI__b15zLYqiMPkiLv2o00nNdA_.base = (&NTI__Ewr5dB9acm1XBOefHdkz32w_);
 NTI__b15zLYqiMPkiLv2o00nNdA_.name = "KeyValuePairSeq[system.string, waku_filter_types.Filter]";
 NTI__b15zLYqiMPkiLv2o00nNdA_.nextType = nimTypeRoot; nimTypeRoot=&NTI__b15zLYqiMPkiLv2o00nNdA_;
 NTI__b15zLYqiMPkiLv2o00nNdA_.marker = Marker_tySequence__b15zLYqiMPkiLv2o00nNdA;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[253].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[253].offset = offsetof(tyObject_Table__A9cYVcPOKBDYXmP0EJYObtA, data);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[253].typ = (&NTI__b15zLYqiMPkiLv2o00nNdA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[253].name = "data";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_252_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[258];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[258].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[258].offset = offsetof(tyObject_Table__A9cYVcPOKBDYXmP0EJYObtA, counter);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[258].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[258].name = "counter";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[252].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[252].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[252].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_252_2[0];
-NTI__A9cYVcPOKBDYXmP0EJYObtA_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[252];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[277].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[277].offset = offsetof(tyObject_Table__A9cYVcPOKBDYXmP0EJYObtA, data);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[277].typ = (&NTI__b15zLYqiMPkiLv2o00nNdA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[277].name = "data";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_279_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[282];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[282].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[282].offset = offsetof(tyObject_Table__A9cYVcPOKBDYXmP0EJYObtA, counter);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[282].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[282].name = "counter";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[276].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[276].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[276].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_279_2[0];
+NTI__A9cYVcPOKBDYXmP0EJYObtA_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[276];
 NTI__PYPLWlmg3RnSxA1NrOVJFw_.size = sizeof(tyObject_Table__PYPLWlmg3RnSxA1NrOVJFw);
 NTI__PYPLWlmg3RnSxA1NrOVJFw_.kind = 18;
 NTI__PYPLWlmg3RnSxA1NrOVJFw_.base = 0;
 NTI__PYPLWlmg3RnSxA1NrOVJFw_.name = "Table[message_notifier.MessageNotificationSubscriptionIdentifie"
 "r, message_notifier.MessageNotificationSubscription]";
 NTI__PYPLWlmg3RnSxA1NrOVJFw_.nextType = nimTypeRoot; nimTypeRoot=&NTI__PYPLWlmg3RnSxA1NrOVJFw_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_254_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[260];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_281_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[284];
 NTI__RR9cGEKcLuRt2J0N36N9aV9aA_.size = sizeof(tyTuple__RR9cGEKcLuRt2J0N36N9aV9aA);
 NTI__RR9cGEKcLuRt2J0N36N9aV9aA_.kind = 18;
 NTI__RR9cGEKcLuRt2J0N36N9aV9aA_.base = 0;
 NTI__RR9cGEKcLuRt2J0N36N9aV9aA_.name = "KeyValuePair[message_notifier.MessageNotificationSubscriptionId"
 "entifier, message_notifier.MessageNotificationSubscription]";
 NTI__RR9cGEKcLuRt2J0N36N9aV9aA_.nextType = nimTypeRoot; nimTypeRoot=&NTI__RR9cGEKcLuRt2J0N36N9aV9aA_;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_255_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[262];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[262].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[262].offset = offsetof(tyTuple__RR9cGEKcLuRt2J0N36N9aV9aA, Field0);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[262].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[262].name = "Field0";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_255_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[263];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[263].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[263].offset = offsetof(tyTuple__RR9cGEKcLuRt2J0N36N9aV9aA, Field1);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[263].typ = (&NTI__77mFvmsOLKik79ci2hXkHEg_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[263].name = "Field1";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_255_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[264];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[264].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[264].offset = offsetof(tyTuple__RR9cGEKcLuRt2J0N36N9aV9aA, Field2);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[264].typ = (&NTI__0iE3wlvp8XLVCEqe9a69bBzA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[264].name = "Field2";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[261].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[261].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[261].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_255_3[0];
-NTI__RR9cGEKcLuRt2J0N36N9aV9aA_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[261];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_282_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[286];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[286].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[286].offset = offsetof(tyTuple__RR9cGEKcLuRt2J0N36N9aV9aA, Field0);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[286].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[286].name = "Field0";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_282_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[287];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[287].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[287].offset = offsetof(tyTuple__RR9cGEKcLuRt2J0N36N9aV9aA, Field1);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[287].typ = (&NTI__77mFvmsOLKik79ci2hXkHEg_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[287].name = "Field1";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_282_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[288];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[288].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[288].offset = offsetof(tyTuple__RR9cGEKcLuRt2J0N36N9aV9aA, Field2);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[288].typ = (&NTI__0iE3wlvp8XLVCEqe9a69bBzA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[288].name = "Field2";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[285].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[285].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[285].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_282_3[0];
+NTI__RR9cGEKcLuRt2J0N36N9aV9aA_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[285];
 NTI__NhrD4IueRTlBqNEpcAHOaw_.size = sizeof(tySequence__NhrD4IueRTlBqNEpcAHOaw*);
 NTI__NhrD4IueRTlBqNEpcAHOaw_.kind = 24;
 NTI__NhrD4IueRTlBqNEpcAHOaw_.base = (&NTI__RR9cGEKcLuRt2J0N36N9aV9aA_);
@@ -18196,17 +20151,17 @@ NTI__NhrD4IueRTlBqNEpcAHOaw_.name = "KeyValuePairSeq[message_notifier.MessageNot
 "nIdentifier, message_notifier.MessageNotificationSubscription]";
 NTI__NhrD4IueRTlBqNEpcAHOaw_.nextType = nimTypeRoot; nimTypeRoot=&NTI__NhrD4IueRTlBqNEpcAHOaw_;
 NTI__NhrD4IueRTlBqNEpcAHOaw_.marker = Marker_tySequence__NhrD4IueRTlBqNEpcAHOaw;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[260].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[260].offset = offsetof(tyObject_Table__PYPLWlmg3RnSxA1NrOVJFw, data);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[260].typ = (&NTI__NhrD4IueRTlBqNEpcAHOaw_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[260].name = "data";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_254_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[265];
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[265].kind = 1;
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[265].offset = offsetof(tyObject_Table__PYPLWlmg3RnSxA1NrOVJFw, counter);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[265].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[265].name = "counter";
-TM__4SoG2KRQy3oMm9aUzSLtGrA_0[259].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[259].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[259].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_254_2[0];
-NTI__PYPLWlmg3RnSxA1NrOVJFw_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[259];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[284].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[284].offset = offsetof(tyObject_Table__PYPLWlmg3RnSxA1NrOVJFw, data);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[284].typ = (&NTI__NhrD4IueRTlBqNEpcAHOaw_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[284].name = "data";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_281_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[289];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[289].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[289].offset = offsetof(tyObject_Table__PYPLWlmg3RnSxA1NrOVJFw, counter);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[289].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[289].name = "counter";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[283].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[283].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[283].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_281_2[0];
+NTI__PYPLWlmg3RnSxA1NrOVJFw_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[283];
 NTI__WVXdlbpZMc1zwgdXod13jA_.size = sizeof(tyObject_Table__PYPLWlmg3RnSxA1NrOVJFw*);
 NTI__WVXdlbpZMc1zwgdXod13jA_.kind = 22;
 NTI__WVXdlbpZMc1zwgdXod13jA_.base = (&NTI__PYPLWlmg3RnSxA1NrOVJFw_);
@@ -18214,5 +20169,50 @@ NTI__WVXdlbpZMc1zwgdXod13jA_.name = "TableRef[message_notifier.MessageNotificati
 "fier, message_notifier.MessageNotificationSubscription]";
 NTI__WVXdlbpZMc1zwgdXod13jA_.nextType = nimTypeRoot; nimTypeRoot=&NTI__WVXdlbpZMc1zwgdXod13jA_;
 NTI__WVXdlbpZMc1zwgdXod13jA_.marker = Marker_tyRef__WVXdlbpZMc1zwgdXod13jA;
+NTI__FdHpxIKbPNjlIbR9a4qcWpw_.size = sizeof(tyObject_Table__FdHpxIKbPNjlIbR9a4qcWpw);
+NTI__FdHpxIKbPNjlIbR9a4qcWpw_.kind = 18;
+NTI__FdHpxIKbPNjlIbR9a4qcWpw_.base = 0;
+NTI__FdHpxIKbPNjlIbR9a4qcWpw_.name = "Table[system.string, web3.Subscription]";
+NTI__FdHpxIKbPNjlIbR9a4qcWpw_.nextType = nimTypeRoot; nimTypeRoot=&NTI__FdHpxIKbPNjlIbR9a4qcWpw_;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_344_2[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[291];
+NTI__Wbu2O9clBpzS2iH9b4rBbnEw_.size = sizeof(tyTuple__Wbu2O9clBpzS2iH9b4rBbnEw);
+NTI__Wbu2O9clBpzS2iH9b4rBbnEw_.kind = 18;
+NTI__Wbu2O9clBpzS2iH9b4rBbnEw_.base = 0;
+NTI__Wbu2O9clBpzS2iH9b4rBbnEw_.name = "KeyValuePair[system.string, web3.Subscription]";
+NTI__Wbu2O9clBpzS2iH9b4rBbnEw_.nextType = nimTypeRoot; nimTypeRoot=&NTI__Wbu2O9clBpzS2iH9b4rBbnEw_;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_345_3[0] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[293];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[293].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[293].offset = offsetof(tyTuple__Wbu2O9clBpzS2iH9b4rBbnEw, Field0);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[293].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[293].name = "Field0";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_345_3[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[294];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[294].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[294].offset = offsetof(tyTuple__Wbu2O9clBpzS2iH9b4rBbnEw, Field1);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[294].typ = (&NTI__77mFvmsOLKik79ci2hXkHEg_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[294].name = "Field1";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_345_3[2] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[295];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[295].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[295].offset = offsetof(tyTuple__Wbu2O9clBpzS2iH9b4rBbnEw, Field2);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[295].typ = (&NTI__R4PEl9bZRSkSI2Ikls9czoYA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[295].name = "Field2";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[292].len = 3; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[292].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[292].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_345_3[0];
+NTI__Wbu2O9clBpzS2iH9b4rBbnEw_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[292];
+NTI__rEAWhJSquAhdmub1uagmwg_.size = sizeof(tySequence__rEAWhJSquAhdmub1uagmwg*);
+NTI__rEAWhJSquAhdmub1uagmwg_.kind = 24;
+NTI__rEAWhJSquAhdmub1uagmwg_.base = (&NTI__Wbu2O9clBpzS2iH9b4rBbnEw_);
+NTI__rEAWhJSquAhdmub1uagmwg_.name = "KeyValuePairSeq[system.string, web3.Subscription]";
+NTI__rEAWhJSquAhdmub1uagmwg_.nextType = nimTypeRoot; nimTypeRoot=&NTI__rEAWhJSquAhdmub1uagmwg_;
+NTI__rEAWhJSquAhdmub1uagmwg_.marker = Marker_tySequence__rEAWhJSquAhdmub1uagmwg;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[291].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[291].offset = offsetof(tyObject_Table__FdHpxIKbPNjlIbR9a4qcWpw, data);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[291].typ = (&NTI__rEAWhJSquAhdmub1uagmwg_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[291].name = "data";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_344_2[1] = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[296];
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[296].kind = 1;
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[296].offset = offsetof(tyObject_Table__FdHpxIKbPNjlIbR9a4qcWpw, counter);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[296].typ = (&NTI__rR5Bzr1D5krxoo1NcNyeMA_);
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[296].name = "counter";
+TM__4SoG2KRQy3oMm9aUzSLtGrA_0[290].len = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[290].kind = 2; TM__4SoG2KRQy3oMm9aUzSLtGrA_0[290].sons = &TM__4SoG2KRQy3oMm9aUzSLtGrA_344_2[0];
+NTI__FdHpxIKbPNjlIbR9a4qcWpw_.node = &TM__4SoG2KRQy3oMm9aUzSLtGrA_0[290];
 }
 

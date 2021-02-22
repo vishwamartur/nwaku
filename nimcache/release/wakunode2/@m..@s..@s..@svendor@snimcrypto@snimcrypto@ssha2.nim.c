@@ -3,7 +3,7 @@
 /* The generated code is subject to the original license. */
 /* Compiled for: Linux, amd64, gcc */
 /* Command for C compiler:
-   gcc -c  -w -pthread -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace/install/usr/include -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1/src -DHAVE_CONFIG_H -DHAVE_BUILTIN_EXPECT -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/src -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/inc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/tools -DBR_USE_UNIX_TIME=1 -DBR_USE_URANDOM=1 -DBR_LE_UNALIGNED=1 -DBR_64=1  -DBR_amd64=1 -DBR_INT128=1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/miniupnp/miniupnpc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/libnatpmp-upstream -DENABLE_STRNATPMPERR -march=native -g3 -Og -O3 -fno-strict-aliasing -fno-ident  -I/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib -I/home/runner/work/nim-waku/nim-waku/waku/v2/node -o nimcache/release/wakunode2/@m..@s..@s..@svendor@snimcrypto@snimcrypto@ssha2.nim.c.o nimcache/release/wakunode2/@m..@s..@s..@svendor@snimcrypto@snimcrypto@ssha2.nim.c */
+   gcc -c  -w -pthread -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace/install/usr/include -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1/src -DHAVE_CONFIG_H -DHAVE_BUILTIN_EXPECT -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/src -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/inc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/tools -DBR_USE_UNIX_TIME=1 -DBR_USE_URANDOM=1 -DBR_LE_UNALIGNED=1 -DBR_64=1  -DBR_amd64=1 -DBR_INT128=1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/certs -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/miniupnp/miniupnpc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/libnatpmp-upstream -DENABLE_STRNATPMPERR -march=native -g3 -Og -O3 -fno-strict-aliasing -fno-ident  -I/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib -I/home/runner/work/nim-waku/nim-waku/waku/v2/node -o nimcache/release/wakunode2/@m..@s..@s..@svendor@snimcrypto@snimcrypto@ssha2.nim.c.o nimcache/release/wakunode2/@m..@s..@s..@svendor@snimcrypto@snimcrypto@ssha2.nim.c */
 #define NIM_INTBITS 64
 
 #include "nimbase.h"
@@ -100,135 +100,135 @@ N_LIB_PRIVATE TNimType NTI__Zu7UusKTJ9auYSy2NZNrWFg_;
 extern TNimType* nimTypeRoot;
 
 #line 236 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha2.nim"
-N_LIB_PRIVATE N_NIMCALL(void, sha256Transform__BJNBQtWr9bJwzqbyfKXd38Q)(NU32* state_0, NU8* data_0, NI data_0Len_0) {	NU32 t0;	NU32 t1;	tyArray__cVaZ0eskK2VoyoXuwrJrYw W;	NU32 pX60gensym39267802_;	NU32 pX60gensym39275402_;	NU32 pX60gensym39285402_;	NU32 pX60gensym39295402_;	NU32 pX60gensym39305402_;	NU32 pX60gensym39315402_;	NU32 pX60gensym39325402_;	NU32 pX60gensym39335402_;	NU32 pX60gensym39345402_;	NU32 pX60gensym39355402_;	NU32 pX60gensym39365402_;	NU32 pX60gensym39375402_;	NU32 pX60gensym39385402_;	NU32 pX60gensym39395402_;	NU32 pX60gensym39405402_;	NU32 pX60gensym39415402_;	NU32 s0;	NU32 s1;	NU32 s2;	NU32 s3;	NU32 s4;	NU32 s5;	NU32 s6;	NU32 s7;	t0 = (NU32)0;	t1 = (NU32)0;
+N_LIB_PRIVATE N_NIMCALL(void, sha256Transform__BJNBQtWr9bJwzqbyfKXd38Q)(NU32* state_0, NU8* data_0, NI data_0Len_0) {	NU32 t0;	NU32 t1;	tyArray__cVaZ0eskK2VoyoXuwrJrYw W;	NU32 pX60gensym38731857_;	NU32 pX60gensym38740402_;	NU32 pX60gensym38750402_;	NU32 pX60gensym38760402_;	NU32 pX60gensym38770402_;	NU32 pX60gensym38780402_;	NU32 pX60gensym38790402_;	NU32 pX60gensym38800402_;	NU32 pX60gensym38810402_;	NU32 pX60gensym38820402_;	NU32 pX60gensym38830402_;	NU32 pX60gensym38840402_;	NU32 pX60gensym38850402_;	NU32 pX60gensym38860402_;	NU32 pX60gensym38870402_;	NU32 pX60gensym38880402_;	NU32 s0;	NU32 s1;	NU32 s2;	NU32 s3;	NU32 s4;	NU32 s5;	NU32 s6;	NU32 s7;	t0 = (NU32)0;	t1 = (NU32)0;
 #line 241 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha2.nim"
 
 #line 335 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 0)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 0),data_0Len_0-1); }	pX60gensym39267802_ = (*((NU32*) ((&data_0[((NI) 0)]))));
+	if ((NU)(((NI) 0)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 0),data_0Len_0-1); }	pX60gensym38731857_ = (*((NU32*) ((&data_0[((NI) 0)]))));
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	W[(((NI) 0))- 0] = __builtin_bswap32(pX60gensym39267802_);
+	W[(((NI) 0))- 0] = __builtin_bswap32(pX60gensym38731857_);
 #line 241 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha2.nim"
 
 #line 335 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 4)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 4),data_0Len_0-1); }	pX60gensym39275402_ = (*((NU32*) ((&data_0[((NI) 4)]))));
+	if ((NU)(((NI) 4)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 4),data_0Len_0-1); }	pX60gensym38740402_ = (*((NU32*) ((&data_0[((NI) 4)]))));
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	W[(((NI) 1))- 0] = __builtin_bswap32(pX60gensym39275402_);
+	W[(((NI) 1))- 0] = __builtin_bswap32(pX60gensym38740402_);
 #line 242 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha2.nim"
 
 #line 335 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 8)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 8),data_0Len_0-1); }	pX60gensym39285402_ = (*((NU32*) ((&data_0[((NI) 8)]))));
+	if ((NU)(((NI) 8)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 8),data_0Len_0-1); }	pX60gensym38750402_ = (*((NU32*) ((&data_0[((NI) 8)]))));
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	W[(((NI) 2))- 0] = __builtin_bswap32(pX60gensym39285402_);
+	W[(((NI) 2))- 0] = __builtin_bswap32(pX60gensym38750402_);
 #line 242 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha2.nim"
 
 #line 335 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 12)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 12),data_0Len_0-1); }	pX60gensym39295402_ = (*((NU32*) ((&data_0[((NI) 12)]))));
+	if ((NU)(((NI) 12)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 12),data_0Len_0-1); }	pX60gensym38760402_ = (*((NU32*) ((&data_0[((NI) 12)]))));
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	W[(((NI) 3))- 0] = __builtin_bswap32(pX60gensym39295402_);
+	W[(((NI) 3))- 0] = __builtin_bswap32(pX60gensym38760402_);
 #line 243 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha2.nim"
 
 #line 335 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 16)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 16),data_0Len_0-1); }	pX60gensym39305402_ = (*((NU32*) ((&data_0[((NI) 16)]))));
+	if ((NU)(((NI) 16)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 16),data_0Len_0-1); }	pX60gensym38770402_ = (*((NU32*) ((&data_0[((NI) 16)]))));
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	W[(((NI) 4))- 0] = __builtin_bswap32(pX60gensym39305402_);
+	W[(((NI) 4))- 0] = __builtin_bswap32(pX60gensym38770402_);
 #line 243 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha2.nim"
 
 #line 335 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 20)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 20),data_0Len_0-1); }	pX60gensym39315402_ = (*((NU32*) ((&data_0[((NI) 20)]))));
+	if ((NU)(((NI) 20)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 20),data_0Len_0-1); }	pX60gensym38780402_ = (*((NU32*) ((&data_0[((NI) 20)]))));
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	W[(((NI) 5))- 0] = __builtin_bswap32(pX60gensym39315402_);
+	W[(((NI) 5))- 0] = __builtin_bswap32(pX60gensym38780402_);
 #line 244 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha2.nim"
 
 #line 335 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 24)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 24),data_0Len_0-1); }	pX60gensym39325402_ = (*((NU32*) ((&data_0[((NI) 24)]))));
+	if ((NU)(((NI) 24)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 24),data_0Len_0-1); }	pX60gensym38790402_ = (*((NU32*) ((&data_0[((NI) 24)]))));
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	W[(((NI) 6))- 0] = __builtin_bswap32(pX60gensym39325402_);
+	W[(((NI) 6))- 0] = __builtin_bswap32(pX60gensym38790402_);
 #line 244 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha2.nim"
 
 #line 335 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 28)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 28),data_0Len_0-1); }	pX60gensym39335402_ = (*((NU32*) ((&data_0[((NI) 28)]))));
+	if ((NU)(((NI) 28)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 28),data_0Len_0-1); }	pX60gensym38800402_ = (*((NU32*) ((&data_0[((NI) 28)]))));
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	W[(((NI) 7))- 0] = __builtin_bswap32(pX60gensym39335402_);
+	W[(((NI) 7))- 0] = __builtin_bswap32(pX60gensym38800402_);
 #line 245 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha2.nim"
 
 #line 335 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 32)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 32),data_0Len_0-1); }	pX60gensym39345402_ = (*((NU32*) ((&data_0[((NI) 32)]))));
+	if ((NU)(((NI) 32)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 32),data_0Len_0-1); }	pX60gensym38810402_ = (*((NU32*) ((&data_0[((NI) 32)]))));
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	W[(((NI) 8))- 0] = __builtin_bswap32(pX60gensym39345402_);
+	W[(((NI) 8))- 0] = __builtin_bswap32(pX60gensym38810402_);
 #line 245 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha2.nim"
 
 #line 335 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 36)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 36),data_0Len_0-1); }	pX60gensym39355402_ = (*((NU32*) ((&data_0[((NI) 36)]))));
+	if ((NU)(((NI) 36)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 36),data_0Len_0-1); }	pX60gensym38820402_ = (*((NU32*) ((&data_0[((NI) 36)]))));
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	W[(((NI) 9))- 0] = __builtin_bswap32(pX60gensym39355402_);
+	W[(((NI) 9))- 0] = __builtin_bswap32(pX60gensym38820402_);
 #line 246 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha2.nim"
 
 #line 335 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 40)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 40),data_0Len_0-1); }	pX60gensym39365402_ = (*((NU32*) ((&data_0[((NI) 40)]))));
+	if ((NU)(((NI) 40)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 40),data_0Len_0-1); }	pX60gensym38830402_ = (*((NU32*) ((&data_0[((NI) 40)]))));
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	W[(((NI) 10))- 0] = __builtin_bswap32(pX60gensym39365402_);
+	W[(((NI) 10))- 0] = __builtin_bswap32(pX60gensym38830402_);
 #line 246 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha2.nim"
 
 #line 335 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 44)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 44),data_0Len_0-1); }	pX60gensym39375402_ = (*((NU32*) ((&data_0[((NI) 44)]))));
+	if ((NU)(((NI) 44)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 44),data_0Len_0-1); }	pX60gensym38840402_ = (*((NU32*) ((&data_0[((NI) 44)]))));
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	W[(((NI) 11))- 0] = __builtin_bswap32(pX60gensym39375402_);
+	W[(((NI) 11))- 0] = __builtin_bswap32(pX60gensym38840402_);
 #line 247 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha2.nim"
 
 #line 335 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 48)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 48),data_0Len_0-1); }	pX60gensym39385402_ = (*((NU32*) ((&data_0[((NI) 48)]))));
+	if ((NU)(((NI) 48)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 48),data_0Len_0-1); }	pX60gensym38850402_ = (*((NU32*) ((&data_0[((NI) 48)]))));
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	W[(((NI) 12))- 0] = __builtin_bswap32(pX60gensym39385402_);
+	W[(((NI) 12))- 0] = __builtin_bswap32(pX60gensym38850402_);
 #line 247 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha2.nim"
 
 #line 335 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 52)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 52),data_0Len_0-1); }	pX60gensym39395402_ = (*((NU32*) ((&data_0[((NI) 52)]))));
+	if ((NU)(((NI) 52)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 52),data_0Len_0-1); }	pX60gensym38860402_ = (*((NU32*) ((&data_0[((NI) 52)]))));
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	W[(((NI) 13))- 0] = __builtin_bswap32(pX60gensym39395402_);
+	W[(((NI) 13))- 0] = __builtin_bswap32(pX60gensym38860402_);
 #line 248 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha2.nim"
 
 #line 335 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 56)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 56),data_0Len_0-1); }	pX60gensym39405402_ = (*((NU32*) ((&data_0[((NI) 56)]))));
+	if ((NU)(((NI) 56)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 56),data_0Len_0-1); }	pX60gensym38870402_ = (*((NU32*) ((&data_0[((NI) 56)]))));
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	W[(((NI) 14))- 0] = __builtin_bswap32(pX60gensym39405402_);
+	W[(((NI) 14))- 0] = __builtin_bswap32(pX60gensym38870402_);
 #line 248 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha2.nim"
 
 #line 335 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 60)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 60),data_0Len_0-1); }	pX60gensym39415402_ = (*((NU32*) ((&data_0[((NI) 60)]))));
+	if ((NU)(((NI) 60)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 60),data_0Len_0-1); }	pX60gensym38880402_ = (*((NU32*) ((&data_0[((NI) 60)]))));
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 336 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	W[(((NI) 15))- 0] = __builtin_bswap32(pX60gensym39415402_);	{		NI i;		NI i_2;		i = (NI)0;
+	W[(((NI) 15))- 0] = __builtin_bswap32(pX60gensym38880402_);	{		NI i;		NI i_2;		i = (NI)0;
 #line 106 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 		i_2 = ((NI) 16);		{
 #line 107 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
@@ -5878,135 +5878,135 @@ N_LIB_PRIVATE N_NIMCALL(tyObject_MDigest__law9ct65KplMYBvtmjCQxbw, finish__x70AL
 	return result;}
 
 #line 339 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha2.nim"
-N_LIB_PRIVATE N_NIMCALL(void, sha512Transform__d4P1X7sPV8KvC9aZQp9b36cw)(NU64* state_0, NU8* data_0, NI data_0Len_0) {	NU64 t0;	NU64 t1;	tyArray__hPrcw5mUju9bhG2eUWCnieQ W;	NU64 pX60gensym42975031_;	NU64 pX60gensym42985402_;	NU64 pX60gensym42995402_;	NU64 pX60gensym43005402_;	NU64 pX60gensym43015402_;	NU64 pX60gensym43025402_;	NU64 pX60gensym43035402_;	NU64 pX60gensym43045402_;	NU64 pX60gensym43055402_;	NU64 pX60gensym43065403_;	NU64 pX60gensym43075403_;	NU64 pX60gensym43085403_;	NU64 pX60gensym43095403_;	NU64 pX60gensym43105403_;	NU64 pX60gensym43115403_;	NU64 pX60gensym43125403_;	NU64 s0;	NU64 s1;	NU64 s2;	NU64 s3;	NU64 s4;	NU64 s5;	NU64 s6;	NU64 s7;	t0 = (NU64)0;	t1 = (NU64)0;
+N_LIB_PRIVATE N_NIMCALL(void, sha512Transform__d4P1X7sPV8KvC9aZQp9b36cw)(NU64* state_0, NU8* data_0, NI data_0Len_0) {	NU64 t0;	NU64 t1;	tyArray__hPrcw5mUju9bhG2eUWCnieQ W;	NU64 pX60gensym42440031_;	NU64 pX60gensym42450402_;	NU64 pX60gensym42460402_;	NU64 pX60gensym42470402_;	NU64 pX60gensym42480402_;	NU64 pX60gensym42490402_;	NU64 pX60gensym42500402_;	NU64 pX60gensym42510402_;	NU64 pX60gensym42520402_;	NU64 pX60gensym42530403_;	NU64 pX60gensym42540403_;	NU64 pX60gensym42550403_;	NU64 pX60gensym42560403_;	NU64 pX60gensym42570403_;	NU64 pX60gensym42580403_;	NU64 pX60gensym42590403_;	NU64 s0;	NU64 s1;	NU64 s2;	NU64 s3;	NU64 s4;	NU64 s5;	NU64 s6;	NU64 s7;	t0 = (NU64)0;	t1 = (NU64)0;
 #line 344 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha2.nim"
 
 #line 353 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 0)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 0),data_0Len_0-1); }	pX60gensym42975031_ = (*((NU64*) ((&data_0[((NI) 0)]))));
+	if ((NU)(((NI) 0)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 0),data_0Len_0-1); }	pX60gensym42440031_ = (*((NU64*) ((&data_0[((NI) 0)]))));
 #line 354 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 354 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	W[(((NI) 0))- 0] = __builtin_bswap64(pX60gensym42975031_);
+	W[(((NI) 0))- 0] = __builtin_bswap64(pX60gensym42440031_);
 #line 344 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha2.nim"
 
 #line 353 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 8)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 8),data_0Len_0-1); }	pX60gensym42985402_ = (*((NU64*) ((&data_0[((NI) 8)]))));
+	if ((NU)(((NI) 8)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 8),data_0Len_0-1); }	pX60gensym42450402_ = (*((NU64*) ((&data_0[((NI) 8)]))));
 #line 354 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 354 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	W[(((NI) 1))- 0] = __builtin_bswap64(pX60gensym42985402_);
+	W[(((NI) 1))- 0] = __builtin_bswap64(pX60gensym42450402_);
 #line 345 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha2.nim"
 
 #line 353 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 16)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 16),data_0Len_0-1); }	pX60gensym42995402_ = (*((NU64*) ((&data_0[((NI) 16)]))));
+	if ((NU)(((NI) 16)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 16),data_0Len_0-1); }	pX60gensym42460402_ = (*((NU64*) ((&data_0[((NI) 16)]))));
 #line 354 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 354 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	W[(((NI) 2))- 0] = __builtin_bswap64(pX60gensym42995402_);
+	W[(((NI) 2))- 0] = __builtin_bswap64(pX60gensym42460402_);
 #line 345 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha2.nim"
 
 #line 353 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 24)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 24),data_0Len_0-1); }	pX60gensym43005402_ = (*((NU64*) ((&data_0[((NI) 24)]))));
+	if ((NU)(((NI) 24)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 24),data_0Len_0-1); }	pX60gensym42470402_ = (*((NU64*) ((&data_0[((NI) 24)]))));
 #line 354 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 354 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	W[(((NI) 3))- 0] = __builtin_bswap64(pX60gensym43005402_);
+	W[(((NI) 3))- 0] = __builtin_bswap64(pX60gensym42470402_);
 #line 346 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha2.nim"
 
 #line 353 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 32)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 32),data_0Len_0-1); }	pX60gensym43015402_ = (*((NU64*) ((&data_0[((NI) 32)]))));
+	if ((NU)(((NI) 32)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 32),data_0Len_0-1); }	pX60gensym42480402_ = (*((NU64*) ((&data_0[((NI) 32)]))));
 #line 354 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 354 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	W[(((NI) 4))- 0] = __builtin_bswap64(pX60gensym43015402_);
+	W[(((NI) 4))- 0] = __builtin_bswap64(pX60gensym42480402_);
 #line 346 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha2.nim"
 
 #line 353 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 40)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 40),data_0Len_0-1); }	pX60gensym43025402_ = (*((NU64*) ((&data_0[((NI) 40)]))));
+	if ((NU)(((NI) 40)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 40),data_0Len_0-1); }	pX60gensym42490402_ = (*((NU64*) ((&data_0[((NI) 40)]))));
 #line 354 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 354 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	W[(((NI) 5))- 0] = __builtin_bswap64(pX60gensym43025402_);
+	W[(((NI) 5))- 0] = __builtin_bswap64(pX60gensym42490402_);
 #line 347 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha2.nim"
 
 #line 353 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 48)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 48),data_0Len_0-1); }	pX60gensym43035402_ = (*((NU64*) ((&data_0[((NI) 48)]))));
+	if ((NU)(((NI) 48)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 48),data_0Len_0-1); }	pX60gensym42500402_ = (*((NU64*) ((&data_0[((NI) 48)]))));
 #line 354 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 354 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	W[(((NI) 6))- 0] = __builtin_bswap64(pX60gensym43035402_);
+	W[(((NI) 6))- 0] = __builtin_bswap64(pX60gensym42500402_);
 #line 347 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha2.nim"
 
 #line 353 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 56)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 56),data_0Len_0-1); }	pX60gensym43045402_ = (*((NU64*) ((&data_0[((NI) 56)]))));
+	if ((NU)(((NI) 56)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 56),data_0Len_0-1); }	pX60gensym42510402_ = (*((NU64*) ((&data_0[((NI) 56)]))));
 #line 354 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 354 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	W[(((NI) 7))- 0] = __builtin_bswap64(pX60gensym43045402_);
+	W[(((NI) 7))- 0] = __builtin_bswap64(pX60gensym42510402_);
 #line 348 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha2.nim"
 
 #line 353 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 64)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 64),data_0Len_0-1); }	pX60gensym43055402_ = (*((NU64*) ((&data_0[((NI) 64)]))));
+	if ((NU)(((NI) 64)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 64),data_0Len_0-1); }	pX60gensym42520402_ = (*((NU64*) ((&data_0[((NI) 64)]))));
 #line 354 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 354 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	W[(((NI) 8))- 0] = __builtin_bswap64(pX60gensym43055402_);
+	W[(((NI) 8))- 0] = __builtin_bswap64(pX60gensym42520402_);
 #line 348 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha2.nim"
 
 #line 353 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 72)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 72),data_0Len_0-1); }	pX60gensym43065403_ = (*((NU64*) ((&data_0[((NI) 72)]))));
+	if ((NU)(((NI) 72)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 72),data_0Len_0-1); }	pX60gensym42530403_ = (*((NU64*) ((&data_0[((NI) 72)]))));
 #line 354 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 354 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	W[(((NI) 9))- 0] = __builtin_bswap64(pX60gensym43065403_);
+	W[(((NI) 9))- 0] = __builtin_bswap64(pX60gensym42530403_);
 #line 349 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha2.nim"
 
 #line 353 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 80)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 80),data_0Len_0-1); }	pX60gensym43075403_ = (*((NU64*) ((&data_0[((NI) 80)]))));
+	if ((NU)(((NI) 80)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 80),data_0Len_0-1); }	pX60gensym42540403_ = (*((NU64*) ((&data_0[((NI) 80)]))));
 #line 354 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 354 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	W[(((NI) 10))- 0] = __builtin_bswap64(pX60gensym43075403_);
+	W[(((NI) 10))- 0] = __builtin_bswap64(pX60gensym42540403_);
 #line 349 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha2.nim"
 
 #line 353 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 88)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 88),data_0Len_0-1); }	pX60gensym43085403_ = (*((NU64*) ((&data_0[((NI) 88)]))));
+	if ((NU)(((NI) 88)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 88),data_0Len_0-1); }	pX60gensym42550403_ = (*((NU64*) ((&data_0[((NI) 88)]))));
 #line 354 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 354 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	W[(((NI) 11))- 0] = __builtin_bswap64(pX60gensym43085403_);
+	W[(((NI) 11))- 0] = __builtin_bswap64(pX60gensym42550403_);
 #line 350 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha2.nim"
 
 #line 353 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 96)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 96),data_0Len_0-1); }	pX60gensym43095403_ = (*((NU64*) ((&data_0[((NI) 96)]))));
+	if ((NU)(((NI) 96)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 96),data_0Len_0-1); }	pX60gensym42560403_ = (*((NU64*) ((&data_0[((NI) 96)]))));
 #line 354 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 354 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	W[(((NI) 12))- 0] = __builtin_bswap64(pX60gensym43095403_);
+	W[(((NI) 12))- 0] = __builtin_bswap64(pX60gensym42560403_);
 #line 350 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha2.nim"
 
 #line 353 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 104)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 104),data_0Len_0-1); }	pX60gensym43105403_ = (*((NU64*) ((&data_0[((NI) 104)]))));
+	if ((NU)(((NI) 104)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 104),data_0Len_0-1); }	pX60gensym42570403_ = (*((NU64*) ((&data_0[((NI) 104)]))));
 #line 354 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 354 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	W[(((NI) 13))- 0] = __builtin_bswap64(pX60gensym43105403_);
+	W[(((NI) 13))- 0] = __builtin_bswap64(pX60gensym42570403_);
 #line 351 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha2.nim"
 
 #line 353 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 112)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 112),data_0Len_0-1); }	pX60gensym43115403_ = (*((NU64*) ((&data_0[((NI) 112)]))));
+	if ((NU)(((NI) 112)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 112),data_0Len_0-1); }	pX60gensym42580403_ = (*((NU64*) ((&data_0[((NI) 112)]))));
 #line 354 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 354 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	W[(((NI) 14))- 0] = __builtin_bswap64(pX60gensym43115403_);
+	W[(((NI) 14))- 0] = __builtin_bswap64(pX60gensym42580403_);
 #line 351 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/sha2.nim"
 
 #line 353 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	if ((NU)(((NI) 120)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 120),data_0Len_0-1); }	pX60gensym43125403_ = (*((NU64*) ((&data_0[((NI) 120)]))));
+	if ((NU)(((NI) 120)) >= (NU)(data_0Len_0)){ raiseIndexError2(((NI) 120),data_0Len_0-1); }	pX60gensym42590403_ = (*((NU64*) ((&data_0[((NI) 120)]))));
 #line 354 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
 
 #line 354 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	W[(((NI) 15))- 0] = __builtin_bswap64(pX60gensym43125403_);	{		NI i;		NI i_2;		i = (NI)0;
+	W[(((NI) 15))- 0] = __builtin_bswap64(pX60gensym42590403_);	{		NI i;		NI i_2;		i = (NI)0;
 #line 106 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 		i_2 = ((NI) 16);		{
 #line 107 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"

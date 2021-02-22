@@ -1,2 +1,11 @@
 cb64	cb64__Yyfw6lxoVbgtswIxGnGnUQ	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/base64.nim	72	2
 cb64safe	cb64safe__q0GCLBVULDDeEKBBmNHUGw	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/base64.nim	73	2
+encode	encode__D4bDwZBUb9bAJslbVxAPmbg	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/base64.nim	167	5
+result	result	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/base64.nim	167	0
+lookupTable	lookupTable	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/base64.nim	143	10
+inputIndex`gensym67560010	inputIndexX60gensym67560010_	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/base64.nim	90	4
+outputIndex`gensym67560011	outputIndexX60gensym67560011_	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/base64.nim	91	4
+inputEnds`gensym67560012	inputEndsX60gensym67560012_	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/base64.nim	92	4
+n`gensym67560013	nX60gensym67560013_	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/base64.nim	93	4
+b`gensym67560014	bX60gensym67560014_	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/base64.nim	94	4
+padding`gensym67560018	paddingX60gensym67560018_	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/base64.nim	118	6

@@ -1,0 +1,9 @@
+isZero	isZero__hHCuOZEP3SZNWlqnu0VGGguint_comparison	/home/runner/work/nim-waku/nim-waku/vendor/nim-stint/stint/private/uint_comparison.nim	15	5
+isZero	isZero__Yu9aLkQ9cLhL5VwnNUuyAvKQuint_comparison	/home/runner/work/nim-waku/nim-waku/vendor/nim-stint/stint/private/uint_comparison.nim	15	5
+isZero	isZero__bitbVizNc3i9cchE5bo9acoAuint_comparison	/home/runner/work/nim-waku/nim-waku/vendor/nim-stint/stint/private/uint_comparison.nim	12	5
+==	eqeq___hyOd3DRsfGOsZ3ykXUTopAuint_comparison	/home/runner/work/nim-waku/nim-waku/vendor/nim-stint/stint/private/uint_comparison.nim	23	5
+<	lt___hyOd3DRsfGOsZ3ykXUTopA_2uint_comparison	/home/runner/work/nim-waku/nim-waku/vendor/nim-stint/stint/private/uint_comparison.nim	18	5
+<=	lteq___hyOd3DRsfGOsZ3ykXUTopA_3uint_comparison	/home/runner/work/nim-waku/nim-waku/vendor/nim-stint/stint/private/uint_comparison.nim	27	5
+==	eqeq___CEU6rCDBDF9aJ6KPYSjCDgAuint_comparison	/home/runner/work/nim-waku/nim-waku/vendor/nim-stint/stint/private/uint_comparison.nim	23	5
+<	lt___CEU6rCDBDF9aJ6KPYSjCDgA_2uint_comparison	/home/runner/work/nim-waku/nim-waku/vendor/nim-stint/stint/private/uint_comparison.nim	18	5
+<=	lteq___CEU6rCDBDF9aJ6KPYSjCDgA_3uint_comparison	/home/runner/work/nim-waku/nim-waku/vendor/nim-stint/stint/private/uint_comparison.nim	27	5

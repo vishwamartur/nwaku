@@ -3,7 +3,7 @@
 /* The generated code is subject to the original license. */
 /* Compiled for: Linux, amd64, gcc */
 /* Command for C compiler:
-   gcc -c  -w -pthread -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace/install/usr/include -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1/src -DHAVE_CONFIG_H -DHAVE_BUILTIN_EXPECT -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/src -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/inc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/tools -DBR_USE_UNIX_TIME=1 -DBR_USE_URANDOM=1 -DBR_LE_UNALIGNED=1 -DBR_64=1  -DBR_amd64=1 -DBR_INT128=1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/miniupnp/miniupnpc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/libnatpmp-upstream -DENABLE_STRNATPMPERR -march=native -g3 -Og -O3 -fno-strict-aliasing -fno-ident  -I/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib -I/home/runner/work/nim-waku/nim-waku/waku/v2/node -o nimcache/release/wakunode2/stdlib_sets.nim.c.o nimcache/release/wakunode2/stdlib_sets.nim.c */
+   gcc -c  -w -pthread -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace/install/usr/include -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1/src -DHAVE_CONFIG_H -DHAVE_BUILTIN_EXPECT -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/src -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/inc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/tools -DBR_USE_UNIX_TIME=1 -DBR_USE_URANDOM=1 -DBR_LE_UNALIGNED=1 -DBR_64=1  -DBR_amd64=1 -DBR_INT128=1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/certs -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/miniupnp/miniupnpc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/libnatpmp-upstream -DENABLE_STRNATPMPERR -march=native -g3 -Og -O3 -fno-strict-aliasing -fno-ident  -I/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib -I/home/runner/work/nim-waku/nim-waku/waku/v2/node -o nimcache/release/wakunode2/stdlib_sets.nim.c.o nimcache/release/wakunode2/stdlib_sets.nim.c */
 #define NIM_INTBITS 64
 
 #include "nimbase.h"
@@ -6799,7 +6799,7 @@ NTI__hnCuDR9cLe2lA3YIkwKIyuA_.size = sizeof(tyTuple__hnCuDR9cLe2lA3YIkwKIyuA);
 NTI__hnCuDR9cLe2lA3YIkwKIyuA_.kind = 18;
 NTI__hnCuDR9cLe2lA3YIkwKIyuA_.base = 0;
 NTI__hnCuDR9cLe2lA3YIkwKIyuA_.flags = 2;
-NTI__hnCuDR9cLe2lA3YIkwKIyuA_.name = "KeyValuePair[MessageID]";
+NTI__hnCuDR9cLe2lA3YIkwKIyuA_.name = "KeyValuePair[seq[byte]]";
 NTI__hnCuDR9cLe2lA3YIkwKIyuA_.nextType = nimTypeRoot; nimTypeRoot=&NTI__hnCuDR9cLe2lA3YIkwKIyuA_;
 TM__0JXiWyhP5OCO8jWMA6sb1w_72_2[0] = &TM__0JXiWyhP5OCO8jWMA6sb1w_0[52];
 TM__0JXiWyhP5OCO8jWMA6sb1w_0[52].kind = 1;
@@ -6817,7 +6817,7 @@ NTI__9aVNV7ijepQnHXz4JmQHd3g_.size = sizeof(tySequence__9aVNV7ijepQnHXz4JmQHd3g*
 NTI__9aVNV7ijepQnHXz4JmQHd3g_.kind = 24;
 NTI__9aVNV7ijepQnHXz4JmQHd3g_.base = (&NTI__hnCuDR9cLe2lA3YIkwKIyuA_);
 NTI__9aVNV7ijepQnHXz4JmQHd3g_.flags = 2;
-NTI__9aVNV7ijepQnHXz4JmQHd3g_.name = "KeyValuePairSeq[MessageID]";
+NTI__9aVNV7ijepQnHXz4JmQHd3g_.name = "KeyValuePairSeq[seq[byte]]";
 NTI__9aVNV7ijepQnHXz4JmQHd3g_.nextType = nimTypeRoot; nimTypeRoot=&NTI__9aVNV7ijepQnHXz4JmQHd3g_;
 NTI__9aVNV7ijepQnHXz4JmQHd3g_.marker = Marker_tySequence__9aVNV7ijepQnHXz4JmQHd3g;
 NTI__o1ej6dBUQnezVPAEZ8Ad9bA_.size = sizeof(tyObject_HashSet__o1ej6dBUQnezVPAEZ8Ad9bA);

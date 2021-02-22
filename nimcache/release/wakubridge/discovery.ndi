@@ -232,8 +232,6 @@ result	result	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/discove
 lookupRandom	lookupRandom__OdmAYTNA6Qwiyjb7tAdJEgdiscovery	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/discovery.nim	286	5
 d	d	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/discovery.nim	286	19
 result	result	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/discovery.nim	286	0
-ms	ms	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncloop.nim	889	17
-result	result	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncloop.nim	889	0
 k	k	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/kademlia.nim	513	22
 result	result	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/kademlia.nim	513	0
 r	r	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/kademlia.nim	232	9

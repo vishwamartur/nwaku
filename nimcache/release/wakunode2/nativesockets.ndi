@@ -54,3 +54,5 @@ bindAddr	bindAddr__aQyfo03zPWPcHE65m8j1pw	/home/runner/work/nim-waku/nim-waku/ve
 result	result	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/nativesockets.nim	227	0
 listen	listen__pMPsTdchcqQvJDjLVQV1BQ	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/nativesockets.nim	231	5
 result	result	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/nativesockets.nim	231	0
+ntohl	ntohl__iBa9bcNfE4emNkgmMoxrrtA	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/nativesockets.nim	268	5
+result	result	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/nativesockets.nim	268	0

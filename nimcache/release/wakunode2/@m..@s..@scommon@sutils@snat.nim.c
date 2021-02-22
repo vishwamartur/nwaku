@@ -3,7 +3,7 @@
 /* The generated code is subject to the original license. */
 /* Compiled for: Linux, amd64, gcc */
 /* Command for C compiler:
-   gcc -c  -w -pthread -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace/install/usr/include -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1/src -DHAVE_CONFIG_H -DHAVE_BUILTIN_EXPECT -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/src -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/inc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/tools -DBR_USE_UNIX_TIME=1 -DBR_USE_URANDOM=1 -DBR_LE_UNALIGNED=1 -DBR_64=1  -DBR_amd64=1 -DBR_INT128=1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/miniupnp/miniupnpc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/libnatpmp-upstream -DENABLE_STRNATPMPERR -march=native -g3 -Og -O3 -fno-strict-aliasing -fno-ident  -I/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib -I/home/runner/work/nim-waku/nim-waku/waku/v2/node -o nimcache/release/wakunode2/@m..@s..@scommon@sutils@snat.nim.c.o nimcache/release/wakunode2/@m..@s..@scommon@sutils@snat.nim.c */
+   gcc -c  -w -pthread -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace/install/usr/include -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1/src -DHAVE_CONFIG_H -DHAVE_BUILTIN_EXPECT -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/src -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/inc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/tools -DBR_USE_UNIX_TIME=1 -DBR_USE_URANDOM=1 -DBR_LE_UNALIGNED=1 -DBR_64=1  -DBR_amd64=1 -DBR_INT128=1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/certs -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/miniupnp/miniupnpc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/libnatpmp-upstream -DENABLE_STRNATPMPERR -march=native -g3 -Og -O3 -fno-strict-aliasing -fno-ident  -I/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib -I/home/runner/work/nim-waku/nim-waku/waku/v2/node -o nimcache/release/wakunode2/@m..@s..@scommon@sutils@snat.nim.c.o nimcache/release/wakunode2/@m..@s..@scommon@sutils@snat.nim.c */
 #define NIM_INTBITS 64
 
 #include "nimbase.h"
@@ -795,15 +795,15 @@ N_LIB_PRIVATE N_NIMCALL(tyTuple__FkTTvqR0qjrSirqw1mlpbQ, setupNat__UP9cfGZeQa8Kj
 							flushRecord__2TFyTWhDxeU5kGr2yqnA6w((&record));
 						} LA25: ;
 						popSafePoint();					}
-					else {						popSafePoint();						if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {							tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym186705019_;							Exception* T37_;							Exception* T38_;							TM__SaiOnI4NH0kZ5tnMqgp4jw_13.status = 0;
+					else {						popSafePoint();						if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {							tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym199400019_;							Exception* T37_;							Exception* T38_;							TM__SaiOnI4NH0kZ5tnMqgp4jw_13.status = 0;
 #line 323 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 
 #line 0 "\?\?\?"
 
 #line 0 "\?\?\?"
-							T37_ = (Exception*)0;							T37_ = getCurrentException();							errX60gensym186705019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T37_));
+							T37_ = (Exception*)0;							T37_ = getCurrentException();							errX60gensym199400019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T37_));
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
-							T38_ = (Exception*)0;							T38_ = &errX60gensym186705019_->Sup;
+							T38_ = (Exception*)0;							T38_ = &errX60gensym199400019_->Sup;
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 							logLoggingFailure__HTlKfqAl9c6Ci7zIH6cYlmg("nor a valid IP address", T38_);
 							popCurrentException();						}
@@ -874,15 +874,15 @@ N_LIB_PRIVATE N_NIMCALL(tyTuple__FkTTvqR0qjrSirqw1mlpbQ, setupNat__UP9cfGZeQa8Kj
 					flushRecord__2TFyTWhDxeU5kGr2yqnA6w((&record_2));
 				} LA41: ;
 				popSafePoint();			}
-			else {				popSafePoint();				if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {					tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym186780019_;					Exception* T51_;					Exception* T52_;					TM__SaiOnI4NH0kZ5tnMqgp4jw_19.status = 0;
+			else {				popSafePoint();				if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {					tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym199475019_;					Exception* T51_;					Exception* T52_;					TM__SaiOnI4NH0kZ5tnMqgp4jw_19.status = 0;
 #line 323 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 
 #line 0 "\?\?\?"
 
 #line 0 "\?\?\?"
-					T51_ = (Exception*)0;					T51_ = getCurrentException();					errX60gensym186780019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T51_));
+					T51_ = (Exception*)0;					T51_ = getCurrentException();					errX60gensym199475019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T51_));
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
-					T52_ = (Exception*)0;					T52_ = &errX60gensym186780019_->Sup;
+					T52_ = (Exception*)0;					T52_ = &errX60gensym199475019_->Sup;
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 					logLoggingFailure__HTlKfqAl9c6Ci7zIH6cYlmg("not a valid NAT mechanism", T52_);
 					popCurrentException();				}

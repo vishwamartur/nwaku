@@ -3,7 +3,7 @@
 /* The generated code is subject to the original license. */
 /* Compiled for: Linux, amd64, gcc */
 /* Command for C compiler:
-   gcc -c  -w -pthread -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace/install/usr/include -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1/src -DHAVE_CONFIG_H -DHAVE_BUILTIN_EXPECT -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/src -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/inc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/tools -DBR_USE_UNIX_TIME=1 -DBR_USE_URANDOM=1 -DBR_LE_UNALIGNED=1 -DBR_64=1  -DBR_amd64=1 -DBR_INT128=1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/miniupnp/miniupnpc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/libnatpmp-upstream -DENABLE_STRNATPMPERR -march=native -g3 -Og -O3 -fno-strict-aliasing -fno-ident  -I/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib -I/home/runner/work/nim-waku/nim-waku/waku/v2/node -o nimcache/release/wakunode2/@m..@s..@s..@svendor@snim-eth@seth@snet@snat.nim.c.o nimcache/release/wakunode2/@m..@s..@s..@svendor@snim-eth@seth@snet@snat.nim.c */
+   gcc -c  -w -pthread -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace/install/usr/include -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1/src -DHAVE_CONFIG_H -DHAVE_BUILTIN_EXPECT -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/src -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/inc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/tools -DBR_USE_UNIX_TIME=1 -DBR_USE_URANDOM=1 -DBR_LE_UNALIGNED=1 -DBR_64=1  -DBR_amd64=1 -DBR_INT128=1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/certs -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/miniupnp/miniupnpc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/libnatpmp-upstream -DENABLE_STRNATPMPERR -march=native -g3 -Og -O3 -fno-strict-aliasing -fno-ident  -I/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib -I/home/runner/work/nim-waku/nim-waku/waku/v2/node -o nimcache/release/wakunode2/@m..@s..@s..@svendor@snim-eth@seth@snet@snat.nim.c.o nimcache/release/wakunode2/@m..@s..@s..@svendor@snim-eth@seth@snet@snat.nim.c */
 #define NIM_INTBITS 64
 
 #include "nimbase.h"
@@ -878,15 +878,15 @@ N_LIB_PRIVATE N_NIMCALL(tyObject_Option__rZSB3RRJAwsx6nOzk6ceBQ, getExternalIP__
 					flushRecord__2TFyTWhDxeU5kGr2yqnA6w((&record));
 				} LA16: ;
 				popSafePoint();			}
-			else {				popSafePoint();				if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {					tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym185235019_;					Exception* T27_;					Exception* T28_;					TM__KZyeRJvkqN4K9bGdF33t3dw_6.status = 0;
+			else {				popSafePoint();				if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {					tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym197930019_;					Exception* T27_;					Exception* T28_;					TM__KZyeRJvkqN4K9bGdF33t3dw_6.status = 0;
 #line 323 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 
 #line 0 "\?\?\?"
 
 #line 0 "\?\?\?"
-					T27_ = (Exception*)0;					T27_ = getCurrentException();					errX60gensym185235019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T27_));
+					T27_ = (Exception*)0;					T27_ = getCurrentException();					errX60gensym197930019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T27_));
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
-					T28_ = (Exception*)0;					T28_ = &errX60gensym185235019_->Sup;
+					T28_ = (Exception*)0;					T28_ = &errX60gensym197930019_->Sup;
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 					logLoggingFailure__HTlKfqAl9c6Ci7zIH6cYlmg("UPnP", T28_);
 					popCurrentException();				}
@@ -993,15 +993,15 @@ N_LIB_PRIVATE N_NIMCALL(tyObject_Option__rZSB3RRJAwsx6nOzk6ceBQ, getExternalIP__
 						flushRecord__2TFyTWhDxeU5kGr2yqnA6w((&record_2));
 					} LA40: ;
 					popSafePoint();				}
-				else {					popSafePoint();					if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {						tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym185300019_;						Exception* T50_;						Exception* T51_;						TM__KZyeRJvkqN4K9bGdF33t3dw_13.status = 0;
+				else {					popSafePoint();					if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {						tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym197995019_;						Exception* T50_;						Exception* T51_;						TM__KZyeRJvkqN4K9bGdF33t3dw_13.status = 0;
 #line 323 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 
 #line 0 "\?\?\?"
 
 #line 0 "\?\?\?"
-						T50_ = (Exception*)0;						T50_ = getCurrentException();						errX60gensym185300019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T50_));
+						T50_ = (Exception*)0;						T50_ = getCurrentException();						errX60gensym197995019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T50_));
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
-						T51_ = (Exception*)0;						T51_ = &errX60gensym185300019_->Sup;
+						T51_ = (Exception*)0;						T51_ = &errX60gensym197995019_->Sup;
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 						logLoggingFailure__HTlKfqAl9c6Ci7zIH6cYlmg("UPnP", T51_);
 						popCurrentException();					}
@@ -1085,15 +1085,15 @@ N_LIB_PRIVATE N_NIMCALL(tyObject_Option__rZSB3RRJAwsx6nOzk6ceBQ, getExternalIP__
 							flushRecord__2TFyTWhDxeU5kGr2yqnA6w((&record_3));
 						} LA61: ;
 						popSafePoint();					}
-					else {						popSafePoint();						if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {							tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym185370019_;							Exception* T72_;							Exception* T73_;							TM__KZyeRJvkqN4K9bGdF33t3dw_15.status = 0;
+					else {						popSafePoint();						if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {							tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym198065019_;							Exception* T72_;							Exception* T73_;							TM__KZyeRJvkqN4K9bGdF33t3dw_15.status = 0;
 #line 323 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 
 #line 0 "\?\?\?"
 
 #line 0 "\?\?\?"
-							T72_ = (Exception*)0;							T72_ = getCurrentException();							errX60gensym185370019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T72_));
+							T72_ = (Exception*)0;							T72_ = getCurrentException();							errX60gensym198065019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T72_));
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
-							T73_ = (Exception*)0;							T73_ = &errX60gensym185370019_->Sup;
+							T73_ = (Exception*)0;							T73_ = &errX60gensym198065019_->Sup;
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 							logLoggingFailure__HTlKfqAl9c6Ci7zIH6cYlmg("UPnP", T73_);
 							popCurrentException();						}
@@ -1187,15 +1187,15 @@ N_LIB_PRIVATE N_NIMCALL(tyObject_Option__rZSB3RRJAwsx6nOzk6ceBQ, getExternalIP__
 									flushRecord__2TFyTWhDxeU5kGr2yqnA6w((&record_4));
 								} LA81: ;
 								popSafePoint();							}
-							else {								popSafePoint();								if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {									tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym185450019_;									Exception* T91_;									Exception* T92_;									TM__KZyeRJvkqN4K9bGdF33t3dw_21.status = 0;
+							else {								popSafePoint();								if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {									tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym198145019_;									Exception* T91_;									Exception* T92_;									TM__KZyeRJvkqN4K9bGdF33t3dw_21.status = 0;
 #line 323 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 
 #line 0 "\?\?\?"
 
 #line 0 "\?\?\?"
-									T91_ = (Exception*)0;									T91_ = getCurrentException();									errX60gensym185450019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T91_));
+									T91_ = (Exception*)0;									T91_ = getCurrentException();									errX60gensym198145019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T91_));
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
-									T92_ = (Exception*)0;									T92_ = &errX60gensym185450019_->Sup;
+									T92_ = (Exception*)0;									T92_ = &errX60gensym198145019_->Sup;
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 									logLoggingFailure__HTlKfqAl9c6Ci7zIH6cYlmg("parseIpAddress() exception", T92_);
 									popCurrentException();								}
@@ -1308,15 +1308,15 @@ N_LIB_PRIVATE N_NIMCALL(tyObject_Option__rZSB3RRJAwsx6nOzk6ceBQ, getExternalIP__
 					flushRecord__2TFyTWhDxeU5kGr2yqnA6w((&record_5));
 				} LA108: ;
 				popSafePoint();			}
-			else {				popSafePoint();				if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {					tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym185520019_;					Exception* T119_;					Exception* T120_;					TM__KZyeRJvkqN4K9bGdF33t3dw_25.status = 0;
+			else {				popSafePoint();				if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {					tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym198215019_;					Exception* T119_;					Exception* T120_;					TM__KZyeRJvkqN4K9bGdF33t3dw_25.status = 0;
 #line 323 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 
 #line 0 "\?\?\?"
 
 #line 0 "\?\?\?"
-					T119_ = (Exception*)0;					T119_ = getCurrentException();					errX60gensym185520019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T119_));
+					T119_ = (Exception*)0;					T119_ = getCurrentException();					errX60gensym198215019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T119_));
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
-					T120_ = (Exception*)0;					T120_ = &errX60gensym185520019_->Sup;
+					T120_ = (Exception*)0;					T120_ = &errX60gensym198215019_->Sup;
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 					logLoggingFailure__HTlKfqAl9c6Ci7zIH6cYlmg("NAT-PMP", T120_);
 					popCurrentException();				}
@@ -1398,15 +1398,15 @@ N_LIB_PRIVATE N_NIMCALL(tyObject_Option__rZSB3RRJAwsx6nOzk6ceBQ, getExternalIP__
 						flushRecord__2TFyTWhDxeU5kGr2yqnA6w((&record_6));
 					} LA127: ;
 					popSafePoint();				}
-				else {					popSafePoint();					if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {						tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym185590019_;						Exception* T138_;						Exception* T139_;						TM__KZyeRJvkqN4K9bGdF33t3dw_28.status = 0;
+				else {					popSafePoint();					if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {						tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym198285019_;						Exception* T138_;						Exception* T139_;						TM__KZyeRJvkqN4K9bGdF33t3dw_28.status = 0;
 #line 323 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 
 #line 0 "\?\?\?"
 
 #line 0 "\?\?\?"
-						T138_ = (Exception*)0;						T138_ = getCurrentException();						errX60gensym185590019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T138_));
+						T138_ = (Exception*)0;						T138_ = getCurrentException();						errX60gensym198285019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T138_));
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
-						T139_ = (Exception*)0;						T139_ = &errX60gensym185590019_->Sup;
+						T139_ = (Exception*)0;						T139_ = &errX60gensym198285019_->Sup;
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 						logLoggingFailure__HTlKfqAl9c6Ci7zIH6cYlmg("NAT-PMP", T139_);
 						popCurrentException();					}
@@ -1502,15 +1502,15 @@ N_LIB_PRIVATE N_NIMCALL(tyObject_Option__rZSB3RRJAwsx6nOzk6ceBQ, getExternalIP__
 								flushRecord__2TFyTWhDxeU5kGr2yqnA6w((&record_7));
 							} LA148: ;
 							popSafePoint();						}
-						else {							popSafePoint();							if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {								tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym185670019_;								Exception* T158_;								Exception* T159_;								TM__KZyeRJvkqN4K9bGdF33t3dw_31.status = 0;
+						else {							popSafePoint();							if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {								tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym198365019_;								Exception* T158_;								Exception* T159_;								TM__KZyeRJvkqN4K9bGdF33t3dw_31.status = 0;
 #line 323 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 
 #line 0 "\?\?\?"
 
 #line 0 "\?\?\?"
-								T158_ = (Exception*)0;								T158_ = getCurrentException();								errX60gensym185670019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T158_));
+								T158_ = (Exception*)0;								T158_ = getCurrentException();								errX60gensym198365019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T158_));
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
-								T159_ = (Exception*)0;								T159_ = &errX60gensym185670019_->Sup;
+								T159_ = (Exception*)0;								T159_ = &errX60gensym198365019_->Sup;
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 								logLoggingFailure__HTlKfqAl9c6Ci7zIH6cYlmg("parseIpAddress() exception", T159_);
 								popCurrentException();							}
@@ -1655,15 +1655,15 @@ N_LIB_PRIVATE N_NIMCALL(tyObject_Option__NFooQFx9abiHLqq4U9cP9ahdg, doPortMappin
 									flushRecord__2TFyTWhDxeU5kGr2yqnA6w((&record));
 								} LA19: ;
 								popSafePoint();							}
-							else {								popSafePoint();								if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {									tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym185740019_;									Exception* T30_;									Exception* T31_;									TM__KZyeRJvkqN4K9bGdF33t3dw_33.status = 0;
+							else {								popSafePoint();								if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {									tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym198435019_;									Exception* T30_;									Exception* T31_;									TM__KZyeRJvkqN4K9bGdF33t3dw_33.status = 0;
 #line 323 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 
 #line 0 "\?\?\?"
 
 #line 0 "\?\?\?"
-									T30_ = (Exception*)0;									T30_ = getCurrentException();									errX60gensym185740019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T30_));
+									T30_ = (Exception*)0;									T30_ = getCurrentException();									errX60gensym198435019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T30_));
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
-									T31_ = (Exception*)0;									T31_ = &errX60gensym185740019_->Sup;
+									T31_ = (Exception*)0;									T31_ = &errX60gensym198435019_->Sup;
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 									logLoggingFailure__HTlKfqAl9c6Ci7zIH6cYlmg("UPnP port mapping", T31_);
 									popCurrentException();								}
@@ -1752,15 +1752,15 @@ N_LIB_PRIVATE N_NIMCALL(tyObject_Option__NFooQFx9abiHLqq4U9cP9ahdg, doPortMappin
 										flushRecord__2TFyTWhDxeU5kGr2yqnA6w((&record_2));
 									} LA39: ;
 									popSafePoint();								}
-								else {									popSafePoint();									if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {										tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym185810019_;										Exception* T50_;										Exception* T51_;										TM__KZyeRJvkqN4K9bGdF33t3dw_36.status = 0;
+								else {									popSafePoint();									if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {										tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym198505019_;										Exception* T50_;										Exception* T51_;										TM__KZyeRJvkqN4K9bGdF33t3dw_36.status = 0;
 #line 323 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 
 #line 0 "\?\?\?"
 
 #line 0 "\?\?\?"
-										T50_ = (Exception*)0;										T50_ = getCurrentException();										errX60gensym185810019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T50_));
+										T50_ = (Exception*)0;										T50_ = getCurrentException();										errX60gensym198505019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T50_));
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
-										T51_ = (Exception*)0;										T51_ = &errX60gensym185810019_->Sup;
+										T51_ = (Exception*)0;										T51_ = &errX60gensym198505019_->Sup;
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 										logLoggingFailure__HTlKfqAl9c6Ci7zIH6cYlmg("UPnP port mapping check failed. Assuming the check itself is br"
 "oken and the port mapping was done.", T51_);
@@ -1838,15 +1838,15 @@ N_LIB_PRIVATE N_NIMCALL(tyObject_Option__NFooQFx9abiHLqq4U9cP9ahdg, doPortMappin
 									flushRecord__2TFyTWhDxeU5kGr2yqnA6w((&record_3));
 								} LA53: ;
 								popSafePoint();							}
-							else {								popSafePoint();								if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {									tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym185885019_;									Exception* T63_;									Exception* T64_;									TM__KZyeRJvkqN4K9bGdF33t3dw_39.status = 0;
+							else {								popSafePoint();								if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {									tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym198580019_;									Exception* T63_;									Exception* T64_;									TM__KZyeRJvkqN4K9bGdF33t3dw_39.status = 0;
 #line 323 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 
 #line 0 "\?\?\?"
 
 #line 0 "\?\?\?"
-									T63_ = (Exception*)0;									T63_ = getCurrentException();									errX60gensym185885019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T63_));
+									T63_ = (Exception*)0;									T63_ = getCurrentException();									errX60gensym198580019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T63_));
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
-									T64_ = (Exception*)0;									T64_ = &errX60gensym185885019_->Sup;
+									T64_ = (Exception*)0;									T64_ = &errX60gensym198580019_->Sup;
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 									logLoggingFailure__HTlKfqAl9c6Ci7zIH6cYlmg("UPnP: added port mapping", T64_);
 									popCurrentException();								}
@@ -1979,15 +1979,15 @@ N_LIB_PRIVATE N_NIMCALL(tyObject_Option__NFooQFx9abiHLqq4U9cP9ahdg, doPortMappin
 									flushRecord__2TFyTWhDxeU5kGr2yqnA6w((&record_4));
 								} LA86: ;
 								popSafePoint();							}
-							else {								popSafePoint();								if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {									tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym186095019_;									Exception* T97_;									Exception* T98_;									TM__KZyeRJvkqN4K9bGdF33t3dw_46.status = 0;
+							else {								popSafePoint();								if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {									tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym198790019_;									Exception* T97_;									Exception* T98_;									TM__KZyeRJvkqN4K9bGdF33t3dw_46.status = 0;
 #line 323 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 
 #line 0 "\?\?\?"
 
 #line 0 "\?\?\?"
-									T97_ = (Exception*)0;									T97_ = getCurrentException();									errX60gensym186095019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T97_));
+									T97_ = (Exception*)0;									T97_ = getCurrentException();									errX60gensym198790019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T97_));
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
-									T98_ = (Exception*)0;									T98_ = &errX60gensym186095019_->Sup;
+									T98_ = (Exception*)0;									T98_ = &errX60gensym198790019_->Sup;
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 									logLoggingFailure__HTlKfqAl9c6Ci7zIH6cYlmg("NAT-PMP port mapping", T98_);
 									popCurrentException();								}
@@ -2074,15 +2074,15 @@ N_LIB_PRIVATE N_NIMCALL(tyObject_Option__NFooQFx9abiHLqq4U9cP9ahdg, doPortMappin
 									flushRecord__2TFyTWhDxeU5kGr2yqnA6w((&record_5));
 								} LA101: ;
 								popSafePoint();							}
-							else {								popSafePoint();								if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {									tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym186175019_;									Exception* T111_;									Exception* T112_;									TM__KZyeRJvkqN4K9bGdF33t3dw_49.status = 0;
+							else {								popSafePoint();								if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {									tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym198870019_;									Exception* T111_;									Exception* T112_;									TM__KZyeRJvkqN4K9bGdF33t3dw_49.status = 0;
 #line 323 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 
 #line 0 "\?\?\?"
 
 #line 0 "\?\?\?"
-									T111_ = (Exception*)0;									T111_ = getCurrentException();									errX60gensym186175019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T111_));
+									T111_ = (Exception*)0;									T111_ = getCurrentException();									errX60gensym198870019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T111_));
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
-									T112_ = (Exception*)0;									T112_ = &errX60gensym186175019_->Sup;
+									T112_ = (Exception*)0;									T112_ = &errX60gensym198870019_->Sup;
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 									logLoggingFailure__HTlKfqAl9c6Ci7zIH6cYlmg("NAT-PMP: added port mapping", T112_);
 									popCurrentException();								}
@@ -2419,15 +2419,15 @@ N_LIB_PRIVATE N_NOCONV(void, stopNatThread__MbizJe5uH9aBP9ao9czq1pMVQ)(void) {	t
 										flushRecord__2TFyTWhDxeU5kGr2yqnA6w((&record));
 									} LA23: ;
 									popSafePoint();								}
-								else {									popSafePoint();									if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {										tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym186340019_;										Exception* T34_;										Exception* T35_;										TM__KZyeRJvkqN4K9bGdF33t3dw_54.status = 0;
+								else {									popSafePoint();									if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {										tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym199035019_;										Exception* T34_;										Exception* T35_;										TM__KZyeRJvkqN4K9bGdF33t3dw_54.status = 0;
 #line 323 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 
 #line 0 "\?\?\?"
 
 #line 0 "\?\?\?"
-										T34_ = (Exception*)0;										T34_ = getCurrentException();										errX60gensym186340019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T34_));
+										T34_ = (Exception*)0;										T34_ = getCurrentException();										errX60gensym199035019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T34_));
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
-										T35_ = (Exception*)0;										T35_ = &errX60gensym186340019_->Sup;
+										T35_ = (Exception*)0;										T35_ = &errX60gensym199035019_->Sup;
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 										logLoggingFailure__HTlKfqAl9c6Ci7zIH6cYlmg("UPnP port mapping deletion", T35_);
 										popCurrentException();									}
@@ -2505,15 +2505,15 @@ N_LIB_PRIVATE N_NOCONV(void, stopNatThread__MbizJe5uH9aBP9ao9czq1pMVQ)(void) {	t
 										flushRecord__2TFyTWhDxeU5kGr2yqnA6w((&record_2));
 									} LA38: ;
 									popSafePoint();								}
-								else {									popSafePoint();									if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {										tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym186405019_;										Exception* T48_;										Exception* T49_;										TM__KZyeRJvkqN4K9bGdF33t3dw_57.status = 0;
+								else {									popSafePoint();									if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {										tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym199100019_;										Exception* T48_;										Exception* T49_;										TM__KZyeRJvkqN4K9bGdF33t3dw_57.status = 0;
 #line 323 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 
 #line 0 "\?\?\?"
 
 #line 0 "\?\?\?"
-										T48_ = (Exception*)0;										T48_ = getCurrentException();										errX60gensym186405019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T48_));
+										T48_ = (Exception*)0;										T48_ = getCurrentException();										errX60gensym199100019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T48_));
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
-										T49_ = (Exception*)0;										T49_ = &errX60gensym186405019_->Sup;
+										T49_ = (Exception*)0;										T49_ = &errX60gensym199100019_->Sup;
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 										logLoggingFailure__HTlKfqAl9c6Ci7zIH6cYlmg("UPnP: deleted port mapping", T49_);
 										popCurrentException();									}
@@ -2632,15 +2632,15 @@ N_LIB_PRIVATE N_NOCONV(void, stopNatThread__MbizJe5uH9aBP9ao9czq1pMVQ)(void) {	t
 										flushRecord__2TFyTWhDxeU5kGr2yqnA6w((&record_3));
 									} LA69: ;
 									popSafePoint();								}
-								else {									popSafePoint();									if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {										tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym186495019_;										Exception* T80_;										Exception* T81_;										TM__KZyeRJvkqN4K9bGdF33t3dw_61.status = 0;
+								else {									popSafePoint();									if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {										tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym199190019_;										Exception* T80_;										Exception* T81_;										TM__KZyeRJvkqN4K9bGdF33t3dw_61.status = 0;
 #line 323 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 
 #line 0 "\?\?\?"
 
 #line 0 "\?\?\?"
-										T80_ = (Exception*)0;										T80_ = getCurrentException();										errX60gensym186495019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T80_));
+										T80_ = (Exception*)0;										T80_ = getCurrentException();										errX60gensym199190019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T80_));
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
-										T81_ = (Exception*)0;										T81_ = &errX60gensym186495019_->Sup;
+										T81_ = (Exception*)0;										T81_ = &errX60gensym199190019_->Sup;
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 										logLoggingFailure__HTlKfqAl9c6Ci7zIH6cYlmg("NAT-PMP port mapping deletion", T81_);
 										popCurrentException();									}
@@ -2718,15 +2718,15 @@ N_LIB_PRIVATE N_NOCONV(void, stopNatThread__MbizJe5uH9aBP9ao9czq1pMVQ)(void) {	t
 										flushRecord__2TFyTWhDxeU5kGr2yqnA6w((&record_4));
 									} LA84: ;
 									popSafePoint();								}
-								else {									popSafePoint();									if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {										tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym186560019_;										Exception* T94_;										Exception* T95_;										TM__KZyeRJvkqN4K9bGdF33t3dw_64.status = 0;
+								else {									popSafePoint();									if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {										tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym199255019_;										Exception* T94_;										Exception* T95_;										TM__KZyeRJvkqN4K9bGdF33t3dw_64.status = 0;
 #line 323 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 
 #line 0 "\?\?\?"
 
 #line 0 "\?\?\?"
-										T94_ = (Exception*)0;										T94_ = getCurrentException();										errX60gensym186560019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T94_));
+										T94_ = (Exception*)0;										T94_ = getCurrentException();										errX60gensym199255019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T94_));
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
-										T95_ = (Exception*)0;										T95_ = &errX60gensym186560019_->Sup;
+										T95_ = (Exception*)0;										T95_ = &errX60gensym199255019_->Sup;
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 										logLoggingFailure__HTlKfqAl9c6Ci7zIH6cYlmg("NAT-PMP: deleted port mapping", T95_);
 										popCurrentException();									}

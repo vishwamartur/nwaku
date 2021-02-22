@@ -641,6 +641,29 @@ N_LIB_PRIVATE N_NIMCALL(int, listen__pMPsTdchcqQvJDjLVQV1BQ)(int socket, int bac
 
 #line 239 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/nativesockets.nim"
 	result = listen(socket, backlog);	return result;}
+
+#line 268 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/nativesockets.nim"
+N_LIB_PRIVATE N_NIMCALL(NU32, ntohl__iBa9bcNfE4emNkgmMoxrrtA)(NU32 x_0) {	NU32 result;	result = (NU32)0;
+#line 275 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/nativesockets.nim"
+
+#line 275 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/nativesockets.nim"
+
+#line 274 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/nativesockets.nim"
+
+#line 273 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/nativesockets.nim"
+
+#line 273 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/nativesockets.nim"
+
+#line 274 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/nativesockets.nim"
+
+#line 274 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/nativesockets.nim"
+
+#line 275 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/nativesockets.nim"
+
+#line 275 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/nativesockets.nim"
+
+#line 276 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/nativesockets.nim"
+	result = (NU32)((NU32)((NU32)((NU32)((NU32)(x_0) >> (NU32)(((NU32) 24))) | (NU32)((NU32)((NU32)(x_0) >> (NU32)(((NU32) 8))) & ((NU32) 65280))) | (NU32)((NU32)((NU32)(x_0) << (NU32)(((NU32) 8))) & ((NU32) 16711680))) | (NU32)((NU32)(x_0) << (NU32)(((NU32) 24))));	return result;}
 N_LIB_PRIVATE N_NIMCALL(void, stdlib_nativesocketsDatInit000)(void) {
 
 #line 999999 "generated_not_to_break_here"

@@ -74,3 +74,9 @@ name	name_1	/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/cli
 handler	handler	/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/client.nim	90	8
 t	t	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim	428	25
 key	key_0	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim	428	41
+initRpcClient	initRpcClient__M84XvqVukfke6zK9cvszpeg	/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/client.nim	21	5
+initRpcClient	initRpcClient__F9aLmvcElUrr78VbxBMSR8A	/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/client.nim	21	5
+setMethodHandler	setMethodHandler__SgzJ9bmAIBnh0GdJaYteCuw	/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/client.nim	197	5
+t	t	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim	309	18
+key	key_0	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim	309	38
+val	val_0	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim	309	46

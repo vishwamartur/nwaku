@@ -26,6 +26,13 @@ u	u	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/li
 i	i	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/chcks.nim	34	22
 a	a	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/chcks.nim	34	25
 b	b	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/chcks.nim	34	28
+rand	rand__v7jZDEs4VOsrcpvk0yo8Rg	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/random.nim	253	5
+result	result	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/random.nim	253	0
+rand	rand__SN9aVN0MBPaaBWhJdtZLhNA	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/random.nim	233	5
+r	r	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/random.nim	233	11
+max	max	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/random.nim	233	24
+result	result	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/random.nim	233	0
+x	x_1	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/random.nim	249	8
 shuffle	shuffle__qTQOUd1teUtnaAiEsB5gjQ	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/random.nim	610	5
 shuffle	shuffle__okICJB7yyEczQCSYXVlJiQ	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/random.nim	595	5
 r	r	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/random.nim	595	17
@@ -33,11 +40,6 @@ x	x_0	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/
 i	i	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/random.nim	606	6
 res	res	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim	28	8
 j	j	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/random.nim	607	8
-rand	rand__SN9aVN0MBPaaBWhJdtZLhNA	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/random.nim	233	5
-r	r	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/random.nim	233	11
-max	max	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/random.nim	233	24
-result	result	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/random.nim	233	0
-x	x_1	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/random.nim	249	8
 shuffle	shuffle__Yos9cVlDRkzYbec5E9bHYojA	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/random.nim	610	5
 shuffle	shuffle__xZRKNe6YzIK3ZR2f11OUGQ	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/random.nim	595	5
 r	r	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/random.nim	595	17

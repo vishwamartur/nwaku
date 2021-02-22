@@ -3,7 +3,7 @@
 /* The generated code is subject to the original license. */
 /* Compiled for: Linux, amd64, gcc */
 /* Command for C compiler:
-   gcc -c  -w -pthread -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace/install/usr/include -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1/src -DHAVE_CONFIG_H -DHAVE_BUILTIN_EXPECT -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/src -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/inc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/tools -DBR_USE_UNIX_TIME=1 -DBR_USE_URANDOM=1 -DBR_LE_UNALIGNED=1 -DBR_64=1  -DBR_amd64=1 -DBR_INT128=1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/miniupnp/miniupnpc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/libnatpmp-upstream -DENABLE_STRNATPMPERR -march=native -g3 -Og -O3 -fno-strict-aliasing -fno-ident  -I/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib -I/home/runner/work/nim-waku/nim-waku/examples/v2 -o nimcache/release/chat2/@m..@s..@svendor@snim-libp2p@slibp2p@sprotocols@spubsub@speertable.nim.c.o nimcache/release/chat2/@m..@s..@svendor@snim-libp2p@slibp2p@sprotocols@spubsub@speertable.nim.c */
+   gcc -c  -w -pthread -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace/install/usr/include -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1/src -DHAVE_CONFIG_H -DHAVE_BUILTIN_EXPECT -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/src -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/inc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/tools -DBR_USE_UNIX_TIME=1 -DBR_USE_URANDOM=1 -DBR_LE_UNALIGNED=1 -DBR_64=1  -DBR_amd64=1 -DBR_INT128=1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/certs -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/miniupnp/miniupnpc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/libnatpmp-upstream -DENABLE_STRNATPMPERR -march=native -g3 -Og -O3 -fno-strict-aliasing -fno-ident  -I/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib -I/home/runner/work/nim-waku/nim-waku/examples/v2 -o nimcache/release/chat2/@m..@s..@svendor@snim-libp2p@slibp2p@sprotocols@spubsub@speertable.nim.c.o nimcache/release/chat2/@m..@s..@svendor@snim-libp2p@slibp2p@sprotocols@spubsub@speertable.nim.c */
 #define NIM_INTBITS 64
 
 #include "nimbase.h"
@@ -221,20 +221,20 @@ static N_INLINE(NI, rawGet__PM9btsJmhNOJ7EUfpwXlHZwtables)(tyObject_Table__t1GIb
 	return result;}
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/protocols/pubsub/peertable.nim"
-N_LIB_PRIVATE N_NIMCALL(void, removePeer__2S3XoG45YC54E3eCQ6VcfA)(tyObject_Table__t1GIbsENi89cp9cMuggZaXQg* table, NimStringDesc* topic, tyObject_PubSubPeercolonObjectType___6rsvBHOjeRkx0KPoUqsmsw* peer) {	NI hcX60gensym117280851_;	NI indexX60gensym117280852_;	NIM_BOOL hasKeyX60gensym117280853_;	hcX60gensym117280851_ = (NI)0;
+N_LIB_PRIVATE N_NIMCALL(void, removePeer__2S3XoG45YC54E3eCQ6VcfA)(tyObject_Table__t1GIbsENi89cp9cMuggZaXQg* table, NimStringDesc* topic, tyObject_PubSubPeercolonObjectType___6rsvBHOjeRkx0KPoUqsmsw* peer) {	NI hcX60gensym140340851_;	NI indexX60gensym140340852_;	NIM_BOOL hasKeyX60gensym140340853_;	hcX60gensym140340851_ = (NI)0;
 #line 607 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 607 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-	indexX60gensym117280852_ = rawGet__PM9btsJmhNOJ7EUfpwXlHZwtables((*table), topic, (&hcX60gensym117280851_));
+	indexX60gensym140340852_ = rawGet__PM9btsJmhNOJ7EUfpwXlHZwtables((*table), topic, (&hcX60gensym140340851_));
 #line 608 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 608 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-	hasKeyX60gensym117280853_ = (((NI) 0) <= indexX60gensym117280852_);
+	hasKeyX60gensym140340853_ = (((NI) 0) <= indexX60gensym140340852_);
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/protocols/pubsub/peertable.nim"
-	{		tyObject_HashSet__SjkKNmUxUCmHfJyMk9aPJ9cw* peers;		if (!hasKeyX60gensym117280853_) goto LA3_;
+	{		tyObject_HashSet__SjkKNmUxUCmHfJyMk9aPJ9cw* peers;		if (!hasKeyX60gensym140340853_) goto LA3_;
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/protocols/pubsub/peertable.nim"
-		if ((NU)(indexX60gensym117280852_) >= (NU)((*table).data ? (*table).data->Sup.len : 0)){ raiseIndexError2(indexX60gensym117280852_,((*table).data ? (*table).data->Sup.len : 0)-1); }		peers = (&(*table).data->data[indexX60gensym117280852_].Field2);
+		if ((NU)(indexX60gensym140340852_) >= (NU)((*table).data ? (*table).data->Sup.len : 0)){ raiseIndexError2(indexX60gensym140340852_,((*table).data ? (*table).data->Sup.len : 0)-1); }		peers = (&(*table).data->data[indexX60gensym140340852_].Field2);
 #line 32 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/protocols/pubsub/peertable.nim"
 
 #line 32 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/protocols/pubsub/peertable.nim"

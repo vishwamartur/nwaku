@@ -389,3 +389,7 @@ tre`gensym23745035	treX60gensym23745035_	/home/runner/work/nim-waku/nim-waku/ven
 cancellation	cancellation__VxlyogNGecuwh9a8OvZoKKQ_10	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/transports/stream.nim	1597	9
 udata	udata	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/transports/stream.nim	1597	22
 :envP	colonenvP_	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/transports/stream.nim	1597	9
+write	write__AoqqlJmmj2KKoDsJvVyk7w_2	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/transports/stream.nim	1907	5
+result	result	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/transports/stream.nim	1907	0
+retFuture	retFuture	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/transports/stream.nim	1911	6
+vector	vector	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/transports/stream.nim	1914	6

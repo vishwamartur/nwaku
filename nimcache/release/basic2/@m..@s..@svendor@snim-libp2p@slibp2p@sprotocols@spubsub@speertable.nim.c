@@ -221,20 +221,20 @@ static N_INLINE(NI, rawGet__PM9btsJmhNOJ7EUfpwXlHZwtables)(tyObject_Table__t1GIb
 	return result;}
 
 #line 30 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/protocols/pubsub/peertable.nim"
-N_LIB_PRIVATE N_NIMCALL(void, removePeer__2S3XoG45YC54E3eCQ6VcfA)(tyObject_Table__t1GIbsENi89cp9cMuggZaXQg* table, NimStringDesc* topic, tyObject_PubSubPeercolonObjectType___6rsvBHOjeRkx0KPoUqsmsw* peer) {	NI hcX60gensym127900851_;	NI indexX60gensym127900852_;	NIM_BOOL hasKeyX60gensym127900853_;	hcX60gensym127900851_ = (NI)0;
+N_LIB_PRIVATE N_NIMCALL(void, removePeer__2S3XoG45YC54E3eCQ6VcfA)(tyObject_Table__t1GIbsENi89cp9cMuggZaXQg* table, NimStringDesc* topic, tyObject_PubSubPeercolonObjectType___6rsvBHOjeRkx0KPoUqsmsw* peer) {	NI hcX60gensym140330851_;	NI indexX60gensym140330852_;	NIM_BOOL hasKeyX60gensym140330853_;	hcX60gensym140330851_ = (NI)0;
 #line 607 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 607 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-	indexX60gensym127900852_ = rawGet__PM9btsJmhNOJ7EUfpwXlHZwtables((*table), topic, (&hcX60gensym127900851_));
+	indexX60gensym140330852_ = rawGet__PM9btsJmhNOJ7EUfpwXlHZwtables((*table), topic, (&hcX60gensym140330851_));
 #line 608 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
 
 #line 608 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim"
-	hasKeyX60gensym127900853_ = (((NI) 0) <= indexX60gensym127900852_);
+	hasKeyX60gensym140330853_ = (((NI) 0) <= indexX60gensym140330852_);
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/protocols/pubsub/peertable.nim"
-	{		tyObject_HashSet__SjkKNmUxUCmHfJyMk9aPJ9cw* peers;		if (!hasKeyX60gensym127900853_) goto LA3_;
+	{		tyObject_HashSet__SjkKNmUxUCmHfJyMk9aPJ9cw* peers;		if (!hasKeyX60gensym140330853_) goto LA3_;
 
 #line 31 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/protocols/pubsub/peertable.nim"
-		if ((NU)(indexX60gensym127900852_) >= (NU)((*table).data ? (*table).data->Sup.len : 0)){ raiseIndexError2(indexX60gensym127900852_,((*table).data ? (*table).data->Sup.len : 0)-1); }		peers = (&(*table).data->data[indexX60gensym127900852_].Field2);
+		if ((NU)(indexX60gensym140330852_) >= (NU)((*table).data ? (*table).data->Sup.len : 0)){ raiseIndexError2(indexX60gensym140330852_,((*table).data ? (*table).data->Sup.len : 0)-1); }		peers = (&(*table).data->data[indexX60gensym140330852_].Field2);
 #line 32 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/protocols/pubsub/peertable.nim"
 
 #line 32 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/protocols/pubsub/peertable.nim"

@@ -3,7 +3,7 @@
 /* The generated code is subject to the original license. */
 /* Compiled for: Linux, amd64, gcc */
 /* Command for C compiler:
-   gcc -c  -w -pthread -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace/install/usr/include -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1/src -DHAVE_CONFIG_H -DHAVE_BUILTIN_EXPECT -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/src -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/inc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/tools -DBR_USE_UNIX_TIME=1 -DBR_USE_URANDOM=1 -DBR_LE_UNALIGNED=1 -DBR_64=1  -DBR_amd64=1 -DBR_INT128=1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/miniupnp/miniupnpc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/libnatpmp-upstream -DENABLE_STRNATPMPERR -march=native -g3 -Og -O3 -fno-strict-aliasing -fno-ident  -I/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib -I/home/runner/work/nim-waku/nim-waku/examples/v2 -o nimcache/release/chat2/@m..@s..@swaku@sv2@sprotocol@swaku_message.nim.c.o nimcache/release/chat2/@m..@s..@swaku@sv2@sprotocol@swaku_message.nim.c */
+   gcc -c  -w -pthread -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace/install/usr/include -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1/src -DHAVE_CONFIG_H -DHAVE_BUILTIN_EXPECT -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/src -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/inc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/tools -DBR_USE_UNIX_TIME=1 -DBR_USE_URANDOM=1 -DBR_LE_UNALIGNED=1 -DBR_64=1  -DBR_amd64=1 -DBR_INT128=1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/certs -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/miniupnp/miniupnpc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/libnatpmp-upstream -DENABLE_STRNATPMPERR -march=native -g3 -Og -O3 -fno-strict-aliasing -fno-ident  -I/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib -I/home/runner/work/nim-waku/nim-waku/examples/v2 -o nimcache/release/chat2/@m..@s..@swaku@sv2@sprotocol@swaku_message.nim.c.o nimcache/release/chat2/@m..@s..@swaku@sv2@sprotocol@swaku_message.nim.c */
 #define NIM_INTBITS 64
 
 #include "nimbase.h"
@@ -124,7 +124,7 @@ static N_INLINE(void, nimZeroMem)(void* p, NI size) {
 }
 
 #line 21 "/home/runner/work/nim-waku/nim-waku/waku/v2/protocol/waku_message.nim"
-N_LIB_PRIVATE N_NIMCALL(void, init__4jzYhj7U7a9btL2NYw9cV81g)(tySequence__6H5Oh5UUvVCLiakt9aTwtUQ* buffer, tyObject_Result__FV8OekT7wN9c7aWgCdYVUqQ* Result) {	tyObject_WakuMessage__snKUdUhXg9ahkzpl1ubVZ0A msg;	tyObject_ProtoBuffer__40iIOZrE3YoWDkFgicA1eA pb;	tyObject_Result__VR7l4DJaL9cSFn6dTxK0gOQ vX60gensym134290234_;	tyObject_Result__VR7l4DJaL9cSFn6dTxK0gOQ vX60gensym134300214_;	tyObject_Result__VR7l4DJaL9cSFn6dTxK0gOQ vX60gensym134310214_;{	chckNil((void*)Result);	switch ((*Result).o) {
+N_LIB_PRIVATE N_NIMCALL(void, init__4jzYhj7U7a9btL2NYw9cV81g)(tySequence__6H5Oh5UUvVCLiakt9aTwtUQ* buffer, tyObject_Result__FV8OekT7wN9c7aWgCdYVUqQ* Result) {	tyObject_WakuMessage__snKUdUhXg9ahkzpl1ubVZ0A msg;	tyObject_ProtoBuffer__40iIOZrE3YoWDkFgicA1eA pb;	tyObject_Result__VR7l4DJaL9cSFn6dTxK0gOQ vX60gensym157260234_;	tyObject_Result__VR7l4DJaL9cSFn6dTxK0gOQ vX60gensym157270214_;	tyObject_Result__VR7l4DJaL9cSFn6dTxK0gOQ vX60gensym157280214_;{	chckNil((void*)Result);	switch ((*Result).o) {
 	case NIM_FALSE:
 	(*Result)._o_1.e = 0;	break;
 	case NIM_TRUE:
@@ -145,11 +145,11 @@ N_LIB_PRIVATE N_NIMCALL(void, init__4jzYhj7U7a9btL2NYw9cV81g)(tySequence__6H5Oh5
 #line 657 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/results.nim"
 
 #line 25 "/home/runner/work/nim-waku/nim-waku/waku/v2/protocol/waku_message.nim"
-	vX60gensym134290234_ = getField__TmmAJk0OXMd3CniSvMNDvQ((&pb), ((NI) 1), (&msg.payload));
+	vX60gensym157260234_ = getField__TmmAJk0OXMd3CniSvMNDvQ((&pb), ((NI) 1), (&msg.payload));
 #line 658 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/results.nim"
 	{
 #line 658 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/results.nim"
-		if (!!(vX60gensym134290234_.o)) goto LA3_;
+		if (!!(vX60gensym157260234_.o)) goto LA3_;
 
 #line 662 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/results.nim"
 
@@ -160,21 +160,21 @@ N_LIB_PRIVATE N_NIMCALL(void, init__4jzYhj7U7a9btL2NYw9cV81g)(tySequence__6H5Oh5
 		case NIM_TRUE:
 		unsureAsgnRef((void**)&(*Result)._o_2.v.payload, NIM_NIL);		(*Result)._o_2.v.contentTopic = 0;		(*Result)._o_2.v.version = 0;		break;
 		} 
-		(*Result).o = 0;		(*Result).o = NIM_FALSE;		if (!(((1 &(1U<<((NU)(vX60gensym134290234_.o)&7U)))!=0))){ raiseFieldError(((NimStringDesc*) &TM__CavI8KpGjSIMhRRRT9cCkhA_3)); }		(*Result)._o_1.e = vX60gensym134290234_._o_1.e;		goto BeforeRet_;
+		(*Result).o = 0;		(*Result).o = NIM_FALSE;		if (!(((1 &(1U<<((NU)(vX60gensym157260234_.o)&7U)))!=0))){ raiseFieldError(((NimStringDesc*) &TM__CavI8KpGjSIMhRRRT9cCkhA_3)); }		(*Result)._o_1.e = vX60gensym157260234_._o_1.e;		goto BeforeRet_;
 	}
 	LA3_: ;
-	if (!(((2 &(1U<<((NU)(vX60gensym134290234_.o)&7U)))!=0))){ raiseFieldError(((NimStringDesc*) &TM__CavI8KpGjSIMhRRRT9cCkhA_4)); }	(void)(vX60gensym134290234_._o_2.v);
+	if (!(((2 &(1U<<((NU)(vX60gensym157260234_.o)&7U)))!=0))){ raiseFieldError(((NimStringDesc*) &TM__CavI8KpGjSIMhRRRT9cCkhA_4)); }	(void)(vX60gensym157260234_._o_2.v);
 
 #line 26 "/home/runner/work/nim-waku/nim-waku/waku/v2/protocol/waku_message.nim"
 
 #line 657 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/results.nim"
 
 #line 26 "/home/runner/work/nim-waku/nim-waku/waku/v2/protocol/waku_message.nim"
-	vX60gensym134300214_ = getField__eM4SWQCct7umnPKykFxfQw((&pb), ((NI) 2), (&msg.contentTopic));
+	vX60gensym157270214_ = getField__eM4SWQCct7umnPKykFxfQw((&pb), ((NI) 2), (&msg.contentTopic));
 #line 658 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/results.nim"
 	{
 #line 658 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/results.nim"
-		if (!!(vX60gensym134300214_.o)) goto LA7_;
+		if (!!(vX60gensym157270214_.o)) goto LA7_;
 
 #line 662 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/results.nim"
 
@@ -185,21 +185,21 @@ N_LIB_PRIVATE N_NIMCALL(void, init__4jzYhj7U7a9btL2NYw9cV81g)(tySequence__6H5Oh5
 		case NIM_TRUE:
 		unsureAsgnRef((void**)&(*Result)._o_2.v.payload, NIM_NIL);		(*Result)._o_2.v.contentTopic = 0;		(*Result)._o_2.v.version = 0;		break;
 		} 
-		(*Result).o = 0;		(*Result).o = NIM_FALSE;		if (!(((1 &(1U<<((NU)(vX60gensym134300214_.o)&7U)))!=0))){ raiseFieldError(((NimStringDesc*) &TM__CavI8KpGjSIMhRRRT9cCkhA_3)); }		(*Result)._o_1.e = vX60gensym134300214_._o_1.e;		goto BeforeRet_;
+		(*Result).o = 0;		(*Result).o = NIM_FALSE;		if (!(((1 &(1U<<((NU)(vX60gensym157270214_.o)&7U)))!=0))){ raiseFieldError(((NimStringDesc*) &TM__CavI8KpGjSIMhRRRT9cCkhA_3)); }		(*Result)._o_1.e = vX60gensym157270214_._o_1.e;		goto BeforeRet_;
 	}
 	LA7_: ;
-	if (!(((2 &(1U<<((NU)(vX60gensym134300214_.o)&7U)))!=0))){ raiseFieldError(((NimStringDesc*) &TM__CavI8KpGjSIMhRRRT9cCkhA_4)); }	(void)(vX60gensym134300214_._o_2.v);
+	if (!(((2 &(1U<<((NU)(vX60gensym157270214_.o)&7U)))!=0))){ raiseFieldError(((NimStringDesc*) &TM__CavI8KpGjSIMhRRRT9cCkhA_4)); }	(void)(vX60gensym157270214_._o_2.v);
 
 #line 27 "/home/runner/work/nim-waku/nim-waku/waku/v2/protocol/waku_message.nim"
 
 #line 657 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/results.nim"
 
 #line 27 "/home/runner/work/nim-waku/nim-waku/waku/v2/protocol/waku_message.nim"
-	vX60gensym134310214_ = getField__eM4SWQCct7umnPKykFxfQw((&pb), ((NI) 3), (&msg.version));
+	vX60gensym157280214_ = getField__eM4SWQCct7umnPKykFxfQw((&pb), ((NI) 3), (&msg.version));
 #line 658 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/results.nim"
 	{
 #line 658 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/results.nim"
-		if (!!(vX60gensym134310214_.o)) goto LA11_;
+		if (!!(vX60gensym157280214_.o)) goto LA11_;
 
 #line 662 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/results.nim"
 
@@ -210,10 +210,10 @@ N_LIB_PRIVATE N_NIMCALL(void, init__4jzYhj7U7a9btL2NYw9cV81g)(tySequence__6H5Oh5
 		case NIM_TRUE:
 		unsureAsgnRef((void**)&(*Result)._o_2.v.payload, NIM_NIL);		(*Result)._o_2.v.contentTopic = 0;		(*Result)._o_2.v.version = 0;		break;
 		} 
-		(*Result).o = 0;		(*Result).o = NIM_FALSE;		if (!(((1 &(1U<<((NU)(vX60gensym134310214_.o)&7U)))!=0))){ raiseFieldError(((NimStringDesc*) &TM__CavI8KpGjSIMhRRRT9cCkhA_3)); }		(*Result)._o_1.e = vX60gensym134310214_._o_1.e;		goto BeforeRet_;
+		(*Result).o = 0;		(*Result).o = NIM_FALSE;		if (!(((1 &(1U<<((NU)(vX60gensym157280214_.o)&7U)))!=0))){ raiseFieldError(((NimStringDesc*) &TM__CavI8KpGjSIMhRRRT9cCkhA_3)); }		(*Result)._o_1.e = vX60gensym157280214_._o_1.e;		goto BeforeRet_;
 	}
 	LA11_: ;
-	if (!(((2 &(1U<<((NU)(vX60gensym134310214_.o)&7U)))!=0))){ raiseFieldError(((NimStringDesc*) &TM__CavI8KpGjSIMhRRRT9cCkhA_4)); }	(void)(vX60gensym134310214_._o_2.v);
+	if (!(((2 &(1U<<((NU)(vX60gensym157280214_.o)&7U)))!=0))){ raiseFieldError(((NimStringDesc*) &TM__CavI8KpGjSIMhRRRT9cCkhA_4)); }	(void)(vX60gensym157280214_._o_2.v);
 	chckNil((void*)Result);	switch ((*Result).o) {
 	case NIM_FALSE:
 	(*Result)._o_1.e = 0;	break;

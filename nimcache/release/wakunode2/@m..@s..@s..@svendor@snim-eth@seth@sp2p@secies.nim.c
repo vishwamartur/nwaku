@@ -3,7 +3,7 @@
 /* The generated code is subject to the original license. */
 /* Compiled for: Linux, amd64, gcc */
 /* Command for C compiler:
-   gcc -c  -w -pthread -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace/install/usr/include -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1/src -DHAVE_CONFIG_H -DHAVE_BUILTIN_EXPECT -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/src -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/inc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/tools -DBR_USE_UNIX_TIME=1 -DBR_USE_URANDOM=1 -DBR_LE_UNALIGNED=1 -DBR_64=1  -DBR_amd64=1 -DBR_INT128=1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/miniupnp/miniupnpc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/libnatpmp-upstream -DENABLE_STRNATPMPERR -march=native -g3 -Og -O3 -fno-strict-aliasing -fno-ident  -I/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib -I/home/runner/work/nim-waku/nim-waku/waku/v2/node -o nimcache/release/wakunode2/@m..@s..@s..@svendor@snim-eth@seth@sp2p@secies.nim.c.o nimcache/release/wakunode2/@m..@s..@s..@svendor@snim-eth@seth@sp2p@secies.nim.c */
+   gcc -c  -w -pthread -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace/install/usr/include -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1/src -DHAVE_CONFIG_H -DHAVE_BUILTIN_EXPECT -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/src -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/inc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/tools -DBR_USE_UNIX_TIME=1 -DBR_USE_URANDOM=1 -DBR_LE_UNALIGNED=1 -DBR_64=1  -DBR_amd64=1 -DBR_INT128=1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/certs -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/miniupnp/miniupnpc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/libnatpmp-upstream -DENABLE_STRNATPMPERR -march=native -g3 -Og -O3 -fno-strict-aliasing -fno-ident  -I/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib -I/home/runner/work/nim-waku/nim-waku/waku/v2/node -o nimcache/release/wakunode2/@m..@s..@s..@svendor@snim-eth@seth@sp2p@secies.nim.c.o nimcache/release/wakunode2/@m..@s..@s..@svendor@snim-eth@seth@sp2p@secies.nim.c */
 #define NIM_INTBITS 64
 
 #include "nimbase.h"
@@ -666,7 +666,7 @@ static N_INLINE(void, clear__l59c6Jn7P8eTpi6QyM6SaFgbcmode)(tyObject_CTR__CSv7tJ
 }
 
 #line 158 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/ecies.nim"
-N_LIB_PRIVATE N_NIMCALL(tyObject_Result__9cSS9aZywjhUjZ2RChHxYzwQ, eciesDecrypt__x9bP2nGPBI8wYkzRgRLf0EA)(NU8* input, NI inputLen_0, NU8* output, NI outputLen_0, tyObject_SkSecretKey__aKiBFtqo69b60sWLnM5A9c3w* seckey, NU8* sharedmac, NI sharedmacLen_0) {	tyObject_Result__9cSS9aZywjhUjZ2RChHxYzwQ result;	tyArray__qtqsWM5aXmcpMIVmvq3kAA encKey;	tyObject_CTR__CSv7tJ1uWHDvWQ9cM87Zmdg cipher;	tyObject_HMAC__CxVfcs3qQxev4nVq3Txjyg ctx;	tyObject_EciesHeader__hXpXY0X9cHZM3fIUIjzbJ6Q* header;	tyObject_SkPublicKey__YxxaGK7KOKaWCOaZ44rHMA pubkey;	tyObject_Result__JzqSndqFlegD9a9bJZxDgMhw vX60gensym159045077_;	tyObject_Result__ac12d9bB2oPDNrhZXEa1pxQ T17_;	tyObject_SharedSecret__bM0XijkI0NMH9cNiAOpJ9aow secret;	tyArray__vEOa9c5qaE9ajWxR5R4zwfQg material;	tyObject_MDigest__law9ct65KplMYBvtmjCQxbw macKey;	NI macsize;	NI TM__kEg4jrkuHaBhU9bZeYcj4rg_16;	NI TM__kEg4jrkuHaBhU9bZeYcj4rg_17;	NI TM__kEg4jrkuHaBhU9bZeYcj4rg_18;	NI TM__kEg4jrkuHaBhU9bZeYcj4rg_19;	tyObject_MDigest__law9ct65KplMYBvtmjCQxbw tag;	NI datsize;	NI TM__kEg4jrkuHaBhU9bZeYcj4rg_21;	NI TM__kEg4jrkuHaBhU9bZeYcj4rg_25;	NI TM__kEg4jrkuHaBhU9bZeYcj4rg_26;{	nimZeroMem((void*)(&result), sizeof(tyObject_Result__9cSS9aZywjhUjZ2RChHxYzwQ));
+N_LIB_PRIVATE N_NIMCALL(tyObject_Result__9cSS9aZywjhUjZ2RChHxYzwQ, eciesDecrypt__x9bP2nGPBI8wYkzRgRLf0EA)(NU8* input, NI inputLen_0, NU8* output, NI outputLen_0, tyObject_SkSecretKey__aKiBFtqo69b60sWLnM5A9c3w* seckey, NU8* sharedmac, NI sharedmacLen_0) {	tyObject_Result__9cSS9aZywjhUjZ2RChHxYzwQ result;	tyArray__qtqsWM5aXmcpMIVmvq3kAA encKey;	tyObject_CTR__CSv7tJ1uWHDvWQ9cM87Zmdg cipher;	tyObject_HMAC__CxVfcs3qQxev4nVq3Txjyg ctx;	tyObject_EciesHeader__hXpXY0X9cHZM3fIUIjzbJ6Q* header;	tyObject_SkPublicKey__YxxaGK7KOKaWCOaZ44rHMA pubkey;	tyObject_Result__JzqSndqFlegD9a9bJZxDgMhw vX60gensym171750077_;	tyObject_Result__ac12d9bB2oPDNrhZXEa1pxQ T17_;	tyObject_SharedSecret__bM0XijkI0NMH9cNiAOpJ9aow secret;	tyArray__vEOa9c5qaE9ajWxR5R4zwfQg material;	tyObject_MDigest__law9ct65KplMYBvtmjCQxbw macKey;	NI macsize;	NI TM__kEg4jrkuHaBhU9bZeYcj4rg_16;	NI TM__kEg4jrkuHaBhU9bZeYcj4rg_17;	NI TM__kEg4jrkuHaBhU9bZeYcj4rg_18;	NI TM__kEg4jrkuHaBhU9bZeYcj4rg_19;	tyObject_MDigest__law9ct65KplMYBvtmjCQxbw tag;	NI datsize;	NI TM__kEg4jrkuHaBhU9bZeYcj4rg_21;	NI TM__kEg4jrkuHaBhU9bZeYcj4rg_25;	NI TM__kEg4jrkuHaBhU9bZeYcj4rg_26;{	nimZeroMem((void*)(&result), sizeof(tyObject_Result__9cSS9aZywjhUjZ2RChHxYzwQ));
 #line 162 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/ecies.nim"
 	nimZeroMem((void*)encKey, sizeof(tyArray__qtqsWM5aXmcpMIVmvq3kAA));	nimZeroMem((void*)(&cipher), sizeof(tyObject_CTR__CSv7tJ1uWHDvWQ9cM87Zmdg));	nimZeroMem((void*)(&ctx), sizeof(tyObject_HMAC__CxVfcs3qQxev4nVq3Txjyg));
 #line 174 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/ecies.nim"
@@ -740,19 +740,19 @@ N_LIB_PRIVATE N_NIMCALL(tyObject_Result__9cSS9aZywjhUjZ2RChHxYzwQ, eciesDecrypt_
 #line 186 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/ecies.nim"
 	T17_ = fromRaw__09bVO0j5Htfp2zQRd1AkcpQ((*header).pubkey, 64);
 #line 186 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/ecies.nim"
-	vX60gensym159045077_ = mapErrTo__QRDjeunFoCK0uGT5kKkpAw((&T17_));
+	vX60gensym171750077_ = mapErrTo__QRDjeunFoCK0uGT5kKkpAw((&T17_));
 #line 658 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/results.nim"
 	{
 #line 658 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/results.nim"
-		if (!!(vX60gensym159045077_.o)) goto LA20_;
+		if (!!(vX60gensym171750077_.o)) goto LA20_;
 
 #line 662 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/results.nim"
 
 #line 662 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/results.nim"
-		chckNil((void*)(&result));		nimZeroMem((void*)(&result), sizeof(tyObject_Result__9cSS9aZywjhUjZ2RChHxYzwQ));		result.o = NIM_FALSE;		if (!(((1 &(1U<<((NU)(vX60gensym159045077_.o)&7U)))!=0))){ raiseFieldError(((NimStringDesc*) &TM__kEg4jrkuHaBhU9bZeYcj4rg_4)); }		result._o_1.e = vX60gensym159045077_._o_1.e;		goto BeforeRet_;
+		chckNil((void*)(&result));		nimZeroMem((void*)(&result), sizeof(tyObject_Result__9cSS9aZywjhUjZ2RChHxYzwQ));		result.o = NIM_FALSE;		if (!(((1 &(1U<<((NU)(vX60gensym171750077_.o)&7U)))!=0))){ raiseFieldError(((NimStringDesc*) &TM__kEg4jrkuHaBhU9bZeYcj4rg_4)); }		result._o_1.e = vX60gensym171750077_._o_1.e;		goto BeforeRet_;
 	}
 	LA20_: ;
-	if (!(((2 &(1U<<((NU)(vX60gensym159045077_.o)&7U)))!=0))){ raiseFieldError(((NimStringDesc*) &TM__kEg4jrkuHaBhU9bZeYcj4rg_3)); }	pubkey = vX60gensym159045077_._o_2.v;
+	if (!(((2 &(1U<<((NU)(vX60gensym171750077_.o)&7U)))!=0))){ raiseFieldError(((NimStringDesc*) &TM__kEg4jrkuHaBhU9bZeYcj4rg_3)); }	pubkey = vX60gensym171750077_._o_2.v;
 #line 187 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/ecies.nim"
 
 #line 187 "/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/p2p/ecies.nim"

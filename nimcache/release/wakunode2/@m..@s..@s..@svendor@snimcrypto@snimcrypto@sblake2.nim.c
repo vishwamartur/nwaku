@@ -3,7 +3,7 @@
 /* The generated code is subject to the original license. */
 /* Compiled for: Linux, amd64, gcc */
 /* Command for C compiler:
-   gcc -c  -w -pthread -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace/install/usr/include -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1/src -DHAVE_CONFIG_H -DHAVE_BUILTIN_EXPECT -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/src -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/inc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/tools -DBR_USE_UNIX_TIME=1 -DBR_USE_URANDOM=1 -DBR_LE_UNALIGNED=1 -DBR_64=1  -DBR_amd64=1 -DBR_INT128=1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/miniupnp/miniupnpc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/libnatpmp-upstream -DENABLE_STRNATPMPERR -march=native -g3 -Og -O3 -fno-strict-aliasing -fno-ident  -I/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib -I/home/runner/work/nim-waku/nim-waku/waku/v2/node -o nimcache/release/wakunode2/@m..@s..@s..@svendor@snimcrypto@snimcrypto@sblake2.nim.c.o nimcache/release/wakunode2/@m..@s..@s..@svendor@snimcrypto@snimcrypto@sblake2.nim.c */
+   gcc -c  -w -pthread -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace/install/usr/include -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1/src -DHAVE_CONFIG_H -DHAVE_BUILTIN_EXPECT -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/src -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/inc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/tools -DBR_USE_UNIX_TIME=1 -DBR_USE_URANDOM=1 -DBR_LE_UNALIGNED=1 -DBR_64=1  -DBR_amd64=1 -DBR_INT128=1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/certs -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/miniupnp/miniupnpc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/libnatpmp-upstream -DENABLE_STRNATPMPERR -march=native -g3 -Og -O3 -fno-strict-aliasing -fno-ident  -I/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib -I/home/runner/work/nim-waku/nim-waku/waku/v2/node -o nimcache/release/wakunode2/@m..@s..@s..@svendor@snimcrypto@snimcrypto@sblake2.nim.c.o nimcache/release/wakunode2/@m..@s..@s..@svendor@snimcrypto@snimcrypto@sblake2.nim.c */
 #define NIM_INTBITS 64
 
 #include "nimbase.h"
@@ -805,7 +805,7 @@ static N_INLINE(void, nimZeroMem)(void* p, NI size) {
 }
 
 #line 141 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/blake2.nim"
-static N_INLINE(void, blake2Transform__0y9cupVXHvkvEoowIDQKmLAblake2)(tyObject_Blake2bContext__54ghkWUXXQiPuWWsGmKLrg* ctx, NIM_BOOL last) {	tyArray__oFdY9bp69azpfZ9aK0AVuq63Q v;	tyArray__oFdY9bp69azpfZ9aK0AVuq63Q m;	NU64 pX60gensym50180513_;	NU64 pX60gensym50190513_;	NU64 pX60gensym50200513_;	NU64 pX60gensym50210513_;	NU64 pX60gensym50220513_;	NU64 pX60gensym50230513_;	NU64 pX60gensym50240513_;	NU64 pX60gensym50250513_;	NU64 pX60gensym50260513_;	NU64 pX60gensym50270514_;	NU64 pX60gensym50280514_;	NU64 pX60gensym50290514_;	NU64 pX60gensym50300514_;	NU64 pX60gensym50310514_;	NU64 pX60gensym50320514_;	NU64 pX60gensym50330514_;
+static N_INLINE(void, blake2Transform__0y9cupVXHvkvEoowIDQKmLAblake2)(tyObject_Blake2bContext__54ghkWUXXQiPuWWsGmKLrg* ctx, NIM_BOOL last) {	tyArray__oFdY9bp69azpfZ9aK0AVuq63Q v;	tyArray__oFdY9bp69azpfZ9aK0AVuq63Q m;	NU64 pX60gensym85165513_;	NU64 pX60gensym85175513_;	NU64 pX60gensym85185513_;	NU64 pX60gensym85195513_;	NU64 pX60gensym85205513_;	NU64 pX60gensym85215513_;	NU64 pX60gensym85225513_;	NU64 pX60gensym85235513_;	NU64 pX60gensym85245513_;	NU64 pX60gensym85255514_;	NU64 pX60gensym85265514_;	NU64 pX60gensym85275514_;	NU64 pX60gensym85285514_;	NU64 pX60gensym85295514_;	NU64 pX60gensym85305514_;	NU64 pX60gensym85315514_;
 #line 150 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/blake2.nim"
 	v[(((NI) 0))- 0] = (*ctx).h[(((NI) 0))- 0];
 #line 150 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/blake2.nim"
@@ -858,67 +858,67 @@ static N_INLINE(void, blake2Transform__0y9cupVXHvkvEoowIDQKmLAblake2)(tyObject_B
 #line 168 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/blake2.nim"
 
 #line 363 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	pX60gensym50180513_ = (*((NU64*) ((&(*ctx).b[(((NI) 0))- 0]))));	m[(((NI) 0))- 0] = pX60gensym50180513_;
+	pX60gensym85165513_ = (*((NU64*) ((&(*ctx).b[(((NI) 0))- 0]))));	m[(((NI) 0))- 0] = pX60gensym85165513_;
 #line 168 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/blake2.nim"
 
 #line 363 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	pX60gensym50190513_ = (*((NU64*) ((&(*ctx).b[(((NI) 8))- 0]))));	m[(((NI) 1))- 0] = pX60gensym50190513_;
+	pX60gensym85175513_ = (*((NU64*) ((&(*ctx).b[(((NI) 8))- 0]))));	m[(((NI) 1))- 0] = pX60gensym85175513_;
 #line 169 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/blake2.nim"
 
 #line 363 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	pX60gensym50200513_ = (*((NU64*) ((&(*ctx).b[(((NI) 16))- 0]))));	m[(((NI) 2))- 0] = pX60gensym50200513_;
+	pX60gensym85185513_ = (*((NU64*) ((&(*ctx).b[(((NI) 16))- 0]))));	m[(((NI) 2))- 0] = pX60gensym85185513_;
 #line 169 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/blake2.nim"
 
 #line 363 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	pX60gensym50210513_ = (*((NU64*) ((&(*ctx).b[(((NI) 24))- 0]))));	m[(((NI) 3))- 0] = pX60gensym50210513_;
+	pX60gensym85195513_ = (*((NU64*) ((&(*ctx).b[(((NI) 24))- 0]))));	m[(((NI) 3))- 0] = pX60gensym85195513_;
 #line 170 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/blake2.nim"
 
 #line 363 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	pX60gensym50220513_ = (*((NU64*) ((&(*ctx).b[(((NI) 32))- 0]))));	m[(((NI) 4))- 0] = pX60gensym50220513_;
+	pX60gensym85205513_ = (*((NU64*) ((&(*ctx).b[(((NI) 32))- 0]))));	m[(((NI) 4))- 0] = pX60gensym85205513_;
 #line 170 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/blake2.nim"
 
 #line 363 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	pX60gensym50230513_ = (*((NU64*) ((&(*ctx).b[(((NI) 40))- 0]))));	m[(((NI) 5))- 0] = pX60gensym50230513_;
+	pX60gensym85215513_ = (*((NU64*) ((&(*ctx).b[(((NI) 40))- 0]))));	m[(((NI) 5))- 0] = pX60gensym85215513_;
 #line 171 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/blake2.nim"
 
 #line 363 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	pX60gensym50240513_ = (*((NU64*) ((&(*ctx).b[(((NI) 48))- 0]))));	m[(((NI) 6))- 0] = pX60gensym50240513_;
+	pX60gensym85225513_ = (*((NU64*) ((&(*ctx).b[(((NI) 48))- 0]))));	m[(((NI) 6))- 0] = pX60gensym85225513_;
 #line 171 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/blake2.nim"
 
 #line 363 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	pX60gensym50250513_ = (*((NU64*) ((&(*ctx).b[(((NI) 56))- 0]))));	m[(((NI) 7))- 0] = pX60gensym50250513_;
+	pX60gensym85235513_ = (*((NU64*) ((&(*ctx).b[(((NI) 56))- 0]))));	m[(((NI) 7))- 0] = pX60gensym85235513_;
 #line 172 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/blake2.nim"
 
 #line 363 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	pX60gensym50260513_ = (*((NU64*) ((&(*ctx).b[(((NI) 64))- 0]))));	m[(((NI) 8))- 0] = pX60gensym50260513_;
+	pX60gensym85245513_ = (*((NU64*) ((&(*ctx).b[(((NI) 64))- 0]))));	m[(((NI) 8))- 0] = pX60gensym85245513_;
 #line 172 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/blake2.nim"
 
 #line 363 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	pX60gensym50270514_ = (*((NU64*) ((&(*ctx).b[(((NI) 72))- 0]))));	m[(((NI) 9))- 0] = pX60gensym50270514_;
+	pX60gensym85255514_ = (*((NU64*) ((&(*ctx).b[(((NI) 72))- 0]))));	m[(((NI) 9))- 0] = pX60gensym85255514_;
 #line 173 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/blake2.nim"
 
 #line 363 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	pX60gensym50280514_ = (*((NU64*) ((&(*ctx).b[(((NI) 80))- 0]))));	m[(((NI) 10))- 0] = pX60gensym50280514_;
+	pX60gensym85265514_ = (*((NU64*) ((&(*ctx).b[(((NI) 80))- 0]))));	m[(((NI) 10))- 0] = pX60gensym85265514_;
 #line 173 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/blake2.nim"
 
 #line 363 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	pX60gensym50290514_ = (*((NU64*) ((&(*ctx).b[(((NI) 88))- 0]))));	m[(((NI) 11))- 0] = pX60gensym50290514_;
+	pX60gensym85275514_ = (*((NU64*) ((&(*ctx).b[(((NI) 88))- 0]))));	m[(((NI) 11))- 0] = pX60gensym85275514_;
 #line 174 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/blake2.nim"
 
 #line 363 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	pX60gensym50300514_ = (*((NU64*) ((&(*ctx).b[(((NI) 96))- 0]))));	m[(((NI) 12))- 0] = pX60gensym50300514_;
+	pX60gensym85285514_ = (*((NU64*) ((&(*ctx).b[(((NI) 96))- 0]))));	m[(((NI) 12))- 0] = pX60gensym85285514_;
 #line 174 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/blake2.nim"
 
 #line 363 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	pX60gensym50310514_ = (*((NU64*) ((&(*ctx).b[(((NI) 104))- 0]))));	m[(((NI) 13))- 0] = pX60gensym50310514_;
+	pX60gensym85295514_ = (*((NU64*) ((&(*ctx).b[(((NI) 104))- 0]))));	m[(((NI) 13))- 0] = pX60gensym85295514_;
 #line 175 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/blake2.nim"
 
 #line 363 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	pX60gensym50320514_ = (*((NU64*) ((&(*ctx).b[(((NI) 112))- 0]))));	m[(((NI) 14))- 0] = pX60gensym50320514_;
+	pX60gensym85305514_ = (*((NU64*) ((&(*ctx).b[(((NI) 112))- 0]))));	m[(((NI) 14))- 0] = pX60gensym85305514_;
 #line 175 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/blake2.nim"
 
 #line 363 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	pX60gensym50330514_ = (*((NU64*) ((&(*ctx).b[(((NI) 120))- 0]))));	m[(((NI) 15))- 0] = pX60gensym50330514_;
+	pX60gensym85315514_ = (*((NU64*) ((&(*ctx).b[(((NI) 120))- 0]))));	m[(((NI) 15))- 0] = pX60gensym85315514_;
 #line 177 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/blake2.nim"
 
 #line 177 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/blake2.nim"
@@ -1654,7 +1654,7 @@ N_LIB_PRIVATE N_NIMCALL(void, B2SROUND__09aRsug6t2OjPnEB4X5zM9bA)(NU32* v, tyArr
 	v[(((NI) 4))- 0] = (NU32)((NU32)((NU32)((NU32)(v[(((NI) 4))- 0] ^ v[(((NI) 9))- 0])) >> (NU32)(((NU32) 7))) | (NU32)((NU32)((NU32)(v[(((NI) 4))- 0] ^ v[(((NI) 9))- 0])) << (NU32)(((NU32) 25))));}
 
 #line 203 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/blake2.nim"
-static N_INLINE(void, blake2Transform__dKq0qk0zm9bqLKuG26HYrSwblake2)(tyObject_Blake2sContext__SF9ahil9bTcqq9aie9aRuhlaGw* ctx, NIM_BOOL last) {	tyArray__U0SiHM0pVagA9c71oWelQMA v;	tyArray__U0SiHM0pVagA9c71oWelQMA m;	NU32 pX60gensym50415513_;	NU32 pX60gensym50425513_;	NU32 pX60gensym50435513_;	NU32 pX60gensym50445513_;	NU32 pX60gensym50455513_;	NU32 pX60gensym50465513_;	NU32 pX60gensym50475513_;	NU32 pX60gensym50485513_;	NU32 pX60gensym50495513_;	NU32 pX60gensym50505513_;	NU32 pX60gensym50515513_;	NU32 pX60gensym50525513_;	NU32 pX60gensym50535513_;	NU32 pX60gensym50545513_;	NU32 pX60gensym50555513_;	NU32 pX60gensym50565513_;
+static N_INLINE(void, blake2Transform__dKq0qk0zm9bqLKuG26HYrSwblake2)(tyObject_Blake2sContext__SF9ahil9bTcqq9aie9aRuhlaGw* ctx, NIM_BOOL last) {	tyArray__U0SiHM0pVagA9c71oWelQMA v;	tyArray__U0SiHM0pVagA9c71oWelQMA m;	NU32 pX60gensym85400513_;	NU32 pX60gensym85410513_;	NU32 pX60gensym85420513_;	NU32 pX60gensym85430513_;	NU32 pX60gensym85440513_;	NU32 pX60gensym85450513_;	NU32 pX60gensym85460513_;	NU32 pX60gensym85470513_;	NU32 pX60gensym85480513_;	NU32 pX60gensym85490513_;	NU32 pX60gensym85500513_;	NU32 pX60gensym85510513_;	NU32 pX60gensym85520513_;	NU32 pX60gensym85530513_;	NU32 pX60gensym85540513_;	NU32 pX60gensym85550513_;
 #line 212 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/blake2.nim"
 	v[(((NI) 0))- 0] = (*ctx).h[(((NI) 0))- 0];
 #line 212 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/blake2.nim"
@@ -1707,67 +1707,67 @@ static N_INLINE(void, blake2Transform__dKq0qk0zm9bqLKuG26HYrSwblake2)(tyObject_B
 #line 230 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/blake2.nim"
 
 #line 343 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	pX60gensym50415513_ = (*((NU32*) ((&(*ctx).b[(((NI) 0))- 0]))));	m[(((NI) 0))- 0] = pX60gensym50415513_;
+	pX60gensym85400513_ = (*((NU32*) ((&(*ctx).b[(((NI) 0))- 0]))));	m[(((NI) 0))- 0] = pX60gensym85400513_;
 #line 230 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/blake2.nim"
 
 #line 343 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	pX60gensym50425513_ = (*((NU32*) ((&(*ctx).b[(((NI) 4))- 0]))));	m[(((NI) 1))- 0] = pX60gensym50425513_;
+	pX60gensym85410513_ = (*((NU32*) ((&(*ctx).b[(((NI) 4))- 0]))));	m[(((NI) 1))- 0] = pX60gensym85410513_;
 #line 231 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/blake2.nim"
 
 #line 343 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	pX60gensym50435513_ = (*((NU32*) ((&(*ctx).b[(((NI) 8))- 0]))));	m[(((NI) 2))- 0] = pX60gensym50435513_;
+	pX60gensym85420513_ = (*((NU32*) ((&(*ctx).b[(((NI) 8))- 0]))));	m[(((NI) 2))- 0] = pX60gensym85420513_;
 #line 231 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/blake2.nim"
 
 #line 343 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	pX60gensym50445513_ = (*((NU32*) ((&(*ctx).b[(((NI) 12))- 0]))));	m[(((NI) 3))- 0] = pX60gensym50445513_;
+	pX60gensym85430513_ = (*((NU32*) ((&(*ctx).b[(((NI) 12))- 0]))));	m[(((NI) 3))- 0] = pX60gensym85430513_;
 #line 232 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/blake2.nim"
 
 #line 343 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	pX60gensym50455513_ = (*((NU32*) ((&(*ctx).b[(((NI) 16))- 0]))));	m[(((NI) 4))- 0] = pX60gensym50455513_;
+	pX60gensym85440513_ = (*((NU32*) ((&(*ctx).b[(((NI) 16))- 0]))));	m[(((NI) 4))- 0] = pX60gensym85440513_;
 #line 232 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/blake2.nim"
 
 #line 343 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	pX60gensym50465513_ = (*((NU32*) ((&(*ctx).b[(((NI) 20))- 0]))));	m[(((NI) 5))- 0] = pX60gensym50465513_;
+	pX60gensym85450513_ = (*((NU32*) ((&(*ctx).b[(((NI) 20))- 0]))));	m[(((NI) 5))- 0] = pX60gensym85450513_;
 #line 233 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/blake2.nim"
 
 #line 343 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	pX60gensym50475513_ = (*((NU32*) ((&(*ctx).b[(((NI) 24))- 0]))));	m[(((NI) 6))- 0] = pX60gensym50475513_;
+	pX60gensym85460513_ = (*((NU32*) ((&(*ctx).b[(((NI) 24))- 0]))));	m[(((NI) 6))- 0] = pX60gensym85460513_;
 #line 233 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/blake2.nim"
 
 #line 343 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	pX60gensym50485513_ = (*((NU32*) ((&(*ctx).b[(((NI) 28))- 0]))));	m[(((NI) 7))- 0] = pX60gensym50485513_;
+	pX60gensym85470513_ = (*((NU32*) ((&(*ctx).b[(((NI) 28))- 0]))));	m[(((NI) 7))- 0] = pX60gensym85470513_;
 #line 234 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/blake2.nim"
 
 #line 343 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	pX60gensym50495513_ = (*((NU32*) ((&(*ctx).b[(((NI) 32))- 0]))));	m[(((NI) 8))- 0] = pX60gensym50495513_;
+	pX60gensym85480513_ = (*((NU32*) ((&(*ctx).b[(((NI) 32))- 0]))));	m[(((NI) 8))- 0] = pX60gensym85480513_;
 #line 234 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/blake2.nim"
 
 #line 343 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	pX60gensym50505513_ = (*((NU32*) ((&(*ctx).b[(((NI) 36))- 0]))));	m[(((NI) 9))- 0] = pX60gensym50505513_;
+	pX60gensym85490513_ = (*((NU32*) ((&(*ctx).b[(((NI) 36))- 0]))));	m[(((NI) 9))- 0] = pX60gensym85490513_;
 #line 235 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/blake2.nim"
 
 #line 343 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	pX60gensym50515513_ = (*((NU32*) ((&(*ctx).b[(((NI) 40))- 0]))));	m[(((NI) 10))- 0] = pX60gensym50515513_;
+	pX60gensym85500513_ = (*((NU32*) ((&(*ctx).b[(((NI) 40))- 0]))));	m[(((NI) 10))- 0] = pX60gensym85500513_;
 #line 235 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/blake2.nim"
 
 #line 343 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	pX60gensym50525513_ = (*((NU32*) ((&(*ctx).b[(((NI) 44))- 0]))));	m[(((NI) 11))- 0] = pX60gensym50525513_;
+	pX60gensym85510513_ = (*((NU32*) ((&(*ctx).b[(((NI) 44))- 0]))));	m[(((NI) 11))- 0] = pX60gensym85510513_;
 #line 236 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/blake2.nim"
 
 #line 343 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	pX60gensym50535513_ = (*((NU32*) ((&(*ctx).b[(((NI) 48))- 0]))));	m[(((NI) 12))- 0] = pX60gensym50535513_;
+	pX60gensym85520513_ = (*((NU32*) ((&(*ctx).b[(((NI) 48))- 0]))));	m[(((NI) 12))- 0] = pX60gensym85520513_;
 #line 236 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/blake2.nim"
 
 #line 343 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	pX60gensym50545513_ = (*((NU32*) ((&(*ctx).b[(((NI) 52))- 0]))));	m[(((NI) 13))- 0] = pX60gensym50545513_;
+	pX60gensym85530513_ = (*((NU32*) ((&(*ctx).b[(((NI) 52))- 0]))));	m[(((NI) 13))- 0] = pX60gensym85530513_;
 #line 237 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/blake2.nim"
 
 #line 343 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	pX60gensym50555513_ = (*((NU32*) ((&(*ctx).b[(((NI) 56))- 0]))));	m[(((NI) 14))- 0] = pX60gensym50555513_;
+	pX60gensym85540513_ = (*((NU32*) ((&(*ctx).b[(((NI) 56))- 0]))));	m[(((NI) 14))- 0] = pX60gensym85540513_;
 #line 237 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/blake2.nim"
 
 #line 343 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/utils.nim"
-	pX60gensym50565513_ = (*((NU32*) ((&(*ctx).b[(((NI) 60))- 0]))));	m[(((NI) 15))- 0] = pX60gensym50565513_;
+	pX60gensym85550513_ = (*((NU32*) ((&(*ctx).b[(((NI) 60))- 0]))));	m[(((NI) 15))- 0] = pX60gensym85550513_;
 #line 239 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/blake2.nim"
 
 #line 239 "/home/runner/work/nim-waku/nim-waku/vendor/nimcrypto/nimcrypto/blake2.nim"

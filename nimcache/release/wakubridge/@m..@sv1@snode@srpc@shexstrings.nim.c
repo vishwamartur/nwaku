@@ -3,7 +3,7 @@
 /* The generated code is subject to the original license. */
 /* Compiled for: Linux, amd64, gcc */
 /* Command for C compiler:
-   gcc -c  -w -pthread -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace/install/usr/include -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1/src -DHAVE_CONFIG_H -DHAVE_BUILTIN_EXPECT -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/src -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/inc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/tools -DBR_USE_UNIX_TIME=1 -DBR_USE_URANDOM=1 -DBR_LE_UNALIGNED=1 -DBR_64=1  -DBR_amd64=1 -DBR_INT128=1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/miniupnp/miniupnpc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/libnatpmp-upstream -DENABLE_STRNATPMPERR -march=native -g3 -Og -O3 -fno-strict-aliasing -fno-ident  -I/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib -I/home/runner/work/nim-waku/nim-waku/waku/common -o nimcache/release/wakubridge/@m..@sv1@snode@srpc@shexstrings.nim.c.o nimcache/release/wakubridge/@m..@sv1@snode@srpc@shexstrings.nim.c */
+   gcc -c  -w -pthread -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace/install/usr/include -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1/src -DHAVE_CONFIG_H -DHAVE_BUILTIN_EXPECT -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/src -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/inc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/tools -DBR_USE_UNIX_TIME=1 -DBR_USE_URANDOM=1 -DBR_LE_UNALIGNED=1 -DBR_64=1  -DBR_amd64=1 -DBR_INT128=1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/miniupnp/miniupnpc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/libnatpmp-upstream -DENABLE_STRNATPMPERR -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/certs -march=native -g3 -Og -O3 -fno-strict-aliasing -fno-ident  -I/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib -I/home/runner/work/nim-waku/nim-waku/waku/common -o nimcache/release/wakubridge/@m..@sv1@snode@srpc@shexstrings.nim.c.o nimcache/release/wakubridge/@m..@sv1@snode@srpc@shexstrings.nim.c */
 #define NIM_INTBITS 64
 
 #include "nimbase.h"
@@ -255,7 +255,7 @@ struct tyObject_StackTraceEntry__oLyohQ7O2XOvGnflOss8EA {NCSTRING procname;
 NI line;
 NCSTRING filename;
 };
-struct tySequence__6H5Oh5UUvVCLiakt9aTwtUQ {  TGenericSeq Sup;  NU8 data[SEQ_DECL_SIZE];};struct tySequence__MlAD6nAPq9bHKla9cWiIZP0g {  TGenericSeq Sup;  tyTuple__awOivLjlO76sGdHY7nQUjQ data[SEQ_DECL_SIZE];};struct tySequence__oLpBKXzW3hF9aCVMo5EymfQ {  TGenericSeq Sup;  tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q* data[SEQ_DECL_SIZE];};struct tySequence__uB9b75OUPRENsBAu4AnoePA {  TGenericSeq Sup;  tyObject_StackTraceEntry__oLyohQ7O2XOvGnflOss8EA data[SEQ_DECL_SIZE];};N_LIB_PRIVATE N_NIMCALL(tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q*, percent___19ag6cl4fMjxytc9arHmLIbw_2)(NimStringDesc* s_0);
+struct tySequence__6H5Oh5UUvVCLiakt9aTwtUQ {  TGenericSeq Sup;  NU8 data[SEQ_DECL_SIZE];};struct tySequence__MlAD6nAPq9bHKla9cWiIZP0g {  TGenericSeq Sup;  tyTuple__awOivLjlO76sGdHY7nQUjQ data[SEQ_DECL_SIZE];};struct tySequence__oLpBKXzW3hF9aCVMo5EymfQ {  TGenericSeq Sup;  tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q* data[SEQ_DECL_SIZE];};struct tySequence__uB9b75OUPRENsBAu4AnoePA {  TGenericSeq Sup;  tyObject_StackTraceEntry__oLyohQ7O2XOvGnflOss8EA data[SEQ_DECL_SIZE];};N_LIB_PRIVATE N_NIMCALL(tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q*, percent___19ag6cl4fMjxytc9arHmLIbw)(NimStringDesc* s_0);
 N_LIB_PRIVATE N_NIMCALL(void, expect__vt4akIm2aAJMf4kfqmrlbw)(tyEnum_JsonNodeKind__RUngo7nCHe6O8aBGIcrhtg actual, tyEnum_JsonNodeKind__RUngo7nCHe6O8aBGIcrhtg expected, NimStringDesc* argName);
 N_LIB_PRIVATE N_NIMCALL(NimStringDesc*, getStr__QeJX1ptVmfOrOg9cwOVpcAA)(tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q* n_0, NimStringDesc* default_0);
 N_LIB_PRIVATE N_NIMCALL(NIM_BOOL, isValidPrivateKey__C0zauXKPlA6zWba9bhRDxlw)(NimStringDesc* value_0);
@@ -339,7 +339,7 @@ N_LIB_PRIVATE N_NIMCALL(tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q*, percent
 #line 117 "/home/runner/work/nim-waku/nim-waku/waku/v1/node/rpc/hexstrings.nim"
 
 #line 117 "/home/runner/work/nim-waku/nim-waku/waku/v1/node/rpc/hexstrings.nim"
-	result = percent___19ag6cl4fMjxytc9arHmLIbw_2(value_0);	return result;}
+	result = percent___19ag6cl4fMjxytc9arHmLIbw(value_0);	return result;}
 
 #line 59 "/home/runner/work/nim-waku/nim-waku/waku/v1/node/rpc/hexstrings.nim"
 N_LIB_PRIVATE N_NIMCALL(NIM_BOOL, isValidHexData__5yraKEitJdhyVmf2nAMP6g)(NimStringDesc* value_0, NIM_BOOL header) {	NIM_BOOL result;{	result = (NIM_BOOL)0;
@@ -828,7 +828,7 @@ N_LIB_PRIVATE N_NIMCALL(tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q*, percent
 #line 129 "/home/runner/work/nim-waku/nim-waku/waku/v1/node/rpc/hexstrings.nim"
 	T2_ = (NimStringDesc*)0;	T2_ = dollar___sCk67mWMaXubq9aFhJ4e9cXw(value_0);	T1_ = rawNewString((T2_ ? T2_->Sup.len : 0) + 4);appendString(T1_, ((NimStringDesc*) &TM__tN8F3IwlBPjsCuE07GJZdA_15));appendString(T1_, T2_);
 #line 129 "/home/runner/work/nim-waku/nim-waku/waku/v1/node/rpc/hexstrings.nim"
-	result = percent___19ag6cl4fMjxytc9arHmLIbw_2(T1_);	return result;}
+	result = percent___19ag6cl4fMjxytc9arHmLIbw(T1_);	return result;}
 
 #line 131 "/home/runner/work/nim-waku/nim-waku/waku/v1/node/rpc/hexstrings.nim"
 N_LIB_PRIVATE N_NIMCALL(tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q*, percent___jLjx7DmyiRpod7C29cD9a43g)(tyObject_SkSecretKey__aKiBFtqo69b60sWLnM5A9c3w* value_0) {	tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q* result;	NimStringDesc* T1_;	NimStringDesc* T2_;	result = (tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q*)0;
@@ -841,7 +841,7 @@ N_LIB_PRIVATE N_NIMCALL(tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q*, percent
 #line 132 "/home/runner/work/nim-waku/nim-waku/waku/v1/node/rpc/hexstrings.nim"
 	T2_ = (NimStringDesc*)0;	T2_ = dollar___3DNipDnN4A79aliwn9a5d9bQA(value_0);	T1_ = rawNewString((T2_ ? T2_->Sup.len : 0) + 2);appendString(T1_, ((NimStringDesc*) &TM__tN8F3IwlBPjsCuE07GJZdA_16));appendString(T1_, T2_);
 #line 132 "/home/runner/work/nim-waku/nim-waku/waku/v1/node/rpc/hexstrings.nim"
-	result = percent___19ag6cl4fMjxytc9arHmLIbw_2(T1_);	return result;}
+	result = percent___19ag6cl4fMjxytc9arHmLIbw(T1_);	return result;}
 
 #line 86 "/home/runner/work/nim-waku/nim-waku/waku/v1/node/rpc/hexstrings.nim"
 N_LIB_PRIVATE N_NIMCALL(NIM_BOOL, isValidSymKey__C0zauXKPlA6zWba9bhRDxlw_3)(NimStringDesc* value_0) {	NIM_BOOL result;	NIM_BOOL T1_;	result = (NIM_BOOL)0;
@@ -943,7 +943,7 @@ N_LIB_PRIVATE N_NIMCALL(tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q*, percent
 #line 135 "/home/runner/work/nim-waku/nim-waku/waku/v1/node/rpc/hexstrings.nim"
 	T2_ = (NimStringDesc*)0;	T2_ = toHex__8S8gmm9b1kIYuNI7oeA9arYQbyteutils(value_0);	T1_ = rawNewString((T2_ ? T2_->Sup.len : 0) + 2);appendString(T1_, ((NimStringDesc*) &TM__tN8F3IwlBPjsCuE07GJZdA_16));appendString(T1_, T2_);
 #line 135 "/home/runner/work/nim-waku/nim-waku/waku/v1/node/rpc/hexstrings.nim"
-	result = percent___19ag6cl4fMjxytc9arHmLIbw_2(T1_);	return result;}
+	result = percent___19ag6cl4fMjxytc9arHmLIbw(T1_);	return result;}
 
 #line 78 "/home/runner/work/nim-waku/nim-waku/waku/v1/node/rpc/hexstrings.nim"
 N_LIB_PRIVATE N_NIMCALL(NIM_BOOL, isValidPublicKey__C0zauXKPlA6zWba9bhRDxlw_4)(NimStringDesc* value_0) {	NIM_BOOL result;	NIM_BOOL T1_;	result = (NIM_BOOL)0;
@@ -1124,7 +1124,7 @@ N_LIB_PRIVATE N_NIMCALL(tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q*, percent
 #line 138 "/home/runner/work/nim-waku/nim-waku/waku/v1/node/rpc/hexstrings.nim"
 	T2_ = (NimStringDesc*)0;	T2_ = toHex__SY4kfKT4J9c4DB9aKGzoEKIQbyteutils(value_0);	T1_ = rawNewString((T2_ ? T2_->Sup.len : 0) + 2);appendString(T1_, ((NimStringDesc*) &TM__tN8F3IwlBPjsCuE07GJZdA_16));appendString(T1_, T2_);
 #line 138 "/home/runner/work/nim-waku/nim-waku/waku/v1/node/rpc/hexstrings.nim"
-	result = percent___19ag6cl4fMjxytc9arHmLIbw_2(T1_);	return result;}
+	result = percent___19ag6cl4fMjxytc9arHmLIbw(T1_);	return result;}
 
 #line 125 "/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/byteutils.nim"
 static N_INLINE(NimStringDesc*, toHex__19cqtdsadv8K0DQ9cF6PPp8Qbyteutils)(NU8* ba, NI baLen_0) {	NimStringDesc* result;	result = (NimStringDesc*)0;
@@ -1146,7 +1146,7 @@ N_LIB_PRIVATE N_NIMCALL(tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q*, percent
 #line 141 "/home/runner/work/nim-waku/nim-waku/waku/v1/node/rpc/hexstrings.nim"
 	T2_ = (NimStringDesc*)0;	T2_ = toHex__19cqtdsadv8K0DQ9cF6PPp8Qbyteutils(value_0->data, (value_0 ? value_0->Sup.len : 0));	T1_ = rawNewString((T2_ ? T2_->Sup.len : 0) + 2);appendString(T1_, ((NimStringDesc*) &TM__tN8F3IwlBPjsCuE07GJZdA_16));appendString(T1_, T2_);
 #line 141 "/home/runner/work/nim-waku/nim-waku/waku/v1/node/rpc/hexstrings.nim"
-	result = percent___19ag6cl4fMjxytc9arHmLIbw_2(T1_);	return result;}
+	result = percent___19ag6cl4fMjxytc9arHmLIbw(T1_);	return result;}
 
 #line 121 "/home/runner/work/nim-waku/nim-waku/waku/v1/node/rpc/hexstrings.nim"
 N_LIB_PRIVATE N_NIMCALL(tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q*, percent___t9aSJtN19a9cdQvE3ijE9bQI9bQ)(tyObject_MDigest__law9ct65KplMYBvtmjCQxbw* value_0) {	tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q* result;	NimStringDesc* T1_;	NimStringDesc* T2_;	result = (tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q*)0;
@@ -1159,7 +1159,7 @@ N_LIB_PRIVATE N_NIMCALL(tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q*, percent
 #line 123 "/home/runner/work/nim-waku/nim-waku/waku/v1/node/rpc/hexstrings.nim"
 	T2_ = (NimStringDesc*)0;	T2_ = toHex__8S8gmm9b1kIYuNI7oeA9arYQbyteutils((*value_0).data);	T1_ = rawNewString((T2_ ? T2_->Sup.len : 0) + 2);appendString(T1_, ((NimStringDesc*) &TM__tN8F3IwlBPjsCuE07GJZdA_16));appendString(T1_, T2_);
 #line 123 "/home/runner/work/nim-waku/nim-waku/waku/v1/node/rpc/hexstrings.nim"
-	result = percent___19ag6cl4fMjxytc9arHmLIbw_2(T1_);	return result;}
+	result = percent___19ag6cl4fMjxytc9arHmLIbw(T1_);	return result;}
 
 #line 101 "/home/runner/work/nim-waku/nim-waku/waku/v1/node/rpc/hexstrings.nim"
 static N_INLINE(void, validateHexData__oH2uVf9aneoSHGAfzAqwsZAhexstrings)(NimStringDesc* value_0) {

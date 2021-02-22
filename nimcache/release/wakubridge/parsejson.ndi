@@ -1,9 +1,17 @@
 open	open__caSf5pJv2JnMMpxc9bAhdpA	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/parsejson.nim	104	5
+L	L	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/lexbase.nim	133	11
+input	input	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/lexbase.nim	133	29
+bufLen	bufLen	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/lexbase.nim	133	44
+refillChars	refillChars	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/lexbase.nim	134	11
 getTok	getTok__9cGllg9a4hN9cmfjsUw6zu39bQ	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/parsejson.nim	358	5
 result	result	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/parsejson.nim	358	0
 skip	skip__FPdQ9beZqb3bJ7eVHJww6Qg	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/parsejson.nim	269	5
 my	my	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/parsejson.nim	269	10
 pos	pos	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/parsejson.nim	270	6
+L	L	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/lexbase.nim	102	15
+pos	pos	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/lexbase.nim	102	33
+L	L	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/lexbase.nim	113	15
+pos	pos	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/lexbase.nim	113	33
 parseNumber	parseNumber__FPdQ9beZqb3bJ7eVHJww6Qg_2	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/parsejson.nim	320	5
 my	my	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/parsejson.nim	320	17
 pos	pos	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/parsejson.nim	321	6

@@ -35,3 +35,13 @@ result	result	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/ven
 res	res	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/parseutils.nim	492	4
 prev	prev	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/parseutils.nim	493	4
 i	i	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/parseutils.nim	494	4
+parseUntil	parseUntil__yxs3WjxMSDtXEyiLC9aqFCAparseutils	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/parseutils.nim	307	5
+parseWhile	parseWhile__aIOGZyeHx2rHC71Dcc2SCwparseutils	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/parseutils.nim	369	5
+parseUntil	parseUntil__jfFErPNXs9cw9bvuw3hS0GVAparseutils	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/parseutils.nim	325	5
+skipWhitespace	skipWhitespace__6WuCTfsk2bOGNtGSxg9cZWAparseutils	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/parseutils.nim	244	5
+parseHex	parseHex__5URmSDed0NZg9au720T3U9aA	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/parseutils.nim	156	5
+result	result	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/parseutils.nim	156	0
+i	i	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/parseutils.nim	187	6
+output	output	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/parseutils.nim	188	6
+foundDigit	foundDigit	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/parseutils.nim	189	6
+last	last	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/parseutils.nim	190	6

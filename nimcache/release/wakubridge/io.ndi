@@ -39,3 +39,12 @@ toString	toString__X5fc87ECNWuekn9cp59cplTw	/home/runner/work/nim-waku/nim-waku/
 result	result	/home/runner/work/nim-waku/nim-waku/vendor/nim-stint/stint/io.nim	309	0
 q	q_1	/home/runner/work/nim-waku/nim-waku/vendor/nim-stint/stint/io.nim	322	7
 r	r	/home/runner/work/nim-waku/nim-waku/vendor/nim-stint/stint/io.nim	322	10
+significantBytesBE	significantBytesBE__7UBUmnE9bSrKAdHlP7wI9aEw	/home/runner/work/nim-waku/nim-waku/vendor/nim-stint/stint/io.nim	468	5
+result	result	/home/runner/work/nim-waku/nim-waku/vendor/nim-stint/stint/io.nim	468	0
+i	i	/home/runner/work/nim-waku/nim-waku/vendor/nim-stint/stint/io.nim	472	6
+i	i_2	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim	106	8
+dumpHex	dumpHex__9byTYUMkpqr9ceGL6b42tekA	/home/runner/work/nim-waku/nim-waku/vendor/nim-stint/stint/io.nim	382	5
+result	result	/home/runner/work/nim-waku/nim-waku/vendor/nim-stint/stint/io.nim	382	0
+bytes	bytes	/home/runner/work/nim-waku/nim-waku/vendor/nim-stint/stint/io.nim	411	8
+i	i	/home/runner/work/nim-waku/nim-waku/vendor/nim-stint/stint/io.nim	413	8
+i	i_2	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim	106	8

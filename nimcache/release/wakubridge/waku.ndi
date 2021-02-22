@@ -19,9 +19,6 @@ result	result	/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/r
 wakuversionDoMain	wakuversionDoMain__7FHb81LyAItOtjEFpL0LjQ_2	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncmacro2.nim	210	30
 result	result	/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/router.nim	229	13
 :envP	colonenvP_	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncmacro2.nim	210	30
-actual	actual	/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/jsonmarshal.nim	5	13
-expected	expected	/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/jsonmarshal.nim	5	21
-argName	argName	/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/jsonmarshal.nim	5	45
 wakuversionDoMain_continue	wakuversionDoMain_continue__oerJ0xVE7dStAFVLN0DjvA	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncmacro2.nim	258	23
 udata`gensym104105004	udataX60gensym104105004_	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncmacro2.nim	33	17
 :envP	colonenvP_	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncmacro2.nim	258	23
@@ -823,8 +820,6 @@ self	self	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/
 result	result	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/options.nim	203	0
 self	self	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/options.nim	157	16
 result	result	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/options.nim	157	0
-val	val_0	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/options.nim	101	14
-result	result	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/options.nim	101	0
 self	self	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/options.nim	203	13
 result	result	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/options.nim	203	0
 node	node	/home/runner/work/nim-waku/nim-waku/waku/v1/protocol/waku_protocol.nim	478	18

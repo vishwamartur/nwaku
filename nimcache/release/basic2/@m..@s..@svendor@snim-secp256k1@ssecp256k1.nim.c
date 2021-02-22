@@ -38,6 +38,8 @@ typedef struct tyObject_SkSignature__zIGR7WXU5PgL069bIs2HRIg tyObject_SkSignatur
 typedef struct tyObject_secp256k1_ecdsa_signature__9abCoFG0e9awROn9bWeoOX9aEA tyObject_secp256k1_ecdsa_signature__9abCoFG0e9awROn9bWeoOX9aEA;
 typedef struct tyObject_Result__cqKviKPTEptuNJjCTlgYBQ tyObject_Result__cqKviKPTEptuNJjCTlgYBQ;
 typedef struct tyObject_Result__Ya9ccZBmFvHJBBkgW6aNwdw tyObject_Result__Ya9ccZBmFvHJBBkgW6aNwdw;
+typedef struct tyObject_SkRecoverableSignature__uOAg5bLjCmhDkxZdWSR9buA tyObject_SkRecoverableSignature__uOAg5bLjCmhDkxZdWSR9buA;
+typedef struct tyObject_secp256k1_ecdsa_recoverable_signature__OOP9ck9bXU6uuG4T9bRTry9a4w tyObject_secp256k1_ecdsa_recoverable_signature__OOP9ck9bXU6uuG4T9bRTry9a4w;
 struct tyObject_SkContext__g9c9bUdtZF9bfUAdx1W2ZZz0A {tyObject_secp256k1_context__POjLS06vi9b462f9boSHL5vQ* context;
 };
 typedef NU8 tyArray__vEOa9c5qaE9ajWxR5R4zwfQg[32];
@@ -118,6 +120,11 @@ N_NIMCALL_PTR(void, ClP_0) (NU8* data_0, NI data_0Len_0, void* ClE_0);
 void* ClE_0;
 } tyProc__2eQPaS8XIidfzb11dDC4nw;
 typedef N_CLOSURE_PTR(void, TM__Vf3HUZLUfnMxxqD8A7j0JA_6) (NU8* data_0, NI data_0Len_0);
+typedef NU8 tyArray__DqM3b17bbm0d9bCZr9c2fLDQ[65];
+struct tyObject_secp256k1_ecdsa_recoverable_signature__OOP9ck9bXU6uuG4T9bRTry9a4w {tyArray__DqM3b17bbm0d9bCZr9c2fLDQ data;
+};
+struct tyObject_SkRecoverableSignature__uOAg5bLjCmhDkxZdWSR9buA {tyObject_secp256k1_ecdsa_recoverable_signature__OOP9ck9bXU6uuG4T9bRTry9a4w data;
+};
 N_LIB_PRIVATE N_NOINLINE(void, chckNil)(void* p);
 static N_INLINE(void, nimZeroMem)(void* p, NI size);
 static N_INLINE(void, nimSetMem__zxfKBYntu9cBapkhrCOk1fgmemory)(void* a, int v, NI size);
@@ -148,6 +155,8 @@ N_LIB_PRIVATE N_NIMCALL(void, toArray__4YEAz4XCqEsEBwgcwy5WUw)(NU8* data_0, NI d
 N_LIB_PRIVATE N_NOINLINE(void, raiseIndexError)(void);
 N_LIB_PRIVATE N_NOINLINE(void, raiseOverflow)(void);
 N_LIB_PRIVATE N_NOINLINE(void, raiseAssert__gpGJG5CoQzE64skFd9bPG7A)(NimStringDesc* msg) __attribute__((noreturn));
+N_CDECL(int, secp256k1_ecdsa_sign_recoverable)(tyObject_secp256k1_context__POjLS06vi9b462f9boSHL5vQ* ctx, tyObject_secp256k1_ecdsa_recoverable_signature__OOP9ck9bXU6uuG4T9bRTry9a4w* sig, unsigned char* msg32, unsigned char* seckey, tyProc__gZv9cNjZk34ctaQVDPYTI5A noncefp, void* ndata);
+N_CDECL(int, secp256k1_ecdsa_recoverable_signature_serialize_compact)(tyObject_secp256k1_context__POjLS06vi9b462f9boSHL5vQ* ctx, unsigned char* output64, int* recid, tyObject_secp256k1_ecdsa_recoverable_signature__OOP9ck9bXU6uuG4T9bRTry9a4w* sig);
 N_LIB_PRIVATE TNimType NTI__aKiBFtqo69b60sWLnM5A9c3w_;
 extern TNimType NTI__k3HXouOuhqAKq0dx450lXQ_;
 N_LIB_PRIVATE TNimType NTI__vEOa9c5qaE9ajWxR5R4zwfQg_;
@@ -164,6 +173,13 @@ STRING_LITERAL(TM__Vf3HUZLUfnMxxqD8A7j0JA_4, "/home/runner/work/nim-waku/nim-wak
 STRING_LITERAL(TM__Vf3HUZLUfnMxxqD8A7j0JA_5, "/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp25"
 "6k1.nim(355, 12) `res == 1` Can\'t fail, per documentation", 120);
 STRING_LITERAL(TM__Vf3HUZLUfnMxxqD8A7j0JA_8, "RNG not giving random enough bytes, can\'t create valid key", 58);
+STRING_LITERAL(TM__Vf3HUZLUfnMxxqD8A7j0JA_9, "/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp25"
+"6k1.nim(292, 12) `res == 1` Can\'t fail, per documentation", 120);
+STRING_LITERAL(TM__Vf3HUZLUfnMxxqD8A7j0JA_10, "/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp25"
+"6k1.nim(442, 12) `res == 1` cannot create recoverable signature,"
+" key invalid\?", 140);
+STRING_LITERAL(TM__Vf3HUZLUfnMxxqD8A7j0JA_11, "/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp25"
+"6k1.nim(392, 12) `res == 1` can\'t fail, per documentation", 120);
 N_LIB_PRIVATE NIM_THREADVAR tyObject_SkContext__g9c9bUdtZF9bfUAdx1W2ZZz0A secpContext__T39b9cmVSHCO632lALSOJ29aw;
 extern TNimType* nimTypeRoot;
 extern tyObject_secp256k1_context__POjLS06vi9b462f9boSHL5vQ* secp256k1_context_no_precomp;
@@ -617,6 +633,81 @@ N_LIB_PRIVATE N_NIMCALL(tyObject_SkSecretKey__aKiBFtqo69b60sWLnM5A9c3w, random__
 	raiseAssert__gpGJG5CoQzE64skFd9bPG7A(((NimStringDesc*) &TM__Vf3HUZLUfnMxxqD8A7j0JA_8));
 	}BeforeRet_: ;
 	return result;}
+
+#line 286 "/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1.nim"
+N_LIB_PRIVATE N_NIMCALL(void, toRaw__bCgy0bI8LIRIvVpAjgBPMg)(tyObject_SkPublicKey__YxxaGK7KOKaWCOaZ44rHMA* pubkey, tyArray__DqM3b17bbm0d9bCZr9c2fLDQ Result) {	size_t length;	int res;	chckNil((void*)Result);	nimZeroMem((void*)Result, sizeof(tyArray__DqM3b17bbm0d9bCZr9c2fLDQ));
+#line 288 "/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1.nim"
+	length = ((size_t) 65);
+#line 289 "/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1.nim"
+
+#line 289 "/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1.nim"
+	res = secp256k1_ec_pubkey_serialize(secp256k1_context_no_precomp, ((unsigned char*) ((&Result[(((NI) 0))- 0]))), (&length), (&(*pubkey).data), ((unsigned int) 2));
+#line 292 "/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1.nim"
+	{
+#line 292 "/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1.nim"
+
+#line 292 "/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1.nim"
+		if (!!((res == ((NI32) 1)))) goto LA3_;
+
+#line 292 "/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1.nim"
+
+#line 292 "/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1.nim"
+		failedAssertImpl__W9cjVocn1tjhW7p7xohJj6A(((NimStringDesc*) &TM__Vf3HUZLUfnMxxqD8A7j0JA_9));
+	}
+	LA3_: ;
+}
+
+#line 437 "/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1.nim"
+N_LIB_PRIVATE N_NIMCALL(tyObject_SkRecoverableSignature__uOAg5bLjCmhDkxZdWSR9buA, signRecoverable__IwAS2SrVpsuq9cMsnSkCo9bg)(tyObject_SkSecretKey__aKiBFtqo69b60sWLnM5A9c3w* key_0, tyArray__vEOa9c5qaE9ajWxR5R4zwfQg msg) {	tyObject_SkRecoverableSignature__uOAg5bLjCmhDkxZdWSR9buA result;	tyObject_secp256k1_ecdsa_recoverable_signature__OOP9ck9bXU6uuG4T9bRTry9a4w data_1;	int res;	tyObject_secp256k1_context__POjLS06vi9b462f9boSHL5vQ* T1_;	nimZeroMem((void*)(&result), sizeof(tyObject_SkRecoverableSignature__uOAg5bLjCmhDkxZdWSR9buA));
+#line 438 "/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1.nim"
+
+#line 440 "/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1.nim"
+
+#line 441 "/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1.nim"
+
+#line 441 "/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1.nim"
+	T1_ = (tyObject_secp256k1_context__POjLS06vi9b462f9boSHL5vQ*)0;	T1_ = getContext__DnBbOJLwooKySk8h6Wtl4A();
+#line 440 "/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1.nim"
+	res = secp256k1_ecdsa_sign_recoverable(T1_, (&data_1), ((unsigned char*) ((&msg[(((NI) 0))- 0]))), ((unsigned char*) ((&(*key_0).data[(((NI) 0))- 0]))), NIM_NIL, NIM_NIL);
+#line 442 "/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1.nim"
+	{
+#line 442 "/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1.nim"
+
+#line 442 "/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1.nim"
+		if (!!((res == ((NI32) 1)))) goto LA4_;
+
+#line 442 "/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1.nim"
+
+#line 442 "/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1.nim"
+		failedAssertImpl__W9cjVocn1tjhW7p7xohJj6A(((NimStringDesc*) &TM__Vf3HUZLUfnMxxqD8A7j0JA_10));
+	}
+	LA4_: ;
+	chckNil((void*)(&result));	nimZeroMem((void*)(&result), sizeof(tyObject_SkRecoverableSignature__uOAg5bLjCmhDkxZdWSR9buA));	result.data = data_1;	return result;}
+
+#line 387 "/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1.nim"
+N_LIB_PRIVATE N_NIMCALL(void, toRaw__yPMUELBksARKX8FT2nORhg)(tyObject_SkRecoverableSignature__uOAg5bLjCmhDkxZdWSR9buA* sig, tyArray__DqM3b17bbm0d9bCZr9c2fLDQ Result) {	int recid;	int res;	chckNil((void*)Result);	nimZeroMem((void*)Result, sizeof(tyArray__DqM3b17bbm0d9bCZr9c2fLDQ));
+#line 389 "/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1.nim"
+	recid = ((int) 0);
+#line 390 "/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1.nim"
+
+#line 390 "/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1.nim"
+	res = secp256k1_ecdsa_recoverable_signature_serialize_compact(secp256k1_context_no_precomp, ((unsigned char*) ((&Result[(((NI) 0))- 0]))), (&recid), (&(*sig).data));
+#line 392 "/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1.nim"
+	{
+#line 392 "/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1.nim"
+
+#line 392 "/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1.nim"
+		if (!!((res == ((NI32) 1)))) goto LA3_;
+
+#line 392 "/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1.nim"
+
+#line 392 "/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1.nim"
+		failedAssertImpl__W9cjVocn1tjhW7p7xohJj6A(((NimStringDesc*) &TM__Vf3HUZLUfnMxxqD8A7j0JA_11));
+	}
+	LA3_: ;
+
+#line 394 "/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1.nim"
+	Result[(((NI) 64))- 0] = ((NU8) (recid));}
 N_LIB_PRIVATE N_NIMCALL(void, secp256k1_secp256k1DatInit000)(void) {
 
 #line 999999 "generated_not_to_break_here"

@@ -3,7 +3,7 @@
 /* The generated code is subject to the original license. */
 /* Compiled for: Linux, amd64, gcc */
 /* Command for C compiler:
-   gcc -c  -w -pthread -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace/install/usr/include -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1/src -DHAVE_CONFIG_H -DHAVE_BUILTIN_EXPECT -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/src -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/inc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/tools -DBR_USE_UNIX_TIME=1 -DBR_USE_URANDOM=1 -DBR_LE_UNALIGNED=1 -DBR_64=1  -DBR_amd64=1 -DBR_INT128=1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/miniupnp/miniupnpc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/libnatpmp-upstream -DENABLE_STRNATPMPERR -march=native -g3 -Og -O3 -fno-strict-aliasing -fno-ident  -I/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib -I/home/runner/work/nim-waku/nim-waku/waku/v2/node -o nimcache/release/wakunode2/@mmessage_store@ssqlite.nim.c.o nimcache/release/wakunode2/@mmessage_store@ssqlite.nim.c */
+   gcc -c  -w -pthread -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace -I/home/runner/work/nim-waku/nim-waku/vendor/nim-libbacktrace/install/usr/include -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-secp256k1/secp256k1_wrapper/secp256k1/src -DHAVE_CONFIG_H -DHAVE_BUILTIN_EXPECT -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/src -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/inc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/csources/tools -DBR_USE_UNIX_TIME=1 -DBR_USE_URANDOM=1 -DBR_LE_UNALIGNED=1 -DBR_64=1  -DBR_amd64=1 -DBR_INT128=1 -I/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/certs -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/miniupnp/miniupnpc -I/home/runner/work/nim-waku/nim-waku/vendor/nim-nat-traversal/vendor/libnatpmp-upstream -DENABLE_STRNATPMPERR -march=native -g3 -Og -O3 -fno-strict-aliasing -fno-ident  -I/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib -I/home/runner/work/nim-waku/nim-waku/waku/v2/node -o nimcache/release/wakunode2/@mmessage_store@ssqlite.nim.c.o nimcache/release/wakunode2/@mmessage_store@ssqlite.nim.c */
 #define NIM_INTBITS 64
 
 #include "nimbase.h"
@@ -358,17 +358,17 @@ N_LIB_PRIVATE N_NIMCALL(void, prepareStmt__cD3rtx9buQel9c19bfiyO9cPGg)(tyObject_
 #line 200 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 	s = (tyObject_sqlite3_stmt__2LrTMWObRpam19clmq9c9aiaw*)0;
 #line 201 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-	{		int vX60gensym184405001_;		NCSTRING T5_;
+	{		int vX60gensym197100001_;		NCSTRING T5_;
 #line 49 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 201 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 		if (((stmt ? stmt->Sup.len : 0)) < ((int) (-2147483647 -1)) || ((stmt ? stmt->Sup.len : 0)) > ((int) 2147483647)){ raiseRangeErrorI((stmt ? stmt->Sup.len : 0), ((int) (-2147483647 -1)), ((int) 2147483647)); }
 #line 201 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-		vX60gensym184405001_ = sqlite3_prepare_v2((*db).env, nimToCStringConv(stmt), ((int) ((stmt ? stmt->Sup.len : 0))), &s, NIM_NIL);
+		vX60gensym197100001_ = sqlite3_prepare_v2((*db).env, nimToCStringConv(stmt), ((int) ((stmt ? stmt->Sup.len : 0))), &s, NIM_NIL);
 #line 49 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 49 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-		if (!!((vX60gensym184405001_ == ((NI32) 0)))) goto LA3_;
+		if (!!((vX60gensym197100001_ == ((NI32) 0)))) goto LA3_;
 
 #line 51 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
@@ -385,7 +385,7 @@ N_LIB_PRIVATE N_NIMCALL(void, prepareStmt__cD3rtx9buQel9c19bfiyO9cPGg)(tyObject_
 #line 51 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 51 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-		T5_ = (NCSTRING)0;		T5_ = sqlite3_errstr(vX60gensym184405001_);		unsureAsgnRef((void**) (&(*Result)._o_1.e), cstrToNimstr(T5_));		goto BeforeRet_;
+		T5_ = (NCSTRING)0;		T5_ = sqlite3_errstr(vX60gensym197100001_);		unsureAsgnRef((void**) (&(*Result)._o_1.e), cstrToNimstr(T5_));		goto BeforeRet_;
 	}
 	LA3_: ;
 	chckNil((void*)Result);	switch ((*Result).o) {
@@ -454,7 +454,7 @@ static N_INLINE(void, nimZeroMem)(void* p, NI size) {
 }
 
 #line 154 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-N_LIB_PRIVATE N_NIMCALL(void, exec__lTxWiO4Uv0RVrg7ZMhZgwA)(tyObject_sqlite3_stmt__2LrTMWObRpam19clmq9c9aiaw* s, tyTuple__9ba6ZCmGhWfQYQs9a8Hr3JUw* params, tyObject_Result__WyXya2I9aOi6nTLz9crZs09bA* Result) {	tyObject_sqlite3_stmt__2LrTMWObRpam19clmq9c9aiaw* s_2;	NI iX60gensym184465245_;	NI TM__LlFNNfm6rAaKSgNQVtgr3A_2;	NI TM__LlFNNfm6rAaKSgNQVtgr3A_3;	NI TM__LlFNNfm6rAaKSgNQVtgr3A_4;	NI TM__LlFNNfm6rAaKSgNQVtgr3A_5;	tyObject_Result__WyXya2I9aOi6nTLz9crZs09bA res;	int T27_;	int T28_;{	chckNil((void*)Result);	switch ((*Result).o) {
+N_LIB_PRIVATE N_NIMCALL(void, exec__lTxWiO4Uv0RVrg7ZMhZgwA)(tyObject_sqlite3_stmt__2LrTMWObRpam19clmq9c9aiaw* s, tyTuple__9ba6ZCmGhWfQYQs9a8Hr3JUw* params, tyObject_Result__WyXya2I9aOi6nTLz9crZs09bA* Result) {	tyObject_sqlite3_stmt__2LrTMWObRpam19clmq9c9aiaw* s_2;	NI iX60gensym197160245_;	NI TM__LlFNNfm6rAaKSgNQVtgr3A_2;	NI TM__LlFNNfm6rAaKSgNQVtgr3A_3;	NI TM__LlFNNfm6rAaKSgNQVtgr3A_4;	NI TM__LlFNNfm6rAaKSgNQVtgr3A_5;	tyObject_Result__WyXya2I9aOi6nTLz9crZs09bA res;	int T27_;	int T28_;{	chckNil((void*)Result);	switch ((*Result).o) {
 	case NIM_FALSE:
 	unsureAsgnRef((void**)&(*Result)._o_1.e, NIM_NIL);	break;
 	case NIM_TRUE:
@@ -466,17 +466,17 @@ N_LIB_PRIVATE N_NIMCALL(void, exec__lTxWiO4Uv0RVrg7ZMhZgwA)(tyObject_sqlite3_stm
 #line 155 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 	s_2 = s;
 #line 147 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-	iX60gensym184465245_ = ((NI) 1);
+	iX60gensym197160245_ = ((NI) 1);
 #line 149 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-	{		int vX60gensym184475001_;		NCSTRING T5_;
+	{		int vX60gensym197170001_;		NCSTRING T5_;
 #line 49 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 149 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-		vX60gensym184475001_ = bindParam__qv2kPKGddqerzK9afm9bSjqQ(s_2, iX60gensym184465245_, (*params).Field0);
+		vX60gensym197170001_ = bindParam__qv2kPKGddqerzK9afm9bSjqQ(s_2, iX60gensym197160245_, (*params).Field0);
 #line 49 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 49 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-		if (!!((vX60gensym184475001_ == ((NI32) 0)))) goto LA3_;
+		if (!!((vX60gensym197170001_ == ((NI32) 0)))) goto LA3_;
 
 #line 51 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
@@ -493,22 +493,22 @@ N_LIB_PRIVATE N_NIMCALL(void, exec__lTxWiO4Uv0RVrg7ZMhZgwA)(tyObject_sqlite3_stm
 #line 51 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 51 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-		T5_ = (NCSTRING)0;		T5_ = sqlite3_errstr(vX60gensym184475001_);		unsureAsgnRef((void**) (&(*Result)._o_1.e), cstrToNimstr(T5_));		goto BeforeRet_;
+		T5_ = (NCSTRING)0;		T5_ = sqlite3_errstr(vX60gensym197170001_);		unsureAsgnRef((void**) (&(*Result)._o_1.e), cstrToNimstr(T5_));		goto BeforeRet_;
 	}
 	LA3_: ;
 
 #line 150 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-	if (nimAddInt(iX60gensym184465245_, ((NI) 1), &TM__LlFNNfm6rAaKSgNQVtgr3A_2)) { raiseOverflow(); };	iX60gensym184465245_ = (NI)(TM__LlFNNfm6rAaKSgNQVtgr3A_2);
+	if (nimAddInt(iX60gensym197160245_, ((NI) 1), &TM__LlFNNfm6rAaKSgNQVtgr3A_2)) { raiseOverflow(); };	iX60gensym197160245_ = (NI)(TM__LlFNNfm6rAaKSgNQVtgr3A_2);
 #line 149 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-	{		int vX60gensym184505001_;		NCSTRING T10_;
+	{		int vX60gensym197200001_;		NCSTRING T10_;
 #line 49 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 149 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-		vX60gensym184505001_ = bindParam__B0rVHfAjKnQMdrfhY2Yugw(s_2, iX60gensym184465245_, (*params).Field1);
+		vX60gensym197200001_ = bindParam__B0rVHfAjKnQMdrfhY2Yugw(s_2, iX60gensym197160245_, (*params).Field1);
 #line 49 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 49 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-		if (!!((vX60gensym184505001_ == ((NI32) 0)))) goto LA8_;
+		if (!!((vX60gensym197200001_ == ((NI32) 0)))) goto LA8_;
 
 #line 51 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
@@ -525,22 +525,22 @@ N_LIB_PRIVATE N_NIMCALL(void, exec__lTxWiO4Uv0RVrg7ZMhZgwA)(tyObject_sqlite3_stm
 #line 51 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 51 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-		T10_ = (NCSTRING)0;		T10_ = sqlite3_errstr(vX60gensym184505001_);		unsureAsgnRef((void**) (&(*Result)._o_1.e), cstrToNimstr(T10_));		goto BeforeRet_;
+		T10_ = (NCSTRING)0;		T10_ = sqlite3_errstr(vX60gensym197200001_);		unsureAsgnRef((void**) (&(*Result)._o_1.e), cstrToNimstr(T10_));		goto BeforeRet_;
 	}
 	LA8_: ;
 
 #line 150 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-	if (nimAddInt(iX60gensym184465245_, ((NI) 1), &TM__LlFNNfm6rAaKSgNQVtgr3A_3)) { raiseOverflow(); };	iX60gensym184465245_ = (NI)(TM__LlFNNfm6rAaKSgNQVtgr3A_3);
+	if (nimAddInt(iX60gensym197160245_, ((NI) 1), &TM__LlFNNfm6rAaKSgNQVtgr3A_3)) { raiseOverflow(); };	iX60gensym197160245_ = (NI)(TM__LlFNNfm6rAaKSgNQVtgr3A_3);
 #line 149 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-	{		int vX60gensym184530001_;		NCSTRING T15_;
+	{		int vX60gensym197225001_;		NCSTRING T15_;
 #line 49 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 149 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-		vX60gensym184530001_ = bindParam__UGm6V7cwLO5FrRqiNJLzUg(s_2, iX60gensym184465245_, (*params).Field2);
+		vX60gensym197225001_ = bindParam__UGm6V7cwLO5FrRqiNJLzUg(s_2, iX60gensym197160245_, (*params).Field2);
 #line 49 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 49 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-		if (!!((vX60gensym184530001_ == ((NI32) 0)))) goto LA13_;
+		if (!!((vX60gensym197225001_ == ((NI32) 0)))) goto LA13_;
 
 #line 51 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
@@ -557,22 +557,22 @@ N_LIB_PRIVATE N_NIMCALL(void, exec__lTxWiO4Uv0RVrg7ZMhZgwA)(tyObject_sqlite3_stm
 #line 51 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 51 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-		T15_ = (NCSTRING)0;		T15_ = sqlite3_errstr(vX60gensym184530001_);		unsureAsgnRef((void**) (&(*Result)._o_1.e), cstrToNimstr(T15_));		goto BeforeRet_;
+		T15_ = (NCSTRING)0;		T15_ = sqlite3_errstr(vX60gensym197225001_);		unsureAsgnRef((void**) (&(*Result)._o_1.e), cstrToNimstr(T15_));		goto BeforeRet_;
 	}
 	LA13_: ;
 
 #line 150 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-	if (nimAddInt(iX60gensym184465245_, ((NI) 1), &TM__LlFNNfm6rAaKSgNQVtgr3A_4)) { raiseOverflow(); };	iX60gensym184465245_ = (NI)(TM__LlFNNfm6rAaKSgNQVtgr3A_4);
+	if (nimAddInt(iX60gensym197160245_, ((NI) 1), &TM__LlFNNfm6rAaKSgNQVtgr3A_4)) { raiseOverflow(); };	iX60gensym197160245_ = (NI)(TM__LlFNNfm6rAaKSgNQVtgr3A_4);
 #line 149 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-	{		int vX60gensym184555001_;		NCSTRING T20_;
+	{		int vX60gensym197250001_;		NCSTRING T20_;
 #line 49 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 149 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-		vX60gensym184555001_ = bindParam__qv2kPKGddqerzK9afm9bSjqQ(s_2, iX60gensym184465245_, (*params).Field3);
+		vX60gensym197250001_ = bindParam__qv2kPKGddqerzK9afm9bSjqQ(s_2, iX60gensym197160245_, (*params).Field3);
 #line 49 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 49 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-		if (!!((vX60gensym184555001_ == ((NI32) 0)))) goto LA18_;
+		if (!!((vX60gensym197250001_ == ((NI32) 0)))) goto LA18_;
 
 #line 51 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
@@ -589,12 +589,12 @@ N_LIB_PRIVATE N_NIMCALL(void, exec__lTxWiO4Uv0RVrg7ZMhZgwA)(tyObject_sqlite3_stm
 #line 51 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 51 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-		T20_ = (NCSTRING)0;		T20_ = sqlite3_errstr(vX60gensym184555001_);		unsureAsgnRef((void**) (&(*Result)._o_1.e), cstrToNimstr(T20_));		goto BeforeRet_;
+		T20_ = (NCSTRING)0;		T20_ = sqlite3_errstr(vX60gensym197250001_);		unsureAsgnRef((void**) (&(*Result)._o_1.e), cstrToNimstr(T20_));		goto BeforeRet_;
 	}
 	LA18_: ;
 
 #line 150 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-	if (nimAddInt(iX60gensym184465245_, ((NI) 1), &TM__LlFNNfm6rAaKSgNQVtgr3A_5)) { raiseOverflow(); };	iX60gensym184465245_ = (NI)(TM__LlFNNfm6rAaKSgNQVtgr3A_5);	nimZeroMem((void*)(&res), sizeof(tyObject_Result__WyXya2I9aOi6nTLz9crZs09bA));
+	if (nimAddInt(iX60gensym197160245_, ((NI) 1), &TM__LlFNNfm6rAaKSgNQVtgr3A_5)) { raiseOverflow(); };	iX60gensym197160245_ = (NI)(TM__LlFNNfm6rAaKSgNQVtgr3A_5);	nimZeroMem((void*)(&res), sizeof(tyObject_Result__WyXya2I9aOi6nTLz9crZs09bA));
 #line 158 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 159 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
@@ -648,7 +648,7 @@ static N_INLINE(void, popSafePoint)(void) {
 	excHandler__rqLlY5bs9atDw2OXYqJEn5g = (*excHandler__rqLlY5bs9atDw2OXYqJEn5g).prev;}
 
 #line 173 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-N_LIB_PRIVATE N_NIMCALL(void, query__aArfMblFLnlNAWmsd4wr9bA)(tyObject_SqliteDatabasecolonObjectType___PTojit7BBLvcY8i5VIxa1g* db, NimStringDesc* query, tyProc__eQpJu066vuTwCX0zWf9aRXQ onData, tyObject_Result__eZlmLdJ9b4dSB3wslQQC9bRA* Result) {	tyObject_sqlite3_stmt__2LrTMWObRpam19clmq9c9aiaw* s;	tyObject_sqlite3_stmt__2LrTMWObRpam19clmq9c9aiaw* sX60gensym184359271_;	TSafePoint TM__LlFNNfm6rAaKSgNQVtgr3A_6;{	chckNil((void*)Result);	switch ((*Result).o) {
+N_LIB_PRIVATE N_NIMCALL(void, query__aArfMblFLnlNAWmsd4wr9bA)(tyObject_SqliteDatabasecolonObjectType___PTojit7BBLvcY8i5VIxa1g* db, NimStringDesc* query, tyProc__eQpJu066vuTwCX0zWf9aRXQ onData, tyObject_Result__eZlmLdJ9b4dSB3wslQQC9bRA* Result) {	tyObject_sqlite3_stmt__2LrTMWObRpam19clmq9c9aiaw* s;	tyObject_sqlite3_stmt__2LrTMWObRpam19clmq9c9aiaw* sX60gensym197054271_;	TSafePoint TM__LlFNNfm6rAaKSgNQVtgr3A_6;{	chckNil((void*)Result);	switch ((*Result).o) {
 	case NIM_FALSE:
 	unsureAsgnRef((void**)&(*Result)._o_1.e, NIM_NIL);	break;
 	case NIM_TRUE:
@@ -656,19 +656,19 @@ N_LIB_PRIVATE N_NIMCALL(void, query__aArfMblFLnlNAWmsd4wr9bA)(tyObject_SqliteDat
 	} 
 	(*Result).o = 0;
 #line 174 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-	sX60gensym184359271_ = (tyObject_sqlite3_stmt__2LrTMWObRpam19clmq9c9aiaw*)0;
+	sX60gensym197054271_ = (tyObject_sqlite3_stmt__2LrTMWObRpam19clmq9c9aiaw*)0;
 #line 126 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-	{		int vX60gensym184360003_;		NCSTRING T5_;
+	{		int vX60gensym197055003_;		NCSTRING T5_;
 #line 49 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 126 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 		if (((query ? query->Sup.len : 0)) < ((int) (-2147483647 -1)) || ((query ? query->Sup.len : 0)) > ((int) 2147483647)){ raiseRangeErrorI((query ? query->Sup.len : 0), ((int) (-2147483647 -1)), ((int) 2147483647)); }
 #line 126 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-		vX60gensym184360003_ = sqlite3_prepare_v2((*db).env, nimToCStringConv(query), ((int) ((query ? query->Sup.len : 0))), &sX60gensym184359271_, NIM_NIL);
+		vX60gensym197055003_ = sqlite3_prepare_v2((*db).env, nimToCStringConv(query), ((int) ((query ? query->Sup.len : 0))), &sX60gensym197054271_, NIM_NIL);
 #line 49 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 49 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-		if (!!((vX60gensym184360003_ == ((NI32) 0)))) goto LA3_;
+		if (!!((vX60gensym197055003_ == ((NI32) 0)))) goto LA3_;
 
 #line 51 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
@@ -685,10 +685,10 @@ N_LIB_PRIVATE N_NIMCALL(void, query__aArfMblFLnlNAWmsd4wr9bA)(tyObject_SqliteDat
 #line 51 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 51 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-		T5_ = (NCSTRING)0;		T5_ = sqlite3_errstr(vX60gensym184360003_);		unsureAsgnRef((void**) (&(*Result)._o_1.e), cstrToNimstr(T5_));		goto BeforeRet_;
+		T5_ = (NCSTRING)0;		T5_ = sqlite3_errstr(vX60gensym197055003_);		unsureAsgnRef((void**) (&(*Result)._o_1.e), cstrToNimstr(T5_));		goto BeforeRet_;
 	}
 	LA3_: ;
-	s = sX60gensym184359271_;
+	s = sX60gensym197054271_;
 #line 176 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 	pushSafePoint(&TM__LlFNNfm6rAaKSgNQVtgr3A_6);	TM__LlFNNfm6rAaKSgNQVtgr3A_6.status = setjmp(TM__LlFNNfm6rAaKSgNQVtgr3A_6.context);	if (TM__LlFNNfm6rAaKSgNQVtgr3A_6.status == 0) {		NIM_BOOL volatile gotResults;		int T15_;		int T16_;
 #line 177 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
@@ -1032,7 +1032,7 @@ N_LIB_PRIVATE N_NIMCALL(void, init__F8rKbaGpyoCOLoh22xAkfA)(NimStringDesc* baseP
 #line 62 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 	nimZeroMem((void*)(&env), sizeof(tyObject_AutoDisposed__INE39cPdnNLlaXfz03yismQ));
 #line 63 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-	pushSafePoint(&TM__LlFNNfm6rAaKSgNQVtgr3A_8);	TM__LlFNNfm6rAaKSgNQVtgr3A_8.status = setjmp(TM__LlFNNfm6rAaKSgNQVtgr3A_8.context);	if (TM__LlFNNfm6rAaKSgNQVtgr3A_8.status == 0) {		NimStringDesc* name_2;		NI flags_1;		tyObject_sqlite3_stmt__2LrTMWObRpam19clmq9c9aiaw* sX60gensym188605027_;		tyObject_sqlite3_stmt__2LrTMWObRpam19clmq9c9aiaw* sX60gensym188610001_;		tyObject_sqlite3_stmt__2LrTMWObRpam19clmq9c9aiaw* journalModePragma;		tyObject_sqlite3_stmt__2LrTMWObRpam19clmq9c9aiaw* sX60gensym188660002_;		tyObject_SqliteDatabasecolonObjectType___PTojit7BBLvcY8i5VIxa1g* T81_;
+	pushSafePoint(&TM__LlFNNfm6rAaKSgNQVtgr3A_8);	TM__LlFNNfm6rAaKSgNQVtgr3A_8.status = setjmp(TM__LlFNNfm6rAaKSgNQVtgr3A_8.context);	if (TM__LlFNNfm6rAaKSgNQVtgr3A_8.status == 0) {		NimStringDesc* name_2;		NI flags_1;		tyObject_sqlite3_stmt__2LrTMWObRpam19clmq9c9aiaw* sX60gensym201300027_;		tyObject_sqlite3_stmt__2LrTMWObRpam19clmq9c9aiaw* sX60gensym201305001_;		tyObject_sqlite3_stmt__2LrTMWObRpam19clmq9c9aiaw* journalModePragma;		tyObject_sqlite3_stmt__2LrTMWObRpam19clmq9c9aiaw* sX60gensym201355002_;		tyObject_SqliteDatabasecolonObjectType___PTojit7BBLvcY8i5VIxa1g* T81_;
 #line 66 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 67 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
@@ -1093,15 +1093,15 @@ N_LIB_PRIVATE N_NIMCALL(void, init__F8rKbaGpyoCOLoh22xAkfA)(NimStringDesc* baseP
 		LA16_: ;
 
 #line 79 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-		{			int vX60gensym188585001_;			NCSTRING T25_;
+		{			int vX60gensym201280001_;			NCSTRING T25_;
 #line 49 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 			if ((flags_1) < ((int) (-2147483647 -1)) || (flags_1) > ((int) 2147483647)){ raiseRangeErrorI(flags_1, ((int) (-2147483647 -1)), ((int) 2147483647)); }
 #line 79 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-			vX60gensym188585001_ = sqlite3_open_v2(nimToCStringConv(name_2), &env.val, ((int) (flags_1)), NIM_NIL);
+			vX60gensym201280001_ = sqlite3_open_v2(nimToCStringConv(name_2), &env.val, ((int) (flags_1)), NIM_NIL);
 #line 49 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 49 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-			if (!!((vX60gensym188585001_ == ((NI32) 0)))) goto LA23_;
+			if (!!((vX60gensym201280001_ == ((NI32) 0)))) goto LA23_;
 
 #line 51 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
@@ -1118,7 +1118,7 @@ N_LIB_PRIVATE N_NIMCALL(void, init__F8rKbaGpyoCOLoh22xAkfA)(NimStringDesc* baseP
 #line 51 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 51 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-			T25_ = (NCSTRING)0;			T25_ = sqlite3_errstr(vX60gensym188585001_);			unsureAsgnRef((void**) (&(*Result)._o_1.e), cstrToNimstr(T25_));			popSafePoint();
+			T25_ = (NCSTRING)0;			T25_ = sqlite3_errstr(vX60gensym201280001_);			unsureAsgnRef((void**) (&(*Result)._o_1.e), cstrToNimstr(T25_));			popSafePoint();
 #line 63 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 63 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
@@ -1128,17 +1128,17 @@ N_LIB_PRIVATE N_NIMCALL(void, init__F8rKbaGpyoCOLoh22xAkfA)(NimStringDesc* baseP
 		LA23_: ;
 
 #line 96 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-		sX60gensym188610001_ = (tyObject_sqlite3_stmt__2LrTMWObRpam19clmq9c9aiaw*)0;
+		sX60gensym201305001_ = (tyObject_sqlite3_stmt__2LrTMWObRpam19clmq9c9aiaw*)0;
 #line 83 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-		{			int vX60gensym188615003_;			NCSTRING T30_;
+		{			int vX60gensym201310003_;			NCSTRING T30_;
 #line 49 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 83 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-			vX60gensym188615003_ = sqlite3_prepare_v2(env.val, "PRAGMA user_version = 1;", ((int) 24), &sX60gensym188610001_, NIM_NIL);
+			vX60gensym201310003_ = sqlite3_prepare_v2(env.val, "PRAGMA user_version = 1;", ((int) 24), &sX60gensym201305001_, NIM_NIL);
 #line 49 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 49 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-			if (!!((vX60gensym188615003_ == ((NI32) 0)))) goto LA28_;
+			if (!!((vX60gensym201310003_ == ((NI32) 0)))) goto LA28_;
 
 #line 51 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
@@ -1155,7 +1155,7 @@ N_LIB_PRIVATE N_NIMCALL(void, init__F8rKbaGpyoCOLoh22xAkfA)(NimStringDesc* baseP
 #line 51 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 51 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-			T30_ = (NCSTRING)0;			T30_ = sqlite3_errstr(vX60gensym188615003_);			unsureAsgnRef((void**) (&(*Result)._o_1.e), cstrToNimstr(T30_));			popSafePoint();
+			T30_ = (NCSTRING)0;			T30_ = sqlite3_errstr(vX60gensym201310003_);			unsureAsgnRef((void**) (&(*Result)._o_1.e), cstrToNimstr(T30_));			popSafePoint();
 #line 63 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 63 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
@@ -1163,24 +1163,24 @@ N_LIB_PRIVATE N_NIMCALL(void, init__F8rKbaGpyoCOLoh22xAkfA)(NimStringDesc* baseP
 			goto BeforeRet_;
 		}
 		LA28_: ;
-		sX60gensym188605027_ = sX60gensym188610001_;
+		sX60gensym201300027_ = sX60gensym201305001_;
 #line 88 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-		{			int xX60gensym188635003_;			int T35_;			NCSTRING T36_;
-#line 88 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-
-#line 88 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-			xX60gensym188635003_ = sqlite3_step(sX60gensym188605027_);
+		{			int xX60gensym201330003_;			int T35_;			NCSTRING T36_;
 #line 88 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 88 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-			if (!!((xX60gensym188635003_ == ((NI32) 101)))) goto LA33_;
+			xX60gensym201330003_ = sqlite3_step(sX60gensym201300027_);
+#line 88 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
-#line 89 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
+#line 88 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
+			if (!!((xX60gensym201330003_ == ((NI32) 101)))) goto LA33_;
 
 #line 89 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 89 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-			T35_ = (int)0;			T35_ = sqlite3_finalize(sX60gensym188605027_);			(void)(T35_);
+
+#line 89 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
+			T35_ = (int)0;			T35_ = sqlite3_finalize(sX60gensym201300027_);			(void)(T35_);
 
 #line 90 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
@@ -1197,7 +1197,7 @@ N_LIB_PRIVATE N_NIMCALL(void, init__F8rKbaGpyoCOLoh22xAkfA)(NimStringDesc* baseP
 #line 90 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 90 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-			T36_ = (NCSTRING)0;			T36_ = sqlite3_errstr(xX60gensym188635003_);			unsureAsgnRef((void**) (&(*Result)._o_1.e), cstrToNimstr(T36_));			popSafePoint();
+			T36_ = (NCSTRING)0;			T36_ = sqlite3_errstr(xX60gensym201330003_);			unsureAsgnRef((void**) (&(*Result)._o_1.e), cstrToNimstr(T36_));			popSafePoint();
 #line 63 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 63 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
@@ -1207,15 +1207,15 @@ N_LIB_PRIVATE N_NIMCALL(void, init__F8rKbaGpyoCOLoh22xAkfA)(NimStringDesc* baseP
 		LA33_: ;
 
 #line 114 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-		{			int xX60gensym188635004_;			NCSTRING T41_;
+		{			int xX60gensym201330004_;			NCSTRING T41_;
 #line 92 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 92 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-			xX60gensym188635004_ = sqlite3_finalize(sX60gensym188605027_);
+			xX60gensym201330004_ = sqlite3_finalize(sX60gensym201300027_);
 #line 92 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 92 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-			if (!!((xX60gensym188635004_ == ((NI32) 0)))) goto LA39_;
+			if (!!((xX60gensym201330004_ == ((NI32) 0)))) goto LA39_;
 
 #line 93 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
@@ -1232,7 +1232,7 @@ N_LIB_PRIVATE N_NIMCALL(void, init__F8rKbaGpyoCOLoh22xAkfA)(NimStringDesc* baseP
 #line 93 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 93 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-			T41_ = (NCSTRING)0;			T41_ = sqlite3_errstr(xX60gensym188635004_);			unsureAsgnRef((void**) (&(*Result)._o_1.e), cstrToNimstr(T41_));			popSafePoint();
+			T41_ = (NCSTRING)0;			T41_ = sqlite3_errstr(xX60gensym201330004_);			unsureAsgnRef((void**) (&(*Result)._o_1.e), cstrToNimstr(T41_));			popSafePoint();
 #line 63 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 63 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
@@ -1242,17 +1242,17 @@ N_LIB_PRIVATE N_NIMCALL(void, init__F8rKbaGpyoCOLoh22xAkfA)(NimStringDesc* baseP
 		LA39_: ;
 
 #line 116 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-		sX60gensym188660002_ = (tyObject_sqlite3_stmt__2LrTMWObRpam19clmq9c9aiaw*)0;
+		sX60gensym201355002_ = (tyObject_sqlite3_stmt__2LrTMWObRpam19clmq9c9aiaw*)0;
 #line 83 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-		{			int vX60gensym188665003_;			NCSTRING T46_;
+		{			int vX60gensym201360003_;			NCSTRING T46_;
 #line 49 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 83 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-			vX60gensym188665003_ = sqlite3_prepare_v2(env.val, "PRAGMA journal_mode = WAL;", ((int) 26), &sX60gensym188660002_, NIM_NIL);
+			vX60gensym201360003_ = sqlite3_prepare_v2(env.val, "PRAGMA journal_mode = WAL;", ((int) 26), &sX60gensym201355002_, NIM_NIL);
 #line 49 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 49 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-			if (!!((vX60gensym188665003_ == ((NI32) 0)))) goto LA44_;
+			if (!!((vX60gensym201360003_ == ((NI32) 0)))) goto LA44_;
 
 #line 51 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
@@ -1269,7 +1269,7 @@ N_LIB_PRIVATE N_NIMCALL(void, init__F8rKbaGpyoCOLoh22xAkfA)(NimStringDesc* baseP
 #line 51 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 51 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-			T46_ = (NCSTRING)0;			T46_ = sqlite3_errstr(vX60gensym188665003_);			unsureAsgnRef((void**) (&(*Result)._o_1.e), cstrToNimstr(T46_));			popSafePoint();
+			T46_ = (NCSTRING)0;			T46_ = sqlite3_errstr(vX60gensym201360003_);			unsureAsgnRef((void**) (&(*Result)._o_1.e), cstrToNimstr(T46_));			popSafePoint();
 #line 63 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 63 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
@@ -1277,17 +1277,17 @@ N_LIB_PRIVATE N_NIMCALL(void, init__F8rKbaGpyoCOLoh22xAkfA)(NimStringDesc* baseP
 			goto BeforeRet_;
 		}
 		LA44_: ;
-		journalModePragma = sX60gensym188660002_;
+		journalModePragma = sX60gensym201355002_;
 #line 100 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-		{			int xX60gensym188685003_;			int T51_;			NCSTRING T52_;
-#line 100 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-
-#line 100 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-			xX60gensym188685003_ = sqlite3_step(journalModePragma);
+		{			int xX60gensym201380003_;			int T51_;			NCSTRING T52_;
 #line 100 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 100 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-			if (!!((xX60gensym188685003_ == ((NI32) 100)))) goto LA49_;
+			xX60gensym201380003_ = sqlite3_step(journalModePragma);
+#line 100 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
+
+#line 100 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
+			if (!!((xX60gensym201380003_ == ((NI32) 100)))) goto LA49_;
 
 #line 101 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
@@ -1311,7 +1311,7 @@ N_LIB_PRIVATE N_NIMCALL(void, init__F8rKbaGpyoCOLoh22xAkfA)(NimStringDesc* baseP
 #line 102 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 102 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-			T52_ = (NCSTRING)0;			T52_ = sqlite3_errstr(xX60gensym188685003_);			unsureAsgnRef((void**) (&(*Result)._o_1.e), cstrToNimstr(T52_));			popSafePoint();
+			T52_ = (NCSTRING)0;			T52_ = sqlite3_errstr(xX60gensym201380003_);			unsureAsgnRef((void**) (&(*Result)._o_1.e), cstrToNimstr(T52_));			popSafePoint();
 #line 63 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 63 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
@@ -1321,15 +1321,15 @@ N_LIB_PRIVATE N_NIMCALL(void, init__F8rKbaGpyoCOLoh22xAkfA)(NimStringDesc* baseP
 		LA49_: ;
 
 #line 104 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-		{			int xX60gensym188685004_;			int T57_;			NCSTRING T58_;
+		{			int xX60gensym201380004_;			int T57_;			NCSTRING T58_;
 #line 104 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 104 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-			xX60gensym188685004_ = sqlite3_column_type(journalModePragma, ((int) 0));
+			xX60gensym201380004_ = sqlite3_column_type(journalModePragma, ((int) 0));
 #line 104 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 104 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-			if (!!((xX60gensym188685004_ == ((NI32) 3)))) goto LA55_;
+			if (!!((xX60gensym201380004_ == ((NI32) 3)))) goto LA55_;
 
 #line 105 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
@@ -1353,7 +1353,7 @@ N_LIB_PRIVATE N_NIMCALL(void, init__F8rKbaGpyoCOLoh22xAkfA)(NimStringDesc* baseP
 #line 106 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 106 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-			T58_ = (NCSTRING)0;			T58_ = sqlite3_errstr(xX60gensym188685004_);			unsureAsgnRef((void**) (&(*Result)._o_1.e), cstrToNimstr(T58_));			popSafePoint();
+			T58_ = (NCSTRING)0;			T58_ = sqlite3_errstr(xX60gensym201380004_);			unsureAsgnRef((void**) (&(*Result)._o_1.e), cstrToNimstr(T58_));			popSafePoint();
 #line 63 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 63 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
@@ -1363,11 +1363,11 @@ N_LIB_PRIVATE N_NIMCALL(void, init__F8rKbaGpyoCOLoh22xAkfA)(NimStringDesc* baseP
 		LA55_: ;
 
 #line 117 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-		{			unsigned char* xX60gensym188685005_;			NIM_BOOL T61_;			NIM_BOOL T62_;			NIM_BOOL T64_;			int T67_;			NimStringDesc* T68_;			NimStringDesc* T69_;
+		{			unsigned char* xX60gensym201380005_;			NIM_BOOL T61_;			NIM_BOOL T62_;			NIM_BOOL T64_;			int T67_;			NimStringDesc* T68_;			NimStringDesc* T69_;
 #line 108 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 108 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-			xX60gensym188685005_ = sqlite3_column_text(journalModePragma, ((int) 0));
+			xX60gensym201380005_ = sqlite3_column_text(journalModePragma, ((int) 0));
 #line 109 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 			T61_ = (NIM_BOOL)0;
 #line 109 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
@@ -1375,14 +1375,14 @@ N_LIB_PRIVATE N_NIMCALL(void, init__F8rKbaGpyoCOLoh22xAkfA)(NimStringDesc* baseP
 #line 109 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 109 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-			T62_ = (NIM_BOOL)0;			T62_ = eqeq___aqip9cmQIuefPKdd25wuEEwsystem(((NCSTRING) (xX60gensym188685005_)), "memory");			T61_ = !(T62_);			if (!(T61_)) goto LA63_;
+			T62_ = (NIM_BOOL)0;			T62_ = eqeq___aqip9cmQIuefPKdd25wuEEwsystem(((NCSTRING) (xX60gensym201380005_)), "memory");			T61_ = !(T62_);			if (!(T61_)) goto LA63_;
 
 #line 109 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 109 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 109 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-			T64_ = (NIM_BOOL)0;			T64_ = eqeq___aqip9cmQIuefPKdd25wuEEwsystem(((NCSTRING) (xX60gensym188685005_)), "wal");			T61_ = !(T64_);			LA63_: ;
+			T64_ = (NIM_BOOL)0;			T64_ = eqeq___aqip9cmQIuefPKdd25wuEEwsystem(((NCSTRING) (xX60gensym201380005_)), "wal");			T61_ = !(T64_);			LA63_: ;
 			if (!T61_) goto LA65_;
 
 #line 110 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
@@ -1405,7 +1405,7 @@ N_LIB_PRIVATE N_NIMCALL(void, init__F8rKbaGpyoCOLoh22xAkfA)(NimStringDesc* baseP
 #line 111 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 			T68_ = (NimStringDesc*)0;
 #line 111 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-			T69_ = (NimStringDesc*)0;			T69_ = cstrToNimstr(((NCSTRING) (xX60gensym188685005_)));			T68_ = rawNewString((T69_ ? T69_->Sup.len : 0) + 23);appendString(T68_, ((NimStringDesc*) &TM__LlFNNfm6rAaKSgNQVtgr3A_13));appendString(T68_, T69_);			unsureAsgnRef((void**) (&(*Result)._o_1.e), T68_);			popSafePoint();
+			T69_ = (NimStringDesc*)0;			T69_ = cstrToNimstr(((NCSTRING) (xX60gensym201380005_)));			T68_ = rawNewString((T69_ ? T69_->Sup.len : 0) + 23);appendString(T68_, ((NimStringDesc*) &TM__LlFNNfm6rAaKSgNQVtgr3A_13));appendString(T68_, T69_);			unsureAsgnRef((void**) (&(*Result)._o_1.e), T68_);			popSafePoint();
 #line 63 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 63 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
@@ -1415,15 +1415,15 @@ N_LIB_PRIVATE N_NIMCALL(void, init__F8rKbaGpyoCOLoh22xAkfA)(NimStringDesc* baseP
 		LA65_: ;
 
 #line 88 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-		{			int xX60gensym188720002_;			int T74_;			NCSTRING T75_;
+		{			int xX60gensym201415002_;			int T74_;			NCSTRING T75_;
 #line 88 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 88 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-			xX60gensym188720002_ = sqlite3_step(journalModePragma);
+			xX60gensym201415002_ = sqlite3_step(journalModePragma);
 #line 88 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 88 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-			if (!!((xX60gensym188720002_ == ((NI32) 101)))) goto LA72_;
+			if (!!((xX60gensym201415002_ == ((NI32) 101)))) goto LA72_;
 
 #line 89 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
@@ -1447,7 +1447,7 @@ N_LIB_PRIVATE N_NIMCALL(void, init__F8rKbaGpyoCOLoh22xAkfA)(NimStringDesc* baseP
 #line 90 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 90 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-			T75_ = (NCSTRING)0;			T75_ = sqlite3_errstr(xX60gensym188720002_);			unsureAsgnRef((void**) (&(*Result)._o_1.e), cstrToNimstr(T75_));			popSafePoint();
+			T75_ = (NCSTRING)0;			T75_ = sqlite3_errstr(xX60gensym201415002_);			unsureAsgnRef((void**) (&(*Result)._o_1.e), cstrToNimstr(T75_));			popSafePoint();
 #line 63 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 63 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
@@ -1457,15 +1457,15 @@ N_LIB_PRIVATE N_NIMCALL(void, init__F8rKbaGpyoCOLoh22xAkfA)(NimStringDesc* baseP
 		LA72_: ;
 
 #line 118 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-		{			int xX60gensym188720003_;			NCSTRING T80_;
+		{			int xX60gensym201415003_;			NCSTRING T80_;
 #line 92 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 92 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-			xX60gensym188720003_ = sqlite3_finalize(journalModePragma);
+			xX60gensym201415003_ = sqlite3_finalize(journalModePragma);
 #line 92 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 92 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-			if (!!((xX60gensym188720003_ == ((NI32) 0)))) goto LA78_;
+			if (!!((xX60gensym201415003_ == ((NI32) 0)))) goto LA78_;
 
 #line 93 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
@@ -1482,7 +1482,7 @@ N_LIB_PRIVATE N_NIMCALL(void, init__F8rKbaGpyoCOLoh22xAkfA)(NimStringDesc* baseP
 #line 93 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 93 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-			T80_ = (NCSTRING)0;			T80_ = sqlite3_errstr(xX60gensym188720003_);			unsureAsgnRef((void**) (&(*Result)._o_1.e), cstrToNimstr(T80_));			popSafePoint();
+			T80_ = (NCSTRING)0;			T80_ = sqlite3_errstr(xX60gensym201415003_);			unsureAsgnRef((void**) (&(*Result)._o_1.e), cstrToNimstr(T80_));			popSafePoint();
 #line 63 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 63 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
@@ -1522,17 +1522,17 @@ N_LIB_PRIVATE N_NIMCALL(void, prepareStmt__YO2y7zKeCTW7QY1N7RZwLw)(tyObject_Sqli
 #line 200 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 	s_1 = (tyObject_sqlite3_stmt__2LrTMWObRpam19clmq9c9aiaw*)0;
 #line 201 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-	{		int vX60gensym188850001_;		NCSTRING T5_;
+	{		int vX60gensym201545001_;		NCSTRING T5_;
 #line 49 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 201 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 		if (((stmt ? stmt->Sup.len : 0)) < ((int) (-2147483647 -1)) || ((stmt ? stmt->Sup.len : 0)) > ((int) 2147483647)){ raiseRangeErrorI((stmt ? stmt->Sup.len : 0), ((int) (-2147483647 -1)), ((int) 2147483647)); }
 #line 201 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-		vX60gensym188850001_ = sqlite3_prepare_v2((*db).env, nimToCStringConv(stmt), ((int) ((stmt ? stmt->Sup.len : 0))), &s_1, NIM_NIL);
+		vX60gensym201545001_ = sqlite3_prepare_v2((*db).env, nimToCStringConv(stmt), ((int) ((stmt ? stmt->Sup.len : 0))), &s_1, NIM_NIL);
 #line 49 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 49 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-		if (!!((vX60gensym188850001_ == ((NI32) 0)))) goto LA3_;
+		if (!!((vX60gensym201545001_ == ((NI32) 0)))) goto LA3_;
 
 #line 51 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
@@ -1549,7 +1549,7 @@ N_LIB_PRIVATE N_NIMCALL(void, prepareStmt__YO2y7zKeCTW7QY1N7RZwLw)(tyObject_Sqli
 #line 51 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 51 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-		T5_ = (NCSTRING)0;		T5_ = sqlite3_errstr(vX60gensym188850001_);		unsureAsgnRef((void**) (&(*Result)._o_1.e), cstrToNimstr(T5_));		goto BeforeRet_;
+		T5_ = (NCSTRING)0;		T5_ = sqlite3_errstr(vX60gensym201545001_);		unsureAsgnRef((void**) (&(*Result)._o_1.e), cstrToNimstr(T5_));		goto BeforeRet_;
 	}
 	LA3_: ;
 	chckNil((void*)Result);	switch ((*Result).o) {
@@ -1562,7 +1562,7 @@ N_LIB_PRIVATE N_NIMCALL(void, prepareStmt__YO2y7zKeCTW7QY1N7RZwLw)(tyObject_Sqli
 }
 
 #line 154 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-N_LIB_PRIVATE N_NIMCALL(void, exec__cIsnqJC9bhQz0tMjQ7NL11A)(tyObject_sqlite3_stmt__2LrTMWObRpam19clmq9c9aiaw* s_0, tyTuple__qERWGavQjzug69cyzEYP39bQ params, tyObject_Result__WyXya2I9aOi6nTLz9crZs09bA* Result) {	tyObject_sqlite3_stmt__2LrTMWObRpam19clmq9c9aiaw* s_2;	NI iX60gensym188910236_;	tyObject_Result__WyXya2I9aOi6nTLz9crZs09bA res;	int T7_;	int T8_;	chckNil((void*)Result);	switch ((*Result).o) {
+N_LIB_PRIVATE N_NIMCALL(void, exec__cIsnqJC9bhQz0tMjQ7NL11A)(tyObject_sqlite3_stmt__2LrTMWObRpam19clmq9c9aiaw* s_0, tyTuple__qERWGavQjzug69cyzEYP39bQ params, tyObject_Result__WyXya2I9aOi6nTLz9crZs09bA* Result) {	tyObject_sqlite3_stmt__2LrTMWObRpam19clmq9c9aiaw* s_2;	NI iX60gensym201605236_;	tyObject_Result__WyXya2I9aOi6nTLz9crZs09bA res;	int T7_;	int T8_;	chckNil((void*)Result);	switch ((*Result).o) {
 	case NIM_FALSE:
 	unsureAsgnRef((void**)&(*Result)._o_1.e, NIM_NIL);	break;
 	case NIM_TRUE:
@@ -1574,7 +1574,7 @@ N_LIB_PRIVATE N_NIMCALL(void, exec__cIsnqJC9bhQz0tMjQ7NL11A)(tyObject_sqlite3_st
 #line 155 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 	s_2 = s_0;
 #line 147 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
-	iX60gensym188910236_ = ((NI) 1);	nimZeroMem((void*)(&res), sizeof(tyObject_Result__WyXya2I9aOi6nTLz9crZs09bA));
+	iX60gensym201605236_ = ((NI) 1);	nimZeroMem((void*)(&res), sizeof(tyObject_Result__WyXya2I9aOi6nTLz9crZs09bA));
 #line 158 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"
 
 #line 159 "/home/runner/work/nim-waku/nim-waku/waku/v2/node/message_store/sqlite.nim"

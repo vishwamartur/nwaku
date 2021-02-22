@@ -55,11 +55,8 @@ result	result	/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/wire.
 connect	connect__CHLP9aPwGeXbYd0oja1MztA	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncmacro2.nim	210	30
 result	result	/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/wire.nim	69	0
 :envP	colonenvP_	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncmacro2.nim	210	30
-address	address	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/transports/stream.nim	1418	16
-bufferSize	bufferSize	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/transports/stream.nim	1419	16
-child	child	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/transports/stream.nim	1420	16
-connect_continue	connect_continue__VQewQ9cMgWszzLuBwggWGBQ	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncmacro2.nim	258	23
-udata`gensym99490052	udataX60gensym99490052_	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncmacro2.nim	33	17
+connect_continue	connect_continue__LL3GBFWhIm2Nxvhf9a4KxzA	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncmacro2.nim	258	23
+udata`gensym122725052	udataX60gensym122725052_	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncmacro2.nim	33	17
 :envP	colonenvP_	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncmacro2.nim	258	23
-next`gensym99490053	nextX60gensym99490053_	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncmacro2.nim	36	12
-exc`gensym99490055	excX60gensym99490055_	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncmacro2.nim	53	29
+next`gensym122725053	nextX60gensym122725053_	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncmacro2.nim	36	12
+exc`gensym122725055	excX60gensym122725055_	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncmacro2.nim	53	29
