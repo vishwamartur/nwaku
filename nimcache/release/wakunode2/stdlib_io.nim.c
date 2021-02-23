@@ -268,11 +268,15 @@ N_LIB_PRIVATE NIM_CONST tyArray__XL8FfPqMNtuU56fW9c8pBtQ FormatOpen__iWZDMxVvD1F
 ;
 STRING_LITERAL(TM__MnCJ0VAmeZ9aTATUB39cx60Q_12, "cannot open: ", 13);
 STRING_LITERAL(TM__MnCJ0VAmeZ9aTATUB39cx60Q_27, "cannot write string to file", 27);
+N_LIB_PRIVATE TNimType NTI__2gIj3gQlK3HZJjQaYCP6ZQ_;
+N_LIB_PRIVATE TNimType NTI__MAWzaQJYFu3mlxj0Ppxhmw_;
+N_LIB_PRIVATE TNimType NTI__XBeRj4rw9bUuE7CB3DS1rgg_;
 extern NIM_THREADVAR tyObject_GcHeap__1TRH1TZMaVZTnLNcIHuNFQ gch__IcYaEuuWivYAS86vFMTS3Q;
 extern NIM_THREADVAR TSafePoint* excHandler__rqLlY5bs9atDw2OXYqJEn5g;
 extern NIM_THREADVAR TSafePoint* excHandler__rqLlY5bs9atDw2OXYqJEn5g;
 extern NIM_THREADVAR TSafePoint* excHandler__rqLlY5bs9atDw2OXYqJEn5g;
 extern NIM_THREADVAR TSafePoint* excHandler__rqLlY5bs9atDw2OXYqJEn5g;
+extern TNimType* nimTypeRoot;
 
 #line 11 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/memory.nim"
 static N_INLINE(void, nimCopyMem)(void* dest, void* source, NI size) {	void* T1_;
@@ -1270,3 +1274,40 @@ N_LIB_PRIVATE N_NIMCALL(void, echoBinSafe)(NimStringDesc** args, NI argsLen_0) {
 #line 650 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/io.nim"
 	funlockfile(stdout);
 }
+
+#line 574 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/io.nim"
+N_LIB_PRIVATE N_NIMCALL(NIM_BOOL, open__NY67RvH2AlO9b9a83QFwNNag)(FILE** f, int filehandle, tyEnum_FileMode__ZJfK20XeZ9bv2j1pZjw9aswg mode) {	NIM_BOOL result;	result = (NIM_BOOL)0;
+#line 579 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/io.nim"
+
+#line 579 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/io.nim"
+	(*f) = fdopen(filehandle, nimToCStringConv(FormatOpen__iWZDMxVvD1FETfmW09b8gFQ[(mode)- 0]));
+#line 580 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/io.nim"
+
+#line 580 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/io.nim"
+
+#line 580 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/io.nim"
+	result = !(((*f) == NIM_NIL));	return result;}
+N_LIB_PRIVATE N_NIMCALL(void, stdlib_ioDatInit000)(void) {
+
+#line 999999 "generated_not_to_break_here"
+static TNimNode TM__MnCJ0VAmeZ9aTATUB39cx60Q_0[1];NTI__2gIj3gQlK3HZJjQaYCP6ZQ_.size = sizeof(int);
+NTI__2gIj3gQlK3HZJjQaYCP6ZQ_.kind = 34;
+NTI__2gIj3gQlK3HZJjQaYCP6ZQ_.base = 0;
+NTI__2gIj3gQlK3HZJjQaYCP6ZQ_.flags = 3;
+NTI__2gIj3gQlK3HZJjQaYCP6ZQ_.name = "FileHandle";
+NTI__2gIj3gQlK3HZJjQaYCP6ZQ_.nextType = nimTypeRoot; nimTypeRoot=&NTI__2gIj3gQlK3HZJjQaYCP6ZQ_;
+NTI__MAWzaQJYFu3mlxj0Ppxhmw_.size = sizeof(void*);
+NTI__MAWzaQJYFu3mlxj0Ppxhmw_.kind = 18;
+NTI__MAWzaQJYFu3mlxj0Ppxhmw_.base = 0;
+NTI__MAWzaQJYFu3mlxj0Ppxhmw_.flags = 3;
+NTI__MAWzaQJYFu3mlxj0Ppxhmw_.name = "CFile";
+NTI__MAWzaQJYFu3mlxj0Ppxhmw_.nextType = nimTypeRoot; nimTypeRoot=&NTI__MAWzaQJYFu3mlxj0Ppxhmw_;
+NTI__MAWzaQJYFu3mlxj0Ppxhmw_.node = &TM__MnCJ0VAmeZ9aTATUB39cx60Q_0[0];
+NTI__XBeRj4rw9bUuE7CB3DS1rgg_.size = sizeof(FILE*);
+NTI__XBeRj4rw9bUuE7CB3DS1rgg_.kind = 21;
+NTI__XBeRj4rw9bUuE7CB3DS1rgg_.base = (&NTI__MAWzaQJYFu3mlxj0Ppxhmw_);
+NTI__XBeRj4rw9bUuE7CB3DS1rgg_.flags = 3;
+NTI__XBeRj4rw9bUuE7CB3DS1rgg_.name = "File";
+NTI__XBeRj4rw9bUuE7CB3DS1rgg_.nextType = nimTypeRoot; nimTypeRoot=&NTI__XBeRj4rw9bUuE7CB3DS1rgg_;
+}
+

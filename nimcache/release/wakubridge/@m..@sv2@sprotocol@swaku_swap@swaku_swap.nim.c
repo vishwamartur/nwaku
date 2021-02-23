@@ -311,11 +311,11 @@ N_LIB_PRIVATE N_NIMCALL(void, waku_waku_swapInit000)(void) {
 #line 999999 "generated_not_to_break_here"
 {
 	tySequence__sM4lkSb7zS6F7OVMvW9cffQ* T1_;	nimRegisterGlobalMarker(TM__p09akwLRB9c9aie9ao2QMG9aAaQ_2);	nimRegisterGlobalMarker(TM__p09akwLRB9c9aie9ao2QMG9aAaQ_5);
-#line 38 "/home/runner/work/nim-waku/nim-waku/waku/v2/protocol/waku_swap/waku_swap.nim"
+#line 39 "/home/runner/work/nim-waku/nim-waku/waku/v2/protocol/waku_swap/waku_swap.nim"
 	T1_ = (tySequence__sM4lkSb7zS6F7OVMvW9cffQ*)0;	T1_ = NIM_NIL;
 #line 504 "/home/runner/work/nim-waku/nim-waku/vendor/nim-metrics/metrics.nim"
 	asgnRef((void**) (&waku_swap_peers__UdsEHRA5vhb0x3IFWcm0yQ), newGauge__M34nJZSsewdGDh09anvsrVA(((NimStringDesc*) &TM__p09akwLRB9c9aie9ao2QMG9aAaQ_3), ((NimStringDesc*) &TM__p09akwLRB9c9aie9ao2QMG9aAaQ_4), T1_->data, (T1_ ? T1_->Sup.len : 0), defaultRegistry__io1tPp0SUJ9acKTx5nDy47A));
-#line 39 "/home/runner/work/nim-waku/nim-waku/waku/v2/protocol/waku_swap/waku_swap.nim"
+#line 40 "/home/runner/work/nim-waku/nim-waku/waku/v2/protocol/waku_swap/waku_swap.nim"
 
 #line 504 "/home/runner/work/nim-waku/nim-waku/vendor/nim-metrics/metrics.nim"
 	asgnRef((void**) (&waku_swap_errors__FFyQnq9bKOeYnMfWRhE5ocg), newGauge__M34nJZSsewdGDh09anvsrVA(((NimStringDesc*) &TM__p09akwLRB9c9aie9ao2QMG9aAaQ_6), ((NimStringDesc*) &TM__p09akwLRB9c9aie9ao2QMG9aAaQ_7), TM__p09akwLRB9c9aie9ao2QMG9aAaQ_8, 1, defaultRegistry__io1tPp0SUJ9acKTx5nDy47A));}

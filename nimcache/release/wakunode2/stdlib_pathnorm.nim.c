@@ -60,6 +60,8 @@ static N_INLINE(void, nimCopyMem)(void* dest, void* source, NI size);
 N_LIB_PRIVATE N_NIMCALL(NimStringDesc*, resizeString)(NimStringDesc* dest, NI addlen);
 N_LIB_PRIVATE N_NIMCALL(NIM_BOOL, isDot__Sl9c33djPmHfV9bnZbQf0QBw_3)(NimStringDesc* x, tyTuple__1v9bKyksXWMsm0vNwmZ4EuQ bounds);
 N_LIB_PRIVATE N_NIMCALL(NimStringDesc*, copyString)(NimStringDesc* src);
+N_NIMCALL(NimStringDesc*, rawNewString)(NI cap);
+N_LIB_PRIVATE N_NIMCALL(void, addNormalizePath__bx9csIXjBBeHkYSkIUixO1g)(NimStringDesc* x, NimStringDesc** result, NI* state, NIM_CHAR dirSep);
 STRING_LITERAL(TM__DfU0iuayCGwHDN1Exp9cbKg_16, ".", 1);
 
 #line 22 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/memory.nim"
@@ -510,3 +512,21 @@ N_LIB_PRIVATE N_NIMCALL(void, addNormalizePath__bx9csIXjBBeHkYSkIUixO1g)(NimStri
 		unsureAsgnRef((void**) (&(*result)), copyString(((NimStringDesc*) &TM__DfU0iuayCGwHDN1Exp9cbKg_16)));	}
 	LA69_: ;
 }
+
+#line 102 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/pathnorm.nim"
+N_LIB_PRIVATE N_NIMCALL(NimStringDesc*, normalizePath__gol9aBbIZpJYUPc6xBOBJDQ)(NimStringDesc* path, NIM_CHAR dirSep) {	NimStringDesc* result;	NI state_1;	result = (NimStringDesc*)0;
+#line 112 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/pathnorm.nim"
+
+#line 112 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/pathnorm.nim"
+
+#line 112 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/pathnorm.nim"
+	if (((path ? path->Sup.len : 0)) < ((NI) 0) || ((path ? path->Sup.len : 0)) > ((NI) IL64(9223372036854775807))){ raiseRangeErrorI((path ? path->Sup.len : 0), ((NI) 0), ((NI) IL64(9223372036854775807))); }
+#line 112 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/pathnorm.nim"
+	result = rawNewString(((NI) ((path ? path->Sup.len : 0))));
+#line 113 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/pathnorm.nim"
+	state_1 = ((NI) 0);
+#line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/pathnorm.nim"
+
+#line 114 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/pathnorm.nim"
+	addNormalizePath__bx9csIXjBBeHkYSkIUixO1g(path, (&result), (&state_1), dirSep);
+	return result;}

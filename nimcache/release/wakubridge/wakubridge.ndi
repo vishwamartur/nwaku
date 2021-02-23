@@ -44,7 +44,7 @@ enableDiscovery	enableDiscovery	/home/runner/work/nim-waku/nim-waku/vendor/nim-e
 data	data_0	/home/runner/work/nim-waku/nim-waku/waku/common/wakubridge.nim	68	31
 :envP	colonenvP_	/home/runner/work/nim-waku/nim-waku/waku/common/wakubridge.nim	68	26
 record	record	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim	297	19
-err`gensym201685019	errX60gensym201685019_	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim	323	29
+err`gensym202340019	errX60gensym202340019_	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim	323	29
 nodev2	nodev2__R5EdVS2ycAsNN546yCzulA	/home/runner/work/nim-waku/nim-waku/waku/common/wakubridge.nim	133	4
 fut	fut	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncloop.nim	1079	17
 startWakuV2	startWakuV2__AifNU2anRrclB1R6rvetZQ	/home/runner/work/nim-waku/nim-waku/waku/common/wakubridge.nim	76	5
@@ -77,11 +77,11 @@ address	address	/home/runner/work/nim-waku/nim-waku/waku/v2/node/wakunode2.nim	3
 future	future	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncfutures2.nim	228	17
 val	val_0	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncfutures2.nim	228	36
 loc	loc	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncfutures2.nim	228	44
-startWakuV2_continue	startWakuV2_continue__SOCA7x3TIUVXTshuD8oe9cA	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncmacro2.nim	258	23
-udata`gensym201720259	udataX60gensym201720259_	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncmacro2.nim	33	17
+startWakuV2_continue	startWakuV2_continue__t0XoJadxShqsHXXA9cYekWQ	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncmacro2.nim	258	23
+udata`gensym202375259	udataX60gensym202375259_	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncmacro2.nim	33	17
 :envP	colonenvP_	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncmacro2.nim	258	23
-next`gensym201720260	nextX60gensym201720260_	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncmacro2.nim	36	12
-exc`gensym201720262	excX60gensym201720262_	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncmacro2.nim	53	29
+next`gensym202375260	nextX60gensym202375260_	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncmacro2.nim	36	12
+exc`gensym202375262	excX60gensym202375262_	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncmacro2.nim	53	29
 future	future	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncfutures2.nim	274	13
 error	error	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncfutures2.nim	274	32
 loc	loc	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronos/chronos/asyncfutures2.nim	274	54

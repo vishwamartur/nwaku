@@ -22,3 +22,6 @@ isDot	isDot__Sl9c33djPmHfV9bnZbQf0QBw_3	/home/runner/work/nim-waku/nim-waku/vend
 x	x_0	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/pathnorm.nim	50	11
 bounds	bounds	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/pathnorm.nim	50	22
 result	result	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/pathnorm.nim	50	0
+normalizePath	normalizePath__gol9aBbIZpJYUPc6xBOBJDQ	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/pathnorm.nim	102	5
+result	result	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/pathnorm.nim	102	0
+state	state_1	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/pathnorm.nim	113	6

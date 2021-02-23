@@ -642,6 +642,7 @@ struct {tyObject_WakuMessage__snKUdUhXg9ahkzpl1ubVZ0A v;
 struct tyObject_Cheque__Wamkk9aPgShkg9bKXtYht9cOg {tySequence__6H5Oh5UUvVCLiakt9aTwtUQ* beneficiary;
 NU32 date;
 NU32 amount;
+tySequence__6H5Oh5UUvVCLiakt9aTwtUQ* signature;
 };
 struct tyObject_Result__bnHsyJoHlboX0FMIwoeTFA {NIM_BOOL o;
 union{

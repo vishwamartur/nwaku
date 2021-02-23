@@ -1445,8 +1445,8 @@ addQuoted	addQuoted__za9b9aT1A9aKyrTmHtA9aVTk9cw	/home/runner/work/nim-waku/nim-
 cmp	cmp__KwoSckNr20rVrbBsCxCfrQ	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system.nim	873	5
 result	result	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system.nim	873	0
 insert	insert__5btssSyGxalFjv30aar7MQ	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system.nim	1258	5
-xl`gensym173195201	xlX60gensym173195201_	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system.nim	1265	8
-j`gensym173195202	jX60gensym173195202_	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system.nim	1267	8
+xl`gensym173850201	xlX60gensym173850201_	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system.nim	1265	8
+j`gensym173850202	jX60gensym173850202_	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system.nim	1267	8
 createThread	createThread__Q9cs9borX1mnmHqaNy7rL7fw	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/threads.nim	299	7
 a	a	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/threads.nim	312	8
 threadProcWrapper	threadProcWrapper__oTnP9cUoE9cVTUL7iHAoIIAA_2	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/threads.nim	186	7
@@ -1645,6 +1645,13 @@ newSeq	newSeq__UfzBCJss1f5fnMfuVU1QCg	/home/runner/work/nim-waku/nim-waku/vendor
 result	result	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system.nim	625	0
 newSeq	newSeq__9bK9c7e7hLG2B9a6KibOkdLDg	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system.nim	625	5
 result	result	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system.nim	625	0
+allocCStringArray	allocCStringArray__LjSatDbwrF5hMmOARlJhEw	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system.nim	2156	7
+result	result	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system.nim	2156	2
+x	x_1	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system.nim	2161	8
+i	i	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system.nim	2162	8
+res	res	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim	77	10
+deallocCStringArray	deallocCStringArray__4ixt9bnFA4tfz1dFgECtQLw	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system.nim	2166	7
+i	i	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system.nim	2168	8
 ctx	ctx	/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/decls.nim	2538	52
 recordLen	recordLen	/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/decls.nim	2539	8
 ctx	ctx	/home/runner/work/nim-waku/nim-waku/vendor/nim-bearssl/bearssl/decls.nim	2540	43

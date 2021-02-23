@@ -24,10 +24,10 @@
 #undef unix
 #define nimfr_(x, y)
 #define nimln_(x, y)
-typedef struct TNimType TNimType;
-typedef struct TNimNode TNimNode;
 typedef struct tyObject_StringTableObj__V5PVrt9bIxZEeV7lfvqqtNg tyObject_StringTableObj__V5PVrt9bIxZEeV7lfvqqtNg;
 typedef struct RootObj RootObj;
+typedef struct TNimType TNimType;
+typedef struct TNimNode TNimNode;
 typedef struct tySequence__xv3aaFd3JCw8NbmALHiezQ tySequence__xv3aaFd3JCw8NbmALHiezQ;
 typedef struct tyTuple__sPaDkVPSC0MkcoXCxPH9ccA tyTuple__sPaDkVPSC0MkcoXCxPH9ccA;
 typedef struct NimStringDesc NimStringDesc;
@@ -68,6 +68,12 @@ TNimType* nextType;
 NI instances;
 NI sizes;
 };
+struct RootObj {TNimType* m_type;};
+typedef NU8 tyEnum_StringTableMode__G9c4wVDFIzf0xHmQvxso9a9cQ;
+struct tyObject_StringTableObj__V5PVrt9bIxZEeV7lfvqqtNg {  RootObj Sup;NI counter;
+tySequence__xv3aaFd3JCw8NbmALHiezQ* data;
+tyEnum_StringTableMode__G9c4wVDFIzf0xHmQvxso9a9cQ mode;
+};
 typedef NU8 tyEnum_TNimNodeKind__unfNsxrcATrufDZmpBq4HQ;
 struct TNimNode {tyEnum_TNimNodeKind__unfNsxrcATrufDZmpBq4HQ kind;
 NI offset;
@@ -75,12 +81,6 @@ TNimType* typ;
 NCSTRING name;
 NI len;
 TNimNode** sons;
-};
-struct RootObj {TNimType* m_type;};
-typedef NU8 tyEnum_StringTableMode__G9c4wVDFIzf0xHmQvxso9a9cQ;
-struct tyObject_StringTableObj__V5PVrt9bIxZEeV7lfvqqtNg {  RootObj Sup;NI counter;
-tySequence__xv3aaFd3JCw8NbmALHiezQ* data;
-tyEnum_StringTableMode__G9c4wVDFIzf0xHmQvxso9a9cQ mode;
 };
 struct TGenericSeq {NI len;
 NI reserved;
@@ -234,6 +234,11 @@ STRING_LITERAL(TM__ZT9crccxweoChVXn9cHcxIXQ_8, "/home/runner/work/nim-waku/nim-w
 "vendor/Nim/lib/pure/strtabs.nim(124, 9) `length > counter` ", 122);
 extern TNimType* nimTypeRoot;
 extern NIM_THREADVAR tyObject_GcHeap__1TRH1TZMaVZTnLNcIHuNFQ gch__IcYaEuuWivYAS86vFMTS3Q;
+
+#line 147 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strtabs.nim"
+N_LIB_PRIVATE N_NIMCALL(NI, nstlen)(tyObject_StringTableObj__V5PVrt9bIxZEeV7lfvqqtNg* t) {	NI result;	result = (NI)0;
+#line 149 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strtabs.nim"
+	result = (*t).counter;	return result;}
 static N_NIMCALL(void, Marker_tySequence__xv3aaFd3JCw8NbmALHiezQ)(void* p, NI op) {
 	tySequence__xv3aaFd3JCw8NbmALHiezQ* a;
 	NI T1_;	a = (tySequence__xv3aaFd3JCw8NbmALHiezQ*)p;

@@ -216,6 +216,7 @@ struct {NIM_BOOL initiator;
 struct tyObject_Cheque__Wamkk9aPgShkg9bKXtYht9cOg {tySequence__6H5Oh5UUvVCLiakt9aTwtUQ* beneficiary;
 NU32 date;
 NU32 amount;
+tySequence__6H5Oh5UUvVCLiakt9aTwtUQ* signature;
 };
 struct tyObject_WakuMessage__snKUdUhXg9ahkzpl1ubVZ0A {tySequence__6H5Oh5UUvVCLiakt9aTwtUQ* payload;
 NU32 contentTopic;
@@ -3628,6 +3629,26 @@ N_LIB_PRIVATE N_NIMCALL(NimStringDesc*, dollar___yxKBCfAJQINztDi2upZHNw)(tyObjec
 
 #line 94 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/dollars.nim"
 	addQuoted__DMSWtl26Af0OtoygyWiFow((&result), x_0.amount);
+
+#line 95 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/dollars.nim"
+	firstElement = NIM_FALSE;
+#line 83 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/dollars.nim"
+	{
+#line 83 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/dollars.nim"
+		if (!!(firstElement)) goto LA15_;
+
+#line 83 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/dollars.nim"
+		result = resizeString(result, 2);appendString(result, ((NimStringDesc*) &TM__n49a9aYp5BrbXv9a6OCpJYm0g_4));	}
+	LA15_: ;
+
+#line 85 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/dollars.nim"
+	result = resizeString(result, 9);appendString(result, ((NimStringDesc*) &TM__n49a9aYp5BrbXv9a6OCpJYm0g_18));
+#line 86 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/dollars.nim"
+	result = resizeString(result, 2);appendString(result, ((NimStringDesc*) &TM__n49a9aYp5BrbXv9a6OCpJYm0g_9));
+#line 94 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/dollars.nim"
+
+#line 94 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/dollars.nim"
+	addQuoted__FtrGsqdthBtpVaYHsgTL9aQ((&result), x_0.signature);
 
 #line 95 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/dollars.nim"
 	firstElement = NIM_FALSE;

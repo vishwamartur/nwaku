@@ -40,9 +40,6 @@ record	record	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicl
 r	r	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles/log_output.nim	551	18
 key	key_0	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles/log_output.nim	551	41
 val	val_0	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles/log_output.nim	551	54
-r	r	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles/log_output.nim	551	18
-key	key_0	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles/log_output.nim	551	41
-val	val_0	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles/log_output.nim	551	54
 err`gensym69580019	errX60gensym69580019_	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim	323	29
 route	route__0KXvOjjsBJs9cjOcAIfHzeA	/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/router.nim	117	5
 router	router	/home/runner/work/nim-waku/nim-waku/vendor/nim-json-rpc/json_rpc/router.nim	117	12

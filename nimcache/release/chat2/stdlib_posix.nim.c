@@ -8,6 +8,7 @@
 
 #include "nimbase.h"
 #include <sys/socket.h>
+#include <sys/types.h>
 #undef LANGUAGE_C
 #undef MIPSEB
 #undef MIPSEL
@@ -51,9 +52,52 @@ NCSTRING name;
 NI len;
 TNimNode** sons;
 };
+N_LIB_PRIVATE N_NOINLINE(void, raiseOverflow)(void);
+N_LIB_PRIVATE N_NIMCALL(int, WTERMSIG__T7ZeAv6ofGPBA29bsuGG1ug)(int s_0);
 N_LIB_PRIVATE TNimType NTI__wEklqjI5bJy7tn1y39bS9cMQ_;
 N_LIB_PRIVATE TNimType NTI__g5pzUdZ4trcxDnPXDYd6QQ_;
+N_LIB_PRIVATE TNimType NTI__r9bTMVI8f19ah9b11jMgY4kPg_;
 extern TNimType* nimTypeRoot;
+
+#line 583 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/posix/posix_linux_amd64.nim"
+N_LIB_PRIVATE N_NIMCALL(NIM_BOOL, WIFSIGNALED__o9b5GK70QLj9ahJeczQ2LyRg)(int s_0) {	NIM_BOOL result;	NI TM__mJPr4mHlDfNAl9asG6X7NFA_2;	result = (NIM_BOOL)0;
+#line 583 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/posix/posix_linux_amd64.nim"
+
+#line 583 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/posix/posix_linux_amd64.nim"
+
+#line 583 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/posix/posix_linux_amd64.nim"
+
+#line 583 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/posix/posix_linux_amd64.nim"
+
+#line 583 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/posix/posix_linux_amd64.nim"
+	if (nimAddInt((NI32)(s_0 & ((NI32) 127)), ((NI32) 1), &TM__mJPr4mHlDfNAl9asG6X7NFA_2)) { raiseOverflow(); };	if (TM__mJPr4mHlDfNAl9asG6X7NFA_2 < (-2147483647 -1) || TM__mJPr4mHlDfNAl9asG6X7NFA_2 > 2147483647){ raiseOverflow(); }	result = (((NI8) 0) < (NI8)((NI64)(((NI8) ((NI32)(TM__mJPr4mHlDfNAl9asG6X7NFA_2)))) >> (NU64)(((NI) 1))));	return result;}
+
+#line 580 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/posix/posix_linux_amd64.nim"
+N_LIB_PRIVATE N_NIMCALL(int, WTERMSIG__T7ZeAv6ofGPBA29bsuGG1ug)(int s_0) {	int result;	result = (int)0;
+#line 580 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/posix/posix_linux_amd64.nim"
+
+#line 580 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/posix/posix_linux_amd64.nim"
+	result = (NI32)(s_0 & ((NI32) 127));	return result;}
+
+#line 579 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/posix/posix_linux_amd64.nim"
+N_LIB_PRIVATE N_NIMCALL(int, WEXITSTATUS__T7ZeAv6ofGPBA29bsuGG1ug_2)(int s_0) {	int result;	result = (int)0;
+#line 579 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/posix/posix_linux_amd64.nim"
+
+#line 579 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/posix/posix_linux_amd64.nim"
+
+#line 579 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/posix/posix_linux_amd64.nim"
+	result = (NI32)((NI64)((NI32)(s_0 & ((NI32) 65280))) >> (NU64)(((NI) 8)));	return result;}
+
+#line 582 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/posix/posix_linux_amd64.nim"
+N_LIB_PRIVATE N_NIMCALL(NIM_BOOL, WIFEXITED__o9b5GK70QLj9ahJeczQ2LyRg_2)(int s_0) {	NIM_BOOL result;	int T1_;	result = (NIM_BOOL)0;
+#line 582 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/posix/posix_linux_amd64.nim"
+
+#line 582 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/posix/posix_linux_amd64.nim"
+
+#line 582 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/posix/posix_linux_amd64.nim"
+
+#line 582 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/posix/posix_linux_amd64.nim"
+	T1_ = (int)0;	T1_ = WTERMSIG__T7ZeAv6ofGPBA29bsuGG1ug(s_0);	result = (T1_ == ((NI32) 0));	return result;}
 N_LIB_PRIVATE N_NIMCALL(void, stdlib_posixDatInit000)(void) {
 
 #line 999999 "generated_not_to_break_here"
@@ -70,5 +114,11 @@ NTI__g5pzUdZ4trcxDnPXDYd6QQ_.base = 0;
 NTI__g5pzUdZ4trcxDnPXDYd6QQ_.flags = 3;
 NTI__g5pzUdZ4trcxDnPXDYd6QQ_.name = "SockLen";
 NTI__g5pzUdZ4trcxDnPXDYd6QQ_.nextType = nimTypeRoot; nimTypeRoot=&NTI__g5pzUdZ4trcxDnPXDYd6QQ_;
+NTI__r9bTMVI8f19ah9b11jMgY4kPg_.size = sizeof(pid_t);
+NTI__r9bTMVI8f19ah9b11jMgY4kPg_.kind = 34;
+NTI__r9bTMVI8f19ah9b11jMgY4kPg_.base = 0;
+NTI__r9bTMVI8f19ah9b11jMgY4kPg_.flags = 3;
+NTI__r9bTMVI8f19ah9b11jMgY4kPg_.name = "Pid";
+NTI__r9bTMVI8f19ah9b11jMgY4kPg_.nextType = nimTypeRoot; nimTypeRoot=&NTI__r9bTMVI8f19ah9b11jMgY4kPg_;
 }
 

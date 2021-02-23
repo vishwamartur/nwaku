@@ -688,6 +688,11 @@ N_LIB_PRIVATE N_NIMCALL(NIM_BOOL, contains__TZWU2lvk4xcu9cCKLDZoWoQ)(tyObject_St
 	result = nsthasKey(t, key_0);	goto BeforeRet_;
 	}BeforeRet_: ;
 	return result;}
+
+#line 147 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strtabs.nim"
+N_LIB_PRIVATE N_NIMCALL(NI, nstlen)(tyObject_StringTableObj__V5PVrt9bIxZEeV7lfvqqtNg* t) {	NI result;	result = (NI)0;
+#line 149 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/strtabs.nim"
+	result = (*t).counter;	return result;}
 N_LIB_PRIVATE N_NIMCALL(void, stdlib_strtabsDatInit000)(void) {
 
 #line 999999 "generated_not_to_break_here"

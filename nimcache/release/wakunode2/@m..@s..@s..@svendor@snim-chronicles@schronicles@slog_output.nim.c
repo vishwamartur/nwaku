@@ -332,6 +332,7 @@ struct {tyObject_PeerID__Se8YyoPxzDpFnTeAyeCVCw v;
 struct tyObject_Cheque__Wamkk9aPgShkg9bKXtYht9cOg {tySequence__6H5Oh5UUvVCLiakt9aTwtUQ* beneficiary;
 NU32 date;
 NU32 amount;
+tySequence__6H5Oh5UUvVCLiakt9aTwtUQ* signature;
 };
 struct tyObject_WakuMessage__snKUdUhXg9ahkzpl1ubVZ0A {tySequence__6H5Oh5UUvVCLiakt9aTwtUQ* payload;
 NU32 contentTopic;
@@ -6079,11 +6080,13 @@ N_LIB_PRIVATE N_NIMCALL(void, setProperty__fJGro5DzFlIMjyzLP3F4mw)(tyObject_Text
 	unsureAsgnRef((void**) (&(*r).output.buffer), resizeString((*r).output.buffer, 4));appendString((*r).output.buffer, ((NimStringDesc*) &TM__Pzwg3bav7uuxF9bIXlPxmFQ_20));}
 
 #line 551 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles/log_output.nim"
-N_LIB_PRIVATE N_NIMCALL(void, setProperty__qCQrydV78klRjBDum0zS2A)(tyObject_TextLineRecord__EhHqp0aF43SxfS6MTF9b0hA* r, NimStringDesc* key_0, NimStringDesc* val_0) {	NimStringDesc* valText;	NimStringDesc* escaped;	NimStringDesc** valueToWrite;	NIM_BOOL needsEscape;	NI T1_;	NIM_BOOL needsQuote;	NI T2_;	tyTuple__1sv9cQSEKRFRImWwXwwui7Q T17_;	tyEnum_ForegroundColor__ez9ah4IgQc0AbdW68acioDg color;	NIM_BOOL bright;	NimStringDesc* T26_;	NimStringDesc* T27_;
+N_LIB_PRIVATE N_NIMCALL(void, setProperty__9cVGGFeqQmHnOc7EJEFCVUw)(tyObject_TextLineRecord__EhHqp0aF43SxfS6MTF9b0hA* r, NimStringDesc* key_0, tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q* val_0) {	NimStringDesc* valText;	NimStringDesc* escaped;	NimStringDesc** valueToWrite;	NIM_BOOL needsEscape;	NI T1_;	NIM_BOOL needsQuote;	NI T2_;	tyTuple__1sv9cQSEKRFRImWwXwwui7Q T17_;	tyEnum_ForegroundColor__ez9ah4IgQc0AbdW68acioDg color;	NIM_BOOL bright;	NimStringDesc* T26_;	NimStringDesc* T27_;
 #line 552 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles/log_output.nim"
 	unsureAsgnRef((void**) (&(*r).output.buffer), resizeString((*r).output.buffer, 1));appendString((*r).output.buffer, ((NimStringDesc*) &TM__Pzwg3bav7uuxF9bIXlPxmFQ_21));
 #line 553 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles/log_output.nim"
-	valText = val_0;	escaped = (NimStringDesc*)0;	valueToWrite = (NimStringDesc**)0;
+
+#line 553 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles/log_output.nim"
+	valText = dollar___79aIqF5QC8ZRJgu2hlv9bdjw(val_0);	escaped = (NimStringDesc*)0;	valueToWrite = (NimStringDesc**)0;
 #line 565 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles/log_output.nim"
 
 #line 565 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles/log_output.nim"
@@ -6206,13 +6209,11 @@ N_LIB_PRIVATE N_NIMCALL(void, setProperty__qCQrydV78klRjBDum0zS2A)(tyObject_Text
 	unsureAsgnRef((void**) (&(*r).output.buffer), resizeString((*r).output.buffer, 4));appendString((*r).output.buffer, ((NimStringDesc*) &TM__Pzwg3bav7uuxF9bIXlPxmFQ_20));}
 
 #line 551 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles/log_output.nim"
-N_LIB_PRIVATE N_NIMCALL(void, setProperty__9cVGGFeqQmHnOc7EJEFCVUw)(tyObject_TextLineRecord__EhHqp0aF43SxfS6MTF9b0hA* r, NimStringDesc* key_0, tyObject_JsonNodeObj__df9bshXB7C9cTiWPIOtX3j1Q* val_0) {	NimStringDesc* valText;	NimStringDesc* escaped;	NimStringDesc** valueToWrite;	NIM_BOOL needsEscape;	NI T1_;	NIM_BOOL needsQuote;	NI T2_;	tyTuple__1sv9cQSEKRFRImWwXwwui7Q T17_;	tyEnum_ForegroundColor__ez9ah4IgQc0AbdW68acioDg color;	NIM_BOOL bright;	NimStringDesc* T26_;	NimStringDesc* T27_;
+N_LIB_PRIVATE N_NIMCALL(void, setProperty__qCQrydV78klRjBDum0zS2A)(tyObject_TextLineRecord__EhHqp0aF43SxfS6MTF9b0hA* r, NimStringDesc* key_0, NimStringDesc* val_0) {	NimStringDesc* valText;	NimStringDesc* escaped;	NimStringDesc** valueToWrite;	NIM_BOOL needsEscape;	NI T1_;	NIM_BOOL needsQuote;	NI T2_;	tyTuple__1sv9cQSEKRFRImWwXwwui7Q T17_;	tyEnum_ForegroundColor__ez9ah4IgQc0AbdW68acioDg color;	NIM_BOOL bright;	NimStringDesc* T26_;	NimStringDesc* T27_;
 #line 552 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles/log_output.nim"
 	unsureAsgnRef((void**) (&(*r).output.buffer), resizeString((*r).output.buffer, 1));appendString((*r).output.buffer, ((NimStringDesc*) &TM__Pzwg3bav7uuxF9bIXlPxmFQ_21));
 #line 553 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles/log_output.nim"
-
-#line 553 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles/log_output.nim"
-	valText = dollar___79aIqF5QC8ZRJgu2hlv9bdjw(val_0);	escaped = (NimStringDesc*)0;	valueToWrite = (NimStringDesc**)0;
+	valText = val_0;	escaped = (NimStringDesc*)0;	valueToWrite = (NimStringDesc**)0;
 #line 565 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles/log_output.nim"
 
 #line 565 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles/log_output.nim"

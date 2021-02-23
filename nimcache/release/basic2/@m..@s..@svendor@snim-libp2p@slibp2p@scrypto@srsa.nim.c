@@ -1749,7 +1749,7 @@ N_LIB_PRIVATE N_NIMCALL(NimStringDesc*, dollar___xOuBvsnLXQ9bkjxzJzLbVOg)(tyObje
 	return result;}
 
 #line 117 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/crypto/rsa.nim"
-N_LIB_PRIVATE N_NIMCALL(void, random__Vw7k5y0bn4JKQKAWFNxc9cg)(br_hmac_drbg_context* rng_0, NI bits, NU32 pubexp, tyObject_Result__sa8ZNrkupWIn7IGy2hoy7Q* Result) {	NI sko;	NI pko;	NI TM__9b9bhChyVhesk0GF7InzPt4A_27;	NI TM__9b9bhChyVhesk0GF7InzPt4A_28;	NI eko;	NI TM__9b9bhChyVhesk0GF7InzPt4A_29;	NI TM__9b9bhChyVhesk0GF7InzPt4A_30;	NI TM__9b9bhChyVhesk0GF7InzPt4A_31;	NI length;	NI TM__9b9bhChyVhesk0GF7InzPt4A_32;	NI TM__9b9bhChyVhesk0GF7InzPt4A_33;	tyObject_RsaPrivateKeycolonObjectType___xFWT9bk7KDVd9cMFfRtPM9c9bw* res;	tyProc__OoAr3x7o9akf3Den4E29aZtg keygen;	tyProc__j6cNyDoRC650IR7UsuH2lg compute;	NI computed;	NI lengthX60gensym166090008_;	NI lengthX60gensym166100008_;	NI lengthX60gensym166110008_;	NI lengthX60gensym166120008_;	NI lengthX60gensym166130008_;	NI lengthX60gensym166140008_;	NI lengthX60gensym166150008_;	NI lengthX60gensym166160008_;{	chckNil((void*)Result);	switch ((*Result).o) {
+N_LIB_PRIVATE N_NIMCALL(void, random__Vw7k5y0bn4JKQKAWFNxc9cg)(br_hmac_drbg_context* rng_0, NI bits, NU32 pubexp, tyObject_Result__sa8ZNrkupWIn7IGy2hoy7Q* Result) {	NI sko;	NI pko;	NI TM__9b9bhChyVhesk0GF7InzPt4A_27;	NI TM__9b9bhChyVhesk0GF7InzPt4A_28;	NI eko;	NI TM__9b9bhChyVhesk0GF7InzPt4A_29;	NI TM__9b9bhChyVhesk0GF7InzPt4A_30;	NI TM__9b9bhChyVhesk0GF7InzPt4A_31;	NI length;	NI TM__9b9bhChyVhesk0GF7InzPt4A_32;	NI TM__9b9bhChyVhesk0GF7InzPt4A_33;	tyObject_RsaPrivateKeycolonObjectType___xFWT9bk7KDVd9cMFfRtPM9c9bw* res;	tyProc__OoAr3x7o9akf3Den4E29aZtg keygen;	tyProc__j6cNyDoRC650IR7UsuH2lg compute;	NI computed;	NI lengthX60gensym166745008_;	NI lengthX60gensym166755008_;	NI lengthX60gensym166765008_;	NI lengthX60gensym166775008_;	NI lengthX60gensym166785008_;	NI lengthX60gensym166795008_;	NI lengthX60gensym166805008_;	NI lengthX60gensym166815008_;{	chckNil((void*)Result);	switch ((*Result).o) {
 	case NIM_FALSE:
 	(*Result)._o_1.e = 0;	break;
 	case NIM_TRUE:
@@ -1869,16 +1869,16 @@ N_LIB_PRIVATE N_NIMCALL(void, random__Vw7k5y0bn4JKQKAWFNxc9cg)(br_hmac_drbg_cont
 #line 154 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/crypto/rsa.nim"
 	(*res).pexplen = computed;
 #line 110 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/crypto/rsa.nim"
-	lengthX60gensym166090008_ = (*res).seck.plen;	{		NI iX60gensym166090009_;		NI i;		iX60gensym166090009_ = (NI)0;
+	lengthX60gensym166745008_ = (*res).seck.plen;	{		NI iX60gensym166745009_;		NI i;		iX60gensym166745009_ = (NI)0;
 #line 106 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 		i = ((NI) 0);		{
 #line 107 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 			while (1) {				NI TM__9b9bhChyVhesk0GF7InzPt4A_34;				NI TM__9b9bhChyVhesk0GF7InzPt4A_35;
 #line 107 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-				if (!(i < lengthX60gensym166090008_)) goto LA16;
+				if (!(i < lengthX60gensym166745008_)) goto LA16;
 
 #line 156 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/crypto/rsa.nim"
-				iX60gensym166090009_ = i;
+				iX60gensym166745009_ = i;
 #line 112 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/crypto/rsa.nim"
 				{
 #line 112 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/crypto/rsa.nim"
@@ -1903,16 +1903,16 @@ N_LIB_PRIVATE N_NIMCALL(void, random__Vw7k5y0bn4JKQKAWFNxc9cg)(br_hmac_drbg_cont
 	} LA14: ;
 
 #line 110 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/crypto/rsa.nim"
-	lengthX60gensym166100008_ = (*res).seck.qlen;	{		NI iX60gensym166100009_;		NI i_2;		iX60gensym166100009_ = (NI)0;
+	lengthX60gensym166755008_ = (*res).seck.qlen;	{		NI iX60gensym166755009_;		NI i_2;		iX60gensym166755009_ = (NI)0;
 #line 106 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 		i_2 = ((NI) 0);		{
 #line 107 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 			while (1) {				NI TM__9b9bhChyVhesk0GF7InzPt4A_36;				NI TM__9b9bhChyVhesk0GF7InzPt4A_37;
 #line 107 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-				if (!(i_2 < lengthX60gensym166100008_)) goto LA23;
+				if (!(i_2 < lengthX60gensym166755008_)) goto LA23;
 
 #line 157 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/crypto/rsa.nim"
-				iX60gensym166100009_ = i_2;
+				iX60gensym166755009_ = i_2;
 #line 112 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/crypto/rsa.nim"
 				{
 #line 112 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/crypto/rsa.nim"
@@ -1937,16 +1937,16 @@ N_LIB_PRIVATE N_NIMCALL(void, random__Vw7k5y0bn4JKQKAWFNxc9cg)(br_hmac_drbg_cont
 	} LA21: ;
 
 #line 110 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/crypto/rsa.nim"
-	lengthX60gensym166110008_ = (*res).seck.dplen;	{		NI iX60gensym166110009_;		NI i_3;		iX60gensym166110009_ = (NI)0;
+	lengthX60gensym166765008_ = (*res).seck.dplen;	{		NI iX60gensym166765009_;		NI i_3;		iX60gensym166765009_ = (NI)0;
 #line 106 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 		i_3 = ((NI) 0);		{
 #line 107 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 			while (1) {				NI TM__9b9bhChyVhesk0GF7InzPt4A_38;				NI TM__9b9bhChyVhesk0GF7InzPt4A_39;
 #line 107 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-				if (!(i_3 < lengthX60gensym166110008_)) goto LA30;
+				if (!(i_3 < lengthX60gensym166765008_)) goto LA30;
 
 #line 158 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/crypto/rsa.nim"
-				iX60gensym166110009_ = i_3;
+				iX60gensym166765009_ = i_3;
 #line 112 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/crypto/rsa.nim"
 				{
 #line 112 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/crypto/rsa.nim"
@@ -1971,16 +1971,16 @@ N_LIB_PRIVATE N_NIMCALL(void, random__Vw7k5y0bn4JKQKAWFNxc9cg)(br_hmac_drbg_cont
 	} LA28: ;
 
 #line 110 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/crypto/rsa.nim"
-	lengthX60gensym166120008_ = (*res).seck.dqlen;	{		NI iX60gensym166120009_;		NI i_4;		iX60gensym166120009_ = (NI)0;
+	lengthX60gensym166775008_ = (*res).seck.dqlen;	{		NI iX60gensym166775009_;		NI i_4;		iX60gensym166775009_ = (NI)0;
 #line 106 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 		i_4 = ((NI) 0);		{
 #line 107 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 			while (1) {				NI TM__9b9bhChyVhesk0GF7InzPt4A_40;				NI TM__9b9bhChyVhesk0GF7InzPt4A_41;
 #line 107 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-				if (!(i_4 < lengthX60gensym166120008_)) goto LA37;
+				if (!(i_4 < lengthX60gensym166775008_)) goto LA37;
 
 #line 159 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/crypto/rsa.nim"
-				iX60gensym166120009_ = i_4;
+				iX60gensym166775009_ = i_4;
 #line 112 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/crypto/rsa.nim"
 				{
 #line 112 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/crypto/rsa.nim"
@@ -2005,16 +2005,16 @@ N_LIB_PRIVATE N_NIMCALL(void, random__Vw7k5y0bn4JKQKAWFNxc9cg)(br_hmac_drbg_cont
 	} LA35: ;
 
 #line 110 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/crypto/rsa.nim"
-	lengthX60gensym166130008_ = (*res).seck.iqlen;	{		NI iX60gensym166130009_;		NI i_5;		iX60gensym166130009_ = (NI)0;
+	lengthX60gensym166785008_ = (*res).seck.iqlen;	{		NI iX60gensym166785009_;		NI i_5;		iX60gensym166785009_ = (NI)0;
 #line 106 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 		i_5 = ((NI) 0);		{
 #line 107 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 			while (1) {				NI TM__9b9bhChyVhesk0GF7InzPt4A_42;				NI TM__9b9bhChyVhesk0GF7InzPt4A_43;
 #line 107 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-				if (!(i_5 < lengthX60gensym166130008_)) goto LA44;
+				if (!(i_5 < lengthX60gensym166785008_)) goto LA44;
 
 #line 160 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/crypto/rsa.nim"
-				iX60gensym166130009_ = i_5;
+				iX60gensym166785009_ = i_5;
 #line 112 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/crypto/rsa.nim"
 				{
 #line 112 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/crypto/rsa.nim"
@@ -2039,16 +2039,16 @@ N_LIB_PRIVATE N_NIMCALL(void, random__Vw7k5y0bn4JKQKAWFNxc9cg)(br_hmac_drbg_cont
 	} LA42: ;
 
 #line 110 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/crypto/rsa.nim"
-	lengthX60gensym166140008_ = (*res).pubk.nlen;	{		NI iX60gensym166140009_;		NI i_6;		iX60gensym166140009_ = (NI)0;
+	lengthX60gensym166795008_ = (*res).pubk.nlen;	{		NI iX60gensym166795009_;		NI i_6;		iX60gensym166795009_ = (NI)0;
 #line 106 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 		i_6 = ((NI) 0);		{
 #line 107 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 			while (1) {				NI TM__9b9bhChyVhesk0GF7InzPt4A_44;				NI TM__9b9bhChyVhesk0GF7InzPt4A_45;
 #line 107 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-				if (!(i_6 < lengthX60gensym166140008_)) goto LA51;
+				if (!(i_6 < lengthX60gensym166795008_)) goto LA51;
 
 #line 161 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/crypto/rsa.nim"
-				iX60gensym166140009_ = i_6;
+				iX60gensym166795009_ = i_6;
 #line 112 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/crypto/rsa.nim"
 				{
 #line 112 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/crypto/rsa.nim"
@@ -2073,16 +2073,16 @@ N_LIB_PRIVATE N_NIMCALL(void, random__Vw7k5y0bn4JKQKAWFNxc9cg)(br_hmac_drbg_cont
 	} LA49: ;
 
 #line 110 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/crypto/rsa.nim"
-	lengthX60gensym166150008_ = (*res).pubk.elen;	{		NI iX60gensym166150009_;		NI i_7;		iX60gensym166150009_ = (NI)0;
+	lengthX60gensym166805008_ = (*res).pubk.elen;	{		NI iX60gensym166805009_;		NI i_7;		iX60gensym166805009_ = (NI)0;
 #line 106 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 		i_7 = ((NI) 0);		{
 #line 107 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 			while (1) {				NI TM__9b9bhChyVhesk0GF7InzPt4A_46;				NI TM__9b9bhChyVhesk0GF7InzPt4A_47;
 #line 107 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-				if (!(i_7 < lengthX60gensym166150008_)) goto LA58;
+				if (!(i_7 < lengthX60gensym166805008_)) goto LA58;
 
 #line 162 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/crypto/rsa.nim"
-				iX60gensym166150009_ = i_7;
+				iX60gensym166805009_ = i_7;
 #line 112 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/crypto/rsa.nim"
 				{
 #line 112 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/crypto/rsa.nim"
@@ -2107,16 +2107,16 @@ N_LIB_PRIVATE N_NIMCALL(void, random__Vw7k5y0bn4JKQKAWFNxc9cg)(br_hmac_drbg_cont
 	} LA56: ;
 
 #line 110 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/crypto/rsa.nim"
-	lengthX60gensym166160008_ = (*res).pexplen;	{		NI iX60gensym166160009_;		NI i_8;		iX60gensym166160009_ = (NI)0;
+	lengthX60gensym166815008_ = (*res).pexplen;	{		NI iX60gensym166815009_;		NI i_8;		iX60gensym166815009_ = (NI)0;
 #line 106 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 		i_8 = ((NI) 0);		{
 #line 107 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
 			while (1) {				NI TM__9b9bhChyVhesk0GF7InzPt4A_48;				NI TM__9b9bhChyVhesk0GF7InzPt4A_49;
 #line 107 "/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim"
-				if (!(i_8 < lengthX60gensym166160008_)) goto LA65;
+				if (!(i_8 < lengthX60gensym166815008_)) goto LA65;
 
 #line 163 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/crypto/rsa.nim"
-				iX60gensym166160009_ = i_8;
+				iX60gensym166815009_ = i_8;
 #line 112 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/crypto/rsa.nim"
 				{
 #line 112 "/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/crypto/rsa.nim"
