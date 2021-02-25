@@ -39,10 +39,10 @@ N_LIB_PRIVATE N_NIMCALL(void*, nimGetProcAddr)(void* lib, NCSTRING name_0);
 STRING_LITERAL(TM__NzU2wR1W4XEL5bi6uaTWpw_4, "rln/target/debug/librln.so", 26);
 STRING_LITERAL(TM__NzU2wR1W4XEL5bi6uaTWpw_5, "rln/target/debug/librln.so", 26);
 static void* TM__NzU2wR1W4XEL5bi6uaTWpw_2;
-tyProc__0XUVz09bHA4rYl2o5JXMrXw Dl_160376220_;
-tyProc__m3q7DfLAUWrOUFppRDoodA Dl_160376228_;
+tyProc__0XUVz09bHA4rYl2o5JXMrXw Dl_160636220_;
+tyProc__m3q7DfLAUWrOUFppRDoodA Dl_160636228_;
 N_LIB_PRIVATE N_NIMCALL(void, waku_rlnDatInit000)(void) {
 
 #line 999999 "generated_not_to_break_here"
-if (!((TM__NzU2wR1W4XEL5bi6uaTWpw_2 = nimLoadLibrary(((NimStringDesc*) &TM__NzU2wR1W4XEL5bi6uaTWpw_4))))) nimLoadLibraryError(((NimStringDesc*) &TM__NzU2wR1W4XEL5bi6uaTWpw_5));	Dl_160376220_ = (tyProc__0XUVz09bHA4rYl2o5JXMrXw) nimGetProcAddr(TM__NzU2wR1W4XEL5bi6uaTWpw_2, "new_circuit_from_params");	Dl_160376228_ = (tyProc__m3q7DfLAUWrOUFppRDoodA) nimGetProcAddr(TM__NzU2wR1W4XEL5bi6uaTWpw_2, "key_gen");}
+if (!((TM__NzU2wR1W4XEL5bi6uaTWpw_2 = nimLoadLibrary(((NimStringDesc*) &TM__NzU2wR1W4XEL5bi6uaTWpw_4))))) nimLoadLibraryError(((NimStringDesc*) &TM__NzU2wR1W4XEL5bi6uaTWpw_5));	Dl_160636220_ = (tyProc__0XUVz09bHA4rYl2o5JXMrXw) nimGetProcAddr(TM__NzU2wR1W4XEL5bi6uaTWpw_2, "new_circuit_from_params");	Dl_160636228_ = (tyProc__m3q7DfLAUWrOUFppRDoodA) nimGetProcAddr(TM__NzU2wR1W4XEL5bi6uaTWpw_2, "key_gen");}
 
