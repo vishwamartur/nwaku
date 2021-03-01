@@ -795,15 +795,15 @@ N_LIB_PRIVATE N_NIMCALL(tyTuple__FkTTvqR0qjrSirqw1mlpbQ, setupNat__UP9cfGZeQa8Kj
 							flushRecord__2TFyTWhDxeU5kGr2yqnA6w((&record));
 						} LA25: ;
 						popSafePoint();					}
-					else {						popSafePoint();						if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {							tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym200315019_;							Exception* T37_;							Exception* T38_;							TM__SaiOnI4NH0kZ5tnMqgp4jw_13.status = 0;
+					else {						popSafePoint();						if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {							tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym200895019_;							Exception* T37_;							Exception* T38_;							TM__SaiOnI4NH0kZ5tnMqgp4jw_13.status = 0;
 #line 323 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 
 #line 0 "\?\?\?"
 
 #line 0 "\?\?\?"
-							T37_ = (Exception*)0;							T37_ = getCurrentException();							errX60gensym200315019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T37_));
+							T37_ = (Exception*)0;							T37_ = getCurrentException();							errX60gensym200895019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T37_));
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
-							T38_ = (Exception*)0;							T38_ = &errX60gensym200315019_->Sup;
+							T38_ = (Exception*)0;							T38_ = &errX60gensym200895019_->Sup;
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 							logLoggingFailure__HTlKfqAl9c6Ci7zIH6cYlmg("nor a valid IP address", T38_);
 							popCurrentException();						}
@@ -874,15 +874,15 @@ N_LIB_PRIVATE N_NIMCALL(tyTuple__FkTTvqR0qjrSirqw1mlpbQ, setupNat__UP9cfGZeQa8Kj
 					flushRecord__2TFyTWhDxeU5kGr2yqnA6w((&record_2));
 				} LA41: ;
 				popSafePoint();			}
-			else {				popSafePoint();				if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {					tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym200390019_;					Exception* T51_;					Exception* T52_;					TM__SaiOnI4NH0kZ5tnMqgp4jw_19.status = 0;
+			else {				popSafePoint();				if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {					tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym200970019_;					Exception* T51_;					Exception* T52_;					TM__SaiOnI4NH0kZ5tnMqgp4jw_19.status = 0;
 #line 323 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 
 #line 0 "\?\?\?"
 
 #line 0 "\?\?\?"
-					T51_ = (Exception*)0;					T51_ = getCurrentException();					errX60gensym200390019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T51_));
+					T51_ = (Exception*)0;					T51_ = getCurrentException();					errX60gensym200970019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T51_));
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
-					T52_ = (Exception*)0;					T52_ = &errX60gensym200390019_->Sup;
+					T52_ = (Exception*)0;					T52_ = &errX60gensym200970019_->Sup;
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 					logLoggingFailure__HTlKfqAl9c6Ci7zIH6cYlmg("not a valid NAT mechanism", T52_);
 					popCurrentException();				}

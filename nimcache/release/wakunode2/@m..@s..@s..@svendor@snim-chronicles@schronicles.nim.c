@@ -72,8 +72,8 @@ STRING_LITERAL(TM__3nvRSfcPoTpjFt9ams46ATA_33, "nat", 3);
 STRING_LITERAL(TM__3nvRSfcPoTpjFt9ams46ATA_34, "wakunode", 8);
 STRING_LITERAL(TM__3nvRSfcPoTpjFt9ams46ATA_35, "semaphore", 9);
 STRING_LITERAL(TM__3nvRSfcPoTpjFt9ams46ATA_36, "wakuswap", 8);
-STRING_LITERAL(TM__3nvRSfcPoTpjFt9ams46ATA_37, "wakupeers", 9);
-STRING_LITERAL(TM__3nvRSfcPoTpjFt9ams46ATA_38, "wakuswapcontracts", 17);
+STRING_LITERAL(TM__3nvRSfcPoTpjFt9ams46ATA_37, "wakuswapcontracts", 17);
+STRING_LITERAL(TM__3nvRSfcPoTpjFt9ams46ATA_38, "wakupeers", 9);
 STRING_LITERAL(TM__3nvRSfcPoTpjFt9ams46ATA_39, "JSONRPC-HTTP-SERVER", 19);
 N_LIB_PRIVATE tyObject_TopicSettings__oHdFGV9aUkZXwZgwzeiU4oQ topic__o7qRjehDzHk49aKpNCVhDgw = {((tyEnum_TopicState__ah9cbicZo9clzGWtgai40l6g) 0), ((tyEnum_LogLevel__9bciZEQ8iC1G2PermjsuXmA) 0)}
 ;
@@ -513,7 +513,7 @@ N_LIB_PRIVATE N_NIMCALL(tyObject_TopicSettings__oHdFGV9aUkZXwZgwzeiU4oQ*, topicS
 	return result;}
 
 #line 108 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
-N_LIB_PRIVATE N_NIMCALL(tyObject_TopicSettings__oHdFGV9aUkZXwZgwzeiU4oQ*, topicStateIMPL__39aBplr9bnsae2aT8TlqcAlw)(void) {	tyObject_TopicSettings__oHdFGV9aUkZXwZgwzeiU4oQ* result;{	result = (tyObject_TopicSettings__oHdFGV9aUkZXwZgwzeiU4oQ*)0;
+N_LIB_PRIVATE N_NIMCALL(tyObject_TopicSettings__oHdFGV9aUkZXwZgwzeiU4oQ*, topicStateIMPL__Ra2FJN5oDt6o8MSMnByItA)(void) {	tyObject_TopicSettings__oHdFGV9aUkZXwZgwzeiU4oQ* result;{	result = (tyObject_TopicSettings__oHdFGV9aUkZXwZgwzeiU4oQ*)0;
 #line 113 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 
 #line 113 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
@@ -522,7 +522,7 @@ N_LIB_PRIVATE N_NIMCALL(tyObject_TopicSettings__oHdFGV9aUkZXwZgwzeiU4oQ*, topicS
 	return result;}
 
 #line 108 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
-N_LIB_PRIVATE N_NIMCALL(tyObject_TopicSettings__oHdFGV9aUkZXwZgwzeiU4oQ*, topicStateIMPL__Ra2FJN5oDt6o8MSMnByItA)(void) {	tyObject_TopicSettings__oHdFGV9aUkZXwZgwzeiU4oQ* result;{	result = (tyObject_TopicSettings__oHdFGV9aUkZXwZgwzeiU4oQ*)0;
+N_LIB_PRIVATE N_NIMCALL(tyObject_TopicSettings__oHdFGV9aUkZXwZgwzeiU4oQ*, topicStateIMPL__39aBplr9bnsae2aT8TlqcAlw)(void) {	tyObject_TopicSettings__oHdFGV9aUkZXwZgwzeiU4oQ* result;{	result = (tyObject_TopicSettings__oHdFGV9aUkZXwZgwzeiU4oQ*)0;
 #line 113 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 
 #line 113 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"

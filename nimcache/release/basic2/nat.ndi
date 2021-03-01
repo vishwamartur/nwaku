@@ -4,9 +4,9 @@ nat	nat	/home/runner/work/nim-waku/nim-waku/waku/common/utils/nat.nim	10	6
 val	val_0	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/options.nim	101	14
 result	result	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/options.nim	101	0
 record	record	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim	297	19
-err`gensym166685019	errX60gensym166685019_	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim	323	29
+err`gensym167265019	errX60gensym167265019_	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim	323	29
 record	record_2	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim	297	19
-err`gensym166760019	errX60gensym166760019_	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim	323	29
+err`gensym167340019	errX60gensym167340019_	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim	323	29
 extIp	extIp	/home/runner/work/nim-waku/nim-waku/waku/common/utils/nat.nim	34	8
 natStrategy	natStrategy	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/net/nat.nim	41	20
 quiet	quiet	/home/runner/work/nim-waku/nim-waku/vendor/nim-eth/eth/net/nat.nim	41	46

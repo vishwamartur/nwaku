@@ -568,15 +568,15 @@ N_LIB_PRIVATE N_NIMCALL(void, catchOrQuit__mHjKb06L9cEyBRFuCwD8J9cw)(Exception* 
 					flushRecord__2TFyTWhDxeU5kGr2yqnA6w((&record));
 				} LA7: ;
 				popSafePoint();			}
-			else {				popSafePoint();				if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {					tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym172655019_;					Exception* T17_;					Exception* T18_;					TM__TRdHGCJ1f9blFUg2UzDb9cng_4.status = 0;
+			else {				popSafePoint();				if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {					tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym173235019_;					Exception* T17_;					Exception* T18_;					TM__TRdHGCJ1f9blFUg2UzDb9cng_4.status = 0;
 #line 323 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 
 #line 0 "\?\?\?"
 
 #line 0 "\?\?\?"
-					T17_ = (Exception*)0;					T17_ = getCurrentException();					errX60gensym172655019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T17_));
+					T17_ = (Exception*)0;					T17_ = getCurrentException();					errX60gensym173235019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T17_));
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
-					T18_ = (Exception*)0;					T18_ = &errX60gensym172655019_->Sup;
+					T18_ = (Exception*)0;					T18_ = &errX60gensym173235019_->Sup;
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 					logLoggingFailure__HTlKfqAl9c6Ci7zIH6cYlmg("Async operation ended with a recoverable error", T18_);
 					popCurrentException();				}
@@ -652,15 +652,15 @@ N_LIB_PRIVATE N_NIMCALL(void, catchOrQuit__mHjKb06L9cEyBRFuCwD8J9cw)(Exception* 
 				flushRecord__2TFyTWhDxeU5kGr2yqnA6w((&record_2));
 			} LA23: ;
 			popSafePoint();		}
-		else {			popSafePoint();			if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {				tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym172720019_;				Exception* T34_;				Exception* T35_;				TM__TRdHGCJ1f9blFUg2UzDb9cng_10.status = 0;
+		else {			popSafePoint();			if (isObj(nimBorrowCurrentException()->Sup.m_type, (&NTI__qrLSDoe2oBoAqNtJ9badtnA_))) {				tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA* errX60gensym173300019_;				Exception* T34_;				Exception* T35_;				TM__TRdHGCJ1f9blFUg2UzDb9cng_10.status = 0;
 #line 323 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 
 #line 0 "\?\?\?"
 
 #line 0 "\?\?\?"
-				T34_ = (Exception*)0;				T34_ = getCurrentException();				errX60gensym172720019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T34_));
+				T34_ = (Exception*)0;				T34_ = getCurrentException();				errX60gensym173300019_ = ((tyObject_CatchableError__qrLSDoe2oBoAqNtJ9badtnA*) (T34_));
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
-				T35_ = (Exception*)0;				T35_ = &errX60gensym172720019_->Sup;
+				T35_ = (Exception*)0;				T35_ = &errX60gensym173300019_->Sup;
 #line 324 "/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles.nim"
 				logLoggingFailure__HTlKfqAl9c6Ci7zIH6cYlmg("Fatal exception reached", T35_);
 				popCurrentException();			}
