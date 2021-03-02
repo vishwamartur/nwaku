@@ -1,7 +1,0 @@
-logAllDynamicProperties	logAllDynamicProperties__2fo45m4EsDq89bdWxK19aOpQ	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles/dynamic_scope.nim	11	5
-frame	frame	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles/dynamic_scope.nim	15	6
-i	i	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles/dynamic_scope.nim	17	8
-i	i_2	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/iterators_1.nim	106	8
-binding	binding	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles/dynamic_scope.nim	18	10
-x	x	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles/dynamic_scope_types.nim	9	33
-valueAddr	valueAddr	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles/dynamic_scope_types.nim	10	33

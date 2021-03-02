@@ -1,7 +1,0 @@
-init	init__PB59cyqPenhYDSnuVdTWYAg	/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/peerinfo.nim	62	5
-result	result	/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/peerinfo.nim	62	0
-self	self	/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/results.nim	466	29
-self	self	/home/runner/work/nim-waku/nim-waku/vendor/nim-stew/stew/results.nim	260	28
-seckey	seckey	/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/peerid.nim	173	32
-a	a	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system.nim	1533	13
-a	a	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system.nim	1533	13

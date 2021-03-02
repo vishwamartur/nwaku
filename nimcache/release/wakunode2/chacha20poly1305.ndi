@@ -1,6 +1,0 @@
-intoChaChaPolyTag	intoChaChaPolyTag__K2DYllCGjKfWSP2bD9ah9aFg	/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/crypto/chacha20poly1305.nim	48	5
-decrypt	decrypt__uW9aORLGdO0TFQzD09aCMtkQ	/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/crypto/chacha20poly1305.nim	79	5
-ad	ad	/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/crypto/chacha20poly1305.nim	86	4
-encrypt	encrypt__uW9aORLGdO0TFQzD09aCMtkQ_2	/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/crypto/chacha20poly1305.nim	56	5
-ad	ad	/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/crypto/chacha20poly1305.nim	63	4
-intoChaChaPolyKey	intoChaChaPolyKey__JjGK4vp5v0i2Ac7VvyXdFg	/home/runner/work/nim-waku/nim-waku/vendor/nim-libp2p/libp2p/crypto/chacha20poly1305.nim	40	5

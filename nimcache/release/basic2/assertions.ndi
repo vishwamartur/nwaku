@@ -1,5 +1,0 @@
-failedAssertImpl	failedAssertImpl__W9cjVocn1tjhW7p7xohJj6A	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/assertions.nim	24	5
-raiseAssert	raiseAssert__gpGJG5CoQzE64skFd9bPG7A	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/assertions.nim	21	5
-msg	msg	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/assertions.nim	21	18
-sysFatal	sysFatal__METp0EHKQZlD51D9bYP6PAAassertions	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/fatal.nim	48	7
-message	message	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/fatal.nim	48	35

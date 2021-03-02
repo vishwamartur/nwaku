@@ -1,9 +1,0 @@
-registryLock	registryLock__gSAJv26CP8tAWB2Sq9bsUxg	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles/topics_registry.nim	22	2
-gActiveLogLevel	gActiveLogLevel__KW9cN1uQtAHIyj9an9a5Dd8Og	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles/topics_registry.nim	23	2
-gTotalEnabledTopics	gTotalEnabledTopics__wW89agTTxIAyafladxyi9c9cg	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles/topics_registry.nim	24	2
-gTotalRequiredTopics	gTotalRequiredTopics__HNDudEI7qS2OaTCT9bMXFJQ	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles/topics_registry.nim	25	2
-gTopicStates	gTopicStates__ZkKzPZlSOosesrao9apKwsg	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles/topics_registry.nim	26	2
-markerProc	markerProc	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/system/gc_common.nim	459	29
-initialSize	initialSize	/home/runner/work/nim-waku/nim-waku/vendor/nimbus-build-system/vendor/Nim/lib/pure/collections/tables.nim	288	22
-mainThreadId	mainThreadId__MjVTb4iPhYDjvyqFIGYWxw	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles/topics_registry.nim	29	6
-setLogLevel	setLogLevel__vpUFsLHhGOauIDBfdOMH6w	/home/runner/work/nim-waku/nim-waku/vendor/nim-chronicles/chronicles/topics_registry.nim	39	5
