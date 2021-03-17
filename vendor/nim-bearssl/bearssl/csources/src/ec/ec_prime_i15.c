@@ -733,12 +733,11 @@ api_mul(unsigned char *G, size_t Glen,
 	jacobian P;
 
 	cc = id_to_curve(curve);
-	if (Glen != cc->point_len) {
-		return 0;
-	}
 	r = point_decode(&P, G, Glen, cc);
 	point_mul(&P, x, xlen, cc);
-	point_encode(G, &P, cc);
+	if (Glen == cc->point_len) {
+		point_encode(G, &P, cc);
+	}
 	return r;
 }
 
@@ -771,9 +770,6 @@ api_muladd(unsigned char *A, const unsigned char *B, size_t len,
 	 */
 
 	cc = id_to_curve(curve);
-	if (len != cc->point_len) {
-		return 0;
-	}
 	r = point_decode(&P, A, len, cc);
 	if (B == NULL) {
 		size_t Glen;

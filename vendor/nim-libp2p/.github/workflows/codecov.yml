@@ -8,12 +8,13 @@ jobs:
     strategy:
       matrix:
         nim-options: [
-          "", 
-          "-d:libp2p_pubsub_anonymize=true -d:libp2p_pubsub_sign=false -d:libp2p_pubsub_verify=false", 
+          "",
+          "-d:libp2p_pubsub_anonymize=true -d:libp2p_pubsub_sign=false -d:libp2p_pubsub_verify=false",
           "-d:libp2p_pubsub_sign=true -d:libp2p_pubsub_verify=true"
         ]
         test-program: [
           "tests/pubsub/testpubsub",
+          "tests/pubsub/testfloodsub",
           "tests/pubsub/testgossipinternal"
         ]
     steps:
@@ -31,7 +32,9 @@ jobs:
           nim c $NIM_OPTIONS -r ${{ matrix.test-program }}
           cd nimcache; rm *.c; cd ..
           lcov --capture --directory nimcache --output-file coverage/coverage.info
-          lcov --extract coverage/coverage.info  `pwd`/libp2p/* `pwd`/libp2p/**/* `pwd`/libp2p/**/**/* --output-file coverage/coverage.f.info
+          shopt -s globstar
+          ls `pwd`/libp2p/{*,**/*}.nim
+          lcov --extract coverage/coverage.info  `pwd`/libp2p/{*,**/*}.nim --output-file coverage/coverage.f.info
           export COV_UUID=`cksum <<< "${{ matrix.test-program }} $NIM_OPTIONS" | cut -f 1 -d ' '`
           genhtml coverage/coverage.f.info --output-directory coverage/$COV_UUID-output
           echo ${{ matrix.test-program }} > coverage/$COV_UUID-nim_options.txt
@@ -67,7 +70,9 @@ jobs:
           nim c $NIM_OPTIONS -r ${{ matrix.test-program }}
           cd nimcache; rm *.c; cd ..
           lcov --capture --directory nimcache --output-file coverage/coverage.info
-          lcov --extract coverage/coverage.info  `pwd`/libp2p/* `pwd`/libp2p/**/* `pwd`/libp2p/**/**/* --output-file coverage/coverage.f.info
+          shopt -s globstar
+          ls `pwd`/libp2p/{*,**/*}.nim
+          lcov --extract coverage/coverage.info  `pwd`/libp2p/{*,**/*}.nim --output-file coverage/coverage.f.info
           export COV_UUID=`cksum <<< "${{ matrix.test-program }} $NIM_OPTIONS" | cut -f 1 -d ' '`
           genhtml coverage/coverage.f.info --output-directory coverage/$COV_UUID-output
           echo ${{ matrix.test-program }} > coverage/$COV_UUID-nim_options.txt
@@ -106,7 +111,9 @@ jobs:
           nim c $NIM_OPTIONS -r ${{ matrix.test-program }}
           cd nimcache; rm *.c; cd ..
           lcov --capture --directory nimcache --output-file coverage/coverage.info
-          lcov --extract coverage/coverage.info  `pwd`/libp2p/* `pwd`/libp2p/**/* `pwd`/libp2p/**/**/* --output-file coverage/coverage.f.info
+          shopt -s globstar
+          ls `pwd`/libp2p/{*,**/*}.nim
+          lcov --extract coverage/coverage.info  `pwd`/libp2p/{*,**/*}.nim --output-file coverage/coverage.f.info
           export COV_UUID=`cksum <<< "${{ matrix.test-program }} $NIM_OPTIONS" | cut -f 1 -d ' '`
           genhtml coverage/coverage.f.info --output-directory coverage/$COV_UUID-output
           echo ${{ matrix.test-program }} > coverage/$COV_UUID-nim_options.txt

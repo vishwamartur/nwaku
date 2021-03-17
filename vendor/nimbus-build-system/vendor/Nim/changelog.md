@@ -125,10 +125,37 @@
   Proc `rightSize` for Tables and HashSets is deprecated, as it is not needed anymore.
   `CountTable.inc` takes `val: int` again not `val: Positive`; I.e. it can "count down" again.
 - Removed deprecated symbols from `macros` module, deprecated as far back as `0.15`.
+- On Windows the SSL library now checks for valid certificates.
+  It uses the `cacert.pem` file for this purpose which was extracted
+  from `https://curl.se/ca/cacert.pem`. Besides
+  the OpenSSL DLLs (e.g. libssl-1_1-x64.dll, libcrypto-1_1-x64.dll) you
+  now also need to ship `cacert.pem` with your `.exe` file.
+
+
+- Make `{.requiresInit.}` pragma to work for `distinct` types.
+
+
+- Added `asyncdispatch.activeDescriptors` that returns the number of currently
+  active async event handles/file descriptors
+- Added `asyncdispatch.maxDescriptors` that returns the maximum number of
+  active async event handles/file descriptors.
 
 
 ## Language changes
 - In newruntime it is now allowed to assign discriminator field without restrictions as long as case object doesn't have custom destructor. Discriminator value doesn't have to be a constant either. If you have custom destructor for case object and you do want to freely assign discriminator fields, it is recommended to refactor object into 2 objects like this: 
+
+- The `=destroy` hook no longer has to reset its target, as the compiler now automatically inserts
+  `wasMoved` calls where needed.
+- The `=` hook is now called `=copy` for clarity. The old name `=` is still available so there
+  is no need to update your code. This change was backported to 1.2 too so you can use the
+  more readability `=copy` without loss of compatibility.
+
+- In the newruntime it is now allowed to assign to the discriminator field
+  without restrictions as long as case object doesn't have custom destructor.
+  The discriminator value doesn't have to be a constant either. If you have a
+  custom destructor for a case object and you do want to freely assign discriminator
+  fields, it is recommended to refactor object into 2 objects like this:
+
   ```nim
   type
     MyObj = object

@@ -830,13 +830,6 @@ proc transformExceptBranch(c: PTransf, n: PNode): PNode =
   else:
     result = transformSons(c, n)
 
-proc dontInlineConstant(orig, cnst: PNode): bool {.inline.} =
-  # symbols that expand to a complex constant (array, etc.) should not be
-  # inlined, unless it's the empty array:
-  result = orig.kind == nkSym and
-           cnst.kind in {nkCurly, nkPar, nkTupleConstr, nkBracket} and
-           cnst.len != 0
-
 proc commonOptimizations*(g: ModuleGraph; c: PSym, n: PNode): PNode =
   result = n
   for i in 0..<n.safeLen:
@@ -1035,6 +1028,11 @@ proc transform(c: PTransf, n: PNode): PNode =
     return n
   of nkExceptBranch:
     result = transformExceptBranch(c, n)
+  of nkCheckedFieldExpr:
+    result = transformSons(c, n)
+    if result[0].kind != nkDotExpr:
+      # simplfied beyond a dot expression --> simplify further.
+      result = result[0]
   else:
     result = transformSons(c, n)
   when false:
@@ -1090,15 +1088,15 @@ proc liftDeferAux(n: PNode) =
         if n[i].kind == nkDefer:
           let deferPart = newNodeI(nkFinally, n[i].info)
           deferPart.add n[i][0]
-          var tryStmt = newNodeI(nkTryStmt, n[i].info)
-          var body = newNodeI(n.kind, n[i].info)
+          var tryStmt = newNodeIT(nkTryStmt, n[i].info, n.typ)
+          var body = newNodeIT(n.kind, n[i].info, n.typ)
           if i < last:
             body.sons = n.sons[(i+1)..last]
           tryStmt.add body
           tryStmt.add deferPart
           n[i] = tryStmt
           n.sons.setLen(i+1)
-          n.typ = n[i].typ
+          n.typ = tryStmt.typ
           goOn = true
           break
   for i in 0..n.safeLen-1:

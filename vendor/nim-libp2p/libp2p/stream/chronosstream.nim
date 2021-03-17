@@ -7,7 +7,7 @@
 ## This file may not be copied, modified, or distributed except according to
 ## those terms.
 
-import std/[oids, strformat, strutils]
+import std/[oids, strformat]
 import chronos, chronicles, metrics
 import connection
 import ../utility
@@ -79,9 +79,9 @@ when defined(libp2p_agents_metrics):
     if not s.tracked:
       if not isNil(s.peerInfo) and s.peerInfo.agentVersion.len > 0:
         # / seems a weak "standard" so for now it's reliable
-        let shortAgent = s.peerInfo.agentVersion.split("/")[0].toLowerAscii()
-        if KnownLibP2PAgentsSeq.contains(shortAgent):
-          s.shortAgent = shortAgent
+        let shortAgent = s.peerInfo.agentVersion.split("/")[0].safeToLowerAscii()
+        if shortAgent.isOk() and KnownLibP2PAgentsSeq.contains(shortAgent.get()):
+          s.shortAgent = shortAgent.get()
         else:
           s.shortAgent = "unknown"
         libp2p_peers_identity.inc(labelValues = [s.shortAgent])
@@ -126,10 +126,10 @@ method write*(s: ChronosStream, msg: seq[byte]) {.async.} =
       if s.tracked:
         libp2p_peers_traffic_write.inc(msg.len.int64, labelValues = [s.shortAgent])
 
-method closed*(s: ChronosStream): bool {.inline.} =
+method closed*(s: ChronosStream): bool {.raises: [Defect].} =
   result = s.client.closed
 
-method atEof*(s: ChronosStream): bool {.inline.} =
+method atEof*(s: ChronosStream): bool {.raises: [Defect].} =
   s.client.atEof()
 
 method closeImpl*(s: ChronosStream) {.async.} =
@@ -145,7 +145,7 @@ method closeImpl*(s: ChronosStream) {.async.} =
     raise exc
   except CatchableError as exc:
     trace "Error closing chronosstream", s, msg = exc.msg
-  
+
   when defined(libp2p_agents_metrics):
     # do this after closing!
     s.untrackPeerIdentity()

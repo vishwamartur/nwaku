@@ -32,7 +32,7 @@ type
   PkgTuple* = tuple[name: string, ver: VersionRange]
 
   ParseVersionError* = object of ValueError
-  NimbleError* = object of Exception
+  NimbleError* = object of CatchableError
     hint*: string
 
 proc `$`*(ver: Version): string {.borrow.}
@@ -93,6 +93,11 @@ proc `==`*(ver: Version, ver2: Version): bool =
     else:
       return false
 
+proc cmp*(a, b: Version): int =
+  if a < b: -1
+  elif a > b: 1
+  else: 0
+
 proc `<=`*(ver: Version, ver2: Version): bool =
   return (ver == ver2) or (ver < ver2)
 
@@ -142,7 +147,7 @@ proc makeRange*(version: string, op: string): VersionRange =
     result = VersionRange(kind: verEqLater)
   of "<=":
     result = VersionRange(kind: verEqEarlier)
-  of "":
+  of "", "==":
     result = VersionRange(kind: verEq)
   else:
     raise newException(ParseVersionError, "Invalid operator: " & op)
@@ -272,7 +277,7 @@ proc newVREq*(ver: string): VersionRange =
   result.ver = newVersion(ver)
 
 proc findLatest*(verRange: VersionRange,
-        versions: Table[Version, string]): tuple[ver: Version, tag: string] =
+        versions: OrderedTable[Version, string]): tuple[ver: Version, tag: string] =
   result = (newVersion(""), "")
   for ver, tag in versions:
     if not withinRange(ver, verRange): continue
@@ -293,9 +298,10 @@ when isMainModule:
   doAssert(newVersion("0.1.0") <= newVersion("0.1"))
 
   var inter1 = parseVersionRange(">= 1.0 & <= 1.5")
-  doAssert inter1.kind == verIntersect
+  doAssert(inter1.kind == verIntersect)
   var inter2 = parseVersionRange("1.0")
   doAssert(inter2.kind == verEq)
+  doAssert(parseVersionRange("== 3.4.2") == parseVersionRange("3.4.2"))
 
   doAssert(not withinRange(newVersion("1.5.1"), inter1))
   doAssert(withinRange(newVersion("1.0.2.3.4.5.6.7.8.9.10.11.12"), inter1))
@@ -309,8 +315,11 @@ when isMainModule:
   doAssert(newVersion("") < newVersion("1.0.0"))
   doAssert(newVersion("") < newVersion("0.1.0"))
 
-  var versions = toTable[Version, string]({newVersion("0.1.1"): "v0.1.1",
-      newVersion("0.2.3"): "v0.2.3", newVersion("0.5"): "v0.5"})
+  var versions = toOrderedTable[Version, string]({
+    newVersion("0.1.1"): "v0.1.1",
+    newVersion("0.2.3"): "v0.2.3",
+    newVersion("0.5"): "v0.5"
+  })
   doAssert findLatest(parseVersionRange(">= 0.1 & <= 0.4"), versions) ==
       (newVersion("0.2.3"), "v0.2.3")
 

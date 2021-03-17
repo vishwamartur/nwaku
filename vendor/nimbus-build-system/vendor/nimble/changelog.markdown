@@ -3,6 +3,102 @@
 
 # Nimble changelog
 
+## 0.13.0
+
+This is a bugfix release. It enhances the security in multiple aspects:
+
+- URLs default to `https`.
+- SSL certificates are checked.
+- Shell escaping bugs have been fixed.
+
+
+## 0.12.0
+
+This is a major release containing multiple improvements and bug fixes:
+
+- `nimble dump` now provides `--json` output.
+- Calls to the Nim compiler now display `--hints:off` output by default.
+  The `--verbose` flag will print the full Nim command as well as regular
+  compiler output.
+- Custom tasks can now be passed compiler flags as well as run flags when run
+  as `nimble <compflags> task <runflags>`. This includes the custom `test`
+  task if defined. Compile flags are forwarded to `nim e` that executes the
+  `.nimble` task and can be used to set `--define:xxx` and other compiler flags
+  that are applicable in Nimscript mode. Run flags can be accessed per usual
+  from `commandLineParams: seq[string]`.
+- The default `nimble test` task also allows passing compiler flags but given
+  run flags are not really applicable for multiple test binaries, it allows
+  specifying compile flags before or after the `test` task.
+- `nimble install` also allows passing compiler flags similar to the default
+  `nimble test` and no longer requires the `--passNim` flag.
+- The Nim compiler to be used by Nimble can now be specified with the `--nim`
+  flag. This is useful for debugging purposes.
+- Nimble now supports project local dependency mode - if a `nimbledeps` directory
+  exists within a project, Nimble will use it to store all package dependencies
+  instead of `~/.nimble/bin`. This enables isolation of a project and its
+  dependencies from other projects being developed.
+- The `-l | --localdeps` flag can be used to setup a project in local dependency
+  mode.
+- Nimble output can now be suppressed using `--silent`.
+- Binaries compiled by Nimble can now be named differently than the source file
+  with the `namedBin` table instead of `bin`. In addition, binary names that clash
+  with a `pkgname` directory containing .nim files no longer require appending
+  `pkg` to the directory.
+
+----
+
+Full changelog: https://github.com/nim-lang/nimble/compare/v0.11.4...v0.12.0
+
+## 0.11.4 - 19/05/2020
+
+This is a minor release containing just 2 commits and a few minor bug fixes.
+
+----
+
+Full changelog: https://github.com/nim-lang/nimble/compare/v0.11.2...v0.11.4
+
+## 0.11.2 - 02/05/2020
+
+This is a minor release containing just 15 commits. This release brings mostly
+bug fixes with some minor new features:
+
+- The `==` operator can now be used in version requirements.
+- Handling of arguments for `nimble run` has been improved.
+- The `nimble run` command can now be used without any arguments if the
+  package has only one binary specified.
+
+----
+
+Full changelog: https://github.com/nim-lang/nimble/compare/v0.11.0...v0.11.2
+
+## 0.11.0 - 22/09/2019
+
+This is a major release containing nearly 60 commits. Most changes are
+bug fixes, but this release also includes a couple new features:
+
+- Binaries can now be built and run using the new ``run`` command.
+- The ``NimblePkgVersion`` is now defined so you can easily get the package
+  version in your source code
+  ([example](https://github.com/nim-lang/nimble/blob/4a2aaa07d/tests/nimbleVersionDefine/src/nimbleVersionDefine.nim)).
+
+Some other highlights:
+
+- Temporary files are now kept when the ``--debug`` flag is used.
+- Fixed dependency resolution issues with "#head" packages (#432 and #672).
+- The `install` command can now take Nim compiler flags via the new
+  ``--passNim`` flag.
+- Command line arguments are now passed properly to tasks (#633).
+- The ``test`` command now respects the specified backend (#631).
+- The ``dump`` command will no longer prompt and now has an implicit ``-y``.
+- Fixed bugs with the new nimscript executor (#665).
+- Fixed multiple downloads and installs of the same package (#678).
+- Nimble init no longer overwrites existing files (#581).
+- Fixed incorrect submodule version being pulled when in a non-master branch (#675).
+
+----
+
+Full changelog: https://github.com/nim-lang/nimble/compare/v0.10.2...v0.11.0
+
 ## 0.10.2 - 03/06/2019
 
 This is a small release which avoids object variant changes that are now

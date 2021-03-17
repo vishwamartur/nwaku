@@ -8,10 +8,32 @@
 ## those terms.
 
 import
-  libp2p/daemon/[daemonapi, transpool],
-  libp2p/protobuf/minprotobuf,
-  libp2p/varint
+  libp2p/[protobuf/minprotobuf,
+          muxers/muxer,
+          muxers/mplex/mplex,
+          stream/lpstream,
+          stream/bufferstream,
+          stream/connection,
+          transports/transport,
+          transports/tcptransport,
+          protocols/secure/noise,
+          cid,
+          multihash,
+          multibase,
+          multicodec,
+          errors,
+          switch,
+          peerid,
+          peerinfo,
+          multiaddress,
+          standard_setup,
+          crypto/crypto]
+
+import bearssl
 
 export
-  daemonapi, transpool, minprotobuf, varint
-
+  minprotobuf, switch, peerid, peerinfo,
+  connection, multiaddress, crypto, lpstream,
+  bufferstream, bearssl, muxer, mplex, transport,
+  tcptransport, noise, errors, cid, multihash,
+  multicodec, standard_setup

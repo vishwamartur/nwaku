@@ -205,6 +205,7 @@ proc memFileInput*(filename: string, mappedSize = -1, offset = 0): InputStreamHa
       span: PageSpan(
         startAddr: head,
         endAddr: offset(head, mappedSize)),
+      spanEndPos: mappedSize,
       file: memFile)
   except OSError as err:
     raise newException(IOError, err.msg, err)
@@ -820,7 +821,7 @@ template useHeapMem(_: Natural) =
     addr buffer[0]
 
 template useStackMem(n: static Natural) =
-  var buffer: array[n, byte]
+  var buffer: array[n + 1, byte]
 
   template allocMem(_: Natural): ptr byte =
     addr buffer[0]

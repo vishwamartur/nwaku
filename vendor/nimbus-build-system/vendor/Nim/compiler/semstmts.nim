@@ -161,7 +161,7 @@ proc semIf(c: PContext, n: PNode; flags: TExprFlags): PNode =
     if it.len == 2:
       openScope(c)
       it[0] = forceBool(c, semExprWithType(c, it[0]))
-      it[1] = semExprBranch(c, it[1])
+      it[1] = semExprBranch(c, it[1], flags)
       typ = commonType(typ, it[1])
       closeScope(c)
     elif it.len == 1:
@@ -722,7 +722,7 @@ proc semForVars(c: PContext, n: PNode; flags: TExprFlags): PNode =
   result = n
   let iterBase = n[^2].typ
   var iter = skipTypes(iterBase, {tyGenericInst, tyAlias, tySink, tyOwned})
-  var iterAfterVarLent = iter.skipTypes({tyLent, tyVar})
+  var iterAfterVarLent = iter.skipTypes({tyGenericInst, tyAlias, tyLent, tyVar})
   # n.len == 3 means that there is one for loop variable
   # and thus no tuple unpacking:
   if iterAfterVarLent.kind != tyTuple or n.len == 3:
@@ -1748,7 +1748,7 @@ proc semOverride(c: PContext, s: PSym, n: PNode) =
                  "signature for 'deepCopy' must be proc[T: ptr|ref](x: T): T")
     incl(s.flags, sfUsed)
     incl(s.flags, sfOverriden)
-  of "=", "=sink":
+  of "=", "=copy", "=sink":
     if s.magic == mAsgn: return
     incl(s.flags, sfUsed)
     incl(s.flags, sfOverriden)
@@ -1770,7 +1770,7 @@ proc semOverride(c: PContext, s: PSym, n: PNode) =
         # attach these ops to the canonical tySequence
         obj = canonType(c, obj)
         #echo "ATTACHING TO ", obj.id, " ", s.name.s, " ", cast[int](obj)
-        let k = if name == "=": attachedAsgn else: attachedSink
+        let k = if name == "=" or name == "=copy": attachedAsgn else: attachedSink
         if obj.attachedOps[k] == s:
           discard "forward declared op"
         elif obj.attachedOps[k].isNil and tfCheckedForDestructor notin obj.flags:

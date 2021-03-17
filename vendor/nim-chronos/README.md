@@ -1,11 +1,10 @@
 # Chronos - An efficient library for asynchronous programming
 
-[![Build Status (Travis)](https://img.shields.io/travis/status-im/nim-chronos/master.svg?label=Linux%20/%20macOS "Linux/macOS build status (Travis)")](https://travis-ci.org/status-im/nim-chronos)
+![Github action](https://github.com/status-im/nim-chronos/workflows/nim-chronos%20CI/badge.svg)
 [![Windows build status (AppVeyor)](https://img.shields.io/appveyor/ci/nimbus/nim-asyncdispatch2/master.svg?label=Windows "Windows build status (Appveyor)")](https://ci.appveyor.com/project/nimbus/nim-asyncdispatch2)
 [![License: Apache](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 ![Stability: experimental](https://img.shields.io/badge/stability-experimental-orange.svg)
-![Github action](https://github.com/status-im/nim-chronos/workflows/nim-chronos%20CI/badge.svg)
 
 ## Introduction
 
@@ -120,19 +119,6 @@ proc p3() {.async.} =
   # Only one second passed while awaiting them both, not two.
 
 waitFor p3()
-```
-
-Not as intuitive, but the same thing happens if we create those futures on the
-same line as `await`, due to the Nim compiler's use of hidden temporary
-variables:
-
-```nim
-proc p4() {.async.} =
-  await p1()
-  await p2()
-  # Also takes a single second for both futures sleeping concurrently.
-
-waitFor p4()
 ```
 
 Don't let `await`'s behaviour of giving back control to the dispatcher surprise

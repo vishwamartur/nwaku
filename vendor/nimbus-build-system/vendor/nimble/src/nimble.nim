@@ -3,12 +3,13 @@
 
 import system except TResult
 
-import httpclient, parseopt, os, osproc, pegs, tables, parseutils,
-       strtabs, json, algorithm, sets, uri, sugar, sequtils
+import os, tables, strtabs, json, algorithm, sets, uri, sugar, sequtils, osproc
+import std/options as std_opt
 
 import strutils except toLower
 from unicode import toLower
 from sequtils import toSeq
+from strformat import fmt
 
 import nimblepkg/packageinfo, nimblepkg/version, nimblepkg/tools,
        nimblepkg/download, nimblepkg/config, nimblepkg/common,
@@ -43,105 +44,6 @@ proc refresh(options: Options) =
     for name, list in options.config.packageLists:
       fetchList(list, options)
 
-proc checkInstallFile(pkgInfo: PackageInfo,
-                      origDir, file: string): bool =
-  ## Checks whether ``file`` should be installed.
-  ## ``True`` means file should be skipped.
-
-  for ignoreFile in pkgInfo.skipFiles:
-    if ignoreFile.endswith("nimble"):
-      raise newException(NimbleError, ignoreFile & " must be installed.")
-    if samePaths(file, origDir / ignoreFile):
-      result = true
-      break
-
-  for ignoreExt in pkgInfo.skipExt:
-    if file.splitFile.ext == ('.' & ignoreExt):
-      result = true
-      break
-
-  if file.splitFile().name[0] == '.': result = true
-
-proc checkInstallDir(pkgInfo: PackageInfo,
-                     origDir, dir: string): bool =
-  ## Determines whether ``dir`` should be installed.
-  ## ``True`` means dir should be skipped.
-  for ignoreDir in pkgInfo.skipDirs:
-    if samePaths(dir, origDir / ignoreDir):
-      result = true
-      break
-
-  let thisDir = splitPath(dir).tail
-  assert thisDir != ""
-  if thisDir[0] == '.': result = true
-  if thisDir == "nimcache": result = true
-
-proc copyWithExt(origDir, currentDir, dest: string,
-                 pkgInfo: PackageInfo): seq[string] =
-  ## Returns the filenames of the files that have been copied
-  ## (their destination).
-  result = @[]
-  for kind, path in walkDir(currentDir):
-    if kind == pcDir:
-      result.add copyWithExt(origDir, path, dest, pkgInfo)
-    else:
-      for iExt in pkgInfo.installExt:
-        if path.splitFile.ext == ('.' & iExt):
-          createDir(changeRoot(origDir, dest, path).splitFile.dir)
-          result.add copyFileD(path, changeRoot(origDir, dest, path))
-
-proc copyFilesRec(origDir, currentDir, dest: string,
-                  options: Options, pkgInfo: PackageInfo): HashSet[string] =
-  ## Copies all the required files, skips files specified in the .nimble file
-  ## (PackageInfo).
-  ## Returns a list of filepaths to files which have been installed.
-  result = initSet[string]()
-  let whitelistMode =
-          pkgInfo.installDirs.len != 0 or
-          pkgInfo.installFiles.len != 0 or
-          pkgInfo.installExt.len != 0
-  if whitelistMode:
-    for file in pkgInfo.installFiles:
-      let src = origDir / file
-      if not src.existsFile():
-        if options.prompt("Missing file " & src & ". Continue?"):
-          continue
-        else:
-          raise NimbleQuit(msg: "")
-      createDir(dest / file.splitFile.dir)
-      result.incl copyFileD(src, dest / file)
-
-    for dir in pkgInfo.installDirs:
-      # TODO: Allow skipping files inside dirs?
-      let src = origDir / dir
-      if not src.existsDir():
-        if options.prompt("Missing directory " & src & ". Continue?"):
-          continue
-        else:
-          raise NimbleQuit(msg: "")
-      result.incl copyDirD(origDir / dir, dest / dir)
-
-    result.incl copyWithExt(origDir, currentDir, dest, pkgInfo)
-  else:
-    for kind, file in walkDir(currentDir):
-      if kind == pcDir:
-        let skip = pkgInfo.checkInstallDir(origDir, file)
-
-        if skip: continue
-        # Create the dir.
-        createDir(changeRoot(origDir, dest, file))
-
-        result.incl copyFilesRec(origDir, file, dest, options, pkgInfo)
-      else:
-        let skip = pkgInfo.checkInstallFile(origDir, file)
-
-        if skip: continue
-
-        result.incl copyFileD(file, changeRoot(origDir, dest, file))
-
-  result.incl copyFileD(pkgInfo.mypath,
-            changeRoot(pkgInfo.mypath.splitFile.dir, dest, pkgInfo.mypath))
-
 proc install(packages: seq[PkgTuple],
              options: Options,
              doPrompt = true): tuple[deps: seq[PackageInfo], pkg: PackageInfo]
@@ -156,11 +58,12 @@ proc processDeps(pkginfo: PackageInfo, options: Options): seq[PackageInfo] =
           "dependencies for $1@$2" % [pkginfo.name, pkginfo.specialVersion],
           priority = HighPriority)
 
-  var pkgList = getInstalledPkgsMin(options.getPkgsDir(), options)
+  var pkgList {.global.}: seq[tuple[pkginfo: PackageInfo, meta: MetaData]] = @[]
+  once: pkgList = getInstalledPkgsMin(options.getPkgsDir(), options)
   var reverseDeps: seq[tuple[name, version: string]] = @[]
   for dep in pkginfo.requires:
     if dep.name == "nimrod" or dep.name == "nim":
-      let nimVer = getNimrodVersion()
+      let nimVer = getNimrodVersion(options)
       if not withinRange(nimVer, dep.ver):
         let msg = "Unsatisfied dependency: " & dep.name & " (" & $dep.ver & ")"
         raise newException(NimbleError, msg)
@@ -199,12 +102,13 @@ proc processDeps(pkginfo: PackageInfo, options: Options): seq[PackageInfo] =
   # in the path.
   var pkgsInPath: StringTableRef = newStringTable(modeCaseSensitive)
   for pkgInfo in result:
+    let currentVer = pkgInfo.getConcreteVersion(options)
     if pkgsInPath.hasKey(pkgInfo.name) and
-       pkgsInPath[pkgInfo.name] != pkgInfo.version:
+       pkgsInPath[pkgInfo.name] != currentVer:
       raise newException(NimbleError,
         "Cannot satisfy the dependency on $1 $2 and $1 $3" %
-          [pkgInfo.name, pkgInfo.version, pkgsInPath[pkgInfo.name]])
-    pkgsInPath[pkgInfo.name] = pkgInfo.version
+          [pkgInfo.name, currentVer, pkgsInPath[pkgInfo.name]])
+    pkgsInPath[pkgInfo.name] = currentVer
 
   # We add the reverse deps to the JSON file here because we don't want
   # them added if the above errorenous condition occurs
@@ -213,44 +117,82 @@ proc processDeps(pkginfo: PackageInfo, options: Options): seq[PackageInfo] =
   for i in reverseDeps:
     addRevDep(options.nimbleData, i, pkginfo)
 
-proc buildFromDir(pkgInfo: PackageInfo, paths: seq[string],
-                  args: var seq[string]) =
+proc buildFromDir(
+  pkgInfo: PackageInfo, paths, args: seq[string],
+  options: Options
+) =
   ## Builds a package as specified by ``pkgInfo``.
+  # Handle pre-`build` hook.
+  let
+    realDir = pkgInfo.getRealDir()
+    pkgDir = pkgInfo.myPath.parentDir()
+  cd pkgDir: # Make sure `execHook` executes the correct .nimble file.
+    if not execHook(options, actionBuild, true):
+      raise newException(NimbleError, "Pre-hook prevented further execution.")
+
   if pkgInfo.bin.len == 0:
     raise newException(NimbleError,
         "Nothing to build. Did you specify a module to build using the" &
         " `bin` key in your .nimble file?")
-  let realDir = pkgInfo.getRealDir()
-  for path in paths: args.add("--path:\"" & path & "\" ")
-  for bin in pkgInfo.bin:
-    let outputOpt = "-o:\"" & pkgInfo.getOutputDir(bin) & "\""
+  var
+    binariesBuilt = 0
+    args = args
+  args.add "-d:NimblePkgVersion=" & pkgInfo.version
+  for path in paths:
+    args.add("--path:" & path.quoteShell)
+  if options.verbosity >= HighPriority:
+    # Hide Nim hints by default
+    args.add("--hints:off")
+  if options.verbosity == SilentPriority:
+    # Hide Nim warnings
+    args.add("--warnings:off")
+
+  let binToBuild =
+    # Only build binaries specified by user if any, but only if top-level package,
+    # dependencies should have every binary built.
+    if options.isInstallingTopLevel(pkgInfo.myPath.parentDir()):
+      options.getCompilationBinary(pkgInfo).get("")
+    else: ""
+  for bin, src in pkgInfo.bin:
+    # Check if this is the only binary that we want to build.
+    if binToBuild.len != 0 and binToBuild != bin:
+      if bin.extractFilename().changeFileExt("") != binToBuild:
+        continue
+
+    let outputOpt = "-o:" & pkgInfo.getOutputDir(bin).quoteShell
     display("Building", "$1/$2 using $3 backend" %
             [pkginfo.name, bin, pkgInfo.backend], priority = HighPriority)
 
     let outputDir = pkgInfo.getOutputDir("")
-    if not existsDir(outputDir):
+    if not dirExists(outputDir):
       createDir(outputDir)
 
+    let input = realDir / src.changeFileExt("nim")
+    # `quoteShell` would be more robust than `\"` (and avoid quoting when
+    # un-necessary) but would require changing `extractBin`
+    let cmd = "$# $# --colors:on --noNimblePath $# $# $#" % [
+      getNimBin(options).quoteShell, pkgInfo.backend, join(args, " "),
+      outputOpt, input.quoteShell]
     try:
-      doCmd("\"" & getNimBin() & "\" $# --noBabelPath $# $# \"$#\"" %
-            [pkgInfo.backend, join(args, " "), outputOpt,
-             realDir / bin.changeFileExt("nim")])
+      doCmd(cmd)
+      binariesBuilt.inc()
     except NimbleError:
       let currentExc = (ref NimbleError)(getCurrentException())
       let exc = newException(BuildFailed, "Build failed for package: " &
                              pkgInfo.name)
       let (error, hint) = getOutputInfo(currentExc)
-      exc.msg.add("\nDetails:\n" & error)
+      exc.msg.add("\n" & error)
       exc.hint = hint
       raise exc
 
-proc buildFromDir(pkgInfo: PackageInfo, paths: seq[string], forRelease: bool) =
-  var args: seq[string]
-  if forRelease:
-    args = @["-d:release"]
-  else:
-    args = @[]
-  buildFromDir(pkgInfo, paths, args)
+  if binariesBuilt == 0:
+    raiseNimbleError(
+      "No binaries built, did you specify a valid binary name?"
+    )
+
+  # Handle post-`build` hook.
+  cd pkgDir: # Make sure `execHook` executes the correct .nimble file.
+    discard execHook(options, actionBuild, false)
 
 proc removePkgDir(dir: string, options: Options) =
   ## Removes files belonging to the package in ``dir``.
@@ -283,8 +225,8 @@ proc removePkgDir(dir: string, options: Options) =
       var pkgInfo: PackageInfo
       if pkgList.findPkg((pkgName, newVRAny()), pkgInfo):
         pkgInfo = pkgInfo.toFullInfo(options)
-        for bin in pkgInfo.bin:
-          let symlinkDest = pkgInfo.getRealDir() / bin
+        for bin, src in pkgInfo.bin:
+          let symlinkDest = pkgInfo.getOutputDir(bin)
           let symlinkFilename = options.getBinDir() / bin.extractFilename
           discard setupBinSymlink(symlinkDest, symlinkFilename, options)
     else:
@@ -329,7 +271,7 @@ proc installFromDir(dir: string, requestedVer: VersionRange, options: Options,
   # Handle pre-`install` hook.
   if not options.depsOnly:
     cd dir: # Make sure `execHook` executes the correct .nimble file.
-      if not execHook(options, true):
+      if not execHook(options, actionInstall, true):
         raise newException(NimbleError, "Pre-hook prevented further execution.")
 
   var pkgInfo = getPkgInfo(dir, options)
@@ -356,81 +298,98 @@ proc installFromDir(dir: string, requestedVer: VersionRange, options: Options,
   # if the build fails then the old package will still be installed.
   if pkgInfo.bin.len > 0:
     let paths = result.deps.map(dep => dep.getRealDir())
-    buildFromDir(pkgInfo, paths, true)
+    let flags = if options.action.typ in {actionInstall, actionPath, actionUninstall, actionDevelop}:
+                  options.action.passNimFlags
+                else:
+                  @[]
+    buildFromDir(pkgInfo, paths, "-d:release" & flags, options)
 
-  let pkgDestDir = pkgInfo.getPkgDest(options)
-  if existsDir(pkgDestDir) and existsFile(pkgDestDir / "nimblemeta.json"):
-    let msg = "$1@$2 already exists. Overwrite?" %
-              [pkgInfo.name, pkgInfo.specialVersion]
-    if not options.prompt(msg):
-      raise NimbleQuit(msg: "")
+  # Don't copy artifacts if project local deps mode and "installing" the top level package
+  if not (options.localdeps and options.isInstallingTopLevel(dir)):
+    let pkgDestDir = pkgInfo.getPkgDest(options)
+    if dirExists(pkgDestDir) and fileExists(pkgDestDir / "nimblemeta.json"):
+      let msg = "$1@$2 already exists. Overwrite?" %
+                [pkgInfo.name, pkgInfo.specialVersion]
+      if not options.prompt(msg):
+        return
 
-    # Remove reverse deps.
-    let pkgInfo = getPkgInfo(pkgDestDir, options)
-    options.nimbleData.removeRevDep(pkgInfo)
+      # Remove reverse deps.
+      let pkgInfo = getPkgInfo(pkgDestDir, options)
+      options.nimbleData.removeRevDep(pkgInfo)
 
-    removePkgDir(pkgDestDir, options)
-    # Remove any symlinked binaries
-    for bin in pkgInfo.bin:
-      # TODO: Check that this binary belongs to the package being installed.
-      when defined(windows):
-        removeFile(binDir / bin.changeFileExt("cmd"))
-        removeFile(binDir / bin.changeFileExt(""))
-      else:
-        removeFile(binDir / bin)
+      removePkgDir(pkgDestDir, options)
+      # Remove any symlinked binaries
+      for bin, src in pkgInfo.bin:
+        # TODO: Check that this binary belongs to the package being installed.
+        when defined(windows):
+          removeFile(binDir / bin.changeFileExt("cmd"))
+          removeFile(binDir / bin.changeFileExt(""))
+        else:
+          removeFile(binDir / bin)
 
-  createDir(pkgDestDir)
-  # Copy this package's files based on the preferences specified in PkgInfo.
-  var filesInstalled = initSet[string]()
-  iterInstallFiles(realDir, pkgInfo, options,
-    proc (file: string) =
-      createDir(changeRoot(realDir, pkgDestDir, file.splitFile.dir))
-      let dest = changeRoot(realDir, pkgDestDir, file)
-      filesInstalled.incl copyFileD(file, dest)
-  )
+    createDir(pkgDestDir)
+    # Copy this package's files based on the preferences specified in PkgInfo.
+    var filesInstalled = initHashSet[string]()
+    iterInstallFiles(realDir, pkgInfo, options,
+      proc (file: string) =
+        createDir(changeRoot(realDir, pkgDestDir, file.splitFile.dir))
+        let dest = changeRoot(realDir, pkgDestDir, file)
+        filesInstalled.incl copyFileD(file, dest)
+    )
 
-  # Copy the .nimble file.
-  let dest = changeRoot(pkgInfo.myPath.splitFile.dir, pkgDestDir,
-                        pkgInfo.myPath)
-  filesInstalled.incl copyFileD(pkgInfo.myPath, dest)
+    # Copy the .nimble file.
+    let dest = changeRoot(pkgInfo.myPath.splitFile.dir, pkgDestDir,
+                          pkgInfo.myPath)
+    filesInstalled.incl copyFileD(pkgInfo.myPath, dest)
 
-  var binariesInstalled = initSet[string]()
-  if pkgInfo.bin.len > 0:
-    # Make sure ~/.nimble/bin directory is created.
-    createDir(binDir)
-    # Set file permissions to +x for all binaries built,
-    # and symlink them on *nix OS' to $nimbleDir/bin/
-    for bin in pkgInfo.bin:
-      if existsFile(pkgDestDir / bin):
-        display("Warning:", ("Binary '$1' was already installed from source" &
-                            " directory. Will be overwritten.") % bin, Warning,
-                MediumPriority)
+    var binariesInstalled = initHashSet[string]()
+    if pkgInfo.bin.len > 0:
+      # Make sure ~/.nimble/bin directory is created.
+      createDir(binDir)
+      # Set file permissions to +x for all binaries built,
+      # and symlink them on *nix OS' to $nimbleDir/bin/
+      for bin, src in pkgInfo.bin:
+        let binDest =
+          # Issue #308
+          if dirExists(pkgDestDir / bin):
+            bin & ".out"
+          else: bin
+        if fileExists(pkgDestDir / binDest):
+          display("Warning:", ("Binary '$1' was already installed from source" &
+                              " directory. Will be overwritten.") % bin, Warning,
+                  MediumPriority)
 
-      # Copy the binary file.
-      filesInstalled.incl copyFileD(pkgInfo.getOutputDir(bin),
-                                    pkgDestDir / bin)
+        # Copy the binary file.
+        createDir((pkgDestDir / binDest).parentDir())
+        filesInstalled.incl copyFileD(pkgInfo.getOutputDir(bin),
+                                      pkgDestDir / binDest)
 
-      # Set up a symlink.
-      let symlinkDest = pkgDestDir / bin
-      let symlinkFilename = binDir / bin.extractFilename
-      for filename in setupBinSymlink(symlinkDest, symlinkFilename, options):
-        binariesInstalled.incl(filename)
+        # Set up a symlink.
+        let symlinkDest = pkgDestDir / binDest
+        let symlinkFilename = options.getBinDir() / bin.extractFilename
+        for filename in setupBinSymlink(symlinkDest, symlinkFilename, options):
+          binariesInstalled.incl(filename)
 
-  let vcsRevision = vcsRevisionInDir(realDir)
+    let vcsRevision = vcsRevisionInDir(realDir)
 
-  # Save a nimblemeta.json file.
-  saveNimbleMeta(pkgDestDir, url, vcsRevision, filesInstalled,
-                 binariesInstalled)
+    # Save a nimblemeta.json file.
+    saveNimbleMeta(pkgDestDir, url, vcsRevision, filesInstalled,
+                  binariesInstalled)
 
-  # Save the nimble data (which might now contain reverse deps added in
-  # processDeps).
-  saveNimbleData(options)
+    # Save the nimble data (which might now contain reverse deps added in
+    # processDeps).
+    saveNimbleData(options)
+
+    # update package path to point to installed directory rather than the temp directory
+    pkgInfo.myPath = dest
+  else:
+    display("Warning:", "Skipped copy in project local deps mode", Warning)
+
+  pkgInfo.isInstalled = true
 
   # Return the dependencies of this package (mainly for paths).
   result.deps.add pkgInfo
   result.pkg = pkgInfo
-  result.pkg.isInstalled = true
-  result.pkg.myPath = dest
 
   display("Success:", pkgInfo.name & " installed successfully.",
           Success, HighPriority)
@@ -438,8 +397,8 @@ proc installFromDir(dir: string, requestedVer: VersionRange, options: Options,
   # Run post-install hook now that package is installed. The `execHook` proc
   # executes the hook defined in the CWD, so we set it to where the package
   # has been installed.
-  cd dest.splitFile.dir:
-    discard execHook(options, false)
+  cd pkgInfo.myPath.splitFile.dir:
+    discard execHook(options, actionInstall, false)
 
 proc getDownloadInfo*(pv: PkgTuple, options: Options,
                       doPrompt: bool): (DownloadMethod, string,
@@ -506,12 +465,12 @@ proc build(options: Options) =
   nimScriptHint(pkgInfo)
   let deps = processDeps(pkginfo, options)
   let paths = deps.map(dep => dep.getRealDir())
-  var args = options.action.compileOptions
-  buildFromDir(pkgInfo, paths, args)
+  var args = options.getCompilationFlags()
+  buildFromDir(pkgInfo, paths, args, options)
 
-proc execBackend(options: Options) =
+proc execBackend(pkgInfo: PackageInfo, options: Options) =
   let
-    bin = options.action.file
+    bin = options.getCompilationBinary(pkgInfo).get("")
     binDotNim = bin.addFileExt("nim")
   if bin == "":
     raise newException(NimbleError, "You need to specify a file.")
@@ -524,10 +483,20 @@ proc execBackend(options: Options) =
   nimScriptHint(pkgInfo)
   let deps = processDeps(pkginfo, options)
 
-  var args = ""
-  for dep in deps: args.add("--path:\"" & dep.getRealDir() & "\" ")
-  for option in options.action.compileOptions:
-    args.add("\"" & option & "\" ")
+  if not execHook(options, options.action.typ, true):
+    raise newException(NimbleError, "Pre-hook prevented further execution.")
+
+  var args = @["-d:NimblePkgVersion=" & pkgInfo.version]
+  for dep in deps:
+    args.add("--path:" & dep.getRealDir().quoteShell)
+  if options.verbosity >= HighPriority:
+    # Hide Nim hints by default
+    args.add("--hints:off")
+  if options.verbosity == SilentPriority:
+    # Hide Nim warnings
+    args.add("--warnings:off")
+  for option in options.getCompilationFlags():
+    args.add(option.quoteShell)
 
   let backend =
     if options.action.backend.len > 0:
@@ -541,9 +510,12 @@ proc execBackend(options: Options) =
   else:
     display("Generating", ("documentation for $1 (from package $2) using $3 " &
             "backend") % [bin, pkgInfo.name, backend], priority = HighPriority)
-  doCmd("\"" & getNimBin() & "\" $# --noNimblePath $# \"$#\"" %
-        [backend, args, bin], showOutput = true)
+  doCmd(getNimBin(options).quoteShell & " $# --noNimblePath $# $#" %
+        [backend, join(args, " "), bin.quoteShell])
   display("Success:", "Execution finished", Success, HighPriority)
+
+  # Run the post hook for action if it exists
+  discard execHook(options, options.action.typ, false)
 
 proc search(options: Options) =
   ## Searches for matches in ``options.action.search``.
@@ -558,7 +530,7 @@ proc search(options: Options) =
   var found = false
   template onFound {.dirty.} =
     echoPackage(pkg)
-    if options.queryVersions:
+    if pkg.alias.len == 0 and options.queryVersions:
       echoPackageVersions(pkg)
     echo(" ")
     found = true
@@ -584,7 +556,7 @@ proc list(options: Options) =
   let pkgList = getPackageList(options)
   for pkg in pkgList:
     echoPackage(pkg)
-    if options.queryVersions:
+    if pkg.alias.len == 0 and options.queryVersions:
       echoPackageVersions(pkg)
     echo(" ")
 
@@ -660,10 +632,10 @@ proc getPackageByPattern(pattern: string, options: Options): PackageInfo =
   if pattern == "":
     # Not specified - using current directory
     result = getPkgInfo(os.getCurrentDir(), options)
-  elif pattern.splitFile.ext == ".nimble" and pattern.existsFile:
+  elif pattern.splitFile.ext == ".nimble" and pattern.fileExists:
     # project file specified
     result = getPkgInfoFromFile(pattern, options)
-  elif pattern.existsDir:
+  elif pattern.dirExists:
     # project directory specified
     result = getPkgInfo(pattern, options)
   else:
@@ -677,27 +649,66 @@ proc getPackageByPattern(pattern: string, options: Options): PackageInfo =
       )
     result = getPkgInfoFromFile(skeletonInfo.myPath, options)
 
+# import std/jsonutils
+proc `%`(a: Version): JsonNode = %a.string
+
+# proc dump(options: Options, json: bool) =
 proc dump(options: Options) =
   cli.setSuppressMessages(true)
   let p = getPackageByPattern(options.action.projName, options)
-  echo "name: ", p.name.escape
-  echo "version: ", p.version.escape
-  echo "author: ", p.author.escape
-  echo "desc: ", p.description.escape
-  echo "license: ", p.license.escape
-  echo "skipDirs: ", p.skipDirs.join(", ").escape
-  echo "skipFiles: ", p.skipFiles.join(", ").escape
-  echo "skipExt: ", p.skipExt.join(", ").escape
-  echo "installDirs: ", p.installDirs.join(", ").escape
-  echo "installFiles: ", p.installFiles.join(", ").escape
-  echo "installExt: ", p.installExt.join(", ").escape
-  echo "requires: ", p.requires.join(", ").escape
-  echo "bin: ", p.bin.join(", ").escape
-  echo "binDir: ", p.binDir.escape
-  echo "srcDir: ", p.srcDir.escape
-  echo "backend: ", p.backend.escape
+  var j: JsonNode
+  var s: string
+  let json = options.dumpMode == kdumpJson
+  if json: j = newJObject()
+  template fn(key, val) =
+    if json:
+      when val is seq[PkgTuple]:
+        # jsonutils.toJson would work but is only available since 1.3.5, so we
+        # do it manually.
+        j[key] = newJArray()
+        for (name, ver) in val:
+          j[key].add %{
+            "name": % name,
+            # we serialize both: `ver` may be more convenient for tooling
+            # (no parsing needed); while `str` is more familiar.
+            "str": % $ver,
+            "ver": %* ver,
+          }
+      else:
+        j[key] = %*val
+    else:
+      if s.len > 0: s.add "\n"
+      s.add key & ": "
+      when val is string:
+        s.add val.escape
+      else:
+        s.add val.join(", ").escape
+  fn "name", p.name
+  fn "version", p.version
+  fn "author", p.author
+  fn "desc", p.description
+  fn "license", p.license
+  fn "skipDirs", p.skipDirs
+  fn "skipFiles", p.skipFiles
+  fn "skipExt", p.skipExt
+  fn "installDirs", p.installDirs
+  fn "installFiles", p.installFiles
+  fn "installExt", p.installExt
+  fn "requires", p.requires
+  fn "bin", toSeq(p.bin.keys)
+  fn "binDir", p.binDir
+  fn "srcDir", p.srcDir
+  fn "backend", p.backend
+  if json:
+    s = j.pretty
+  echo s
 
 proc init(options: Options) =
+  # Check whether the vcs is installed.
+  let vcsBin = options.action.vcsOption
+  if vcsBin != "" and findExe(vcsBin, true) == "":
+    raise newException(NimbleError, "Please install git or mercurial first")
+
   # Determine the package name.
   let pkgName =
     if options.action.projName != "":
@@ -717,7 +728,7 @@ proc init(options: Options) =
 
   let nimbleFile = (pkgRoot / pkgName).changeFileExt("nimble")
 
-  if existsFile(nimbleFile):
+  if fileExists(nimbleFile):
     let errMsg = "Nimble file already exists: $#" % nimbleFile
     raise newException(NimbleError, errMsg)
 
@@ -732,20 +743,20 @@ proc init(options: Options) =
   display("Using", "$# for new package name" % [pkgName.escape()],
     priority = HighPriority)
 
-  # Ask for package author
+  # Determine author by running an external command
+  proc getAuthorWithCmd(cmd: string): string =
+    let (name, exitCode) = doCmdEx(cmd)
+    if exitCode == QuitSuccess and name.len > 0:
+      result = name.strip()
+      display("Using", "$# for new package author" % [result],
+        priority = HighPriority)
+
+  # Determine package author via git/hg or asking
   proc getAuthor(): string =
     if findExe("git") != "":
-      let (name, exitCode) = doCmdEx("git config --global user.name")
-      if exitCode == QuitSuccess and name.len > 0:
-        result = name.strip()
-        display("Using", "$# for new package author" % [result.escape()],
-          priority = HighPriority)
+      result = getAuthorWithCmd("git config --global user.name")
     elif findExe("hg") != "":
-      let (name, exitCode) = doCmdEx("hg config ui.username")
-      if exitCode == QuitSuccess and name.len > 0:
-        result = name.strip()
-        display("Using", "$# for new package author" % [result.escape()],
-          priority = HighPriority)
+      result = getAuthorWithCmd("hg config ui.username")
     if result.len == 0:
       result = promptCustom(options, "Your name?", "Anonymous")
   let pkgAuthor = getAuthor()
@@ -791,6 +802,7 @@ This should ideally be a valid SPDX identifier. See https://spdx.org/licenses/.
     "LGPL-2.1",
     "LGPL-3.0",
     "EPL-2.0",
+    "AGPL-3.0",
     # This is what npm calls "UNLICENSED" (which is too similar to "Unlicense")
     "Proprietary",
     "Other"
@@ -802,17 +814,17 @@ This should ideally be a valid SPDX identifier. See https://spdx.org/licenses/.
 Please specify a valid SPDX identifier.""",
       "MIT"
     )
-  var pkgBackend = options.promptList(
-    """Package Backend?
-c    - Compile using C backend.
-cpp  - Compile using C++ backend.
-objc - Compile using Objective-C backend.
-js   - Compile using JavaScript backend.""",
-    ["c", "cpp", "objc", "js"]
-  )
+
+  if pkgLicense in ["GPL-2.0", "GPL-3.0", "LGPL-2.1", "LGPL-3.0", "AGPL-3.0"]:
+    let orLater = options.promptList(
+      "\"Or any later version\" clause?", ["Yes", "No"])
+    if orLater == "Yes":
+      pkgLicense.add("-or-later")
+    else:
+      pkgLicense.add("-only")
 
   # Ask for Nim dependency
-  let nimDepDef = getNimrodVersion()
+  let nimDepDef = getNimrodVersion(options)
   let pkgNimDep = promptCustom(options, "Lowest supported Nim version?",
     $nimDepDef)
   validateVersion(pkgNimDep)
@@ -824,13 +836,23 @@ js   - Compile using JavaScript backend.""",
       pkgAuthor,
       pkgDesc,
       pkgLicense,
-      pkgBackend,
       pkgSrcDir,
       pkgNimDep,
       pkgType
     ),
     pkgRoot
   )
+
+  # Create a git or hg repo in the new nimble project.
+  if vcsBin != "":
+    let cmd = fmt"cd {pkgRoot} && {vcsBin} init"
+    let ret: tuple[output: string, exitCode: int] = execCmdEx(cmd)
+    if ret.exitCode != 0: quit ret.output
+
+    var ignoreFile = if vcsBin == "git": ".gitignore" else: ".hgignore"
+    var fd = open(joinPath(pkgRoot, ignoreFile), fmWrite)
+    fd.write(pkgName & "\n")
+    fd.close()
 
   display("Success:", "Package $# created successfully" % [pkgName], Success,
     HighPriority)
@@ -840,7 +862,8 @@ proc uninstall(options: Options) =
     raise newException(NimbleError,
         "Please specify the package(s) to uninstall.")
 
-  var pkgsToDelete: seq[PackageInfo] = @[]
+  var pkgsToDelete: HashSet[PackageInfo]
+  pkgsToDelete.init()
   # Do some verification.
   for pkgTup in options.action.packages:
     display("Looking", "for $1 ($2)" % [pkgTup.name, $pkgTup.ver],
@@ -851,37 +874,33 @@ proc uninstall(options: Options) =
       raise newException(NimbleError, "Package not found")
 
     display("Checking", "reverse dependencies", priority = HighPriority)
-    var errors: seq[string] = @[]
     for pkg in pkgList:
       # Check whether any packages depend on the ones the user is trying to
       # uninstall.
       if options.uninstallRevDeps:
         getAllRevDeps(options, pkg, pkgsToDelete)
       else:
-        let revDeps = getRevDeps(options, pkg)
+        let
+          revDeps = getRevDeps(options, pkg)
         var reason = ""
-        if revDeps.len == 1:
-          reason = "$1 ($2) depends on it" % [revDeps[0].name, $revDeps[0].ver]
-        else:
-          for i in 0 ..< revDeps.len:
-            reason.add("$1 ($2)" % [revDeps[i].name, $revDeps[i].ver])
-            if i != revDeps.len-1:
-              reason.add ", "
-          reason.add " depend on it"
+        for revDep in revDeps:
+          if reason.len != 0: reason.add ", "
+          reason.add("$1 ($2)" % [revDep.name, revDep.version])
+        if reason.len != 0:
+          reason &= " depend" & (if revDeps.len == 1: "s" else: "") & " on it"
 
-        if revDeps.len > 0:
-          errors.add("Cannot uninstall $1 ($2) because $3" %
-                     [pkgTup.name, pkg.specialVersion, reason])
+        if len(revDeps - pkgsToDelete) > 0:
+          display("Cannot", "uninstall $1 ($2) because $3" %
+                  [pkgTup.name, pkg.specialVersion, reason], Warning, HighPriority)
         else:
-          pkgsToDelete.add pkg
+          pkgsToDelete.incl pkg
 
-    if pkgsToDelete.len == 0:
-      raise newException(NimbleError, "\n  " & errors.join("\n  "))
+  if pkgsToDelete.len == 0:
+    raise newException(NimbleError, "Failed uninstall - no packages to delete")
 
   var pkgNames = ""
-  for i in 0 ..< pkgsToDelete.len:
-    if i != 0: pkgNames.add ", "
-    let pkg = pkgsToDelete[i]
+  for pkg in pkgsToDelete.items:
+    if pkgNames.len != 0: pkgNames.add ", "
     pkgNames.add("$1 ($2)" % [pkg.name, pkg.specialVersion])
 
   # Let's confirm that the user wants these packages removed.
@@ -908,11 +927,8 @@ proc listTasks(options: Options) =
   nimscriptwrapper.listTasks(nimbleFile, options)
 
 proc developFromDir(dir: string, options: Options) =
-  if options.depsOnly:
-    raiseNimbleError("Cannot develop dependencies only.")
-
   cd dir: # Make sure `execHook` executes the correct .nimble file.
-    if not execHook(options, true):
+    if not execHook(options, actionDevelop, true):
       raise newException(NimbleError, "Pre-hook prevented further execution.")
 
   var pkgInfo = getPkgInfo(dir, options)
@@ -926,46 +942,68 @@ proc developFromDir(dir: string, options: Options) =
   # Overwrite the version to #head always.
   pkgInfo.specialVersion = "#head"
 
-  # Dependencies need to be processed before the creation of the pkg dir.
-  discard processDeps(pkgInfo, options)
+  if options.developLocaldeps:
+    var optsCopy: Options
+    optsCopy.forcePrompts = options.forcePrompts
+    optsCopy.nimbleDir = dir / nimbledeps
+    createDir(optsCopy.getPkgsDir())
+    optsCopy.verbosity = options.verbosity
+    optsCopy.action = Action(typ: actionDevelop)
+    optsCopy.config = options.config
+    optsCopy.nimbleData = %{"reverseDeps": newJObject()}
+    optsCopy.pkgInfoCache = newTable[string, PackageInfo]()
+    optsCopy.noColor = options.noColor
+    optsCopy.disableValidation = options.disableValidation
+    optsCopy.forceFullClone = options.forceFullClone
+    optsCopy.startDir = dir
+    optsCopy.nim = options.nim
+    cd dir:
+      discard processDeps(pkgInfo, optsCopy)
+  else:
+    # Dependencies need to be processed before the creation of the pkg dir.
+    discard processDeps(pkgInfo, options)
 
-  # This is similar to the code in `installFromDir`, except that we
-  # *consciously* not worry about the package's binaries.
-  let pkgDestDir = pkgInfo.getPkgDest(options)
-  if existsDir(pkgDestDir) and existsFile(pkgDestDir / "nimblemeta.json"):
-    let msg = "$1@$2 already exists. Overwrite?" %
-              [pkgInfo.name, pkgInfo.specialVersion]
-    if not options.prompt(msg):
-      raise NimbleQuit(msg: "")
-    removePkgDir(pkgDestDir, options)
+  # Don't link if project local deps mode and "developing" the top level package
+  if not (options.localdeps and options.isInstallingTopLevel(dir)):
+    # This is similar to the code in `installFromDir`, except that we
+    # *consciously* not worry about the package's binaries.
+    let pkgDestDir = pkgInfo.getPkgDest(options)
+    if dirExists(pkgDestDir) and fileExists(pkgDestDir / "nimblemeta.json"):
+      let msg = "$1@$2 already exists. Overwrite?" %
+                [pkgInfo.name, pkgInfo.specialVersion]
+      if not options.prompt(msg):
+        raise NimbleQuit(msg: "")
+      removePkgDir(pkgDestDir, options)
 
-  createDir(pkgDestDir)
-  # The .nimble-link file contains the path to the real .nimble file,
-  # and a secondary path to the source directory of the package.
-  # The secondary path is necessary so that the package's .nimble file doesn't
-  # need to be read. This will mean that users will need to re-run
-  # `nimble develop` if they change their `srcDir` but I think it's a worthy
-  # compromise.
-  let nimbleLinkPath = pkgDestDir / pkgInfo.name.addFileExt("nimble-link")
-  let nimbleLink = NimbleLink(
-    nimbleFilePath: pkgInfo.myPath,
-    packageDir: pkgInfo.getRealDir()
-  )
-  writeNimbleLink(nimbleLinkPath, nimbleLink)
+    createDir(pkgDestDir)
+    # The .nimble-link file contains the path to the real .nimble file,
+    # and a secondary path to the source directory of the package.
+    # The secondary path is necessary so that the package's .nimble file doesn't
+    # need to be read. This will mean that users will need to re-run
+    # `nimble develop` if they change their `srcDir` but I think it's a worthy
+    # compromise.
+    let nimbleLinkPath = pkgDestDir / pkgInfo.name.addFileExt("nimble-link")
+    let nimbleLink = NimbleLink(
+      nimbleFilePath: pkgInfo.myPath,
+      packageDir: pkgInfo.getRealDir()
+    )
+    writeNimbleLink(nimbleLinkPath, nimbleLink)
 
-  # Save a nimblemeta.json file.
-  saveNimbleMeta(pkgDestDir, dir, vcsRevisionInDir(dir), nimbleLinkPath)
+    # Save a nimblemeta.json file.
+    saveNimbleMeta(pkgDestDir, dir, vcsRevisionInDir(dir), nimbleLinkPath)
 
-  # Save the nimble data (which might now contain reverse deps added in
-  # processDeps).
-  saveNimbleData(options)
+    # Save the nimble data (which might now contain reverse deps added in
+    # processDeps).
+    saveNimbleData(options)
 
-  display("Success:", (pkgInfo.name & " linked successfully to '$1'.") %
-          dir, Success, HighPriority)
+    display("Success:", (pkgInfo.name & " linked successfully to '$1'.") %
+            dir, Success, HighPriority)
+  else:
+    display("Warning:", "Skipping link in project local deps mode", Warning)
 
   # Execute the post-develop hook.
   cd dir:
-    discard execHook(options, false)
+    discard execHook(options, actionDevelop, false)
 
 proc develop(options: Options) =
   if options.action.packages == @[]:
@@ -975,7 +1013,7 @@ proc develop(options: Options) =
     for pv in options.action.packages:
       let name =
         if isURL(pv.name):
-          parseUri(pv.name).path
+          parseUri(pv.name).path.splitPath().tail
         else:
           pv.name
       let downloadDir = getCurrentDir() / name
@@ -1001,6 +1039,8 @@ proc develop(options: Options) =
 proc test(options: Options) =
   ## Executes all tests starting with 't' in the ``tests`` directory.
   ## Subdirectories are not walked.
+  var pkgInfo = getPkgInfo(getCurrentDir(), options)
+
   var
     files = toSeq(walkDir(getCurrentDir() / "tests"))
     tests, failures: int
@@ -1008,6 +1048,9 @@ proc test(options: Options) =
   if files.len < 1:
     display("Warning:", "No tests found!", Warning, HighPriority)
     return
+
+  if not execHook(options, actionCustom, true):
+    raise newException(NimbleError, "Pre-hook prevented further execution.")
 
   files.sort((a, b) => cmp(a.path, b.path))
 
@@ -1017,28 +1060,34 @@ proc test(options: Options) =
       var optsCopy = options.briefClone()
       optsCopy.action = Action(typ: actionCompile)
       optsCopy.action.file = file.path
-      optsCopy.action.backend = "c"
-      optsCopy.action.compileOptions = @[]
-      optsCopy.action.compileOptions.add("-r")
-      optsCopy.action.compileOptions.add("--path:.")
+      optsCopy.action.backend = pkgInfo.backend
+      optsCopy.getCompilationFlags() = options.getCompilationFlags()
+      # treat run flags as compile for default test task
+      optsCopy.getCompilationFlags().add(options.action.custRunFlags)
+      optsCopy.getCompilationFlags().add("-r")
+      optsCopy.getCompilationFlags().add("--path:.")
       let
         binFileName = file.path.changeFileExt(ExeExt)
-        existsBefore = existsFile(binFileName)
+        existsBefore = fileExists(binFileName)
 
       if options.continueTestsOnFailure:
         inc tests
         try:
-          execBackend(optsCopy)
+          execBackend(pkgInfo, optsCopy)
         except NimbleError:
           inc failures
       else:
-        execBackend(optsCopy)
+        execBackend(pkgInfo, optsCopy)
 
       let
-        existsAfter = existsFile(binFileName)
+        existsAfter = fileExists(binFileName)
         canRemove = not existsBefore and existsAfter
       if canRemove:
-        removeFile(binFileName)
+        try:
+          removeFile(binFileName)
+        except OSError as exc:
+          display("Warning:", "Failed to delete " & binFileName & ": " &
+                  exc.msg, Warning, MediumPriority)
 
   if failures == 0:
     display("Success:", "All tests passed", Success, HighPriority)
@@ -1046,8 +1095,11 @@ proc test(options: Options) =
     let error = "Only " & $(tests - failures) & "/" & $tests & " tests passed"
     display("Error:", error, Error, HighPriority)
 
+  if not execHook(options, actionCustom, false):
+    return
+
 proc check(options: Options) =
-  ## Validates a package a in the current working directory.
+  ## Validates a package in the current working directory.
   let nimbleFile = findNimbleFile(getCurrentDir(), true)
   var error: ValidationError
   var pkgInfo: PackageInfo
@@ -1065,16 +1117,40 @@ proc check(options: Options) =
     display("Failure:", "Validation failed", Error, HighPriority)
     quit(QuitFailure)
 
-proc doAction(options: Options) =
+proc run(options: Options) =
+  # Verify parameters.
+  var pkgInfo = getPkgInfo(getCurrentDir(), options)
+
+  let binary = options.getCompilationBinary(pkgInfo).get("")
+  if binary.len == 0:
+    raiseNimbleError("Please specify a binary to run")
+
+  if binary notin toSeq(pkgInfo.bin.keys):
+    raiseNimbleError(
+      "Binary '$#' is not defined in '$#' package." % [binary, pkgInfo.name]
+    )
+
+  # Build the binary.
+  build(options)
+
+  let binaryPath = pkgInfo.getOutputDir(binary)
+  let cmd = quoteShellCommand(binaryPath & options.action.runFlags)
+  displayDebug("Executing", cmd)
+  cmd.execCmd.quit
+
+
+proc doAction(options: var Options) =
   if options.showHelp:
     writeHelp()
   if options.showVersion:
     writeVersion()
 
-  if not existsDir(options.getNimbleDir()):
-    createDir(options.getNimbleDir())
-  if not existsDir(options.getPkgsDir):
-    createDir(options.getPkgsDir)
+  setNimBin(options)
+  setNimbleDir(options)
+
+  if options.action.typ in {actionTasks, actionRun, actionBuild, actionCompile}:
+    # Implicitly disable package validation for these commands.
+    options.disableValidation = true
 
   case options.action.typ
   of actionRefresh:
@@ -1101,8 +1177,11 @@ proc doAction(options: Options) =
     listPaths(options)
   of actionBuild:
     build(options)
+  of actionRun:
+    run(options)
   of actionCompile, actionDoc:
-    execBackend(options)
+    var pkgInfo = getPkgInfo(getCurrentDir(), options)
+    execBackend(pkgInfo, options)
   of actionInit:
     init(options)
   of actionPublish:
@@ -1119,30 +1198,37 @@ proc doAction(options: Options) =
   of actionNil:
     assert false
   of actionCustom:
-    if not execHook(options, true):
-      display("Warning", "Pre-hook prevented further execution.", Warning,
-              HighPriority)
-      return
-    let isPreDefined = options.action.command.normalize == "test"
+    let
+      command = options.action.command.normalize
+      nimbleFile = findNimbleFile(getCurrentDir(), true)
+      pkgInfo = getPkgInfoFromFile(nimbleFile, options)
 
-    var execResult: ExecutionResult[bool]
-    if execCustom(options, execResult, failFast=not isPreDefined):
-      if execResult.hasTaskRequestedCommand():
-        doAction(execResult.getOptionsForCommand(options))
-    else:
+    if command in pkgInfo.nimbleTasks:
+      # If valid task defined in nimscript, run it
+      var execResult: ExecutionResult[bool]
+      if execCustom(nimbleFile, options, execResult):
+        if execResult.hasTaskRequestedCommand():
+          var options = execResult.getOptionsForCommand(options)
+          doAction(options)
+    elif command == "test":
       # If there is no task defined for the `test` task, we run the pre-defined
       # fallback logic.
-      if isPreDefined:
         test(options)
-        # Run the post hook for `test` in case it exists.
-        discard execHook(options, false)
+    else:
+      raiseNimbleError(msg = "Could not find task $1 in $2" %
+                            [options.action.command, nimbleFile],
+                      hint = "Run `nimble --help` and/or `nimble tasks` for" &
+                              " a list of possible commands.")
 
 when isMainModule:
   var error = ""
   var hint = ""
 
+  var opt: Options
   try:
-    parseCmdLine().doAction()
+    opt = parseCmdLine()
+    opt.startDir = getCurrentDir()
+    opt.doAction()
   except NimbleError:
     let currentExc = (ref NimbleError)(getCurrentException())
     (error, hint) = getOutputInfo(currentExc)
@@ -1150,7 +1236,9 @@ when isMainModule:
     discard
   finally:
     try:
-      removeDir(getNimbleTempDir())
+      let folder = getNimbleTempDir()
+      if opt.shouldRemoveTmp(folder):
+        removeDir(folder)
     except OSError:
       let msg = "Couldn't remove Nimble's temp dir"
       display("Warning:", msg, Warning, MediumPriority)

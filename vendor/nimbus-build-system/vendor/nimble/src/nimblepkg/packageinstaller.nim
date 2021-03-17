@@ -3,7 +3,13 @@
 import os, strutils, sets, json
 
 # Local imports
-import cli, common, options, tools
+import cli, options, tools
+
+when defined(windows):
+  import version
+
+when not declared(initHashSet) or not declared(toHashSet):
+  import common
 
 when defined(windows):
   # This is just for Win XP support.
@@ -24,17 +30,19 @@ when defined(windows):
 proc setupBinSymlink*(symlinkDest, symlinkFilename: string,
                       options: Options): seq[string] =
   result = @[]
-  let currentPerms = getFilePermissions(symlinkDest)
+  let
+    symlinkDestRel = relativePath(symlinkDest, symlinkFilename.parentDir())
+    currentPerms = getFilePermissions(symlinkDest)
   setFilePermissions(symlinkDest, currentPerms + {fpUserExec})
   when defined(unix):
     display("Creating", "symlink: $1 -> $2" %
             [symlinkDest, symlinkFilename], priority = MediumPriority)
-    if existsFile(symlinkFilename):
+    if fileExists(symlinkFilename):
       let msg = "Symlink already exists in $1. Replacing." % symlinkFilename
       display("Warning:", msg, Warning, HighPriority)
       removeFile(symlinkFilename)
 
-    createSymlink(symlinkDest, symlinkFilename)
+    createSymlink(symlinkDestRel, symlinkFilename)
     result.add symlinkFilename.extractFilename
   elif defined(windows):
     # There is a bug on XP, described here:
@@ -56,14 +64,14 @@ proc setupBinSymlink*(symlinkDest, symlinkFilename: string,
       if fixChcp:
         contents.add "chcp 65001 > nul && "
       else: contents.add "chcp 65001 > nul\n@"
-    contents.add "\"" & symlinkDest & "\" %*\n"
+    contents.add "\"%~dp0\\" & symlinkDestRel & "\" %*\n"
     writeFile(dest, contents)
     result.add dest.extractFilename
     # For bash on Windows (Cygwin/Git bash).
     let bashDest = dest.changeFileExt("")
     display("Creating", "Cygwin stub: $1 -> $2" %
             [symlinkDest, bashDest], priority = MediumPriority)
-    writeFile(bashDest, "\"" & symlinkDest & "\" \"$@\"\n")
+    writeFile(bashDest, "\"`dirname \"$0\"`\\" & symlinkDestRel & "\" \"$@\"\n")
     result.add bashDest.extractFilename
   else:
     {.error: "Sorry, your platform is not supported.".}
@@ -103,4 +111,4 @@ proc saveNimbleMeta*(pkgDestDir, pkgDir, vcsRevision, nimbleLinkPath: string) =
   ## pkgDir - The directory where the original package files are.
   ##          For example: ~/projects/jester/
   saveNimbleMeta(pkgDestDir, "file://" & pkgDir, vcsRevision,
-                 toSet[string]([nimbleLinkPath]), initSet[string](), true)
+                 toHashSet[string]([nimbleLinkPath]), initHashSet[string](), true)

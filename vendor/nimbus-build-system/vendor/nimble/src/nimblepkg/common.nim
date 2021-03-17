@@ -5,10 +5,9 @@
 # recursive imports
 
 when not defined(nimscript):
-  import sets
+  import sets, tables
 
   import version
-  export version.NimbleError # TODO: Surely there is a better way?
 
   type
     BuildFailed* = object of NimbleError
@@ -19,11 +18,13 @@ when not defined(nimscript):
       isMinimal*: bool
       isInstalled*: bool ## Determines if the pkg this info belongs to is installed
       isLinked*: bool ## Determines if the pkg this info belongs to has been linked via `develop`
+      nimbleTasks*: HashSet[string] ## All tasks defined in the Nimble file
       postHooks*: HashSet[string] ## Useful to know so that Nimble doesn't execHook unnecessarily
       preHooks*: HashSet[string]
       name*: string
       ## The version specified in the .nimble file.Assuming info is non-minimal,
-      ## it will always be a non-special version such as '0.1.4'
+      ## it will always be a non-special version such as '0.1.4'.
+      ## If in doubt, use `getConcreteVersion` instead.
       version*: string
       specialVersion*: string ## Either `myVersion` or a special version such as #head.
       author*: string
@@ -36,14 +37,14 @@ when not defined(nimscript):
       installFiles*: seq[string]
       installExt*: seq[string]
       requires*: seq[PkgTuple]
-      bin*: seq[string]
+      bin*: Table[string, string]
       binDir*: string
       srcDir*: string
       backend*: string
       foreignDeps*: seq[string]
 
     ## Same as quit(QuitSuccess), but allows cleanup.
-    NimbleQuit* = ref object of Exception
+    NimbleQuit* = ref object of CatchableError
 
   proc raiseNimbleError*(msg: string, hint = "") =
     var exc = newException(NimbleError, msg)
@@ -62,5 +63,27 @@ when not defined(nimscript):
 
     return (error, hint)
 
+import strscans
+from strutils import allCharsInSet
+
+proc extractNimbleVersion(): string =
+  let x = staticRead("../../nimble.nimble")
+  var prefix = ""
+  assert scanf(x, "$*version$s=$s\"$+\"", prefix, result)
+  assert result.len >= 3
+  assert allCharsInSet(result, {'0'..'9', '.'})
+
 const
-  nimbleVersion* = "0.10.2"
+  nimbleVersion* = extractNimbleVersion()
+
+when not declared(initHashSet):
+  import sets
+
+  template initHashSet*[A](initialSize = 64): HashSet[A] =
+    initSet[A](initialSize)
+
+when not declared(toHashSet):
+  import sets
+
+  template toHashSet*[A](keys: openArray[A]): HashSet[A] =
+    toSet(keys)

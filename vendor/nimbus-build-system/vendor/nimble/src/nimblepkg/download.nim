@@ -2,14 +2,15 @@
 # BSD License. Look at license.txt for more info.
 
 import parseutils, os, osproc, strutils, tables, pegs, uri
-
 import packageinfo, packageparser, version, tools, common, options, cli
+from algorithm import SortOrder, sorted
+from sequtils import toSeq, filterIt, map
 
 type
   DownloadMethod* {.pure.} = enum
     git = "git", hg = "hg"
 
-proc getSpecificDir(meth: DownloadMethod): string =
+proc getSpecificDir(meth: DownloadMethod): string {.used.} =
   case meth
   of DownloadMethod.git:
     ".git"
@@ -24,18 +25,19 @@ proc doCheckout(meth: DownloadMethod, downloadDir, branch: string) =
       # clone has happened. Like in the case of git on Windows where it
       # messes up the damn line endings.
       doCmd("git checkout --force " & branch)
+      doCmd("git submodule update --recursive --depth 1")
   of DownloadMethod.hg:
     cd downloadDir:
       doCmd("hg checkout " & branch)
 
-proc doPull(meth: DownloadMethod, downloadDir: string) =
+proc doPull(meth: DownloadMethod, downloadDir: string) {.used.} =
   case meth
   of DownloadMethod.git:
     doCheckout(meth, downloadDir, "")
     cd downloadDir:
       doCmd("git pull")
-      if existsFile(".gitmodules"):
-        doCmd("git submodule update")
+      if fileExists(".gitmodules"):
+        doCmd("git submodule update --recursive --depth 1")
   of DownloadMethod.hg:
     doCheckout(meth, downloadDir, "default")
     cd downloadDir:
@@ -48,8 +50,8 @@ proc doClone(meth: DownloadMethod, url, downloadDir: string, branch = "",
     let
       depthArg = if onlyTip: "--depth 1 " else: ""
       branchArg = if branch == "": "" else: "-b " & branch & " "
-    doCmd("git clone --recursive " & depthArg & branchArg & url &
-          " " & downloadDir)
+    doCmd("git clone --recursive " & depthArg & branchArg &
+          url & " " & downloadDir)
   of DownloadMethod.hg:
     let
       tipArg = if onlyTip: "-r tip " else: ""
@@ -86,7 +88,7 @@ proc getTagsListRemote*(url: string, meth: DownloadMethod): seq[string] =
   result = @[]
   case meth
   of DownloadMethod.git:
-    var (output, exitCode) = doCmdEx("git ls-remote --tags " & url)
+    var (output, exitCode) = doCmdEx("git ls-remote --tags " & url.quoteShell())
     if exitCode != QuitSuccess:
       raise newException(OSError, "Unable to query remote tags for " & url &
           ". Git returned: " & output)
@@ -102,14 +104,21 @@ proc getTagsListRemote*(url: string, meth: DownloadMethod): seq[string] =
     # http://stackoverflow.com/questions/2039150/show-tags-for-remote-hg-repository
     raise newException(ValueError, "Hg doesn't support remote tag querying.")
 
-proc getVersionList*(tags: seq[string]): Table[Version, string] =
-  # Returns: TTable of version -> git tag name
-  result = initTable[Version, string]()
-  for tag in tags:
-    if tag != "":
-      let i = skipUntil(tag, Digits) # skip any chars before the version
-      # TODO: Better checking, tags can have any names. Add warnings and such.
-      result[newVersion(tag[i .. tag.len-1])] = tag
+proc getVersionList*(tags: seq[string]): OrderedTable[Version, string] =
+  ## Return an ordered table of Version -> git tag label.  Ordering is
+  ## in descending order with the most recent version first.
+  let taggedVers: seq[tuple[ver: Version, tag: string]] =
+    tags
+      .filterIt(it != "")
+      .map(proc(s: string): tuple[ver: Version, tag: string] =
+        # skip any chars before the version
+        let i = skipUntil(s, Digits)
+        # TODO: Better checking, tags can have any
+        # names. Add warnings and such.
+        result = (newVersion(s[i .. s.len-1]), s))
+      .sorted(proc(a, b: (Version, string)): int = cmp(a[0], b[0]),
+              SortOrder.Descending)
+  result = toOrderedTable[Version, string](taggedVers)
 
 proc getDownloadMethod*(meth: string): DownloadMethod =
   case meth
@@ -127,9 +136,9 @@ proc getHeadName*(meth: DownloadMethod): Version =
 
 proc checkUrlType*(url: string): DownloadMethod =
   ## Determines the download method based on the URL.
-  if doCmdEx("git ls-remote " & url).exitCode == QuitSuccess:
+  if doCmdEx("git ls-remote " & url.quoteShell()).exitCode == QuitSuccess:
     return DownloadMethod.git
-  elif doCmdEx("hg identify " & url).exitCode == QuitSuccess:
+  elif doCmdEx("hg identify " & url.quoteShell()).exitCode == QuitSuccess:
     return DownloadMethod.hg
   else:
     raise newException(NimbleError, "Unable to identify url: " & url)
@@ -267,14 +276,8 @@ proc echoPackageVersions*(pkg: Package) =
     try:
       let versions = getTagsListRemote(pkg.url, downMethod).getVersionList()
       if versions.len > 0:
-        var vstr = ""
-        var i = 0
-        for v in values(versions):
-          if i != 0:
-            vstr.add(", ")
-          vstr.add(v)
-          i.inc
-        echo("  versions:    " & vstr)
+        let sortedVersions = toSeq(values(versions))
+        echo("  versions:    " & join(sortedVersions, ", "))
       else:
         echo("  versions:    (No versions tagged in the remote repository)")
     except OSError:
@@ -282,3 +285,32 @@ proc echoPackageVersions*(pkg: Package) =
   of DownloadMethod.hg:
     echo("  versions:    (Remote tag retrieval not supported by " &
         pkg.downloadMethod & ")")
+
+when isMainModule:
+  # Test version sorting
+  block:
+    let data = @["v9.0.0-taeyeon", "v9.0.1-jessica", "v9.2.0-sunny",
+                 "v9.4.0-tiffany", "v9.4.2-hyoyeon"]
+    let expected = toOrderedTable[Version, string]({
+      newVersion("9.4.2-hyoyeon"): "v9.4.2-hyoyeon",
+      newVersion("9.4.0-tiffany"): "v9.4.0-tiffany",
+      newVersion("9.2.0-sunny"): "v9.2.0-sunny",
+      newVersion("9.0.1-jessica"): "v9.0.1-jessica",
+      newVersion("9.0.0-taeyeon"): "v9.0.0-taeyeon"
+    })
+    doAssert expected == getVersionList(data)
+
+
+  block:
+    let data2 = @["v0.1.0", "v0.1.1", "v0.2.0",
+                 "0.4.0", "v0.4.2"]
+    let expected2 = toOrderedTable[Version, string]({
+      newVersion("0.4.2"): "v0.4.2",
+      newVersion("0.4.0"): "0.4.0",
+      newVersion("0.2.0"): "v0.2.0",
+      newVersion("0.1.1"): "v0.1.1",
+      newVersion("0.1.0"): "v0.1.0",
+    })
+    doAssert expected2 == getVersionList(data2)
+
+  echo("Everything works!")

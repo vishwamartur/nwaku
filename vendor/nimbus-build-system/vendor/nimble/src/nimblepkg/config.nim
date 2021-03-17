@@ -1,8 +1,8 @@
 # Copyright (C) Dominik Picheta. All rights reserved.
 # BSD License. Look at license.txt for more info.
-import parsecfg, streams, strutils, os, tables, Uri
+import parsecfg, streams, strutils, os, tables, uri
 
-import tools, version, common, cli
+import version, cli
 
 type
   Config* = object
@@ -11,7 +11,6 @@ type
     packageLists*: Table[string, PackageList] ## Names -> packages.json files
     cloneUsingHttps*: bool # Whether to replace git:// for https://
     httpProxy*: Uri # Proxy for package list downloads.
-    nimLibPrefix*: string # Nim stdlib prefix.
 
   PackageList* = object
     name*: string
@@ -29,12 +28,10 @@ proc initConfig(): Config =
   result.packageLists = initTable[string, PackageList]()
   let defaultPkgList = PackageList(name: "Official", urls: @[
     "https://github.com/nim-lang/packages/raw/master/packages.json",
-    "http://irclogs.nim-lang.org/packages.json",
-    "http://nim-lang.org/nimble/packages.json"
+    "https://irclogs.nim-lang.org/packages.json",
+    "https://nim-lang.org/nimble/packages.json"
   ])
   result.packageLists["official"] = defaultPkgList
-
-  result.nimLibPrefix = ""
 
 proc initPackageList(): PackageList =
   result.name = ""
@@ -115,7 +112,8 @@ proc parseConfig*(): Config =
               currentPackageList.path = e.value
           else: assert false
         of "nimlibprefix":
-          result.nimLibPrefix = e.value
+          # Not relevant anymore but leaving in for legacy ini files
+          discard
         else:
           raise newException(NimbleError, "Unable to parse config file:" &
                                      " Unknown key: " & e.key)

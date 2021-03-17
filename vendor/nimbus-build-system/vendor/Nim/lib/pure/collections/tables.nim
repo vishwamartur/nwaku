@@ -1808,7 +1808,7 @@ proc newOrderedTable*[A, B](pairs: openArray[(A, B)]): <//>OrderedTableRef[A, B]
     assert b == {'a': 5, 'b': 9}.newOrderedTable
 
   result = newOrderedTable[A, B](rightSize(pairs.len))
-  for key, val in items(pairs): result.add(key, val)
+  for key, val in items(pairs): result[key] = val
 
 
 proc `[]`*[A, B](t: OrderedTableRef[A, B], key: A): var B =
@@ -2634,7 +2634,7 @@ proc `[]`*[A](t: CountTableRef[A], key: A): int =
   ## See also:
   ## * `getOrDefault<#getOrDefault,CountTableRef[A],A,int>`_ to return
   ##   a custom value if the key doesn't exist
-  ## * `mget proc<#mget,CountTableRef[A],A>`_
+  ## * `inc proc<#inc,CountTableRef[A],A>`_ to inc even if missing
   ## * `[]= proc<#[]%3D,CountTableRef[A],A,int>`_ for inserting a new
   ##   (key, value) pair in the table
   ## * `hasKey proc<#hasKey,CountTableRef[A],A>`_ for checking if a key
@@ -3002,37 +3002,37 @@ when isMainModule:
   block: #5482
     var a = [("wrong?", "foo"), ("wrong?", "foo2")].newOrderedTable()
     var b = newOrderedTable[string, string](initialSize = 2)
-    b.add("wrong?", "foo")
-    b.add("wrong?", "foo2")
+    b["wrong?"] = "foo"
+    b["wrong?"] = "foo2"
     assert a == b
 
   block: #5482
     var a = {"wrong?": "foo", "wrong?": "foo2"}.newOrderedTable()
     var b = newOrderedTable[string, string](initialSize = 2)
-    b.add("wrong?", "foo")
-    b.add("wrong?", "foo2")
+    b["wrong?"] = "foo"
+    b["wrong?"] = "foo2"
     assert a == b
 
   block: #5487
     var a = {"wrong?": "foo", "wrong?": "foo2"}.newOrderedTable()
     var b = newOrderedTable[string, string]()         # notice, default size!
-    b.add("wrong?", "foo")
-    b.add("wrong?", "foo2")
+    b["wrong?"] = "foo"
+    b["wrong?"] = "foo2"
     assert a == b
 
   block: #5487
     var a = [("wrong?", "foo"), ("wrong?", "foo2")].newOrderedTable()
     var b = newOrderedTable[string, string]()         # notice, default size!
-    b.add("wrong?", "foo")
-    b.add("wrong?", "foo2")
+    b["wrong?"] = "foo"
+    b["wrong?"] = "foo2"
     assert a == b
 
   block:
     var a = {"wrong?": "foo", "wrong?": "foo2"}.newOrderedTable()
     var b = [("wrong?", "foo"), ("wrong?", "foo2")].newOrderedTable()
     var c = newOrderedTable[string, string]()         # notice, default size!
-    c.add("wrong?", "foo")
-    c.add("wrong?", "foo2")
+    c["wrong?"] = "foo"
+    c["wrong?"] = "foo2"
     assert a == b
     assert a == c
 

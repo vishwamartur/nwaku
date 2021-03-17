@@ -188,7 +188,7 @@ macro capture*(locals: varargs[typed], body: untyped): untyped {.since: (1, 1).}
   for arg in locals:
     params.add(newIdentDefs(ident(arg.strVal), freshIdentNodes getTypeInst arg))
   result = newNimNode(nnkCall)
-  result.add(newProc(newEmptyNode(), params, body, nnkProcDef))
+  result.add(newProc(newEmptyNode(), params, body, nnkLambda))
   for arg in locals: result.add(arg)
 
 when (NimMajor, NimMinor) >= (1, 1):
@@ -369,3 +369,13 @@ when isMainModule:
         of "bird": "word"
         else: d
     assert z == @["word", "word"]
+
+
+    proc tforum =
+      let ans = collect(newSeq):
+        for y in 0..10:
+          if y mod 5 == 2:
+            for x in 0..y:
+              x
+
+    tforum()

@@ -5,8 +5,10 @@
 ## nim-lang/packages automatically.
 
 import system except TResult
-import httpclient, base64, strutils, rdstdin, json, os, browsers, times, uri
-import tools, common, cli, config, options
+import httpclient, strutils, json, os, browsers, times, uri
+import version, tools, common, cli, config, options
+{.warning[UnusedImport]: off.}
+from net import SslCVerifyMode, newContext
 
 type
   Auth = object
@@ -43,7 +45,7 @@ proc requestNewToken(cfg: Config): string =
   let token = promptCustom("Personal access token?", "").strip()
   # inform the user that their token will be written to disk
   let tokenWritePath = cfg.nimbleDir / ApiKeyFile
-  display("Info:", "Writing access token to file:" & tokenWritePath, 
+  display("Info:", "Writing access token to file:" & tokenWritePath,
           priority = HighPriority)
   writeFile(tokenWritePath, token)
   sleep(3000)
@@ -51,11 +53,12 @@ proc requestNewToken(cfg: Config): string =
 
 proc getGithubAuth(o: Options): Auth =
   let cfg = o.config
-  result.http = newHttpClient(proxy = getProxy(o))
+  let ctx = newSSLContext(o.disableSslCertCheck)
+  result.http = newHttpClient(proxy = getProxy(o), sslContext = ctx)
   # always prefer the environment variable to asking for a new one
   if existsEnv(ApiTokenEnvironmentVariable):
     result.token = getEnv(ApiTokenEnvironmentVariable)
-    display("Info:", "Using the '" & ApiTokenEnvironmentVariable & 
+    display("Info:", "Using the '" & ApiTokenEnvironmentVariable &
             "' environment variable for the GitHub API Token.",
             priority = HighPriority)
   else:
@@ -213,7 +216,10 @@ proc publish*(p: PackageInfo, o: Options) =
     url = promptCustom("Github URL of " & p.name & "?", "")
     if url.len == 0: userAborted()
 
-  let tags = promptCustom("Whitespace separated list of tags?", "")
+  let tags = promptCustom(
+    "Whitespace separated list of tags? (For example: web library wrapper)",
+    ""
+  )
 
   cd pkgsDir:
     editJson(p, url, tags, downloadMethod)

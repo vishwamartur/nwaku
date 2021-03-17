@@ -124,10 +124,12 @@ build_nim() {
 		sed \
 			-e 's/koch$/--warnings:off --hints:off koch/' \
 			-e 's/koch boot/koch boot --warnings:off --hints:off/' \
-			-e 's/koch tools/koch --stable tools --warnings:off --hints:off/' \
 			build_all.sh > build_all_custom.sh
 		sh build_all_custom.sh
 		rm build_all_custom.sh
+		# Nimble needs a CA cert
+		rm -f bin/cacert.pem
+		curl -LsS -o bin/cacert.pem https://curl.se/ca/cacert.pem || echo "Warning: 'curl' failed to download a CA cert needed by Nimble. Ignoring it."
 	else
 		# Don't re-build it multiple times until we get identical
 		# binaries, like "build_all.sh" does. Don't build any tools
@@ -149,7 +151,9 @@ build_nim() {
 			--skipParentCfg \
 			compiler/nim.nim
 		cp -a compiler/nim bin/nim1
-		# If we stop here, we risk ending up with a buggy compiler: https://github.com/status-im/nimbus-eth2/pull/2220
+		# If we stop here, we risk ending up with a buggy compiler:
+		# https://github.com/status-im/nimbus-eth2/pull/2220
+		# https://github.com/status-im/nimbus-eth2/issues/2310
 		bin/nim1 \
 			c \
 			--compileOnly \

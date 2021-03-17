@@ -28,7 +28,7 @@ jobs:
         include:
           - target:
               os: linux
-            builder: ubuntu-18.04
+            builder: ubuntu-20.04
           - target:
               os: macos
             builder: macos-10.15
@@ -47,8 +47,8 @@ jobs:
         if: runner.os == 'Linux' && matrix.target.cpu == 'i386'
         run: |
           sudo dpkg --add-architecture i386
-          sudo apt-fast update -qq
-          sudo DEBIAN_FRONTEND='noninteractive' apt-fast install \
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND='noninteractive' apt-get install \
             --no-install-recommends -yq gcc-multilib g++-multilib \
             libssl-dev:i386
           mkdir -p external/bin
@@ -167,13 +167,13 @@ jobs:
       # - name: Install library dependencies (Linux amd64)
       #   if: runner.os == 'Linux' && matrix.target.cpu == 'amd64'
       #   run: |
-      #     sudo DEBIAN_FRONTEND='noninteractive' apt-fast install \
+      #     sudo DEBIAN_FRONTEND='noninteractive' apt-get install \
       #       --no-install-recommends -yq libgmp-dev
       #
       # - name: Install library dependencies (Linux i386)
       #   if: runner.os == 'Linux' && matrix.target.cpu == 'i386'
       #   run: |
-      #     sudo DEBIAN_FRONTEND='noninteractive' apt-fast install \
+      #     sudo DEBIAN_FRONTEND='noninteractive' apt-get install \
       #       libgmp-dev:i386
       #
       # - name: Install library dependencies (macOS)
@@ -205,3 +205,83 @@ jobs:
           cd nim-libp2p
           nimble install -y --depsOnly
           nimble test
+
+  bumpNBC-stable:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: status-im/github-app-token@v1
+        name: Generate token
+        id: generate-token
+        with:
+          app_id: ${{ secrets.BUMP_BOT_APP_ID }}
+          private_key: ${{ secrets.BUMP_BOT_APP_PRIVATE_KEY }}
+
+      - name: Clone NBC
+        uses: actions/checkout@v2
+        with:
+          repository: status-im/nimbus-eth2
+          path: nbc
+          submodules: true
+          fetch-depth: 0
+
+      - name: Checkout this ref
+        run: |
+          cd nbc/vendor/nim-libp2p
+          git checkout $GITHUB_SHA
+
+      - name: Commit this bump
+        run: |
+          cd nbc
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+          git config --global user.name = "${{ github.actor }}"
+          git commit -a -m "auto-bump nim-libp2p"
+
+      - name: Make PR
+        uses: peter-evans/create-pull-request@v3.5.0
+        with:
+          branch: nim-libp2p-auto-bump
+          path: nbc
+          token: ${{ steps.generate-token.outputs.token }}
+          title: nim-libp2p auto bump
+
+  bumpNBC-unstable:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: status-im/github-app-token@v1
+        name: Generate token
+        id: generate-token
+        with:
+          app_id: ${{ secrets.BUMP_BOT_APP_ID }}
+          private_key: ${{ secrets.BUMP_BOT_APP_PRIVATE_KEY }}
+
+      - name: Clone NBC
+        uses: actions/checkout@v2
+        with:
+          repository: status-im/nimbus-eth2
+          ref: unstable
+          path: nbc
+          submodules: true
+          fetch-depth: 0
+
+      - name: Checkout this ref
+        run: |
+          cd nbc/vendor/nim-libp2p
+          git checkout $GITHUB_SHA
+
+      - name: Commit this bump
+        run: |
+          cd nbc
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+          git config --global user.name = "${{ github.actor }}"
+          git commit -a -m "auto-bump nim-libp2p"
+
+      - name: Make PR
+        uses: peter-evans/create-pull-request@v3.5.0
+        with:
+          branch: nim-libp2p-auto-bump-unstable
+          path: nbc
+          token: ${{ steps.generate-token.outputs.token }}
+          title: nim-libp2p unstable auto bump
+          draft: true

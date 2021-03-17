@@ -3,8 +3,8 @@
 
 # Stdlib imports
 import system except TResult
-import parsecfg, json, streams, strutils, parseutils, os, sets, tables
-import httpclient
+import hashes, json, strutils, os, sets, tables, httpclient
+from net import SslError
 
 # Local imports
 import version, tools, common, options, cli, config
@@ -34,6 +34,7 @@ type
 proc initPackageInfo*(path: string): PackageInfo =
   result.myPath = path
   result.specialVersion = ""
+  result.nimbleTasks.init()
   result.preHooks.init()
   result.postHooks.init()
   # reasonable default:
@@ -50,7 +51,7 @@ proc initPackageInfo*(path: string): PackageInfo =
   result.installExt = @[]
   result.requires = @[]
   result.foreignDeps = @[]
-  result.bin = @[]
+  result.bin = initTable[string, string]()
   result.srcDir = ""
   result.binDir = ""
   result.backend = "c"
@@ -135,7 +136,7 @@ proc fromJson(obj: JSonNode): Package =
 proc readMetaData*(path: string): MetaData =
   ## Reads the metadata present in ``~/.nimble/pkgs/pkg-0.1/nimblemeta.json``
   var bmeta = path / "nimblemeta.json"
-  if not existsFile(bmeta):
+  if not fileExists(bmeta):
     result.url = ""
     display("Warning:", "No nimblemeta.json file found in " & path,
             Warning, HighPriority)
@@ -199,8 +200,13 @@ proc fetchList*(list: PackageList, options: Options) =
                 priority = LowPriority)
 
       try:
-        let client = newHttpClient(proxy = proxy)
+        let ctx = newSSLContext(options.disableSslCertCheck)
+        let client = newHttpClient(proxy = proxy, sslContext = ctx)
         client.downloadFile(url, tempPath)
+      except SslError:
+        let message = "Failed to verify the SSL certificate for " & url
+        raiseNimbleError(message, "Use --noSSLCheck to ignore this error.")
+
       except:
         let message = "Could not download: " & getCurrentExceptionMsg()
         display("Warning:", message, Warning)
@@ -232,8 +238,14 @@ proc fetchList*(list: PackageList, options: Options) =
     copyFile(copyFromPath,
         options.getNimbleDir() / "packages_$1.json" % list.name.toLowerAscii())
 
+# Cache after first call
+var
+  gPackageJson: Table[string, JsonNode]
 proc readPackageList(name: string, options: Options): JsonNode =
   # If packages.json is not present ask the user if they want to download it.
+  if gPackageJson.hasKey(name):
+    return gPackageJson[name]
+
   if needsRefresh(options):
     if options.prompt("No local packages.json found, download it from " &
             "internet?"):
@@ -242,9 +254,11 @@ proc readPackageList(name: string, options: Options): JsonNode =
     else:
       # The user might not need a package list for now. So let's try
       # going further.
-      return newJArray()
-  return parseFile(options.getNimbleDir() / "packages_" &
-                   name.toLowerAscii() & ".json")
+      gPackageJson[name] = newJArray()
+      return gPackageJson[name]
+  gPackageJson[name] = parseFile(options.getNimbleDir() / "packages_" &
+                                 name.toLowerAscii() & ".json")
+  return gPackageJson[name]
 
 proc getPackage*(pkg: string, options: Options, resPkg: var Package): bool
 proc resolveAlias(pkg: Package, options: Options): Package =
@@ -278,7 +292,7 @@ proc getPackage*(pkg: string, options: Options, resPkg: var Package): bool =
 proc getPackageList*(options: Options): seq[Package] =
   ## Returns the list of packages found in the downloaded packages.json files.
   result = @[]
-  var namesAdded = initSet[string]()
+  var namesAdded = initHashSet[string]()
   for name, list in options.config.packageLists:
     let packages = readPackageList(name, options)
     for p in packages:
@@ -304,14 +318,13 @@ proc findNimbleFile*(dir: string; error: bool): string =
   elif hits == 0:
     if error:
       raise newException(NimbleError,
-          "Specified directory ($1) does not contain a .nimble file." % dir)
+          "Could not find a file with a .nimble extension inside the specified directory: $1" % dir)
     else:
       display("Warning:", "No .nimble or .nimble-link file found for " &
               dir, Warning, HighPriority)
 
   if result.splitFile.ext == ".nimble-link":
     # Return the path of the real .nimble file.
-    let nimbleLinkPath = result
     result = readNimbleLink(result).nimbleFilePath
     if not fileExists(result):
       let msg = "The .nimble-link file is pointing to a missing file: " & result
@@ -414,6 +427,8 @@ proc getOutputDir*(pkgInfo: PackageInfo, bin: string): string =
     result = pkgInfo.mypath.splitFile.dir / pkgInfo.binDir / bin
   else:
     result = pkgInfo.mypath.splitFile.dir / bin
+  if bin.len != 0 and dirExists(result):
+    result &= ".out"
 
 proc echoPackage*(pkg: Package) =
   echo(pkg.name & ":")
@@ -498,7 +513,7 @@ proc iterInstallFiles*(realDir: string, pkgInfo: PackageInfo,
   if whitelistMode:
     for file in pkgInfo.installFiles:
       let src = realDir / file
-      if not src.existsFile():
+      if not src.fileExists():
         if options.prompt("Missing file " & src & ". Continue?"):
           continue
         else:
@@ -509,7 +524,7 @@ proc iterInstallFiles*(realDir: string, pkgInfo: PackageInfo,
     for dir in pkgInfo.installDirs:
       # TODO: Allow skipping files inside dirs?
       let src = realDir / dir
-      if not src.existsDir():
+      if not src.dirExists():
         if options.prompt("Missing directory " & src & ". Continue?"):
           continue
         else:
@@ -541,6 +556,11 @@ proc getPkgDest*(pkgInfo: PackageInfo, options: Options): string =
 proc `==`*(pkg1: PackageInfo, pkg2: PackageInfo): bool =
   if pkg1.name == pkg2.name and pkg1.myPath == pkg2.myPath:
     return true
+
+proc hash*(x: PackageInfo): Hash =
+  var h: Hash = 0
+  h = h !& hash(x.myPath)
+  result = !$h
 
 when isMainModule:
   doAssert getNameVersion("/home/user/.nimble/libs/packagea-0.1") ==

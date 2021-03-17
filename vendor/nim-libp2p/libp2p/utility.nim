@@ -7,8 +7,9 @@
 ## This file may not be copied, modified, or distributed except according to
 ## those terms.
 
+{.push raises: [Defect].}
+
 import stew/byteutils
-import strutils
 
 const
   ShortDumpMax = 12
@@ -38,6 +39,18 @@ func shortLog*(item: string): string =
     result &= item[(item.len - split)..item.high]
 
 when defined(libp2p_agents_metrics):
+  import strutils
+  export split
+
+  import stew/results
+  export results
+
+  proc safeToLowerAscii*(s: string): Result[string, cstring] =
+    try:
+      ok(s.toLowerAscii())
+    except CatchableError:
+      err("toLowerAscii failed")
+
   const
     KnownLibP2PAgents* {.strdefine.} = ""
-    KnownLibP2PAgentsSeq* = KnownLibP2PAgents.toLowerAscii().split(",")
+    KnownLibP2PAgentsSeq* = KnownLibP2PAgents.safeToLowerAscii().tryGet().split(",")

@@ -1,16 +1,17 @@
 # Copyright (C) Dominik Picheta. All rights reserved.
 # BSD License. Look at license.txt for more info.
 
-import os, tables, strutils, sets
+import os, strutils, sets
 
-import packageparser, common, packageinfo, options, nimscriptwrapper, cli
+import packageparser, common, packageinfo, options, nimscriptwrapper, cli,
+       version
 
-proc execHook*(options: Options, before: bool): bool =
+proc execHook*(options: Options, hookAction: ActionType, before: bool): bool =
   ## Returns whether to continue.
   result = true
 
   # For certain commands hooks should not be evaluated.
-  if options.action.typ in noHookActions:
+  if hookAction in noHookActions:
     return
 
   var nimbleFile = ""
@@ -20,8 +21,8 @@ proc execHook*(options: Options, before: bool): bool =
   # PackageInfos are cached so we can read them as many times as we want.
   let pkgInfo = getPkgInfoFromFile(nimbleFile, options)
   let actionName =
-    if options.action.typ == actionCustom: options.action.command
-    else: ($options.action.typ)[6 .. ^1]
+    if hookAction == actionCustom: options.action.command
+    else: ($hookAction)[6 .. ^1]
   let hookExists =
     if before: actionName.normalize in pkgInfo.preHooks
     else: actionName.normalize in pkgInfo.postHooks
@@ -30,34 +31,26 @@ proc execHook*(options: Options, before: bool): bool =
     if res.success:
       result = res.retVal
 
-proc execCustom*(options: Options,
-                 execResult: var ExecutionResult[bool],
-                 failFast = true): bool =
+proc execCustom*(nimbleFile: string, options: Options,
+                 execResult: var ExecutionResult[bool]): bool =
   ## Executes the custom command using the nimscript backend.
-  ##
-  ## If failFast is true then exceptions will be raised when something is wrong.
-  ## Otherwise this function will just return false.
 
-  # Custom command. Attempt to call a NimScript task.
-  let nimbleFile = findNimbleFile(getCurrentDir(), true)
-  if not nimbleFile.isNimScript(options) and failFast:
+  if not execHook(options, actionCustom, true):
+    raise newException(NimbleError, "Pre-hook prevented further execution.")
+
+  if not nimbleFile.isNimScript(options):
     writeHelp()
 
   execResult = execTask(nimbleFile, options.action.command, options)
   if not execResult.success:
-    if not failFast:
-      return
-    raiseNimbleError(msg = "Could not find task $1 in $2" %
-                           [options.action.command, nimbleFile],
-                     hint = "Run `nimble --help` and/or `nimble tasks` for" &
-                            " a list of possible commands.")
+    raiseNimbleError(msg = "Failed to execute task $1 in $2" %
+                           [options.action.command, nimbleFile])
 
   if execResult.command.normalize == "nop":
     display("Warning:", "Using `setCommand 'nop'` is not necessary.", Warning,
             HighPriority)
-    return
 
-  if not execHook(options, false):
+  if not execHook(options, actionCustom, false):
     return
 
   return true

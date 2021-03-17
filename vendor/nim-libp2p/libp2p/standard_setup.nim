@@ -3,11 +3,8 @@ import
   switch, peerid, peerinfo, stream/connection, multiaddress,
   crypto/crypto, transports/[transport, tcptransport],
   muxers/[muxer, mplex/mplex],
-  protocols/[identify, secure/secure]
-
-import
-  protocols/secure/noise,
-  protocols/secure/secio
+  protocols/[identify, secure/secure, secure/noise],
+  connmanager
 
 export
   switch, peerid, peerinfo, connection, multiaddress, crypto
@@ -15,19 +12,21 @@ export
 type
   SecureProtocol* {.pure.} = enum
     Noise,
-    Secio
+    Secio {.deprecated.}
 
 proc newStandardSwitch*(privKey = none(PrivateKey),
                         address = MultiAddress.init("/ip4/127.0.0.1/tcp/0").tryGet(),
                         secureManagers: openarray[SecureProtocol] = [
-                            # array cos order matters
-                            SecureProtocol.Secio,
                             SecureProtocol.Noise,
                           ],
                         transportFlags: set[ServerFlags] = {},
                         rng = newRng(),
                         inTimeout: Duration = 5.minutes,
-                        outTimeout: Duration = 5.minutes): Switch =
+                        outTimeout: Duration = 5.minutes,
+                        maxConnections = MaxConnections,
+                        maxIn = -1,
+                        maxOut = -1,
+                        maxConnsPerPeer = MaxConnectionsPerPeer): Switch =
   proc createMplex(conn: Connection): Muxer =
     Mplex.init(
       conn,
@@ -52,13 +51,17 @@ proc newStandardSwitch*(privKey = none(PrivateKey),
     of SecureProtocol.Noise:
       secureManagerInstances &= newNoise(rng, seckey).Secure
     of SecureProtocol.Secio:
-      secureManagerInstances &= newSecio(rng, seckey).Secure
+      quit("Secio is deprecated!") # use of secio is unsafe
 
   let switch = newSwitch(
     peerInfo,
     transports,
     identify,
     muxers,
-    secureManagers = secureManagerInstances)
+    secureManagers = secureManagerInstances,
+    maxConnections = maxConnections,
+    maxIn = maxIn,
+    maxOut = maxOut,
+    maxConnsPerPeer = maxConnsPerPeer)
 
   return switch

@@ -41,14 +41,16 @@ type
     kind*: PubSubPeerEventKind
 
   GetConn* = proc(): Future[Connection] {.gcsafe.}
+  DropConn* = proc(peer: PubsubPeer) {.gcsafe.} # have to pass peer as it's unknown during init
   OnEvent* = proc(peer: PubSubPeer, event: PubsubPeerEvent) {.gcsafe.}
 
   PubSubPeer* = ref object of RootObj
     getConn*: GetConn                   # callback to establish a new send connection
+    dropConn*: DropConn                 # Function pointer to use to drop connections
     onEvent*: OnEvent                   # Connectivity updates for peer
     codec*: string                      # the protocol that this peer joined from
     sendConn*: Connection               # cached send connection
-    connections*: seq[Connection]       # connections to this peer
+    address*: Option[MultiAddress]
     peerId*: PeerID
     handler*: RPCHandler
     observers*: ref seq[PubSubObserver] # ref as in smart_ptr
@@ -56,18 +58,19 @@ type
     score*: float64
     iWantBudget*: int
     iHaveBudget*: int
-    outbound*: bool # if this is an outbound connection
     appScore*: float64 # application specific score
     behaviourPenalty*: float64 # the eventual penalty score
-    
+
     when defined(libp2p_agents_metrics):
       shortAgent*: string
 
   RPCHandler* = proc(peer: PubSubPeer, msg: RPCMsg): Future[void] {.gcsafe.}
 
 func hash*(p: PubSubPeer): Hash =
-  # int is either 32/64, so intptr basically, pubsubpeer is a ref
-  cast[pointer](p).hash
+  p.peerId.hash
+
+func `==`*(a, b: PubSubPeer): bool =
+  a.peerId == b.peerId
 
 func shortLog*(p: PubSubPeer): string =
   if p.isNil: "PubSubPeer(nil)"
@@ -80,6 +83,16 @@ proc connected*(p: PubSubPeer): bool =
 
 proc hasObservers(p: PubSubPeer): bool =
   p.observers != nil and anyIt(p.observers[], it != nil)
+
+func outbound*(p: PubSubPeer): bool =
+  # gossipsub 1.1 spec requires us to know if the transport is outgoing
+  # in order to give priotity to connections we make
+  # https://github.com/libp2p/specs/blob/master/pubsub/gossipsub/gossipsub-v1.1.md#outbound-mesh-quotas
+  # This behaviour is presrcibed to counter sybil attacks and ensures that a coordinated inbound attack can never fully take over the mesh
+  if not p.sendConn.isNil and p.sendConn.transportDir == Direction.Out:
+    true
+  else:
+    false
 
 proc recvObservers(p: PubSubPeer, msg: var RPCMsg) =
   # trigger hooks
@@ -153,6 +166,7 @@ proc connectOnce(p: PubSubPeer): Future[void] {.async.} =
 
     trace "Get new send connection", p, newConn
     p.sendConn = newConn
+    p.address = some(p.sendConn.observedAddr)
 
     if p.onEvent != nil:
       p.onEvent(p, PubsubPeerEvent(kind: PubSubPeerEventKind.Connected))
@@ -162,10 +176,17 @@ proc connectOnce(p: PubSubPeer): Future[void] {.async.} =
     if p.sendConn != nil:
       trace "Removing send connection", p, conn = p.sendConn
       await p.sendConn.close()
-
       p.sendConn = nil
+
+    try:
       if p.onEvent != nil:
         p.onEvent(p, PubsubPeerEvent(kind: PubSubPeerEventKind.Disconnected))
+    except CancelledError:
+      raise
+    except CatchableError as exc:
+      debug "Errors during diconnection events", error = exc.msg
+
+    # don't cleanup p.address else we leak some gossip stat table
 
 proc connectImpl(p: PubSubPeer) {.async.} =
   try:
@@ -174,9 +195,11 @@ proc connectImpl(p: PubSubPeer) {.async.} =
     # issue so we try to get a new on
     while true:
       await connectOnce(p)
-
-  except CatchableError as exc:
+  except CatchableError as exc: # never cancelled
     debug "Could not establish send connection", msg = exc.msg
+  finally:
+    # drop the connection, else we end up with ghost peers
+    if p.dropConn != nil: p.dropConn(p)
 
 proc connect*(p: PubSubPeer) =
   asyncSpawn connectImpl(p)
@@ -187,7 +210,7 @@ proc sendImpl(conn: Connection, encoded: seq[byte]) {.async.} =
     await conn.writeLp(encoded)
     trace "sent pubsub message to remote", conn
 
-  except CatchableError as exc:
+  except CatchableError as exc: # never cancelled
     # Because we detach the send call from the currently executing task using
     # asyncSpawn, no exceptions may leak out of it
     trace "Unable to send to remote", conn, msg = exc.msg
@@ -203,7 +226,7 @@ template sendMetrics(msg: RPCMsg): untyped =
         # metrics
         libp2p_pubsub_sent_messages.inc(labelValues = [$p.peerId, t])
 
-proc send*(p: PubSubPeer, msg: RPCMsg, anonymize: bool) =
+proc send*(p: PubSubPeer, msg: RPCMsg, anonymize: bool) {.raises: [Defect].} =
   doAssert(not isNil(p), "pubsubpeer nil!")
 
   let conn = p.sendConn
@@ -236,14 +259,19 @@ proc send*(p: PubSubPeer, msg: RPCMsg, anonymize: bool) =
 
   # To limit the size of the closure, we only pass the encoded message and
   # connection to the spawned send task
-  asyncSpawn sendImpl(conn, encoded)
+  asyncSpawn(try:
+    sendImpl(conn, encoded)
+  except Exception as exc: # TODO chronos Exception
+    raiseAssert exc.msg)
 
 proc newPubSubPeer*(peerId: PeerID,
                     getConn: GetConn,
+                    dropConn: DropConn,
                     onEvent: OnEvent,
                     codec: string): PubSubPeer =
   PubSubPeer(
     getConn: getConn,
+    dropConn: dropConn,
     onEvent: onEvent,
     codec: codec,
     peerId: peerId,

@@ -33,8 +33,25 @@ type
     peerInfo*: PeerInfo
     observedAddr*: Multiaddress
     upgraded*: Future[void]
+    transportDir*: Direction        # The bottom level transport (generally the socket) direction
 
 proc timeoutMonitor(s: Connection) {.async, gcsafe.}
+
+proc isUpgraded*(s: Connection): bool =
+  if not isNil(s.upgraded):
+    return s.upgraded.finished
+
+proc upgrade*(s: Connection, failed: ref Exception = nil) =
+  if not isNil(s.upgraded):
+    if not isNil(failed):
+      s.upgraded.fail(failed)
+      return
+
+    s.upgraded.complete()
+
+proc onUpgrade*(s: Connection) {.async.} =
+  if not isNil(s.upgraded):
+    await s.upgraded
 
 func shortLog*(conn: Connection): string =
   if conn.isNil: "Connection(nil)"

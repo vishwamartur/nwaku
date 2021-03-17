@@ -106,6 +106,7 @@ type
     msgSeqno*: uint64
     anonymize*: bool                   # if we omit fromPeer and seqno from RPC messages we send
     subscriptionValidator*: SubscriptionValidator # callback used to validate subscriptions
+    topicsHigh*: int                  # the maximum number of topics we allow in a subscription message (application specific, defaults to int max)
 
     knownTopics*: HashSet[string]
 
@@ -118,7 +119,7 @@ method unsubscribePeer*(p: PubSub, peerId: PeerID) {.base.} =
 
   libp2p_pubsub_peers.set(p.peers.len.int64)
 
-proc send*(p: PubSub, peer: PubSubPeer, msg: RPCMsg) =
+proc send*(p: PubSub, peer: PubSubPeer, msg: RPCMsg) {.raises: [Defect].} =
   ## Attempt to send `msg` to remote peer
   ##
 
@@ -128,7 +129,7 @@ proc send*(p: PubSub, peer: PubSubPeer, msg: RPCMsg) =
 proc broadcast*(
   p: PubSub,
   sendPeers: openArray[PubSubPeer],
-  msg: RPCMsg) = # raises: [Defect]
+  msg: RPCMsg) {.raises: [Defect].} =
   ## Attempt to send `msg` to the given peers
 
   let npeers = sendPeers.len.int64
@@ -207,11 +208,13 @@ method rpcHandler*(p: PubSub,
                    rpcMsg: RPCMsg) {.async, base.} =
   ## handle rpc messages
   trace "processing RPC message", msg = rpcMsg.shortLog, peer
-  for s in rpcMsg.subscriptions: # subscribe/unsubscribe the peer for each topic
-    trace "about to subscribe to topic", topicId = s.topic, peer
+  for i in 0..<min(rpcMsg.subscriptions.len, p.topicsHigh):
+    let s = rpcMsg.subscriptions[i]
+    trace "about to subscribe to topic", topicId = s.topic, peer, subscribe = s.subscribe
     p.subscribeTopic(s.topic, s.subscribe, peer)
 
-  for sub in rpcMsg.subscriptions:
+  for i in 0..<min(rpcMsg.subscriptions.len, p.topicsHigh):
+    let sub = rpcMsg.subscriptions[i]
     if sub.subscribe:
       if p.knownTopics.contains(sub.topic):
         libp2p_pubsub_received_subscriptions.inc(labelValues = [sub.topic])
@@ -271,11 +274,19 @@ proc getOrCreatePeer*(
   proc getConn(): Future[Connection] =
     p.switch.dial(peer, protos)
 
+  proc dropConn(peer: PubSubPeer) =
+    proc dropConnAsync(peer: PubsubPeer) {.async.} =
+      try:
+        await p.switch.disconnect(peer.peerId)
+      except CatchableError as exc: # never cancelled
+        trace "Failed to close connection", peer, error = exc.name, msg = exc.msg
+    asyncSpawn dropConnAsync(peer)
+
   proc onEvent(peer: PubsubPeer, event: PubsubPeerEvent) {.gcsafe.} =
     p.onPubSubPeerEvent(peer, event)
 
   # create new pubsub peer
-  let pubSubPeer = newPubSubPeer(peer, getConn, onEvent, protos[0])
+  let pubSubPeer = newPubSubPeer(peer, getConn, dropConn, onEvent, protos[0])
   debug "created new pubsub peer", peer
 
   p.peers[peer] = pubSubPeer
@@ -351,8 +362,7 @@ method subscribePeer*(p: PubSub, peer: PeerID) {.base.} =
   ## messages
   ##
 
-  let peer = p.getOrCreatePeer(peer, p.codecs)
-  peer.outbound = true # flag as outbound
+  discard p.getOrCreatePeer(peer, p.codecs)
 
 proc updateTopicMetrics(p: PubSub, topic: string) =
   # metrics
@@ -518,10 +528,9 @@ proc init*[PubParams: object | bool](
         anonymize: anonymize,
         verifySignature: verifySignature,
         sign: sign,
-        peers: initTable[PeerID, PubSubPeer](),
-        topics: initTable[string, Topic](),
         msgIdProvider: msgIdProvider,
-        subscriptionValidator: subscriptionValidator)
+        subscriptionValidator: subscriptionValidator,
+        topicsHigh: int.high)
     else:
       P(switch: switch,
         peerInfo: switch.peerInfo,
@@ -529,11 +538,10 @@ proc init*[PubParams: object | bool](
         anonymize: anonymize,
         verifySignature: verifySignature,
         sign: sign,
-        peers: initTable[PeerID, PubSubPeer](),
-        topics: initTable[string, Topic](),
         msgIdProvider: msgIdProvider,
         subscriptionValidator: subscriptionValidator,
-        parameters: parameters)
+        parameters: parameters,
+        topicsHigh: int.high)
 
   proc peerEventHandler(peerId: PeerID, event: PeerEvent) {.async.} =
     if event.kind == PeerEventKind.Joined:

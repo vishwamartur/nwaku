@@ -12,11 +12,11 @@
 #   - Bright for HighPriority.
 #   - Normal for MediumPriority.
 
-import logging, terminal, sets, strutils, os
-import ./common
+import terminal, sets, strutils
+import version
 
-when defined(windows):
-  import winlean
+when not declared(initHashSet):
+  import common
 
 type
   CLI* = ref object
@@ -30,7 +30,7 @@ type
                            ## machine readable.
 
   Priority* = enum
-    DebugPriority, LowPriority, MediumPriority, HighPriority
+    DebugPriority, LowPriority, MediumPriority, HighPriority, SilentPriority
 
   DisplayType* = enum
     Error, Warning, Message, Success
@@ -49,7 +49,7 @@ const
 proc newCLI(): CLI =
   result = CLI(
     level: HighPriority,
-    warnings: initSet[(string, string)](),
+    warnings: initHashSet[(string, string)](),
     suppressionCount: 0,
     showColor: true,
     suppressMessages: false
@@ -62,8 +62,18 @@ proc calculateCategoryOffset(category: string): int =
   assert category.len <= longestCategory
   return longestCategory - category.len
 
+proc isSuppressed(displayType: DisplayType): bool =
+  # Don't print any Warning, Message or Success messages when suppression of
+  # warnings is enabled. That is, unless the user asked for --verbose output.
+  if globalCLI.suppressMessages and displayType >= Warning and
+     globalCLI.level == HighPriority:
+    return true
+
 proc displayCategory(category: string, displayType: DisplayType,
                      priority: Priority) =
+  if isSuppressed(displayType):
+    return
+
   # Calculate how much the `category` must be offset to align along a center
   # line.
   let offset = calculateCategoryOffset(category)
@@ -80,6 +90,9 @@ proc displayCategory(category: string, displayType: DisplayType,
 
 proc displayLine(category, line: string, displayType: DisplayType,
                  priority: Priority) =
+  if isSuppressed(displayType):
+    return
+
   displayCategory(category, displayType, priority)
 
   # Display the message.
@@ -87,12 +100,6 @@ proc displayLine(category, line: string, displayType: DisplayType,
 
 proc display*(category, msg: string, displayType = Message,
               priority = MediumPriority) =
-  # Don't print any Warning, Message or Success messages when suppression of
-  # warnings is enabled. That is, unless the user asked for --verbose output.
-  if globalCLI.suppressMessages and displayType >= Warning and
-     globalCLI.level == HighPriority:
-    return
-
   # Multiple warnings containing the same messages should not be shown.
   let warningPair = (category, msg)
   if displayType == Warning:
@@ -210,6 +217,8 @@ proc promptListInteractive(question: string, args: openarray[string]): string =
       cursorUp(stdout)
     resetAttributes(stdout)
 
+    # Ensure that the screen is updated before input
+    flushFile(stdout)
     # Begin key input
     while true:
       case getch():

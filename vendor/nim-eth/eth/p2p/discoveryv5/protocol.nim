@@ -77,7 +77,7 @@ import
   stew/shims/net as stewNet, json_serialization/std/net,
   stew/endians2, chronicles, chronos, stint, bearssl, metrics,
   eth/[rlp, keys, async_utils],
-  types, encoding, node, routing_table, enr, random2, sessions, ip_vote
+  messages, encoding, node, routing_table, enr, random2, sessions, ip_vote
 
 import nimcrypto except toHex
 
@@ -341,7 +341,7 @@ proc handleMessage(d: Protocol, srcId: NodeId, fromAddr: Address,
 
 proc sendWhoareyou(d: Protocol, toId: NodeId, a: Address,
     requestNonce: AESGCMNonce, node: Option[Node]) {.raises: [Exception].} =
-  let key = HandShakeKey(nodeId: toId, address: $a)
+  let key = HandShakeKey(nodeId: toId, address: a)
   if not d.codec.hasHandshake(key):
     let
       recordSeq = if node.isSome(): node.get().record.seqNum
@@ -948,11 +948,12 @@ proc ipMajorityLoop(d: Protocol) {.async, raises: [Exception, Defect].} =
     trace "ipMajorityLoop canceled"
 
 proc newProtocol*(privKey: PrivateKey,
-                  externalIp: Option[ValidIpAddress],
-                  tcpPort, udpPort: Port,
+                  enrIp: Option[ValidIpAddress],
+                  enrTcpPort, enrUdpPort: Option[Port],
                   localEnrFields: openarray[(string, seq[byte])] = [],
                   bootstrapRecords: openarray[Record] = [],
                   previousRecord = none[enr.Record](),
+                  bindPort: Port,
                   bindIp = IPv4_any(),
                   enrAutoUpdate = false,
                   tableIpLimits = DefaultTableIpLimits,
@@ -970,11 +971,17 @@ proc newProtocol*(privKey: PrivateKey,
   var record: Record
   if previousRecord.isSome():
     record = previousRecord.get()
-    record.update(privKey, externalIp, some(tcpPort), some(udpPort),
+    record.update(privKey, enrIp, enrTcpPort, enrUdpPort,
       extraFields).expect("Record within size limits and correct key")
   else:
-    record = enr.Record.init(1, privKey, externalIp, some(tcpPort),
-      some(udpPort), extraFields).expect("Record within size limits")
+    record = enr.Record.init(1, privKey, enrIp, enrTcpPort, enrUdpPort,
+      extraFields).expect("Record within size limits")
+
+  info "ENR initialized", ip = enrIp, tcp = enrTcpPort, udp = enrUdpPort,
+    seqNum = record.seqNum, uri = toURI(record)
+  if enrIp.isNone():
+    warn "No external IP provided for the ENR, this node will not be discoverable"
+
   let node = newNode(record).expect("Properly initialized record")
 
   # TODO Consider whether this should be a Defect
@@ -983,7 +990,7 @@ proc newProtocol*(privKey: PrivateKey,
   result = Protocol(
     privateKey: privKey,
     localNode: node,
-    bindAddress: Address(ip: ValidIpAddress.init(bindIp), port: udpPort),
+    bindAddress: Address(ip: ValidIpAddress.init(bindIp), port: bindPort),
     codec: Codec(localNode: node, privKey: privKey,
       sessions: Sessions.init(256)),
     bootstrapRecords: @bootstrapRecords,
@@ -995,10 +1002,8 @@ proc newProtocol*(privKey: PrivateKey,
 
 proc open*(d: Protocol) {.raises: [Exception, Defect].} =
   info "Starting discovery node", node = d.localNode,
-    bindAddress = d.bindAddress, uri = toURI(d.localNode.record)
+    bindAddress = d.bindAddress
 
-  if d.localNode.address.isNone():
-    info "No external IP provided, this node will not be discoverable"
   # TODO allow binding to specific IP / IPv6 / etc
   let ta = initTAddress(d.bindAddress.ip, d.bindAddress.port)
   # TODO: raises `OSError` and `IOSelectorsException`, the latter which is

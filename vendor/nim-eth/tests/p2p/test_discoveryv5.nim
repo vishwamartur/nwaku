@@ -2,7 +2,7 @@ import
   std/tables,
   chronos, chronicles, stint, testutils/unittests,
   stew/shims/net, eth/keys, bearssl,
-  eth/p2p/discoveryv5/[enr, node, routing_table, encoding, sessions, types],
+  eth/p2p/discoveryv5/[enr, node, routing_table, encoding, sessions, messages],
   eth/p2p/discoveryv5/protocol as discv5_protocol,
   ./discv5_test_helper
 
@@ -371,13 +371,15 @@ procSuite "Discovery v5 Tests":
       privKey = PrivateKey.random(rng[])
       ip = some(ValidIpAddress.init("127.0.0.1"))
       port = Port(20301)
-      node = newProtocol(privKey, ip, port, port, rng = rng)
-      noUpdatesNode = newProtocol(privKey, ip, port, port, rng = rng,
-        previousRecord = some(node.getRecord()))
-      updatesNode = newProtocol(privKey, ip, port, Port(20302), rng = rng,
+      node = newProtocol(privKey, ip, some(port), some(port), bindPort = port,
+        rng = rng)
+      noUpdatesNode = newProtocol(privKey, ip, some(port), some(port),
+        bindPort = port, rng = rng, previousRecord = some(node.getRecord()))
+      updatesNode = newProtocol(privKey, ip, some(port), some(Port(20302)),
+        bindPort = port, rng = rng,
         previousRecord = some(noUpdatesNode.getRecord()))
-      moreUpdatesNode = newProtocol(privKey, ip, port, port, rng = rng,
-        localEnrFields = {"addfield": @[byte 0]},
+      moreUpdatesNode = newProtocol(privKey, ip, some(port), some(port),
+        bindPort = port, rng = rng, localEnrFields = {"addfield": @[byte 0]},
         previousRecord = some(updatesNode.getRecord()))
     check:
       node.getRecord().seqNum == 1
@@ -388,7 +390,7 @@ procSuite "Discovery v5 Tests":
     # Defect (for now?) on incorrect key use
     expect ResultDefect:
       let incorrectKeyUpdates = newProtocol(PrivateKey.random(rng[]),
-        ip, port, port, rng = rng,
+        ip, some(port), some(port), bindPort = port, rng = rng,
         previousRecord = some(updatesNode.getRecord()))
 
   asyncTest "Update node record with revalidate":
@@ -610,7 +612,7 @@ procSuite "Discovery v5 Tests":
     # Check handshake duplicates
     check receiveNode.codec.handshakes.len == 1
     # Check if it is for the first packet that a handshake is stored
-    let key = HandShakeKey(nodeId: sendNode.id, address: $a)
+    let key = HandShakeKey(nodeId: sendNode.id, address: a)
     check receiveNode.codec.handshakes[key].whoareyouData.requestNonce ==
       firstRequestNonce
 
