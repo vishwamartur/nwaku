@@ -1,7 +1,10 @@
 import
-  typetraits,
+  std/typetraits,
   faststreams/[outputs, textio], serialization, json,
-  types
+  format, types
+
+export
+  format, JsonString, DefaultFlavor
 
 type
   JsonWriterState = enum
@@ -9,23 +12,23 @@ type
     RecordStarted
     AfterField
 
-  JsonWriter* = object
+  JsonWriter*[Flavor = DefaultFlavor] = object
     stream*: OutputStream
     hasTypeAnnotations: bool
     hasPrettyOutput*: bool # read-only
     nestingLevel*: int     # read-only
     state: JsonWriterState
 
-export
-  JsonString
+Json.setWriter JsonWriter,
+               PreferredOutput = string
 
-proc init*(T: type JsonWriter, stream: OutputStream,
-           pretty = false, typeAnnotations = false): T =
-  result.stream = stream
-  result.hasPrettyOutput = pretty
-  result.hasTypeAnnotations = typeAnnotations
-  result.nestingLevel = if pretty: 0 else: -1
-  result.state = RecordExpected
+proc init*(W: type JsonWriter, stream: OutputStream,
+           pretty = false, typeAnnotations = false): W =
+  W(stream: stream,
+    hasPrettyOutput: pretty,
+    hasTypeAnnotations: typeAnnotations,
+    nestingLevel: if pretty: 0 else: -1,
+    state: RecordExpected)
 
 proc beginRecord*(w: var JsonWriter, T: type)
 proc beginRecord*(w: var JsonWriter)
@@ -228,7 +231,7 @@ proc toJson*(v: auto, pretty = false, typeAnnotations = false): string =
   mixin writeValue
 
   var s = memoryOutput()
-  var w = JsonWriter.init(s, pretty, typeAnnotations)
+  var w = JsonWriter[DefaultFlavor].init(s, pretty, typeAnnotations)
   w.writeValue v
   return s.getOutput(string)
 

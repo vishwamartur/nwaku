@@ -1,31 +1,13 @@
 import
   typetraits,
   stew/shims/macros, faststreams,
-  serialization/[object_serialization, errors]
+  serialization/[object_serialization, errors, formats]
 
 export
-  faststreams, object_serialization, errors
-
-template serializationFormatImpl(Name: untyped,
-                                 Reader, Writer, PreferedOutput: distinct type,
-                                 mimeTypeName: static string = "") {.dirty.} =
-  # This indirection is required in order to be able to generate the
-  # `mimeType` accessor template. Without the indirection, the template
-  # mechanism of Nim will try to expand the `mimeType` param in the position
-  # of the `mimeType` template name which will result in error.
-  type Name* = object
-  template ReaderType*(T: type Name): type = Reader
-  template WriterType*(T: type Name): type = Writer
-  template PreferedOutputType*(T: type Name): type = PreferedOutput
-  template mimeType*(T: type Name): string = mimeTypeName
-
-template serializationFormat*(Name: untyped,
-                              Reader, Writer, PreferedOutput: distinct type,
-                              mimeType: static string = "") =
-  serializationFormatImpl(Name, Reader, Writer, PreferedOutput, mimeType)
+  faststreams, object_serialization, errors, formats
 
 template encode*(Format: type, value: auto, params: varargs[untyped]): auto =
-  mixin init, WriterType, writeValue, PreferedOutputType
+  mixin init, Writer, writeValue, PreferredOutputType
   {.noSideEffect.}:
     # We assume that there is no side-effects here, because we are
     # using a `memoryOutput`. The computed side-effects are coming
@@ -33,9 +15,10 @@ template encode*(Format: type, value: auto, params: varargs[untyped]): auto =
     # faststreams may be writing to a file or a network device.
     try:
       var s = memoryOutput()
-      var writer = unpackArgs(init, [WriterType(Format), s, params])
+      type WriterType = Writer(Format)
+      var writer = unpackArgs(init, [WriterType, s, params])
       writeValue writer, value
-      s.getOutput PreferedOutputType(Format)
+      s.getOutput PreferredOutputType(Format)
     except IOError:
       raise (ref Defect)() # a memoryOutput cannot have an IOError
 
@@ -52,7 +35,7 @@ template decode*(Format: distinct type,
                  params: varargs[untyped]): auto =
   # TODO, this is dusplicated only due to a Nim bug:
   # If `input` was `string|openarray[byte]`, it won't match `seq[byte]`
-  mixin init, ReaderType
+  mixin init, Reader
   {.noSideEffect.}:
     # We assume that there are no side-effects here, because we are
     # using a `memoryInput`. The computed side-effects are coming
@@ -60,7 +43,8 @@ template decode*(Format: distinct type,
     # faststreams may be reading from a file or a network device.
     try:
       var stream = unsafeMemoryInput(input)
-      var reader = unpackArgs(init, [ReaderType(Format), stream, params])
+      type ReaderType = Reader(Format)
+      var reader = unpackArgs(init, [ReaderType, stream, params])
       reader.readValue(RecordType)
     except IOError:
       raise (ref Defect)() # memory inputs cannot raise an IOError
@@ -71,7 +55,7 @@ template decode*(Format: distinct type,
                  params: varargs[untyped]): auto =
   # TODO, this is dusplicated only due to a Nim bug:
   # If `input` was `string|openarray[byte]`, it won't match `seq[byte]`
-  mixin init, ReaderType
+  mixin init, Reader
   {.noSideEffect.}:
     # We assume that there are no side-effects here, because we are
     # using a `memoryInput`. The computed side-effects are coming
@@ -79,7 +63,8 @@ template decode*(Format: distinct type,
     # faststreams may be reading from a file or a network device.
     try:
       var stream = unsafeMemoryInput(input)
-      var reader = unpackArgs(init, [ReaderType(Format), stream, params])
+      type ReaderType = Reader(Format)
+      var reader = unpackArgs(init, [ReaderType, stream, params])
       reader.readValue(RecordType)
     except IOError:
       raise (ref Defect)() # memory inputs cannot raise an IOError
@@ -88,11 +73,12 @@ template loadFile*(Format: distinct type,
                    filename: string,
                    RecordType: distinct type,
                    params: varargs[untyped]): auto =
-  mixin init, ReaderType, readValue
+  mixin init, Reader, readValue
 
   var stream = memFileInput(filename)
   try:
-    var reader = unpackArgs(init, [ReaderType(Format), stream, params])
+    type ReaderType = Reader(Format)
+    var reader = unpackArgs(init, [ReaderType, stream, params])
     reader.readValue(RecordType)
   finally:
     close stream
@@ -104,11 +90,12 @@ template loadFile*[RecordType](Format: type,
   record = loadFile(Format, filename, RecordType, params)
 
 template saveFile*(Format: type, filename: string, value: auto, params: varargs[untyped]) =
-  mixin init, WriterType, writeValue
+  mixin init, Writer, writeValue
 
   var stream = fileOutput(filename)
   try:
-    var writer = unpackArgs(init, [WriterType(Format), stream, params])
+    type WriterType = Writer(Format)
+    var writer = unpackArgs(init, [WriterType, stream, params])
     writer.writeValue(value)
   finally:
     close stream
@@ -137,16 +124,16 @@ template borrowSerialization*(Alias: distinct type,
 
 template serializesAsBase*(SerializedType: distinct type,
                            Format: distinct type) =
-  mixin ReaderType, WriterType
+  mixin Reader, Writer
 
-  type Reader = ReaderType(Format)
-  type Writer = WriterType(Format)
+  type ReaderType = Reader(Format)
+  type WriterType = Writer(Format)
 
-  template writeValue*(writer: var Writer, value: SerializedType) =
+  template writeValue*(writer: var WriterType, value: SerializedType) =
     mixin writeValue
     writeValue(writer, distinctBase value)
 
-  template readValue*(reader: var Reader, value: var SerializedType) =
+  template readValue*(reader: var ReaderType, value: var SerializedType) =
     mixin readValue
     value = SerializedType reader.readValue(distinctBase SerializedType)
 
@@ -160,15 +147,17 @@ template readValue*(stream: InputStream,
                     Format: type,
                     ValueType: type,
                     params: varargs[untyped]): untyped =
-  mixin ReaderType, init, readValue
-  var reader = unpackArgs(init, [ReaderType(Format), stream, params])
+  mixin Reader, init, readValue
+  type ReaderType = Reader(Format)
+  var reader = unpackArgs(init, [ReaderType, stream, params])
   readValue reader, ValueType
 
 template writeValue*(stream: OutputStream,
                      Format: type,
                      value: auto,
                      params: varargs[untyped]) =
-  mixin WriterType, init, writeValue
-  var writer = unpackArgs(init, [WriterType(Format), stream])
+  mixin Writer, init, writeValue
+  type WriterType = Writer(Format)
+  var writer = unpackArgs(init, [WriterType, stream, params])
   writeValue writer, value
 
