@@ -1,8 +1,10 @@
 import
-  std/[json, strutils, tables, uri],
+  std/[strutils, tables, uri],
   stew/byteutils,
-  chronicles, httputils, chronos, json_serialization/std/net,
+  chronicles, httputils, json_serialization/std/net,
   ../client
+
+export client
 
 logScope:
   topics = "JSONRPC-HTTP-CLIENT"
@@ -170,7 +172,8 @@ proc httpMethod*(client: RpcHttpClient, m: HttpMethod) =
   client.options.httpMethod = m
 
 method call*(client: RpcHttpClient, name: string,
-             params: JsonNode): Future[Response] {.async, gcsafe.} =
+             params: JsonNode): Future[Response] {.
+    async, gcsafe, raises: [Defect, CatchableError].} =
   ## Remotely calls the specified RPC method.
   let id = client.getNextId()
 

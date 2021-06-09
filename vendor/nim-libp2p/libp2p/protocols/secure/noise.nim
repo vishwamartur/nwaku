@@ -7,6 +7,8 @@
 ## This file may not be copied, modified, or distributed except according to
 ## those terms.
 
+{.push raises: [Defect].}
+
 import std/[oids, strformat]
 import chronos
 import chronicles
@@ -18,8 +20,10 @@ import ../../peerid
 import ../../peerinfo
 import ../../protobuf/minprotobuf
 import ../../utility
+import ../../errors
+
 import secure,
-       ../../crypto/[crypto, chacha20poly1305, curve25519, hkdf]
+      ../../crypto/[crypto, chacha20poly1305, curve25519, hkdf]
 
 when defined(libp2p_dump):
   import ../../debugutils
@@ -85,17 +89,22 @@ type
     readCs: CipherState
     writeCs: CipherState
 
-  NoiseHandshakeError* = object of CatchableError
-  NoiseDecryptTagError* = object of CatchableError
-  NoiseOversizedPayloadError* = object of CatchableError
-  NoiseNonceMaxError* = object of CatchableError # drop connection on purpose
+  NoiseError* = object of LPError
+  NoiseHandshakeError* = object of NoiseError
+  NoiseDecryptTagError* = object of NoiseError
+  NoiseOversizedPayloadError* = object of NoiseError
+  NoiseNonceMaxError* = object of NoiseError # drop connection on purpose
 
 # Utility
 
 func shortLog*(conn: NoiseConnection): auto =
-  if conn.isNil: "NoiseConnection(nil)"
-  elif conn.peerInfo.isNil: $conn.oid
-  else: &"{shortLog(conn.peerInfo.peerId)}:{conn.oid}"
+  try:
+    if conn.isNil: "NoiseConnection(nil)"
+    elif conn.peerInfo.isNil: $conn.oid
+    else: &"{shortLog(conn.peerInfo.peerId)}:{conn.oid}"
+  except ValueError as exc:
+    raise newException(Defect, exc.msg)
+
 chronicles.formatIt(NoiseConnection): shortLog(it)
 
 proc genKeyPair(rng: var BrHmacDrbgContext): KeyPair =
@@ -122,8 +131,11 @@ proc hasKey(cs: CipherState): bool =
   cs.k != EmptyKey
 
 proc encrypt(
-    state: var CipherState, data: var openArray[byte],
-    ad: openArray[byte]): ChaChaPolyTag {.noinit.} =
+    state: var CipherState,
+    data: var openArray[byte],
+    ad: openArray[byte]): ChaChaPolyTag
+    {.noinit, raises: [Defect, NoiseNonceMaxError].} =
+
   var nonce: ChaChaPolyNonce
   nonce[4..<12] = toBytesLE(state.n)
 
@@ -133,7 +145,8 @@ proc encrypt(
   if state.n > NonceMax:
     raise newException(NoiseNonceMaxError, "Noise max nonce value reached")
 
-proc encryptWithAd(state: var CipherState, ad, data: openArray[byte]): seq[byte] =
+proc encryptWithAd(state: var CipherState, ad, data: openArray[byte]): seq[byte]
+  {.raises: [Defect, NoiseNonceMaxError].} =
   result = newSeqOfCap[byte](data.len + sizeof(ChachaPolyTag))
   result.add(data)
 
@@ -144,7 +157,8 @@ proc encryptWithAd(state: var CipherState, ad, data: openArray[byte]): seq[byte]
   trace "encryptWithAd",
     tag = byteutils.toHex(tag), data = result.shortLog, nonce = state.n - 1
 
-proc decryptWithAd(state: var CipherState, ad, data: openArray[byte]): seq[byte] =
+proc decryptWithAd(state: var CipherState, ad, data: openArray[byte]): seq[byte]
+  {.raises: [Defect, NoiseDecryptTagError, NoiseNonceMaxError].} =
   var
     tagIn = data.toOpenArray(data.len - ChaChaPolyTag.len, data.high).intoChaChaPolyTag
     tagOut: ChaChaPolyTag
@@ -175,7 +189,7 @@ proc mixKey(ss: var SymmetricState, ikm: ChaChaPolyKey) =
   ss.cs = CipherState(k: temp_keys[1])
   trace "mixKey", key = ss.cs.k.shortLog
 
-proc mixHash(ss: var SymmetricState; data: openArray[byte]) =
+proc mixHash(ss: var SymmetricState, data: openArray[byte]) =
   var ctx: sha256
   ctx.init()
   ctx.update(ss.h.data)
@@ -184,7 +198,7 @@ proc mixHash(ss: var SymmetricState; data: openArray[byte]) =
   trace "mixHash", hash = ss.h.data.shortLog
 
 # We might use this for other handshake patterns/tokens
-proc mixKeyAndHash(ss: var SymmetricState; ikm: openArray[byte]) {.used.} =
+proc mixKeyAndHash(ss: var SymmetricState, ikm: openArray[byte]) {.used.} =
   var
     temp_keys: array[3, ChaChaPolyKey]
   sha256.hkdf(ss.ck, ikm, [], temp_keys)
@@ -192,7 +206,8 @@ proc mixKeyAndHash(ss: var SymmetricState; ikm: openArray[byte]) {.used.} =
   ss.mixHash(temp_keys[1])
   ss.cs = CipherState(k: temp_keys[2])
 
-proc encryptAndHash(ss: var SymmetricState, data: openArray[byte]): seq[byte] =
+proc encryptAndHash(ss: var SymmetricState, data: openArray[byte]): seq[byte]
+  {.raises: [Defect, NoiseNonceMaxError].} =
   # according to spec if key is empty leave plaintext
   if ss.cs.hasKey:
     result = ss.cs.encryptWithAd(ss.h.data, data)
@@ -200,7 +215,8 @@ proc encryptAndHash(ss: var SymmetricState, data: openArray[byte]): seq[byte] =
     result = @data
   ss.mixHash(result)
 
-proc decryptAndHash(ss: var SymmetricState, data: openArray[byte]): seq[byte] =
+proc decryptAndHash(ss: var SymmetricState, data: openArray[byte]): seq[byte]
+  {.raises: [Defect, NoiseDecryptTagError, NoiseNonceMaxError].} =
   # according to spec if key is empty leave plaintext
   if ss.cs.hasKey:
     result = ss.cs.decryptWithAd(ss.h.data, data)
@@ -429,7 +445,10 @@ method readMessage*(sconn: NoiseConnection): Future[seq[byte]] {.async.} =
 
 
 proc encryptFrame(
-    sconn: NoiseConnection, cipherFrame: var openArray[byte], src: openArray[byte]) =
+    sconn: NoiseConnection,
+    cipherFrame: var openArray[byte],
+    src: openArray[byte])
+    {.raises: [Defect, NoiseNonceMaxError].} =
   # Frame consists of length + cipher data + tag
   doAssert src.len <= MaxPlainSize
   doAssert cipherFrame.len == 2 + src.len + sizeof(ChaChaPolyTag)
@@ -577,14 +596,25 @@ method init*(p: Noise) {.gcsafe.} =
   p.codec = NoiseCodec
 
 proc newNoise*(
-    rng: ref BrHmacDrbgContext, privateKey: PrivateKey;
-    outgoing: bool = true; commonPrologue: seq[byte] = @[]): Noise =
-  result = Noise(
+    rng: ref BrHmacDrbgContext,
+    privateKey: PrivateKey,
+    outgoing: bool = true,
+    commonPrologue: seq[byte] = @[]): Noise =
+
+  let pkBytes = privateKey
+  .getKey()
+  .expect("Expected valid Private Key")
+  .getBytes()
+  .expect("Couldn't get Private Key bytes")
+
+  var noise = Noise(
     rng: rng,
     outgoing: outgoing,
     localPrivateKey: privateKey,
-    localPublicKey: privateKey.getKey().tryGet().getBytes().tryGet(),
+    localPublicKey: pkBytes,
     noiseKeys: genKeyPair(rng[]),
     commonPrologue: commonPrologue,
   )
-  result.init()
+
+  noise.init()
+  return noise

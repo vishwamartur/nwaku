@@ -1,7 +1,7 @@
 {.used.}
 
 import
-  os,
+  std/[os, options],
   testutils/unittests,
   ../../eth/db/[kvstore, kvstore_sqlite3],
   ./test_kvstore
@@ -10,8 +10,10 @@ procSuite "SqStoreRef":
   test "KvStore interface":
     let db = SqStoreRef.init("", "test", inMemory = true)[]
     defer: db.close()
+    let kv = db.openKvStore()
+    defer: kv.get()[].close()
 
-    testKvStore(kvStore db)
+    testKvStore(kvStore kv.get(), true)
 
   test "Prepare and execute statements":
     let db = SqStoreRef.init("", "test", inMemory = true)[]
@@ -43,12 +45,20 @@ procSuite "SqStoreRef":
       NoParams, int64).get
 
     var totalRecords = 0
-    echo "About to call total records"
     let countRes = countStmt.exec do (res: int64):
       totalRecords = int res
 
     check:
       countRes.isOk and countRes.get == true
+      totalRecords == 3
+
+    # Without prepare..
+    totalRecords = 0
+    check:
+      (db.exec("SELECT COUNT(*) FROM records;", ()) do (res: int64):
+        totalRecords = int res).get()
+
+    check:
       totalRecords == 3
 
     let selectRangeStmt = db.prepareStmt(
@@ -136,7 +146,6 @@ procSuite "SqStoreRef":
       NoParams, int64).get
 
     var totalRecords = 0
-    echo "About to call total attestations"
     let countRes = countStmt.exec do (res: int64):
       totalRecords = int res
 
@@ -176,3 +185,43 @@ procSuite "SqStoreRef":
         source == 2
         target == 4
         digest == hash
+
+  test "null values":
+    #
+    let db = SqStoreRef.init("", "test", inMemory = true)[]
+    defer: db.close()
+
+    let createTableRes = db.exec """
+      CREATE TABLE IF NOT EXISTS testnull(
+         a INTEGER PRIMARY KEY,
+         b INTEGER NULL,
+         c INTEGER NULL
+      );
+    """
+    check createTableRes.isOk
+
+    type
+      ABC = (int64, Option[int64], Option[int64])
+    let insertStmt = db.prepareStmt("""
+      INSERT INTO testnull(a, b, c) VALUES (?,?,?);
+    """, ABC, void).get()
+
+    const val = (42'i64, none(int64), some(44'i64))
+    check:
+      insertStmt.exec(val).isOk()
+
+    let selectStmt = db.prepareStmt("""
+      SELECT a, b, c FROM testnull
+      """, NoParams, ABC).get()
+
+    block:
+      var abc: ABC
+      let selectRes = selectStmt.exec do (res: ABC):
+        abc = res
+
+      if selectRes.isErr:
+        echo selectRes.error
+
+      check:
+        selectRes.isOk and selectRes.get == true
+        abc == val

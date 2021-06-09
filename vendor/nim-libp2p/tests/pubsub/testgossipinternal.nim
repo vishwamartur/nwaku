@@ -3,9 +3,9 @@ include ../../libp2p/protocols/pubsub/gossipsub
 {.used.}
 
 import options
-import unittest, bearssl
+import bearssl
 import stew/byteutils
-import ../../libp2p/standard_setup
+import ../../libp2p/builders
 import ../../libp2p/errors
 import ../../libp2p/crypto/crypto
 import ../../libp2p/stream/bufferstream
@@ -34,7 +34,10 @@ proc getPubSubPeer(p: TestGossipSub, peerId: PeerID): PubSubPeer =
   pubSubPeer
 
 proc randomPeerInfo(): PeerInfo =
-  PeerInfo.init(PrivateKey.random(ECDSA, rng[]).get())
+  try:
+    PeerInfo.init(PrivateKey.random(ECDSA, rng[]).get())
+  except CatchableError as exc:
+    raise newException(Defect, exc.msg)
 
 suite "GossipSub internal":
   teardown:
@@ -559,6 +562,43 @@ suite "GossipSub internal":
     gossipSub.rebalanceMesh(topic)
     # expect 0 since they are all backing off
     check gossipSub.mesh[topic].len == 0
+
+    await allFuturesThrowing(conns.mapIt(it.close()))
+    await gossipSub.switch.stop()
+
+  asyncTest "rebalanceMesh fail due to backoff - remote":
+    let gossipSub = TestGossipSub.init(newStandardSwitch())
+    let topic = "foobar"
+    gossipSub.mesh[topic] = initHashSet[PubSubPeer]()
+    gossipSub.topicParams[topic] = TopicParams.init()
+
+    var conns = newSeq[Connection]()
+    gossipSub.gossipsub[topic] = initHashSet[PubSubPeer]()
+    for i in 0..<15:
+      let conn = newBufferStream(noop)
+      conns &= conn
+      let peerInfo = randomPeerInfo()
+      conn.peerInfo = peerInfo
+      let peer = gossipSub.getPubSubPeer(peerInfo.peerId)
+      peer.sendConn = conn
+      gossipSub.gossipsub[topic].incl(peer)
+      gossipSub.mesh[topic].incl(peer)
+
+    check gossipSub.peers.len == 15
+    gossipSub.rebalanceMesh(topic)
+    check gossipSub.mesh[topic].len != 0
+
+    for i in 0..<15:
+      let peerInfo = conns[i].peerInfo
+      let peer = gossipSub.getPubSubPeer(peerInfo.peerId)
+      gossipSub.handlePrune(peer, @[ControlPrune(
+        topicID: topic,
+        peers: @[],
+        backoff: gossipSub.parameters.pruneBackoff.seconds.uint64
+      )])
+
+    # expect topic cleaned up since they are all pruned
+    check topic notin gossipSub.mesh
 
     await allFuturesThrowing(conns.mapIt(it.close()))
     await gossipSub.switch.stop()

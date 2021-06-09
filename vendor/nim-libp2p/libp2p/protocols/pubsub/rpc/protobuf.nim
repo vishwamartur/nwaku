@@ -7,7 +7,10 @@
 ## This file may not be copied, modified, or distributed except according to
 ## those terms.
 
+{.push raises: [Defect].}
+
 import options
+import stew/assign2
 import chronicles
 import messages,
        ../../../peerid,
@@ -116,7 +119,7 @@ proc encodeMessage*(msg: Message, anonymize: bool): seq[byte] =
 
   when defined(libp2p_protobuf_metrics):
     libp2p_pubsub_rpc_bytes_write.inc(pb.getLen().int64, labelValues = ["message"])
-  
+
   pb.buffer
 
 proc write*(pb: var ProtoBuffer, field: int, msg: Message, anonymize: bool) =
@@ -320,8 +323,8 @@ proc encodeRpcMsg*(msg: RPCMsg, anonymize: bool): seq[byte] =
 proc decodeRpcMsg*(msg: seq[byte]): ProtoResult[RPCMsg] {.inline.} =
   trace "decodeRpcMsg: decoding message", msg = msg.shortLog()
   var pb = initProtoBuffer(msg)
-  var rpcMsg: RPCMsg
-  rpcMsg.messages = ? pb.decodeMessages()
-  rpcMsg.subscriptions = ? pb.decodeSubscriptions()
-  rpcMsg.control = ? pb.decodeControl()
-  ok(rpcMsg)
+  var rpcMsg = ok(RPCMsg())
+  assign(rpcMsg.get().messages, ? pb.decodeMessages())
+  assign(rpcMsg.get().subscriptions, ? pb.decodeSubscriptions())
+  assign(rpcMsg.get().control, ? pb.decodeControl())
+  rpcMsg

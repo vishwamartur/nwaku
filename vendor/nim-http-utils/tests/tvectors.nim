@@ -76,7 +76,10 @@ const RequestVectors = [
     "X-Amz-Date:20150830T123600Z\r\n\r\nhello",
   "GET /%E1%88%B4 HTTP/1.1\r\n" &
     "Host:example.amazonaws.com\r\n" &
-    "X-Amz-Date:20150830T123600Z\r\n\r\n"
+    "X-Amz-Date:20150830T123600Z\r\n\r\n",
+  "GET / HTTP/1.1\r\n" &
+    "Sec-Fetch-User: ?1\r\n" &
+    "Sec-Fetch-Mode:@1\r\n\r\n"
 ]
 
 const RequestHeaderTexts = [
@@ -125,20 +128,23 @@ const RequestHeaderTexts = [
   (k: "X-Amz-Date", v: "20150830T123600Z"),
 
   (k: "Host", v: "example.amazonaws.com"),
-  (k: "X-Amz-Date", v: "20150830T123600Z")
+  (k: "X-Amz-Date", v: "20150830T123600Z"),
+
+  (k: "Sec-Fetch-User", v: "?1"),
+  (k: "Sec-Fetch-Mode", v: "@1")
 ]
 
 const RequestResults = [
   0x8E, 0x8E, 0x8E, 0x8E, 0x8E, 0x8E, 0x8E, 0x8E, 0xC2, 0x8E, 0x8E,
   0x8E, 0x8E, 0x8E, 0x8E, 0x8E, 0x8E, 0x8E, 0x8E, 0x8E, 0x8E, 0x8E,
-  0x8E, 0x8E, 0x8E
+  0x8E, 0x8E, 0x8E, 0x8E
 ]
 
 const RequestHeaders = [
   (0, 2), (3, 10), (11, 11), (0, -1), (0, -1), (12, 12), (13, 13), (14, 16),
   (0, -1), (17, 19), (20, 23), (0, -1), (0, -1), (0, -1), (0, -1), (0, -1),
   (0, -1), (0, -1), (0, -1), (24, 24), (25, 26), (27, 27), (28, 28), (29, 30),
-  (31, 32)
+  (31, 32), (33, 34)
 ]
 
 const RequestVersions = [
@@ -146,7 +152,8 @@ const RequestVersions = [
   HttpVersion20, HttpVersion10, HttpVersion11, HttpVersion11, HttpVersion10,
   HttpVersion11, HttpVersion10, HttpVersion10, HttpVersion10, HttpVersion10,
   HttpVersion10, HttpVersion10, HttpVersion10, HttpVersion10, HttpVersion20,
-  HttpVersion11, HttpVersion11, HttpVersion09, HttpVersion11, HttpVersion11
+  HttpVersion11, HttpVersion11, HttpVersion09, HttpVersion11, HttpVersion11,
+  HttpVersion11
 ]
 
 const RequestUris = [
@@ -156,11 +163,12 @@ const RequestUris = [
   "/with_\"stupid\"_quotes?foo=\"bar\"", "foo.bar.com:443",
   "/!#$&'()*+,-./0123456789:;=?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[]_abcdefghijklmnopqrstuvwxyz~",
   "/", "/", "/", "/", "/", "/", "/", "/", "/", "/empty_header", "/", "/", "/",
-  "/%E1%88%B4"
+  "/%E1%88%B4", "/"
 ]
 
 const RequestCLengths = [
-  0, 0, 0, 0, 0, 0, 5, 5, -1, 10, 15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0
+  0, 0, 0, 0, 0, 0, 5, 5, -1, 10, 15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0,
+  0
 ]
 
 const ResponseVectors = [
@@ -389,6 +397,25 @@ suite "HTTP Procedures test suite":
 
         for ei in ResponseHeaders[i][0]..ResponseHeaders[i][1]:
           check (resp[ResponseHeaderTexts[ei].k] == ResponseHeaderTexts[ei].v)
+
+  test "HTTP request methods test":
+    const MethodRequests = [
+      ("GET / HTTP/1.1\r\nHost: www.google.com\r\n\r\n", MethodGet),
+      ("POST / HTTP/1.1\r\nHost: www.google.com\r\n\r\n", MethodPost),
+      ("HEAD / HTTP/1.1\r\nHost: www.google.com\r\n\r\n", MethodHead),
+      ("PUT / HTTP/1.1\r\nHost: www.google.com\r\n\r\n", MethodPut),
+      ("DELETE / HTTP/1.1\r\nHost: www.google.com\r\n\r\n", MethodDelete),
+      ("TRACE / HTTP/1.1\r\nHost: www.google.com\r\n\r\n", MethodTrace),
+      ("OPTIONS / HTTP/1.1\r\nHost: www.google.com\r\n\r\n", MethodOptions),
+      ("CONNECT / HTTP/1.1\r\nHost: www.google.com\r\n\r\n", MethodConnect),
+      ("PATCH / HTTP/1.1\r\nHost: www.google.com\r\n\r\n", MethodPatch)
+    ]
+
+    for item in MethodRequests:
+      var req = parseRequest(item[0], true)
+      check:
+        req.success()
+        req.meth == item[1]
 
   test "HTTP methods conversion vectors":
     check:

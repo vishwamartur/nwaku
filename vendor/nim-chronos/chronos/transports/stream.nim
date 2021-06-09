@@ -199,8 +199,10 @@ template shiftVectorFile(v, o: untyped) =
   (v).buf = cast[pointer](cast[uint]((v).buf) - cast[uint](o))
   (v).offset += cast[uint]((o))
 
-proc setupStreamTransportTracker(): StreamTransportTracker {.gcsafe, raises: [Defect].}
-proc setupStreamServerTracker(): StreamServerTracker {.gcsafe, raises: [Defect].}
+proc setupStreamTransportTracker(): StreamTransportTracker {.
+     gcsafe, raises: [Defect].}
+proc setupStreamServerTracker(): StreamServerTracker {.
+     gcsafe, raises: [Defect].}
 
 proc getStreamTransportTracker(): StreamTransportTracker {.inline.} =
   result = cast[StreamTransportTracker](getTracker(StreamTransportTrackerName))
@@ -767,7 +769,7 @@ when defined(windows):
       ## Unix domain socket emulation with Windows Named Pipes.
       var pipeHandle = INVALID_HANDLE_VALUE
       var pipeContinuation: proc (udata: pointer) {.gcsafe, raises: [Defect].}
-      pipeContinuation = proc (udata: pointer) =
+      pipeContinuation = proc (udata: pointer) {.gcsafe, raises: [Defect].} =
         # Continue only if `retFuture` is not cancelled.
         if not(retFuture.finished()):
           var pipeSuffix = $cast[cstring](unsafeAddr address.address_un[0])
@@ -960,9 +962,12 @@ when defined(windows):
         if server.status notin {ServerStatus.Stopped, ServerStatus.Closed}:
           server.apending = true
           # TODO No way to report back errors!
-          server.asock = try: createAsyncSocket(server.domain, SockType.SOCK_STREAM,
-                                           Protocol.IPPROTO_TCP)
-          except CatchableError as exc: raiseAsDefect exc, "createAsyncSocket"
+          server.asock =
+            try:
+              createAsyncSocket(server.domain, SockType.SOCK_STREAM,
+                                Protocol.IPPROTO_TCP)
+            except CatchableError as exc:
+              raiseAsDefect exc, "createAsyncSocket"
           if server.asock == asyncInvalidSocket:
             raiseAssert osErrorMsg(OSErrorCode(wsaGetLastError()))
 
@@ -1039,8 +1044,8 @@ when defined(windows):
             let err = OSErrorCode(wsaGetLastError())
             server.asock.closeSocket()
             if int32(err) == WSAENOTSOCK:
-              # This can be happened when server get closed, but continuation was
-              # already scheduled, so we failing it not with OS error.
+              # This can be happened when server get closed, but continuation
+              # was already scheduled, so we failing it not with OS error.
               retFuture.fail(getServerUseClosedError())
             else:
               retFuture.fail(getTransportOsError(err))
@@ -2458,7 +2463,20 @@ proc closeWait*(transp: StreamTransport): Future[void] =
 
 proc closed*(transp: StreamTransport): bool {.inline.} =
   ## Returns ``true`` if transport in closed state.
-  result = ({ReadClosed, WriteClosed} * transp.state != {})
+  ({ReadClosed, WriteClosed} * transp.state != {})
+
+proc finished*(transp: StreamTransport): bool {.inline.} =
+  ## Returns ``true`` if transport in finished (EOF) state.
+  ({ReadEof, WriteEof} * transp.state != {})
+
+proc failed*(transp: StreamTransport): bool {.inline.} =
+  ## Returns ``true`` if transport in error state.
+  ({ReadError, WriteError} * transp.state != {})
+
+proc running*(transp: StreamTransport): bool {.inline.} =
+  ## Returns ``true`` if transport is still pending.
+  ({ReadClosed, ReadEof, ReadError,
+    WriteClosed, WriteEof, WriteError} * transp.state == {})
 
 proc fromPipe*(fd: AsyncFD, child: StreamTransport = nil,
                bufferSize = DefaultStreamBufferSize): StreamTransport {.

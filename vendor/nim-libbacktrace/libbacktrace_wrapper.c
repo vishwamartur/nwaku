@@ -74,7 +74,6 @@ struct callback_data {
 	int next_index;
 	int max_length;
 	int nim_main_module_seen; // Did we already see NimMainModule?
-	int missing_debugging_symbols_error_shown;
 };
 
 struct simple_callback_data {
@@ -110,6 +109,16 @@ static int strings_equal(const char *str1, const char *str2)
 	} else {
 		size_t len2 = strlen(str2);
 		return strlen(str1) == len2 && strncmp(str1, str2, len2) == 0;
+	}
+}
+
+static int string_starts_with(const char *str1, const char *str2)
+{
+	if (!str1 || !str2) {
+		return 0;
+	} else {
+		size_t len2 = strlen(str2);
+		return strlen(str1) >= len2 && strncmp(str1, str2, len2) == 0;
 	}
 }
 
@@ -160,11 +169,6 @@ static int success_callback(void *data, uintptr_t pc __attribute__((unused)),
 		return 1; // Stop building the backtrace.
 
 	if (function == NULL || filename == NULL) {
-		if (cb_data->missing_debugging_symbols_error_shown == 0) {
-			fprintf(stderr, "libbacktrace error: no debugging symbols available. Compile with '--debugger:native'.\n");
-			cb_data->missing_debugging_symbols_error_shown = 1;
-		}
-
 		// see https://github.com/status-im/nim-libbacktrace/issues/9, we need to keep going here.
 		return 0;
 	}
@@ -192,7 +196,7 @@ static int success_callback(void *data, uintptr_t pc __attribute__((unused)),
 			strings_equal(demangled_function, "rawWriteStackTrace") ||
 			strings_equal(demangled_function, "writeStackTrace") ||
 			strings_equal(demangled_function, "raiseExceptionAux") ||
-			strings_equal(demangled_function, "raiseExceptionEx")) {
+			string_starts_with(demangled_function, "raiseExceptionEx")) {
 		if (!debug) {
 			xfree(demangled_function);
 			return 0; // Skip it, but continue the backtrace.

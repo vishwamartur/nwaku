@@ -1,7 +1,9 @@
+{.used.}
+
 import
   std/[unittest, options, sequtils],
   nimcrypto/utils, stew/shims/net,
-  eth/p2p/enode, eth/p2p/discoveryv5/enr, eth/[keys, rlp]
+  ../../eth/p2p/discoveryv5/enr, ../../eth/[keys, rlp]
 
 let rng = newRng()
 

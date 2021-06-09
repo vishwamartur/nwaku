@@ -1,8 +1,15 @@
+# nim-eth
+# Copyright (c) 2018-2021 Status Research & Development GmbH
+# Licensed and distributed under either of
+#   * MIT license (license terms in the root directory or at https://opensource.org/licenses/MIT).
+#   * Apache v2 license (license terms in the root directory or at https://www.apache.org/licenses/LICENSE-2.0).
+# at your option. This file may not be copied, modified, or distributed except according to those terms.
+
 import
-  sets, options, random, hashes,
-  chronos, chronicles, eth/common/eth_types,
-  private/p2p_types, rlpx, peer_pool, rlpx_protocols/eth_protocol,
-  ../p2p
+  std/[sets, options, random, hashes],
+  chronos, chronicles,
+  ../common/eth_types, ../p2p,
+  ./private/p2p_types, ./rlpx_protocols/eth_protocol, "."/[rlpx, peer_pool]
 
 const
   minPeersToStartSync* = 2 # Wait for consensus of at least this
@@ -36,7 +43,7 @@ type
     trustedPeers: HashSet[Peer]
     hasOutOfOrderBlocks: bool
 
-proc hash*(p: Peer): Hash {.inline.} = hash(cast[pointer](p))
+proc hash*(p: Peer): Hash = hash(cast[pointer](p))
 
 proc endIndex(b: WantedBlocks): BlockNumber =
   result = b.startIndex

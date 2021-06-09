@@ -1,7 +1,9 @@
+{.push raises: [Defect].}
+
 import
-  tables, hashes, sets,
+  std/[tables, hashes, sets],
   nimcrypto/[hash, keccak],
-  trie_defs, db_tracing
+  "."/[trie_defs, db_tracing]
 
 type
   MemDBRec = object
@@ -14,17 +16,17 @@ type
 
   # XXX: poor's man vtref types
   PutProc = proc (db: RootRef, key, val: openarray[byte]) {.
-    gcsafe, raises: [Defect, CatchableError] .}
+    gcsafe, raises: [Defect].}
 
   GetProc = proc (db: RootRef, key: openarray[byte]): seq[byte] {.
-    gcsafe, raises: [Defect, CatchableError] .}
+    gcsafe, raises: [Defect].}
     ## The result will be empty seq if not found
 
   DelProc = proc (db: RootRef, key: openarray[byte]) {.
-    gcsafe, raises: [Defect, CatchableError] .}
+    gcsafe, raises: [Defect].}
 
   ContainsProc = proc (db: RootRef, key: openarray[byte]): bool {.
-    gcsafe, raises: [Defect, CatchableError] .}
+    gcsafe, raises: [Defect].}
 
   TrieDatabaseRef* = ref object
     obj: RootRef

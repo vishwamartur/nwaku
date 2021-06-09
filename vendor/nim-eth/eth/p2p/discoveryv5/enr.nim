@@ -1,14 +1,21 @@
-# ENR implementation according to specification in EIP-778:
-# https://github.com/ethereum/EIPs/blob/master/EIPS/eip-778.md
+# nim-eth - Node Discovery Protocol v5
+# Copyright (c) 2020-2021 Status Research & Development GmbH
+# Licensed and distributed under either of
+#   * MIT license (license terms in the root directory or at https://opensource.org/licenses/MIT).
+#   * Apache v2 license (license terms in the root directory or at https://www.apache.org/licenses/LICENSE-2.0).
+# at your option. This file may not be copied, modified, or distributed except according to those terms.
+#
+## ENR implementation according to specification in EIP-778:
+## https://github.com/ethereum/EIPs/blob/master/EIPS/eip-778.md
+
+{.push raises: [Defect].}
 
 import
   std/[strutils, macros, algorithm, options],
   stew/shims/net, stew/base64, nimcrypto,
-  eth/[rlp, keys]
+  ".."/../[rlp, keys]
 
 export options
-
-{.push raises: [Defect].}
 
 const
   maxEnrSize = 300  ## Maximum size of an encoded node record, in bytes.
@@ -461,7 +468,7 @@ proc `$`*(r: Record): string =
 proc `==`*(a, b: Record): bool = a.raw == b.raw
 
 proc read*(rlp: var Rlp, T: typedesc[Record]):
-    T {.inline, raises:[RlpError, ValueError, Defect].} =
+    T {.raises: [RlpError, ValueError, Defect].} =
   if not rlp.hasData() or not result.fromBytes(rlp.rawData):
     # TODO: This could also just be an invalid signature, would be cleaner to
     # split of RLP deserialisation errors from this.

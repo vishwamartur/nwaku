@@ -41,8 +41,9 @@ type
   OptInfo = ref object
     name, abbr, desc, typename: string
     idx: int
-    hasDefault: bool
     isHidden: bool
+    hasDefault: bool
+    defaultInHelpText: string
     case kind: OptKind
     of Discriminator:
       isCommand: bool
@@ -126,6 +127,7 @@ else:
 
 const
   fgSection = fgYellow
+  fgDefault = fgWhite
   fgCommand = fgCyan
   fgOption = fgBlue
   fgArg = fgBlue
@@ -214,18 +216,23 @@ func humaneName(opt: OptInfo): string =
 template padding(output: string, desiredWidth: int): string =
   spaces(max(desiredWidth - output.len, 0))
 
-proc writeDesc(help: var string, appInfo: HelpAppInfo, desc: string) =
+proc writeDesc(help: var string,
+               appInfo: HelpAppInfo,
+               desc, defaultValue: string) =
   const descSpacing = "  "
   let
     descIndent = (5 + appInfo.namesWidth + descSpacing.len)
     remainingColumns = appInfo.terminalWidth - descIndent
+    defaultValSuffix = if defaultValue.len == 0: ""
+                       else: " [=" & defaultValue & "]"
+    fullDesc = desc & defaultValSuffix & "."
 
   if remainingColumns < confutils_narrow_terminal_width:
-    helpOutput "\p ", wrapWords(desc, appInfo.terminalWidth - 2,
+    helpOutput "\p ", wrapWords(fullDesc, appInfo.terminalWidth - 2,
                                 newLine = "\p ")
   else:
     let wrappingWidth = min(remainingColumns, confutils_description_width)
-    helpOutput descSpacing, wrapWords(desc & ".", wrappingWidth,
+    helpOutput descSpacing, wrapWords(fullDesc, wrappingWidth,
                                       newLine = "\p" & spaces(descIndent))
 
 proc describeInvocation(help: var string,
@@ -260,7 +267,7 @@ proc describeInvocation(help: var string,
       let cliArg = " <" & arg.humaneName & ">"
       helpOutput fgArg, styleBright, cliArg
       helpOutput padding(cliArg, 6 + appInfo.namesWidth)
-      help.writeDesc appInfo, arg.desc
+      help.writeDesc appInfo, arg.desc, arg.defaultInHelpText
       helpOutput "\p"
 
 type
@@ -303,7 +310,9 @@ proc describeOptions(help: var string,
         helpOutput spaces(2 + appInfo.namesWidth)
 
       if opt.desc.len > 0:
-        help.writeDesc appInfo, opt.desc.replace("%t", opt.typename)
+        help.writeDesc appInfo,
+                       opt.desc.replace("%t", opt.typename),
+                       opt.defaultInHelpText
 
       helpOutput "\p"
 
@@ -358,8 +367,8 @@ proc showHelp(help: var string,
   flushOutputAndQuit QuitSuccess
 
 func getNextArgIdx(cmd: CmdInfo, consumedArgIdx: int): int =
-  for i in consumedArgIdx + 1 ..< cmd.opts.len:
-    if cmd.opts[i].kind == Arg:
+  for i in 0 ..< cmd.opts.len:
+    if cmd.opts[i].kind == Arg and cmd.opts[i].idx > consumedArgIdx:
       return cmd.opts[i].idx
 
   return -1
@@ -570,7 +579,11 @@ template setField[T](loc: var T, val: Option[TaintedString], defaultVal: untyped
         else: FieldType(defaultVal)
 
 template setField[T](loc: var seq[T], val: Option[TaintedString], defaultVal: untyped) =
-  loc.add parseCmdArgAux(type(loc[0]), val.get)
+  if val.isSome:
+    loc.add parseCmdArgAux(type(loc[0]), val.get)
+  else:
+    type FieldType = type(loc)
+    loc = FieldType(defaultVal)
 
 proc makeDefaultValue*(T: type): T =
   discard
@@ -658,6 +671,12 @@ proc cmdInfoFromType(T: NimNode): CmdInfo =
     let
       isImplicitlySelectable = field.readPragma"implicitlySelectable" != nil
       defaultValue = field.readPragma"defaultValue"
+      defaultValueDesc = field.readPragma"defaultValueDesc"
+      defaultInHelp = if defaultValueDesc != nil: defaultValueDesc
+                      else: defaultValue
+      defaultInHelpText = if defaultInHelp == nil: ""
+                          elif defaultInHelp.kind in {nnkStrLit..nnkTripleStrLit}: defaultInHelp.strVal
+                          else: repr(defaultInHelp)
       isHidden = field.readPragma("hidden") != nil
       abbr = field.readPragma"abbr"
       name = field.readPragma"name"
@@ -671,6 +690,7 @@ proc cmdInfoFromType(T: NimNode): CmdInfo =
                       name: $field.name,
                       isHidden: isHidden,
                       hasDefault: defaultValue != nil,
+                      defaultInHelpText: defaultInHelpText,
                       typename: field.typ.repr)
 
     if desc != nil: opt.desc = desc.strVal
@@ -790,9 +810,9 @@ proc load*(Configuration: type,
       fieldSetters[setterIdx][1](confAddr[], some(cmdLineVal))
       inc fieldCounters[setterIdx]
     except:
-      fail("Error while processing the '",
-           fgOption, fieldSetters[setterIdx][0], resetStyle,
-           "' parameter: " &
+      fail("Error while processing the ",
+           fgOption, fieldSetters[setterIdx][0],
+           "=", cmdLineVal.string, resetStyle, " parameter: ",
            getCurrentExceptionMsg())
 
   when hasCompletions:

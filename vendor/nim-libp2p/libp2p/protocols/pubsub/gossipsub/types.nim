@@ -1,3 +1,14 @@
+## Nim-LibP2P
+## Copyright (c) 2021 Status Research & Development GmbH
+## Licensed under either of
+##  * Apache License, version 2.0, ([LICENSE-APACHE](LICENSE-APACHE))
+##  * MIT license ([LICENSE-MIT](LICENSE-MIT))
+## at your option.
+## This file may not be copied, modified, or distributed except according to
+## those terms.
+
+{.push raises: [Defect].}
+
 import chronos
 import std/[tables, sets]
 import ".."/[floodsub, peertable, mcache, pubsubpeer]
@@ -149,8 +160,6 @@ type
     peersInIP*: Table[MultiAddress, HashSet[PeerID]]
 
     heartbeatEvents*: seq[AsyncEvent]
-
-    randomBytes*: seq[byte]
 
   MeshMetrics* = object
     # scratch buffers for metrics

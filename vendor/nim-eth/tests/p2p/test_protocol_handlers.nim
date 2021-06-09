@@ -7,9 +7,12 @@
 #  Apache License, version 2.0, (LICENSE-APACHEv2)
 #            MIT license (LICENSE-MIT)
 
+{.used.}
+
 import
-  tables, chronos, testutils/unittests,
-  eth/p2p,
+  std/tables,
+  chronos, testutils/unittests,
+  ../../eth/p2p,
   ./p2p_test_helper
 
 type

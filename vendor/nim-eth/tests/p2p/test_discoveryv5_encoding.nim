@@ -1,8 +1,10 @@
+{.used.}
+
 import
   std/[unittest, options, sequtils, tables],
   stint, stew/byteutils, stew/shims/net,
-  eth/[rlp, keys],
-  eth/p2p/discoveryv5/[messages, encoding, enr, node, sessions]
+  ../../eth/keys,
+  ../../eth/p2p/discoveryv5/[messages, encoding, enr, node, sessions]
 
 let rng = newRng()
 
@@ -107,6 +109,41 @@ suite "Discovery v5.1 Protocol Message Encodings":
       message.nodes.enrs.len() == 2
       message.nodes.enrs[0] == e1
       message.nodes.enrs[1] == e2
+
+  test "Talk Request":
+    let
+      tr = TalkReqMessage(protocol: "echo".toBytes(), request: "hi".toBytes())
+      reqId = RequestId(id: @[1.byte])
+
+    let encoded = encodeMessage(tr, reqId)
+    check encoded.toHex == "05c901846563686f826869"
+
+    let decoded = decodeMessage(encoded)
+    check decoded.isOk()
+
+    let message = decoded.get()
+    check:
+      message.reqId == reqId
+      message.kind == talkreq
+      message.talkreq.protocol == "echo".toBytes()
+      message.talkreq.request == "hi".toBytes()
+
+  test "Talk Response":
+    let
+      tr = TalkRespMessage(response: "hi".toBytes())
+      reqId = RequestId(id: @[1.byte])
+
+    let encoded = encodeMessage(tr, reqId)
+    check encoded.toHex == "06c401826869"
+
+    let decoded = decodeMessage(encoded)
+    check decoded.isOk()
+
+    let message = decoded.get()
+    check:
+      message.reqId == reqId
+      message.kind == talkresp
+      message.talkresp.response == "hi".toBytes()
 
   test "Ping with too large RequestId":
     let

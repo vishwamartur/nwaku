@@ -1,5 +1,5 @@
 # Makefile.am -- Backtrace Makefile.
-# Copyright (C) 2012-2020 Free Software Foundation, Inc.
+# Copyright (C) 2012-2021 Free Software Foundation, Inc.
 
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -101,12 +101,12 @@ check_DATA =
 # Flags to use when compiling test programs.
 libbacktrace_TEST_CFLAGS = $(EXTRA_FLAGS) $(WARN_FLAGS) -g
 
-if HAVE_DSYMUTIL
+if USE_DSYMUTIL
 
 %.dSYM: %
 	$(DSYMUTIL) $<
 
-endif HAVE_DSYMUTIL
+endif USE_DSYMUTIL
 
 if NATIVE
 check_LTLIBRARIES = libbacktrace_alloc.la
@@ -238,9 +238,9 @@ allocfail.sh: allocfail
 
 TESTS += allocfail.sh
 
-if HAVE_DSYMUTIL
+if USE_DSYMUTIL
 check_DATA += allocfail.dSYM
-endif HAVE_DSYMUTIL
+endif USE_DSYMUTIL
 
 if HAVE_ELF
 if HAVE_OBJCOPY_DEBUGLINK
@@ -274,9 +274,9 @@ btest_LDADD = libbacktrace.la
 
 BUILDTESTS += btest
 
-if HAVE_DSYMUTIL
+if USE_DSYMUTIL
 check_DATA += btest.dSYM
-endif HAVE_DSYMUTIL
+endif USE_DSYMUTIL
 
 if HAVE_ELF
 
@@ -294,9 +294,9 @@ btest_alloc_LDADD = libbacktrace_alloc.la
 
 BUILDTESTS += btest_alloc
 
-if HAVE_DSYMUTIL
+if USE_DSYMUTIL
 check_DATA += btest_alloc.dSYM
-endif HAVE_DSYMUTIL
+endif USE_DSYMUTIL
 
 if HAVE_DWZ
 
@@ -304,9 +304,13 @@ if HAVE_DWZ
 	rm -f $@ $@_common.debug
 	cp $< $@_1
 	cp $< $@_2
-	$(DWZ) -m $@_common.debug $@_1 $@_2
-	rm -f $@_2
-	mv $@_1 $@
+	if $(DWZ) -m $@_common.debug $@_1 $@_2; then \
+	  rm -f $@_2; \
+	  mv $@_1 $@; \
+	else \
+	  echo "Ignoring dwz errors, assuming that test passes"; \
+	  cp $< $@; \
+	fi
 
 TESTS += btest_dwz
 
@@ -324,9 +328,9 @@ stest_LDADD = libbacktrace.la
 
 BUILDTESTS += stest
 
-if HAVE_DSYMUTIL
+if USE_DSYMUTIL
 check_DATA += stest.dSYM
-endif HAVE_DSYMUTIL
+endif USE_DSYMUTIL
 
 stest_alloc_SOURCES = $(stest_SOURCES)
 stest_alloc_CFLAGS = $(libbacktrace_TEST_CFLAGS)
@@ -334,9 +338,9 @@ stest_alloc_LDADD = libbacktrace_alloc.la
 
 BUILDTESTS += stest_alloc
 
-if HAVE_DSYMUTIL
+if USE_DSYMUTIL
 check_DATA += stest_alloc.dSYM
-endif HAVE_DSYMUTIL
+endif USE_DSYMUTIL
 
 if HAVE_ELF
 
@@ -367,17 +371,17 @@ edtest_LDADD = libbacktrace.la
 
 BUILDTESTS += edtest
 
-if HAVE_DSYMUTIL
+if USE_DSYMUTIL
 check_DATA += edtest.dSYM
-endif HAVE_DSYMUTIL
+endif USE_DSYMUTIL
 
 edtest_alloc_SOURCES = $(edtest_SOURCES)
 edtest_alloc_CFLAGS = $(libbacktrace_TEST_CFLAGS)
 edtest_alloc_LDADD = libbacktrace_alloc.la
 
-if HAVE_DSYMUTIL
+if USE_DSYMUTIL
 check_DATA += edtest_alloc.dSYM
-endif HAVE_DSYMUTIL
+endif USE_DSYMUTIL
 
 BUILDTESTS += edtest_alloc
 
@@ -395,9 +399,9 @@ ttest_SOURCES = ttest.c testlib.c
 ttest_CFLAGS = $(libbacktrace_TEST_CFLAGS) -pthread
 ttest_LDADD = libbacktrace.la
 
-if HAVE_DSYMUTIL
+if USE_DSYMUTIL
 check_DATA += ttest.dSYM
-endif HAVE_DSYMUTIL
+endif USE_DSYMUTIL
 
 BUILDTESTS += ttest_alloc
 
@@ -405,9 +409,9 @@ ttest_alloc_SOURCES = $(ttest_SOURCES)
 ttest_alloc_CFLAGS = $(ttest_CFLAGS)
 ttest_alloc_LDADD = libbacktrace_alloc.la
 
-if HAVE_DSYMUTIL
+if USE_DSYMUTIL
 check_DATA += ttest_alloc.dSYM
-endif HAVE_DSYMUTIL
+endif USE_DSYMUTIL
 
 endif HAVE_PTHREAD
 
@@ -463,9 +467,9 @@ dwarf5_LDADD = libbacktrace.la
 
 BUILDTESTS += dwarf5
 
-if HAVE_DSYMUTIL
+if USE_DSYMUTIL
 check_DATA += dwarf5.dSYM
-endif HAVE_DSYMUTIL
+endif USE_DSYMUTIL
 
 dwarf5_alloc_SOURCES = $(dwarf5_SOURCES)
 dwarf5_alloc_CFLAGS = $(dwarf5_CFLAGS)
@@ -473,9 +477,9 @@ dwarf5_alloc_LDADD = libbacktrace_alloc.la
 
 BUILDTESTS += dwarf5_alloc
 
-if HAVE_DSYMUTIL
+if USE_DSYMUTIL
 check_DATA += dwarf5_alloc.dSYM
-endif HAVE_DSYMUTIL
+endif USE_DSYMUTIL
 
 endif
 
@@ -484,6 +488,10 @@ mtest_CFLAGS = $(libbacktrace_TEST_CFLAGS) -O
 mtest_LDADD = libbacktrace.la
 
 BUILDTESTS += mtest
+
+if USE_DSYMUTIL
+check_DATA += mtest.dSYM
+endif USE_DSYMUTIL
 
 if HAVE_MINIDEBUG
 

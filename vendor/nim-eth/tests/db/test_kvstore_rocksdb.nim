@@ -1,8 +1,8 @@
 {.used.}
 
 import
-  os, chronicles,
-  unittest,
+  std/[os, unittest],
+  chronicles,
   ../../eth/db/[kvstore, kvstore_rocksdb],
   ./test_kvstore
 
@@ -14,4 +14,4 @@ suite "RocksStoreRef":
     let db = RocksStoreRef.init(tmp, "test")[]
     defer: db.close()
 
-    testKvStore(kvStore db)
+    testKvStore(kvStore db, false)

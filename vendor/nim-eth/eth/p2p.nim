@@ -1,24 +1,21 @@
-#
-#                 Ethereum P2P
-#              (c) Copyright 2018
-#       Status Research & Development GmbH
-#
-#            Licensed under either of
-#  Apache License, version 2.0, (LICENSE-APACHEv2)
-#            MIT license (LICENSE-MIT)
-#
+# nim-eth
+# Copyright (c) 2018-2021 Status Research & Development GmbH
+# Licensed and distributed under either of
+#   * MIT license (license terms in the root directory or at https://opensource.org/licenses/MIT).
+#   * Apache v2 license (license terms in the root directory or at https://www.apache.org/licenses/LICENSE-2.0).
+# at your option. This file may not be copied, modified, or distributed except according to those terms.
 
 import
-  tables, algorithm, random, bearssl,
-  chronos, chronos/timer, chronicles,
-  eth/keys, eth/common/eth_types,
-  eth/p2p/[kademlia, discovery, enode, peer_pool, rlpx],
-  eth/p2p/private/p2p_types
+  std/[tables, algorithm, random],
+  bearssl, chronos, chronos/timer, chronicles,
+  ./keys, ./common/eth_types, ./p2p/private/p2p_types,
+  ./p2p/[kademlia, discovery, enode, peer_pool, rlpx]
 
 export
   p2p_types, rlpx, enode, kademlia
 
-proc addCapability*(node: var EthereumNode, p: ProtocolInfo) =
+proc addCapability*(node: var EthereumNode, p: ProtocolInfo)
+    {.raises: [Defect].} =
   doAssert node.connectionState == ConnectionState.None
 
   let pos = lowerBound(node.protocols, p, rlpx.cmp)
@@ -39,10 +36,10 @@ proc newEthereumNode*(keys: KeyPair,
                       addAllCapabilities = true,
                       useCompression: bool = false,
                       minPeers = 10,
-                      rng = newRng()): EthereumNode =
+                      rng = newRng()): EthereumNode {.raises: [Defect].} =
 
   if rng == nil: # newRng could fail
-    raise (ref CatchableError)(msg: "Cannot initialize RNG")
+    raise (ref Defect)(msg: "Cannot initialize RNG")
 
   new result
   result.keys = keys

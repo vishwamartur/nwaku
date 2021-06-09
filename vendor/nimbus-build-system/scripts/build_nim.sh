@@ -11,8 +11,10 @@
 set -e
 
 # Git commits
-CSOURCES_COMMIT="f72f471adb743bea4f8d8c59d19aa1cb885dcc59" # 0.20.0
-NIMBLE_COMMIT="4007b2a778429a978e12307bf13a038029b4c4d9" # 0.11.0
+: ${CSOURCES_COMMIT:=a8a5241f9475099c823cfe1a5e0ca4022ac201ff} # 1.0.11 + support for Apple's M1
+: ${NIMBLE_COMMIT:=d13f3b8ce288b4dc8c34c219a4e050aaeaf43fc9} # 0.13.1
+: ${NIM_COMMIT:=nimbus} # could be a (partial) commit hash, a tag, a branch name, etc.
+NIM_COMMIT_HASH="" # full hash for NIM_COMMIT, retrieved in "nim_needs_rebuilding()"
 
 # script arguments
 [[ $# -ne 4 ]] && { echo "Usage: $0 nim_dir csources_dir nimble_dir ci_cache_dir"; exit 1; }
@@ -52,15 +54,37 @@ nim_needs_rebuilding() {
 	NO_REBUILD=1
 
 	if [[ ! -e "$NIM_DIR" ]]; then
+		# Shallow clone, optimised for the default NIM_COMMIT value.
 		git clone -q --depth=1 https://github.com/status-im/Nim.git "$NIM_DIR"
 	fi
+
+	pushd "${NIM_DIR}" >/dev/null
+	# support old Git versions, like the one from Ubuntu-18.04
+	git restore . 2>/dev/null || git reset --hard
+	if ! git checkout -q ${NIM_COMMIT}; then
+		# Pay the price for a non-default NIM_COMMIT here, by fetching everything.
+		# (This includes upstream branches and tags that might be missing from our fork.)
+		git remote add upstream https://github.com/nim-lang/Nim
+		git fetch --all
+		git checkout -q ${NIM_COMMIT}
+	fi
+	# We can't use "rev-parse" here, because it would return the tag object's
+	# hash instead of the commit hash, when NIM_COMMIT is a tag.
+	NIM_COMMIT_HASH="$(git rev-list -n 1 ${NIM_COMMIT})"
+	popd >/dev/null
 
 	if [[ -n "$CI_CACHE" && -d "$CI_CACHE" ]]; then
 		cp -a "$CI_CACHE"/* "$NIM_DIR"/bin/ || true # let this one fail with an empty cache dir
 	fi
 
-	# compare the built commit's timestamp to the date of the last commit (keep in mind that Git doesn't preserve file timestamps)
-	if [[ -e "${NIM_DIR}/bin/timestamp" && $(cat "${NIM_DIR}/bin/timestamp") -eq $(cd "$NIM_DIR"; git log --pretty=format:%cd -n 1 ${GIT_TIMESTAMP_ARG}) ]]; then
+	# compare the last built commit to the one requested
+	if [[ -e "${NIM_DIR}/bin/last_built_commit" && "$(cat "${NIM_DIR}/bin/last_built_commit")" == "${NIM_COMMIT_HASH}" ]]; then
+		return $NO_REBUILD
+	elif [[ -e "${NIM_DIR}/bin/nim_commit_${NIM_COMMIT_HASH}" ]]; then
+		# we built the requested commit in the past, so we simply reuse it
+		rm -f "${NIM_DIR}/bin/nim${EXE_SUFFIX}"
+		ln -s "nim_commit_${NIM_COMMIT_HASH}" "${NIM_DIR}/bin/nim${EXE_SUFFIX}"
+		echo ${NIM_COMMIT_HASH} > "${NIM_DIR}/bin/last_built_commit"
 		return $NO_REBUILD
 	else
 		return $REBUILD
@@ -78,7 +102,7 @@ build_nim() {
 	if [[ ! -d "$CSOURCES_DIR" ]]; then
 		mkdir -p "$CSOURCES_DIR"
 		pushd "$CSOURCES_DIR"
-		git clone https://github.com/nim-lang/csources.git .
+		git clone https://github.com/nim-lang/csources_v1.git .
 		git checkout $CSOURCES_COMMIT
 		popd
 	fi
@@ -103,7 +127,7 @@ build_nim() {
 	fi
 
 	# bootstrap the Nim compiler and build the tools
-	rm -rf bin/nim_csources
+	rm -f bin/{nim,nim_csources}
 	pushd csources
 	if [[ "$ON_WINDOWS" == "0" ]]; then
 		$MAKE $UCPU clean
@@ -114,6 +138,7 @@ build_nim() {
 	fi
 	popd
 	if [[ -e csources/bin ]]; then
+		rm -f bin/nim bin/nim_csources
 		cp -a csources/bin/nim bin/nim
 		cp -a csources/bin/nim bin/nim_csources
 		rm -rf csources/bin
@@ -170,12 +195,17 @@ build_nim() {
 			--skipUserCfg \
 			--skipParentCfg \
 			compiler/nim.nim
+		rm -f bin/nim
 		cp -a compiler/nim bin/nim
 		rm bin/nim1
 	fi
 
-	# record the last commit's timestamp
-	git log --pretty=format:%cd -n 1 ${GIT_TIMESTAMP_ARG} > bin/timestamp
+	# record the built commit
+	echo ${NIM_COMMIT_HASH} > bin/last_built_commit
+
+	# create the symlink
+	mv bin/nim bin/nim_commit_${NIM_COMMIT_HASH}
+	ln -s nim_commit_${NIM_COMMIT_HASH} bin/nim${EXE_SUFFIX}
 
 	# update the CI cache
 	popd # we were in $NIM_DIR

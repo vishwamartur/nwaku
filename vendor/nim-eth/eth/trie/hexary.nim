@@ -1,7 +1,8 @@
 import
-  tables,
-  nimcrypto/[keccak, hash], eth/rlp,
-  trie_defs, nibbles, db
+  std/tables,
+  nimcrypto/[keccak, hash],
+  ../rlp,
+  "."/[trie_defs, nibbles, db]
 
 type
   TrieNodeKey = object
@@ -33,7 +34,8 @@ proc expectHash(r: Rlp): seq[byte] =
     raise newException(RlpTypeMismatch,
       "RLP expected to be a Keccak hash value, but has an incorrect length")
 
-proc dbPut(db: DB, data: openArray[byte]): TrieNodeKey {.gcsafe.}
+proc dbPut(db: DB, data: openArray[byte]): TrieNodeKey
+  {.gcsafe, raises: [Defect].}
 
 template get(db: DB, key: Rlp): seq[byte] =
   db.get(key.expectHash)
@@ -50,7 +52,8 @@ proc initHexaryTrie*(db: DB, rootHash: KeccakHash, isPruning = true): HexaryTrie
 template initSecureHexaryTrie*(db: DB, rootHash: KeccakHash, isPruning = true): SecureHexaryTrie =
   SecureHexaryTrie initHexaryTrie(db, rootHash, isPruning)
 
-proc initHexaryTrie*(db: DB, isPruning = true): HexaryTrie =
+proc initHexaryTrie*(db: DB, isPruning = true): HexaryTrie
+    {.raises: [Defect].} =
   result.db = db
   result.root = result.db.dbPut(emptyRlp)
   result.isPruning = isPruning
@@ -83,7 +86,8 @@ template keyToLocalBytes(db: DB, k: TrieNodeKey): seq[byte] =
 template extensionNodeKey(r: Rlp): auto =
   hexPrefixDecode r.listElem(0).toBytes
 
-proc getAux(db: DB, nodeRlp: Rlp, path: NibblesSeq): seq[byte] {.gcsafe.}
+proc getAux(db: DB, nodeRlp: Rlp, path: NibblesSeq): seq[byte]
+  {.gcsafe, raises: [RlpError, Defect].}
 
 proc getAuxByHash(db: DB, node: TrieNodeKey, path: NibblesSeq): seq[byte] =
   var nodeRlp = rlpFromBytes keyToLocalBytes(db, node)
@@ -93,7 +97,8 @@ template getLookup(elem: untyped): untyped =
   if elem.isList: elem
   else: rlpFromBytes(get(db, elem.expectHash))
 
-proc getAux(db: DB, nodeRlp: Rlp, path: NibblesSeq): seq[byte] =
+proc getAux(db: DB, nodeRlp: Rlp, path: NibblesSeq): seq[byte]
+    {.gcsafe, raises: [RlpError, Defect].} =
   if not nodeRlp.hasData or nodeRlp.isEmpty:
     return
 
@@ -347,7 +352,8 @@ proc getBranch*(self: HexaryTrie; key: openArray[byte]): seq[seq[byte]] =
 proc dbDel(t: var HexaryTrie, data: openArray[byte]) =
   if data.len >= 32: t.prune(data.keccak.data)
 
-proc dbPut(db: DB, data: openArray[byte]): TrieNodeKey =
+proc dbPut(db: DB, data: openArray[byte]): TrieNodeKey
+    {.raises: [Defect].} =
   result.hash = data.keccak
   result.usedBytes = 32
   put(db, result.asDbKey, data)
@@ -405,7 +411,8 @@ proc findSingleChild(r: Rlp; childPos: var byte): Rlp =
         return zeroBytesRlp
     inc i
 
-proc deleteAt(self: var HexaryTrie; origRlp: Rlp, key: NibblesSeq): seq[byte] {.gcsafe.}
+proc deleteAt(self: var HexaryTrie; origRlp: Rlp, key: NibblesSeq): seq[byte]
+  {.gcsafe, raises: [RlpError, Defect].}
 
 proc deleteAux(self: var HexaryTrie; rlpWriter: var RlpWriter;
                origRlp: Rlp; path: NibblesSeq): bool =
@@ -456,8 +463,8 @@ proc mergeAndGraft(self: var HexaryTrie;
   if self.isTwoItemNode(soleChild):
     result = self.graft(rlpFromBytes(result))
 
-proc deleteAt(self: var HexaryTrie;
-              origRlp: Rlp, key: NibblesSeq): seq[byte] =
+proc deleteAt(self: var HexaryTrie; origRlp: Rlp, key: NibblesSeq): seq[byte]
+    {.gcsafe, raises: [RlpError, Defect].} =
   if origRlp.isEmpty:
     return
 
@@ -535,8 +542,9 @@ proc del*(self: var HexaryTrie; key: openArray[byte]) =
     self.root = self.db.dbPut(newRootBytes)
 
 proc mergeAt(self: var HexaryTrie, orig: Rlp, origHash: KeccakHash,
-             key: NibblesSeq, value: openArray[byte],
-             isInline = false): seq[byte] {.gcsafe.}
+  key: NibblesSeq, value: openArray[byte],
+  isInline = false): seq[byte]
+  {.gcsafe, raises: [RlpError, Defect].}
 
 proc mergeAt(self: var HexaryTrie, rlp: Rlp,
              key: NibblesSeq, value: openArray[byte],
@@ -555,8 +563,9 @@ proc mergeAtAux(self: var HexaryTrie, output: var RlpWriter, orig: Rlp,
   output.appendAndSave(b, self.db)
 
 proc mergeAt(self: var HexaryTrie, orig: Rlp, origHash: KeccakHash,
-             key: NibblesSeq, value: openArray[byte],
-             isInline = false): seq[byte] =
+    key: NibblesSeq, value: openArray[byte],
+    isInline = false): seq[byte]
+    {.gcsafe, raises: [RlpError, Defect].} =
   template origWithNewValue: auto =
     self.prune(origHash.data)
     replaceValue(orig, key, value)

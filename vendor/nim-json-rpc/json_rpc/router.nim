@@ -1,16 +1,16 @@
 import
-  std/[json, macros, options, strutils, tables],
+  std/[macros, options, strutils, tables],
   chronicles, chronos, json_serialization/writer,
   ./jsonmarshal
 
 export
-  chronos, json, jsonmarshal
+  chronos, jsonmarshal
 
 type
   StringOfJson* = JsonString
 
   # Procedure signature accepted as an RPC call by server
-  RpcProc* = proc(input: JsonNode): Future[StringOfJson] {.gcsafe.}
+  RpcProc* = proc(input: JsonNode): Future[StringOfJson] {.gcsafe, raises: [Defect, CatchableError].}
 
   RpcRouter* = object
     procs*: Table[string, RpcProc]
@@ -89,6 +89,9 @@ proc route*(router: RpcRouter, data: string): Future[string] {.async, gcsafe.} =
   let node =
     try: parseJson(data)
     except CatchableError as err:
+      return string(wrapError(JSON_PARSE_ERROR, err.msg))
+    except Exception as err:
+      # TODO https://github.com/status-im/nimbus-eth2/issues/2430
       return string(wrapError(JSON_PARSE_ERROR, err.msg))
 
   return string(await router.route(node))

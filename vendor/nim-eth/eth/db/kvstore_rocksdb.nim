@@ -1,6 +1,9 @@
 {.push raises: [Defect].}
 
-import os, rocksdb, ./kvstore, stew/results
+import
+  std/os,
+  rocksdb, stew/results,
+  ./kvstore
 
 export results
 
@@ -12,6 +15,9 @@ type
 
 proc get*(db: RocksStoreRef, key: openarray[byte], onData: kvstore.DataProc): KvResult[bool] =
   db.store.get(key, onData)
+
+proc find*(db: RocksStoreRef, prefix: openarray[byte], onFind: kvstore.KeyValueProc): KvResult[int] =
+  raiseAssert "Unimplemented"
 
 proc put*(db: RocksStoreRef, key, value: openarray[byte]): KvResult[void] =
   db.store.put(key, value)

@@ -1,13 +1,13 @@
 {.used.}
 
-import unittest, options, sequtils
+import options, sequtils
 import chronos
 import stew/byteutils
 import nimcrypto/sysrand
 import ../libp2p/[errors,
                   switch,
                   multistream,
-                  standard_setup,
+                  builders,
                   stream/bufferstream,
                   stream/connection,
                   multiaddress,

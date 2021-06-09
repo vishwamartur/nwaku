@@ -7,12 +7,15 @@
 ## This file may not be copied, modified, or distributed except according to
 ## those terms.
 
+{.push raises: [Defect].}
+
 import std/oids
 import stew/byteutils
 import chronicles, chronos, metrics
 import ../varint,
        ../peerinfo,
-       ../multiaddress
+       ../multiaddress,
+       ../errors
 
 declareGauge(libp2p_open_streams,
   "open stream instances", labels = ["type", "dir"])
@@ -39,7 +42,7 @@ type
     dir*: Direction
     closedWithEOF: bool # prevent concurrent calls
 
-  LPStreamError* = object of CatchableError
+  LPStreamError* = object of LPError
   LPStreamIncompleteError* = object of LPStreamError
   LPStreamIncorrectDefect* = object of Defect
   LPStreamLimitError* = object of LPStreamError
@@ -81,34 +84,34 @@ proc getStreamTracker(name: string): StreamTracker {.gcsafe.} =
   if isNil(result):
     result = setupStreamTracker(name)
 
-proc newLPStreamReadError*(p: ref CatchableError): ref CatchableError =
+proc newLPStreamReadError*(p: ref CatchableError): ref LPStreamReadError =
   var w = newException(LPStreamReadError, "Read stream failed")
   w.msg = w.msg & ", originated from [" & $p.name & "] " & p.msg
   w.par = p
   result = w
 
-proc newLPStreamReadError*(msg: string): ref CatchableError =
+proc newLPStreamReadError*(msg: string): ref LPStreamReadError =
   newException(LPStreamReadError, msg)
 
-proc newLPStreamWriteError*(p: ref CatchableError): ref CatchableError =
+proc newLPStreamWriteError*(p: ref CatchableError): ref LPStreamWriteError =
   var w = newException(LPStreamWriteError, "Write stream failed")
   w.msg = w.msg & ", originated from [" & $p.name & "] " & p.msg
   w.par = p
   result = w
 
-proc newLPStreamIncompleteError*(): ref CatchableError =
+proc newLPStreamIncompleteError*(): ref LPStreamIncompleteError =
   result = newException(LPStreamIncompleteError, "Incomplete data received")
 
-proc newLPStreamLimitError*(): ref CatchableError =
+proc newLPStreamLimitError*(): ref LPStreamLimitError =
   result = newException(LPStreamLimitError, "Buffer limit reached")
 
-proc newLPStreamIncorrectDefect*(m: string): ref Defect =
+proc newLPStreamIncorrectDefect*(m: string): ref LPStreamIncorrectDefect =
   result = newException(LPStreamIncorrectDefect, m)
 
-proc newLPStreamEOFError*(): ref CatchableError =
+proc newLPStreamEOFError*(): ref LPStreamEOFError =
   result = newException(LPStreamEOFError, "Stream EOF!")
 
-proc newLPStreamClosedError*(): ref Exception =
+proc newLPStreamClosedError*(): ref LPStreamClosedError =
   result = newException(LPStreamClosedError, "Stream Closed!")
 
 func shortLog*(s: LPStream): auto =
@@ -130,17 +133,17 @@ method initStream*(s: LPStream) {.base.} =
 proc join*(s: LPStream): Future[void] =
   s.closeEvent.wait()
 
-method closed*(s: LPStream): bool {.base, raises: [Defect].} =
+method closed*(s: LPStream): bool {.base.} =
   s.isClosed
 
-method atEof*(s: LPStream): bool {.base, raises: [Defect].} =
+method atEof*(s: LPStream): bool {.base.} =
   s.isEof
 
-method readOnce*(s: LPStream,
-                 pbytes: pointer,
-                 nbytes: int):
-                 Future[int]
-  {.base, async.} =
+method readOnce*(
+  s: LPStream,
+  pbytes: pointer,
+  nbytes: int):
+  Future[int] {.base, async.} =
   doAssert(false, "not implemented!")
 
 proc readExactly*(s: LPStream,
@@ -182,7 +185,8 @@ proc readLine*(s: LPStream,
 
   while true:
     var ch: char
-    await readExactly(s, addr ch, 1)
+    if (await readOnce(s, addr ch, 1)) == 0:
+      raise newLPStreamEOFError()
 
     if sep[state] == ch:
       inc(state)
@@ -202,12 +206,15 @@ proc readLine*(s: LPStream,
 
 proc readVarint*(conn: LPStream): Future[uint64] {.async, gcsafe.} =
   var
-    varint: uint64
-    length: int
     buffer: array[10, byte]
 
   for i in 0..<len(buffer):
-    await conn.readExactly(addr buffer[i], 1)
+    if (await conn.readOnce(addr buffer[i], 1)) == 0:
+      raise newLPStreamEOFError()
+
+    var
+      varint: uint64
+      length: int
     let res = PB.getUVarint(buffer.toOpenArray(0, i), length, varint)
     if res.isOk():
       return varint

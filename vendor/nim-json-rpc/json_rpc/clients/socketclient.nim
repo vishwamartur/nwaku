@@ -1,6 +1,9 @@
 import
-  std/[json, tables],
-  ../client, chronos
+  std/tables,
+  chronos,
+  ../client
+
+export client
 
 type
   RpcSocketClient* = ref object of RpcClient
@@ -18,7 +21,8 @@ proc newRpcSocketClient*: RpcSocketClient =
   RpcSocketClient.new()
 
 method call*(self: RpcSocketClient, name: string,
-             params: JsonNode): Future[Response] {.async.} =
+             params: JsonNode): Future[Response] {.
+    async, gcsafe, raises: [Defect, CatchableError].} =
   ## Remotely calls the specified RPC method.
   let id = self.getNextId()
   var value = $rpcCallNode(name, params, id) & "\r\n"
@@ -59,5 +63,7 @@ proc connect*(client: RpcSocketClient, address: string, port: Port) {.async.} =
   client.loop = processData(client)
 
 method close*(client: RpcSocketClient) {.async.} =
-  # TODO: Stop the processData loop
-  await client.transport.closeWait()
+  await client.loop.cancelAndWait()
+  if not client.transport.isNil:
+    client.transport.close()
+    client.transport = nil

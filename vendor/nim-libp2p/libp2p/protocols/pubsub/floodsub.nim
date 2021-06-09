@@ -7,8 +7,10 @@
 ## This file may not be copied, modified, or distributed except according to
 ## those terms.
 
-import std/[sequtils, sets, tables]
-import chronos, chronicles, metrics
+{.push raises: [Defect].}
+
+import std/[sequtils, sets, hashes, tables]
+import chronos, chronicles, metrics, bearssl
 import ./pubsub,
        ./pubsubpeer,
        ./timedcache,
@@ -27,12 +29,22 @@ const FloodSubCodec* = "/floodsub/1.0.0"
 type
   FloodSub* = ref object of PubSub
     floodsub*: PeerTable      # topic to remote peer map
-    seen*: TimedCache[MessageID] # list of messages forwarded to peers
+    seen*: TimedCache[MessageID] # message id:s already seen on the network
+    seenSalt*: seq[byte]
 
-method subscribeTopic*(f: FloodSub,
-                       topic: string,
-                       subscribe: bool,
-                       peer: PubsubPeer) {.gcsafe.} =
+proc hasSeen*(f: FloodSub, msgId: MessageID): bool =
+  f.seenSalt & msgId in f.seen
+
+proc addSeen*(f: FloodSub, msgId: MessageID): bool =
+  # Salting the seen hash helps avoid attacks against the hash function used
+  # in the nim hash table
+  # Return true if the message has already been seen
+  f.seen.put(f.seenSalt & msgId)
+
+proc handleSubscribe*(f: FloodSub,
+                      peer: PubsubPeer,
+                      topic: string,
+                      subscribe: bool) =
   logScope:
     peer
     topic
@@ -51,21 +63,16 @@ method subscribeTopic*(f: FloodSub,
     return
 
   if subscribe:
-    if topic notin f.floodsub:
-      f.floodsub[topic] = initHashSet[PubSubPeer]()
-
     trace "adding subscription for topic", peer, topic
 
     # subscribe the peer to the topic
-    f.floodsub[topic].incl(peer)
+    f.floodsub.mgetOrPut(topic, HashSet[PubSubPeer]()).incl(peer)
   else:
-    if topic notin f.floodsub:
-      return
+    f.floodsub.withValue(topic, peers):
+      trace "removing subscription for topic", peer, topic
 
-    trace "removing subscription for topic", peer, topic
-
-    # unsubscribe the peer from the topic
-    f.floodsub[topic].excl(peer)
+      # unsubscribe the peer from the topic
+      peers[].excl(peer)
 
 method unsubscribePeer*(f: FloodSub, peer: PeerID) =
   ## handle peer disconnects
@@ -83,12 +90,14 @@ method unsubscribePeer*(f: FloodSub, peer: PeerID) =
 method rpcHandler*(f: FloodSub,
                    peer: PubSubPeer,
                    rpcMsg: RPCMsg) {.async.} =
-  await procCall PubSub(f).rpcHandler(peer, rpcMsg)
+  for i in 0..<min(f.topicsHigh, rpcMsg.subscriptions.len):
+    template sub: untyped = rpcMsg.subscriptions[i]
+    f.handleSubscribe(peer, sub.topic, sub.subscribe)
 
   for msg in rpcMsg.messages:                         # for every message
     let msgId = f.msgIdProvider(msg)
 
-    if f.seen.put(msgId):
+    if f.addSeen(msgId):
       trace "Dropping already-seen message", msgId, peer
       continue
 
@@ -118,14 +127,18 @@ method rpcHandler*(f: FloodSub,
 
     var toSendPeers = initHashSet[PubSubPeer]()
     for t in msg.topicIDs:                     # for every topic in the message
+      if t notin f.topics:
+        continue
       f.floodsub.withValue(t, peers): toSendPeers.incl(peers[])
 
       await handleData(f, t, msg.data)
 
     # In theory, if topics are the same in all messages, we could batch - we'd
     # also have to be careful to only include validated messages
-    f.broadcast(toSeq(toSendPeers), RPCMsg(messages: @[msg]))
+    f.broadcast(toSendPeers, RPCMsg(messages: @[msg]))
     trace "Forwared message to peers", peers = toSendPeers.len
+
+  f.updateMetrics(rpcMsg)
 
 method init*(f: FloodSub) =
   proc handler(conn: Connection, proto: string) {.async.} =
@@ -157,7 +170,7 @@ method publish*(f: FloodSub,
     debug "Empty topic, skipping publish", topic
     return 0
 
-  let peers = toSeq(f.floodsub.getOrDefault(topic))
+  let peers = f.floodsub.getOrDefault(topic)
 
   if peers.len == 0:
     debug "No peers for topic, skipping publish", topic
@@ -175,7 +188,7 @@ method publish*(f: FloodSub,
   trace "Created new message",
     msg = shortLog(msg), peers = peers.len, topic, msgId
 
-  if f.seen.put(msgId):
+  if f.addSeen(msgId):
     # custom msgid providers might cause this
     trace "Dropping already-seen message", msgId, topic
     return 0
@@ -190,20 +203,12 @@ method publish*(f: FloodSub,
 
   return peers.len
 
-method unsubscribe*(f: FloodSub,
-                    topics: seq[TopicPair]) =
-  procCall PubSub(f).unsubscribe(topics)
-
-  for p in f.peers.values:
-    f.sendSubs(p, topics.mapIt(it.topic).deduplicate(), false)
-
-method unsubscribeAll*(f: FloodSub, topic: string) =
-  procCall PubSub(f).unsubscribeAll(topic)
-
-  for p in f.peers.values:
-    f.sendSubs(p, @[topic], false)
-
-method initPubSub*(f: FloodSub) =
+method initPubSub*(f: FloodSub)
+  {.raises: [Defect, InitializationError].} =
   procCall PubSub(f).initPubSub()
   f.seen = TimedCache[MessageID].init(2.minutes)
+  var rng = newRng()
+  f.seenSalt = newSeqUninitialized[byte](sizeof(Hash))
+  brHmacDrbgGenerate(rng[], f.seenSalt)
+
   f.init()

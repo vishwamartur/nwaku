@@ -7,6 +7,8 @@
 ## This file may not be copied, modified, or distributed except according to
 ## those terms.
 
+{.push raises: [Defect].}
+
 import std/[strutils]
 import chronos, chronicles, stew/byteutils
 import stream/connection,
@@ -25,7 +27,9 @@ const
   Ls* = "\x03ls\n"
 
 type
-  Matcher* = proc (proto: string): bool {.gcsafe.}
+  Matcher* = proc (proto: string): bool {.gcsafe, raises: [Defect].}
+
+  MultiStreamError* = object of LPError
 
   HandlerHolder* = object
     protos*: seq[string]
@@ -44,7 +48,7 @@ template validateSuffix(str: string): untyped =
     if str.endsWith("\n"):
       str.removeSuffix("\n")
     else:
-      raise newException(CatchableError, "MultistreamSelect failed, malformed message")
+      raise newException(MultiStreamError, "MultistreamSelect failed, malformed message")
 
 proc select*(m: MultistreamSelect,
              conn: Connection,
@@ -62,7 +66,7 @@ proc select*(m: MultistreamSelect,
 
   if s != Codec:
     notice "handshake failed", conn, codec = s
-    raise newException(CatchableError, "MultistreamSelect handshake failed")
+    raise newException(MultiStreamError, "MultistreamSelect handshake failed")
   else:
     trace "multistream handshake success", conn
 

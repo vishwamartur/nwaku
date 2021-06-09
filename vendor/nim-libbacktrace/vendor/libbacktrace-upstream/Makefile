@@ -15,7 +15,7 @@
 
 
 # Makefile.am -- Backtrace Makefile.
-# Copyright (C) 2012-2020 Free Software Foundation, Inc.
+# Copyright (C) 2012-2021 Free Software Foundation, Inc.
 
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -125,7 +125,7 @@ check_PROGRAMS = $(am__EXEEXT_1) $(am__EXEEXT_2) $(am__EXEEXT_3) \
 	$(am__EXEEXT_14)
 TESTS = $(am__append_4) $(am__append_7) $(am__append_9) \
 	$(am__append_12) $(am__append_13) $(am__append_20) \
-	$(am__append_25) $(am__EXEEXT_14)
+	$(am__append_26) $(am__EXEEXT_14)
 am__append_1 = libbacktrace_elf_for_test.la
 am__append_2 = test_elf_32 test_elf_64 test_macho \
 	test_xcoff_32 test_xcoff_64 test_pecoff \
@@ -149,20 +149,23 @@ am__append_15 = -lz
 am__append_16 = ztest ztest_alloc
 am__append_17 = edtest edtest_alloc
 am__append_18 = ttest ttest_alloc
-#am__append_19 = ttest.dSYM \
+#am__append_19 =  \
+#	ttest.dSYM \
 #	ttest_alloc.dSYM
 am__append_20 = btest_gnudebuglink
 am__append_21 = ctestg ctesta \
 	ctestg_alloc \
 	ctesta_alloc
 am__append_22 = dwarf5 dwarf5_alloc
-#am__append_23 = dwarf5.dSYM \
+#am__append_23 =  \
+#	dwarf5.dSYM \
 #	dwarf5_alloc.dSYM
 am__append_24 = mtest
-am__append_25 = mtest_minidebug
-am__append_26 = -llzma
+#am__append_25 = mtest.dSYM
+am__append_26 = mtest_minidebug
 am__append_27 = -llzma
-am__append_28 = xztest xztest_alloc
+am__append_28 = -llzma
+am__append_29 = xztest xztest_alloc
 subdir = .
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/config/lead-dot.m4 \
@@ -988,10 +991,11 @@ libbacktrace_la_DEPENDENCIES = $(libbacktrace_la_LIBADD)
 BUILDTESTS = $(am__append_2) $(am__append_10) $(am__append_11) \
 	$(am__append_16) $(am__append_17) $(am__append_18) \
 	$(am__append_21) $(am__append_22) $(am__append_24) \
-	$(am__append_28)
+	$(am__append_29)
 
 # Add a file to this variable if you want it to be built for testing.
-check_DATA = $(am__append_5) $(am__append_19) $(am__append_23)
+check_DATA = $(am__append_5) $(am__append_19) $(am__append_23) \
+	$(am__append_25)
 
 # Flags to use when compiling test programs.
 libbacktrace_TEST_CFLAGS = $(EXTRA_FLAGS) $(WARN_FLAGS) -g
@@ -1118,12 +1122,12 @@ mtest_CFLAGS = $(libbacktrace_TEST_CFLAGS) -O
 mtest_LDADD = libbacktrace.la
 xztest_SOURCES = xztest.c testlib.c
 xztest_CFLAGS = $(libbacktrace_TEST_CFLAGS) -DSRCDIR=\"$(srcdir)\"
-xztest_LDADD = libbacktrace.la $(am__append_26) \
+xztest_LDADD = libbacktrace.la $(am__append_27) \
 	$(CLOCK_GETTIME_LINK)
 xztest_alloc_SOURCES = $(xztest_SOURCES)
 xztest_alloc_CFLAGS = $(xztest_CFLAGS)
 xztest_alloc_LDADD = libbacktrace_alloc.la \
-	$(am__append_27) $(CLOCK_GETTIME_LINK)
+	$(am__append_28) $(CLOCK_GETTIME_LINK)
 CLEANFILES = \
 	$(TESTS) *.debug elf_for_test.c edtest2_build.c gen_edtest2_build \
 	*.dsyms *.fsyms *.keepsyms *.dbg *.mdbg *.mdbg.xz *.strip
@@ -2455,9 +2459,13 @@ allocfail.sh: allocfail
 #	rm -f $@ $@_common.debug
 #	cp $< $@_1
 #	cp $< $@_2
-#	$(DWZ) -m $@_common.debug $@_1 $@_2
-#	rm -f $@_2
-#	mv $@_1 $@
+#	if $(DWZ) -m $@_common.debug $@_1 $@_2; then \
+#	  rm -f $@_2; \
+#	  mv $@_1 $@; \
+#	else \
+#	  echo "Ignoring dwz errors, assuming that test passes"; \
+#	  cp $< $@; \
+#	fi
 
 edtest2_build.c: gen_edtest2_build; @true
 gen_edtest2_build: $(srcdir)/edtest2.c

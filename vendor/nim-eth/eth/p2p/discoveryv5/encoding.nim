@@ -1,18 +1,27 @@
+# nim-eth - Node Discovery Protocol v5
+# Copyright (c) 2020-2021 Status Research & Development GmbH
+# Licensed and distributed under either of
+#   * MIT license (license terms in the root directory or at https://opensource.org/licenses/MIT).
+#   * Apache v2 license (license terms in the root directory or at https://www.apache.org/licenses/LICENSE-2.0).
+# at your option. This file may not be copied, modified, or distributed except according to those terms.
+#
 ## Discovery v5 packet encoding as specified at
 ## https://github.com/ethereum/devp2p/blob/master/discv5/discv5-wire.md#packet-encoding
 ## And handshake/sessions as specified at
 ## https://github.com/ethereum/devp2p/blob/master/discv5/discv5-theory.md#sessions
 ##
+
+{.push raises: [Defect].}
+
 import
   std/[tables, options, hashes, net],
   nimcrypto, stint, chronicles, bearssl, stew/[results, byteutils],
-  eth/[rlp, keys], messages, node, enr, hkdf, sessions
+  ".."/../[rlp, keys],
+  "."/[messages, node, enr, hkdf, sessions]
 
 from stew/objects import checkedEnumAssign
 
 export keys
-
-{.push raises: [Defect].}
 
 logScope:
   topics = "discv5"
@@ -370,7 +379,7 @@ proc decodeMessage*(body: openarray[byte]): DecodeResult[Message] =
       return err("Invalid request-id")
 
     proc decode[T](rlp: var Rlp, v: var T)
-        {.inline, nimcall, raises:[RlpError, ValueError, Defect].} =
+        {.nimcall, raises:[RlpError, ValueError, Defect].} =
       for k, v in v.fieldPairs:
         v = rlp.read(typeof(v))
 

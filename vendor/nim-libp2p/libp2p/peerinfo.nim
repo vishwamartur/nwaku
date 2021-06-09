@@ -9,11 +9,11 @@
 
 {.push raises: [Defect].}
 
-import options, sequtils, hashes
-import chronos, chronicles
-import peerid, multiaddress, crypto/crypto
+import std/[options, sequtils, hashes]
+import pkg/[chronos, chronicles, stew/results]
+import peerid, multiaddress, crypto/crypto, errors
 
-export peerid, multiaddress, crypto
+export peerid, multiaddress, crypto, errors, results
 
 ## A peer can be constructed in one of tree ways:
 ## 1) A local peer with a private key
@@ -27,6 +27,8 @@ type
   KeyType* = enum
     HasPrivate,
     HasPublic
+
+  PeerInfoError* = LPError
 
   PeerInfo* = ref object of RootObj
     peerId*: PeerID
@@ -59,52 +61,93 @@ template postInit(peerinfo: PeerInfo,
   if len(protocols) > 0:
     peerinfo.protocols = @protocols
 
-proc init*(p: typedesc[PeerInfo],
-           key: PrivateKey,
-           addrs: openarray[MultiAddress] = [],
-           protocols: openarray[string] = []): PeerInfo {.
-           raises: [Defect, ResultError[cstring]].} =
-  result = PeerInfo(keyType: HasPrivate, peerId: PeerID.init(key).tryGet(),
-                    privateKey: key)
-  result.postInit(addrs, protocols)
+proc init*(
+  p: typedesc[PeerInfo],
+  key: PrivateKey,
+  addrs: openarray[MultiAddress] = [],
+  protocols: openarray[string] = [],
+  protoVersion: string = "",
+  agentVersion: string = ""): PeerInfo
+  {.raises: [Defect, PeerInfoError].} =
 
-proc init*(p: typedesc[PeerInfo],
-           peerId: PeerID,
-           addrs: openarray[MultiAddress] = [],
-           protocols: openarray[string] = []): PeerInfo =
-  result = PeerInfo(keyType: HasPublic, peerId: peerId)
-  result.postInit(addrs, protocols)
+  let peerInfo = PeerInfo(
+    keyType: HasPrivate,
+    peerId: PeerID.init(key).tryGet(),
+    privateKey: key,
+    protoVersion: protoVersion,
+    agentVersion: agentVersion)
 
-proc init*(p: typedesc[PeerInfo],
-           peerId: string,
-           addrs: openarray[MultiAddress] = [],
-           protocols: openarray[string] = []): PeerInfo {.
-           raises: [Defect, ResultError[cstring]].} =
-  result = PeerInfo(keyType: HasPublic, peerId: PeerID.init(peerId).tryGet())
-  result.postInit(addrs, protocols)
+  peerInfo.postInit(addrs, protocols)
+  return peerInfo
 
-proc init*(p: typedesc[PeerInfo],
-           key: PublicKey,
-           addrs: openarray[MultiAddress] = [],
-           protocols: openarray[string] = []): PeerInfo {.
-           raises: [Defect, ResultError[cstring]].}=
-  result = PeerInfo(keyType: HasPublic,
-                    peerId: PeerID.init(key).tryGet(),
-                    key: some(key))
+proc init*(
+  p: typedesc[PeerInfo],
+  peerId: PeerID,
+  addrs: openarray[MultiAddress] = [],
+  protocols: openarray[string] = [],
+  protoVersion: string = "",
+  agentVersion: string = ""): PeerInfo =
+  let peerInfo = PeerInfo(
+    keyType: HasPublic,
+    peerId: peerId,
+    protoVersion: protoVersion,
+    agentVersion: agentVersion)
 
-  result.postInit(addrs, protocols)
+  peerInfo.postInit(addrs, protocols)
+  return peerInfo
 
-proc publicKey*(p: PeerInfo): Option[PublicKey] {.
-    raises: [Defect, ResultError[CryptoError]].} =
+proc init*(
+  p: typedesc[PeerInfo],
+  peerId: string,
+  addrs: openarray[MultiAddress] = [],
+  protocols: openarray[string] = [],
+  protoVersion: string = "",
+  agentVersion: string = ""): PeerInfo
+  {.raises: [Defect, PeerInfoError].} =
+
+  let peerInfo = PeerInfo(
+    keyType: HasPublic,
+    peerId: PeerID.init(peerId).tryGet(),
+    protoVersion: protoVersion,
+    agentVersion: agentVersion)
+
+  peerInfo.postInit(addrs, protocols)
+  return peerInfo
+
+proc init*(
+  p: typedesc[PeerInfo],
+  key: PublicKey,
+  addrs: openarray[MultiAddress] = [],
+  protocols: openarray[string] = [],
+  protoVersion: string = "",
+  agentVersion: string = ""): PeerInfo
+  {.raises: [Defect, PeerInfoError].} =
+
+  let peerInfo = PeerInfo(
+    keyType: HasPublic,
+    peerId: PeerID.init(key).tryGet(),
+    key: some(key),
+    protoVersion: protoVersion,
+    agentVersion: agentVersion)
+
+  peerInfo.postInit(addrs, protocols)
+  return peerInfo
+
+proc publicKey*(p: PeerInfo): Option[PublicKey] =
+  var res = none(PublicKey)
   if p.keyType == HasPublic:
     if p.peerId.hasPublicKey():
       var pubKey: PublicKey
       if p.peerId.extractPublicKey(pubKey):
-        result = some(pubKey)
+        res = some(pubKey)
     elif p.key.isSome:
-      result = p.key
+      res = p.key
   else:
-    result = some(p.privateKey.getKey().tryGet())
+    let pkeyRes = p.privateKey.getKey()
+    if pkeyRes.isOk:
+      res = some(pkeyRes.get())
+
+  return res
 
 func hash*(p: PeerInfo): Hash =
   cast[pointer](p).hash

@@ -5,11 +5,20 @@ import chronos
 import chronicles
 import macros
 
-# could not figure how to make it with a simple template
-# sadly nim needs more love for hygenic templates
+type
+  # Base exception type for libp2p
+  LPError* = object of CatchableError
+
+func toException*(e: cstring): ref LPError =
+  (ref LPError)(msg: $e)
+
+func toException*(e: string): ref LPError =
+  (ref LPError)(msg: e)
+
+# TODO: could not figure how to make it with a simple template
+# sadly nim needs more love for hygienic templates
 # so here goes the macro, its based on the proc/template version
 # and uses quote do so it's quite readable
-
 macro checkFutures*[T](futs: seq[Future[T]], exclude: untyped = []): untyped =
   let nexclude = exclude.len
   case nexclude

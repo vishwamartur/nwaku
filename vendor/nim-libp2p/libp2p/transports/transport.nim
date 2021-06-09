@@ -8,6 +8,8 @@
 ## those terms.
 ##
 
+{.push raises: [Defect].}
+
 import sequtils
 import chronos, chronicles
 import ../stream/connection,
@@ -18,14 +20,15 @@ logScope:
   topics = "libp2p transport"
 
 type
-  TransportClosedError* = object of CatchableError
+  TransportError* = object of LPError
+  TransportClosedError* = object of TransportError
 
   Transport* = ref object of RootObj
     ma*: Multiaddress
     multicodec*: MultiCodec
     running*: bool
 
-proc newTransportClosedError*(parent: ref Exception = nil): ref CatchableError =
+proc newTransportClosedError*(parent: ref Exception = nil): ref LPError =
   newException(TransportClosedError,
     "Transport closed, no more connections!", parent)
 
@@ -77,7 +80,8 @@ method handles*(t: Transport, address: MultiAddress): bool {.base, gcsafe.} =
 
   # by default we skip circuit addresses to avoid
   # having to repeat the check in every transport
-  address.protocols.tryGet().filterIt( it == multiCodec("p2p-circuit") ).len == 0
+  if address.protocols.isOk:
+    return address.protocols.get().filterIt( it == multiCodec("p2p-circuit") ).len == 0
 
 method localAddress*(t: Transport): MultiAddress {.base, gcsafe.} =
   ## get the local address of the transport in case started with 0.0.0.0:0

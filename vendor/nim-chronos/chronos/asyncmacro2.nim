@@ -7,7 +7,7 @@
 #    distribution, for details about the copyright.
 #
 
-import std/[macros, strutils]
+import std/[macros]
 
 proc skipUntilStmtList(node: NimNode): NimNode {.compileTime.} =
   # Skips a nest of StmtList's.
@@ -27,7 +27,7 @@ when defined(chronosStrictException):
     var nameIterVar = iteratorNameSym
     {.push stackTrace: off.}
     var identName: proc(udata: pointer) {.gcsafe, raises: [Defect].}
-    identName = proc(udata: pointer) {.raises: [Defect].} =
+    identName = proc(udata: pointer) {.gcsafe, raises: [Defect].} =
       try:
         # If the compiler complains about unlisted exception here, it's usually
         # because you're calling a callback or forward declaration in your code
@@ -64,7 +64,7 @@ else:
     var nameIterVar = iteratorNameSym
     {.push stackTrace: off.}
     var identName: proc(udata: pointer) {.gcsafe, raises: [Defect].}
-    identName = proc(udata: pointer) {.raises: [Defect].} =
+    identName = proc(udata: pointer) {.gcsafe, raises: [Defect].} =
       try:
         # If the compiler complains about unlisted exception here, it's usually
         # because you're calling a callback or forward declaration in your code
@@ -92,7 +92,7 @@ else:
         retFutureSym.fail(exc)
       except Exception as exc:
         # TODO remove Exception handler to turn on strict mode
-        if exc is Defect:
+        if exc of Defect:
           raise (ref Defect)(exc)
 
         futureVarCompletions
@@ -161,7 +161,7 @@ proc processBody(node, retFutureSym: NimNode,
 proc getName(node: NimNode): string {.compileTime.} =
   case node.kind
   of nnkSym:
-    return $node
+    return node.strVal
   of nnkPostfix:
     return node[1].strVal
   of nnkIdent:
@@ -184,8 +184,7 @@ proc isInvalidReturnType(typeName: string): bool =
 
 proc verifyReturnType(typeName: string) {.compileTime.} =
   if typeName.isInvalidReturnType:
-    error("Expected return type of 'Future' got '$1'" %
-          typeName)
+    error("Expected return type of 'Future' got '" & typeName & "'")
 
 macro unsupported(s: static[string]): untyped =
   error s
@@ -253,7 +252,8 @@ proc asyncSingleProc(prc: NimNode): NimNode {.compileTime.} =
     if subtypeIsVoid:
       let resultTemplate = quote do:
         template result: auto {.used.} =
-          {.fatal: "You should not reference the `result` variable inside a void async proc".}
+          {.fatal: "You should not reference the `result` variable inside" &
+                   " a void async proc".}
       procBody = newStmtList(resultTemplate, procBody)
 
     # fix #13899, `defer` should not escape its original scope
@@ -309,7 +309,8 @@ proc asyncSingleProc(prc: NimNode): NimNode {.compileTime.} =
       ))
 
     # If proc has an explicit gcsafe pragma, we add it to iterator as well.
-    if prc.pragma.findChild(it.kind in {nnkSym, nnkIdent} and $it == "gcsafe") != nil:
+    if prc.pragma.findChild(it.kind in {nnkSym, nnkIdent} and
+                            it.strVal == "gcsafe") != nil:
       closureIterator.addPragma(newIdentNode("gcsafe"))
     outerProcBody.add(closureIterator)
 
@@ -335,7 +336,10 @@ proc asyncSingleProc(prc: NimNode): NimNode {.compileTime.} =
     # Add discardable pragma.
     if returnType.kind == nnkEmpty:
       # Add Future[void]
-      result.params[0] = parseExpr("Future[void]")
+      result.params[0] =
+        newNimNode(nnkBracketExpr, prc)
+        .add(newIdentNode("Future"))
+        .add(newIdentNode("void"))
   if procBody.kind != nnkEmpty:
     result.body = outerProcBody
   #echo(treeRepr(result))

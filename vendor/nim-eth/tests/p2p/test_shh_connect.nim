@@ -7,9 +7,13 @@
 #  Apache License, version 2.0, (LICENSE-APACHEv2)
 #            MIT license (LICENSE-MIT)
 
+{.used.}
+
 import
-  sequtils, options, tables, chronos, testutils/unittests, bearssl,
-  eth/[keys, p2p], eth/p2p/rlpx_protocols/whisper_protocol, eth/p2p/peer_pool,
+  std/[sequtils, options, tables],
+  chronos, testutils/unittests, bearssl,
+  ../../eth/[keys, p2p], ../../eth/p2p/peer_pool,
+  ../../eth/p2p/rlpx_protocols/whisper_protocol,
   ./p2p_test_helper
 
 proc resetMessageQueues(nodes: varargs[EthereumNode]) =

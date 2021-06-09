@@ -1,16 +1,23 @@
 #
 #                     Chronos
 #
-#           (c) Copyright 2015 Dominik Picheta
-#  (c) Copyright 2018-Present Status Research & Development GmbH
+#  (c) Copyright 2015 Dominik Picheta
+#  (c) Copyright 2018-2021 Status Research & Development GmbH
 #
 #                Licensed under either of
 #    Apache License, version 2.0, (LICENSE-APACHEv2)
 #                MIT license (LICENSE-MIT)
 
-import std/[os, tables, strutils, heapqueue, options, deques, cstrutils, sequtils]
+import std/[os, tables, strutils, heapqueue, options, deques, sequtils]
 import ./srcloc
 export srcloc
+
+when defined(nimHasStacktracesModule):
+  import system/stacktraces
+else:
+  const
+    reraisedFromBegin = -10
+    reraisedFromEnd = -100
 
 const
   LocCreateIndex* = 0
@@ -390,55 +397,78 @@ proc `cancelCallback=`*[T](future: Future[T], cb: CallbackFunc) =
   ## This callback will be called immediately as ``future.cancel()`` invoked.
   future.cancelcb = cb
 
+template getFilenameProcname(entry: StackTraceEntry): (string, string) =
+  when compiles(entry.filenameStr) and compiles(entry.procnameStr):
+    # We can't rely on "entry.filename" and "entry.procname" still being valid
+    # cstring pointers, because the "string.data" buffers they pointed to might
+    # be already garbage collected (this entry being a non-shallow copy,
+    # "entry.filename" no longer points to "entry.filenameStr.data", but to the
+    # buffer of the original object).
+    (entry.filenameStr, entry.procnameStr)
+  else:
+    ($entry.filename, $entry.procname)
+
 proc getHint(entry: StackTraceEntry): string =
   ## We try to provide some hints about stack trace entries that the user
   ## may not be familiar with, in particular calls inside the stdlib.
-  result = ""
-  if entry.procname == "processPendingCallbacks":
-    if cmpIgnoreStyle(entry.filename, "asyncdispatch.nim") == 0:
+
+  let (filename, procname) = getFilenameProcname(entry)
+
+  if procname == "processPendingCallbacks":
+    if cmpIgnoreStyle(filename, "asyncdispatch.nim") == 0:
       return "Executes pending callbacks"
-  elif entry.procname == "poll":
-    if cmpIgnoreStyle(entry.filename, "asyncdispatch.nim") == 0:
+  elif procname == "poll":
+    if cmpIgnoreStyle(filename, "asyncdispatch.nim") == 0:
       return "Processes asynchronous completion events"
 
-  if entry.procname.endsWith("_continue"):
-    if cmpIgnoreStyle(entry.filename, "asyncmacro.nim") == 0:
+  if procname.endsWith("_continue"):
+    if cmpIgnoreStyle(filename, "asyncmacro.nim") == 0:
       return "Resumes an async procedure"
 
-proc `$`*(entries: seq[StackTraceEntry]): string =
+proc `$`(stackTraceEntries: seq[StackTraceEntry]): string =
   try:
+    when defined(nimStackTraceOverride) and declared(addDebuggingInfo):
+      let entries = addDebuggingInfo(stackTraceEntries)
+    else:
+      let entries = stackTraceEntries
+
     # Find longest filename & line number combo for alignment purposes.
     var longestLeft = 0
     for entry in entries:
-      if isNil(entry.procName): continue
+      let (filename, procname) = getFilenameProcname(entry)
 
-      let left = $entry.filename & $entry.line
-      if left.len > longestLeft:
-        longestLeft = left.len
+      if procname == "": continue
+
+      let leftLen = filename.len + len($entry.line)
+      if leftLen > longestLeft:
+        longestLeft = leftLen
 
     var indent = 2
     # Format the entries.
     for entry in entries:
-      if isNil(entry.procName):
-        if entry.line == -10:
+      let (filename, procname) = getFilenameProcname(entry)
+
+      if procname == "":
+        if entry.line == reraisedFromBegin:
           result.add(spaces(indent) & "#[\n")
           indent.inc(2)
-        else:
+        elif entry.line == reraisedFromEnd:
           indent.dec(2)
           result.add(spaces(indent) & "]#\n")
         continue
 
-      let left = "$#($#)" % [$entry.filename, $entry.line]
+      let left = "$#($#)" % [filename, $entry.line]
       result.add((spaces(indent) & "$#$# $#\n") % [
         left,
         spaces(longestLeft - left.len + 2),
-        $entry.procName
+        procname
       ])
       let hint = getHint(entry)
       if hint.len > 0:
         result.add(spaces(indent+2) & "## " & hint & "\n")
   except ValueError as exc:
-    return exc.msg # Shouldn't actually happen since we set the formatting string
+    return exc.msg # Shouldn't actually happen since we set the formatting
+                   # string
 
 when defined(chronosStackTrace):
   proc injectStacktrace(future: FutureBase) =
@@ -457,14 +487,15 @@ when defined(chronosStackTrace):
     newMsg.add($entries)
 
     newMsg.add("Exception message: " & exceptionMsg & "\n")
-    newMsg.add("Exception type:")
 
     # # For debugging purposes
+    # newMsg.add("Exception type:")
     # for entry in getStackTraceEntries(future.error):
     #   newMsg.add "\n" & $entry
     future.error.msg = newMsg
 
-proc internalCheckComplete*(fut: FutureBase) {.raises: [Defect, CatchableError].} =
+proc internalCheckComplete*(fut: FutureBase) {.
+     raises: [Defect, CatchableError].} =
   # For internal use only. Used in asyncmacro
   if not(isNil(fut.error)):
     when defined(chronosStackTrace):
@@ -476,7 +507,8 @@ proc internalRead*[T](fut: Future[T] | FutureVar[T]): T {.inline.} =
   when T isnot void:
     return fut.value
 
-proc read*[T](future: Future[T] | FutureVar[T]): T {.raises: [Defect, CatchableError].} =
+proc read*[T](future: Future[T] | FutureVar[T]): T {.
+     raises: [Defect, CatchableError].} =
   ## Retrieves the value of ``future``. Future must be finished otherwise
   ## this function will fail with a ``ValueError`` exception.
   ##
@@ -488,7 +520,8 @@ proc read*[T](future: Future[T] | FutureVar[T]): T {.raises: [Defect, CatchableE
     # TODO: Make a custom exception type for this?
     raise newException(ValueError, "Future still in progress.")
 
-proc readError*[T](future: Future[T]): ref CatchableError {.raises: [Defect, ValueError].} =
+proc readError*[T](future: Future[T]): ref CatchableError {.
+     raises: [Defect, ValueError].} =
   ## Retrieves the exception stored in ``future``.
   ##
   ## An ``ValueError`` exception will be thrown if no exception exists
@@ -514,8 +547,9 @@ template taskFutureLocation(future: FutureBase): string =
 
 template taskErrorMessage(future: FutureBase): string =
   "Asynchronous task " & taskFutureLocation(future) &
-  " finished with an exception \"" & $future.error.name & "\"!\nStack trace: " &
-  future.error.getStackTrace()
+  " finished with an exception \"" & $future.error.name &
+  "\"!\nMessage: " & future.error.msg &
+  "\nStack trace: " & future.error.getStackTrace()
 template taskCancelMessage(future: FutureBase): string =
   "Asynchronous task " & taskFutureLocation(future) & " was cancelled!"
 
@@ -546,7 +580,8 @@ proc asyncSpawn*(future: Future[void]) =
     cb(nil)
 
 proc asyncCheck*[T](future: Future[T]) {.
-    deprecated: "Raises Defect on future failure, fix your code and use asyncSpawn!".} =
+    deprecated: "Raises Defect on future failure, fix your code and use" &
+                " asyncSpawn!".} =
   ## This function used to raise an exception through the `poll` call if
   ## the given future failed - there's no way to handle such exceptions so this
   ## function is now an alias for `asyncSpawn`
@@ -621,7 +656,7 @@ proc `or`*[T, Y](fut1: Future[T], fut2: Future[Y]): Future[void] =
   ## If cancelled, ``fut1`` and ``fut2`` futures WILL NOT BE cancelled.
   var retFuture = newFuture[void]("chronos.or")
   var cb: proc(udata: pointer) {.gcsafe, raises: [Defect].}
-  cb = proc(udata: pointer) =
+  cb = proc(udata: pointer) {.gcsafe, raises: [Defect].} =
     if not(retFuture.finished()):
       var fut = cast[FutureBase](udata)
       if cast[pointer](fut1) == udata:
@@ -912,7 +947,7 @@ proc one*[T](futs: varargs[Future[T]]): Future[Future[T]] =
   var nfuts = @futs
 
   var cb: proc(udata: pointer) {.gcsafe, raises: [Defect].}
-  cb = proc(udata: pointer) =
+  cb = proc(udata: pointer) {.gcsafe, raises: [Defect].} =
     if not(retFuture.finished()):
       var res: Future[T]
       var rfut = cast[FutureBase](udata)
@@ -959,7 +994,7 @@ proc race*(futs: varargs[FutureBase]): Future[FutureBase] =
   var nfuts = @futs
 
   var cb: proc(udata: pointer) {.gcsafe, raises: [Defect].}
-  cb = proc(udata: pointer) =
+  cb = proc(udata: pointer) {.gcsafe, raises: [Defect].} =
     if not(retFuture.finished()):
       var res: FutureBase
       var rfut = cast[FutureBase](udata)

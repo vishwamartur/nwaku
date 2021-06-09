@@ -1,7 +1,9 @@
 import
-  tables, sets,
-  chronicles, chronos, eth/rlp, eth/common/eth_types,
-  ../../rlpx, ../../private/p2p_types, private/les_types
+  std/[tables, sets],
+  chronicles, chronos,
+  ../../../rlp, ../../..//common/eth_types,
+  ../../rlpx, ../../private/p2p_types,
+  ./private/les_types
 
 const
   maxSamples = 100000
@@ -314,7 +316,7 @@ proc acceptRequest*(network: LesNetwork, peer: LesPeer,
   network.updateFlowControl t
 
   while not network.canServeRequest:
-    await sleepAsync(10)
+    await sleepAsync(chronos.milliseconds(10))
 
   if peer notin network.peers:
     # The peer was disconnected or the network

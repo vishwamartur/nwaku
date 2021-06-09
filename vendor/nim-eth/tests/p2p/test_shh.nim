@@ -7,9 +7,13 @@
 #  Apache License, version 2.0, (LICENSE-APACHEv2)
 #            MIT license (LICENSE-MIT)
 
+{.used.}
+
 import
-  sequtils, options, unittest, tables, nimcrypto/hash,
-  eth/[keys, rlp], eth/p2p/rlpx_protocols/whisper/whisper_types as whisper
+  std/[sequtils, options, unittest, tables],
+  nimcrypto/hash,
+  ../../eth/[keys, rlp],
+  ../../eth/p2p/rlpx_protocols/whisper/whisper_types as whisper
 
 let rng = newRng()
 

@@ -1,7 +1,9 @@
+{.used.}
+
 import
   std/unittest,
   nimcrypto, stew/byteutils,
-  eth/p2p/discoveryv5/hkdf
+  ../../eth/p2p/discoveryv5/hkdf
 
 proc hextToBytes(s: string): seq[byte] =
   if s.len != 0: return hexToSeqByte(s)
