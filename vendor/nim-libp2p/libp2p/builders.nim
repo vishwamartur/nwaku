@@ -10,14 +10,16 @@
 {.push raises: [Defect].}
 
 import
-  options, tables, chronos, bearssl,
+  options, tables, chronos, chronicles, bearssl,
   switch, peerid, peerinfo, stream/connection, multiaddress,
   crypto/crypto, transports/[transport, tcptransport],
   muxers/[muxer, mplex/mplex],
-  protocols/[identify, secure/secure, secure/noise]
+  protocols/[identify, secure/secure, secure/noise],
+  connmanager, upgrademngrs/muxedupgrade,
+  errors
 
 export
-  switch, peerid, peerinfo, connection, multiaddress, crypto
+  switch, peerid, peerinfo, connection, multiaddress, crypto, errors
 
 type
   SecureProtocol* {.pure.} = enum
@@ -136,7 +138,7 @@ proc build*(b: SwitchBuilder): Switch
   var
     secureManagerInstances: seq[Secure]
   if SecureProtocol.Noise in b.secureManagers:
-    secureManagerInstances.add(newNoise(b.rng, seckey).Secure)
+    secureManagerInstances.add(Noise.new(b.rng, seckey).Secure)
 
   let
     peerInfo = PeerInfo.init(
@@ -149,17 +151,20 @@ proc build*(b: SwitchBuilder): Switch
     muxers = block:
       var muxers: Table[string, MuxerProvider]
       if b.mplexOpts.enable:
-        muxers.add(MplexCodec, newMuxerProvider(b.mplexOpts.newMuxer, MplexCodec))
+        muxers[MplexCodec] = MuxerProvider.new(b.mplexOpts.newMuxer, MplexCodec)
       muxers
 
   let
-    identify = newIdentify(peerInfo)
+    identify = Identify.new(peerInfo)
+    connManager = ConnManager.init(b.maxConnsPerPeer, b.maxConnections, b.maxIn, b.maxOut)
+    ms = MultistreamSelect.new()
+    muxedUpgrade = MuxedUpgrade.init(identify, muxers, secureManagerInstances, connManager, ms)
 
   let
     transports = block:
       var transports: seq[Transport]
       if b.tcpTransportOpts.enable:
-        transports.add(Transport(TcpTransport.init(b.tcpTransportOpts.flags)))
+        transports.add(Transport(TcpTransport.init(b.tcpTransportOpts.flags, muxedUpgrade)))
       transports
 
   if b.secureManagers.len == 0:
@@ -174,10 +179,8 @@ proc build*(b: SwitchBuilder): Switch
     identity = identify,
     muxers = muxers,
     secureManagers = secureManagerInstances,
-    maxConnections = b.maxConnections,
-    maxIn = b.maxIn,
-    maxOut = b.maxOut,
-    maxConnsPerPeer = b.maxConnsPerPeer)
+    connManager = connManager,
+    ms = ms)
 
   return switch
 

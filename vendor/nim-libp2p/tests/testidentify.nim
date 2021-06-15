@@ -8,7 +8,8 @@ import ../libp2p/[protocols/identify,
                   multistream,
                   transports/transport,
                   transports/tcptransport,
-                  crypto/crypto]
+                  crypto/crypto,
+                  upgrademngrs/upgrade]
 import ./helpers
 
 when defined(nimHasUsed): {.used.}
@@ -38,14 +39,14 @@ suite "Identify":
       remotePeerInfo = PeerInfo.init(
         remoteSecKey, [ma], ["/test/proto1/1.0.0", "/test/proto2/1.0.0"])
 
-      transport1 = TcpTransport.init()
-      transport2 = TcpTransport.init()
+      transport1 = TcpTransport.init(upgrade = Upgrade())
+      transport2 = TcpTransport.init(upgrade = Upgrade())
 
-      identifyProto1 = newIdentify(remotePeerInfo)
-      identifyProto2 = newIdentify(remotePeerInfo)
+      identifyProto1 = Identify.new(remotePeerInfo)
+      identifyProto2 = Identify.new(remotePeerInfo)
 
-      msListen = newMultistream()
-      msDial = newMultistream()
+      msListen = MultistreamSelect.new()
+      msDial = MultistreamSelect.new()
 
     asyncTeardown:
       await conn.close()

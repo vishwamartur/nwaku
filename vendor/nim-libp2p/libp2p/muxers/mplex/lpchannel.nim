@@ -10,10 +10,9 @@
 {.push raises: [Defect].}
 
 import std/[oids, strformat]
-import chronos, chronicles, metrics
+import pkg/[chronos, chronicles, metrics, nimcrypto/utils]
 import ./coder,
        ../muxer,
-       nimcrypto/utils,
        ../../stream/[bufferstream, connection, streamseq],
        ../../peerinfo
 
@@ -140,7 +139,7 @@ method close*(s: LPChannel) {.async, gcsafe.} =
 
 method initStream*(s: LPChannel) =
   if s.objName.len == 0:
-    s.objName = "LPChannel"
+    s.objName = LPChannelTrackerName
 
   s.timeoutHandler = proc(): Future[void] {.gcsafe.} =
     trace "Idle timeout expired, resetting LPChannel", s

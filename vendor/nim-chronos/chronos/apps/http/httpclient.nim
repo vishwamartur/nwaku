@@ -32,6 +32,7 @@ const
 type
   HttpClientConnectionState* {.pure.} = enum
     Closed                    ## Connection has been closed
+    Closing,                  ## Connection is closing
     Resolving,                ## Resolving remote hostname
     Connecting,               ## Connecting to remote server
     Ready,                    ## Connected to remote server
@@ -51,6 +52,7 @@ type
 
   HttpClientRequestState* {.pure.} = enum
     Closed,                   ## Request has been closed
+    Closing,                  ## Connection is closing
     Created,                  ## Request created
     Connecting,               ## Connecting to remote host
     HeadersSending,           ## Sending request headers
@@ -62,6 +64,7 @@ type
 
   HttpClientResponseState* {.pure.} = enum
     Closed,                   ## Response has been closed
+    Closing,                  ## Response is closing
     HeadersReceived,          ## Response headers received
     BodyReceiving,            ## Response body receiving
     BodyReceived,             ## Response body received
@@ -528,8 +531,18 @@ proc setError(response: HttpClientResponseRef, error: ref HttpError) {.
 
 proc closeWait(conn: HttpClientConnectionRef) {.async.} =
   ## Close HttpClientConnectionRef instance ``conn`` and free all the resources.
-  if conn.state != HttpClientConnectionState.Closed:
-    await allFutures(conn.reader.closeWait(), conn.writer.closeWait())
+  if conn.state notin {HttpClientConnectionState.Closing,
+                       HttpClientConnectionState.Closed}:
+    conn.state = HttpClientConnectionState.Closing
+    let pending =
+      block:
+        var res: seq[Future[void]]
+        if not(isNil(conn.reader)) and not(conn.reader.closed()):
+          res.add(conn.reader.closeWait())
+        if not(isNil(conn.writer)) and not(conn.writer.closed()):
+          res.add(conn.writer.closeWait())
+        res
+    if len(pending) > 0: await allFutures(pending)
     case conn.kind
     of HttpClientScheme.Secure:
       await allFutures(conn.treader.closeWait(), conn.twriter.closeWait())
@@ -568,6 +581,7 @@ proc connect(session: HttpSessionRef,
               raise exc
             except AsyncStreamError:
               await res.closeWait()
+              res.state = HttpClientConnectionState.Error
           of HttpClientScheme.Nonsecure:
             res.state = HttpClientConnectionState.Ready
           res
@@ -632,7 +646,9 @@ proc closeWait*(session: HttpSessionRef) {.async.} =
   await allFutures(pending)
 
 proc closeWait*(request: HttpClientRequestRef) {.async.} =
-  if request.state != HttpClientRequestState.Closed:
+  if request.state notin {HttpClientRequestState.Closing,
+                          HttpClientRequestState.Closed}:
+    request.setState(HttpClientRequestState.Closing)
     if not(isNil(request.writer)):
       if not(request.writer.closed()):
         await request.writer.closeWait()
@@ -647,7 +663,9 @@ proc closeWait*(request: HttpClientRequestRef) {.async.} =
     untrackHttpClientRequest(request)
 
 proc closeWait*(response: HttpClientResponseRef) {.async.} =
-  if response.state != HttpClientResponseState.Closed:
+  if response.state notin {HttpClientResponseState.Closing,
+                           HttpClientResponseState.Closed}:
+    response.setState(HttpClientResponseState.Closing)
     if not(isNil(response.reader)):
       if not(response.reader.closed()):
         await response.reader.closeWait()
@@ -1200,18 +1218,18 @@ proc fetch*(session: HttpSessionRef, url: Uri): Future[HttpResponseTuple] {.
                 raiseHttpRedirectError("Location header with an empty value")
             else:
               raiseHttpRedirectError("Location header missing")
+        discard await response.consumeBody()
         await request.closeWait()
         request = nil
-        discard await response.consumeBody()
         await response.closeWait()
         response = nil
         request = redirect
         redirect = nil
       else:
-        await request.closeWait()
-        request = nil
         let data = await response.getBodyBytes()
         let code = response.status
+        await request.closeWait()
+        request = nil
         await response.closeWait()
         response = nil
         return (code, data)

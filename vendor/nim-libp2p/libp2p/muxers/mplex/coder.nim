@@ -9,8 +9,7 @@
 
 {.push raises: [Defect].}
 
-import chronos
-import nimcrypto/utils, chronicles, stew/byteutils
+import pkg/[chronos, nimcrypto/utils, chronicles, stew/byteutils]
 import ../../stream/connection,
        ../../utility,
        ../../varint,

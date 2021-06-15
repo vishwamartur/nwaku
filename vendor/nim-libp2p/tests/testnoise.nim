@@ -29,7 +29,9 @@ import ../libp2p/[switch,
                   muxers/mplex/mplex,
                   protocols/secure/noise,
                   protocols/secure/secio,
-                  protocols/secure/secure]
+                  protocols/secure/secure,
+                  upgrademngrs/muxedupgrade,
+                  connmanager]
 import ./helpers
 
 const
@@ -51,23 +53,31 @@ method init(p: TestProto) {.gcsafe.} =
 proc createSwitch(ma: MultiAddress; outgoing: bool, secio: bool = false): (Switch, PeerInfo) =
   var peerInfo: PeerInfo = PeerInfo.init(PrivateKey.random(ECDSA, rng[]).get())
   peerInfo.addrs.add(ma)
-  let identify = newIdentify(peerInfo)
 
   proc createMplex(conn: Connection): Muxer =
     result = Mplex.init(conn)
 
-  let mplexProvider = newMuxerProvider(createMplex, MplexCodec)
-  let transports = @[Transport(TcpTransport.init())]
-  let muxers = [(MplexCodec, mplexProvider)].toTable()
-  let secureManagers = if secio:
-      [Secure(newSecio(rng, peerInfo.privateKey))]
+  let
+    identify = Identify.new(peerInfo)
+    mplexProvider = MuxerProvider.new(createMplex, MplexCodec)
+    muxers = [(MplexCodec, mplexProvider)].toTable()
+    secureManagers = if secio:
+      [Secure(Secio.new(rng, peerInfo.privateKey))]
     else:
-      [Secure(newNoise(rng, peerInfo.privateKey, outgoing = outgoing))]
-  let switch = newSwitch(peerInfo,
-                         transports,
-                         identify,
-                         muxers,
-                         secureManagers)
+      [Secure(Noise.new(rng, peerInfo.privateKey, outgoing = outgoing))]
+    connManager = ConnManager.init()
+    ms = MultistreamSelect.new()
+    muxedUpgrade = MuxedUpgrade.init(identify, muxers, secureManagers, connManager, ms)
+    transports = @[Transport(TcpTransport.init(upgrade = muxedUpgrade))]
+
+  let switch = newSwitch(
+      peerInfo,
+      transports,
+      identify,
+      muxers,
+      secureManagers,
+      connManager,
+      ms)
   result = (switch, peerInfo)
 
 suite "Noise":
@@ -78,9 +88,9 @@ suite "Noise":
     let
       server = Multiaddress.init("/ip4/0.0.0.0/tcp/0").tryGet()
       serverInfo = PeerInfo.init(PrivateKey.random(ECDSA, rng[]).get(), [server])
-      serverNoise = newNoise(rng, serverInfo.privateKey, outgoing = false)
+      serverNoise = Noise.new(rng, serverInfo.privateKey, outgoing = false)
 
-    let transport1: TcpTransport = TcpTransport.init()
+    let transport1: TcpTransport = TcpTransport.init(upgrade = Upgrade())
     asyncCheck transport1.start(server)
 
     proc acceptHandler() {.async.} =
@@ -94,9 +104,9 @@ suite "Noise":
 
     let
       acceptFut = acceptHandler()
-      transport2: TcpTransport = TcpTransport.init()
+      transport2: TcpTransport = TcpTransport.init(upgrade = Upgrade())
       clientInfo = PeerInfo.init(PrivateKey.random(ECDSA, rng[]).get(), [transport1.ma])
-      clientNoise = newNoise(rng, clientInfo.privateKey, outgoing = true)
+      clientNoise = Noise.new(rng, clientInfo.privateKey, outgoing = true)
       conn = await transport2.dial(transport1.ma)
       sconn = await clientNoise.secure(conn, true)
 
@@ -115,10 +125,10 @@ suite "Noise":
     let
       server = Multiaddress.init("/ip4/0.0.0.0/tcp/0").tryGet()
       serverInfo = PeerInfo.init(PrivateKey.random(ECDSA, rng[]).get(), [server])
-      serverNoise = newNoise(rng, serverInfo.privateKey, outgoing = false)
+      serverNoise = Noise.new(rng, serverInfo.privateKey, outgoing = false)
 
     let
-      transport1: TcpTransport = TcpTransport.init()
+      transport1: TcpTransport = TcpTransport.init(upgrade = Upgrade())
 
     asyncCheck transport1.start(server)
 
@@ -134,9 +144,9 @@ suite "Noise":
 
     let
       handlerWait = acceptHandler()
-      transport2: TcpTransport = TcpTransport.init()
+      transport2: TcpTransport = TcpTransport.init(upgrade = Upgrade())
       clientInfo = PeerInfo.init(PrivateKey.random(ECDSA, rng[]).get(), [transport1.ma])
-      clientNoise = newNoise(rng, clientInfo.privateKey, outgoing = true, commonPrologue = @[1'u8, 2'u8, 3'u8])
+      clientNoise = Noise.new(rng, clientInfo.privateKey, outgoing = true, commonPrologue = @[1'u8, 2'u8, 3'u8])
       conn = await transport2.dial(transport1.ma)
     var sconn: Connection = nil
     expect(NoiseDecryptTagError):
@@ -151,10 +161,10 @@ suite "Noise":
     let
       server = Multiaddress.init("/ip4/0.0.0.0/tcp/0").tryGet()
       serverInfo = PeerInfo.init(PrivateKey.random(ECDSA, rng[]).get(), [server])
-      serverNoise = newNoise(rng, serverInfo.privateKey, outgoing = false)
+      serverNoise = Noise.new(rng, serverInfo.privateKey, outgoing = false)
       readTask = newFuture[void]()
 
-    let transport1: TcpTransport = TcpTransport.init()
+    let transport1: TcpTransport = TcpTransport.init(upgrade = Upgrade())
     asyncCheck transport1.start(server)
 
     proc acceptHandler() {.async, gcsafe.} =
@@ -170,9 +180,9 @@ suite "Noise":
 
     let
       acceptFut = acceptHandler()
-      transport2: TcpTransport = TcpTransport.init()
+      transport2: TcpTransport = TcpTransport.init(upgrade = Upgrade())
       clientInfo = PeerInfo.init(PrivateKey.random(ECDSA, rng[]).get(), [transport1.ma])
-      clientNoise = newNoise(rng, clientInfo.privateKey, outgoing = true)
+      clientNoise = Noise.new(rng, clientInfo.privateKey, outgoing = true)
       conn = await transport2.dial(transport1.ma)
       sconn = await clientNoise.secure(conn, true)
 
@@ -187,7 +197,7 @@ suite "Noise":
     let
       server = Multiaddress.init("/ip4/0.0.0.0/tcp/0").tryGet()
       serverInfo = PeerInfo.init(PrivateKey.random(ECDSA, rng[]).get(), [server])
-      serverNoise = newNoise(rng, serverInfo.privateKey, outgoing = false)
+      serverNoise = Noise.new(rng, serverInfo.privateKey, outgoing = false)
       readTask = newFuture[void]()
 
     var hugePayload = newSeq[byte](0xFFFFF)
@@ -195,7 +205,7 @@ suite "Noise":
     trace "Sending huge payload", size = hugePayload.len
 
     let
-      transport1: TcpTransport = TcpTransport.init()
+      transport1: TcpTransport = TcpTransport.init(upgrade = Upgrade())
       listenFut = transport1.start(server)
 
     proc acceptHandler() {.async, gcsafe.} =
@@ -209,9 +219,9 @@ suite "Noise":
 
     let
       acceptFut = acceptHandler()
-      transport2: TcpTransport = TcpTransport.init()
+      transport2: TcpTransport = TcpTransport.init(upgrade = Upgrade())
       clientInfo = PeerInfo.init(PrivateKey.random(ECDSA, rng[]).get(), [transport1.ma])
-      clientNoise = newNoise(rng, clientInfo.privateKey, outgoing = true)
+      clientNoise = Noise.new(rng, clientInfo.privateKey, outgoing = true)
       conn = await transport2.dial(transport1.ma)
       sconn = await clientNoise.secure(conn, true)
 
@@ -278,89 +288,3 @@ suite "Noise":
       switch2.stop())
 
     await allFuturesThrowing(awaiters)
-
-  # test "interop with rust noise":
-  #   when true: # disable cos in CI we got no interop server/client
-  #     proc testListenerDialer(): Future[bool] {.async.} =
-  #       const
-  #         proto = "/noise/xx/25519/chachapoly/sha256/0.1.0"
-
-  #       let
-  #         local = Multiaddress.init("/ip4/0.0.0.0/tcp/23456")
-  #         info = PeerInfo.init(PrivateKey.random(ECDSA), [local])
-  #         noise = newNoise(info.privateKey)
-  #         ms = newMultistream()
-  #         transport = TcpTransport.newTransport()
-
-  #       proc connHandler(conn: Connection) {.async, gcsafe.} =
-  #         try:
-  #           await ms.handle(conn)
-  #           trace "ms.handle exited"
-  #         except:
-  #           error getCurrentExceptionMsg()
-  #         finally:
-  #           await conn.close()
-
-  #       ms.addHandler(proto, noise)
-
-  #       let
-  #         clientConn = await transport.listen(local, connHandler)
-  #       await clientConn
-
-  #       result = true
-
-  #     check:
-  #       waitFor(testListenerDialer()) == true
-
-  # test "interop with rust noise":
-  #   when true: # disable cos in CI we got no interop server/client
-  #     proc testListenerDialer(): Future[bool] {.async.} =
-  #       const
-  #         proto = "/noise/xx/25519/chachapoly/sha256/0.1.0"
-
-  #       let
-  #         local = Multiaddress.init("/ip4/0.0.0.0/tcp/0")
-  #         remote = Multiaddress.init("/ip4/127.0.0.1/tcp/23456")
-  #         info = PeerInfo.init(PrivateKey.random(ECDSA), [local])
-  #         noise = newNoise(info.privateKey)
-  #         ms = newMultistream()
-  #         transport = TcpTransport.newTransport()
-  #         conn = await transport.dial(remote)
-
-  #       check ms.select(conn, @[proto]).await == proto
-
-  #       let
-  #         sconn = await noise.secure(conn, true)
-
-  #       # use sconn
-
-  #       result = true
-
-  #     check:
-  #       waitFor(testListenerDialer()) == true
-
-  # test "interop with go noise":
-  #   when true: # disable cos in CI we got no interop server/client
-  #     proc testListenerDialer(): Future[bool] {.async.} =
-  #       let
-  #         local = Multiaddress.init("/ip4/0.0.0.0/tcp/23456")
-  #         info = PeerInfo.init(PrivateKey.random(ECDSA), [local])
-  #         noise = newNoise(info.privateKey)
-  #         ms = newMultistream()
-  #         transport = TcpTransport.newTransport()
-
-  #       proc connHandler(conn: Connection) {.async, gcsafe.} =
-  #         try:
-  #           let seconn = await noise.secure(conn, false)
-  #           trace "ms.handle exited"
-  #         finally:
-  #           await conn.close()
-
-  #       let
-  #         clientConn = await transport.listen(local, connHandler)
-  #       await clientConn
-
-  #       result = true
-
-  #     check:
-  #       waitFor(testListenerDialer()) == true

@@ -13,9 +13,10 @@ import std/[hashes, oids, strformat]
 import chronicles, chronos, metrics
 import lpstream,
        ../multiaddress,
-       ../peerinfo
+       ../peerinfo,
+       ../errors
 
-export lpstream, peerinfo
+export lpstream, peerinfo, errors
 
 logScope:
   topics = "libp2p connection"
@@ -67,7 +68,7 @@ chronicles.formatIt(Connection): shortLog(it)
 
 method initStream*(s: Connection) =
   if s.objName.len == 0:
-    s.objName = "Connection"
+    s.objName = ConnectionTrackerName
 
   procCall LPStream(s).initStream()
 

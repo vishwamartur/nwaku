@@ -132,15 +132,19 @@ type
     bootstrapRecords*: seq[Record]
     ipVote: IpVote
     enrAutoUpdate: bool
-    talkProtocols: Table[seq[byte], TalkProtocolHandler]
+    talkProtocols*: Table[seq[byte], TalkProtocol] # TODO: Table is a bit of
+    # overkill here, use sequence
     rng*: ref BrHmacDrbgContext
 
   PendingRequest = object
     node: Node
     message: seq[byte]
 
-  TalkProtocolHandler* = proc(request: seq[byte]): seq[byte]
+  TalkProtocolHandler* = proc(p: TalkProtocol, request: seq[byte]): seq[byte]
     {.gcsafe, raises: [Defect].}
+
+  TalkProtocol* = ref object of RootObj
+    protocolHandler*: TalkProtocolHandler
 
   DiscResult*[T] = Result[T, cstring]
 
@@ -299,15 +303,16 @@ proc handleFindNode(d: Protocol, fromId: NodeId, fromAddr: Address,
 
 proc handleTalkReq(d: Protocol, fromId: NodeId, fromAddr: Address,
     talkreq: TalkReqMessage, reqId: RequestId) =
-  let protocolHandler = d.talkProtocols.getOrDefault(talkreq.protocol)
+  let talkProtocol = d.talkProtocols.getOrDefault(talkreq.protocol)
 
   let talkresp =
-    if protocolHandler.isNil():
+    if talkProtocol.isNil() or talkProtocol.protocolHandler.isNil():
       # Protocol identifier that is not registered and thus not supported. An
       # empty response is send as per specification.
       TalkRespMessage(response: @[])
     else:
-      TalkRespMessage(response: protocolHandler(talkreq.request))
+      TalkRespMessage(response: talkProtocol.protocolHandler(talkProtocol,
+        talkreq.request))
   let (data, _) = encodeMessagePacket(d.rng[], d.codec, fromId, fromAddr,
     encodeMessage(talkresp, reqId))
 
@@ -341,10 +346,10 @@ proc handleMessage(d: Protocol, srcId: NodeId, fromAddr: Address,
       trace "Timed out or unrequested message", kind = message.kind,
         origin = fromAddr
 
-proc registerTalkProtocol*(d: Protocol, protocol: seq[byte],
-    handler: TalkProtocolHandler): DiscResult[void] =
+proc registerTalkProtocol*(d: Protocol, protocolId: seq[byte],
+    protocol: TalkProtocol): DiscResult[void] =
   # Currently allow only for one handler per talk protocol.
-  if d.talkProtocols.hasKeyOrPut(protocol, handler):
+  if d.talkProtocols.hasKeyOrPut(protocolId, protocol):
     err("Protocol identifier already registered")
   else:
     ok()
@@ -546,18 +551,23 @@ proc waitNodes(d: Protocol, fromNode: Node, reqId: RequestId):
   ## If one reply is lost here (timed out), others are ignored too.
   ## Same counts for out of order receival.
   var op = await d.waitMessage(fromNode, reqId)
-  if op.isSome and op.get.kind == nodes:
-    var res = op.get.nodes.enrs
-    let total = op.get.nodes.total
-    for i in 1 ..< total:
-      op = await d.waitMessage(fromNode, reqId)
-      if op.isSome and op.get.kind == nodes:
-        res.add(op.get.nodes.enrs)
-      else:
-        # No error on this as we received some nodes.
-        break
-    return ok(res)
+  if op.isSome:
+    if op.get.kind == nodes:
+      var res = op.get.nodes.enrs
+      let total = op.get.nodes.total
+      for i in 1 ..< total:
+        op = await d.waitMessage(fromNode, reqId)
+        if op.isSome and op.get.kind == nodes:
+          res.add(op.get.nodes.enrs)
+        else:
+          # No error on this as we received some nodes.
+          break
+      return ok(res)
+    else:
+      discovery_message_requests_outgoing.inc(labelValues = ["invalid_response"])
+      return err("Invalid response to find node message")
   else:
+    discovery_message_requests_outgoing.inc(labelValues = ["no_response"])
     return err("Nodes message not received in time")
 
 proc sendMessage*[T: SomeMessage](d: Protocol, toNode: Node, m: T):
@@ -586,9 +596,14 @@ proc ping*(d: Protocol, toNode: Node):
     PingMessage(enrSeq: d.localNode.record.seqNum))
   let resp = await d.waitMessage(toNode, reqId)
 
-  if resp.isSome() and resp.get().kind == pong:
-    d.routingTable.setJustSeen(toNode)
-    return ok(resp.get().pong)
+  if resp.isSome():
+    if resp.get().kind == pong:
+      d.routingTable.setJustSeen(toNode)
+      return ok(resp.get().pong)
+    else:
+      d.replaceNode(toNode)
+      discovery_message_requests_outgoing.inc(labelValues = ["invalid_response"])
+      return err("Invalid response to ping message")
   else:
     d.replaceNode(toNode)
     discovery_message_requests_outgoing.inc(labelValues = ["no_response"])
@@ -609,7 +624,6 @@ proc findNode*(d: Protocol, toNode: Node, distances: seq[uint32]):
     return ok(res)
   else:
     d.replaceNode(toNode)
-    discovery_message_requests_outgoing.inc(labelValues = ["no_response"])
     return err(nodes.error)
 
 proc talkreq*(d: Protocol, toNode: Node, protocol, request: seq[byte]):
@@ -621,9 +635,14 @@ proc talkreq*(d: Protocol, toNode: Node, protocol, request: seq[byte]):
     TalkReqMessage(protocol: protocol, request: request))
   let resp = await d.waitMessage(toNode, reqId)
 
-  if resp.isSome() and resp.get().kind == talkresp:
-    d.routingTable.setJustSeen(toNode)
-    return ok(resp.get().talkresp)
+  if resp.isSome():
+    if resp.get().kind == talkresp:
+      d.routingTable.setJustSeen(toNode)
+      return ok(resp.get().talkresp)
+    else:
+      d.replaceNode(toNode)
+      discovery_message_requests_outgoing.inc(labelValues = ["invalid_response"])
+      return err("Invalid response to talk request message")
   else:
     d.replaceNode(toNode)
     discovery_message_requests_outgoing.inc(labelValues = ["no_response"])
