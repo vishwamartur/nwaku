@@ -5,6 +5,8 @@
 #   * Apache v2 license (license terms in the root directory or at https://www.apache.org/licenses/LICENSE-2.0).
 # at your option. This file may not be copied, modified, or distributed except according to those terms.
 
+{.push raises: [Defect].}
+
 import
   std/[tables, algorithm, deques, hashes, options, typetraits],
   stew/shims/macros, chronicles, nimcrypto, chronos,
@@ -68,8 +70,7 @@ chronicles.formatIt(Peer): $(it.remote)
 
 include p2p_backends_helpers
 
-proc requestResolver[MsgType](msg: pointer, future: FutureBase)
-    {.gcsafe, raises:[Defect].} =
+proc requestResolver[MsgType](msg: pointer, future: FutureBase) {.gcsafe.} =
   var f = Future[Option[MsgType]](future)
   if not f.finished:
     if msg != nil:
@@ -115,7 +116,7 @@ proc messagePrinter[MsgType](msg: pointer): string {.gcsafe.} =
   # result = $(cast[ptr MsgType](msg)[])
 
 proc disconnect*(peer: Peer, reason: DisconnectionReason,
-                 notifyOtherPeer = false) {.gcsafe, raises: [Defect], async.}
+  notifyOtherPeer = false) {.gcsafe, async.}
 
 template raisePeerDisconnected(msg: string, r: DisconnectionReason) =
   var e = newException(PeerDisconnected, msg)
@@ -372,7 +373,7 @@ proc registerRequest(peer: Peer,
 
   doAssert(not peer.dispatcher.isNil)
   let requestResolver = peer.dispatcher.messages[responseMsgId].requestResolver
-  proc timeoutExpired(udata: pointer) {.gcsafe, raises:[Defect].} =
+  proc timeoutExpired(udata: pointer) {.gcsafe.} =
     requestResolver(nil, responseFuture)
 
   discard setTimer(timeoutAt, timeoutExpired, nil)
@@ -512,13 +513,14 @@ proc recvMsg*(peer: Peer): Future[tuple[msgId: int, msgData: Rlp]] {.async.} =
     await peer.disconnectAndRaise(BreachOfProtocol,
                                   "Cannot read RLPx message id")
 
-proc checkedRlpRead(peer: Peer, r: var Rlp, MsgType: type): auto =
+proc checkedRlpRead(peer: Peer, r: var Rlp, MsgType: type):
+    auto {.raises: [RlpError, Defect].} =
   when defined(release):
     return r.read(MsgType)
   else:
     try:
       return r.read(MsgType)
-    except Exception as e:
+    except rlp.RlpError as e:
       debug "Failed rlp.read",
             peer = peer,
             dataType = MsgType.name,
@@ -877,7 +879,7 @@ p2pProtocol DevP2P(version = 5, rlpxName = "p2p"):
   proc pong(peer: Peer, emptyList: EmptyList) =
     discard
 
-proc removePeer(network: EthereumNode, peer: Peer) {.raises: [Defect].} =
+proc removePeer(network: EthereumNode, peer: Peer) =
   # It is necessary to check if peer.remote still exists. The connection might
   # have been dropped already from the peers side.
   # E.g. when receiving a p2p.disconnect message from a peer, a race will happen
@@ -911,7 +913,7 @@ proc callDisconnectHandlers(peer: Peer, reason: DisconnectionReason):
       trace "Disconnection handler ended with an error", err = f.error.msg
 
 proc disconnect*(peer: Peer, reason: DisconnectionReason,
-    notifyOtherPeer = false) {.async, raises: [Defect].} =
+    notifyOtherPeer = false) {.async.} =
   if peer.connectionState notin {Disconnecting, Disconnected}:
     peer.connectionState = Disconnecting
     # Do this first so sub-protocols have time to clean up and stop sending
@@ -945,7 +947,7 @@ proc validatePubKeyInHello(msg: DevP2P.hello, pubKey: PublicKey): bool =
   let pk = PublicKey.fromRaw(msg.nodeId)
   pk.isOk and pk[] == pubKey
 
-proc checkUselessPeer(peer: Peer) =
+proc checkUselessPeer(peer: Peer) {.raises: [UselessPeerError, Defect].} =
   if peer.dispatcher.numProtocols == 0:
     # XXX: Send disconnect + UselessPeer
     raise newException(UselessPeerError, "Useless peer")
@@ -1021,8 +1023,8 @@ template `^`(arr): auto =
   arr.toOpenArray(0, `arr Len` - 1)
 
 proc initSecretState(hs: var Handshake, authMsg, ackMsg: openarray[byte],
-                     p: Peer) =
-  var secrets = hs.getSecrets(authMsg, ackMsg).tryGet()
+    p: Peer) =
+  var secrets = hs.getSecrets(authMsg, ackMsg)
   initSecretState(secrets, p.secretsState)
   burnMem(secrets)
 
