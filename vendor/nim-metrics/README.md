@@ -1,7 +1,6 @@
 # nim-metrics
 
-[![Build Status (Travis)](https://img.shields.io/travis/status-im/nim-metrics/master.svg?label=Linux%20/%20macOS "Linux/macOS build status (Travis)")](https://travis-ci.org/status-im/nim-metrics)
-[![Windows build status (Appveyor)](https://img.shields.io/appveyor/ci/nimbus/nim-metrics/master.svg?label=Windows "Windows build status (Appveyor)")](https://ci.appveyor.com/project/nimbus/nim-metrics)
+[![CI](https://github.com/status-im/nim-metrics/actions/workflows/ci.yml/badge.svg)](https://github.com/status-im/nim-metrics/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![License: Apache](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 ![Stability: experimental](https://img.shields.io/badge/stability-experimental-orange.svg)
@@ -319,7 +318,7 @@ import metrics, metrics/chronos_httpserver
 
 ### Starting the HTTP server
 
-Start an HTTP server listening on 127.0.0.1:8000 from which the Prometheus
+Start an HTTP server listening on `127.0.0.1:8000` from which the Prometheus
 daemon can pull the metrics from all collectors in `defaultRegistry` (plus the
 default metrics):
 
@@ -335,8 +334,10 @@ import net
 startMetricsHttpServer("127.0.0.1", Port(8000))
 ```
 
-The HTTP server will run in its own thread. You can open
-"http://127.0.0.1:8000/metrics" in a browser to see what Prometheus sees.
+The HTTP server will run in its own thread. It will expose two endpoints:
+
+* http://127.0.0.1:8000/metrics - Returns the metrics consumed by Prometheus.
+* http://127.0.0.1:8000/health - Healthcheck that returns `OK` string and 200 code.
 
 Default metrics available (see also [the relevant Prometheus docs](https://prometheus.io/docs/instrumenting/writing_clientlibs/#standard-and-runtime-collectors)):
 

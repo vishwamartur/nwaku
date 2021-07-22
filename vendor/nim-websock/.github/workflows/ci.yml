@@ -1,0 +1,344 @@
+name: CI
+on: [push, pull_request]
+
+# we dont run compression extension
+# in regular CI because it is a
+# time consuming operation.
+# we delegate it to manually triggered CI
+# and only run base autobahn tests here.
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        branch: [v1.2.6]
+        target:
+          # Unit tests
+          - os: linux
+            cpu: amd64
+            TEST_KIND: unit-tests
+          - os: linux
+            cpu: i386
+            TEST_KIND: unit-tests
+          - os: macos
+            cpu: amd64
+            TEST_KIND: unit-tests
+          - os: windows
+            cpu: i386
+            TEST_KIND: unit-tests
+          - os: windows
+            cpu: amd64
+            TEST_KIND: unit-tests
+        include:
+          - target:
+              os: linux
+            builder: ubuntu-20.04
+          - target:
+              os: macos
+            builder: macos-10.15
+          - target:
+              os: windows
+            builder: windows-2019
+    name: "${{ matrix.target.os }}-${{ matrix.target.cpu }} (${{ matrix.branch }})"
+    runs-on: ${{ matrix.builder }}
+    steps:
+      - name: Checkout nim-websock
+        uses: actions/checkout@v2
+        with:
+          path: nim-websock
+          submodules: true
+
+      - name: Derive environment variables
+        shell: bash
+        run: |
+          if [[ '${{ matrix.target.cpu }}' == 'amd64' ]]; then
+            ARCH=64
+            PLATFORM=x64
+          else
+            ARCH=32
+            PLATFORM=x86
+          fi
+          echo "ARCH=$ARCH" >> $GITHUB_ENV
+          echo "PLATFORM=$PLATFORM" >> $GITHUB_ENV
+
+          ncpu=
+          case '${{ runner.os }}' in
+          'Linux')
+            ncpu=$(nproc)
+            ;;
+          'macOS')
+            ncpu=$(sysctl -n hw.ncpu)
+            ;;
+          'Windows')
+            ncpu=$NUMBER_OF_PROCESSORS
+            ;;
+          esac
+          [[ -z "$ncpu" || $ncpu -le 0 ]] && ncpu=1
+          echo "ncpu=$ncpu" >> $GITHUB_ENV
+
+      - name: Install build dependencies (Linux i386)
+        if: runner.os == 'Linux' && matrix.target.cpu == 'i386'
+        run: |
+          sudo dpkg --add-architecture i386
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND='noninteractive' apt-get install \
+            --no-install-recommends -yq gcc-multilib g++-multilib \
+            libssl-dev:i386
+          mkdir -p external/bin
+          cat << EOF > external/bin/gcc
+          #!/bin/bash
+          exec $(which gcc) -m32 "\$@"
+          EOF
+          cat << EOF > external/bin/g++
+          #!/bin/bash
+          exec $(which g++) -m32 "\$@"
+          EOF
+          chmod 755 external/bin/gcc external/bin/g++
+          echo '${{ github.workspace }}/external/bin' >> $GITHUB_PATH
+
+      - name: Install build dependencies (Windows)
+        if: runner.os == 'Windows'
+        shell: bash
+        run: |
+          mkdir external
+          if [[ '${{ matrix.target.cpu }}' == 'amd64' ]]; then
+            arch=64
+          else
+            arch=32
+          fi
+          curl -L "https://nim-lang.org/download/mingw$arch.7z" -o "external/mingw$arch.7z"
+          curl -L "https://nim-lang.org/download/windeps.zip" -o external/windeps.zip
+          7z x "external/mingw$arch.7z" -oexternal/
+          7z x external/windeps.zip -oexternal/dlls
+          echo '${{ github.workspace }}'"/external/mingw$arch/bin" >> $GITHUB_PATH
+          echo '${{ github.workspace }}'"/external/dlls" >> $GITHUB_PATH
+
+      - name: Setup environment
+        shell: bash
+        run: echo '${{ github.workspace }}/nim/bin' >> $GITHUB_PATH
+
+      - name: Get latest Nim commit hash
+        id: versions
+        shell: bash
+        run: |
+          getHash() {
+            git ls-remote "https://github.com/$1" "${2:-HEAD}" | cut -f 1
+          }
+          nimHash=$(getHash nim-lang/Nim '${{ matrix.branch }}')
+          csourcesHash=$(getHash nim-lang/csources)
+          echo "::set-output name=nim::$nimHash"
+          echo "::set-output name=csources::$csourcesHash"
+
+      - name: Restore prebuilt Nim from cache
+        id: nim-cache
+        uses: actions/cache@v1
+        with:
+          path: nim
+          key: "nim-${{ matrix.target.os }}-${{ matrix.target.cpu }}-${{ steps.versions.outputs.nim }}"
+
+      - name: Restore prebuilt csources from cache
+        if: steps.nim-cache.outputs.cache-hit != 'true'
+        id: csources-cache
+        uses: actions/cache@v1
+        with:
+          path: csources/bin
+          key: "csources-${{ matrix.target.os }}-${{ matrix.target.cpu }}-${{ steps.versions.outputs.csources }}"
+
+      - name: Checkout Nim csources
+        if: >
+          steps.csources-cache.outputs.cache-hit != 'true' &&
+          steps.nim-cache.outputs.cache-hit != 'true'
+        uses: actions/checkout@v2
+        with:
+          repository: nim-lang/csources
+          path: csources
+          ref: ${{ steps.versions.outputs.csources }}
+
+      - name: Checkout Nim
+        if: steps.nim-cache.outputs.cache-hit != 'true'
+        uses: actions/checkout@v2
+        with:
+          repository: nim-lang/Nim
+          path: nim
+          ref: ${{ steps.versions.outputs.nim }}
+
+      - name: Build Nim and associated tools
+        if: steps.nim-cache.outputs.cache-hit != 'true'
+        shell: bash
+        run: |
+          ncpu=
+          ext=
+          case '${{ runner.os }}' in
+          'Linux')
+            ncpu=$(nproc)
+            ;;
+          'macOS')
+            ncpu=$(sysctl -n hw.ncpu)
+            ;;
+          'Windows')
+            ncpu=$NUMBER_OF_PROCESSORS
+            ext=.exe
+            ;;
+          esac
+          [[ -z "$ncpu" || $ncpu -le 0 ]] && ncpu=1
+          if [[ ! -e csources/bin/nim$ext ]]; then
+            make -C csources -j $ncpu CC=gcc ucpu='${{ matrix.target.cpu }}'
+          else
+            echo 'Using prebuilt csources'
+          fi
+          cp -v csources/bin/nim$ext nim/bin
+          cd nim
+          nim c koch
+          ./koch boot -d:release
+          ./koch tools -d:release
+          # clean up to save cache space
+          rm koch
+          rm -rf nimcache
+          rm -rf dist
+          rm -rf .git
+
+      - name: Run nim-websock tests
+        shell: bash
+        run: |
+          export UCPU="$cpu"
+          cd nim-websock
+          nimble install -y --depsOnly
+          nimble test
+
+  autobahn-test:
+    if: github.event_name == 'push'
+    name: "Autobahn test suite"
+    runs-on: ubuntu-20.04
+
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        websock: [ws, wsc, wss, wssc]
+
+    steps:
+      - name: Checkout nim-websock
+        uses: actions/checkout@v2
+        with:
+          path: nim-websock
+          submodules: true
+
+      - name: Get latest nimbus-build-system commit hash
+        id: versions
+        shell: bash
+        run: |
+          getHash() {
+            git ls-remote "https://github.com/$1" "${2:-HEAD}" | cut -f 1
+          }
+          nbsHash=$(getHash status-im/nimbus-build-system)
+          echo "::set-output name=nimbus_build_system::$nbsHash"
+
+      - name: Restore prebuilt Nim from cache
+        id: nim-cache
+        uses: actions/cache@v2
+        with:
+          path: NimBinaries
+          key: 'NimBinaries-${{ steps.versions.outputs.nimbus_build_system }}'
+
+      - name: Build Nim and associated tools
+        shell: bash
+        run: |
+          curl -O -L -s -S https://raw.githubusercontent.com/status-im/nimbus-build-system/master/scripts/build_nim.sh
+          env MAKE="make -j2" ARCH_OVERRIDE=x64 CC=gcc bash build_nim.sh nim csources dist/nimble NimBinaries
+          echo '${{ github.workspace }}/nim/bin' >> $GITHUB_PATH
+
+      - name: Setup Python version
+        uses: actions/setup-python@v2
+        with:
+          python-version: pypy-2.7
+
+      - name: Setup Autobahn.
+        run: |
+          sudo apt-get install -y python-dev
+          pip install virtualenv
+          pip install markdown2
+          virtualenv --python=/usr/bin/python2 autobahn
+          source autobahn/bin/activate
+          pip install autobahntestsuite
+          cd nim-websock
+          nimble install -y --depsOnly
+
+      - name: Generate index.html
+        if: matrix.websock == 'ws'
+        run: |
+          cd nim-websock
+          mkdir autobahn/reports
+          sed -i "s/COMMIT_SHA_SHORT/${GITHUB_SHA::7}/g" autobahn/index.md
+          sed -i "s/COMMIT_SHA/$GITHUB_SHA/g" autobahn/index.md
+          markdown2 autobahn/index.md > autobahn/reports/index.html
+
+      - name: Run Autobahn test suite.
+        run: |
+          source autobahn/bin/activate
+          case '${{ matrix.websock }}' in
+            ws)
+              cd nim-websock
+              nim c -d:release examples/server.nim
+              examples/server &
+              server=$!
+
+              cd autobahn
+              wstest --mode fuzzingclient --spec fuzzingclient.json
+            ;;
+            wsc)
+              cd nim-websock
+              nim c -d:tls -d:release -o:examples/tls_server examples/server.nim
+              examples/tls_server &
+              server=$!
+
+              cd autobahn
+              wstest --mode fuzzingclient --spec fuzzingclient_tls.json
+            ;;
+            wss)
+              cd nim-websock/autobahn
+              wstest --webport=0 --mode fuzzingserver --spec fuzzingserver.json &
+              server=$!
+
+              cd ..
+              nim c -d:release examples/autobahn_client
+              examples/autobahn_client
+            ;;
+            wssc)
+              cd nim-websock/autobahn
+              wstest --webport=0 --mode fuzzingserver --spec fuzzingserver_tls.json &
+              server=$!
+
+              cd ..
+              nim c -d:tls -d:release -o:examples/autobahn_tlsclient examples/autobahn_client
+              examples/autobahn_tlsclient
+            ;;
+          esac
+
+          kill $server
+
+      - name: Upload Autobahn result
+        uses: actions/upload-artifact@v2
+        with:
+          name: autobahn-report
+          path: ./nim-websock/autobahn/reports
+
+  deploy-test:
+    if: github.event_name == 'push'
+    name: "Deplay Autobahn results"
+    needs: autobahn-test
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Download Autobahn reports
+        uses: actions/download-artifact@v2
+        with:
+          name: autobahn-report
+          path: ./autobahn_reports
+
+      - name: Deploy autobahn report.
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./autobahn_reports
