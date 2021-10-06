@@ -10,7 +10,7 @@ import std/[strutils, uri]
 import stew/[results, endians2], httputils
 import ../../asyncloop, ../../asyncsync
 import ../../streams/[asyncstream, boundstream]
-export results, httputils, strutils
+export asyncloop, asyncsync, results, httputils, strutils
 
 const
   HeadersMark* = @[0x0d'u8, 0x0a'u8, 0x0d'u8, 0x0a'u8]
@@ -22,7 +22,7 @@ const
   DateHeader* = "date"
   HostHeader* = "host"
   ConnectionHeader* = "connection"
-  AcceptHeader* = "accept"
+  AcceptHeaderName* = "accept"
   ContentLengthHeader* = "content-length"
   TransferEncodingHeader* = "transfer-encoding"
   ContentEncodingHeader* = "content-encoding"
@@ -67,6 +67,9 @@ type
   QueryParamsFlag* {.pure.} = enum
     CommaSeparatedArray ## Enable usage of comma symbol as separator of array
                         ## items
+
+  HttpState* {.pure.} = enum
+    Alive, Closing, Closed
 
 proc raiseHttpCriticalError*(msg: string,
                              code = Http400) {.noinline, noreturn.} =

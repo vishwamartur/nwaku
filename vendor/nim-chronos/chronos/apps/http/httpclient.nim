@@ -11,7 +11,9 @@ import stew/[results, base10, base64], httputils
 import ../../asyncloop, ../../asyncsync
 import ../../streams/[asyncstream, tlsstream, chunkstream, boundstream]
 import httptable, httpcommon, httpagent, httpbodyrw, multipart
-export httptable, httpcommon, httpagent, httpbodyrw, multipart
+export results, asyncloop, asyncsync, asyncstream, tlsstream, chunkstream,
+       boundstream, httptable, httpcommon, httpagent, httpbodyrw, multipart,
+       httputils
 
 const
   HttpMaxHeadersSize* = 8192
@@ -856,7 +858,7 @@ proc prepareRequest(request: HttpClientRequestRef): string {.
     else:
       request.headers.add(ConnectionHeader, "keep-alive")
   # We set `Accept` to accept any content if its not set.
-  discard request.headers.hasKeyOrPut(AcceptHeader, "*/*")
+  discard request.headers.hasKeyOrPut(AcceptHeaderName, "*/*")
 
   # We will send `Authorization` information only if username or password set,
   # and `Authorization` header is not present in request's headers.
@@ -1183,11 +1185,22 @@ proc redirect*(request: HttpClientRequestRef,
 
 proc fetch*(request: HttpClientRequestRef): Future[HttpResponseTuple] {.
      async.} =
-  let response = await request.send()
-  let data = await response.getBodyBytes()
-  let code = response.status
-  await response.closeWait()
-  return (code, data)
+  var response: HttpClientResponseRef
+  try:
+    response = await request.send()
+    let buffer = await response.getBodyBytes()
+    let status = response.status
+    await response.closeWait()
+    response = nil
+    return (status, buffer)
+  except HttpError as exc:
+    if not(isNil(response)):
+      await response.closeWait()
+    raise exc
+  except CancelledError as exc:
+    if not(isNil(response)):
+      await response.closeWait()
+    raise exc
 
 proc fetch*(session: HttpSessionRef, url: Uri): Future[HttpResponseTuple] {.
      async.} =

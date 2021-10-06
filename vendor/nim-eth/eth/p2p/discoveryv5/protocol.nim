@@ -78,7 +78,7 @@ import
   stew/shims/net as stewNet, json_serialization/std/net,
   stew/endians2, chronicles, chronos, stint, bearssl, metrics,
   ".."/../[rlp, keys, async_utils],
-  "."/[messages, encoding, node, routing_table, enr, random2, sessions, ip_vote]
+  "."/[messages, encoding, node, routing_table, enr, random2, sessions, ip_vote, nodes_verification]
 
 import nimcrypto except toHex
 
@@ -140,7 +140,7 @@ type
     node: Node
     message: seq[byte]
 
-  TalkProtocolHandler* = proc(p: TalkProtocol, request: seq[byte]): seq[byte]
+  TalkProtocolHandler* = proc(p: TalkProtocol, request: seq[byte], fromId: NodeId, fromUdpAddress: Address): seq[byte]
     {.gcsafe, raises: [Defect].}
 
   TalkProtocol* = ref object of RootObj
@@ -318,7 +318,7 @@ proc handleTalkReq(d: Protocol, fromId: NodeId, fromAddr: Address,
       TalkRespMessage(response: @[])
     else:
       TalkRespMessage(response: talkProtocol.protocolHandler(talkProtocol,
-        talkreq.request))
+        talkreq.request, fromId, fromAddr))
   let (data, _) = encodeMessagePacket(d.rng[], d.codec, fromId, fromAddr,
     encodeMessage(talkresp, reqId))
 
@@ -449,23 +449,6 @@ proc processClient(transp: DatagramTransport, raddr: TransportAddress):
 
   proto.receive(a, buf)
 
-proc validIp(sender, address: IpAddress): bool =
-  let
-    s = initTAddress(sender, Port(0))
-    a = initTAddress(address, Port(0))
-  if a.isAnyLocal():
-    return false
-  if a.isMulticast():
-    return false
-  if a.isLoopback() and not s.isLoopback():
-    return false
-  if a.isSiteLocal() and not s.isSiteLocal():
-    return false
-  # TODO: Also check for special reserved ip addresses:
-  # https://www.iana.org/assignments/iana-ipv4-special-registry/iana-ipv4-special-registry.xhtml
-  # https://www.iana.org/assignments/iana-ipv6-special-registry/iana-ipv6-special-registry.xhtml
-  return true
-
 proc replaceNode(d: Protocol, n: Node) =
   if n.record notin d.bootstrapRecords:
     d.routingTable.replaceNode(n)
@@ -495,58 +478,6 @@ proc waitMessage(d: Protocol, fromNode: Node, reqId: RequestId):
     if not res.finished:
       res.complete(none(Message))
   d.awaitedMessages[key] = result
-
-proc verifyNodesRecords*(enrs: openarray[Record], fromNode: Node,
-    distances: varargs[uint16]): seq[Node] =
-  ## Verify and convert ENRs to a sequence of nodes. Only ENRs that pass
-  ## verification will be added. ENRs are verified for duplicates, invalid
-  ## addresses and invalid distances.
-  var seen: HashSet[Node]
-  var count = 0
-  for r in enrs:
-    # Check and allow for processing of maximum `findNodeResultLimit` ENRs
-    # returned. This limitation is required so no huge lists of invalid ENRs
-    # are processed for no reason, and for not overwhelming a routing table
-    # with nodes from a malicious actor.
-    # The discovery v5 specification specifies no limit on the amount of ENRs
-    # that can be returned, but clients usually stick with the bucket size limit
-    # as in original Kademlia. Because of this it is chosen not to fail
-    # immediatly, but still process maximum `findNodeResultLimit`.
-    if count >= findNodeResultLimit:
-      debug "Response on findnode returned too many ENRs", enrs = enrs.len(),
-        limit = findNodeResultLimit, sender = fromNode.record.toURI
-      break
-
-    count.inc()
-
-    let node = newNode(r)
-    if node.isOk():
-      let n = node.get()
-      # Check for duplicates in the nodes reply. Duplicates are checked based
-      # on node id.
-      if n in seen:
-        trace "Nodes reply contained records with duplicate node ids",
-          record = n.record.toURI, id = n.id, sender = fromNode.record.toURI
-        continue
-      # Check if the node has an address and if the address is public or from
-      # the same local network or lo network as the sender. The latter allows
-      # for local testing.
-      if not n.address.isSome() or not
-          validIp(fromNode.address.get().ip, n.address.get().ip):
-        trace "Nodes reply contained record with invalid ip-address",
-          record = n.record.toURI, node = n, sender = fromNode.record.toURI
-        continue
-      # Check if returned node has one of the requested distances.
-      if not distances.contains(logDist(n.id, fromNode.id)):
-        debug "Nodes reply contained record with incorrect distance",
-          record = n.record.toURI, sender = fromNode.record.toURI
-        continue
-
-      # No check on UDP port and thus any port is allowed, also the so called
-      # "well-known" ports.
-
-      seen.incl(n)
-      result.add(n)
 
 proc waitNodes(d: Protocol, fromNode: Node, reqId: RequestId):
     Future[DiscResult[seq[Record]]] {.async.} =
@@ -625,7 +556,7 @@ proc findNode*(d: Protocol, toNode: Node, distances: seq[uint16]):
   let nodes = await d.waitNodes(toNode, reqId)
 
   if nodes.isOk:
-    let res = verifyNodesRecords(nodes.get(), toNode, distances)
+    let res = verifyNodesRecords(nodes.get(), toNode, findNodeResultLimit, distances)
     d.routingTable.setJustSeen(toNode)
     return ok(res)
   else:
@@ -633,7 +564,7 @@ proc findNode*(d: Protocol, toNode: Node, distances: seq[uint16]):
     return err(nodes.error)
 
 proc talkreq*(d: Protocol, toNode: Node, protocol, request: seq[byte]):
-    Future[DiscResult[TalkRespMessage]] {.async.} =
+    Future[DiscResult[seq[byte]]] {.async.} =
   ## Send a discovery talkreq message.
   ##
   ## Returns the received talkresp message or an error.
@@ -644,7 +575,7 @@ proc talkreq*(d: Protocol, toNode: Node, protocol, request: seq[byte]):
   if resp.isSome():
     if resp.get().kind == talkresp:
       d.routingTable.setJustSeen(toNode)
-      return ok(resp.get().talkresp)
+      return ok(resp.get().talkresp.response)
     else:
       d.replaceNode(toNode)
       discovery_message_requests_outgoing.inc(labelValues = ["invalid_response"])
@@ -654,15 +585,16 @@ proc talkreq*(d: Protocol, toNode: Node, protocol, request: seq[byte]):
     discovery_message_requests_outgoing.inc(labelValues = ["no_response"])
     return err("Talk response message not received in time")
 
-proc lookupDistances(target, dest: NodeId): seq[uint16] =
+proc lookupDistances*(target, dest: NodeId): seq[uint16] =
   let td = logDist(target, dest)
+  let tdAsInt = int(td)
   result.add(td)
-  var i = 1'u16
+  var i = 1
   while result.len < lookupRequestLimit:
-    if td + i < 256:
-      result.add(td + i)
-    if td - i > 0'u16:
-      result.add(td - i)
+    if tdAsInt + i < 256:
+      result.add(td + uint16(i))
+    if tdAsInt - i > 0:
+      result.add(td - uint16(i))
     inc i
 
 proc lookupWorker(d: Protocol, destNode: Node, target: NodeId):
@@ -726,7 +658,7 @@ proc lookup*(d: Protocol, target: NodeId): Future[seq[Node]] {.async.} =
         # If it wasn't seen before, insert node while remaining sorted
         closestNodes.insert(n, closestNodes.lowerBound(n,
           proc(x: Node, n: Node): int =
-            cmp(distanceTo(x, target), distanceTo(n, target))
+            cmp(distanceTo(x.id, target), distanceTo(n.id, target))
         ))
 
         if closestNodes.len > BUCKET_SIZE:
@@ -984,7 +916,7 @@ proc newProtocol*(privKey: PrivateKey,
   # TODO Consider whether this should be a Defect
   doAssert rng != nil, "RNG initialization failed"
 
-  result = Protocol(
+  Protocol(
     privateKey: privKey,
     localNode: node,
     bindAddress: Address(ip: ValidIpAddress.init(bindIp), port: bindPort),
@@ -993,9 +925,11 @@ proc newProtocol*(privKey: PrivateKey,
     bootstrapRecords: @bootstrapRecords,
     ipVote: IpVote.init(),
     enrAutoUpdate: enrAutoUpdate,
+    routingTable: RoutingTable.init(node, DefaultBitsPerHop, tableIpLimits, rng),
     rng: rng)
 
-  result.routingTable.init(node, DefaultBitsPerHop, tableIpLimits, rng)
+template listeningAddress*(p: Protocol): Address =
+  p.bindAddress
 
 proc open*(d: Protocol) {.raises: [Defect, CatchableError].} =
   info "Starting discovery node", node = d.localNode,

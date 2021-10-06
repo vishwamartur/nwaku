@@ -12,6 +12,7 @@
 {.push raises: [Defect].}
 
 import
+  math, sequtils,
   stew/[bitops2, endians2, ptrops],
   stew/ranges/ptr_arith, nimcrypto/[hash, sha2],
   serialization/testing/tracing,
@@ -69,6 +70,10 @@ template computeDigest*(body: untyped): Digest =
       body
       finish(h)
 
+func digest(a: openArray[byte]): Digest =
+  result = computeDigest:
+    h.update(a)
+
 func digest(a, b: openArray[byte]): Digest =
   result = computeDigest:
     trs "DIGESTING ARRAYS ", toHex(a), " ", toHex(b)
@@ -98,7 +103,7 @@ template mergeBranches(existing: Digest, newData: array[32, byte]): Digest =
   trs "MERGING BRANCHES ARRAY"
   digest(existing.data, newData)
 
-template mergeBranches(a, b: Digest): Digest =
+template mergeBranches*(a, b: Digest): Digest =
   trs "MERGING BRANCHES DIGEST"
   digest(a.data, b.data)
 
@@ -609,3 +614,55 @@ func hash_tree_root*(x: auto): Digest {.raises: [Defect].} =
 
   trs "HASH TREE ROOT FOR ", name(type x), " = ", "0x", $result
 
+# https://github.com/ethereum/eth2.0-specs/blob/dev/ssz/merkle-proofs.md#get_generalized_index_length
+func getGeneralizedIndexLength(x: uint64): int =
+  log2trunc(x)
+
+# https://github.com/ethereum/eth2.0-specs/blob/dev/ssz/merkle-proofs.md#get_generalized_index_bit
+func getGeneralizedIndexBit(index: uint64, position: uint64): bool =
+  (index and (1'u64 shl position)) > 0
+
+# validates merkle proof. Provided index should be a generalized index of leaf node
+# as defined in: https://github.com/ethereum/eth2.0-specs/blob/dev/ssz/merkle-proofs.md#generalized-merkle-tree-index
+func isValidProof*(leaf: Digest, proof: openArray[Digest],
+                             index: uint64, root: Digest): bool =
+  if len(proof) == getGeneralizedIndexLength(index):
+    var
+      value = leaf
+
+    for i, digest in proof:
+      value =
+        if getGeneralizedIndexBit(index, uint64 i):
+          mergeBranches(digest, value)
+        else:
+          mergeBranches(value, digest)
+
+    value == root
+  else:
+    false
+
+proc slice[T](x: openArray[T]): seq[T] = x.toSeq()
+
+# Helper functions to get proof for any element of a list
+proc getProofForAllListElements*(list: List): seq[Digest] = 
+  type T = type(list)
+  type E = ElemType(T)
+  # basic types have different chunking rules
+  static:
+    doAssert (E is not BasicType)
+  var digests: seq[Digest] = @[]
+  for e in list:
+    let root = hash_tree_root(e)
+    digests.add(root)
+  var merk = createMerkleizer(list.maxLen)
+  merk.addChunksAndGenMerkleProofs(digests)
+
+proc getProofWithIdx*(list: List, allProofs: seq[Digest], idx: int): seq[Digest] =
+  let treeHeight = binaryTreeHeight(list.maxLen)
+  let startPos = idx * treeHeight
+  let endPos = startPos + treeHeight - 2
+  slice(allProofs.toOpenArray(startPos, endPos))
+
+proc generateAndGetProofWithIdx*(list: List, idx: int): seq[Digest] =
+  let allProofs = getProofForAllListElements(list)
+  getProofWithIdx(list, allProofs, idx)

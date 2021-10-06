@@ -40,6 +40,7 @@ type
 
   OptInfo = ref object
     name, abbr, desc, typename: string
+    separator: string
     idx: int
     isHidden: bool
     hasDefault: bool
@@ -292,6 +293,10 @@ proc describeOptions(help: var string,
       if opt.kind == Arg or
          opt.kind == Discriminator or
          opt.isHidden: continue
+
+      if opt.separator.len > 0:
+        helpOutput opt.separator
+        helpOutput "\p"
 
       # Indent all command-line switches
       helpOutput " "
@@ -659,6 +664,36 @@ proc generateFieldSetters(RecordType: NimNode): NimNode =
   result.add settersArray
   debugMacroResult "Field Setters"
 
+proc checkDuplicate(cmd: CmdInfo, opt: OptInfo, fieldName: NimNode) =
+  for x in cmd.opts:
+    if opt.name == x.name:
+      error "duplicate name detected: " & opt.name, fieldName
+    if opt.abbr.len > 0 and opt.abbr == x.abbr:
+      error "duplicate abbr detected: " & opt.abbr, fieldName
+
+proc validPath(path: var seq[CmdInfo], parent, node: CmdInfo): bool =
+  for x in parent.opts:
+    if x.kind != Discriminator: continue
+    for y in x.subCmds:
+      if y == node:
+        path.add y
+        return true
+      if validPath(path, y, node):
+        path.add y
+        return true
+  false
+
+proc findPath(parent, node: CmdInfo): seq[CmdInfo] =
+  # find valid path from parent to node
+  result = newSeq[CmdInfo]()
+  doAssert validPath(result, parent, node)
+  result.add parent
+
+func toText(n: NimNode): string =
+  if n == nil: ""
+  elif n.kind in {nnkStrLit..nnkTripleStrLit}: n.strVal
+  else: repr(n)
+
 proc cmdInfoFromType(T: NimNode): CmdInfo =
   result = CmdInfo()
 
@@ -674,9 +709,10 @@ proc cmdInfoFromType(T: NimNode): CmdInfo =
       defaultValueDesc = field.readPragma"defaultValueDesc"
       defaultInHelp = if defaultValueDesc != nil: defaultValueDesc
                       else: defaultValue
-      defaultInHelpText = if defaultInHelp == nil: ""
-                          elif defaultInHelp.kind in {nnkStrLit..nnkTripleStrLit}: defaultInHelp.strVal
-                          else: repr(defaultInHelp)
+      defaultInHelpText = toText(defaultInHelp)
+      separator = field.readPragma"separator"
+      separatorText = toText(separator)
+
       isHidden = field.readPragma("hidden") != nil
       abbr = field.readPragma"abbr"
       name = field.readPragma"name"
@@ -688,6 +724,7 @@ proc cmdInfoFromType(T: NimNode): CmdInfo =
     var opt = OptInfo(kind: optKind,
                       idx: fieldIdx,
                       name: $field.name,
+                      separator: separatorText,
                       isHidden: isHidden,
                       hasDefault: defaultValue != nil,
                       defaultInHelpText: defaultInHelpText,
@@ -741,9 +778,14 @@ proc cmdInfoFromType(T: NimNode): CmdInfo =
       if branchEnumVal.kind == nnkDotExpr:
         branchEnumVal = branchEnumVal[1]
       var cmd = findCmd(discriminator.subCmds, $branchEnumVal)
+      # we respect subcommand hierarchy when looking for duplicate
+      let path = findPath(result, cmd)
+      for n in path:
+        checkDuplicate(n, opt, field.name)
       cmd.opts.add opt
 
     else:
+      checkDuplicate(result, opt, field.name)
       result.opts.add opt
 
 macro configurationRtti(RecordType: type): untyped =

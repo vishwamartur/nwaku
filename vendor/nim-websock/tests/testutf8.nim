@@ -11,7 +11,7 @@ import
   std/[strutils],
   pkg/[
     stew/byteutils,
-    asynctest,
+    asynctest/unittest2,
     chronos,
     chronicles
   ],
@@ -74,16 +74,15 @@ suite "UTF-8 DFA validator":
 proc waitForClose(ws: WSSession) {.async.} =
   try:
     while ws.readystate != ReadyState.Closed:
-      discard await ws.recv()
+      discard await ws.recvMsg()
   except CatchableError:
     trace "Closing websocket"
 
-# TODO: use new test framework from dryajov
-# if it is ready.
-var server: HttpServer
-let address = initTAddress("127.0.0.1:8888")
-
 suite "UTF-8 validator in action":
+
+  var server: HttpServer
+  let address = initTAddress("127.0.0.1:8888")
+
   teardown:
     server.stop()
     await server.closeWait()
@@ -96,7 +95,7 @@ suite "UTF-8 validator in action":
       let server = WSServer.new(protos = ["proto"])
       let ws = await server.handleRequest(request)
 
-      let res = await ws.recv()
+      let res = await ws.recvMsg()
       check:
         string.fromBytes(res) == testData
         ws.binary == false
@@ -135,7 +134,7 @@ suite "UTF-8 validator in action":
 
       let server = WSServer.new(protos = ["proto"], onClose = onClose)
       let ws = await server.handleRequest(request)
-      let res = await ws.recv()
+      let res = await ws.recvMsg()
       await waitForClose(ws)
 
       check:
@@ -182,7 +181,7 @@ suite "UTF-8 validator in action":
     )
 
     expect WSInvalidUTF8:
-      let data = await session.recv()
+      let data = await session.recvMsg()
 
   test "invalid UTF-8 sequence close code":
     let closeReason = "i want to close\xc0\xaf"
@@ -207,4 +206,4 @@ suite "UTF-8 validator in action":
     )
 
     expect WSInvalidUTF8:
-      let data = await session.recv()
+      let data = await session.recvMsg()

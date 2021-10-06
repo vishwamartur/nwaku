@@ -8,7 +8,7 @@
 ## those terms.
 
 import pkg/[chronos, stew/byteutils]
-import ../asyncunit
+import pkg/asynctest/unittest2
 import ./base64ext, ./hexext
 import ../../websock/websock, ../helpers
 
@@ -30,7 +30,7 @@ suite "multiple extensions flow":
         factories = [hexFactory, base64Factory],
       )
       let ws = await server.handleRequest(request)
-      let recvData = await ws.recv()
+      let recvData = await ws.recvMsg()
       await ws.send(recvData,
         if ws.binary: Opcode.Binary else: Opcode.Text)
 
@@ -50,7 +50,7 @@ suite "multiple extensions flow":
     )
 
     await client.send(testData)
-    let res = await client.recv()
+    let res = await client.recvMsg()
     check testData.toBytes() == res
     await client.close()
 
@@ -62,7 +62,7 @@ suite "multiple extensions flow":
         factories = [hexFactory, base64Factory],
       )
       let ws = await server.handleRequest(request)
-      let recvData = await ws.recv()
+      let recvData = await ws.recvMsg()
       await ws.send(recvData,
         if ws.binary: Opcode.Binary else: Opcode.Text)
 
@@ -82,6 +82,6 @@ suite "multiple extensions flow":
     )
 
     await client.send(testData)
-    let res = await client.recv()
+    let res = await client.recvMsg()
     check testData.toBytes() == res
     await client.close()

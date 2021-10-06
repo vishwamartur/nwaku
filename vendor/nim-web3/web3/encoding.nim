@@ -1,5 +1,5 @@
 import
-  strutils, macros, math
+  std/[typetraits, strutils, macros, math]
 
 import
   stint, stew/byteutils, ./ethtypes
@@ -63,7 +63,7 @@ func encodeDynamic(v: openarray[byte]): EncodeResult =
   result.data &= "00".repeat(v.len mod 32)
 
 func encode*[N](x: DynamicBytes[N]): EncodeResult {.inline.} =
-  encodeDynamic(array[N, byte](x))
+  encodeDynamic(distinctBase(x))
 
 func decodeDynamic(input: string, offset: int, to: var openarray[byte]): int =
   var dataOffset, dataLen: UInt256
@@ -75,7 +75,8 @@ func decodeDynamic(input: string, offset: int, to: var openarray[byte]): int =
   hexToByteArray(input[actualDataOffset .. actualDataOffset + meaningfulLen - 1], to)
 
 func decode*[N](input: string, offset: int, to: var DynamicBytes[N]): int {.inline.} =
-  decodeDynamic(input, offset, array[N, byte](to))
+  {.fatal: "decodeDynamic is not implemented properly".}
+  decodeDynamic(input, offset, distinctBase(to))
 
 macro makeTypeEnum(): untyped =
   ## This macro creates all the various types of Solidity contracts and maps
@@ -150,15 +151,24 @@ macro makeTypeEnum(): untyped =
       identResult = ident "result"
     result.add quote do:
       type
-        `identBytes`* = DynamicBytes[`i`]
+        `identBytes`* = FixedBytes[`i`]
 
   #result.add newEnum(ident "FieldKind", fields, public = true, pure = true)
 
 makeTypeEnum()
 
+proc parse*(T: type Bool, val: bool): T =
+  let i = if val: 1 else: 0
+  T i.i256
+
+proc `==`*(a: Bool, b: Bool): bool =
+  Int256(a) == Int256(b)
+
 func encode*(x: Bool): EncodeResult = encode(Int256(x))
-func decode*[N](input: string, offset: int, to: var Bool): int {.inline.} =
-  decode(input, offset, Stint(to))
+func decode*(input: string, offset: int, to: var Bool): int =
+  let meaningfulLen = Int256.bits div 8 * 2
+  to = Bool Int256.fromHex(input[offset .. offset + meaningfulLen - 1])
+  meaningfulLen
 
 func decode*(input: string, offset: int, obj: var object): int =
   var offset = offset

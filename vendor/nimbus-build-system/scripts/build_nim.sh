@@ -34,6 +34,7 @@ UCPU=""
 [[ "$ARCH_OVERRIDE" == "x86" ]] && UCPU="ucpu=i686"
 [[ -z "$NIM_BUILD_MSG" ]] && NIM_BUILD_MSG="Building the Nim compiler"
 [[ -z "$QUICK_AND_DIRTY_COMPILER" ]] && QUICK_AND_DIRTY_COMPILER=0
+[[ -z "$QUICK_AND_DIRTY_NIMBLE" ]] && QUICK_AND_DIRTY_NIMBLE=0
 
 # Windows detection
 if uname | grep -qiE "mingw|msys"; then
@@ -68,6 +69,12 @@ nim_needs_rebuilding() {
 		git fetch --all
 		git checkout -q ${NIM_COMMIT}
 	fi
+	# In case the local branch diverged and a fast-forward merge is not possible.
+	git fetch || true
+	git reset -q --hard origin/${NIM_COMMIT} || true
+	# In case NIM_COMMIT is a local branch that's behind the remote one it's tracking.
+	git pull -q 2>/dev/null || true
+	git checkout -q ${NIM_COMMIT}
 	# We can't use "rev-parse" here, because it would return the tag object's
 	# hash instead of the commit hash, when NIM_COMMIT is a tag.
 	NIM_COMMIT_HASH="$(git rev-list -n 1 ${NIM_COMMIT})"
@@ -149,6 +156,7 @@ build_nim() {
 		sed \
 			-e 's/koch$/--warnings:off --hints:off koch/' \
 			-e 's/koch boot/koch boot --warnings:off --hints:off/' \
+			-e '/nimBuildCsourcesIfNeeded/d' \
 			build_all.sh > build_all_custom.sh
 		sh build_all_custom.sh
 		rm build_all_custom.sh
@@ -198,6 +206,12 @@ build_nim() {
 		rm -f bin/nim
 		cp -a compiler/nim bin/nim
 		rm bin/nim1
+
+		# Do we want Nimble in this quick build?
+		if [[ "${QUICK_AND_DIRTY_NIMBLE}" != "0" ]]; then
+			bin/nim c -d:release --noNimblePath --skipUserCfg --skipParentCfg dist/nimble/src/nimble.nim
+			mv dist/nimble/src/nimble bin/
+		fi
 	fi
 
 	# record the built commit

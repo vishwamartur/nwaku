@@ -6,6 +6,20 @@ import
   ../../eth/keys, ../../eth/p2p/discoveryv5/[routing_table, node, enr],
   ./discv5_test_helper
 
+func customDistance*(a, b: NodeId): Uint256 =
+  if a >= b:
+    a - b
+  else:
+    b - a
+
+func customLogDistance*(a, b: NodeId): uint16 =
+  let distance = customDistance(a, b)
+  let modulo = distance mod (u256(uint8.high))
+  cast[uint16](modulo)
+
+func customIdAdDist*(id: NodeId, dist: uint16): NodeId =
+  id + u256(dist)
+
 suite "Routing Table Tests":
   let rng = newRng()
 
@@ -16,20 +30,21 @@ suite "Routing Table Tests":
   let ipLimits = TableIpLimits(tableIpLimit: 200,
     bucketIpLimit: BUCKET_SIZE + REPLACEMENT_CACHE_SIZE + 1)
 
+  let customDistanceCalculator = DistanceCalculator(
+    calculateDistance: customDistance, 
+    calculateLogDistance: customLogDistance, 
+    calculateIdAtDistance: customIdAdDist)
+
   test "Add local node":
     let node = generateNode(PrivateKey.random(rng[]))
-    var table: RoutingTable
-
-    table.init(node, 1, ipLimits, rng = rng)
+    var table = RoutingTable.init(node, 1, ipLimits, rng = rng)
 
     check table.addNode(node) == LocalNode
 
   test "Bucket splitting in range branch b=1":
     let node = generateNode(PrivateKey.random(rng[]))
-    var table: RoutingTable
-
     # bitsPerHop = 1 -> Split only the branch in range of own id
-    table.init(node, 1, ipLimits, rng = rng)
+    var table = RoutingTable.init(node, 1, ipLimits, rng = rng)
 
     for j in 0..5'u32:
       for i in 0..<BUCKET_SIZE:
@@ -38,10 +53,8 @@ suite "Routing Table Tests":
 
   test "Bucket splitting off range branch b=1":
     let node = generateNode(PrivateKey.random(rng[]))
-    var table: RoutingTable
-
     # bitsPerHop = 1 -> Split only the branch in range of own id
-    table.init(node, 1, ipLimits, rng = rng)
+    var table = RoutingTable.init(node, 1, ipLimits, rng = rng)
 
     # Add 16 nodes, distance 256
     for i in 0..<BUCKET_SIZE:
@@ -58,10 +71,8 @@ suite "Routing Table Tests":
 
   test "Bucket splitting off range branch b=2":
     let node = generateNode(PrivateKey.random(rng[]))
-    var table: RoutingTable
-
     # bitsPerHop = 2, allow not in range branch to split once (2 buckets).
-    table.init(node, 2, ipLimits, rng = rng)
+    var table = RoutingTable.init(node, 2, ipLimits, rng = rng)
 
     # Add 16 nodes, distance 256 from `node`, but all with 2 bits shared prefix
     # among themselves.
@@ -88,10 +99,8 @@ suite "Routing Table Tests":
 
   test "Replacement cache":
     let node = generateNode(PrivateKey.random(rng[]))
-    var table: RoutingTable
-
     # bitsPerHop = 1 -> Split only the branch in range of own id
-    table.init(node, 1, ipLimits, rng = rng)
+    var table = RoutingTable.init(node, 1, ipLimits, rng = rng)
 
     # create a full bucket
     let bucketNodes = node.nodesAtDistance(rng[], 256, BUCKET_SIZE)
@@ -122,10 +131,8 @@ suite "Routing Table Tests":
 
   test "Empty bucket":
     let node = generateNode(PrivateKey.random(rng[]))
-    var table: RoutingTable
-
     # bitsPerHop = 1 -> Split only the branch in range of own id
-    table.init(node, 1, ipLimits, rng = rng)
+    var table = RoutingTable.init(node, 1, ipLimits, rng = rng)
 
     check table.nodeToRevalidate().isNil()
 
@@ -146,10 +153,8 @@ suite "Routing Table Tests":
 
   test "Empty replacement cache":
     let node = generateNode(PrivateKey.random(rng[]))
-    var table: RoutingTable
-
     # bitsPerHop = 1 -> Split only the branch in range of own id
-    table.init(node, 1, ipLimits, rng = rng)
+    var table = RoutingTable.init(node, 1, ipLimits, rng = rng)
 
     # create a full bucket TODO: no need to store bucketNodes
     let bucketNodes = node.nodesAtDistance(rng[], 256, BUCKET_SIZE)
@@ -162,10 +167,8 @@ suite "Routing Table Tests":
 
   test "Double add":
     let node = generateNode(PrivateKey.random(rng[]))
-    var table: RoutingTable
-
     # bitsPerHop = 1 -> Split only the branch in range of own id
-    table.init(node, 1, ipLimits, rng = rng)
+    var table = RoutingTable.init(node, 1, ipLimits, rng = rng)
 
     let doubleNode = node.nodeAtDistance(rng[], 256)
     # Try to add the node twice
@@ -192,10 +195,8 @@ suite "Routing Table Tests":
 
   test "Double replacement add":
     let node = generateNode(PrivateKey.random(rng[]))
-    var table: RoutingTable
-
     # bitsPerHop = 1 -> Split only the branch in range of own id
-    table.init(node, 1, ipLimits, rng = rng)
+    var table = RoutingTable.init(node, 1, ipLimits, rng = rng)
 
     # create a full bucket
     let bucketNodes = node.nodesAtDistance(rng[], 256, BUCKET_SIZE)
@@ -222,10 +223,8 @@ suite "Routing Table Tests":
 
   test "Just seen":
     let node = generateNode(PrivateKey.random(rng[]))
-    var table: RoutingTable
-
     # bitsPerHop = 1 -> Split only the branch in range of own id
-    table.init(node, 1, ipLimits, rng = rng)
+    var table = RoutingTable.init(node, 1, ipLimits, rng = rng)
 
     # create a full bucket
     let bucketNodes = node.nodesAtDistance(rng[], 256, BUCKET_SIZE)
@@ -242,10 +241,8 @@ suite "Routing Table Tests":
 
   test "Just seen replacement":
     let node = generateNode(PrivateKey.random(rng[]))
-    var table: RoutingTable
-
     # bitsPerHop = 1 -> Split only the branch in range of own id
-    table.init(node, 1, ipLimits, rng = rng)
+    var table = RoutingTable.init(node, 1, ipLimits, rng = rng)
 
     # create a full bucket
     let bucketNodes = node.nodesAtDistance(rng[], 256, BUCKET_SIZE)
@@ -275,10 +272,8 @@ suite "Routing Table Tests":
 
   test "Ip limits on bucket":
     let node = generateNode(PrivateKey.random(rng[]))
-    var table: RoutingTable
-
     # bitsPerHop = 1 -> Split only the branch in range of own id
-    table.init(node, 1, DefaultTableIpLimits, rng = rng)
+    var table = RoutingTable.init(node, 1, DefaultTableIpLimits, rng = rng)
 
     block: # First bucket
       let sameIpNodes = node.nodesAtDistance(rng[], 256,
@@ -325,10 +320,8 @@ suite "Routing Table Tests":
 
   test "Ip limits on routing table":
     let node = generateNode(PrivateKey.random(rng[]))
-    var table: RoutingTable
-
     # bitsPerHop = 1 -> Split only the branch in range of own id
-    table.init(node, 1, DefaultTableIpLimits, rng = rng)
+    var table = RoutingTable.init(node, 1, DefaultTableIpLimits, rng = rng)
 
     let amount = uint32(DefaultTableIpLimits.tableIpLimit div
       DefaultTableIpLimits.bucketIpLimit)
@@ -365,9 +358,7 @@ suite "Routing Table Tests":
 
   test "Ip limits on replacement cache":
     let node = generateNode(PrivateKey.random(rng[]))
-    var table: RoutingTable
-
-    table.init(node, 1, DefaultTableIpLimits, rng = rng)
+    var table = RoutingTable.init(node, 1, DefaultTableIpLimits, rng = rng)
 
     let diffIpNodes = node.nodesAtDistanceUniqueIp(rng[], 256,
       int(BUCKET_SIZE - DefaultTableIpLimits.bucketIpLimit + 1),
@@ -403,9 +394,7 @@ suite "Routing Table Tests":
 
   test "Ip limits on replacement cache: deletion":
     let node = generateNode(PrivateKey.random(rng[]))
-    var table: RoutingTable
-
-    table.init(node, 1, DefaultTableIpLimits, rng = rng)
+    var table = RoutingTable.init(node, 1, DefaultTableIpLimits, rng = rng)
 
     block: # Fill bucket
       let sameIpNodes = node.nodesAtDistance(rng[], 256,
@@ -443,9 +432,7 @@ suite "Routing Table Tests":
 
   test "Ip limits on replacement cache: double add":
     let node = generateNode(PrivateKey.random(rng[]))
-    var table: RoutingTable
-
-    table.init(node, 1, DefaultTableIpLimits, rng = rng)
+    var table = RoutingTable.init(node, 1, DefaultTableIpLimits, rng = rng)
 
     # Fill bucket
     let diffIpNodes = node.nodesAtDistanceUniqueIp(rng[], 256, BUCKET_SIZE,
@@ -465,9 +452,7 @@ suite "Routing Table Tests":
 
   test "Ip limits on bucket: double add with new ip":
     let node = generateNode(PrivateKey.random(rng[]))
-    var table: RoutingTable
-
-    table.init(node, 1, DefaultTableIpLimits, rng = rng)
+    var table = RoutingTable.init(node, 1, DefaultTableIpLimits, rng = rng)
 
     let pk = PrivateKey.random(rng[])
     let sameIpNode1 = generateNode(pk)
@@ -490,9 +475,7 @@ suite "Routing Table Tests":
 
   test "Ip limits on replacement cache: double add with new ip":
     let node = generateNode(PrivateKey.random(rng[]))
-    var table: RoutingTable
-
-    table.init(node, 1, DefaultTableIpLimits, rng = rng)
+    var table = RoutingTable.init(node, 1, DefaultTableIpLimits, rng = rng)
 
     # Fill bucket
     let diffIpNodes = node.nodesAtDistanceUniqueIp(rng[], 256, BUCKET_SIZE,
@@ -516,9 +499,7 @@ suite "Routing Table Tests":
   test "Ip limits on bucket: even more adds with new ip":
     # This tests against an issue where the ip of the nodes would not get updated
     let node = generateNode(PrivateKey.random(rng[]))
-    var table: RoutingTable
-
-    table.init(node, 1, DefaultTableIpLimits, rng = rng)
+    var table = RoutingTable.init(node, 1, DefaultTableIpLimits, rng = rng)
 
     let pk = PrivateKey.random(rng[])
     let sameIpNode1 = generateNode(pk)
@@ -540,3 +521,44 @@ suite "Routing Table Tests":
       check table.addNode(n) == Added
 
     check table.len == int(DefaultTableIpLimits.bucketIpLimit) + 1
+
+  test "Custom distance calculator: distance":
+    let numNodes = 10
+    let local = generateNode(PrivateKey.random(rng[]))
+    var table = RoutingTable.init(local, 1, ipLimits, rng = rng,
+      distanceCalculator = customDistanceCalculator)
+
+    let nodes = generateNRandomNodes(rng, numNodes)
+
+    for n in nodes:
+      check table.addNode(n) == Added
+
+    let neighbours = table.neighbours(local.id)
+    check len(neighbours) == numNodes
+
+    #  check that neighbours are sorted by provdied custom distance funciton
+    for i in 0..numNodes-2:
+      let prevDist = customDistance(local.id, neighbours[i].id)
+      let nextDist = customDistance(local.id, neighbours[i + 1].id)
+      check prevDist <= nextDist
+
+  test "Custom distance calculator: at log distance":
+    let numNodes = 10
+    let local = generateNode(PrivateKey.random(rng[]))
+    var table = RoutingTable.init(local, 1, ipLimits, rng = rng,
+      distanceCalculator = customDistanceCalculator)
+
+    let nodes = generateNRandomNodes(rng, numNodes)
+
+    for n in nodes:
+      check table.addNode(n) == Added
+
+    let neighbours = table.neighbours(local.id)
+    check len(neighbours) == numNodes
+
+    for n in neighbours:
+      let cLogDist = customLogDistance(local.id, n.id)
+      let neighboursAtLogDist = table.neighboursAtDistance(cLogDist)
+      # there may be more than one node at provided distance
+      check len(neighboursAtLogDist) >= 1
+      check neighboursAtLogDist.contains(n)
