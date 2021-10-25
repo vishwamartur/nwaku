@@ -24,14 +24,11 @@ type
   ExecutePayloadResponse* = object
     status*: string
 
-  BlockValidationStatus* {.pure.} = enum
-    valid   = "VALID"
-    invalid = "INVALID"
-
-  BlockValidationResult* = object
-    blockHash*: BlockHash
-    status*: string
-
   ForkChoiceUpdate* = object
     headBlockHash*: BlockHash
     finalizedBlockHash*: BlockHash
+
+const
+  # https://github.com/ethereum/execution-apis/blob/v1.0.0-alpha.2/src/engine/interop/specification.md
+  UNKNOWN_HEADER* = 4
+  UNKNOWN_PAYLOAD* = 5

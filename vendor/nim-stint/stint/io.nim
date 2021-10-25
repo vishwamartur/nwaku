@@ -155,11 +155,11 @@ func stint*(x: StInt, bits: static[int]): StInt[bits] {.inline.} =
       # due to bug #92, we skip negative range check
       when false:
         const dmin = stint((type result).low, N)
-        if x < dmin: raise newException(RangeError, "value out of range")
+        if x < dmin: raise newException(ValueError, "value out of range")
 
     template checkPositiveRange() =
       const dmax = stint((type result).high, N)
-      if x > dmax: raise newException(RangeError, "value out of range")
+      if x > dmax: raise newException(ValueError, "value out of range")
 
     when bits <= 64:
       if x.isNegative:
@@ -183,7 +183,7 @@ func stint*(x: StInt, bits: static[int]): StInt[bits] {.inline.} =
 func stint*(x: StUint, bits: static[int]): StInt[bits] {.inline.} =
   const N = bitsof(x.data)
   const dmax = stuint((type result).high, N)
-  if x > dmax: raise newException(RangeError, "value out of range")
+  if x > dmax: raise newException(ValueError, "value out of range")
   when N < bits:
     when N <= 64:
       result = stint(x.data, bits)
@@ -209,6 +209,8 @@ func readHexChar(c: char): int8 {.inline.}=
 func skipPrefixes(current_idx: var int, str: string, radix: range[2..16]) {.inline.} =
   ## Returns the index of the first meaningful char in `hexStr` by skipping
   ## "0x" prefix
+  # Always called from a context where radix is known at compile-time
+  # and checked within 2..16 and so cannot throw a RangeDefect at runtime
 
   if str.len < 2:
     return
@@ -216,13 +218,16 @@ func skipPrefixes(current_idx: var int, str: string, radix: range[2..16]) {.inli
   doAssert current_idx == 0, "skipPrefixes only works for prefixes (position 0 and 1 of the string)"
   if str[0] == '0':
     if str[1] in {'x', 'X'}:
-      doAssert radix == 16, "Parsing mismatch, 0x prefix is only valid for a hexadecimal number (base 16)"
+      if radix != 16:
+        raise newException(ValueError,"Parsing mismatch, 0x prefix is only valid for a hexadecimal number (base 16)")
       current_idx = 2
     elif str[1] in {'o', 'O'}:
-      doAssert radix == 8, "Parsing mismatch, 0o prefix is only valid for an octal number (base 8)"
+      if radix != 8:
+        raise newException(ValueError, "Parsing mismatch, 0o prefix is only valid for an octal number (base 8)")
       current_idx = 2
     elif str[1] in {'b', 'B'}:
-      doAssert radix == 2, "Parsing mismatch, 0b prefix is only valid for a binary number (base 2)"
+      if radix != 2:
+        raise newException(ValueError, "Parsing mismatch, 0b prefix is only valid for a binary number (base 2)")
       current_idx = 2
 
 func nextNonBlank(current_idx: var int, s: string) {.inline.} =
@@ -234,9 +239,11 @@ func nextNonBlank(current_idx: var int, s: string) {.inline.} =
   while current_idx < s.len and s[current_idx] in blanks:
     inc current_idx
 
-func readDecChar(c: range['0'..'9']): int {.inline.}=
+func readDecChar(c: char): int {.inline.}=
   ## Converts a decimal char to an int
   # specialization without branching for base <= 10.
+  if c notin {'0'..'9'}:
+    raise newException(ValueError, "Character out of '0'..'9' range")
   ord(c) - ord('0')
 
 func parse*[bits: static[int]](input: string, T: typedesc[Stuint[bits]], radix: static[uint8] = 10): T =

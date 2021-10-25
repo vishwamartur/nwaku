@@ -33,9 +33,13 @@ type
     extension*: uint8
     connectionId*: uint16
     timestamp*: MicroSeconds
+    # This is the difference between the local time, at the time the last packet
+    # was received, and the timestamp in this last received packet
     timestampDiff*: MicroSeconds
+    # The window size is the number of bytes currently in-flight, i.e. sent but not acked
     wndSize*: uint32
     seqNr*: uint16
+    # sequence number the sender of the packet last received in the other direction
     ackNr*: uint16
 
   Packet* = object
@@ -50,7 +54,7 @@ type
 # For now we can use basic monotime, later it would be good to analyze:
 # https://github.com/bittorrent/libutp/blob/master/utp_utils.cpp, to check all the
 # timing assumptions on different platforms
-proc getMonoTimeTimeStamp(): uint32 = 
+proc getMonoTimeTimeStamp*(): uint32 = 
   let time = getMonoTime()
   cast[uint32](time.ticks() div 1000)
 
@@ -69,33 +73,29 @@ proc encodeTypeVer(h: PacketHeaderV1): uint8 =
   typeVer = (typeVer and 0xf) or (typeOrd shl 4)
   typeVer
 
-proc encodeHeader*(h: PacketHeaderV1): seq[byte] = 
-  var mem = memoryOutput().s
+proc encodeHeaderStream(s: var OutputStream, h: PacketHeaderV1) =
   try:
-    mem.write(encodeTypeVer(h))
-    mem.write(h.extension)
-    mem.write(h.connectionId.toBytesBE())
-    mem.write(h.timestamp.toBytesBE())
-    mem.write(h.timestampDiff.toBytesBE())
-    mem.write(h.wndSize.toBytesBE())
-    mem.write(h.seqNr.toBytesBE())
-    mem.write(h.ackNr.toBytesBE())
-    return mem.getOutput()
+    s.write(encodeTypeVer(h))
+    s.write(h.extension)
+    s.write(h.connectionId.toBytesBE())
+    s.write(h.timestamp.toBytesBE())
+    s.write(h.timestampDiff.toBytesBE())
+    s.write(h.wndSize.toBytesBE())
+    s.write(h.seqNr.toBytesBE())
+    s.write(h.ackNr.toBytesBE())
   except IOError as e:
-    # TODO not sure how writing to memory buffer could throw. Raise assertion error if
-    # its happen for now
+    # This should not happen in case of in-memory streams
     raiseAssert e.msg
 
 proc encodePacket*(p: Packet): seq[byte] =
-  var mem = memoryOutput().s
+  var s = memoryOutput().s
   try:
-    mem.write(encodeHeader(p.header))
+    encodeHeaderStream(s, p.header)
     if (len(p.payload) > 0):
-      mem.write(p.payload)
-    mem.getOutput()
+      s.write(p.payload)
+    s.getOutput()
   except IOError as e:
-    # TODO not sure how writing to memory buffer could throw. Raise assertion error if
-    # its happen for now
+    # This should not happen in case of in-memory streams
     raiseAssert e.msg
   
 # TODO for now we do not handle extensions
@@ -116,12 +116,12 @@ proc decodePacket*(bytes: openArray[byte]): Result[Packet, string] =
         pType: kind,
         version: version,
         extension: bytes[1],
-        connection_id: fromBytesBE(uint16, [bytes[2], bytes[3]]),
-        timestamp: fromBytesBE(uint32, [bytes[4], bytes[5], bytes[6], bytes[7]]),
-        timestamp_diff: fromBytesBE(uint32, [bytes[8], bytes[9], bytes[10], bytes[11]]),
-        wnd_size: fromBytesBE(uint32, [bytes[12], bytes[13], bytes[14], bytes[15]]),
-        seq_nr: fromBytesBE(uint16, [bytes[16], bytes[17]]),
-        ack_nr: fromBytesBE(uint16, [bytes[18], bytes[19]]),
+        connection_id: fromBytesBE(uint16, bytes.toOpenArray(2, 3)),
+        timestamp: fromBytesBE(uint32, bytes.toOpenArray(4, 7)),
+        timestamp_diff: fromBytesBE(uint32, bytes.toOpenArray(8, 11)),
+        wnd_size: fromBytesBE(uint32, bytes.toOpenArray(12, 15)),
+        seq_nr: fromBytesBE(uint16, bytes.toOpenArray(16, 17)),
+        ack_nr: fromBytesBE(uint16, bytes.toOpenArray(18, 19)),
       )
     
     let payload =
@@ -134,23 +134,57 @@ proc decodePacket*(bytes: openArray[byte]): Result[Packet, string] =
 
 # connectionId - should be random not already used number
 # bufferSize - should be pre configured initial buffer size for socket
-proc synPacket*(rng: var BrHmacDrbgContext, connectionId: uint16, bufferSize: uint32): Packet =
+# SYN packets are special, and should have the receive ID in the connid field,
+# instead of conn_id_send.
+proc synPacket*(seqNr: uint16, rcvConnectionId: uint16, bufferSize: uint32): Packet =
   let h = PacketHeaderV1(
     pType: ST_SYN,
     version: protocolVersion,
     # TODO for we do not handle extensions
     extension: 0'u8,
-    # TODO should be random not used number
-    connectionId: connectionId,
-
+    connectionId: rcvConnectionId,
     timestamp: getMonoTimeTimeStamp(),
-
     timestampDiff: 0'u32,
-    # TODO shouldbe current available buffer size
     wndSize: bufferSize,
-    seqNr: randUint16(rng),
+    seqNr: seqNr,
     # Initialy we did not receive any acks
     ackNr: 0'u16
   )
 
   Packet(header: h, payload: @[])
+
+proc ackPacket*(seqNr: uint16, sndConnectionId: uint16, ackNr: uint16, bufferSize: uint32): Packet = 
+  let h = PacketHeaderV1(
+    pType: ST_STATE,
+    version: protocolVersion,
+    # ack packets always have extension field set to 0
+    extension: 0'u8,
+    connectionId: sndConnectionId,
+    timestamp: getMonoTimeTimeStamp(),
+    # TODO for not we are using 0, but this value should be calculated on socket
+    # level
+    timestampDiff: 0'u32,
+    wndSize: bufferSize,
+    seqNr: seqNr,
+    ackNr: ackNr
+  )
+  
+  Packet(header: h, payload: @[])
+
+proc dataPacket*(seqNr: uint16, sndConnectionId: uint16, ackNr: uint16, bufferSize: uint32, payload: seq[byte]): Packet = 
+  let h = PacketHeaderV1(
+    pType: ST_DATA,
+    version: protocolVersion,
+    # data packets always have extension field set to 0
+    extension: 0'u8,
+    connectionId: sndConnectionId,
+    timestamp: getMonoTimeTimeStamp(),
+    # TODO for not we are using 0, but this value should be calculated on socket
+    # level
+    timestampDiff: 0'u32,
+    wndSize: bufferSize,
+    seqNr: seqNr,
+    ackNr: ackNr
+  )
+  
+  Packet(header: h, payload: payload)

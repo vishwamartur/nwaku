@@ -443,13 +443,15 @@ func chunkedHashTreeRootForBasicTypes[T](merkleizer: var SszMerkleizerImpl,
                                          arr: openArray[T]): Digest =
   static:
     doAssert T is BasicType
+    doAssert bytesPerChunk mod sizeof(T) == 0
 
   if arr.len == 0:
     return getFinalHash(merkleizer)
 
-  when T is byte:
+  when sizeof(T) == 1 or cpuEndian == littleEndian:
     var
-      remainingBytes = arr.len
+      remainingBytes = when sizeof(T) == 1: arr.len
+                                      else: arr.len * sizeof(T)
       pos = cast[ptr byte](unsafeAddr arr[0])
 
     while remainingBytes >= bytesPerChunk:
@@ -460,18 +462,8 @@ func chunkedHashTreeRootForBasicTypes[T](merkleizer: var SszMerkleizerImpl,
     if remainingBytes > 0:
       merkleizer.addChunk(makeOpenArray(pos, remainingBytes))
 
-  elif T is bool or cpuEndian == littleEndian:
-    let
-      baseAddr = cast[ptr byte](unsafeAddr arr[0])
-      len = arr.len * sizeof(T)
-    return chunkedHashTreeRootForBasicTypes(merkleizer, makeOpenArray(baseAddr, len))
-
   else:
-    static:
-      doAssert T is UintN
-      doAssert bytesPerChunk mod sizeof(Т) == 0
-
-    const valuesPerChunk = bytesPerChunk div sizeof(Т)
+    const valuesPerChunk = bytesPerChunk div sizeof(T)
 
     var writtenValues = 0
 
@@ -486,7 +478,7 @@ func chunkedHashTreeRootForBasicTypes[T](merkleizer: var SszMerkleizerImpl,
     if remainingValues > 0:
       var lastChunk: array[bytesPerChunk, byte]
       for i in 0 ..< remainingValues:
-        chunk.writeBytesLE(i * sizeof(T), arr[writtenValues + i])
+        lastChunk.writeBytesLE(i * sizeof(T), arr[writtenValues + i])
       merkleizer.addChunk lastChunk
 
   getFinalHash(merkleizer)
@@ -567,8 +559,8 @@ func hashTreeRootAux[T](x: T): Digest =
           pos += sizeof(E)
     else:
       trs "FIXED TYPE; USE CHUNK STREAM"
-      var markleizer = createMerkleizer(maxChunksCount(T, Limit x.len))
-      chunkedHashTreeRootForBasicTypes(markleizer, x)
+      var merkleizer = createMerkleizer(maxChunksCount(T, Limit x.len))
+      chunkedHashTreeRootForBasicTypes(merkleizer, x)
   elif T is BitArray:
     hashTreeRootAux(x.bytes)
   elif T is array|object|tuple:
