@@ -46,6 +46,10 @@ type
     data: JsonNode
     id: int
 
+  HasCstring = object
+    notNilStr: cstring
+    nilStr: cstring
+
 # TODO `borrowSerialization` still doesn't work
 # properly when it's placed in another module:
 Meter.borrowSerialization int
@@ -88,7 +92,7 @@ suite "toJson tests":
     check:
       s.toJson == """{"distance":20,"x":10,"y":"test"}"""
       s.toJson(typeAnnotations = true) == """{"$type":"Simple","distance":20,"x":10,"y":"test"}"""
-      s.toJson(pretty = true) == dedent"""
+      s.toJson(pretty = true) == test_dedent"""
         {
           "distance": 20,
           "x": 10,
@@ -97,7 +101,7 @@ suite "toJson tests":
       """
 
   test "handle missing fields":
-    let json = dedent"""
+    let json = test_dedent"""
         {
           "distance": 20,
           "y": "test"
@@ -112,7 +116,7 @@ suite "toJson tests":
       decoded.distance.int == 20
 
   test "handle additional fields":
-    let json = dedent"""
+    let json = test_dedent"""
         {
           "x": -20,
           "futureObject": {"a": -1, "b": [1, 2.0, 3.1], "c": null, "d": true},
@@ -132,11 +136,90 @@ suite "toJson tests":
       let shouldNotDecode = Json.decode(json, Simple)
       echo "This should not have decoded ", shouldNotDecode
 
+  test "all fields are required and present":
+    let json = test_dedent"""
+        {
+          "x": 20,
+          "distance": 10,
+          "y": "y value"
+        }
+      """
+
+    let decoded = Json.decode(json, Simple, requireAllFields = true)
+
+    check:
+      decoded.x == 20
+      decoded.y == "y value"
+      decoded.distance.int == 10
+
+  test "all fields were required, but not all were provided":
+    let json = test_dedent"""
+      {
+        "x": -20,
+        "distance": 10
+      }
+    """
+
+    expect IncompleteObjectError:
+      let shouldNotDecode = Json.decode(json, Simple, requireAllFields = true)
+      echo "This should not have decoded ", shouldNotDecode
+
+  test "all fields were required, but not all were provided (additional fields present instead)":
+    let json = test_dedent"""
+      {
+        "futureBool": false,
+        "y": "y value",
+        "futureObject": {"a": -1, "b": [1, 2.0, 3.1], "c": null, "d": true},
+        "distance": 10
+      }
+    """
+
+    expect IncompleteObjectError:
+      let shouldNotDecode = Json.decode(json, Simple,
+                                        requireAllFields = true,
+                                        allowUnknownFields = true)
+      echo "This should not have decoded ", shouldNotDecode
+
+  test "all fields were required, but none were provided":
+    let json = "{}"
+
+    expect IncompleteObjectError:
+      let shouldNotDecode = Json.decode(json, Simple, requireAllFields = true)
+      echo "This should not have decoded ", shouldNotDecode
+
+  test "all fields are required and provided, and additional ones are present":
+    let json = test_dedent"""
+      {
+        "x": 20,
+        "distance": 10,
+        "futureBool": false,
+        "y": "y value",
+        "futureObject": {"a": -1, "b": [1, 2.0, 3.1], "c": null, "d": true},
+      }
+      """
+
+    let decoded = try:
+      Json.decode(json, Simple, requireAllFields = true, allowUnknownFields = true)
+    except SerializationError as err:
+      checkpoint "Unexpected deserialization failure: " & err.formatMsg("<input>")
+      raise
+
+    check:
+      decoded.x == 20
+      decoded.y == "y value"
+      decoded.distance.int == 10
+
+    expect UnexpectedField:
+      let shouldNotDecode = Json.decode(json, Simple,
+                                        requireAllFields = true,
+                                        allowUnknownFields = false)
+      echo "This should not have decoded ", shouldNotDecode
+
   test "arrays are printed correctly":
     var x = HoldsArray(data: @[1, 2, 3, 4])
 
     check:
-      x.toJson(pretty = true) == dedent"""
+      x.toJson(pretty = true) == test_dedent"""
         {
           "data": [
             1,
@@ -160,7 +243,7 @@ suite "toJson tests":
   test "Unusual field names":
     let r = HasUnusualFieldNames(`type`: "uint8", renamedField: "field")
     check:
-      r.toJSON == """{"type":"uint8","renamed":"field"}"""
+      r.toJson == """{"type":"uint8","renamed":"field"}"""
       r == Json.decode("""{"type":"uint8", "renamed":"field"}""", HasUnusualFieldNames)
 
   test "Option types":
@@ -197,7 +280,7 @@ suite "toJson tests":
 
   proc testJsonHolders(HasJsonData: type) =
     let
-      data1 = dedent"""
+      data1 = test_dedent"""
         {
           "name": "Data 1",
           "data": [1, 2, 3, 4],
@@ -205,7 +288,7 @@ suite "toJson tests":
         }
       """
     let
-      data2 = dedent"""
+      data2 = test_dedent"""
         {
           "name": "Data 2",
           "data": "some string",
@@ -213,7 +296,7 @@ suite "toJson tests":
         }
       """
     let
-      data3 = dedent"""
+      data3 = test_dedent"""
         {
           "name": "Data 3",
           "data": {"field1": 10, "field2": [1, 2, 3], "field3": "test"},
@@ -270,3 +353,21 @@ suite "toJson tests":
     except SerializationError as err:
       checkpoint err.formatMsg("./cases/comments.json")
       check false
+
+  test "A nil cstring":
+    let
+      obj1 = HasCstring(notNilStr: "foo", nilStr: nil)
+      obj2 = HasCstring(notNilStr: "", nilStr: nil)
+      str: cstring = "some value"
+
+    check:
+      Json.encode(obj1) == """{"notNilStr":"foo","nilStr":null}"""
+      Json.encode(obj2) == """{"notNilStr":"","nilStr":null}"""
+      Json.encode(str) == "\"some value\""
+      Json.encode(cstring nil) == "null"
+
+    reject:
+      # Decoding cstrings is not supported due to lack of
+      # clarity regarding the memory allocation approach
+      Json.decode("null", cstring)
+

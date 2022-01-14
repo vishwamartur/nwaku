@@ -9,7 +9,7 @@
 import httpserver
 import ../../asyncloop, ../../asyncsync
 import ../../streams/[asyncstream, tlsstream]
-export httpserver, asyncstream, tlsstream
+export asyncloop, asyncsync, httpserver, asyncstream, tlsstream
 
 type
   SecureHttpServer* = object of HttpServer
@@ -97,7 +97,7 @@ proc new*(htype: typedesc[SecureHttpServerRef],
   HttpServer(res[]).init(address, serverInstance, processCallback,
                          createSecConnection, serverUri, serverFlags,
                          socketFlags, serverIdent, maxConnections,
-                         bufferSize, backLogSize, httpHeadersTimeout,
+                         bufferSize, backlogSize, httpHeadersTimeout,
                          maxHeadersSize, maxRequestBodySize)
   res.tlsCertificate = tlsCertificate
   res.tlsPrivateKey = tlsPrivateKey

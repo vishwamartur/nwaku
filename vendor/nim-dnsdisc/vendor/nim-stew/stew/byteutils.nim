@@ -11,7 +11,7 @@
 
 import
   std/[algorithm, typetraits],
-  ./assign2, ./arrayops
+  ./arrayops
 
 # backwards compat
 export arrayops.`&`, arrayops.initArrayWith, arrayops.`[]=`
@@ -59,17 +59,17 @@ func hexToByteArray*(hexStr: string, output: var openArray[byte])
   hexToByteArray(hexStr, output, 0, output.high)
 
 func hexToByteArray*[N: static[int]](hexStr: string): array[N, byte]
-                    {.raises: [ValueError, Defect], noInit, inline.}=
+                    {.raises: [ValueError, Defect], noinit, inline.}=
   ## Read an hex string and store it in a byte array. No "endianness" reordering is done.
   hexToByteArray(hexStr, result)
 
 func hexToByteArray*(hexStr: string, N: static int): array[N, byte]
-                    {.raises: [ValueError, Defect], noInit, inline.}=
+                    {.raises: [ValueError, Defect], noinit, inline.}=
   ## Read an hex string and store it in a byte array. No "endianness" reordering is done.
   hexToByteArray(hexStr, result)
 
 func fromHex*[N](A: type array[N, byte], hexStr: string): A
-                {.raises: [ValueError, Defect], noInit, inline.}=
+                {.raises: [ValueError, Defect], noinit, inline.}=
   ## Read an hex string and store it in a byte array. No "endianness" reordering is done.
   hexToByteArray(hexStr, result)
 
@@ -115,29 +115,44 @@ func hexToSeqByte*(hexStr: string): seq[byte]
   for i in 0 ..< N:
     result[i] = hexStr[2*i + skip].readHexChar shl 4 or hexStr[2*i + 1 + skip].readHexChar
 
-func toHexAux(ba: openarray[byte]): string =
+func toHexAux(ba: openArray[byte], with0x: static bool): string =
   ## Convert a byte-array to its hex representation
   ## Output is in lowercase
   ## No "endianness" reordering is done.
   const hexChars = "0123456789abcdef"
 
-  let sz = ba.len
-  result = newString(2 * sz)
-  for i in 0 ..< sz:
-    result[2*i] = hexChars[int ba[i] shr 4 and 0xF]
-    result[2*i+1] = hexChars[int ba[i] and 0xF]
+  let extra = when with0x: 2 else: 0
+  result = newStringOfCap(2 * ba.len + extra)
+  when with0x:
+    result.add("0x")
 
-func toHex*(ba: openarray[byte]): string {.inline.} =
+  for b in ba:
+    result.add(hexChars[int(b shr 4 and 0x0f'u8)])
+    result.add(hexChars[int(b and 0x0f'u8)])
+
+func toHex*(ba: openArray[byte]): string {.inline.} =
   ## Convert a byte-array to its hex representation
   ## Output is in lowercase
   ## No "endianness" reordering is done.
-  toHexAux(ba)
+  toHexAux(ba, false)
 
 func toHex*[N: static[int]](ba: array[N, byte]): string {.inline.} =
   ## Convert a big endian byte-array to its hex representation
   ## Output is in lowercase
   ## No "endianness" reordering is done.
-  toHexAux(ba)
+  toHexAux(ba, false)
+
+func to0xHex*(ba: openArray[byte]): string {.inline.} =
+  ## Convert a byte-array to its hex representation
+  ## Output is in lowercase
+  ## No "endianness" reordering is done.
+  toHexAux(ba, true)
+
+func to0xHex*[N: static[int]](ba: array[N, byte]): string {.inline.} =
+  ## Convert a big endian byte-array to its hex representation
+  ## Output is in lowercase
+  ## No "endianness" reordering is done.
+  toHexAux(ba, true)
 
 func toBytes*(s: string): seq[byte] =
   ## Convert a string to the corresponding byte sequence - since strings in

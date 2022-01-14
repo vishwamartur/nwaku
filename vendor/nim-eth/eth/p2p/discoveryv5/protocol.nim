@@ -76,13 +76,13 @@
 import
   std/[tables, sets, options, math, sequtils, algorithm],
   stew/shims/net as stewNet, json_serialization/std/net,
-  stew/endians2, chronicles, chronos, stint, bearssl, metrics,
+  stew/[endians2, results], chronicles, chronos, stint, bearssl, metrics,
   ".."/../[rlp, keys, async_utils],
   "."/[messages, encoding, node, routing_table, enr, random2, sessions, ip_vote, nodes_verification]
 
 import nimcrypto except toHex
 
-export options
+export options, results, node, enr
 
 declareCounter discovery_message_requests_outgoing,
   "Discovery protocol outgoing message requests", labels = ["response"]
@@ -122,7 +122,7 @@ type
     privateKey: PrivateKey
     bindAddress: Address ## UDP binding address
     pendingRequests: Table[AESGCMNonce, PendingRequest]
-    routingTable: RoutingTable
+    routingTable*: RoutingTable
     codec*: Codec
     awaitedMessages: Table[(NodeId, RequestId), Future[Option[Message]]]
     refreshLoop: Future[void]
@@ -173,7 +173,7 @@ proc addNode*(d: Protocol, enr: EnrUri): bool =
   ## Returns false if no valid ENR URI, or on the conditions of `addNode` from
   ## an `Record`.
   var r: Record
-  let res = r.fromUri(enr)
+  let res = r.fromURI(enr)
   if res:
     return d.addNode(r)
 
@@ -217,7 +217,7 @@ func getRecord*(d: Protocol): Record =
   d.localNode.record
 
 proc updateRecord*(
-    d: Protocol, enrFields: openarray[(string, seq[byte])]): DiscResult[void] =
+    d: Protocol, enrFields: openArray[(string, seq[byte])]): DiscResult[void] =
   ## Update the ENR of the local node with provided `enrFields` k:v pairs.
   let fields = mapIt(enrFields, toFieldPair(it[0], it[1]))
   d.localNode.record.update(d.privateKey, fields)
@@ -246,7 +246,7 @@ proc send(d: Protocol, n: Node, data: seq[byte]) =
   d.send(n.address.get(), data)
 
 proc sendNodes(d: Protocol, toId: NodeId, toAddr: Address, reqId: RequestId,
-    nodes: openarray[Node]) =
+    nodes: openArray[Node]) =
   proc sendNodes(d: Protocol, toId: NodeId, toAddr: Address,
       message: NodesMessage, reqId: RequestId) {.nimcall.} =
     let (data, _) = encodeMessagePacket(d.rng[], d.codec, toId, toAddr,
@@ -332,9 +332,9 @@ proc handleMessage(d: Protocol, srcId: NodeId, fromAddr: Address,
   of ping:
     discovery_message_requests_incoming.inc()
     d.handlePing(srcId, fromAddr, message.ping, message.reqId)
-  of findNode:
+  of findnode:
     discovery_message_requests_incoming.inc()
-    d.handleFindNode(srcId, fromAddr, message.findNode, message.reqId)
+    d.handleFindNode(srcId, fromAddr, message.findnode, message.reqId)
   of talkreq:
     discovery_message_requests_incoming.inc()
     d.handleTalkReq(srcId, fromAddr, message.talkreq, message.reqId)
@@ -362,7 +362,7 @@ proc registerTalkProtocol*(d: Protocol, protocolId: seq[byte],
 
 proc sendWhoareyou(d: Protocol, toId: NodeId, a: Address,
     requestNonce: AESGCMNonce, node: Option[Node]) =
-  let key = HandShakeKey(nodeId: toId, address: a)
+  let key = HandshakeKey(nodeId: toId, address: a)
   if not d.codec.hasHandshake(key):
     let
       recordSeq = if node.isSome(): node.get().record.seqNum
@@ -422,8 +422,10 @@ proc receive*(d: Protocol, a: Address, packet: openArray[byte]) =
       # In that case we can add/update it to the routing table.
       if packet.node.isSome():
         let node = packet.node.get()
-        # Not filling table with nodes without correct IP in the ENR
-        # TODO: Should we care about this???
+        # Lets not add nodes without correct IP in the ENR to the routing table.
+        # The ENR could contain bogus IPs and although they would get removed
+        # on the next revalidation, one could spam these as the handshake
+        # message occurs on (first) incoming messages.
         if node.address.isSome() and a == node.address.get():
           if d.addNode(node):
             trace "Added new node to routing table after handshake", node
@@ -739,6 +741,8 @@ proc resolve*(d: Protocol, id: NodeId): Future[Option[Node]] {.async.} =
   ## will try to contact if for newer information. If node is not known or it
   ## does not reply, a lookup is done to see if it can find a (newer) record of
   ## the node on the network.
+  if id == d.localNode.id:
+    return some(d.localNode)
 
   let node = d.getNode(id)
   if node.isSome():
@@ -787,7 +791,7 @@ proc populateTable*(d: Protocol) {.async.} =
 proc revalidateNode*(d: Protocol, n: Node) {.async.} =
   let pong = await d.ping(n)
 
-  if pong.isOK():
+  if pong.isOk():
     let res = pong.get()
     if res.enrSeq > n.record.seqNum:
       # Request new ENR
@@ -879,8 +883,8 @@ proc ipMajorityLoop(d: Protocol) {.async.} =
 proc newProtocol*(privKey: PrivateKey,
                   enrIp: Option[ValidIpAddress],
                   enrTcpPort, enrUdpPort: Option[Port],
-                  localEnrFields: openarray[(string, seq[byte])] = [],
-                  bootstrapRecords: openarray[Record] = [],
+                  localEnrFields: openArray[(string, seq[byte])] = [],
+                  bootstrapRecords: openArray[Record] = [],
                   previousRecord = none[enr.Record](),
                   bindPort: Port,
                   bindIp = IPv4_any(),
@@ -909,7 +913,11 @@ proc newProtocol*(privKey: PrivateKey,
   info "ENR initialized", ip = enrIp, tcp = enrTcpPort, udp = enrUdpPort,
     seqNum = record.seqNum, uri = toURI(record)
   if enrIp.isNone():
-    warn "No external IP provided for the ENR, this node will not be discoverable"
+    if enrAutoUpdate:
+      notice "No external IP provided for the ENR, this node will not be " &
+        "discoverable until the ENR is updated with the discovered external IP address"
+    else:
+      warn "No external IP provided for the ENR, this node will not be discoverable"
 
   let node = newNode(record).expect("Properly initialized record")
 

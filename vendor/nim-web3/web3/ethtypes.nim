@@ -201,11 +201,12 @@ type
 
   TypedTransaction* = distinct seq[byte]
 
-  ExecutionPayload* = object
+  # https://github.com/ethereum/execution-apis/blob/v1.0.0-alpha.5/src/engine/specification.md#executionpayloadv1
+  ExecutionPayloadV1* = object
     parentHash*: BlockHash
-    coinbase*: Address
+    feeRecipient*: Address
     stateRoot*: BlockHash
-    receiptRoot*: BlockHash
+    receiptsRoot*: BlockHash
     logsBloom*: FixedBytes[256]
     random*: FixedBytes[32]
     blockNumber*: Quantity
@@ -287,3 +288,5 @@ template bytes*(data: DynamicBytes): seq[byte] =
 template len*(data: DynamicBytes): int =
   len(distinctBase data)
 
+func `$`*[minLen, maxLen](data: DynamicBytes[minLen, maxLen]): string =
+  "0x" & byteutils.toHex(distinctbase(data))

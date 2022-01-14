@@ -22,8 +22,9 @@ type
     maxBufferedBytes*: Natural
 
     queue*: Deque[PageRef]
-    waitingReader*: Future[void]
-    waitingWriter*: Future[void]
+    when fsAsyncSupport:
+      waitingReader*: Future[void]
+      waitingWriter*: Future[void]
 
     eofReached*: bool
     fauxEofPos*: Natural
@@ -54,7 +55,7 @@ else:
   template describeBuffers*(context: static string, buffers: PageBuffers) =
     discard
 
-func openArrayToPair*(a: var openarray[byte]): (ptr byte, Natural) =
+func openArrayToPair*(a: var openArray[byte]): (ptr byte, Natural) =
   (addr a[0], Natural(a.len))
 
 template allocationStart*(page: PageRef): ptr byte =

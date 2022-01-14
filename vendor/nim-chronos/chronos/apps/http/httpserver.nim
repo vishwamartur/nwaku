@@ -34,7 +34,7 @@ type
     ServerRunning, ServerStopped, ServerClosed
 
   HttpProcessError* = object
-    error*: HTTPServerError
+    error*: HttpServerError
     code*: HttpCode
     exc*: ref CatchableError
     remote*: TransportAddress
@@ -130,7 +130,7 @@ type
 
   ByteChar* = string | seq[byte]
 
-proc init(htype: typedesc[HttpProcessError], error: HTTPServerError,
+proc init(htype: typedesc[HttpProcessError], error: HttpServerError,
           exc: ref CatchableError, remote: TransportAddress,
           code: HttpCode): HttpProcessError {.raises: [Defect].} =
   HttpProcessError(error: error, exc: exc, remote: remote, code: code)
@@ -214,7 +214,7 @@ proc new*(htype: typedesc[HttpServerRef],
   var res = HttpServerRef()
   res[].init(address, serverInstance, processCallback, createConnection,
              serverUri, serverFlags, socketFlags, serverIdent, maxConnections,
-             bufferSize, backLogSize, httpHeadersTimeout, maxHeadersSize,
+             bufferSize, backlogSize, httpHeadersTimeout, maxHeadersSize,
              maxRequestBodySize)
   ok(res)
 
@@ -246,9 +246,12 @@ proc dumbResponse*(): HttpResponseRef {.raises: [Defect].} =
   ## Create an empty response to return when request processor got no request.
   HttpResponseRef(state: HttpResponseState.Dumb, version: HttpVersion11)
 
-proc getId(transp: StreamTransport): string {.inline.} =
+proc getId(transp: StreamTransport): Result[string, string]  {.inline.} =
   ## Returns string unique transport's identifier as string.
-  $transp.remoteAddress() & "_" & $transp.localAddress()
+  try:
+    ok($transp.remoteAddress() & "_" & $transp.localAddress())
+  except TransportOsError as exc:
+    err($exc.msg)
 
 proc hasBody*(request: HttpRequestRef): bool {.raises: [Defect].} =
   ## Returns ``true`` if request has body.
@@ -665,7 +668,8 @@ proc `keepalive=`*(resp: HttpResponseRef, value: bool) =
 proc keepalive*(resp: HttpResponseRef): bool {.raises: [Defect].} =
   HttpResponseFlags.KeepAlive in resp.flags
 
-proc processLoop(server: HttpServerRef, transp: StreamTransport) {.async.} =
+proc processLoop(server: HttpServerRef, transp: StreamTransport,
+                 connId: string) {.async.} =
   var
     conn: HttpConnectionRef
     connArg: RequestFence
@@ -675,11 +679,11 @@ proc processLoop(server: HttpServerRef, transp: StreamTransport) {.async.} =
     conn = await server.createConnCallback(server, transp)
     runLoop = true
   except CancelledError:
-    server.connections.del(transp.getId())
+    server.connections.del(connId)
     await transp.closeWait()
     return
   except HttpCriticalError as exc:
-    let error = HttpProcessError.init(HTTPServerError.CriticalError, exc,
+    let error = HttpProcessError.init(HttpServerError.CriticalError, exc,
                                       transp.remoteAddress(), exc.code)
     connArg = RequestFence.err(error)
     runLoop = false
@@ -702,20 +706,24 @@ proc processLoop(server: HttpServerRef, transp: StreamTransport) {.async.} =
       resp: HttpResponseRef
 
     try:
-      let request = await conn.getRequest().wait(server.headersTimeout)
+      let request =
+        if server.headersTimeout.isInfinite():
+          await conn.getRequest()
+        else:
+          await conn.getRequest().wait(server.headersTimeout)
       arg = RequestFence.ok(request)
     except CancelledError:
       breakLoop = true
     except AsyncTimeoutError as exc:
-      let error = HttpProcessError.init(HTTPServerError.TimeoutError, exc,
+      let error = HttpProcessError.init(HttpServerError.TimeoutError, exc,
                                         transp.remoteAddress(), Http408)
       arg = RequestFence.err(error)
     except HttpRecoverableError as exc:
-      let error = HttpProcessError.init(HTTPServerError.RecoverableError, exc,
+      let error = HttpProcessError.init(HttpServerError.RecoverableError, exc,
                                         transp.remoteAddress(), exc.code)
       arg = RequestFence.err(error)
     except HttpCriticalError as exc:
-      let error = HttpProcessError.init(HTTPServerError.CriticalError, exc,
+      let error = HttpProcessError.init(HttpServerError.CriticalError, exc,
                                         transp.remoteAddress(), exc.code)
       arg = RequestFence.err(error)
     except HttpDisconnectError as exc:
@@ -726,7 +734,7 @@ proc processLoop(server: HttpServerRef, transp: StreamTransport) {.async.} =
       else:
         breakLoop = true
     except CatchableError as exc:
-      let error = HttpProcessError.init(HTTPServerError.CatchableError, exc,
+      let error = HttpProcessError.init(HttpServerError.CatchableError, exc,
                                         transp.remoteAddress(), Http500)
       arg = RequestFence.err(error)
 
@@ -754,13 +762,13 @@ proc processLoop(server: HttpServerRef, transp: StreamTransport) {.async.} =
       let code = arg.error().code
       try:
         case arg.error().error
-        of HTTPServerError.TimeoutError:
+        of HttpServerError.TimeoutError:
           discard await conn.sendErrorResponse(HttpVersion11, code, false)
-        of HTTPServerError.RecoverableError:
+        of HttpServerError.RecoverableError:
           discard await conn.sendErrorResponse(HttpVersion11, code, false)
-        of HTTPServerError.CriticalError:
+        of HttpServerError.CriticalError:
           discard await conn.sendErrorResponse(HttpVersion11, code, false)
-        of HTTPServerError.CatchableError:
+        of HttpServerError.CatchableError:
           discard await conn.sendErrorResponse(HttpVersion11, code, false)
         of HttpServerError.DisconnectError:
           discard
@@ -822,7 +830,7 @@ proc processLoop(server: HttpServerRef, transp: StreamTransport) {.async.} =
       # need to close it.
       await conn.closeWait()
 
-  server.connections.del(transp.getId())
+  server.connections.del(connId)
   # if server.maxConnections > 0:
   #   server.semaphore.release()
 
@@ -832,10 +840,16 @@ proc acceptClientLoop(server: HttpServerRef) {.async.} =
     try:
       # if server.maxConnections > 0:
       #   await server.semaphore.acquire()
-
       let transp = await server.instance.accept()
-      server.connections[transp.getId()] = processLoop(server, transp)
-
+      let resId = transp.getId()
+      if resId.isErr():
+        # We are unable to identify remote peer, it means that remote peer
+        # disconnected before identification.
+        await transp.closeWait()
+        breakLoop = false
+      else:
+        let connId = resId.get()
+        server.connections[connId] = processLoop(server, transp, connId)
     except CancelledError:
       # Server was stopped
       breakLoop = true
@@ -845,10 +859,12 @@ proc acceptClientLoop(server: HttpServerRef) {.async.} =
     except TransportTooManyError:
       # Non critical error
       breakLoop = false
+    except TransportAbortedError:
+      # Non critical error
+      breakLoop = false
     except CatchableError:
       # Unexpected error
       breakLoop = true
-      discard
 
     if breakLoop:
       break
@@ -1447,7 +1463,7 @@ proc requestInfo*(req: HttpRequestRef, contentType = "text/text"): string {.
   res.add(kv("server.maxHeadersSize", $req.connection.server.maxHeadersSize))
   res.add(kv("server.maxRequestBodySize",
              $req.connection.server.maxRequestBodySize))
-  res.add(kv("server.backlog", $req.connection.server.backLogSize))
+  res.add(kv("server.backlog", $req.connection.server.backlogSize))
   res.add(kv("server.headersTimeout", $req.connection.server.headersTimeout))
   res.add(kv("server.baseUri", $req.connection.server.baseUri))
   res.add(kv("server.flags", $req.connection.server.flags))

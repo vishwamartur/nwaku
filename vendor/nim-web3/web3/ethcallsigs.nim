@@ -13,7 +13,7 @@ proc eth_syncing(): JsonNode
 proc eth_coinbase(): string
 proc eth_mining(): bool
 proc eth_hashrate(): int
-proc eth_gasPrice(): int64
+proc eth_gasPrice(): Quantity
 proc eth_accounts(): seq[Address]
 proc eth_blockNumber(): Quantity
 proc eth_getBalance(data: Address, blockId: BlockIdentifier): UInt256
@@ -24,7 +24,7 @@ proc eth_getBlockTransactionCountByNumber(blockId: BlockIdentifier)
 proc eth_getUncleCountByBlockHash(data: BlockHash)
 proc eth_getUncleCountByBlockNumber(blockId: BlockIdentifier)
 proc eth_getCode(data: Address, blockId: BlockIdentifier): seq[byte]
-proc eth_sign(data: Address, message: seq[byte]): seq[byte]
+proc eth_sign(address: Address, data: string): seq[byte]
 proc eth_sendTransaction(obj: EthSend): TxHash
 proc eth_sendRawTransaction(data: string): TxHash
 proc eth_call(call: EthCall, blockId: BlockIdentifier): string #UInt256

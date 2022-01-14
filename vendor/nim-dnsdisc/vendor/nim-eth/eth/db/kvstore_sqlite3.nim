@@ -29,6 +29,7 @@ type
     # can be created
     env: Sqlite
     managedStmts: seq[RawStmtPtr]
+    readOnly*: bool
 
   SqStoreCheckpointKind* {.pure.} = enum
     passive, full, restart, truncate
@@ -460,7 +461,7 @@ proc init*(
   let
     name =
       if inMemory: ":memory:"
-      else: basepath / name & ".sqlite3"
+      else: basePath / name & ".sqlite3"
     flags =
       # For some reason, opening multiple in-memory databases doesn't work if
       # one of them is read-only - for now, disable read-only mode for them
@@ -509,6 +510,7 @@ proc init*(
 
   ok(SqStoreRef(
     env: env.release,
+    readOnly: readOnly
   ))
 
 proc openKvStore*(db: SqStoreRef, name = "kvstore", withoutRowid = false): KvResult[SqKeyspaceRef] =
@@ -519,15 +521,15 @@ proc openKvStore*(db: SqStoreRef, name = "kvstore", withoutRowid = false): KvRes
   ##               rows (the row being the sum of key and value) - see
   ##               https://www.sqlite.org/withoutrowid.html
   ##
-  let
-    createSql = """
+
+  if not db.readOnly:
+    let createSql = """
       CREATE TABLE IF NOT EXISTS """ & name & """ (
          key BLOB PRIMARY KEY,
          value BLOB
       )"""
-
-  checkExec db.env,
-    if withoutRowid: createSql & " WITHOUT ROWID;" else: createSql & ";"
+    checkExec db.env,
+      if withoutRowid: createSql & " WITHOUT ROWID;" else: createSql & ";"
 
   var
     tmp: SqKeyspace
@@ -550,7 +552,7 @@ proc openKvStore*(db: SqStoreRef, name = "kvstore", withoutRowid = false): KvRes
   ok res
 
 when defined(metrics):
-  import tables, times,
+  import locks, tables, times,
         chronicles, metrics
 
   type Sqlite3Info = ref object of Gauge
@@ -561,6 +563,7 @@ when defined(metrics):
                         help: help,
                         typ: "gauge",
                         creationThreadId: getThreadId())
+    result.lock.initLock()
     result.register(registry)
 
   var sqlite3Info* {.global.} = newSqlite3Info("sqlite3_info", "SQLite3 info")

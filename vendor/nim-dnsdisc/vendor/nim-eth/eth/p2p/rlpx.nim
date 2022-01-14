@@ -5,6 +5,8 @@
 #   * Apache v2 license (license terms in the root directory or at https://www.apache.org/licenses/LICENSE-2.0).
 # at your option. This file may not be copied, modified, or distributed except according to those terms.
 
+{.push raises: [Defect].}
+
 import
   std/[tables, algorithm, deques, hashes, options, typetraits],
   stew/shims/macros, chronicles, nimcrypto, chronos,
@@ -68,8 +70,7 @@ chronicles.formatIt(Peer): $(it.remote)
 
 include p2p_backends_helpers
 
-proc requestResolver[MsgType](msg: pointer, future: FutureBase)
-    {.gcsafe, raises:[Defect].} =
+proc requestResolver[MsgType](msg: pointer, future: FutureBase) {.gcsafe.} =
   var f = Future[Option[MsgType]](future)
   if not f.finished:
     if msg != nil:
@@ -115,7 +116,7 @@ proc messagePrinter[MsgType](msg: pointer): string {.gcsafe.} =
   # result = $(cast[ptr MsgType](msg)[])
 
 proc disconnect*(peer: Peer, reason: DisconnectionReason,
-                 notifyOtherPeer = false) {.gcsafe, raises: [Defect], async.}
+  notifyOtherPeer = false) {.gcsafe, async.}
 
 template raisePeerDisconnected(msg: string, r: DisconnectionReason) =
   var e = newException(PeerDisconnected, msg)
@@ -169,7 +170,7 @@ proc numProtocols(d: Dispatcher): int =
   d.activeProtocols.len
 
 proc getDispatcher(node: EthereumNode,
-                   otherPeerCapabilities: openarray[Capability]): Dispatcher =
+                   otherPeerCapabilities: openArray[Capability]): Dispatcher =
   # TODO: sub-optimal solution until progress is made here:
   # https://github.com/nim-lang/Nim/issues/7457
   # We should be able to find an existing dispatcher without allocating a new one
@@ -251,15 +252,8 @@ func asCapability*(p: ProtocolInfo): Capability =
   result.name = p.name
   result.version = p.version
 
-func nameStr*(p: ProtocolInfo): string =
-  result = newStringOfCap(3)
-  for c in p.name: result.add(c)
-
 proc cmp*(lhs, rhs: ProtocolInfo): int =
-  for i in 0..2:
-    if lhs.name[i] != rhs.name[i]:
-      return int16(lhs.name[i]) - int16(rhs.name[i])
-  return 0
+  return cmp(lhs.name, rhs.name)
 
 proc nextMsgResolver[MsgType](msgData: Rlp, future: FutureBase)
     {.gcsafe, raises: [RlpError, Defect].} =
@@ -372,7 +366,7 @@ proc registerRequest(peer: Peer,
 
   doAssert(not peer.dispatcher.isNil)
   let requestResolver = peer.dispatcher.messages[responseMsgId].requestResolver
-  proc timeoutExpired(udata: pointer) {.gcsafe, raises:[Defect].} =
+  proc timeoutExpired(udata: pointer) {.gcsafe.} =
     requestResolver(nil, responseFuture)
 
   discard setTimer(timeoutAt, timeoutExpired, nil)
@@ -512,13 +506,14 @@ proc recvMsg*(peer: Peer): Future[tuple[msgId: int, msgData: Rlp]] {.async.} =
     await peer.disconnectAndRaise(BreachOfProtocol,
                                   "Cannot read RLPx message id")
 
-proc checkedRlpRead(peer: Peer, r: var Rlp, MsgType: type): auto =
+proc checkedRlpRead(peer: Peer, r: var Rlp, MsgType: type):
+    auto {.raises: [RlpError, Defect].} =
   when defined(release):
     return r.read(MsgType)
   else:
     try:
       return r.read(MsgType)
-    except Exception as e:
+    except rlp.RlpError as e:
       debug "Failed rlp.read",
             peer = peer,
             dataType = MsgType.name,
@@ -616,7 +611,8 @@ proc dispatchMessages*(peer: Peer) {.async.} =
     # The documentation will need to be updated, explaning the fact that
     # nextMsg will be resolved only if the message handler has executed
     # successfully.
-    if peer.awaitedMessages[msgId] != nil:
+    if msgId >= 0 and msgId < peer.awaitedMessages.len and
+       peer.awaitedMessages[msgId] != nil:
       let msgInfo = peer.dispatcher.messages[msgId]
       try:
         (msgInfo.nextMsgResolver)(msgData, peer.awaitedMessages[msgId])
@@ -664,9 +660,8 @@ proc p2pProtocolBackendImpl*(protocol: P2PProtocol): Backend =
     isSubprotocol = protocol.rlpxName != "p2p"
 
   if protocol.rlpxName.len == 0: protocol.rlpxName = protocol.name
-  # By convention, all Ethereum protocol names were abbreviated to 3 letters,
-  # but this informal spec has since been relaxed (e.g. `hive`).
-  doAssert protocol.rlpxName.len > 2
+  # By convention, all Ethereum protocol names have at least 3 characters.
+  doAssert protocol.rlpxName.len >= 3
 
   new result
 
@@ -877,7 +872,7 @@ p2pProtocol DevP2P(version = 5, rlpxName = "p2p"):
   proc pong(peer: Peer, emptyList: EmptyList) =
     discard
 
-proc removePeer(network: EthereumNode, peer: Peer) {.raises: [Defect].} =
+proc removePeer(network: EthereumNode, peer: Peer) =
   # It is necessary to check if peer.remote still exists. The connection might
   # have been dropped already from the peers side.
   # E.g. when receiving a p2p.disconnect message from a peer, a race will happen
@@ -911,7 +906,7 @@ proc callDisconnectHandlers(peer: Peer, reason: DisconnectionReason):
       trace "Disconnection handler ended with an error", err = f.error.msg
 
 proc disconnect*(peer: Peer, reason: DisconnectionReason,
-    notifyOtherPeer = false) {.async, raises: [Defect].} =
+    notifyOtherPeer = false) {.async.} =
   if peer.connectionState notin {Disconnecting, Disconnected}:
     peer.connectionState = Disconnecting
     # Do this first so sub-protocols have time to clean up and stop sending
@@ -945,12 +940,12 @@ proc validatePubKeyInHello(msg: DevP2P.hello, pubKey: PublicKey): bool =
   let pk = PublicKey.fromRaw(msg.nodeId)
   pk.isOk and pk[] == pubKey
 
-proc checkUselessPeer(peer: Peer) =
+proc checkUselessPeer(peer: Peer) {.raises: [UselessPeerError, Defect].} =
   if peer.dispatcher.numProtocols == 0:
     # XXX: Send disconnect + UselessPeer
     raise newException(UselessPeerError, "Useless peer")
 
-proc initPeerState*(peer: Peer, capabilities: openarray[Capability])
+proc initPeerState*(peer: Peer, capabilities: openArray[Capability])
     {.raises: [UselessPeerError, Defect].} =
   peer.dispatcher = getDispatcher(peer.network, capabilities)
   checkUselessPeer(peer)
@@ -1020,9 +1015,9 @@ template `^`(arr): auto =
   # variable as an open array
   arr.toOpenArray(0, `arr Len` - 1)
 
-proc initSecretState(hs: var Handshake, authMsg, ackMsg: openarray[byte],
-                     p: Peer) =
-  var secrets = hs.getSecrets(authMsg, ackMsg).tryGet()
+proc initSecretState(hs: var Handshake, authMsg, ackMsg: openArray[byte],
+    p: Peer) =
+  var secrets = hs.getSecrets(authMsg, ackMsg)
   initSecretState(secrets, p.secretsState)
   burnMem(secrets)
 
@@ -1106,7 +1101,7 @@ proc rlpxConnect*(node: EthereumNode, remote: Node): Future[Peer] {.async.} =
       result.waitSingleMsg(DevP2P.hello),
       10.seconds)
 
-    if not validatePubKeyInHello(response, remote.node.pubKey):
+    if not validatePubKeyInHello(response, remote.node.pubkey):
       warn "Remote nodeId is not its public key" # XXX: Do we care?
 
     trace "DevP2P handshake completed", peer = remote,
@@ -1150,7 +1145,7 @@ proc rlpxAccept*(node: EthereumNode,
   result.network = node
 
   var handshake =
-    HandShake.tryInit(node.rng[], node.keys, {auth.Responder}).tryGet
+    Handshake.tryInit(node.rng[], node.keys, {auth.Responder}).tryGet
 
   var ok = false
   try:

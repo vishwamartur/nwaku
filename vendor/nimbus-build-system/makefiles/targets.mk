@@ -11,6 +11,7 @@
 	warn-jobs \
 	deps-common \
 	build-nim \
+	update-test \
 	update-common \
 	$(NIM_BINARY) \
 	update-remote \
@@ -64,6 +65,7 @@ endif
 
 #- conditionally re-builds the Nim compiler (not usually needed, because `make update` calls this rule; delete $(NIM_BINARY) to force it)
 #- allows parallel building with the '+' prefix
+#- handles the case where NIM_COMMIT was previously used to build a non-default compiler
 #- forces a rebuild of csources, Nimble and a complete compiler rebuild, in case we're called after pulling a new Nim version
 #- uses our Git submodules for csources and Nimble (Git doesn't let us place them in another submodule)
 #- build_all.sh looks at the parent dir to decide whether to copy the resulting csources binary there,
@@ -72,13 +74,21 @@ endif
 #- macOS is also a special case, with its "ln" not supporting "-r"
 #- the AppVeyor 32-bit build is done on a 64-bit image, so we need to override the architecture detection with ARCH_OVERRIDE
 build-nim: | sanity-checks
-	+ NIM_BUILD_MSG="$(BUILD_MSG) Nim compiler" \
+	+ if [[ -z "$(NIM_COMMIT)" ]]; then git submodule update --init --recursive "$(BUILD_SYSTEM_DIR)"; fi; \
+		NIM_BUILD_MSG="$(BUILD_MSG) Nim compiler" \
 		V=$(V) \
 		CC=$(CC) \
 		MAKE="$(MAKE)" \
 		ARCH_OVERRIDE=$(ARCH_OVERRIDE) \
 		QUICK_AND_DIRTY_COMPILER=$(QUICK_AND_DIRTY_COMPILER) \
 		"$(CURDIR)/$(BUILD_SYSTEM_DIR)/scripts/build_nim.sh" "$(NIM_DIR)" ../Nim-csources-v1 ../nimble "$(CI_CACHE)"
+
+# Check if the update might cause loss of work. Abort, if so, while allowing an override mechanism.
+update-test:
+	TEE_TO_TTY="cat"; if [[ -e /dev/tty ]]; then TEE_TO_TTY="tee /dev/tty"; fi; \
+	COMMAND="git status --short --untracked-files=no --ignore-submodules=untracked"; \
+	LINES=$$({ $${COMMAND} | grep 'vendor' && echo ^---top level || true; git submodule foreach --recursive --quiet "$${COMMAND} | grep . && echo ^---\$$name || true"; } | $${TEE_TO_TTY} | wc -l); \
+	if [[ "$${LINES}" -ne "0" && "$(OVERRIDE)" != "1" ]]; then echo -e "\nYou have uncommitted local changes which might be overwritten by the update. Aborting.\nIf you know better, you can re-run the command with OVERRIDE=1.\n"; exit 1; fi
 
 #- for each submodule, delete checked out files (that might prevent a fresh checkout); skip dotfiles
 #- in case of submodule URL changes, propagates that change in the parent repo's .git directory
@@ -89,7 +99,7 @@ build-nim: | sanity-checks
 #- deletes the ".nimble" dir and executes the "deps" target
 #- allows parallel building with the '+' prefix
 #- rebuilds the Nim compiler if the corresponding submodule is updated
-update-common: | sanity-checks
+update-common: | sanity-checks update-test
 	git submodule foreach --quiet 'git ls-files --exclude-standard --recurse-submodules -z -- ":!:.*" | xargs -0 rm -rf'
 	git submodule update --init --recursive || true
 	# changing URLs in a submodule's submodule means we have to sync and update twice
@@ -121,9 +131,9 @@ endif
 
 libnatpmp.a: | sanity-checks
 ifeq ($(OS), Windows_NT)
-	+ "$(MAKE)" -C vendor/nim-nat-traversal/vendor/libnatpmp-upstream CC=$(CC) CFLAGS="-Wall -Os -DWIN32 -DNATPMP_STATICLIB -DENABLE_STRNATPMPERR -DNATPMP_MAX_RETRIES=4 $(CFLAGS)" $@ $(HANDLE_OUTPUT)
+	+ "$(MAKE)" -C vendor/nim-nat-traversal/vendor/libnatpmp-upstream CC=$(CC) CFLAGS="-Wall -Wno-cpp -Os -DWIN32 -DNATPMP_STATICLIB -DENABLE_STRNATPMPERR -DNATPMP_MAX_RETRIES=4 $(CFLAGS)" $@ $(HANDLE_OUTPUT)
 else
-	+ "$(MAKE)" CFLAGS="-Wall -Os -DENABLE_STRNATPMPERR -DNATPMP_MAX_RETRIES=4 $(CFLAGS)" -C vendor/nim-nat-traversal/vendor/libnatpmp-upstream $@ $(HANDLE_OUTPUT)
+	+ "$(MAKE)" CFLAGS="-Wall -Wno-cpp -Os -DENABLE_STRNATPMPERR -DNATPMP_MAX_RETRIES=4 $(CFLAGS)" -C vendor/nim-nat-traversal/vendor/libnatpmp-upstream $@ $(HANDLE_OUTPUT)
 endif
 
 #- depends on Git submodules being initialised
@@ -136,7 +146,7 @@ $(NIMBLE_DIR):
 
 clean-cross:
 	+ [[ -e vendor/nim-nat-traversal/vendor/miniupnp/miniupnpc ]] && "$(MAKE)" -C vendor/nim-nat-traversal/vendor/miniupnp/miniupnpc clean $(HANDLE_OUTPUT) || true
-	+ [[ -e vendor/nim-nat-traversal/vendor/libnatpmp-upstream ]] && "$(MAKE)" -C vendor/nim-nat-traversal/vendor/libnatpmp-upstream clean $(HANDLE_OUTPUT) || true
+	+ [[ -e vendor/nim-nat-traversal/vendor/libnatpmp-upstream ]] && "$(MAKE)" -C vendor/nim-nat-traversal/vendor/libnatpmp-upstream CC=$(CC) clean $(HANDLE_OUTPUT) || true
 
 clean-common: clean-cross
 	rm -rf build/{*.exe,*.so,*.so.0} $(NIMBLE_DIR) $(NIM_BINARY) $(NIM_DIR)/bin/{timestamp,last_built_commit,nim_commit_*} $(NIM_DIR)/nimcache nimcache

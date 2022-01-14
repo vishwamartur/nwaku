@@ -76,13 +76,13 @@
 import
   std/[tables, sets, options, math, sequtils, algorithm],
   stew/shims/net as stewNet, json_serialization/std/net,
-  stew/endians2, chronicles, chronos, stint, bearssl, metrics,
+  stew/[endians2, results], chronicles, chronos, stint, bearssl, metrics,
   ".."/../[rlp, keys, async_utils],
-  "."/[messages, encoding, node, routing_table, enr, random2, sessions, ip_vote]
+  "."/[messages, encoding, node, routing_table, enr, random2, sessions, ip_vote, nodes_verification]
 
 import nimcrypto except toHex
 
-export options
+export options, results, node, enr
 
 declareCounter discovery_message_requests_outgoing,
   "Discovery protocol outgoing message requests", labels = ["response"]
@@ -122,7 +122,7 @@ type
     privateKey: PrivateKey
     bindAddress: Address ## UDP binding address
     pendingRequests: Table[AESGCMNonce, PendingRequest]
-    routingTable: RoutingTable
+    routingTable*: RoutingTable
     codec*: Codec
     awaitedMessages: Table[(NodeId, RequestId), Future[Option[Message]]]
     refreshLoop: Future[void]
@@ -140,7 +140,7 @@ type
     node: Node
     message: seq[byte]
 
-  TalkProtocolHandler* = proc(p: TalkProtocol, request: seq[byte]): seq[byte]
+  TalkProtocolHandler* = proc(p: TalkProtocol, request: seq[byte], fromId: NodeId, fromUdpAddress: Address): seq[byte]
     {.gcsafe, raises: [Defect].}
 
   TalkProtocol* = ref object of RootObj
@@ -173,7 +173,7 @@ proc addNode*(d: Protocol, enr: EnrUri): bool =
   ## Returns false if no valid ENR URI, or on the conditions of `addNode` from
   ## an `Record`.
   var r: Record
-  let res = r.fromUri(enr)
+  let res = r.fromURI(enr)
   if res:
     return d.addNode(r)
 
@@ -197,9 +197,15 @@ proc randomNodes*(d: Protocol, maxAmount: int,
   ## the nodes selected are filtered by provided `enrField`.
   d.randomNodes(maxAmount, proc(x: Node): bool = x.record.contains(enrField))
 
-proc neighbours*(d: Protocol, id: NodeId, k: int = BUCKET_SIZE): seq[Node] =
+proc neighbours*(d: Protocol, id: NodeId, k: int = BUCKET_SIZE,
+    seenOnly = false): seq[Node] =
   ## Return up to k neighbours (closest node ids) of the given node id.
-  d.routingTable.neighbours(id, k)
+  d.routingTable.neighbours(id, k, seenOnly)
+
+proc neighboursAtDistances*(d: Protocol, distances: seq[uint16],
+    k: int = BUCKET_SIZE, seenOnly = false): seq[Node] =
+  ## Return up to k neighbours (closest node ids) at given distances.
+  d.routingTable.neighboursAtDistances(distances, k, seenOnly)
 
 proc nodesDiscovered*(d: Protocol): int = d.routingTable.len
 
@@ -211,7 +217,7 @@ func getRecord*(d: Protocol): Record =
   d.localNode.record
 
 proc updateRecord*(
-    d: Protocol, enrFields: openarray[(string, seq[byte])]): DiscResult[void] =
+    d: Protocol, enrFields: openArray[(string, seq[byte])]): DiscResult[void] =
   ## Update the ENR of the local node with provided `enrFields` k:v pairs.
   let fields = mapIt(enrFields, toFieldPair(it[0], it[1]))
   d.localNode.record.update(d.privateKey, fields)
@@ -240,7 +246,7 @@ proc send(d: Protocol, n: Node, data: seq[byte]) =
   d.send(n.address.get(), data)
 
 proc sendNodes(d: Protocol, toId: NodeId, toAddr: Address, reqId: RequestId,
-    nodes: openarray[Node]) =
+    nodes: openArray[Node]) =
   proc sendNodes(d: Protocol, toId: NodeId, toAddr: Address,
       message: NodesMessage, reqId: RequestId) {.nimcall.} =
     let (data, _) = encodeMessagePacket(d.rng[], d.codec, toId, toAddr,
@@ -293,7 +299,7 @@ proc handleFindNode(d: Protocol, fromId: NodeId, fromAddr: Address,
     d.sendNodes(fromId, fromAddr, reqId, [d.localNode])
   else:
     # TODO: Still deduplicate also?
-    if fn.distances.all(proc (x: uint32): bool = return x <= 256):
+    if fn.distances.all(proc (x: uint16): bool = return x <= 256):
       d.sendNodes(fromId, fromAddr, reqId,
         d.routingTable.neighboursAtDistances(fn.distances, seenOnly = true))
     else:
@@ -312,7 +318,7 @@ proc handleTalkReq(d: Protocol, fromId: NodeId, fromAddr: Address,
       TalkRespMessage(response: @[])
     else:
       TalkRespMessage(response: talkProtocol.protocolHandler(talkProtocol,
-        talkreq.request))
+        talkreq.request, fromId, fromAddr))
   let (data, _) = encodeMessagePacket(d.rng[], d.codec, fromId, fromAddr,
     encodeMessage(talkresp, reqId))
 
@@ -326,9 +332,9 @@ proc handleMessage(d: Protocol, srcId: NodeId, fromAddr: Address,
   of ping:
     discovery_message_requests_incoming.inc()
     d.handlePing(srcId, fromAddr, message.ping, message.reqId)
-  of findNode:
+  of findnode:
     discovery_message_requests_incoming.inc()
-    d.handleFindNode(srcId, fromAddr, message.findNode, message.reqId)
+    d.handleFindNode(srcId, fromAddr, message.findnode, message.reqId)
   of talkreq:
     discovery_message_requests_incoming.inc()
     d.handleTalkReq(srcId, fromAddr, message.talkreq, message.reqId)
@@ -356,7 +362,7 @@ proc registerTalkProtocol*(d: Protocol, protocolId: seq[byte],
 
 proc sendWhoareyou(d: Protocol, toId: NodeId, a: Address,
     requestNonce: AESGCMNonce, node: Option[Node]) =
-  let key = HandShakeKey(nodeId: toId, address: a)
+  let key = HandshakeKey(nodeId: toId, address: a)
   if not d.codec.hasHandshake(key):
     let
       recordSeq = if node.isSome(): node.get().record.seqNum
@@ -416,8 +422,10 @@ proc receive*(d: Protocol, a: Address, packet: openArray[byte]) =
       # In that case we can add/update it to the routing table.
       if packet.node.isSome():
         let node = packet.node.get()
-        # Not filling table with nodes without correct IP in the ENR
-        # TODO: Should we care about this???
+        # Lets not add nodes without correct IP in the ENR to the routing table.
+        # The ENR could contain bogus IPs and although they would get removed
+        # on the next revalidation, one could spam these as the handshake
+        # message occurs on (first) incoming messages.
         if node.address.isSome() and a == node.address.get():
           if d.addNode(node):
             trace "Added new node to routing table after handshake", node
@@ -442,23 +450,6 @@ proc processClient(transp: DatagramTransport, raddr: TransportAddress):
   let a = Address(ip: ValidIpAddress.init(ip), port: raddr.port)
 
   proto.receive(a, buf)
-
-proc validIp(sender, address: IpAddress): bool =
-  let
-    s = initTAddress(sender, Port(0))
-    a = initTAddress(address, Port(0))
-  if a.isAnyLocal():
-    return false
-  if a.isMulticast():
-    return false
-  if a.isLoopback() and not s.isLoopback():
-    return false
-  if a.isSiteLocal() and not s.isSiteLocal():
-    return false
-  # TODO: Also check for special reserved ip addresses:
-  # https://www.iana.org/assignments/iana-ipv4-special-registry/iana-ipv4-special-registry.xhtml
-  # https://www.iana.org/assignments/iana-ipv6-special-registry/iana-ipv6-special-registry.xhtml
-  return true
 
 proc replaceNode(d: Protocol, n: Node) =
   if n.record notin d.bootstrapRecords:
@@ -489,58 +480,6 @@ proc waitMessage(d: Protocol, fromNode: Node, reqId: RequestId):
     if not res.finished:
       res.complete(none(Message))
   d.awaitedMessages[key] = result
-
-proc verifyNodesRecords*(enrs: openarray[Record], fromNode: Node,
-    distances: varargs[uint32]): seq[Node] =
-  ## Verify and convert ENRs to a sequence of nodes. Only ENRs that pass
-  ## verification will be added. ENRs are verified for duplicates, invalid
-  ## addresses and invalid distances.
-  var seen: HashSet[Node]
-  var count = 0
-  for r in enrs:
-    # Check and allow for processing of maximum `findNodeResultLimit` ENRs
-    # returned. This limitation is required so no huge lists of invalid ENRs
-    # are processed for no reason, and for not overwhelming a routing table
-    # with nodes from a malicious actor.
-    # The discovery v5 specification specifies no limit on the amount of ENRs
-    # that can be returned, but clients usually stick with the bucket size limit
-    # as in original Kademlia. Because of this it is chosen not to fail
-    # immediatly, but still process maximum `findNodeResultLimit`.
-    if count >= findNodeResultLimit:
-      debug "Response on findnode returned too many ENRs", enrs = enrs.len(),
-        limit = findNodeResultLimit, sender = fromNode.record.toURI
-      break
-
-    count.inc()
-
-    let node = newNode(r)
-    if node.isOk():
-      let n = node.get()
-      # Check for duplicates in the nodes reply. Duplicates are checked based
-      # on node id.
-      if n in seen:
-        trace "Nodes reply contained records with duplicate node ids",
-          record = n.record.toURI, id = n.id, sender = fromNode.record.toURI
-        continue
-      # Check if the node has an address and if the address is public or from
-      # the same local network or lo network as the sender. The latter allows
-      # for local testing.
-      if not n.address.isSome() or not
-          validIp(fromNode.address.get().ip, n.address.get().ip):
-        trace "Nodes reply contained record with invalid ip-address",
-          record = n.record.toURI, node = n, sender = fromNode.record.toURI
-        continue
-      # Check if returned node has one of the requested distances.
-      if not distances.contains(logDist(n.id, fromNode.id)):
-        debug "Nodes reply contained record with incorrect distance",
-          record = n.record.toURI, sender = fromNode.record.toURI
-        continue
-
-      # No check on UDP port and thus any port is allowed, also the so called
-      # "well-known" ports.
-
-      seen.incl(n)
-      result.add(n)
 
 proc waitNodes(d: Protocol, fromNode: Node, reqId: RequestId):
     Future[DiscResult[seq[Record]]] {.async.} =
@@ -609,7 +548,7 @@ proc ping*(d: Protocol, toNode: Node):
     discovery_message_requests_outgoing.inc(labelValues = ["no_response"])
     return err("Pong message not received in time")
 
-proc findNode*(d: Protocol, toNode: Node, distances: seq[uint32]):
+proc findNode*(d: Protocol, toNode: Node, distances: seq[uint16]):
     Future[DiscResult[seq[Node]]] {.async.} =
   ## Send a discovery findNode message.
   ##
@@ -619,7 +558,7 @@ proc findNode*(d: Protocol, toNode: Node, distances: seq[uint32]):
   let nodes = await d.waitNodes(toNode, reqId)
 
   if nodes.isOk:
-    let res = verifyNodesRecords(nodes.get(), toNode, distances)
+    let res = verifyNodesRecords(nodes.get(), toNode, findNodeResultLimit, distances)
     d.routingTable.setJustSeen(toNode)
     return ok(res)
   else:
@@ -627,7 +566,7 @@ proc findNode*(d: Protocol, toNode: Node, distances: seq[uint32]):
     return err(nodes.error)
 
 proc talkreq*(d: Protocol, toNode: Node, protocol, request: seq[byte]):
-    Future[DiscResult[TalkRespMessage]] {.async.} =
+    Future[DiscResult[seq[byte]]] {.async.} =
   ## Send a discovery talkreq message.
   ##
   ## Returns the received talkresp message or an error.
@@ -638,7 +577,7 @@ proc talkreq*(d: Protocol, toNode: Node, protocol, request: seq[byte]):
   if resp.isSome():
     if resp.get().kind == talkresp:
       d.routingTable.setJustSeen(toNode)
-      return ok(resp.get().talkresp)
+      return ok(resp.get().talkresp.response)
     else:
       d.replaceNode(toNode)
       discovery_message_requests_outgoing.inc(labelValues = ["invalid_response"])
@@ -648,15 +587,16 @@ proc talkreq*(d: Protocol, toNode: Node, protocol, request: seq[byte]):
     discovery_message_requests_outgoing.inc(labelValues = ["no_response"])
     return err("Talk response message not received in time")
 
-proc lookupDistances(target, dest: NodeId): seq[uint32] =
-  let td = logDist(target, dest)
+proc lookupDistances*(target, dest: NodeId): seq[uint16] =
+  let td = logDistance(target, dest)
+  let tdAsInt = int(td)
   result.add(td)
-  var i = 1'u32
+  var i = 1
   while result.len < lookupRequestLimit:
-    if td + i < 256:
-      result.add(td + i)
-    if td - i > 0'u32:
-      result.add(td - i)
+    if tdAsInt + i < 256:
+      result.add(td + uint16(i))
+    if tdAsInt - i > 0:
+      result.add(td - uint16(i))
     inc i
 
 proc lookupWorker(d: Protocol, destNode: Node, target: NodeId):
@@ -720,7 +660,7 @@ proc lookup*(d: Protocol, target: NodeId): Future[seq[Node]] {.async.} =
         # If it wasn't seen before, insert node while remaining sorted
         closestNodes.insert(n, closestNodes.lowerBound(n,
           proc(x: Node, n: Node): int =
-            cmp(distanceTo(x, target), distanceTo(n, target))
+            cmp(distance(x.id, target), distance(n.id, target))
         ))
 
         if closestNodes.len > BUCKET_SIZE:
@@ -801,10 +741,12 @@ proc resolve*(d: Protocol, id: NodeId): Future[Option[Node]] {.async.} =
   ## will try to contact if for newer information. If node is not known or it
   ## does not reply, a lookup is done to see if it can find a (newer) record of
   ## the node on the network.
+  if id == d.localNode.id:
+    return some(d.localNode)
 
   let node = d.getNode(id)
   if node.isSome():
-    let request = await d.findNode(node.get(), @[0'u32])
+    let request = await d.findNode(node.get(), @[0'u16])
 
     # TODO: Handle failures better. E.g. stop on different failures than timeout
     if request.isOk() and request[].len > 0:
@@ -849,11 +791,11 @@ proc populateTable*(d: Protocol) {.async.} =
 proc revalidateNode*(d: Protocol, n: Node) {.async.} =
   let pong = await d.ping(n)
 
-  if pong.isOK():
+  if pong.isOk():
     let res = pong.get()
     if res.enrSeq > n.record.seqNum:
       # Request new ENR
-      let nodes = await d.findNode(n, @[0'u32])
+      let nodes = await d.findNode(n, @[0'u16])
       if nodes.isOk() and nodes[].len > 0:
         discard d.addNode(nodes[][0])
 
@@ -941,8 +883,8 @@ proc ipMajorityLoop(d: Protocol) {.async.} =
 proc newProtocol*(privKey: PrivateKey,
                   enrIp: Option[ValidIpAddress],
                   enrTcpPort, enrUdpPort: Option[Port],
-                  localEnrFields: openarray[(string, seq[byte])] = [],
-                  bootstrapRecords: openarray[Record] = [],
+                  localEnrFields: openArray[(string, seq[byte])] = [],
+                  bootstrapRecords: openArray[Record] = [],
                   previousRecord = none[enr.Record](),
                   bindPort: Port,
                   bindIp = IPv4_any(),
@@ -971,14 +913,18 @@ proc newProtocol*(privKey: PrivateKey,
   info "ENR initialized", ip = enrIp, tcp = enrTcpPort, udp = enrUdpPort,
     seqNum = record.seqNum, uri = toURI(record)
   if enrIp.isNone():
-    warn "No external IP provided for the ENR, this node will not be discoverable"
+    if enrAutoUpdate:
+      notice "No external IP provided for the ENR, this node will not be " &
+        "discoverable until the ENR is updated with the discovered external IP address"
+    else:
+      warn "No external IP provided for the ENR, this node will not be discoverable"
 
   let node = newNode(record).expect("Properly initialized record")
 
   # TODO Consider whether this should be a Defect
   doAssert rng != nil, "RNG initialization failed"
 
-  result = Protocol(
+  Protocol(
     privateKey: privKey,
     localNode: node,
     bindAddress: Address(ip: ValidIpAddress.init(bindIp), port: bindPort),
@@ -987,9 +933,11 @@ proc newProtocol*(privKey: PrivateKey,
     bootstrapRecords: @bootstrapRecords,
     ipVote: IpVote.init(),
     enrAutoUpdate: enrAutoUpdate,
+    routingTable: RoutingTable.init(node, DefaultBitsPerHop, tableIpLimits, rng),
     rng: rng)
 
-  result.routingTable.init(node, DefaultBitsPerHop, tableIpLimits, rng)
+template listeningAddress*(p: Protocol): Address =
+  p.bindAddress
 
 proc open*(d: Protocol) {.raises: [Defect, CatchableError].} =
   info "Starting discovery node", node = d.localNode,

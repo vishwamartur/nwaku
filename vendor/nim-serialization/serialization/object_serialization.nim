@@ -167,7 +167,7 @@ type
                  {.gcsafe, nimcall, raises: [SerializationError, Defect].}
   ]
 
-  FieldReadersTable*[RecordType, Reader] = openarray[FieldReader[RecordType, Reader]]
+  FieldReadersTable*[RecordType, Reader] = openArray[FieldReader[RecordType, Reader]]
 
 proc totalSerializedFieldsImpl(T: type): int =
   mixin enumAllSerializedFields
@@ -182,7 +182,8 @@ macro customSerialization*(field: untyped, definition): untyped =
 template readFieldIMPL[Reader](field: type FieldTag,
                                reader: var Reader): untyped =
   mixin readValue
-  reader.readValue(field.FieldType)
+  {.gcsafe.}: # needed by Nim-1.6
+    reader.readValue(field.FieldType)
 
 template writeFieldIMPL*[Writer](writer: var Writer,
                                  fieldTag: type FieldTag,

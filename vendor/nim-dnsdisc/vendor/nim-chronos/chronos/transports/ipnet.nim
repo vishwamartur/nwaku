@@ -11,7 +11,8 @@
 
 {.push raises: [Defect].}
 
-import stew/endians2, std/strutils
+import std/strutils
+import stew/endians2
 import ./common
 export common
 
@@ -174,6 +175,7 @@ proc toIPv6*(address: TransportAddress): TransportAddress =
   ## If ``address`` is IPv6 address it will be returned without any changes.
   if address.family == AddressFamily.IPv4:
     result = TransportAddress(family: AddressFamily.IPv6)
+    result.port = address.port
     result.address_v6[10] = 0xFF'u8
     result.address_v6[11] = 0xFF'u8
     let data = cast[ptr uint32](unsafeAddr address.address_v4[0])[]
@@ -202,6 +204,7 @@ proc toIPv4*(address: TransportAddress): TransportAddress =
   if address.family == AddressFamily.IPv6:
     if isV4Mapped(address):
       result = TransportAddress(family: AddressFamily.IPv4)
+      result.port = address.port
       let data = cast[ptr uint32](unsafeAddr address.address_v6[12])[]
       cast[ptr uint32](addr result.address_v4[0])[] = data
   elif address.family == AddressFamily.IPv4:

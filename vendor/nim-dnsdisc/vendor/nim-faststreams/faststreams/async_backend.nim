@@ -1,14 +1,25 @@
 const
-  faststreams_async_backend {.strdefine.} = "chronos"
+  # To compile with async support, use `-d:asyncBackend=chronos|asyncdispatch`
+  asyncBackend {.strdefine.} = "none"
+
+const
+  faststreams_async_backend {.strdefine.} = ""
+
+when faststreams_async_backend != "":
+  {.fatal: "use `-d:asyncBackend` instead".}
 
 type
   CloseBehavior* = enum
     waitAsyncClose
     dontWaitAsyncClose
 
-const debugHelpers* = defined(debugHelpers)
+const
+  debugHelpers* = defined(debugHelpers)
+  fsAsyncSupport* = asyncBackend != "none"
 
-when faststreams_async_backend == "chronos":
+when asyncBackend == "none":
+  discard
+elif asyncBackend == "chronos":
   import
     chronos
 
@@ -18,10 +29,10 @@ when faststreams_async_backend == "chronos":
   template fsAwait*(f: Future): untyped =
     await f
 
-elif faststreams_async_backend in ["std", "asyncdispatch"]:
+elif asyncBackend == "asyncdispatch":
   import
     std/asyncdispatch
-  
+
   export
     asyncdispatch
 
@@ -36,7 +47,7 @@ elif faststreams_async_backend in ["std", "asyncdispatch"]:
   type Duration* = int
 
 else:
-  {.fatal: "Unrecognized network backend: " & faststreams_async_backend.}
+  {.fatal: "Unrecognized network backend: " & asyncBackend .}
 
 when defined(danger):
   template fsAssert*(x) = discard

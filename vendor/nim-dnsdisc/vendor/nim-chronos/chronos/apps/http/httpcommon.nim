@@ -10,7 +10,7 @@ import std/[strutils, uri]
 import stew/[results, endians2], httputils
 import ../../asyncloop, ../../asyncsync
 import ../../streams/[asyncstream, boundstream]
-export results, httputils, strutils
+export asyncloop, asyncsync, results, httputils, strutils
 
 const
   HeadersMark* = @[0x0d'u8, 0x0a'u8, 0x0d'u8, 0x0a'u8]
@@ -22,7 +22,7 @@ const
   DateHeader* = "date"
   HostHeader* = "host"
   ConnectionHeader* = "connection"
-  AcceptHeader* = "accept"
+  AcceptHeaderName* = "accept"
   ContentLengthHeader* = "content-length"
   TransferEncodingHeader* = "transfer-encoding"
   ContentEncodingHeader* = "content-encoding"
@@ -30,6 +30,7 @@ const
   ExpectHeader* = "expect"
   ServerHeader* = "server"
   LocationHeader* = "location"
+  AuthorizationHeader* = "authorization"
 
   UrlEncodedContentType* = "application/x-www-form-urlencoded"
   MultipartContentType* = "multipart/form-data"
@@ -66,6 +67,9 @@ type
   QueryParamsFlag* {.pure.} = enum
     CommaSeparatedArray ## Enable usage of comma symbol as separator of array
                         ## items
+
+  HttpState* {.pure.} = enum
+    Alive, Closing, Closed
 
 proc raiseHttpCriticalError*(msg: string,
                              code = Http400) {.noinline, noreturn.} =
@@ -123,7 +127,7 @@ iterator queryParams*(query: string,
       else:
         yield (decodeUrl(k), decodeUrl(v))
 
-func getTransferEncoding*(ch: openarray[string]): HttpResult[
+func getTransferEncoding*(ch: openArray[string]): HttpResult[
                                                   set[TransferEncodingFlags]] {.
      raises: [Defect].} =
   ## Parse value of multiple HTTP headers ``Transfer-Encoding`` and return
@@ -154,7 +158,7 @@ func getTransferEncoding*(ch: openarray[string]): HttpResult[
           return err("Incorrect Transfer-Encoding value")
     ok(res)
 
-func getContentEncoding*(ch: openarray[string]): HttpResult[
+func getContentEncoding*(ch: openArray[string]): HttpResult[
                                                    set[ContentEncodingFlags]] {.
      raises: [Defect].} =
   ## Parse value of multiple HTTP headers ``Content-Encoding`` and return
@@ -185,7 +189,7 @@ func getContentEncoding*(ch: openarray[string]): HttpResult[
           return err("Incorrect Content-Encoding value")
     ok(res)
 
-func getContentType*(ch: openarray[string]): HttpResult[string]  {.
+func getContentType*(ch: openArray[string]): HttpResult[string]  {.
      raises: [Defect].} =
   ## Check and prepare value of ``Content-Type`` header.
   if len(ch) == 0:
@@ -196,7 +200,7 @@ func getContentType*(ch: openarray[string]): HttpResult[string]  {.
     let mparts = ch[0].split(";")
     ok(strip(mparts[0]).toLowerAscii())
 
-proc bytesToString*(src: openarray[byte], dst: var openarray[char]) =
+proc bytesToString*(src: openArray[byte], dst: var openArray[char]) =
   ## Convert array of bytes to array of characters.
   ##
   ## Note, that this procedure assume that `sizeof(byte) == sizeof(char) == 1`.
@@ -205,7 +209,7 @@ proc bytesToString*(src: openarray[byte], dst: var openarray[char]) =
   if len(src) > 0:
     copyMem(addr dst[0], unsafeAddr src[0], len(src))
 
-proc stringToBytes*(src: openarray[char], dst: var openarray[byte]) =
+proc stringToBytes*(src: openArray[char], dst: var openArray[byte]) =
   ## Convert array of characters to array of bytes.
   ##
   ## Note, that this procedure assume that `sizeof(byte) == sizeof(char) == 1`.
@@ -214,7 +218,7 @@ proc stringToBytes*(src: openarray[char], dst: var openarray[byte]) =
   if len(src) > 0:
     copyMem(addr dst[0], unsafeAddr src[0], len(src))
 
-func bytesToString*(src: openarray[byte]): string =
+func bytesToString*(src: openArray[byte]): string =
   ## Convert array of bytes to a string.
   ##
   ## Note, that this procedure assume that `sizeof(byte) == sizeof(char) == 1`.
@@ -227,7 +231,7 @@ func bytesToString*(src: openarray[byte]): string =
   else:
     default
 
-func stringToBytes*(src: openarray[char]): seq[byte] =
+func stringToBytes*(src: openArray[char]): seq[byte] =
   ## Convert string to sequence of bytes.
   ##
   ## Note, that this procedure assume that `sizeof(byte) == sizeof(char) == 1`.
@@ -240,7 +244,7 @@ func stringToBytes*(src: openarray[char]): seq[byte] =
   else:
     default
 
-proc dumpHex*(pbytes: openarray[byte], groupBy = 1, ascii = true): string =
+proc dumpHex*(pbytes: openArray[byte], groupBy = 1, ascii = true): string =
   ## Get hexadecimal dump of memory for array ``pbytes``.
   var res = ""
   var offset = 0

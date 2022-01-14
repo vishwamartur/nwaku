@@ -1,6 +1,6 @@
 import
   testutils/fuzzing, chronicles,
-  eth/rlp
+  ../../../eth/rlp
 
 type
   TestEnum = enum
@@ -10,7 +10,7 @@ type
     test1: uint32
     test2: string
 
-template testDecode(payload: openarray, T: type) =
+template testDecode(payload: openArray, T: type) =
   try:
     discard rlp.decode(payload, T)
   except RlpError as e:

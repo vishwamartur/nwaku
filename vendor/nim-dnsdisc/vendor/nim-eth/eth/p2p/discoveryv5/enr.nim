@@ -12,10 +12,10 @@
 
 import
   std/[strutils, macros, algorithm, options],
-  stew/shims/net, stew/base64, nimcrypto,
+  stew/shims/net, stew/[base64, results], nimcrypto,
   ".."/../[rlp, keys]
 
-export options
+export options, results, keys
 
 const
   maxEnrSize = 300  ## Maximum size of an encoded node record, in bytes.
@@ -46,7 +46,8 @@ type
   FieldKind = enum
     kString,
     kNum,
-    kBytes
+    kBytes,
+    kList
 
   Field = object
     case kind: FieldKind
@@ -56,6 +57,9 @@ type
       num: BiggestUInt
     of kBytes:
       bytes: seq[byte]
+    of kList:
+      listRaw: seq[byte] ## Differently from the other kinds, this is is stored
+      ## as raw (encoded) RLP data, and thus treated as such further on.
 
   EnrResult*[T] = Result[T, cstring]
 
@@ -68,6 +72,8 @@ template toField[T](v: T): Field =
     Field(kind: kBytes, bytes: v)
   elif T is SomeUnsignedInt:
     Field(kind: kNum, num: BiggestUInt(v))
+  elif T is object|tuple:
+    Field(kind: kList, listRaw: rlp.encode(v))
   else:
     {.error: "Unsupported field type".}
 
@@ -80,15 +86,17 @@ proc `==`(a, b: Field): bool =
       return a.num == b.num
     of kBytes:
       return a.bytes == b.bytes
+    of kList:
+      return a.listRaw == b.listRaw
   else:
     return false
 
 proc cmp(a, b: FieldPair): int = cmp(a[0], b[0])
 
 proc makeEnrRaw(seqNum: uint64, pk: PrivateKey,
-    pairs: openarray[FieldPair]): EnrResult[seq[byte]] =
+    pairs: openArray[FieldPair]): EnrResult[seq[byte]] =
   proc append(w: var RlpWriter, seqNum: uint64,
-      pairs: openarray[FieldPair]): seq[byte] =
+      pairs: openArray[FieldPair]): seq[byte] =
     w.append(seqNum)
     for (k, v) in pairs:
       w.append(k)
@@ -96,6 +104,7 @@ proc makeEnrRaw(seqNum: uint64, pk: PrivateKey,
       of kString: w.append(v.str)
       of kNum: w.append(v.num)
       of kBytes: w.append(v.bytes)
+      of kList: w.appendRawBytes(v.listRaw) # No encoding needs to happen
     w.finish()
 
   let toSign = block:
@@ -115,7 +124,7 @@ proc makeEnrRaw(seqNum: uint64, pk: PrivateKey,
     ok(raw)
 
 proc makeEnrAux(seqNum: uint64, pk: PrivateKey,
-    pairs: openarray[FieldPair]): EnrResult[Record] =
+    pairs: openArray[FieldPair]): EnrResult[Record] =
   var record: Record
   record.pairs = @pairs
   record.seqNum = seqNum
@@ -152,7 +161,9 @@ template toFieldPair*(key: string, value: auto): FieldPair =
 
 proc addAddress(fields: var seq[FieldPair], ip: Option[ValidIpAddress],
     tcpPort, udpPort: Option[Port]) =
-  # It makes sense to add ports only when there is an IP provided
+  ## Add address information in new fields. Incomplete address
+  ## information is allowed (example: Port but not IP) as that information
+  ## might be already in the ENR or added later.
   if ip.isSome():
     let
       ipExt = ip.get()
@@ -164,12 +175,17 @@ proc addAddress(fields: var seq[FieldPair], ip: Option[ValidIpAddress],
       fields.add(((if isV6: "tcp6" else: "tcp"), tcpPort.get().uint16.toField))
     if udpPort.isSome():
       fields.add(((if isV6: "udp6" else: "udp"), udpPort.get().uint16.toField))
+  else:
+    if tcpPort.isSome():
+      fields.add(("tcp", tcpPort.get().uint16.toField))
+    if udpPort.isSome():
+      fields.add(("udp", udpPort.get().uint16.toField))
 
 proc init*(T: type Record, seqNum: uint64,
                            pk: PrivateKey,
                            ip: Option[ValidIpAddress],
                            tcpPort, udpPort: Option[Port],
-                           extraFields: openarray[FieldPair] = []):
+                           extraFields: openArray[FieldPair] = []):
                            EnrResult[T] =
   ## Initialize a `Record` with given sequence number, private key, optional
   ## ip address, tcp port, udp port, and optional custom k:v pairs.
@@ -177,6 +193,7 @@ proc init*(T: type Record, seqNum: uint64,
   ## Can fail in case the record exceeds the `maxEnrSize`.
   var fields = newSeq[FieldPair]()
 
+  # TODO: Allow for initializing ENR with both ip4 and ipv6 address.
   fields.addAddress(ip, tcpPort, udpPort)
   fields.add extraFields
   makeEnrAux(seqNum, pk, fields)
@@ -190,43 +207,47 @@ proc getField(r: Record, name: string, field: var Field): bool =
       field = v
       return true
 
-proc requireKind(f: Field, kind: FieldKind) {.raises: [ValueError].} =
+proc requireKind(f: Field, kind: FieldKind): EnrResult[void] =
   if f.kind != kind:
-    raise newException(ValueError, "Wrong field kind")
+    err("Wrong field kind")
+  else:
+    ok()
 
-proc get*(r: Record, key: string, T: type): T {.raises: [ValueError, Defect].} =
+proc get*(r: Record, key: string, T: type): EnrResult[T] =
   ## Get the value from the provided key.
-  ## Throw `KeyError` if key does not exist.
-  ## Throw `ValueError` if the value is invalid according to type `T`.
   var f: Field
   if r.getField(key, f):
     when T is SomeInteger:
-      requireKind(f, kNum)
-      return T(f.num)
+      ? requireKind(f, kNum)
+      ok(T(f.num))
     elif T is seq[byte]:
-      requireKind(f, kBytes)
-      return f.bytes
+      ? requireKind(f, kBytes)
+      ok(f.bytes)
     elif T is string:
-      requireKind(f, kString)
-      return f.str
+      ? requireKind(f, kString)
+      ok(f.str)
     elif T is PublicKey:
-      requireKind(f, kBytes)
+      ? requireKind(f, kBytes)
       let pk = PublicKey.fromRaw(f.bytes)
       if pk.isErr:
-        raise newException(ValueError, "Invalid public key")
-      return pk[]
+        err("Invalid public key")
+      else:
+        ok(pk[])
     elif T is array:
-      when type(result[0]) is byte:
-        requireKind(f, kBytes)
-        if f.bytes.len != result.len:
-          raise newException(ValueError, "Invalid byte blob length")
-        copyMem(addr result[0], addr f.bytes[0], result.len)
+      when type(default(T)[low(T)]) is byte:
+        ? requireKind(f, kBytes)
+        if f.bytes.len != T.len:
+          err("Invalid byte blob length")
+        else:
+          var res: T
+          copyMem(addr res[0], addr f.bytes[0], res.len)
+          ok(res)
       else:
         {.fatal: "Unsupported output type in enr.get".}
     else:
       {.fatal: "Unsupported output type in enr.get".}
   else:
-    raise newException(KeyError, "Key not found in ENR: " & key)
+    err("Key not found in ENR")
 
 proc get*(r: Record, T: type PublicKey): Option[T] =
   ## Get the `PublicKey` from provided `Record`. Return `none` when there is
@@ -246,7 +267,7 @@ proc find(r: Record, key: string): Option[int] =
       return some(i)
 
 proc update*(record: var Record, pk: PrivateKey,
-    fieldPairs: openarray[FieldPair]): EnrResult[void] =
+    fieldPairs: openArray[FieldPair]): EnrResult[void] =
   ## Update a `Record` k:v pairs.
   ##
   ## In case any of the k:v pairs is updated or added (new), the sequence number
@@ -289,7 +310,7 @@ proc update*(record: var Record, pk: PrivateKey,
 proc update*(r: var Record, pk: PrivateKey,
                             ip: Option[ValidIpAddress],
                             tcpPort, udpPort: Option[Port] = none[Port](),
-                            extraFields: openarray[FieldPair] = []):
+                            extraFields: openArray[FieldPair] = []):
                             EnrResult[void] =
   ## Update a `Record` with given ip address, tcp port, udp port and optional
   ## custom k:v pairs.
@@ -302,6 +323,7 @@ proc update*(r: var Record, pk: PrivateKey,
   ## will not be altered in these cases.
   var fields = newSeq[FieldPair]()
 
+  # TODO: Make updating of both ipv4 and ipv6 address in ENR more convenient.
   fields.addAddress(ip, tcpPort, udpPort)
   fields.add extraFields
   r.update(pk, fields)
@@ -310,10 +332,11 @@ proc tryGet*(r: Record, key: string, T: type): Option[T] =
   ## Get the value from the provided key.
   ## Return `none` if the key does not exist or if the value is invalid
   ## according to type `T`.
-  try:
-    return some get(r, key, T)
-  except ValueError:
-    discard
+  let val = get(r, key, T)
+  if val.isOk():
+    some(val.get())
+  else:
+    none(T)
 
 proc toTypedRecord*(r: Record): EnrResult[TypedRecord] =
   let id = r.tryGet("id", string)
@@ -344,7 +367,7 @@ proc contains*(r: Record, fp: (string, seq[byte])): bool =
     if field.get() == fp[1]:
       return true
 
-proc verifySignatureV4(r: Record, sigData: openarray[byte], content: seq[byte]):
+proc verifySignatureV4(r: Record, sigData: openArray[byte], content: seq[byte]):
     bool =
   let publicKey = r.get(PublicKey)
   if publicKey.isSome:
@@ -410,11 +433,20 @@ proc fromBytesAux(r: var Record): bool {.raises: [RlpError, Defect].} =
       let v = rlp.read(uint16)
       r.pairs.add((k, Field(kind: kNum, num: v)))
     else:
-      r.pairs.add((k, Field(kind: kBytes, bytes: rlp.read(seq[byte]))))
+      # Don't know really what this is supposed to represent so drop it in
+      # `kBytes` field pair when a single byte or blob.
+      if rlp.isSingleByte() or rlp.isBlob():
+        r.pairs.add((k, Field(kind: kBytes, bytes: rlp.read(seq[byte]))))
+      elif rlp.isList():
+        # Not supporting decoding lists as value (especially unknown ones),
+        # just drop the raw RLP value in there.
+        r.pairs.add((k, Field(kind: kList, listRaw: @(rlp.rawData()))))
+        # Need to skip the element still.
+        rlp.skipElem()
 
   verifySignature(r)
 
-proc fromBytes*(r: var Record, s: openarray[byte]): bool =
+proc fromBytes*(r: var Record, s: openArray[byte]): bool =
   ## Loads ENR from rlp-encoded bytes, and validates the signature.
   r.raw = @s
   try:
@@ -454,6 +486,8 @@ proc `$`(f: Field): string =
     "0x" & f.bytes.toHex
   of kString:
     "\"" & f.str & "\""
+  of kList:
+    "(Raw RLP list) " & "0x" & f.listRaw.toHex
 
 proc `$`*(r: Record): string =
   result = "("
@@ -462,7 +496,22 @@ proc `$`*(r: Record): string =
     result &= ", "
     result &= k
     result &= ": "
-    result &= $v
+    # For IP addresses we print something prettier than the default kinds
+    # Note: Could disallow for invalid IPs in ENR also.
+    if k == "ip":
+      let ip = r.tryGet("ip", array[4, byte])
+      if ip.isSome():
+        result &= $ipv4(ip.get())
+      else:
+        result &= "(Invalid) " & $v
+    elif k == "ip6":
+      let ip = r.tryGet("ip6", array[16, byte])
+      if ip.isSome():
+        result &= $ipv6(ip.get())
+      else:
+        result &= "(Invalid) " & $v
+    else:
+      result &= $v
   result &= ')'
 
 proc `==`*(a, b: Record): bool = a.raw == b.raw

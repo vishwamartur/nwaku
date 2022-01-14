@@ -79,7 +79,7 @@ type
       distance* {.
         defaultValue: 255
         desc: "Distance parameter for the findNode message"
-        name: "distance" .}: uint32
+        name: "distance" .}: uint16
       # TODO: Order here matters as else the help message does not show all the
       # information, see: https://github.com/status-im/nim-confutils/issues/15
       findNodeTarget* {.
@@ -187,7 +187,7 @@ proc run(config: DiscoveryConf) =
       echo "No Talk Response message returned"
   of noCommand:
     d.start()
-    waitfor(discover(d))
+    waitFor(discover(d))
 
 when isMainModule:
   let config = DiscoveryConf.load()

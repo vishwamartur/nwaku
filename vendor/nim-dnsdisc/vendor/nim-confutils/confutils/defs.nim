@@ -43,14 +43,17 @@ template `$`*(x: SomeDistinctString): string =
   string(x)
 
 template desc*(v: string) {.pragma.}
+template longDesc*(v: string) {.pragma.}
 template name*(v: string) {.pragma.}
 template abbr*(v: string) {.pragma.}
+template separator*(v: string) {.pragma.}
 template defaultValue*(v: untyped) {.pragma.}
 template defaultValueDesc*(v: string) {.pragma.}
 template required* {.pragma.}
 template command* {.pragma.}
 template argument* {.pragma.}
 template hidden* {.pragma.}
+template ignore* {.pragma.}
 template inlineConfiguration* {.pragma.}
 
 template implicitlySelectable* {.pragma.}

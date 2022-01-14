@@ -5,6 +5,8 @@
 #   * Apache v2 license (license terms in the root directory or at https://www.apache.org/licenses/LICENSE-2.0).
 # at your option. This file may not be copied, modified, or distributed except according to those terms.
 
+{.push raises: [Defect].}
+
 import
   std/[tables, algorithm, random],
   bearssl, chronos, chronos/timer, chronicles,
@@ -14,8 +16,7 @@ import
 export
   p2p_types, rlpx, enode, kademlia
 
-proc addCapability*(node: var EthereumNode, p: ProtocolInfo)
-    {.raises: [Defect].} =
+proc addCapability*(node: var EthereumNode, p: ProtocolInfo) =
   doAssert node.connectionState == ConnectionState.None
 
   let pos = lowerBound(node.protocols, p, rlpx.cmp)
@@ -36,7 +37,7 @@ proc newEthereumNode*(keys: KeyPair,
                       addAllCapabilities = true,
                       useCompression: bool = false,
                       minPeers = 10,
-                      rng = newRng()): EthereumNode {.raises: [Defect].} =
+                      rng = newRng()): EthereumNode =
 
   if rng == nil: # newRng could fail
     raise (ref Defect)(msg: "Cannot initialize RNG")
@@ -79,7 +80,7 @@ proc processIncoming(server: StreamServer,
 proc listeningAddress*(node: EthereumNode): ENode =
   node.toENode()
 
-proc startListening*(node: EthereumNode) =
+proc startListening*(node: EthereumNode) {.raises: [CatchableError, Defect].} =
   # TODO allow binding to specific IP / IPv6 / etc
   let ta = initTAddress(IPv4_any(), node.address.tcpPort)
   if node.listeningServer == nil:
@@ -92,7 +93,8 @@ proc startListening*(node: EthereumNode) =
 proc connectToNetwork*(node: EthereumNode,
                        bootstrapNodes: seq[ENode],
                        startListening = true,
-                       enableDiscovery = true) {.async.} =
+                       enableDiscovery = true,
+                       waitForPeers = true) {.async.} =
   doAssert node.connectionState == ConnectionState.None
 
   node.connectionState = Connecting
@@ -111,11 +113,11 @@ proc connectToNetwork*(node: EthereumNode,
   else:
     info "Discovery disabled"
 
-  while node.peerPool.connectedNodes.len == 0:
+  while node.peerPool.connectedNodes.len == 0 and waitForPeers:
     trace "Waiting for more peers", peers = node.peerPool.connectedNodes.len
     await sleepAsync(500.milliseconds)
 
-proc stopListening*(node: EthereumNode) =
+proc stopListening*(node: EthereumNode) {.raises: [CatchableError, Defect].} =
   node.listeningServer.stop()
 
 iterator peers*(node: EthereumNode): Peer =

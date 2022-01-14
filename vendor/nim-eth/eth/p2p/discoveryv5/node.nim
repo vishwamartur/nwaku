@@ -10,7 +10,8 @@
 import
   std/hashes,
   nimcrypto, stint, chronos, stew/shims/net, chronicles,
-  ../../keys, ./enr
+  ../../keys, ../../net/utils,
+  ./enr
 
 export stint
 
@@ -59,7 +60,7 @@ func newNode*(r: Record): Result[Node, cstring] =
 
 func update*(n: Node, pk: PrivateKey, ip: Option[ValidIpAddress],
     tcpPort, udpPort: Option[Port] = none[Port](),
-    extraFields: openarray[FieldPair] = []): Result[void, cstring] =
+    extraFields: openArray[FieldPair] = []): Result[void, cstring] =
   ? n.record.update(pk, ip, tcpPort, udpPort, extraFields)
 
   if ip.isSome():
@@ -82,14 +83,14 @@ func `==`*(a, b: Node): bool =
   (a.isNil and b.isNil) or
     (not a.isNil and not b.isNil and a.pubkey == b.pubkey)
 
+func hash*(id: NodeId): Hash =
+  hash(id.toByteArrayBE)
+
 proc random*(T: type NodeId, rng: var BrHmacDrbgContext): T =
   var id: NodeId
   brHmacDrbgGenerate(addr rng, addr id, csize_t(sizeof(id)))
 
   id
-
-func toBytes*(id: NodeId): array[32, byte] =
-  id.toByteArrayBE()
 
 func `$`*(id: NodeId): string =
   id.toHex()
@@ -109,7 +110,8 @@ func shortLog*(id: NodeId): string =
 chronicles.formatIt(NodeId): shortLog(it)
 
 func hash*(a: Address): hashes.Hash =
-  hashData(unsafeAddr a, sizeof(a))
+  let res = a.ip.hash !& a.port.hash
+  !$res
 
 func `$`*(a: Address): string =
   result.add($a.ip)

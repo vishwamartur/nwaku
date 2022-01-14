@@ -40,6 +40,8 @@ type
 
   OptInfo = ref object
     name, abbr, desc, typename: string
+    separator: string
+    longDesc: string
     idx: int
     isHidden: bool
     hasDefault: bool
@@ -235,6 +237,16 @@ proc writeDesc(help: var string,
     helpOutput descSpacing, wrapWords(fullDesc, wrappingWidth,
                                       newLine = "\p" & spaces(descIndent))
 
+proc writeLongDesc(help: var string,
+               appInfo: HelpAppInfo,
+               desc: string) =
+  let lines = split(desc, {'\n', '\r'})
+  for line in lines:
+    if line.len > 0:
+      helpOutput "\p"
+      helpOutput padding("", 5 + appInfo.namesWidth)
+      help.writeDesc appInfo, line, ""
+
 proc describeInvocation(help: var string,
                         cmd: CmdInfo, cmdInvocation: string,
                         appInfo: HelpAppInfo) =
@@ -268,6 +280,7 @@ proc describeInvocation(help: var string,
       helpOutput fgArg, styleBright, cliArg
       helpOutput padding(cliArg, 6 + appInfo.namesWidth)
       help.writeDesc appInfo, arg.desc, arg.defaultInHelpText
+      help.writeLongDesc appInfo, arg.longDesc
       helpOutput "\p"
 
 type
@@ -293,6 +306,10 @@ proc describeOptions(help: var string,
          opt.kind == Discriminator or
          opt.isHidden: continue
 
+      if opt.separator.len > 0:
+        helpOutput opt.separator
+        helpOutput "\p"
+
       # Indent all command-line switches
       helpOutput " "
 
@@ -313,6 +330,7 @@ proc describeOptions(help: var string,
         help.writeDesc appInfo,
                        opt.desc.replace("%t", opt.typename),
                        opt.defaultInHelpText
+        help.writeLongDesc appInfo, opt.longDesc
 
       helpOutput "\p"
 
@@ -659,6 +677,36 @@ proc generateFieldSetters(RecordType: NimNode): NimNode =
   result.add settersArray
   debugMacroResult "Field Setters"
 
+proc checkDuplicate(cmd: CmdInfo, opt: OptInfo, fieldName: NimNode) =
+  for x in cmd.opts:
+    if opt.name == x.name:
+      error "duplicate name detected: " & opt.name, fieldName
+    if opt.abbr.len > 0 and opt.abbr == x.abbr:
+      error "duplicate abbr detected: " & opt.abbr, fieldName
+
+proc validPath(path: var seq[CmdInfo], parent, node: CmdInfo): bool =
+  for x in parent.opts:
+    if x.kind != Discriminator: continue
+    for y in x.subCmds:
+      if y == node:
+        path.add y
+        return true
+      if validPath(path, y, node):
+        path.add y
+        return true
+  false
+
+proc findPath(parent, node: CmdInfo): seq[CmdInfo] =
+  # find valid path from parent to node
+  result = newSeq[CmdInfo]()
+  doAssert validPath(result, parent, node)
+  result.add parent
+
+func toText(n: NimNode): string =
+  if n == nil: ""
+  elif n.kind in {nnkStrLit..nnkTripleStrLit}: n.strVal
+  else: repr(n)
+
 proc cmdInfoFromType(T: NimNode): CmdInfo =
   result = CmdInfo()
 
@@ -674,9 +722,10 @@ proc cmdInfoFromType(T: NimNode): CmdInfo =
       defaultValueDesc = field.readPragma"defaultValueDesc"
       defaultInHelp = if defaultValueDesc != nil: defaultValueDesc
                       else: defaultValue
-      defaultInHelpText = if defaultInHelp == nil: ""
-                          elif defaultInHelp.kind in {nnkStrLit..nnkTripleStrLit}: defaultInHelp.strVal
-                          else: repr(defaultInHelp)
+      defaultInHelpText = toText(defaultInHelp)
+      separator = field.readPragma"separator"
+      longDesc = field.readPragma"longDesc"
+
       isHidden = field.readPragma("hidden") != nil
       abbr = field.readPragma"abbr"
       name = field.readPragma"name"
@@ -696,6 +745,8 @@ proc cmdInfoFromType(T: NimNode): CmdInfo =
     if desc != nil: opt.desc = desc.strVal
     if name != nil: opt.name = name.strVal
     if abbr != nil: opt.abbr = abbr.strVal
+    if separator != nil: opt.separator = separator.strVal
+    if longDesc != nil: opt.longDesc = longDesc.strVal
 
     inc fieldIdx
 
@@ -741,10 +792,21 @@ proc cmdInfoFromType(T: NimNode): CmdInfo =
       if branchEnumVal.kind == nnkDotExpr:
         branchEnumVal = branchEnumVal[1]
       var cmd = findCmd(discriminator.subCmds, $branchEnumVal)
-      cmd.opts.add opt
+      # we respect subcommand hierarchy when looking for duplicate
+      let path = findPath(result, cmd)
+      for n in path:
+        checkDuplicate(n, opt, field.name)
+
+      # the reason we check for `ignore` pragma here and not using `continue` statement
+      # is we do respect option hierarchy of subcommands
+      if field.readPragma("ignore") == nil:
+        cmd.opts.add opt
 
     else:
-      result.opts.add opt
+      checkDuplicate(result, opt, field.name)
+
+      if field.readPragma("ignore") == nil:
+        result.opts.add opt
 
 macro configurationRtti(RecordType: type): untyped =
   let

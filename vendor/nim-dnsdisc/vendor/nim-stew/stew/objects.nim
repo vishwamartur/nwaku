@@ -20,7 +20,7 @@ template init*(lvalue: var auto, a1, a2, a3: auto) =
 when not declared(default):
   proc default*(T: type): T = discard
 
-proc toArray*[T](N: static int, data: openarray[T]): array[N, T] =
+proc toArray*[T](N: static int, data: openArray[T]): array[N, T] =
   doAssert data.len == N
   copyMem(addr result[0], unsafeAddr data[0], N)
 
@@ -105,5 +105,12 @@ func checkedEnumAssign*[E: enum, I: SomeInteger](res: var E, value: I): bool =
     return false
 
   res = E value
+  return true
+
+func isZeroMemory*[T](x: T): bool =
+  # TODO: iterate over words here
+  for b in cast[ptr array[sizeof(T), byte]](unsafeAddr x)[]:
+    if b != 0:
+      return false
   return true
 

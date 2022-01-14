@@ -5,6 +5,8 @@
 #   * Apache v2 license (license terms in the root directory or at https://www.apache.org/licenses/LICENSE-2.0).
 # at your option. This file may not be copied, modified, or distributed except according to those terms.
 
+{.push raises: [Defect].}
+
 import
   std/[algorithm, bitops, math, options, tables, times, hashes],
   chronicles, stew/[byteutils, endians2], metrics, bearssl,
@@ -187,7 +189,7 @@ proc fullBloom*(): Bloom =
   for i in 0..<result.len:
     result[i] = 0xFF
 
-proc encryptAesGcm(plain: openarray[byte], key: SymKey,
+proc encryptAesGcm(plain: openArray[byte], key: SymKey,
     iv: array[gcmIVLen, byte]): seq[byte] =
   ## Encrypt using AES-GCM, making sure to append tag and iv, in that order
   var gcm: GCM[aes256]
@@ -201,7 +203,7 @@ proc encryptAesGcm(plain: openarray[byte], key: SymKey,
   result.add tag
   result.add iv
 
-proc decryptAesGcm(cipher: openarray[byte], key: SymKey): Option[seq[byte]] =
+proc decryptAesGcm(cipher: openArray[byte], key: SymKey): Option[seq[byte]] =
   ## Decrypt AES-GCM ciphertext and validate authenticity - assumes
   ## cipher-tag-iv format of the buffer
   if cipher.len < gcmTagLen + gcmIVLen:
@@ -308,7 +310,7 @@ proc encode*(rng: var BrHmacDrbgContext, self: Payload): Option[seq[byte]] =
   # No encryption!
   return some(plain)
 
-proc decode*(data: openarray[byte], dst = none[PrivateKey](),
+proc decode*(data: openArray[byte], dst = none[PrivateKey](),
     symKey = none[SymKey]()): Option[DecodedPayload] =
   ## Decode data into payload, potentially trying to decrypt if keys are
   ## provided
@@ -519,7 +521,7 @@ proc initQueue*(capacity: int): Queue =
   result.capacity = capacity
   result.itemHashes.init()
 
-proc prune*(self: var Queue) {.raises: [].} =
+proc prune*(self: var Queue) =
   ## Remove items that are past their expiry time
   let now = epochTime().uint32
 
@@ -654,7 +656,8 @@ proc notify*(filters: var Filters, msg: Message) {.gcsafe.} =
    else:
      filter.handler(receivedMsg)
 
-proc getFilterMessages*(filters: var Filters, filterId: string): seq[ReceivedMessage] =
+proc getFilterMessages*(filters: var Filters, filterId: string):
+    seq[ReceivedMessage] {.raises: [KeyError, Defect].} =
   result = @[]
   if filters.contains(filterId):
     if filters[filterId].handler.isNil():

@@ -12,6 +12,7 @@
 import bearssl, bearssl/cacert
 import ../asyncloop, ../timer, ../asyncsync
 import asyncstream, ../transports/stream, ../transports/common
+export asyncloop, asyncsync, timer, asyncstream, bearssl
 
 type
   TLSStreamKind {.pure.} = enum
@@ -146,10 +147,12 @@ proc tlsWriteRec(engine: ptr SslEngineContext,
     sslEngineSendrecAck(engine, length)
     return TLSResult.Success
   except AsyncStreamError as exc:
-    writer.state = AsyncStreamState.Error
-    writer.error = exc
+    if writer.state == AsyncStreamState.Running:
+      writer.state = AsyncStreamState.Error
+      writer.error = exc
   except CancelledError:
-    writer.state = AsyncStreamState.Stopped
+    if writer.state == AsyncStreamState.Running:
+      writer.state = AsyncStreamState.Stopped
   return TLSResult.Error
 
 proc tlsWriteApp(engine: ptr SslEngineContext,
@@ -180,7 +183,8 @@ proc tlsWriteApp(engine: ptr SslEngineContext,
       item.future.complete()
       return TLSResult.Success
   except CancelledError:
-    writer.state = AsyncStreamState.Stopped
+    if writer.state == AsyncStreamState.Running:
+      writer.state = AsyncStreamState.Stopped
   return TLSResult.Error
 
 proc tlsReadRec(engine: ptr SslEngineContext,
@@ -197,10 +201,12 @@ proc tlsReadRec(engine: ptr SslEngineContext,
     else:
       return TLSResult.Success
   except CancelledError:
-    reader.state = AsyncStreamState.Stopped
+    if reader.state == AsyncStreamState.Running:
+      reader.state = AsyncStreamState.Stopped
   except AsyncStreamError as exc:
-    reader.state = AsyncStreamState.Error
-    reader.error = exc
+    if reader.state == AsyncStreamState.Running:
+      reader.state = AsyncStreamState.Error
+      reader.error = exc
   return TLSResult.Error
 
 proc tlsReadApp(engine: ptr SslEngineContext,
@@ -212,23 +218,26 @@ proc tlsReadApp(engine: ptr SslEngineContext,
     sslEngineRecvappAck(engine, length)
     return TLSResult.Success
   except CancelledError:
-    reader.state = AsyncStreamState.Stopped
+    if reader.state == AsyncStreamState.Running:
+      reader.state = AsyncStreamState.Stopped
   return TLSResult.Error
 
 template readAndReset(fut: untyped) =
   if fut.finished():
     let res = fut.read()
     case res
-    of TLSREsult.Success:
+    of TLSResult.Success:
       fut = nil
       continue
     of TLSResult.Error:
       fut = nil
-      loopState = AsyncStreamState.Error
+      if loopState == AsyncStreamState.Running:
+        loopState = AsyncStreamState.Error
       break
     of TLSResult.EOF:
       fut = nil
-      loopState = AsyncStreamState.Finished
+      if loopState == AsyncStreamState.Running:
+        loopState = AsyncStreamState.Finished
       break
 
 proc cancelAndWait*(a, b, c, d: Future[TLSResult]): Future[void] =
@@ -285,7 +294,8 @@ proc tlsLoop*(stream: TLSAsyncStream) {.async.} =
     var state = sslEngineCurrentState(engine)
 
     if (state and SSL_CLOSED) == SSL_CLOSED:
-      loopState = AsyncStreamState.Finished
+      if loopState == AsyncStreamState.Running:
+        loopState = AsyncStreamState.Finished
       break
 
     if isNil(sendRecFut):
@@ -332,7 +342,8 @@ proc tlsLoop*(stream: TLSAsyncStream) {.async.} =
       try:
         discard await one(waiting)
       except CancelledError:
-        loopState = AsyncStreamState.Stopped
+        if loopState == AsyncStreamState.Running:
+          loopState = AsyncStreamState.Stopped
 
     if loopState != AsyncStreamState.Running:
       break
@@ -608,7 +619,7 @@ proc copyKey(src: EcPrivateKey): TLSPrivateKey =
   res.eckey.curve = src.curve
   res
 
-proc init*(tt: typedesc[TLSPrivateKey], data: openarray[byte]): TLSPrivateKey =
+proc init*(tt: typedesc[TLSPrivateKey], data: openArray[byte]): TLSPrivateKey =
   ## Initialize TLS private key from array of bytes ``data``.
   ##
   ## This procedure initializes private key using raw, DER-encoded format,
@@ -631,7 +642,7 @@ proc init*(tt: typedesc[TLSPrivateKey], data: openarray[byte]): TLSPrivateKey =
       raiseTLSStreamProtocolError("Unknown key type (" & $keyType & ")")
   res
 
-proc pemDecode*(data: openarray[char]): seq[PEMElement] =
+proc pemDecode*(data: openArray[char]): seq[PEMElement] =
   ## Decode PEM encoded string and get array of binary blobs.
   if len(data) == 0:
     raiseTLSStreamProtocolError("Empty PEM message")
@@ -674,7 +685,7 @@ proc pemDecode*(data: openarray[char]): seq[PEMElement] =
       raiseTLSStreamProtocolError("Invalid PEM encoding")
   res
 
-proc init*(tt: typedesc[TLSPrivateKey], data: openarray[char]): TLSPrivateKey =
+proc init*(tt: typedesc[TLSPrivateKey], data: openArray[char]): TLSPrivateKey =
   ## Initialize TLS private key from string ``data``.
   ##
   ## This procedure initializes private key using unencrypted PKCS#8 PEM
@@ -692,7 +703,7 @@ proc init*(tt: typedesc[TLSPrivateKey], data: openarray[char]): TLSPrivateKey =
   res
 
 proc init*(tt: typedesc[TLSCertificate],
-           data: openarray[char]): TLSCertificate =
+           data: openArray[char]): TLSCertificate =
   ## Initialize TLS certificates from string ``data``.
   ##
   ## This procedure initializes array of certificates from PEM encoded string.

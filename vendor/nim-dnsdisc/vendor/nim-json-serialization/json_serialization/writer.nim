@@ -132,7 +132,7 @@ proc writeIterable*(w: var JsonWriter, collection: auto) =
 
   append ']'
 
-proc writeArray*[T](w: var JsonWriter, elements: openarray[T]) =
+proc writeArray*[T](w: var JsonWriter, elements: openArray[T]) =
   writeIterable(w, elements)
 
 # this construct catches `array[N, char]` which otherwise won't decompose into
@@ -159,6 +159,11 @@ proc writeValue*(w: var JsonWriter, value: auto) =
       writeValue(w, value[])
 
   elif isStringLike(value):
+    when value is cstring:
+      if value == nil:
+        append "null"
+        return
+
     append '"'
 
     template addPrefixSlash(c) =

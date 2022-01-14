@@ -17,28 +17,30 @@ skipDirs    = @["examples", "tests"]
 requires "nim >= 1.2.0" # nimble will fail to install nim-websock if we are using 1.2.6 here
 requires "chronos >= 3.0.0"
 requires "httputils >= 0.2.0"
-requires "chronicles#ba2817f1"
+requires "chronicles >= 0.10.2"
 requires "stew >= 0.1.0"
 requires "asynctest >= 0.3.0 & < 0.4.0"
 requires "nimcrypto"
 requires "bearssl"
-requires "https://github.com/status-im/nim-zlib"
+requires "zlib"
 
 task test, "run tests":
-  # dont't need to run it, only want to test if it is compileable
-  exec "nim c -c --verbosity:0 --hints:off -d:chronicles_log_level=TRACE -d:chronicles_sinks:json ./tests/testcommon"
+  let envNimflags = getEnv("NIMFLAGS")
 
-  exec "nim --hints:off c -r --opt:speed -d:debug --verbosity:0 --hints:off -d:chronicles_log_level=INFO ./tests/testcommon.nim"
+  # dont't need to run it, only want to test if it is compileable
+  exec "nim c -c " & envNimflags & " --verbosity:0 --hints:off --hint:Name:on -d:chronicles_log_level=TRACE -d:chronicles_sinks:json --styleCheck:usages --styleCheck:hint ./tests/testcommon"
+
+  exec "nim --hints:off c -r " & envNimflags & " --opt:speed -d:debug --verbosity:0 --hints:off -d:chronicles_log_level=INFO ./tests/testcommon.nim"
   rmFile "./tests/testcommon"
 
-  exec "nim --hints:off c -r --opt:speed -d:debug --verbosity:0 --hints:off -d:chronicles_log_level=INFO ./tests/testwebsockets.nim"
+  exec "nim --hints:off c -r " & envNimflags & " --opt:speed -d:debug --verbosity:0 --hints:off -d:chronicles_log_level=INFO ./tests/testwebsockets.nim"
   rmFile "./tests/testwebsockets"
 
-  exec "nim --hints:off -d:secure c -r --opt:speed -d:debug --verbosity:0 --hints:off -d:chronicles_log_level=INFO ./tests/testwebsockets.nim"
+  exec "nim --hints:off -d:secure c -r " & envNimflags & " --opt:speed -d:debug --verbosity:0 --hints:off -d:chronicles_log_level=INFO ./tests/testwebsockets.nim"
   rmFile "./tests/testwebsockets"
 
-  exec "nim --hints:off -d:accepts c -r --opt:speed -d:debug --verbosity:0 --hints:off -d:chronicles_log_level=INFO ./tests/testwebsockets.nim"
+  exec "nim --hints:off -d:accepts c -r " & envNimflags & " --opt:speed -d:debug --verbosity:0 --hints:off -d:chronicles_log_level=INFO ./tests/testwebsockets.nim"
   rmFile "./tests/testwebsockets"
 
-  exec "nim --hints:off -d:secure -d:accepts c -r --opt:speed -d:debug --verbosity:0 --hints:off -d:chronicles_log_level=INFO ./tests/testwebsockets.nim"
+  exec "nim --hints:off -d:secure -d:accepts c -r " & envNimflags & " --opt:speed -d:debug --verbosity:0 --hints:off -d:chronicles_log_level=INFO ./tests/testwebsockets.nim"
   rmFile "./tests/testwebsockets"

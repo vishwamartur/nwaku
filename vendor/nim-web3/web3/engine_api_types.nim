@@ -1,34 +1,41 @@
-# https://github.com/ethereum/execution-apis/blob/main/src/engine/interop/specification.md
+# https://github.com/ethereum/execution-apis/blob/v1.0.0-alpha.5/src/engine/specification.md
 
 import
+  std/options,
   ethtypes
 
 export
   ethtypes
 
 type
-  PayloadAttributes* = object
-    parentHash*: BlockHash
+  # https://github.com/ethereum/execution-apis/blob/v1.0.0-alpha.5/src/engine/specification.md#payloadattributesv1
+  PayloadAttributesV1* = object
     timestamp*: Quantity
     random*: FixedBytes[32]
-    feeRecipient*: Address
-
-  PreparePayloadResponse* = object
-    payloadId*: Quantity
+    suggestedFeeRecipient*: Address
 
   PayloadExecutionStatus* {.pure.} = enum
     valid   = "VALID"
     invalid = "INVALID"
     syncing = "SYNCING"
 
-  ExecutePayloadResponse* = object
-    status*: string
+  PayloadID* = FixedBytes[8]
 
-  ForkChoiceUpdate* = object
+  ExecutePayloadResponse* = object
+    status*: PayloadExecutionStatus
+    latestValidHash*: Option[BlockHash]
+    message*: Option[string]
+
+  # https://github.com/ethereum/execution-apis/blob/v1.0.0-alpha.5/src/engine/specification.md#forkchoicestatev1
+  ForkchoiceStateV1* = object
     headBlockHash*: BlockHash
+    safeBlockHash*: BlockHash
     finalizedBlockHash*: BlockHash
 
-const
-  # https://github.com/ethereum/execution-apis/blob/v1.0.0-alpha.2/src/engine/interop/specification.md
-  UNKNOWN_HEADER* = 4
-  UNKNOWN_PAYLOAD* = 5
+  ForkchoiceUpdatedStatus* {.pure.} = enum
+    success = "SUCCESS"
+    syncing = "SYNCING"
+
+  ForkchoiceUpdatedResponse* = object
+    status*: string
+    payloadId*: Option[PayloadID]

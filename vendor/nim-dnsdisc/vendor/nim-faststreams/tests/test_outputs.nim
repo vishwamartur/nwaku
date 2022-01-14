@@ -1,12 +1,15 @@
 {.used.}
 
 import
-  os, unittest, random, strformat,
+  os, unittest2, random, strformat,
   stew/ranges/ptr_arith,
   ../faststreams, ../faststreams/textio
 
 proc bytes(s: string): seq[byte] =
   result = newSeqOfCap[byte](s.len)
+  for c in s: result.add byte(c)
+
+proc bytes(s: cstring): seq[byte] =
   for c in s: result.add byte(c)
 
 template bytes(c: char): byte = byte(c)
@@ -17,12 +20,10 @@ proc repeat(b: byte, count: int): seq[byte] =
   result = newSeq[byte](count)
   for i in 0 ..< count: result[i] = b
 
-const line = "123456789123456789123456789123456789\n\n\n\n\n"
-
 proc randomBytes(n: int): seq[byte] =
   result.newSeq n
   for i in 0 ..< n:
-    result[i] = byte(rand(line))
+    result[i] = byte(rand(int('1')..int('9')))
 
 proc readAllAndClose(s: InputStream): seq[byte] =
   while s.readable:
@@ -52,20 +53,19 @@ suite "output stream":
       streamWritingToExistingBuffer = unsafeMemoryOutput(buffer, bufferSize)
 
   teardown:
+    fileStream.close()
+    unbufferedFileStream.close()
     removeFile fileOutputPath
     removeFile unbufferedFileOutputPath
     dealloc buffer
 
   template output(val: auto) {.dirty.} =
     nimSeq.add bytes(val)
-
     memStream.write val
     smallPageSizeStream.write val
     largePageSizeStream.write val
-
     fileStream.write val
     unbufferedFileStream.write val
-
     streamWritingToExistingBuffer.write val
 
   template outputText(val: auto) =
@@ -153,6 +153,24 @@ suite "output stream":
       outputText '\n'
 
     checkOutputsMatch()
+
+  test "cstrings":
+    for i in 1 .. 100:
+      output cstring("cstring sent by output ")
+      output cstring("")
+      outputText cstring("cstring sent by outputText ")
+      outputText cstring("")
+
+    checkOutputsMatch()
+
+  test "memcpy":
+    var x = 0x42'u8
+
+    nimSeq.add x
+    memStream.writeMemCopy x
+    let memStreamRes = memStream.getOutput
+
+    check memStreamRes == nimSeq
 
   template undelayedOutput(content: seq[byte]) {.dirty.} =
     nimSeq.add content

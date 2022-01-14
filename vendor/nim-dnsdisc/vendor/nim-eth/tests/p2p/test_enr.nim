@@ -1,7 +1,8 @@
 {.used.}
 
 import
-  std/[unittest, options, sequtils],
+  std/[options, sequtils],
+  unittest2,
   nimcrypto/utils, stew/shims/net,
   ../../eth/p2p/discoveryv5/enr, ../../eth/[keys, rlp]
 
@@ -12,7 +13,7 @@ suite "ENR":
     var pk = PrivateKey.fromHex(
       "5d2908f3f09ea1ff2e327c3f623159639b00af406e9009de5fd4b910fc34049d")[]
     var r = initRecord(123, pk, {"udp": 1234'u, "ip": [byte 5, 6, 7, 8]})[]
-    check($r == """(123, id: "v4", ip: 0x05060708, secp256k1: 0x02E51EFA66628CE09F689BC2B82F165A75A9DDECBB6A804BE15AC3FDF41F3B34E7, udp: 1234)""")
+    check($r == """(123, id: "v4", ip: 5.6.7.8, secp256k1: 0x02E51EFA66628CE09F689BC2B82F165A75A9DDECBB6A804BE15AC3FDF41F3B34E7, udp: 1234)""")
     let uri = r.toURI()
     var r2: Record
     let sigValid = r2.fromURI(uri)
@@ -24,7 +25,7 @@ suite "ENR":
     var pk = PrivateKey.fromHex(
       "5d2908f3f09ea1ff2e327c3f623159639b00af406e9009de5fd4b910fc34049d")[]
     var r = initRecord(123, pk, {"udp": 1234'u, "ip": [byte 5, 6, 7, 8]})[]
-    check($r == """(123, id: "v4", ip: 0x05060708, secp256k1: 0x02E51EFA66628CE09F689BC2B82F165A75A9DDECBB6A804BE15AC3FDF41F3B34E7, udp: 1234)""")
+    check($r == """(123, id: "v4", ip: 5.6.7.8, secp256k1: 0x02E51EFA66628CE09F689BC2B82F165A75A9DDECBB6A804BE15AC3FDF41F3B34E7, udp: 1234)""")
     let encoded = rlp.encode(r)
     let decoded = rlp.decode(encoded, enr.Record)
     check($decoded == $r)
@@ -37,7 +38,7 @@ suite "ENR":
     var r: Record
     check not fromBytes(r, [])
 
-  test "Base64 dserialsation without data":
+  test "Base64 deserialsation without data":
     var r: Record
     let sigValid = r.fromURI("enr:")
     check(not sigValid)
@@ -46,7 +47,7 @@ suite "ENR":
     var r: Record
     let sigValid = r.fromBase64("-IS4QHCYrYZbAKWCBRlAy5zzaDZXJBGkcnh4MHcBFZntXNFrdvJjX04jRzjzCBOonrkTfj499SZuOh8R33Ls8RRcy5wBgmlkgnY0gmlwhH8AAAGJc2VjcDI1NmsxoQPKY0yuDUmstAHYpMa2_oxVtw0RW_QAdpzBQA8yWM0xOIN1ZHCCdl8")
     check(sigValid)
-    check($r == """(1, id: "v4", ip: 0x7F000001, secp256k1: 0x03CA634CAE0D49ACB401D8A4C6B6FE8C55B70D115BF400769CC1400F3258CD3138, udp: 30303)""")
+    check($r == """(1, id: "v4", ip: 127.0.0.1, secp256k1: 0x03CA634CAE0D49ACB401D8A4C6B6FE8C55B70D115BF400769CC1400F3258CD3138, udp: 30303)""")
 
   test "Bad base64":
     var r: Record
@@ -83,7 +84,7 @@ suite "ENR":
   test "ENR without address":
     let
       keypair = KeyPair.random(rng[])
-      port = some(Port(9000))
+      port = none(Port)
       enr = Record.init(
         100, keypair.seckey, none(ValidIpAddress), port, port)[]
       typedEnr = get enr.toTypedRecord()
@@ -122,14 +123,14 @@ suite "ENR":
       let updated = r.update(pk, [newField])
       check updated.isOk()
       check:
-        r.get("test", uint) == 123
+        r.get("test", uint).get() == 123
         r.seqNum == 2
 
     block: # Insert same k:v pair, no update of seqNum should occur.
       let updated = r.update(pk, [newField])
       check updated.isOk()
       check:
-        r.get("test", uint) == 123
+        r.get("test", uint).get() == 123
         r.seqNum == 2
 
     block: # Insert k:v pair with changed value, update of seqNum should occur.
@@ -137,7 +138,7 @@ suite "ENR":
       let updated = r.update(pk, [updatedField])
       check updated.isOk()
       check:
-        r.get("test", uint) == 1234
+        r.get("test", uint).get() == 1234
         r.seqNum == 3
 
   test "ENR update sorted":
@@ -192,8 +193,8 @@ suite "ENR":
       check updated.isOk()
       check:
         r.tryGet("ip", uint).isNone()
-        r.tryGet("tcp", uint).isNone()
-        r.tryGet("udp", uint).isNone()
+        r.tryGet("tcp", uint).isSome()
+        r.tryGet("udp", uint).isSome()
         r.seqNum == 1
 
     block:
@@ -202,9 +203,9 @@ suite "ENR":
       check updated.isOk()
       check:
         r.tryGet("ip", uint).isNone()
-        r.tryGet("tcp", uint).isNone()
-        r.tryGet("udp", uint).isNone()
-        r.seqNum == 1
+        r.tryGet("tcp", uint).isSome()
+        r.tryGet("udp", uint).isSome()
+        r.seqNum == 2
 
     block:
       let updated = r.update(pk, some(ValidIpAddress.init("10.20.30.40")),
@@ -223,7 +224,7 @@ suite "ENR":
         typedEnr.udp.isSome()
         typedEnr.udp.get() == 9000
 
-        r.seqNum == 2
+        r.seqNum == 3
 
     block:
       let updated = r.update(pk, some(ValidIpAddress.init("10.20.30.40")),
@@ -242,4 +243,71 @@ suite "ENR":
         typedEnr.udp.isSome()
         typedEnr.udp.get() == 9001
 
-        r.seqNum == 3
+        r.seqNum == 4
+
+  test "ENR with RLP list value":
+    type
+      RlpTestList = object
+        number: uint16
+        data: seq[byte]
+        text: string
+
+    let rlpList =
+      RlpTestList(number: 72, data: @[byte 0x0, 0x1, 0x2], text: "Hi there")
+
+    let pk = PrivateKey.fromHex(
+      "5d2908f3f09ea1ff2e327c3f623159639b00af406e9009de5fd4b910fc34049d")[]
+    var r = initRecord(123, pk, {"udp": 1234'u, "ip": [byte 5, 6, 7, 8],
+      "some_list": rlpList})[]
+
+    check($r == """(123, id: "v4", ip: 5.6.7.8, secp256k1: 0x02E51EFA66628CE09F689BC2B82F165A75A9DDECBB6A804BE15AC3FDF41F3B34E7, some_list: (Raw RLP list) 0xCE4883000102884869207468657265, udp: 1234)""")
+
+    let encoded = rlp.encode(r)
+    let decoded = rlp.decode(encoded, enr.Record)
+    check($decoded == $r)
+    check(decoded.raw == r.raw)
+
+  test "ENR IP addresses ":
+    let pk = PrivateKey.fromHex(
+      "5d2908f3f09ea1ff2e327c3f623159639b00af406e9009de5fd4b910fc34049d")[]
+    block: # valid ipv4
+      var r = initRecord(123, pk, {"udp": 1234'u, "ip": [byte 5, 6, 7, 8]})[]
+
+      check($r == """(123, id: "v4", ip: 5.6.7.8, secp256k1: 0x02E51EFA66628CE09F689BC2B82F165A75A9DDECBB6A804BE15AC3FDF41F3B34E7, udp: 1234)""")
+
+      let encoded = rlp.encode(r)
+      let decoded = rlp.decode(encoded, enr.Record)
+      check($decoded == $r)
+      check(decoded.raw == r.raw)
+
+    block: # invalid ipv4
+      var r = initRecord(123, pk, {"udp": 1234'u, "ip": [byte 5, 6, 7]})[]
+
+      check($r == """(123, id: "v4", ip: (Invalid) 0x050607, secp256k1: 0x02E51EFA66628CE09F689BC2B82F165A75A9DDECBB6A804BE15AC3FDF41F3B34E7, udp: 1234)""")
+
+      let encoded = rlp.encode(r)
+      let decoded = rlp.decode(encoded, enr.Record)
+      check($decoded == $r)
+      check(decoded.raw == r.raw)
+
+    block: # valid ipv4 + ipv6
+      var r = initRecord(123, pk, {"udp": 1234'u, "ip": [byte 5, 6, 7, 8],
+        "ip6": [byte 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 5, 6]})[]
+
+      check($r == """(123, id: "v4", ip: 5.6.7.8, ip6: 102::102:304:506, secp256k1: 0x02E51EFA66628CE09F689BC2B82F165A75A9DDECBB6A804BE15AC3FDF41F3B34E7, udp: 1234)""")
+
+      let encoded = rlp.encode(r)
+      let decoded = rlp.decode(encoded, enr.Record)
+      check($decoded == $r)
+      check(decoded.raw == r.raw)
+
+    block: # invalid ipv4 + ipv6
+      var r = initRecord(123, pk, {"udp": 1234'u, "ip": [byte 5, 6, 7, 8, 9],
+        "ip6": [byte 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 5]})[]
+
+      check($r == """(123, id: "v4", ip: (Invalid) 0x0506070809, ip6: (Invalid) 0x010200000000000000000102030405, secp256k1: 0x02E51EFA66628CE09F689BC2B82F165A75A9DDECBB6A804BE15AC3FDF41F3B34E7, udp: 1234)""")
+
+      let encoded = rlp.encode(r)
+      let decoded = rlp.decode(encoded, enr.Record)
+      check($decoded == $r)
+      check(decoded.raw == r.raw)

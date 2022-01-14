@@ -210,6 +210,20 @@ template desc*(v: string) {.pragma.}
 A description of the configuration option that will appear in the produced
 help messages.
 
+```nim
+template longDesc*(v: string) {.pragma.}
+```
+
+A long description text that will appear below regular desc. You can use
+one of {'\n', '\r'} to break it into multiple lines. But you can't use
+'\p' as line break.
+
+```text
+ -x, --name   regular description [=defVal].
+              longdesc line one.
+              longdesc line two.
+              longdesc line three.
+```
 -----------------
 
 ```nim
@@ -279,6 +293,24 @@ template argument* {.pragma.}
 This field represents an argument to the program. If the program expects
 multiple arguments, this pragma can be applied to multiple fields or to
 a single `seq[T]` field depending on the desired behavior.
+
+-----------------
+
+```nim
+template separator(v: string)* {.pragma.}
+```
+
+Using this pragma, a customizable separator text will be displayed just before
+this field. E.g.:
+
+```text
+Network Options:     # this is a separator
+  -a, --opt1 desc
+  -b, --opt2 desc
+
+----------------     # this is a separator too
+  -c, --opt3 desc
+```
 
 ## Configuration field types
 

@@ -286,7 +286,7 @@ proc raiseAsDefect*(exc: ref Exception, msg: string) {.
   raise (ref Defect)(
     msg: msg & "\n" & exc.msg & "\n" & exc.getStackTrace(), parent: exc)
 
-when defined(windows) or defined(nimdoc):
+when defined(windows):
   type
     WSAPROC_TRANSMITFILE = proc(hSocket: SocketHandle, hFile: Handle,
                                 nNumberOfBytesToWrite: DWORD,
@@ -323,7 +323,7 @@ when defined(windows) or defined(nimdoc):
     AsyncFD* = distinct int
 
   proc hash(x: AsyncFD): Hash {.borrow.}
-  proc `==`*(x: AsyncFD, y: AsyncFD): bool {.borrow.}
+  proc `==`*(x: AsyncFD, y: AsyncFD): bool {.borrow, gcsafe.}
 
   proc getFunc(s: SocketHandle, fun: var pointer, guid: var GUID): bool =
     var bytesRet: DWORD
@@ -431,7 +431,7 @@ when defined(windows) or defined(nimdoc):
     loop.processTimersGetTimeout(curTimeout)
 
     # Processing handles
-    var lpNumberOfBytesTransferred: Dword
+    var lpNumberOfBytesTransferred: DWORD
     var lpCompletionKey: ULONG_PTR
     var customOverlapped: PtrCustomOverlapped
 
@@ -516,7 +516,7 @@ elif unixPlatform:
       selector: Selector[SelectorData]
       keys: seq[ReadyKey]
 
-  proc `==`*(x, y: AsyncFD): bool {.borrow.}
+  proc `==`*(x, y: AsyncFD): bool {.borrow, gcsafe.}
 
   proc globalInit() =
     # We are ignoring SIGPIPE signal, because we are working with EPIPE.
@@ -563,7 +563,7 @@ elif unixPlatform:
     ## Unregister file descriptor ``fd`` from thread's dispatcher.
     getThreadDispatcher().selector.unregister(int(fd))
 
-  proc contains*(disp: PDispatcher, fd: AsyncFd): bool {.inline.} =
+  proc contains*(disp: PDispatcher, fd: AsyncFD): bool {.inline.} =
     ## Returns ``true`` if ``fd`` is registered in thread's dispatcher.
     result = int(fd) in disp.selector
 
@@ -770,7 +770,7 @@ proc getThreadDispatcher*(): PDispatcher =
       setThreadDispatcher(newDispatcher())
     except CatchableError as exc:
       raiseAsDefect exc, "Cannot create dispatcher"
-  gdisp
+  gDisp
 
 proc setGlobalDispatcher*(disp: PDispatcher) {.
       gcsafe, deprecated: "Use setThreadDispatcher() instead".} =

@@ -1,7 +1,8 @@
 {.used.}
 
 import
-  std/[unittest, sequtils, os, algorithm, random],
+  std/[sequtils, os, algorithm, random],
+  unittest2,
   stew/byteutils, nimcrypto/utils,
   ../../eth/trie/[hexary, db, trie_defs],
   ./testutils
@@ -309,19 +310,6 @@ suite "hexary trie":
       if not ok:
         echo "ITERATION: ", iteration
         break
-
-  proc isValidBranch(branch: seq[seq[byte]], rootHash: KeccakHash, key, value: seq[byte]): bool =
-    # branch must not be empty
-    doAssert(branch.len != 0)
-
-    var db = newMemoryDB()
-    for node in branch:
-      doAssert(node.len != 0)
-      let nodeHash = hexary.keccak(node)
-      db.put(nodeHash.data, node)
-
-    var trie = initHexaryTrie(db, rootHash)
-    result = trie.get(key) == value
 
   test "get branch with pruning trie":
     var

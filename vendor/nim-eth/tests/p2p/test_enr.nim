@@ -1,7 +1,8 @@
 {.used.}
 
 import
-  std/[unittest, options, sequtils],
+  std/[options, sequtils],
+  unittest2,
   nimcrypto/utils, stew/shims/net,
   ../../eth/p2p/discoveryv5/enr, ../../eth/[keys, rlp]
 
@@ -122,14 +123,14 @@ suite "ENR":
       let updated = r.update(pk, [newField])
       check updated.isOk()
       check:
-        r.get("test", uint) == 123
+        r.get("test", uint).get() == 123
         r.seqNum == 2
 
     block: # Insert same k:v pair, no update of seqNum should occur.
       let updated = r.update(pk, [newField])
       check updated.isOk()
       check:
-        r.get("test", uint) == 123
+        r.get("test", uint).get() == 123
         r.seqNum == 2
 
     block: # Insert k:v pair with changed value, update of seqNum should occur.
@@ -137,7 +138,7 @@ suite "ENR":
       let updated = r.update(pk, [updatedField])
       check updated.isOk()
       check:
-        r.get("test", uint) == 1234
+        r.get("test", uint).get() == 1234
         r.seqNum == 3
 
   test "ENR update sorted":

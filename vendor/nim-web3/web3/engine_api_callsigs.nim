@@ -1,8 +1,7 @@
-# https://github.com/ethereum/execution-apis/blob/main/src/engine/interop/specification.md
+# https://github.com/ethereum/execution-apis/blob/v1.0.0-alpha.5/src/engine/specification.md
 
 import ethtypes, engine_api_types
 
-proc engine_preparePayload(payloadAttributes: PayloadAttributes): PreparePayloadResponse
-proc engine_getPayload(payloadId: Quantity): ExecutionPayload
-proc engine_executePayload(payload: ExecutionPayload): ExecutePayloadResponse
-proc engine_forkchoiceUpdated(update: ForkChoiceUpdate)
+proc engine_executePayloadV1(payload: ExecutionPayloadV1): ExecutePayloadResponse
+proc engine_forkchoiceUpdatedV1(forkchoiceState: ForkchoiceStateV1, payloadAttributes: Option[PayloadAttributesV1]): ForkchoiceUpdatedResponse
+proc engine_getPayloadV1(payloadId: PayloadID): ExecutionPayloadV1

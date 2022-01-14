@@ -4,7 +4,7 @@ description   = "Ethereum Common library"
 license       = "MIT"
 skipDirs      = @["tests"]
 
-requires "nim >= 1.2.0 & <= 1.2.12",
+requires "nim >= 1.2.0",
          "nimcrypto",
          "stint",
          "secp256k1",
@@ -16,21 +16,26 @@ requires "nim >= 1.2.0 & <= 1.2.12",
          "metrics",
          "sqlite3_abi",
          "confutils",
-         "testutils"
+         "testutils",
+         "unittest2"
+
+let commonParams = " --verbosity:0 --hints:off --skipUserCfg:on " &
+  "--warning[ObservableStores]:off --styleCheck:usages --styleCheck:hint " &
+  getEnv("NIMFLAGS") & " "
 
 proc runTest(path: string, release: bool = true, chronosStrict = true) =
-  echo "\nRunning: ", path
+  echo "\nBuilding and running: ", path
   let releaseMode = if release: "-d:release" else: ""
   let chronosMode =
     if chronosStrict: "-d:chronosStrictException" else: ""
   exec "nim c -r " & releaseMode & " " & chronosMode &
-    " -d:chronicles_log_level=error --verbosity:0 --hints:off " & path
+    " -d:chronicles_log_level=ERROR " & commonParams & path
   rmFile path
 
 proc buildBinary(path: string) =
   echo "\nBuilding: ", path
   exec "nim c -d:release -d:chronosStrictException " &
-    "-d:chronicles_log_level=trace --verbosity:0 --hints:off --threads:on " &
+    "-d:chronicles_log_level=TRACE --threads:on " & commonParams &
     "--warning[CaseTransition]:off --warning[ObservableStores]:off " &
     path
 
@@ -45,9 +50,6 @@ task test_discv5, "Run discovery v5 tests":
 
 task test_discv4, "Run discovery v4 tests":
   runTest("tests/p2p/test_discovery")
-
-task test_portal, "Run Portal network tests":
-  runTest("tests/p2p/all_portal_tests")
 
 task test_p2p, "Run p2p tests":
   runTest("tests/p2p/all_tests")
@@ -69,6 +71,9 @@ task test_trie, "Run trie tests":
 task test_db, "Run db tests":
   runTest("tests/db/all_tests")
 
+task test_utp, "Run utp tests":
+  runTest("tests/utp/all_utp_tests")
+
 task test, "Run all tests":
   for filename in [
       "test_bloom",
@@ -81,6 +86,7 @@ task test, "Run all tests":
   test_p2p_task()
   test_trie_task()
   test_db_task()
+  test_utp_task()
 
 task test_discv5_full, "Run discovery v5 and its dependencies tests":
   test_keys_task()
@@ -90,5 +96,15 @@ task test_discv5_full, "Run discovery v5 and its dependencies tests":
 task build_dcli, "Build dcli":
   buildBinary("eth/p2p/discoveryv5/dcli")
 
-task build_portalcli, "Build portalcli":
-  buildBinary("eth/p2p/portal/portalcli")
+import os, strutils
+
+task build_fuzzers, "Build fuzzer test cases":
+  # This file is there to be able to quickly build the fuzzer test cases in
+  # order to avoid bit rot (e.g. for CI). Not for actual fuzzing.
+  # TODO: Building fuzzer test case one by one will make it take a bit longer,
+  # but we cannot import them in one Nim file due to the usage of
+  # `exportc: "AFLmain"` in the fuzzing test template for Windows:
+  # https://github.com/status-im/nim-testutils/blob/master/testutils/fuzzing.nim#L100
+  for file in walkDirRec("tests/fuzzing/"):
+    if file.endsWith("nim"):
+      buildBinary(file)

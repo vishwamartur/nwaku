@@ -705,6 +705,66 @@ template suite*(name, body) {.dirty.} =
 
 template exceptionTypeName(e: typed): string = $e.name
 
+template checkpoint*(msg: string) =
+  ## Set a checkpoint identified by `msg`. Upon test failure all
+  ## checkpoints encountered so far are printed out. Example:
+  ##
+  ## .. code-block:: nim
+  ##
+  ##  checkpoint("Checkpoint A")
+  ##  check((42, "the Answer to life and everything") == (1, "a"))
+  ##  checkpoint("Checkpoint B")
+  ##
+  ## outputs "Checkpoint A" once it fails.
+  checkpoints.add(msg)
+  # TODO: add support for something like SCOPED_TRACE from Google Test
+
+template fail* =
+  ## Print out the checkpoints encountered so far and quit if ``abortOnError``
+  ## is true. Otherwise, erase the checkpoints and indicate the test has
+  ## failed (change exit code and test status). This template is useful
+  ## for debugging, but is otherwise mostly used internally. Example:
+  ##
+  ## .. code-block:: nim
+  ##
+  ##  checkpoint("Checkpoint A")
+  ##  complicatedProcInThread()
+  ##  fail()
+  ##
+  ## outputs "Checkpoint A" before quitting.
+  when declared(testStatusIMPL):
+    testStatusIMPL = TestStatus.FAILED
+  else:
+    programResult = 1
+
+  withLock formattersLock:
+    {.gcsafe.}:
+      for formatter in formatters:
+        when declared(stackTrace):
+          formatter.failureOccurred(checkpoints, stackTrace)
+        else:
+          formatter.failureOccurred(checkpoints, "")
+
+  if abortOnError: quit(1)
+
+  checkpoints = @[]
+
+template skip* =
+  ## Mark the test as skipped. Should be used directly
+  ## in case when it is not possible to perform test
+  ## for reasons depending on outer environment,
+  ## or certain application logic conditions or configurations.
+  ## The test code is still executed.
+  ##
+  ## .. code-block:: nim
+  ##
+  ##  if not isGLContextCreated():
+  ##    skip()
+  bind checkpoints
+
+  testStatusIMPL = TestStatus.SKIPPED
+  checkpoints = @[]
+
 template test*(name: string, body: untyped) =
   ## Define a single test case identified by `name`.
   ##
@@ -773,66 +833,6 @@ template test*(name: string, body: untyped) =
       flowVars.add(spawn runTest(optionalTestSuiteName, tname))
     else:
       discard runTest(optionalTestSuiteName, tname)
-
-proc checkpoint*(msg: string) =
-  ## Set a checkpoint identified by `msg`. Upon test failure all
-  ## checkpoints encountered so far are printed out. Example:
-  ##
-  ## .. code-block:: nim
-  ##
-  ##  checkpoint("Checkpoint A")
-  ##  check((42, "the Answer to life and everything") == (1, "a"))
-  ##  checkpoint("Checkpoint B")
-  ##
-  ## outputs "Checkpoint A" once it fails.
-  checkpoints.add(msg)
-  # TODO: add support for something like SCOPED_TRACE from Google Test
-
-template fail* =
-  ## Print out the checkpoints encountered so far and quit if ``abortOnError``
-  ## is true. Otherwise, erase the checkpoints and indicate the test has
-  ## failed (change exit code and test status). This template is useful
-  ## for debugging, but is otherwise mostly used internally. Example:
-  ##
-  ## .. code-block:: nim
-  ##
-  ##  checkpoint("Checkpoint A")
-  ##  complicatedProcInThread()
-  ##  fail()
-  ##
-  ## outputs "Checkpoint A" before quitting.
-  when declared(testStatusIMPL):
-    testStatusIMPL = TestStatus.FAILED
-  else:
-    programResult = 1
-
-  withLock formattersLock:
-    {.gcsafe.}:
-      for formatter in formatters:
-        when declared(stackTrace):
-          formatter.failureOccurred(checkpoints, stackTrace)
-        else:
-          formatter.failureOccurred(checkpoints, "")
-
-  if abortOnError: quit(1)
-
-  checkpoints = @[]
-
-template skip* =
-  ## Mark the test as skipped. Should be used directly
-  ## in case when it is not possible to perform test
-  ## for reasons depending on outer environment,
-  ## or certain application logic conditions or configurations.
-  ## The test code is still executed.
-  ##
-  ## .. code-block:: nim
-  ##
-  ##  if not isGLContextCreated():
-  ##    skip()
-  bind checkpoints
-
-  testStatusIMPL = TestStatus.SKIPPED
-  checkpoints = @[]
 
 {.pop.} # raises: [Defect]
 
@@ -965,8 +965,9 @@ macro expect*(exceptions: varargs[typed], body: untyped): untyped =
       fail()
     except errorTypes:
       discard
-    except:
-      checkpoint(lineInfoLit & ": Expect Failed, unexpected exception was thrown.")
+    except Exception as e:
+      checkpoint(lineInfoLit & ": Expect Failed, unexpected " & $e.name &
+      " (" & e.msg & ") was thrown.\n" & e.getStackTrace())
       fail()
 
   var errorTypes = newNimNode(nnkBracket)

@@ -1,7 +1,8 @@
 {.used.}
 
 import
-  std/[unittest, options, sequtils, tables],
+  std/[options, sequtils, tables],
+  unittest2,
   stint, stew/byteutils, stew/shims/net,
   ../../eth/keys,
   ../../eth/p2p/discoveryv5/[messages, encoding, enr, node, sessions]
@@ -51,7 +52,7 @@ suite "Discovery v5.1 Protocol Message Encodings":
 
   test "FindNode Request":
     let
-      distances = @[0x0100'u32]
+      distances = @[0x0100'u16]
       fn = FindNodeMessage(distances: distances)
       reqId = RequestId(id: @[1.byte])
 
@@ -288,9 +289,10 @@ suite "Discovery v5.1 Packet Encodings Test Vectors":
     codecB.sessions.store(nodeA.id, nodeA.address.get(),
       hexToByteArray[aesKeySize](readKey), hexToByteArray[aesKeySize](dummyKey))
 
-    let decoded = codecB.decodePacket(nodeA.address.get(), hexToSeqByte(encodedPacket))
+    let decoded = codecB.decodePacket(nodeA.address.get(),
+      hexToSeqByte(encodedPacket))
     check:
-      decoded.isOK()
+      decoded.isOk()
       decoded.get().messageOpt.isSome()
       decoded.get().messageOpt.get().reqId.id == hexToSeqByte(pingReqId)
       decoded.get().messageOpt.get().kind == ping
@@ -311,12 +313,15 @@ suite "Discovery v5.1 Packet Encodings Test Vectors":
       hexToSeqByte(encodedPacket))
 
     check:
-      decoded.isOK()
+      decoded.isOk()
       decoded.get().flag == Flag.Whoareyou
       decoded.get().whoareyou.requestNonce == hexToByteArray[gcmNonceSize](whoareyouRequestNonce)
       decoded.get().whoareyou.idNonce == hexToByteArray[idNonceSize](whoareyouIdNonce)
       decoded.get().whoareyou.recordSeq == whoareyouEnrSeq
       decoded.get().whoareyou.challengeData == hexToSeqByte(whoareyouChallengeData)
+
+      codecB.decodePacket(nodeA.address.get(),
+        hexToSeqByte(encodedPacket & "00")).isErr()
 
   test "Ping Handshake Message Packet":
     const
@@ -347,7 +352,7 @@ suite "Discovery v5.1 Packet Encodings Test Vectors":
         challengeData: hexToSeqByte(whoareyouChallengeData))
       pubkey = some(privKeyA.toPublicKey())
       challenge = Challenge(whoareyouData: whoareyouData, pubkey: pubkey)
-      key = HandShakeKey(nodeId: nodeA.id, address: nodeA.address.get())
+      key = HandshakeKey(nodeId: nodeA.id, address: nodeA.address.get())
 
     check: not codecB.handshakes.hasKeyOrPut(key, challenge)
 
@@ -360,6 +365,9 @@ suite "Discovery v5.1 Packet Encodings Test Vectors":
       decoded.get().message.kind == ping
       decoded.get().message.ping.enrSeq == pingEnrSeq
       decoded.get().node.isNone()
+
+      codecB.decodePacket(nodeA.address.get(),
+        hexToSeqByte(encodedPacket & "00")).isErr()
 
   test "Ping Handshake Message Packet with ENR":
     const
@@ -394,7 +402,7 @@ suite "Discovery v5.1 Packet Encodings Test Vectors":
         challengeData: hexToSeqByte(whoareyouChallengeData))
       pubkey = none(PublicKey)
       challenge = Challenge(whoareyouData: whoareyouData, pubkey: pubkey)
-      key = HandShakeKey(nodeId: nodeA.id, address: nodeA.address.get())
+      key = HandshakeKey(nodeId: nodeA.id, address: nodeA.address.get())
 
     check: not codecB.handshakes.hasKeyOrPut(key, challenge)
 
@@ -407,6 +415,9 @@ suite "Discovery v5.1 Packet Encodings Test Vectors":
       decoded.get().message.kind == ping
       decoded.get().message.ping.enrSeq == pingEnrSeq
       decoded.get().node.isSome()
+
+      codecB.decodePacket(nodeA.address.get(),
+        hexToSeqByte(encodedPacket & "00")).isErr()
 
 suite "Discovery v5.1 Additional Encode/Decode":
   test "Encryption/Decryption":
@@ -509,7 +520,7 @@ suite "Discovery v5.1 Additional Encode/Decode":
 
     let decoded = codecB.decodePacket(nodeA.address.get(), data)
 
-    let key = HandShakeKey(nodeId: nodeB.id, address: nodeB.address.get())
+    let key = HandshakeKey(nodeId: nodeB.id, address: nodeB.address.get())
     var challenge: Challenge
 
     check:

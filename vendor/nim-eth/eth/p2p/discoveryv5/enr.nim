@@ -12,10 +12,10 @@
 
 import
   std/[strutils, macros, algorithm, options],
-  stew/shims/net, stew/base64, nimcrypto,
+  stew/shims/net, stew/[base64, results], nimcrypto,
   ".."/../[rlp, keys]
 
-export options
+export options, results, keys
 
 const
   maxEnrSize = 300  ## Maximum size of an encoded node record, in bytes.
@@ -94,9 +94,9 @@ proc `==`(a, b: Field): bool =
 proc cmp(a, b: FieldPair): int = cmp(a[0], b[0])
 
 proc makeEnrRaw(seqNum: uint64, pk: PrivateKey,
-    pairs: openarray[FieldPair]): EnrResult[seq[byte]] =
+    pairs: openArray[FieldPair]): EnrResult[seq[byte]] =
   proc append(w: var RlpWriter, seqNum: uint64,
-      pairs: openarray[FieldPair]): seq[byte] =
+      pairs: openArray[FieldPair]): seq[byte] =
     w.append(seqNum)
     for (k, v) in pairs:
       w.append(k)
@@ -124,7 +124,7 @@ proc makeEnrRaw(seqNum: uint64, pk: PrivateKey,
     ok(raw)
 
 proc makeEnrAux(seqNum: uint64, pk: PrivateKey,
-    pairs: openarray[FieldPair]): EnrResult[Record] =
+    pairs: openArray[FieldPair]): EnrResult[Record] =
   var record: Record
   record.pairs = @pairs
   record.seqNum = seqNum
@@ -185,7 +185,7 @@ proc init*(T: type Record, seqNum: uint64,
                            pk: PrivateKey,
                            ip: Option[ValidIpAddress],
                            tcpPort, udpPort: Option[Port],
-                           extraFields: openarray[FieldPair] = []):
+                           extraFields: openArray[FieldPair] = []):
                            EnrResult[T] =
   ## Initialize a `Record` with given sequence number, private key, optional
   ## ip address, tcp port, udp port, and optional custom k:v pairs.
@@ -207,43 +207,47 @@ proc getField(r: Record, name: string, field: var Field): bool =
       field = v
       return true
 
-proc requireKind(f: Field, kind: FieldKind) {.raises: [ValueError].} =
+proc requireKind(f: Field, kind: FieldKind): EnrResult[void] =
   if f.kind != kind:
-    raise newException(ValueError, "Wrong field kind")
+    err("Wrong field kind")
+  else:
+    ok()
 
-proc get*(r: Record, key: string, T: type): T {.raises: [ValueError, Defect].} =
+proc get*(r: Record, key: string, T: type): EnrResult[T] =
   ## Get the value from the provided key.
-  ## Throw `KeyError` if key does not exist.
-  ## Throw `ValueError` if the value is invalid according to type `T`.
   var f: Field
   if r.getField(key, f):
     when T is SomeInteger:
-      requireKind(f, kNum)
-      return T(f.num)
+      ? requireKind(f, kNum)
+      ok(T(f.num))
     elif T is seq[byte]:
-      requireKind(f, kBytes)
-      return f.bytes
+      ? requireKind(f, kBytes)
+      ok(f.bytes)
     elif T is string:
-      requireKind(f, kString)
-      return f.str
+      ? requireKind(f, kString)
+      ok(f.str)
     elif T is PublicKey:
-      requireKind(f, kBytes)
+      ? requireKind(f, kBytes)
       let pk = PublicKey.fromRaw(f.bytes)
       if pk.isErr:
-        raise newException(ValueError, "Invalid public key")
-      return pk[]
+        err("Invalid public key")
+      else:
+        ok(pk[])
     elif T is array:
-      when type(result[0]) is byte:
-        requireKind(f, kBytes)
-        if f.bytes.len != result.len:
-          raise newException(ValueError, "Invalid byte blob length")
-        copyMem(addr result[0], addr f.bytes[0], result.len)
+      when type(default(T)[low(T)]) is byte:
+        ? requireKind(f, kBytes)
+        if f.bytes.len != T.len:
+          err("Invalid byte blob length")
+        else:
+          var res: T
+          copyMem(addr res[0], addr f.bytes[0], res.len)
+          ok(res)
       else:
         {.fatal: "Unsupported output type in enr.get".}
     else:
       {.fatal: "Unsupported output type in enr.get".}
   else:
-    raise newException(KeyError, "Key not found in ENR: " & key)
+    err("Key not found in ENR")
 
 proc get*(r: Record, T: type PublicKey): Option[T] =
   ## Get the `PublicKey` from provided `Record`. Return `none` when there is
@@ -263,7 +267,7 @@ proc find(r: Record, key: string): Option[int] =
       return some(i)
 
 proc update*(record: var Record, pk: PrivateKey,
-    fieldPairs: openarray[FieldPair]): EnrResult[void] =
+    fieldPairs: openArray[FieldPair]): EnrResult[void] =
   ## Update a `Record` k:v pairs.
   ##
   ## In case any of the k:v pairs is updated or added (new), the sequence number
@@ -306,7 +310,7 @@ proc update*(record: var Record, pk: PrivateKey,
 proc update*(r: var Record, pk: PrivateKey,
                             ip: Option[ValidIpAddress],
                             tcpPort, udpPort: Option[Port] = none[Port](),
-                            extraFields: openarray[FieldPair] = []):
+                            extraFields: openArray[FieldPair] = []):
                             EnrResult[void] =
   ## Update a `Record` with given ip address, tcp port, udp port and optional
   ## custom k:v pairs.
@@ -328,10 +332,11 @@ proc tryGet*(r: Record, key: string, T: type): Option[T] =
   ## Get the value from the provided key.
   ## Return `none` if the key does not exist or if the value is invalid
   ## according to type `T`.
-  try:
-    return some get(r, key, T)
-  except ValueError:
-    discard
+  let val = get(r, key, T)
+  if val.isOk():
+    some(val.get())
+  else:
+    none(T)
 
 proc toTypedRecord*(r: Record): EnrResult[TypedRecord] =
   let id = r.tryGet("id", string)
@@ -362,7 +367,7 @@ proc contains*(r: Record, fp: (string, seq[byte])): bool =
     if field.get() == fp[1]:
       return true
 
-proc verifySignatureV4(r: Record, sigData: openarray[byte], content: seq[byte]):
+proc verifySignatureV4(r: Record, sigData: openArray[byte], content: seq[byte]):
     bool =
   let publicKey = r.get(PublicKey)
   if publicKey.isSome:
@@ -441,7 +446,7 @@ proc fromBytesAux(r: var Record): bool {.raises: [RlpError, Defect].} =
 
   verifySignature(r)
 
-proc fromBytes*(r: var Record, s: openarray[byte]): bool =
+proc fromBytes*(r: var Record, s: openArray[byte]): bool =
   ## Loads ENR from rlp-encoded bytes, and validates the signature.
   r.raw = @s
   try:
