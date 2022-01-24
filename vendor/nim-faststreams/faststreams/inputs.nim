@@ -399,6 +399,30 @@ let fileInputVTable = InputStreamVTable(
       raise newException(IOError, "Failed to close file", err)
 )
 
+proc fileInput*(file: File,
+                offset = 0,
+                pageSize = defaultPageSize): InputStreamHandle
+               {.raises: [IOError, OSError].} =
+  ## Creates an input stream for reading the contents of a file
+  ## through Nim's `io` module.
+  ##
+  ## Parameters:
+  ##
+  ## ``file``
+  ##  The file to read.
+  ##
+  ## ``offset``
+  ##  Initial position in the file where reading should start.
+  ##
+
+  if offset != 0:
+    setFilePos(file, offset)
+
+  makeHandle FileInputStream(
+    vtable: vtableAddr fileInputVTable,
+    buffers: initPageBuffers(pageSize),
+    file: file)
+
 proc fileInput*(filename: string,
                 offset = 0,
                 pageSize = defaultPageSize): InputStreamHandle
@@ -415,14 +439,7 @@ proc fileInput*(filename: string,
   ##  Initial position in the file where reading should start.
   ##
   let file = system.open(filename, fmRead)
-
-  if offset != 0:
-    setFilePos(file, offset)
-
-  makeHandle FileInputStream(
-    vtable: vtableAddr fileInputVTable,
-    buffers: initPageBuffers(pageSize),
-    file: file)
+  return fileInput(file, offset, pageSize)
 
 proc unsafeMemoryInput*(mem: openArray[byte]): InputStreamHandle =
   let head = unsafeAddr mem[0]
@@ -740,8 +757,7 @@ proc drainBuffersInto*(s: InputStream, dstAddr: ptr byte, dstLen: Natural): Natu
     # Since we reached the end of the current page,
     # we have to do the equivalent of `getNewSpan`:
 
-    # TODO: what if the page was extended?
-    if s.buffers.len > 0:
+    if s.buffers.len > 0 and s.buffers[0].pageLen == 0:
       discard s.buffers.popFirst()
 
     for page in consumePages(s.buffers):
@@ -948,4 +964,3 @@ proc pos*(s: InputStream): int {.inline.} =
 when fsAsyncSupport:
   template pos*(s: AsyncInputStream): int =
     pos InputStream(s)
-

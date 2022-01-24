@@ -164,6 +164,33 @@ You also need to specify it when using this non-default Nim compiler version:
 
 `make -j8 NIM_COMMIT="v1.2.6" nimbus_beacon_node`
 
+### EXCLUDED_NIM_PACKAGES
+
+List of relative paths (incomplete ones also work) to Git submodules that
+should not end up as Nim packages in "vendor/.nimble" - usually because they
+duplicate more high-level ones.
+
+For example, say we have:
+
+```text
+$ find vendor -name "nim-chronos" | sort
+vendor/nim-chronos
+vendor/nim-waku/vendor/nim-chronos
+vendor/nim-waku/vendor/nim-dnsdisc/vendor/nim-chronos
+```
+
+We only want the top-level "vendor/nim-chronos", so we put the rest in
+`EXCLUDED_NIM_PACKAGES`, in the top-level Makefile:
+
+```text
+EXCLUDED_NIM_PACKAGES := vendor/nim-waku/vendor/nim-chronos \
+			 vendor/nim-waku/vendor/nimbus-build-system \
+			 vendor/nim-waku/vendor/nim-dnsdisc/vendor
+```
+
+As you see, we can exclude all those "nim-dnsdisc" submodules with a single
+line, because the pattern is not anchored during the match.
+
 ## Make targets
 
 ### build
@@ -348,19 +375,6 @@ install:
 ```
 
 Notice how the number of Make jobs is set through the "MAKE" env var.
-
-### build_p2pd.sh
-
-Builds the "p2pd" Go daemon. No longer used by a Make target, but needed by
-other projects that run it directly in their CI config files, like this:
-
-```yaml
-install:
-  # [...]
-  # install and build go-libp2p-daemon
-  - curl -O -L -s -S https://raw.githubusercontent.com/status-im/nimbus-build-system/master/scripts/build_p2pd.sh
-  - bash build_p2pd.sh p2pdCache v0.2.1
-```
 
 ### build_rocksdb.sh
 
