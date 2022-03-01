@@ -116,6 +116,10 @@ const
   ## call
 
 type
+  DiscoveryConfig* = object
+    tableIpLimits*: TableIpLimits
+    bitsPerHop*: int
+
   Protocol* = ref object
     transp: DatagramTransport
     localNode*: Node
@@ -147,6 +151,11 @@ type
     protocolHandler*: TalkProtocolHandler
 
   DiscResult*[T] = Result[T, cstring]
+
+const
+  defaultDiscoveryConfig* = DiscoveryConfig(
+    tableIpLimits: DefaultTableIpLimits,
+    bitsPerHop: DefaultBitsPerHop)
 
 proc addNode*(d: Protocol, node: Node): bool =
   ## Add `Node` to discovery routing table.
@@ -224,7 +233,7 @@ proc updateRecord*(
   # TODO: Would it make sense to actively ping ("broadcast") to all the peers
   # we stored a handshake with in order to get that ENR updated?
 
-proc send(d: Protocol, a: Address, data: seq[byte]) =
+proc send*(d: Protocol, a: Address, data: seq[byte]) =
   let ta = initTAddress(a.ip, a.port)
   let f = d.transp.sendTo(ta, data)
   f.callback = proc(data: pointer) {.gcsafe.} =
@@ -332,13 +341,13 @@ proc handleMessage(d: Protocol, srcId: NodeId, fromAddr: Address,
   of ping:
     discovery_message_requests_incoming.inc()
     d.handlePing(srcId, fromAddr, message.ping, message.reqId)
-  of findnode:
+  of findNode:
     discovery_message_requests_incoming.inc()
-    d.handleFindNode(srcId, fromAddr, message.findnode, message.reqId)
-  of talkreq:
+    d.handleFindNode(srcId, fromAddr, message.findNode, message.reqId)
+  of talkReq:
     discovery_message_requests_incoming.inc()
-    d.handleTalkReq(srcId, fromAddr, message.talkreq, message.reqId)
-  of regtopic, topicquery:
+    d.handleTalkReq(srcId, fromAddr, message.talkReq, message.reqId)
+  of regTopic, topicQuery:
     discovery_message_requests_incoming.inc()
     discovery_message_requests_incoming.inc(labelValues = ["no_response"])
     trace "Received unimplemented message kind", kind = message.kind,
@@ -565,7 +574,7 @@ proc findNode*(d: Protocol, toNode: Node, distances: seq[uint16]):
     d.replaceNode(toNode)
     return err(nodes.error)
 
-proc talkreq*(d: Protocol, toNode: Node, protocol, request: seq[byte]):
+proc talkReq*(d: Protocol, toNode: Node, protocol, request: seq[byte]):
     Future[DiscResult[seq[byte]]] {.async.} =
   ## Send a discovery talkreq message.
   ##
@@ -575,9 +584,9 @@ proc talkreq*(d: Protocol, toNode: Node, protocol, request: seq[byte]):
   let resp = await d.waitMessage(toNode, reqId)
 
   if resp.isSome():
-    if resp.get().kind == talkresp:
+    if resp.get().kind == talkResp:
       d.routingTable.setJustSeen(toNode)
-      return ok(resp.get().talkresp.response)
+      return ok(resp.get().talkResp.response)
     else:
       d.replaceNode(toNode)
       discovery_message_requests_outgoing.inc(labelValues = ["invalid_response"])
@@ -603,7 +612,7 @@ proc lookupWorker(d: Protocol, destNode: Node, target: NodeId):
     Future[seq[Node]] {.async.} =
   let dists = lookupDistances(target, destNode.id)
 
-  # Instead of doing max `lookupRequestLimit` findNode requests,  make use
+  # Instead of doing max `lookupRequestLimit` findNode requests, make use
   # of the discv5.1 functionality to request nodes for multiple distances.
   let r = await d.findNode(destNode, dists)
   if r.isOk:
@@ -880,18 +889,32 @@ proc ipMajorityLoop(d: Protocol) {.async.} =
   except CancelledError:
     trace "ipMajorityLoop canceled"
 
-proc newProtocol*(privKey: PrivateKey,
-                  enrIp: Option[ValidIpAddress],
-                  enrTcpPort, enrUdpPort: Option[Port],
-                  localEnrFields: openArray[(string, seq[byte])] = [],
-                  bootstrapRecords: openArray[Record] = [],
-                  previousRecord = none[enr.Record](),
-                  bindPort: Port,
-                  bindIp = IPv4_any(),
-                  enrAutoUpdate = false,
-                  tableIpLimits = DefaultTableIpLimits,
-                  rng = newRng()):
-                  Protocol =
+func init*(
+    T: type DiscoveryConfig,
+    tableIpLimit: uint,
+    bucketIpLimit: uint,
+    bitsPerHop: int): T =
+
+  DiscoveryConfig(
+    tableIpLimits: TableIpLimits(
+      tableIpLimit: tableIpLimit,
+      bucketIpLimit: bucketIpLimit),
+    bitsPerHop: bitsPerHop
+  )
+
+proc newProtocol*(
+    privKey: PrivateKey,
+    enrIp: Option[ValidIpAddress],
+    enrTcpPort, enrUdpPort: Option[Port],
+    localEnrFields: openArray[(string, seq[byte])] = [],
+    bootstrapRecords: openArray[Record] = [],
+    previousRecord = none[enr.Record](),
+    bindPort: Port,
+    bindIp = IPv4_any(),
+    enrAutoUpdate = false,
+    config = defaultDiscoveryConfig,
+    rng = newRng()):
+    Protocol =
   # TODO: Tried adding bindPort = udpPort as parameter but that gave
   # "Error: internal error: environment misses: udpPort" in nim-beacon-chain.
   # Anyhow, nim-beacon-chain would also require some changes to support port
@@ -909,6 +932,11 @@ proc newProtocol*(privKey: PrivateKey,
   else:
     record = enr.Record.init(1, privKey, enrIp, enrTcpPort, enrUdpPort,
       extraFields).expect("Record within size limits")
+
+  debug "Initializing discovery v5",
+    enrIp, enrTcpPort, enrUdpPort, enrAutoUpdate,
+    bootstrapEnrs = bootstrapRecords, localEnrFields,
+    bindPort, bindIp
 
   info "ENR initialized", ip = enrIp, tcp = enrTcpPort, udp = enrUdpPort,
     seqNum = record.seqNum, uri = toURI(record)
@@ -933,7 +961,8 @@ proc newProtocol*(privKey: PrivateKey,
     bootstrapRecords: @bootstrapRecords,
     ipVote: IpVote.init(),
     enrAutoUpdate: enrAutoUpdate,
-    routingTable: RoutingTable.init(node, DefaultBitsPerHop, tableIpLimits, rng),
+    routingTable: RoutingTable.init(
+      node, config.bitsPerHop, config.tableIpLimits, rng),
     rng: rng)
 
 template listeningAddress*(p: Protocol): Address =

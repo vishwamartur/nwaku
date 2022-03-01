@@ -31,11 +31,12 @@ logScope:
   topics = "discv5"
 
 const
-  version: uint16 = 1
+  discv5_protocol_version {.intdefine.} : uint16 = 1
+  discv5_protocol_id {.strdefine.} = "discv5"
+  version = discv5_protocol_version
+  protocolId = toBytes(discv5_protocol_id)
   idSignatureText  = "discovery v5 identity proof"
   keyAgreementPrefix = "discovery v5 key agreement"
-  protocolIdStr = "discv5"
-  protocolId = toBytes(protocolIdStr)
   gcmNonceSize* = 12
   idNonceSize* = 16
   gcmTagSize* = 16
@@ -394,11 +395,11 @@ proc decodeMessage*(body: openArray[byte]): DecodeResult[Message] =
       of unused: return err("Invalid message type")
       of ping: rlp.decode(message.ping)
       of pong: rlp.decode(message.pong)
-      of findnode: rlp.decode(message.findNode)
+      of findNode: rlp.decode(message.findNode)
       of nodes: rlp.decode(message.nodes)
-      of talkreq: rlp.decode(message.talkreq)
-      of talkresp: rlp.decode(message.talkresp)
-      of regtopic, ticket, regconfirmation, topicquery:
+      of talkReq: rlp.decode(message.talkReq)
+      of talkResp: rlp.decode(message.talkResp)
+      of regTopic, ticket, regConfirmation, topicQuery:
         # We just pass the empty type of this message without attempting to
         # decode, so that the protocol knows what was received.
         # But we ignore the message as per specification as "the content and

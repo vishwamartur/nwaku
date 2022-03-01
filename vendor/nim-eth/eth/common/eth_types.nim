@@ -244,6 +244,13 @@ func baseFee*(h: BlockHeader | BlockHeaderRef): UInt256 =
 template `baseFee=`*(h: BlockHeader | BlockHeaderRef, data: UInt256) =
   h.fee = some(data)
 
+# starting from EIP-4399, `mixHash`/`mixDigest` field will be alled `prevRandao`
+template prevRandao*(h: BlockHeader | BlockHeaderRef): Hash256 =
+  h.mixDigest
+
+template `prevRandao=`*(h: BlockHeader | BlockHeaderRef, hash: Hash256) =
+  h.mixDigest = hash
+
 func toBlockNonce*(n: uint64): BlockNonce =
   n.toBytesBE()
 
