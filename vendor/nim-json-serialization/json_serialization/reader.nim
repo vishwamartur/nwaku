@@ -3,12 +3,12 @@
 import
   std/[tables, strutils, typetraits, macros, strformat],
   faststreams/inputs, serialization/[formats, object_serialization, errors],
-  format, types, lexer
+  "."/[format, types, lexer]
 
 from json import JsonNode, JsonNodeKind
 
 export
-  format, types, errors
+  inputs, format, types, errors
 
 type
   JsonReader*[Flavor = DefaultFlavor] = object
@@ -395,7 +395,7 @@ template isCharArray(v: auto): bool = false
 proc readValue*[T](r: var JsonReader, value: var T)
                   {.raises: [SerializationError, IOError, Defect].} =
   mixin readValue
-  type ReaderType = type r
+  type ReaderType {.used.} = type r
 
   let tok {.used.} = r.lexer.tok
 

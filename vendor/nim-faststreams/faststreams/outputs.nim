@@ -132,8 +132,11 @@ template flushImpl(s: OutputStream, awaiter, writeOp, flushOp: untyped) =
   fsAssert s.extCursorsCount == 0
   if s.vtable != nil:
     if s.buffers != nil:
+      let runway = s.span.len
       trackWrittenTo(s.buffers, s.span.startAddr)
       awaiter s.vtable.writeOp(s, nil, 0)
+      s.span = getWritableSpan(s.buffers)
+      s.spanEndPos = s.spanEndPos - runway + s.span.len
 
     if s.vtable.flushOp != nil:
       awaiter s.vtable.flushOp(s)
@@ -220,7 +223,7 @@ proc ensureRunway*(s: OutputStream, neededRunway: Natural) =
     # feeding to it.
     fsAssert s.buffers != nil, "Unsafe memory output of insufficient size"
     s.buffers.ensureRunway(s.span, neededRunway)
-    s.spanEndPos += (s.span.len - runway)
+    s.spanEndPos = s.spanEndPos - runway + s.span.len
 
 when fsAsyncSupport:
   template ensureRunway*(s: AsyncOutputStream, neededRunway: Natural) =
@@ -469,7 +472,59 @@ proc delayVarSizeWrite*(s: OutputStream, maxSize: Natural): VarSizeWriteCursor =
 
     s.span = PageSpan(startAddr: cursorEndAddr,
                       endAddr: nextPageSpan.endAddr)
-    s.spanEndPos += nextPageSize - runway
+    s.spanEndPos = s.spanEndPos - runway + nextPageSize
+
+proc getWritableBytesOnANewPage(s: OutputStream, spanSize: Natural): ptr byte =
+  fsAssert s.buffers != nil
+
+  trackWrittenTo(s.buffers, s.span.startAddr)
+
+  let
+    nextPageSize = nextAlignedSize(spanSize, s.buffers.pageSize)
+    nextPage = allocWritablePage(nextPageSize, spanSize)
+
+  s.buffers.queue.addLast nextPage
+
+  let retiredSpanRunway = s.span.len
+  s.span = nextPage.fullSpan
+  s.spanEndPos = s.spanEndPos - retiredSpanRunway + spanSize
+  s.span.startAddr
+
+template getWritableBytes*(sp: OutputStream, spanSizeParam: Natural): openArray[byte] =
+  ## Returns a contiguous range of memory that the caller is free to populate fully
+  ## or partially. The caller indicates how many bytes were written to the openArray
+  ## by calling `advance(numberOfBytes)` once or multiple times. Advancing the stream
+  ## past the allocated size is considered a defect. The typical usage pattern of this
+  ## API looks as follows:
+  ##
+  ## stream.advance(myComponent.writeBlock(stream.getWritableBytes(maxBlockSize)))
+  ##
+  ## In the example, `writeBlock` would be a function returning the number of bytes
+  ## written to the openArray.
+  ##
+  ## While it's not illegal to issue other writing operations to the stream during
+  ## the `getWritetableBytes` -> `advance` sequence, doing this is not recommended
+  ## because it will result in overwriting the same range of bytes.
+  ##
+  ## One limitation of this API is that the returned `openArray` will be considered
+  ## read-only by Nim. You may need to use `unsafeAddr` in your writing functions
+  ## to get around this limitation.
+  let
+    s = sp
+    spanSize = spanSizeParam
+    runway = s.span.len
+    startAddr = if spanSize <= runway:
+      s.span.startAddr
+    else:
+      getWritableBytesOnANewPage(s, spanSize)
+
+  makeOpenArray(startAddr, spanSize)
+
+proc advance*(s: OutputStream, bytesWrittenToWritableSpan: Natural) =
+  ## Advance the stream write cursor.
+  ## Typically used after a previous call to `getWritableBytes`.
+  fsAssert bytesWrittenToWritableSpan <= s.span.len
+  s.span.startAddr = offset(s.span.startAddr, bytesWrittenToWritableSpan)
 
 proc finalize*(cursor: var WriteCursor) =
   fsAssert cursor.stream.extCursorsCount > 0
@@ -773,7 +828,7 @@ proc consumeOutputsImpl(s: OutputStream, consumer: OutputConsumingProc) =
     consumer(makeOpenArray(pageReadableStart, pageLen))
 
   s.span = getWritableSpan(s.buffers)
-  s.spanEndPos += s.span.len - runway
+  s.spanEndPos = s.spanEndPos - runway + s.span.len
 
 template consumeOutputs*(s: OutputStream, bytesVar, body: untyped) =
   ## Please note that calling `consumeOutputs` on an unbuffered stream
@@ -818,7 +873,7 @@ proc consumeContiguousOutputImpl(s: OutputStream, consumer: OutputConsumingProc)
   consumer(makeOpenArray(bytesPtr, bytesLen))
 
   s.span = s.buffers.getWritableSpan()
-  s.spanEndPos += s.span.len - runway
+  s.spanEndPos = s.spanEndPos - runway + s.span.len
 
 template consumeContiguousOutput*(s: OutputStream, bytesVar, body: untyped) =
   ## Please note that calling `consumeContiguousOutput` on an unbuffered stream

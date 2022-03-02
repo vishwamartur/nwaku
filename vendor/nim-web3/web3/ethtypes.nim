@@ -83,8 +83,9 @@ type
     gasLimit*: Quantity
     gasUsed*: Quantity
     timestamp*: Quantity
-    nonce*: Quantity
-    mixHash*: BlockHash
+    when not defined(gnosisChainBinary):
+      nonce*: Quantity
+      mixHash*: BlockHash
 
   ## A block object, or null when no block was found
   BlockObject* = ref object
@@ -102,7 +103,8 @@ type
     gasLimit*: Quantity           # the maximum gas allowed in this block.
     gasUsed*: Quantity            # the total used gas by all transactions in this block.
     timestamp*: Quantity          # the unix timestamp for when the block was collated.
-    nonce*: Quantity              # hash of the generated proof-of-work. null when its pending block.
+    when not defined(gnosisChainBinary):
+      nonce*: Option[Quantity]    # hash of the generated proof-of-work. null when its pending block.
     size*: Quantity               # integer the size of this block in bytes.
     totalDifficulty*: UInt256     # integer of the total difficulty of the chain until this block.
     transactions*: seq[TxHash]    # list of transaction objects, or 32 Bytes transaction hashes depending on the last given parameter.
@@ -201,14 +203,14 @@ type
 
   TypedTransaction* = distinct seq[byte]
 
-  # https://github.com/ethereum/execution-apis/blob/v1.0.0-alpha.5/src/engine/specification.md#executionpayloadv1
+  # https://github.com/ethereum/execution-apis/blob/v1.0.0-alpha.7/src/engine/specification.md#executionpayloadv1
   ExecutionPayloadV1* = object
     parentHash*: BlockHash
     feeRecipient*: Address
     stateRoot*: BlockHash
     receiptsRoot*: BlockHash
     logsBloom*: FixedBytes[256]
-    random*: FixedBytes[32]
+    prevRandao*: FixedBytes[32]
     blockNumber*: Quantity
     gasLimit*: Quantity
     gasUsed*: Quantity

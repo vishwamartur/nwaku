@@ -52,7 +52,8 @@ method call*(client: RpcHttpClient, name: string,
     reqBody = $rpcCallNode(name, params, id)
     req = HttpClientRequestRef.post(client.httpSession,
                                     client.httpAddress.get,
-                                    body = reqBody.toOpenArrayByte(0, reqBody.len - 1))
+                                    body = reqBody.toOpenArrayByte(0, reqBody.len - 1),
+                                    headers = [("Content-Type", "application/json")])
     res =
       try:
         await req.send()
@@ -117,3 +118,7 @@ proc connect*(client: RpcHttpClient, address: string, port: Port, secure: bool) 
     client.httpAddress = res
   else:
     raise newException(RpcAddressUnresolvableError, res.error)
+
+method close*(client: RpcHttpClient) {.async.} =
+  if not client.httpSession.isNil:
+    await client.httpSession.closeWait()
