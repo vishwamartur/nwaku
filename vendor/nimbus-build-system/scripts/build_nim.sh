@@ -49,6 +49,7 @@ else
 fi
 
 NIM_BINARY="${NIM_DIR}/bin/nim${EXE_SUFFIX}"
+MAX_NIM_BINARIES="10" # Old ones get deleted.
 
 nim_needs_rebuilding() {
 	REBUILD=0
@@ -88,6 +89,13 @@ nim_needs_rebuilding() {
 	if [[ -n "$CI_CACHE" && -d "$CI_CACHE" ]]; then
 		cp -a "$CI_CACHE"/* "$NIM_DIR"/bin/ || true # let this one fail with an empty cache dir
 	fi
+
+	# Delete old Nim binaries, to put a limit on how much storage we use.
+	for F in "$(ls -t "${NIM_DIR}"/bin/nim_commit_* | tail -n +$((MAX_NIM_BINARIES + 1)))"; do
+		if [[ -e "${F}" ]]; then
+			rm "${F}"
+		fi
+	done
 
 	# Compare the last built commit to the one requested.
 	# Handle the scenario where our symlink is manually deleted by the user.
@@ -168,9 +176,6 @@ build_nim() {
 			build_all.sh > build_all_custom.sh
 		sh build_all_custom.sh
 		rm build_all_custom.sh
-		# Nimble needs a CA cert
-		rm -f bin/cacert.pem
-		curl -LsS -o bin/cacert.pem https://curl.se/ca/cacert.pem || echo "Warning: 'curl' failed to download a CA cert needed by Nimble. Ignoring it."
 	else
 		# Don't re-build it multiple times until we get identical
 		# binaries, like "build_all.sh" does. Don't build any tools
@@ -220,6 +225,12 @@ build_nim() {
 			bin/nim c -d:release --noNimblePath --skipUserCfg --skipParentCfg dist/nimble/src/nimble.nim
 			mv dist/nimble/src/nimble bin/
 		fi
+	fi
+
+	if [[ "$QUICK_AND_DIRTY_COMPILER" == "0" || "${QUICK_AND_DIRTY_NIMBLE}" != "0" ]]; then
+		# Nimble needs a CA cert
+		rm -f bin/cacert.pem
+		curl -LsS -o bin/cacert.pem https://curl.se/ca/cacert.pem || echo "Warning: 'curl' failed to download a CA cert needed by Nimble. Ignoring it."
 	fi
 
 	# record the built commit
