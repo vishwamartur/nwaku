@@ -27,10 +27,15 @@ type
 
   VCStartUpCmd = enum
     VCNoCommand
+    `import`
 
   ValidatorKeyPath = TypedInputFile[ValidatorPrivKey, Txt, "privkey"]
 
   TestConf* = object
+    configFile* {.
+      desc: "Loads the configuration from a config file"
+      name: "config-file" }: Option[InputFile]
+
     logLevel* {.
       defaultValue: "DEBUG"
       desc: "Sets the log level."
@@ -94,6 +99,24 @@ type
         desc: "Delay in seconds between retries after unsuccessful attempts to connect to a beacon node"
         name: "retry-delay" }: int
 
+    of `import`:
+
+      blocksFile* {.
+        argument
+        desc: "Import RLP encoded block(s) from a file, validate, write to database and quit"
+        defaultValue: ""
+        name: "blocks-file" }: InputFile
+
+      `type`* {.
+        desc: "Test nnkAccQuoted of public sub command entry"
+        defaultValue: ""
+        name: "import-type" }: string
+
+      `seq` {.
+        desc: "Test nnkAccQuoted of private sub command entry"
+        defaultValue: ""
+        name: "import-seq" }: string
+
 func defaultDataDir(conf: TestConf): string =
   discard
 
@@ -115,38 +138,6 @@ const
   confPathCurrUser = "tests" / "config_files" / "current_user"
   confPathSystemWide = "tests" / "config_files" / "system_wide"
 
-# appName, vendorName, and appendConfigFileFormats
-# are overrideables proc related to config-file
-func appName(_: type TestConf): string =
-  "testApp"
-
-func vendorName(_: type TestConf): string =
-  "testVendor"
-
-func appendConfigFileFormats(_: type TestConf) =
-  appendConfigFileFormat(Envvar, ""):
-    "prefix"
-
-  when defined(windows):
-    appendConfigFileFormat(Winreg, ""):
-      "HKCU" / "SOFTWARE"
-
-    appendConfigFileFormat(Winreg, ""):
-      "HKLM" / "SOFTWARE"
-
-    appendConfigFileFormat(Toml, "toml"):
-      confPathCurrUser
-
-    appendConfigFileFormat(Toml, "toml"):
-      confPathSystemWide
-
-  elif defined(posix):
-    appendConfigFileFormat(Toml, "toml"):
-      confPathCurrUser
-
-    appendConfigFileFormat(Toml, "toml"):
-      confPathSystemWide
-
 # User might also need to extend the serializer capability
 # for each of the registered formats.
 # This is especially true for distinct types and some special types
@@ -155,7 +146,7 @@ func appendConfigFileFormats(_: type TestConf) =
 proc readValue(r: var TomlReader,
   value: var (InputFile | InputDir | OutFile | OutDir | ValidatorKeyPath)) =
   type T = type value
-  value = r.parseAsString().T
+  value = T r.parseAsString()
 
 proc readValue(r: var TomlReader, value: var ValidIpAddress) =
   value = ValidIpAddress.init(r.parseAsString())
@@ -196,10 +187,18 @@ proc readValue(r: var WinregReader, value: var GraffitiBytes) =
 
 proc testConfigFile() =
   suite "config file test suite":
-    putEnv("prefixdataDir", "ENV VAR DATADIR")
+    putEnv("prefixdata-dir", "ENV VAR DATADIR")
 
     test "basic config file":
-      let conf = TestConf.load()
+      let conf = TestConf.load(secondarySources = proc (config: TestConf, sources: auto) =
+        sources.addConfigFile(Envvar, InputFile "prefix")
+
+        if config.configFile.isSome:
+          sources.addConfigFile(Toml, config.configFile.get)
+        else:
+          sources.addConfigFile(Toml, InputFile(confPathCurrUser / "testVendor" / "testApp.toml"))
+          sources.addConfigFile(Toml, InputFile(confPathSystemWide / "testVendor" / "testApp.toml"))
+      )
 
       # dataDir is in env var
       check conf.dataDir.string == "ENV VAR DATADIR"
