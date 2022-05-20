@@ -38,6 +38,7 @@ type
     Resolving,                ## Resolving remote hostname
     Connecting,               ## Connecting to remote server
     Ready,                    ## Connected to remote server
+    Acquired,                 ## Connection is acquired for use
     RequestHeadersSending,    ## Sending request headers
     RequestHeadersSent,       ## Request headers has been sent
     RequestBodySending,       ## Sending request body
@@ -583,6 +584,7 @@ proc acquireConnection(session: HttpSessionRef,
         await session.connect(ha).wait(session.connectTimeout)
       except AsyncTimeoutError:
         raiseHttpConnectionError("Connection timed out")
+    res[].state = HttpClientConnectionState.Acquired
     session.connections.mgetOrPut(ha.id, default).add(res)
     return res
   else:
@@ -599,6 +601,7 @@ proc acquireConnection(session: HttpSessionRef,
         else:
           nil
     if not(isNil(conn)):
+      conn[].state = HttpClientConnectionState.Acquired
       return conn
     else:
       var default: seq[HttpClientConnectionRef]
@@ -607,6 +610,7 @@ proc acquireConnection(session: HttpSessionRef,
           await session.connect(ha).wait(session.connectTimeout)
         except AsyncTimeoutError:
           raiseHttpConnectionError("Connection timed out")
+      res[].state = HttpClientConnectionState.Acquired
       session.connections.mgetOrPut(ha.id, default).add(res)
       return res
 
@@ -1069,6 +1073,11 @@ proc finish*(request: HttpClientRequestRef): Future[HttpClientResponseRef] {.
   ## Finish sending request and receive response.
   doAssert(not(isNil(request.connection)),
            "Request missing connection instance")
+  if request.connection.state in {HttpClientConnectionState.Closing,
+                                  HttpClientConnectionState.Closed}:
+    let e = newHttpUseClosedError()
+    request.setError(e)
+    raise e
   doAssert(request.state == HttpReqRespState.Open,
            "Request's state is " & $request.state)
   doAssert(request.connection.state ==
