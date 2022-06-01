@@ -48,6 +48,7 @@ type
     protoVersion: string
     agentVersion: string
     nameResolver: NameResolver
+    peerStoreCapacity: Option[int]
     isCircuitRelay: bool
     circuitRelayCanHop: bool
 
@@ -85,12 +86,17 @@ proc withSignedPeerRecord*(b: SwitchBuilder, sendIt = true): SwitchBuilder =
   b.sendSignedPeerRecord = sendIt
   b
 
-proc withMplex*(b: SwitchBuilder, inTimeout = 5.minutes, outTimeout = 5.minutes): SwitchBuilder =
+proc withMplex*(
+    b: SwitchBuilder,
+    inTimeout = 5.minutes,
+    outTimeout = 5.minutes,
+    maxChannCount = 200): SwitchBuilder =
   proc newMuxer(conn: Connection): Muxer =
     Mplex.new(
       conn,
-      inTimeout = inTimeout,
-      outTimeout = outTimeout)
+      inTimeout,
+      outTimeout,
+      maxChannCount)
 
   b.mplexOpts = MplexOpts(
     enable: true,
@@ -128,6 +134,10 @@ proc withMaxOut*(b: SwitchBuilder, maxOut: int): SwitchBuilder =
 
 proc withMaxConnsPerPeer*(b: SwitchBuilder, maxConnsPerPeer: int): SwitchBuilder =
   b.maxConnsPerPeer = maxConnsPerPeer
+  b
+
+proc withPeerStore*(b: SwitchBuilder, capacity: int): SwitchBuilder =
+  b.peerStoreCapacity = some(capacity)
   b
 
 proc withProtoVersion*(b: SwitchBuilder, protoVersion: string): SwitchBuilder =
@@ -195,6 +205,12 @@ proc build*(b: SwitchBuilder): Switch
   if isNil(b.rng):
     b.rng = newRng()
 
+  let peerStore =
+    if isSome(b.peerStoreCapacity):
+      PeerStore.new(b.peerStoreCapacity.get())
+    else:
+      PeerStore.new()
+
   let switch = newSwitch(
     peerInfo = peerInfo,
     transports = transports,
@@ -203,7 +219,8 @@ proc build*(b: SwitchBuilder): Switch
     secureManagers = secureManagerInstances,
     connManager = connManager,
     ms = ms,
-    nameResolver = b.nameResolver)
+    nameResolver = b.nameResolver,
+    peerStore = peerStore)
 
   if b.isCircuitRelay:
     let relay = Relay.new(switch, b.circuitRelayCanHop)
@@ -227,7 +244,8 @@ proc newStandardSwitch*(
   maxOut = -1,
   maxConnsPerPeer = MaxConnectionsPerPeer,
   nameResolver: NameResolver = nil,
-  sendSignedPeerRecord = false): Switch
+  sendSignedPeerRecord = false,
+  peerStoreCapacity = 1000): Switch
   {.raises: [Defect, LPError].} =
   if SecureProtocol.Secio in secureManagers:
       quit("Secio is deprecated!") # use of secio is unsafe
@@ -242,6 +260,7 @@ proc newStandardSwitch*(
     .withMaxIn(maxIn)
     .withMaxOut(maxOut)
     .withMaxConnsPerPeer(maxConnsPerPeer)
+    .withPeerStore(capacity=peerStoreCapacity)
     .withMplex(inTimeout, outTimeout)
     .withTcpTransport(transportFlags)
     .withNameResolver(nameResolver)
