@@ -1,10 +1,10 @@
 import
-  std/typetraits,
-  faststreams/[outputs, textio], serialization, json,
-  format, types
+  std/[json, typetraits],
+  faststreams/[outputs, textio], serialization,
+  "."/[format, types]
 
 export
-  format, JsonString, DefaultFlavor
+  outputs, format, types, JsonString, DefaultFlavor
 
 type
   JsonWriterState = enum
@@ -191,9 +191,6 @@ proc writeValue*(w: var JsonWriter, value: auto) =
       else: append c
 
     append '"'
-
-  elif value is TaintedString:
-    writeValue(w, string value)
 
   elif value is bool:
     append if value: "true" else: "false"

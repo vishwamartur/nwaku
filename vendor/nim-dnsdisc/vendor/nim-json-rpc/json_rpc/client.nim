@@ -19,6 +19,8 @@ type
 
   Response* = JsonNode
 
+  GetJsonRpcRequestHeaders* = proc(): seq[(string, string)] {.gcsafe, raises: [Defect].}
+
 proc getNextId*(client: RpcClient): ClientId =
   client.lastId += 1
   client.lastId
@@ -28,11 +30,11 @@ proc rpcCallNode*(path: string, params: JsonNode, id: ClientId): JsonNode =
 
 method call*(client: RpcClient, name: string,
              params: JsonNode): Future[Response] {.
-    base, async, gcsafe, raises: [Defect, CatchableError].} =
+    base, async, gcsafe, raises: [Defect].} =
   discard
 
 method close*(client: RpcClient): Future[void] {.
-    base, async, gcsafe, raises: [Defect, CatchableError].} =
+    base, async, gcsafe, raises: [Defect].} =
   discard
 
 template `or`(a: JsonNode, b: typed): JsonNode =
@@ -85,7 +87,7 @@ proc createRpcProc(procName, parameters, callBody: NimNode): NimNode =
   # make proc async
   result.addPragma ident"async"
   # export this proc
-  result[0] = nnkPostFix.newTree(ident"*", newIdentNode($procName))
+  result[0] = nnkPostfix.newTree(ident"*", newIdentNode($procName))
 
 proc toJsonArray(parameters: NimNode): NimNode =
   # outputs an array of jsonified parameters

@@ -79,6 +79,12 @@ s.rpc("rpc.optionalArg") do(val: int, obj: Option[MyOptional]) -> MyOptional:
   else:
     MyOptional(maybeInt: some(val))
 
+s.rpc("rpc.optionalArg2") do(a, b: string, c, d: Option[string]) -> string:
+  var ret = a & b
+  if c.isSome: ret.add c.get()
+  if d.isSome: ret.add d.get()
+  return ret
+
 type
   OptionalFields = object
     a: int
@@ -147,39 +153,39 @@ suite "Server types":
     check r == inp
 
   test "Array parameters":
-    let r1 = waitfor s.executeMethod("rpc.arrayParam", %[%[1, 2, 3], %"hello"])
+    let r1 = waitFor s.executeMethod("rpc.arrayParam", %[%[1, 2, 3], %"hello"])
     var ckR1 = %[1, 2, 3, 0, 0, 0]
     ckR1.elems.add %"hello"
     check r1 == ckR1
 
   test "Seq parameters":
-    let r2 = waitfor s.executeMethod("rpc.seqParam", %[%"abc", %[1, 2, 3, 4, 5]])
+    let r2 = waitFor s.executeMethod("rpc.seqParam", %[%"abc", %[1, 2, 3, 4, 5]])
     var ckR2 = %["abc"]
     for i in 0..4: ckR2.add %(i + 1)
     check r2 == ckR2
 
   test "Object parameters":
-    let r = waitfor s.executeMethod("rpc.objParam", %[%"abc", testObj])
+    let r = waitFor s.executeMethod("rpc.objParam", %[%"abc", testObj])
     check r == testObj
 
   test "Simple return types":
     let
       inp = %99
-      r1 = waitfor s.executeMethod("rpc.returnTypeSimple", %[%inp])
+      r1 = waitFor s.executeMethod("rpc.returnTypeSimple", %[%inp])
     check r1 == inp
 
   test "Complex return types":
     let
       inp = 99
-      r1 = waitfor s.executeMethod("rpc.returnTypeComplex", %[%inp])
+      r1 = waitFor s.executeMethod("rpc.returnTypeComplex", %[%inp])
     check r1 == %*{"x": %[1, inp, 3], "y": "test"}
 
   test "Option types":
     let
       inp1 = MyOptional(maybeInt: some(75))
       inp2 = MyOptional()
-      r1 = waitfor s.executeMethod("rpc.optional", %[%inp1])
-      r2 = waitfor s.executeMethod("rpc.optional", %[%inp2])
+      r1 = waitFor s.executeMethod("rpc.optional", %[%inp1])
+      r2 = waitFor s.executeMethod("rpc.optional", %[%inp2])
     check r1 == %inp1
     check r2 == %inp2
 
@@ -190,19 +196,19 @@ suite "Server types":
   test "Runtime errors":
     expect ValueError:
       # root param not array
-      discard waitfor s.executeMethod("rpc.arrayParam", %"test")
+      discard waitFor s.executeMethod("rpc.arrayParam", %"test")
     expect ValueError:
       # too big for array
-      discard waitfor s.executeMethod("rpc.arrayParam", %[%[0, 1, 2, 3, 4, 5, 6], %"hello"])
+      discard waitFor s.executeMethod("rpc.arrayParam", %[%[0, 1, 2, 3, 4, 5, 6], %"hello"])
     expect ValueError:
       # wrong sub parameter type
-      discard waitfor s.executeMethod("rpc.arrayParam", %[%"test", %"hello"])
+      discard waitFor s.executeMethod("rpc.arrayParam", %[%"test", %"hello"])
     expect ValueError:
       # wrong param type
       discard waitFor s.executeMethod("rpc.differentParams", %[%"abc", %1])
 
   test "Multiple variables of one type":
-    let r = waitfor s.executeMethod("rpc.multiVarsOfOneType", %[%"hello", %"world"])
+    let r = waitFor s.executeMethod("rpc.multiVarsOfOneType", %[%"hello", %"world"])
     check r == %"hello world"
 
   test "Optional arg":
@@ -211,8 +217,32 @@ suite "Server types":
       int2 = MyOptional(maybeInt: some(117))
       r1 = waitFor s.executeMethod("rpc.optionalArg", %[%117, %int1])
       r2 = waitFor s.executeMethod("rpc.optionalArg", %[%117])
+      r3 = waitFor s.executeMethod("rpc.optionalArg", %[%117, newJNull()])
     check r1 == %int1
     check r2 == %int2
+    check r3 == %int2
+
+  test "Optional arg2":
+    let r1 = waitFor s.executeMethod("rpc.optionalArg2", %[%"A", %"B"])
+    check r1 == %"AB"
+
+    let r2 = waitFor s.executeMethod("rpc.optionalArg2", %[%"A", %"B", newJNull()])
+    check r2 == %"AB"
+
+    let r3 = waitFor s.executeMethod("rpc.optionalArg2", %[%"A", %"B", newJNull(), newJNull()])
+    check r3 == %"AB"
+
+    let r4 = waitFor s.executeMethod("rpc.optionalArg2", %[%"A", %"B", newJNull(), %"D"])
+    check r4 == %"ABD"
+
+    let r5 = waitFor s.executeMethod("rpc.optionalArg2", %[%"A", %"B", %"C", %"D"])
+    check r5 == %"ABCD"
+
+    let r6 = waitFor s.executeMethod("rpc.optionalArg2", %[%"A", %"B", %"C", newJNull()])
+    check r6 == %"ABC"
+
+    let r7 = waitFor s.executeMethod("rpc.optionalArg2", %[%"A", %"B", %"C"])
+    check r7 == %"ABC"
 
   test "Mixed optional arg":
     var ax = waitFor s.executeMethod("rpc.mixedOptionalArg", %[%10, %11, %"hello", %12, %"world"])

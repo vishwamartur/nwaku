@@ -10,7 +10,7 @@ type
   StringOfJson* = JsonString
 
   # Procedure signature accepted as an RPC call by server
-  RpcProc* = proc(input: JsonNode): Future[StringOfJson] {.gcsafe, raises: [Defect, CatchableError].}
+  RpcProc* = proc(input: JsonNode): Future[StringOfJson] {.gcsafe, raises: [Defect].}
 
   RpcRouter* = object
     procs*: Table[string, RpcProc]
@@ -81,7 +81,7 @@ proc route*(router: RpcRouter, node: JsonNode): Future[StringOfJson] {.async, gc
       let res = await rpcProc(if params == nil: newJArray() else: params)
       return wrapReply(id, res)
     except InvalidRequest as err:
-      return wrapError(err.code, err.msg)
+      return wrapError(err.code, err.msg, id)
     except CatchableError as err:
       debug "Error occurred within RPC", methodName = methodName, err = err.msg
       return wrapError(

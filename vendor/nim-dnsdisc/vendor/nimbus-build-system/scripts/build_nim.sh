@@ -13,7 +13,7 @@ set -e
 # Git commits
 : ${CSOURCES_COMMIT:=a8a5241f9475099c823cfe1a5e0ca4022ac201ff} # 1.0.11 + support for Apple's M1
 : ${NIMBLE_COMMIT:=d13f3b8ce288b4dc8c34c219a4e050aaeaf43fc9} # 0.13.1
-: ${NIM_COMMIT:=nimbus} # could be a (partial) commit hash, a tag, a branch name, etc.
+# NIM_COMMIT could be a (partial) commit hash, a tag, a branch name, etc. Empty by default.
 NIM_COMMIT_HASH="" # full hash for NIM_COMMIT, retrieved in "nim_needs_rebuilding()"
 
 # script arguments
@@ -34,6 +34,7 @@ UCPU=""
 [[ "$ARCH_OVERRIDE" == "x86" ]] && UCPU="ucpu=i686"
 [[ -z "$NIM_BUILD_MSG" ]] && NIM_BUILD_MSG="Building the Nim compiler"
 [[ -z "$QUICK_AND_DIRTY_COMPILER" ]] && QUICK_AND_DIRTY_COMPILER=0
+[[ -z "$QUICK_AND_DIRTY_NIMBLE" ]] && QUICK_AND_DIRTY_NIMBLE=0
 
 # Windows detection
 if uname | grep -qiE "mingw|msys"; then
@@ -48,6 +49,7 @@ else
 fi
 
 NIM_BINARY="${NIM_DIR}/bin/nim${EXE_SUFFIX}"
+MAX_NIM_BINARIES="10" # Old ones get deleted.
 
 nim_needs_rebuilding() {
 	REBUILD=0
@@ -59,26 +61,47 @@ nim_needs_rebuilding() {
 	fi
 
 	pushd "${NIM_DIR}" >/dev/null
-	# support old Git versions, like the one from Ubuntu-18.04
-	git restore . 2>/dev/null || git reset --hard
-	if ! git checkout -q ${NIM_COMMIT}; then
-		# Pay the price for a non-default NIM_COMMIT here, by fetching everything.
-		# (This includes upstream branches and tags that might be missing from our fork.)
-		git remote add upstream https://github.com/nim-lang/Nim
-		git fetch --all
+	if [[ -n "${NIM_COMMIT}" ]]; then
+		# support old Git versions, like the one from Ubuntu-18.04
+		git restore . 2>/dev/null || git reset --hard
+		if ! git checkout -q ${NIM_COMMIT} 2>/dev/null; then
+			# Pay the price for a non-default NIM_COMMIT here, by fetching everything.
+			# (This includes upstream branches and tags that might be missing from our fork.)
+			git remote add upstream https://github.com/nim-lang/Nim
+			git fetch --all
+			git checkout -q ${NIM_COMMIT}
+		fi
+		# In case the local branch diverged and a fast-forward merge is not possible.
+		git fetch || true
+		git reset -q --hard origin/${NIM_COMMIT} 2>/dev/null || true
+		# In case NIM_COMMIT is a local branch that's behind the remote one it's tracking.
+		git pull -q 2>/dev/null || true
 		git checkout -q ${NIM_COMMIT}
+		# We can't use "rev-parse" here, because it would return the tag object's
+		# hash instead of the commit hash, when NIM_COMMIT is a tag.
+		NIM_COMMIT_HASH="$(git rev-list -n 1 ${NIM_COMMIT})"
+	else
+		# NIM_COMMIT is empty, so assume the commit we need is already checked out
+		NIM_COMMIT_HASH="$(git rev-list -n 1 HEAD)"
 	fi
-	# We can't use "rev-parse" here, because it would return the tag object's
-	# hash instead of the commit hash, when NIM_COMMIT is a tag.
-	NIM_COMMIT_HASH="$(git rev-list -n 1 ${NIM_COMMIT})"
 	popd >/dev/null
 
 	if [[ -n "$CI_CACHE" && -d "$CI_CACHE" ]]; then
 		cp -a "$CI_CACHE"/* "$NIM_DIR"/bin/ || true # let this one fail with an empty cache dir
 	fi
 
-	# compare the last built commit to the one requested
-	if [[ -e "${NIM_DIR}/bin/last_built_commit" && "$(cat "${NIM_DIR}/bin/last_built_commit")" == "${NIM_COMMIT_HASH}" ]]; then
+	# Delete old Nim binaries, to put a limit on how much storage we use.
+	for F in "$(ls -t "${NIM_DIR}"/bin/nim_commit_* 2>/dev/null | tail -n +$((MAX_NIM_BINARIES + 1)))"; do
+		if [[ -e "${F}" ]]; then
+			rm "${F}"
+		fi
+	done
+
+	# Compare the last built commit to the one requested.
+	# Handle the scenario where our symlink is manually deleted by the user.
+	if [[ -e "${NIM_DIR}/bin/last_built_commit" && \
+	-e "${NIM_DIR}/bin/nim${EXE_SUFFIX}" && \
+	"$(cat "${NIM_DIR}/bin/last_built_commit")" == "${NIM_COMMIT_HASH}" ]]; then
 		return $NO_REBUILD
 	elif [[ -e "${NIM_DIR}/bin/nim_commit_${NIM_COMMIT_HASH}" ]]; then
 		# we built the requested commit in the past, so we simply reuse it
@@ -153,9 +176,6 @@ build_nim() {
 			build_all.sh > build_all_custom.sh
 		sh build_all_custom.sh
 		rm build_all_custom.sh
-		# Nimble needs a CA cert
-		rm -f bin/cacert.pem
-		curl -LsS -o bin/cacert.pem https://curl.se/ca/cacert.pem || echo "Warning: 'curl' failed to download a CA cert needed by Nimble. Ignoring it."
 	else
 		# Don't re-build it multiple times until we get identical
 		# binaries, like "build_all.sh" does. Don't build any tools
@@ -199,6 +219,18 @@ build_nim() {
 		rm -f bin/nim
 		cp -a compiler/nim bin/nim
 		rm bin/nim1
+
+		# Do we want Nimble in this quick build?
+		if [[ "${QUICK_AND_DIRTY_NIMBLE}" != "0" ]]; then
+			bin/nim c -d:release --noNimblePath --skipUserCfg --skipParentCfg dist/nimble/src/nimble.nim
+			mv dist/nimble/src/nimble bin/
+		fi
+	fi
+
+	if [[ "$QUICK_AND_DIRTY_COMPILER" == "0" || "${QUICK_AND_DIRTY_NIMBLE}" != "0" ]]; then
+		# Nimble needs a CA cert
+		rm -f bin/cacert.pem
+		curl -LsS -o bin/cacert.pem https://curl.se/ca/cacert.pem || echo "Warning: 'curl' failed to download a CA cert needed by Nimble. Ignoring it."
 	fi
 
 	# record the built commit

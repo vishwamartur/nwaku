@@ -13,6 +13,17 @@ import
   ".."/[rlp, common, keys, async_utils],
   ./private/p2p_types, "."/[kademlia, auth, rlpxcrypt, enode, p2p_protocol_dsl]
 
+const
+  # Insane kludge for suppporting chunked messages when syncing against clients
+  # like Nethermind.
+  #
+  # The original specs which are now obsoleted can be found here:
+  # github.com/ethereum/devp2p/commit/6504d410bc4b8dda2b43941e1cb48c804b90cf22.
+  #
+  # The current requirement is stated at
+  # github.com/ethereum/devp2p/blob/master/rlpx.md#framing
+  allowObsoletedChunkedMessages = defined(chunked_rlpx_enabled)
+
 when useSnappy:
   import snappy
   const devp2pSnappyVersion* = 5
@@ -42,6 +53,34 @@ type
   EmptyList = object
   DisconnectionReasonList = object
     value: DisconnectionReason
+
+proc read(rlp: var Rlp; T: type DisconnectionReasonList): T
+    {.gcsafe, raises: [RlpError, Defect].} =
+  ## Rlp mixin: `DisconnectionReasonList` parser
+
+  if rlp.isList:
+    # Be strict here: The expression `rlp.read(DisconnectionReasonList)`
+    # accepts lists with at least one item. The array expression wants
+    # exactly one item.
+    return DisconnectionReasonList(
+      value: rlp.read(array[1,DisconnectionReason])[0])
+
+  # Also accepted: a single byte reason code. Is is typically used
+  # by variants of the reference implementation `Geth`
+  if rlp.blobLen <= 1:
+    return DisconnectionReasonList(
+      value: rlp.read(DisconnectionReason))
+
+  # Also accepted: a blob of a list (aka object) of reason code. It is
+  # used by `bor`, a `geth` fork
+  var subList = rlp.toBytes.rlpFromBytes
+  if subList.isList:
+    # Ditto, see above.
+    return DisconnectionReasonList(
+      value: subList.read(array[1,DisconnectionReason])[0])
+
+  raise newException(RlpTypeMismatch, "Single entry list expected")
+
 
 const
   devp2pVersion* = 4
@@ -207,7 +246,8 @@ proc getDispatcher(node: EthereumNode,
 
 proc getMsgName*(peer: Peer, msgId: int): string =
   if not peer.dispatcher.isNil and
-     msgId < peer.dispatcher.messages.len:
+     msgId < peer.dispatcher.messages.len and
+     not peer.dispatcher.messages[msgId].isNil:
     return peer.dispatcher.messages[msgId].name
   else:
     return case msgId
@@ -452,6 +492,43 @@ proc resolveResponseFuture(peer: Peer, msgId: int, msg: pointer, reqId: int) =
 
     debug "late or duplicate reply for a RLPx request"
 
+proc getRlpxHeaderData(header: RlpxHeader): (int,int,int) =
+  ## Helper for `recvMsg()`
+  # This is insane. Some clients like Nethermind use the now obsoleted
+  # chunked message frame protocol, see
+  # github.com/ethereum/devp2p/commit/6504d410bc4b8dda2b43941e1cb48c804b90cf22.
+  result = (-1, -1, 0)
+  proc datagramSize: int =
+    # For logging only
+    (header[0].int shl 16) or (header[1].int shl 8) or header[1].int
+  try:
+    let optsLen = max(0, header[3].int - 0xc0)
+    var hdrData = header[4 ..< 4 + optsLen].rlpFromBytes
+    result[0] = hdrData.read(int)   # capability ID
+    result[1] = hdrData.read(int)   # context ID
+    if hdrData.isBlob:
+      result[2] = hdrData.read(int) # total packet size
+      trace "RLPx message first chunked header-data",
+        capabilityId = result[0],
+        contextId = result[1],
+        totalPacketSize = result[2],
+        datagramSize = datagramSize()
+    #[
+    elif 0 < result[1]:
+      # This should be all zero according to latest specs
+      trace "RLPx message chunked next header-data",
+        capabilityId = result[0],
+        contextId = result[1],
+        datagramSize = datagramSize()
+    #]#
+  except:
+    error "RLPx message header-data options, parse error",
+      capabilityId = result[0],
+      contextId = result[1],
+      totalPacketSize = result[2],
+      datagramSize = datagramSize()
+    result = (-1, -1, -1)
+
 proc recvMsg*(peer: Peer): Future[tuple[msgId: int, msgData: Rlp]] {.async.} =
   ##  This procs awaits the next complete RLPx message in the TCP stream
 
@@ -459,8 +536,9 @@ proc recvMsg*(peer: Peer): Future[tuple[msgId: int, msgData: Rlp]] {.async.} =
   await peer.transport.readExactly(addr headerBytes[0], 32)
 
   var msgSize: int
+  var msgHeader: RlpxHeader
   if decryptHeaderAndGetMsgSize(peer.secretsState,
-                                headerBytes, msgSize).isErr():
+                                headerBytes, msgSize, msgHeader).isErr():
     await peer.disconnectAndRaise(BreachOfProtocol,
                                   "Cannot decrypt RLPx frame header")
 
@@ -496,15 +574,103 @@ proc recvMsg*(peer: Peer): Future[tuple[msgId: int, msgData: Rlp]] {.async.} =
       if decryptedBytes.len == 0:
         await peer.disconnectAndRaise(BreachOfProtocol,
                                       "Snappy uncompress encountered malformed data")
+
+  # Check embedded header-data for start of an obsoleted chunked message.
+  #
+  # The current RLPx requirements need all triple entries <= 0, see
+  # github.com/ethereum/devp2p/blob/master/rlpx.md#framing
+  let (capaId, ctxId, totalMsgSize) = msgHeader.getRlpxHeaderData
+
+  when not allowObsoletedChunkedMessages:
+    # Note that the check should come *before* the `msgId` is read. For
+    # instance, if this is a malformed packet, then the `msgId` might be
+    # random which in turn might try to access a `peer.dispatcher.messages[]`
+    # slot with a `nil` entry.
+    if 0 < capaId or 0 < ctxId or 0 < totalMsgSize:
+      await peer.disconnectAndRaise(
+        BreachOfProtocol, "Rejected obsoleted chunked message header")
+
   var rlp = rlpFromBytes(decryptedBytes)
 
+  var msgId: int32
   try:
     # int32 as this seems more than big enough for the amount of msgIds
-    let msgId = rlp.read(int32)
-    return (msgId.int, rlp)
+    msgId = rlp.read(int32)
+    result = (msgId.int, rlp)
   except RlpError:
     await peer.disconnectAndRaise(BreachOfProtocol,
                                   "Cannot read RLPx message id")
+
+  # Handle chunked messages
+  when allowObsoletedChunkedMessages:
+    # Snappy with obsolete chunked RLPx message datagrams is unsupported here
+    when useSnappy:
+      if peer.snappyEnabled:
+        return
+
+    # This also covers totalMessageSize <= 0
+    if totalMsgSize <= msgSize:
+      return
+
+    # Loop over chunked RLPx datagram fragments
+    var moreData = totalMsgSize - msgSize
+    while 0 < moreData:
+
+      # Load and parse next header
+      block:
+        await peer.transport.readExactly(addr headerBytes[0], 32)
+        if decryptHeaderAndGetMsgSize(peer.secretsState,
+                                      headerBytes, msgSize, msgHeader).isErr():
+          trace "RLPx next chunked header-data failed",
+            peer, msgId, ctxId, maxSize = moreData
+          await peer.disconnectAndRaise(
+            BreachOfProtocol, "Cannot decrypt next chunked RLPx header")
+
+      # Verify that this is really the next chunk
+      block:
+        let (_, ctyId, totalSize) = msgHeader.getRlpxHeaderData
+        if ctyId != ctxId or 0 < totalSize:
+          trace "Malformed RLPx next chunked header-data",
+            peer, msgId, msgSize, ctxtId = ctyId, expCtxId = ctxId, totalSize
+          await peer.disconnectAndRaise(
+            BreachOfProtocol, "Malformed next chunked RLPx header")
+
+      # Append payload to `decryptedBytes` collector
+      block:
+        var encBytes = newSeq[byte](msgSize.encryptedLength - 32)
+        await peer.transport.readExactly(addr encBytes[0], encBytes.len)
+        var
+          dcrBytes = newSeq[byte](msgSize.decryptedLength)
+          dcrBytesCount = 0
+        # TODO: This should be improved by passing a reference into
+        # `decryptedBytes` where to append the data.
+        if decryptBody(peer.secretsState, encBytes, msgSize,
+                       dcrBytes, dcrBytesCount).isErr():
+          await peer.disconnectAndRaise(
+            BreachOfProtocol, "Cannot decrypt next chunked RLPx frame body")
+        decryptedBytes.add dcrBytes[0 ..< dcrBytesCount]
+        moreData -= msgSize
+        #[
+        trace "RLPx next chunked datagram fragment",
+          peer, msgId = result[0], ctxId, msgSize, moreData, totalMsgSize,
+          dcrBytesCount, payloadSoFar = decryptedBytes.len
+        #]#
+
+      # End While
+
+    if moreData != 0:
+      await peer.disconnectAndRaise(
+        BreachOfProtocol, "Malformed assembly of chunked RLPx message")
+
+    # Pass back extended message (first entry remains `msgId`)
+    result[1] = decryptedBytes.rlpFromBytes
+    result[1].position = rlp.position
+
+    trace "RLPx chunked datagram payload",
+      peer, msgId, ctxId, totalMsgSize, moreData, payload = decryptedBytes.len
+
+    # End `allowObsoletedChunkedMessages`
+
 
 proc checkedRlpRead(peer: Peer, r: var Rlp, MsgType: type):
     auto {.raises: [RlpError, Defect].} =
@@ -518,7 +684,7 @@ proc checkedRlpRead(peer: Peer, r: var Rlp, MsgType: type):
             peer = peer,
             dataType = MsgType.name,
             exception = e.msg
-            # rlpData = r.inspect
+            # rlpData = r.inspect -- don't use (might crash)
 
       raise e
 
@@ -1048,22 +1214,19 @@ template baseProtocolVersion(peer: Peer): uint =
 proc rlpxConnect*(node: EthereumNode, remote: Node): Future[Peer] {.async.} =
   initTracing(devp2pInfo, node.protocols)
 
-  new result
-  result.network = node
-  result.remote = remote
-
+  let peer = Peer(remote: remote, network: node)
   let ta = initTAddress(remote.node.address.ip, remote.node.address.tcpPort)
   var ok = false
   try:
-    result.transport = await connect(ta)
-    var handshake = Handshake.tryInit(
-      node.rng[], node.keys, {Initiator, EIP8}, node.baseProtocolVersion).tryGet()
+    peer.transport = await connect(ta)
+    var handshake = Handshake.init(
+      node.rng[], node.keys, {Initiator, EIP8}, node.baseProtocolVersion)
 
     var authMsg: array[AuthMessageMaxEIP8, byte]
     var authMsgLen = 0
     authMessage(
       handshake, node.rng[], remote.node.pubkey, authMsg, authMsgLen).tryGet()
-    var res = await result.transport.write(addr authMsg[0], authMsgLen)
+    var res = await peer.transport.write(addr authMsg[0], authMsgLen)
     if res != authMsgLen:
       raisePeerDisconnected("Unexpected disconnect while authenticating",
                             TcpError)
@@ -1072,33 +1235,41 @@ proc rlpxConnect*(node: EthereumNode, remote: Node): Future[Peer] {.async.} =
     var ackMsg = newSeqOfCap[byte](1024)
     ackMsg.setLen(initialSize)
 
-    await result.transport.readExactly(addr ackMsg[0], len(ackMsg))
+    # TODO: Should we not set some timeouts on these `readExactly`s?
+    await peer.transport.readExactly(addr ackMsg[0], len(ackMsg))
 
     var ret = handshake.decodeAckMessage(ackMsg)
     if ret.isErr and ret.error == AuthError.IncompleteError:
       ackMsg.setLen(handshake.expectedLength)
-      await result.transport.readExactly(addr ackMsg[initialSize],
+      await peer.transport.readExactly(addr ackMsg[initialSize],
                                          len(ackMsg) - initialSize)
       ret = handshake.decodeAckMessage(ackMsg)
-    ret.tryGet() # for the raise!
 
-    node.checkSnappySupport(handshake, result)
-    initSecretState(handshake, ^authMsg, ackMsg, result)
+    if ret.isErr():
+      debug "rlpxConnect handshake error", error = ret.error
+      if not isNil(peer.transport):
+        peer.transport.close()
+      return nil
+
+    ret.get()
+
+    node.checkSnappySupport(handshake, peer)
+    initSecretState(handshake, ^authMsg, ackMsg, peer)
 
     # if handshake.remoteHPubkey != remote.node.pubKey:
     #   raise newException(Exception, "Remote pubkey is wrong")
-    logConnectedPeer result
+    logConnectedPeer peer
 
-    var sendHelloFut = result.hello(
+    var sendHelloFut = peer.hello(
       handshake.getVersion(),
       node.clientId,
       node.capabilities,
       uint(node.address.tcpPort),
       node.keys.pubkey.toRaw())
 
-    var response = await result.handshakeImpl(
+    var response = await peer.handshakeImpl(
       sendHelloFut,
-      result.waitSingleMsg(DevP2P.hello),
+      peer.waitSingleMsg(DevP2P.hello),
       10.seconds)
 
     if not validatePubKeyInHello(response, remote.node.pubkey):
@@ -1107,7 +1278,7 @@ proc rlpxConnect*(node: EthereumNode, remote: Node): Future[Peer] {.async.} =
     trace "DevP2P handshake completed", peer = remote,
       clientId = response.clientId
 
-    await postHelloSteps(result, response)
+    await postHelloSteps(peer, response)
     ok = true
     trace "Peer fully connected", peer = remote, clientId = response.clientId
   except PeerDisconnected as e:
@@ -1132,39 +1303,47 @@ proc rlpxConnect*(node: EthereumNode, remote: Node): Future[Peer] {.async.} =
       err = e.msg
 
   if not ok:
-    if not isNil(result.transport):
-      result.transport.close()
-    result = nil
+    if not isNil(peer.transport):
+      peer.transport.close()
+    return nil
+  else:
+    return peer
 
 proc rlpxAccept*(node: EthereumNode,
                  transport: StreamTransport): Future[Peer] {.async.} =
   initTracing(devp2pInfo, node.protocols)
 
-  new result
-  result.transport = transport
-  result.network = node
-
-  var handshake =
-    Handshake.tryInit(node.rng[], node.keys, {auth.Responder}).tryGet
-
+  let peer = Peer(transport: transport, network: node)
+  var handshake = Handshake.init(node.rng[], node.keys, {auth.Responder})
   var ok = false
   try:
     let initialSize = handshake.expectedLength
     var authMsg = newSeqOfCap[byte](1024)
 
     authMsg.setLen(initialSize)
+    # TODO: Should we not set some timeouts on these `readExactly`s?
     await transport.readExactly(addr authMsg[0], len(authMsg))
     var ret = handshake.decodeAuthMessage(authMsg)
     if ret.isErr and ret.error == AuthError.IncompleteError:
-      # Eip8 auth message is likely
+      # Eip8 auth message is possible, but not likely
       authMsg.setLen(handshake.expectedLength)
       await transport.readExactly(addr authMsg[initialSize],
                                   len(authMsg) - initialSize)
       ret = handshake.decodeAuthMessage(authMsg)
-    ret.tryGet() # for the raise!
 
-    node.checkSnappySupport(handshake, result)
-    handshake.version = uint8(result.baseProtocolVersion)
+    if ret.isErr():
+      # It is likely that errors on the handshake Auth is just garbage arriving
+      # on the TCP port as it is the first data on the incoming connection,
+      # hence log them as trace.
+      trace "rlpxAccept handshake error", error = ret.error
+      if not isNil(peer.transport):
+        peer.transport.close()
+      return nil
+
+    ret.get()
+
+    node.checkSnappySupport(handshake, peer)
+    handshake.version = uint8(peer.baseProtocolVersion)
 
     var ackMsg: array[AckMessageMaxEIP8, byte]
     var ackMsgLen: int
@@ -1174,22 +1353,22 @@ proc rlpxAccept*(node: EthereumNode,
       raisePeerDisconnected("Unexpected disconnect while authenticating",
                             TcpError)
 
-    initSecretState(handshake, authMsg, ^ackMsg, result)
+    initSecretState(handshake, authMsg, ^ackMsg, peer)
 
     let listenPort = transport.localAddress().port
 
-    logAcceptedPeer result
+    logAcceptedPeer peer
 
-    var sendHelloFut = result.hello(
-      result.baseProtocolVersion,
+    var sendHelloFut = peer.hello(
+      peer.baseProtocolVersion,
       node.clientId,
       node.capabilities,
       listenPort.uint,
       node.keys.pubkey.toRaw())
 
-    var response = await result.handshakeImpl(
+    var response = await peer.handshakeImpl(
       sendHelloFut,
-      result.waitSingleMsg(DevP2P.hello),
+      peer.waitSingleMsg(DevP2P.hello),
       10.seconds)
 
     trace "Received Hello", version=response.version, id=response.clientId
@@ -1200,36 +1379,36 @@ proc rlpxAccept*(node: EthereumNode,
     let remote = transport.remoteAddress()
     let address = Address(ip: remote.address, tcpPort: remote.port,
                           udpPort: remote.port)
-    result.remote = newNode(
+    peer.remote = newNode(
       ENode(pubkey: handshake.remoteHPubkey, address: address))
 
-    trace "devp2p handshake completed", peer = result.remote,
+    trace "devp2p handshake completed", peer = peer.remote,
       clientId = response.clientId
 
     # In case there is an outgoing connection started with this peer we give
     # precedence to that one and we disconnect here with `AlreadyConnected`
-    if result.remote in node.peerPool.connectedNodes or
-        result.remote in node.peerPool.connectingNodes:
+    if peer.remote in node.peerPool.connectedNodes or
+        peer.remote in node.peerPool.connectingNodes:
       trace "Duplicate connection in rlpxAccept"
       raisePeerDisconnected("Peer already connecting or connected",
                             AlreadyConnected)
 
-    node.peerPool.connectingNodes.incl(result.remote)
+    node.peerPool.connectingNodes.incl(peer.remote)
 
-    await postHelloSteps(result, response)
+    await postHelloSteps(peer, response)
     ok = true
-    trace "Peer fully connected", peer = result.remote, clientId = response.clientId
+    trace "Peer fully connected", peer = peer.remote, clientId = response.clientId
   except PeerDisconnected as e:
     case e.reason
       of AlreadyConnected, TooManyPeers, MessageTimeout:
-        trace "Disconnect during rlpxAccept", reason = e.reason, peer = result.remote
+        trace "Disconnect during rlpxAccept", reason = e.reason, peer = peer.remote
       else:
         debug "Unexpected disconnect during rlpxAccept", reason = e.reason,
-          msg = e.msg, peer = result.remote
+          msg = e.msg, peer = peer.remote
   except TransportIncompleteError:
-    trace "Connection dropped in rlpxAccept", remote = result.remote
+    trace "Connection dropped in rlpxAccept", remote = peer.remote
   except UselessPeerError:
-    trace "Disconnecting useless peer", peer = result.remote
+    trace "Disconnecting useless peer", peer = peer.remote
   except RlpTypeMismatch:
     # Some peers report capabilities with names longer than 3 chars. We ignore
     # those for now. Maybe we should allow this though.
@@ -1240,9 +1419,11 @@ proc rlpxAccept*(node: EthereumNode,
     error "Unexpected exception in rlpxAccept", exc = e.name, err = e.msg
 
   if not ok:
-    if not isNil(result.transport):
-      result.transport.close()
-    result = nil
+    if not isNil(peer.transport):
+      peer.transport.close()
+    return nil
+  else:
+    return peer
 
 when isMainModule:
 

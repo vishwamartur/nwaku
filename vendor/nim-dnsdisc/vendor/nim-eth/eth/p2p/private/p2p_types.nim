@@ -1,3 +1,4 @@
+
 # nim-eth
 # Copyright (c) 2018-2021 Status Research & Development GmbH
 # Licensed and distributed under either of
@@ -8,6 +9,7 @@
 import
   std/[deques, tables],
   bearssl, chronos,
+  stew/results,
   ".."/../[rlp, keys], ".."/../common/eth_types,
   ".."/[enode, kademlia, discovery, rlpxcrypt]
 
@@ -25,6 +27,8 @@ type
     keys*: KeyPair
     address*: Address # The external address that the node will be advertising
     peerPool*: PeerPool
+    bindIp*: IpAddress
+    bindPort*: Port
 
     # Private fields:
     capabilities*: seq[Capability]
@@ -64,7 +68,6 @@ type
     connectedNodes*: Table[Node, Peer]
     connectingNodes*: HashSet[Node]
     running*: bool
-    listenPort*: Port
     observers*: Table[int, PeerObserver]
 
   PeerObserver* = object

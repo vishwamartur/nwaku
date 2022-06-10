@@ -188,6 +188,8 @@ procSuite "Utp router unit tests":
 
     await router.processIncomingBytes(encodedData, testSender)
 
+    await waitUntil(proc (): bool = socket.numOfEventsInEventQueue() == 0)
+
     check:
       socket.isConnected()
 
@@ -310,6 +312,8 @@ procSuite "Utp router unit tests":
 
     let connectResult = await connectFuture
 
+    await waitUntil(proc (): bool = router.len() == 0)
+    
     check:
       connectResult.isErr()
       connectResult.error().kind == ConnectionTimedOut
@@ -331,6 +335,8 @@ procSuite "Utp router unit tests":
 
     await connectFuture.cancelAndWait()
 
+    await waitUntil(proc (): bool = router.len() == 0)
+
     check:
       router.len() == 0
 
@@ -350,8 +356,8 @@ procSuite "Utp router unit tests":
 
     check:
       connectResult.isErr()
-      connectResult.error().kind == ErrorWhileSendingSyn
-      cast[TestError](connectResult.error().error) is TestError
+      # even though send is failing we will just finish with timeout, 
+      connectResult.error().kind == ConnectionTimedOut
       router.len() == 0
 
   asyncTest "Router should clear closed outgoing connections":

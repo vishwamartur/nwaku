@@ -29,6 +29,8 @@ type
 
   HttpServer* = ref object of StreamServer
     handler*: HttpAsyncCallback
+    handshakeTimeout*: Duration
+    headersTimeout*: Duration
     case secure*: bool:
     of true:
       tlsFlags*: set[TLSFlags]
@@ -72,7 +74,7 @@ proc parseRequest(
   try:
     let hlenfut = stream.reader.readUntil(
       addr buffer[0], MaxHttpHeadersSize, sep = HeaderSep)
-    let ores = await withTimeout(hlenfut, HttpHeadersTimeout)
+    let ores = await withTimeout(hlenfut, server.headersTimeout)
     if not ores:
       # Timeout
       trace "Timeout expired while receiving headers", address = $remoteAddr
@@ -147,12 +149,10 @@ proc handleTlsConnCb(
     maxVersion = tlsHttpServer.maxVersion,
     flags = tlsHttpServer.tlsFlags)
 
-  var stream: ASyncStream
-  try:
-    stream = AsyncStream(
+  let stream = AsyncStream(
       reader: tlsStream.reader,
       writer: tlsStream.writer)
-
+  try:
     let httpServer = HttpServer(server)
     let request = await httpServer.parseRequest(stream)
 
@@ -162,9 +162,7 @@ proc handleTlsConnCb(
   finally:
     await stream.closeWait()
 
-proc accept*(server: HttpServer): Future[HttpRequest]
-  {.async, raises: [Defect, HttpError].} =
-
+proc accept*(server: HttpServer): Future[HttpRequest] {.async.} =
   if not isNil(server.handler):
     raise newException(HttpError,
       "Callback already registered - cannot mix callback and accepts styles!")
@@ -191,25 +189,48 @@ proc accept*(server: HttpServer): Future[HttpRequest]
 
   trace "Got new request", isTls = server.secure
   try:
-    return await server.parseRequest(stream)
+    let
+      parseFut = server.parseRequest(stream)
+    if await withTimeout(parseFut, server.handshakeTimeout):
+      return parseFut.read()
+    raise newException(HttpError, "Timed out parsing request")
   except CatchableError as exc:
-    await stream.closeWait()
+    # Can't hold up the accept loop
+    stream.close()
     raise exc
 
 
 proc create*(
   _: typedesc[HttpServer],
-  address: TransportAddress,
+  address: TransportAddress | string,
   handler: HttpAsyncCallback = nil,
-  flags: set[ServerFlags] = {}): HttpServer
+  flags: set[ServerFlags] = {},
+  headersTimeout = HttpHeadersTimeout,
+  handshakeTimeout = 0.seconds
+  ): HttpServer
   {.raises: [Defect, CatchableError].} = # TODO: remove CatchableError
   ## Make a new HTTP Server
   ##
 
-  var server = HttpServer(handler: handler)
+  var server = HttpServer(
+    handler: handler,
+    headersTimeout: headersTimeout,
+    handshakeTimeout:
+      if handshakeTimeout == 0.seconds:
+        # default to headersTimeout * 1.05
+        headersTimeout + (headersTimeout div 20)
+      else: handshakeTimeout,
+  )
+
+  let localAddress =
+    when address is string:
+      initTAddress(address)
+    else:
+      address
+
   server = HttpServer(
     createStreamServer(
-      address,
+      localAddress,
       handleConnCb,
       flags,
       child = StreamServer(server)))
@@ -219,29 +240,27 @@ proc create*(
   return server
 
 proc create*(
-  _: typedesc[HttpServer],
-  host: string,
-  handler: HttpAsyncCallback = nil,
-  flags: set[ServerFlags] = {}): HttpServer
-  {.raises: [Defect, CatchableError].} = # TODO: remove CatchableError
-  ## Make a new HTTP Server
-  ##
-
-  return HttpServer.create(initTAddress(host), handler, flags)
-
-proc create*(
   _: typedesc[TlsHttpServer],
-  address: TransportAddress,
+  address: TransportAddress | string,
   tlsPrivateKey: TLSPrivateKey,
   tlsCertificate: TLSCertificate,
   handler: HttpAsyncCallback = nil,
   flags: set[ServerFlags] = {},
   tlsFlags: set[TLSFlags] = {},
   tlsMinVersion = TLSVersion.TLS12,
-  tlsMaxVersion = TLSVersion.TLS12): TlsHttpServer
+  tlsMaxVersion = TLSVersion.TLS12,
+  headersTimeout = HttpHeadersTimeout,
+  handshakeTimeout = 0.seconds
+  ): TlsHttpServer
   {.raises: [Defect, CatchableError].} = # TODO: remove CatchableError
 
   var server = TlsHttpServer(
+    headersTimeout: headersTimeout,
+    handshakeTimeout:
+      if handshakeTimeout == 0.seconds:
+        # default to headersTimeout * 1.05
+        headersTimeout + (headersTimeout div 20)
+      else: handshakeTimeout,
     secure: true,
     handler: handler,
     tlsPrivateKey: tlsPrivateKey,
@@ -249,9 +268,15 @@ proc create*(
     minVersion: tlsMinVersion,
     maxVersion: tlsMaxVersion)
 
+  let localAddress =
+    when address is string:
+      initTAddress(address)
+    else:
+      address
+
   server = TlsHttpServer(
     createStreamServer(
-      address,
+      localAddress,
       handleTlsConnCb,
       flags,
       child = StreamServer(server)))
@@ -259,22 +284,3 @@ proc create*(
   trace "Created TLS HTTP Server", host = $server.localAddress()
 
   return server
-
-proc create*(
-  _: typedesc[TlsHttpServer],
-  host: string,
-  tlsPrivateKey: TLSPrivateKey,
-  tlsCertificate: TLSCertificate,
-  handler: HttpAsyncCallback = nil,
-  flags: set[ServerFlags] = {},
-  tlsFlags: set[TLSFlags] = {},
-  tlsMinVersion = TLSVersion.TLS12,
-  tlsMaxVersion = TLSVersion.TLS12): TlsHttpServer
-  {.raises: [Defect, CatchableError].} = # TODO: remove CatchableError
-  TlsHttpServer.create(
-    address = initTAddress(host),
-    handler = handler,
-    tlsPrivateKey = tlsPrivateKey,
-    tlsCertificate = tlsCertificate,
-    flags = flags,
-    tlsFlags = tlsFlags)

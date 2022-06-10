@@ -6,11 +6,15 @@
 # This file may not be copied, modified, or distributed except according to
 # those terms.
 
+{.push raises: [Defect].}
+
 import
   std/[options, os, strutils, times],
   stew/results, nat_traversal/[miniupnpc, natpmp],
-  chronicles, json_serialization/std/net, chronos,
+  chronicles, json_serialization/std/net, chronos, confutils,
   ../common/utils, ./utils as netutils
+
+export ConfigurationError
 
 type
   NatStrategy* = enum
@@ -18,6 +22,13 @@ type
     NatUpnp
     NatPmp
     NatNone
+
+  PrefSrcStatus = enum
+    NoRoutingInfo
+    PrefSrcIsPublic
+    PrefSrcIsPrivate
+    BindAddressIsPublic
+    BindAddressIsPrivate
 
 const
   UPNP_TIMEOUT = 200 # ms
@@ -98,6 +109,42 @@ proc getExternalIP*(natStrategy: NatStrategy, quiet = false): Option[IpAddress] 
           error "parseIpAddress() exception", err = e.msg
           return
 
+# This queries the routing table to get the "preferred source" attribute and
+# checks if it's a public IP. If so, then it's our public IP.
+#
+# Further more, we check if the bind address (user provided, or a "0.0.0.0"
+# default) is a public IP. That's a long shot, because code paths involving a
+# user-provided bind address are not supposed to get here.
+proc getRoutePrefSrc(bindIp: ValidIpAddress): (Option[ValidIpAddress], PrefSrcStatus) =
+  let bindAddress = initTAddress(bindIp, Port(0))
+
+  if bindAddress.isAnyLocal():
+    let ip = getRouteIpv4()
+    if ip.isErr():
+      # No route was found, log error and continue without IP.
+      error "No routable IP address found, check your network connection", error = ip.error
+      return (none(ValidIpAddress), NoRoutingInfo)
+    elif ip.get().isPublic():
+      return (some(ip.get()), PrefSrcIsPublic)
+    else:
+      return (none(ValidIpAddress), PrefSrcIsPrivate)
+  elif bindAddress.isPublic():
+    return (some(ValidIpAddress.init(bindIp)), BindAddressIsPublic)
+  else:
+    return (none(ValidIpAddress), BindAddressIsPrivate)
+
+# Try to detect a public IP assigned to this host, before trying NAT traversal.
+proc getPublicRoutePrefSrcOrExternalIP*(natStrategy: NatStrategy, bindIp: ValidIpAddress, quiet = true): Option[ValidIpAddress] =
+  let (prefSrcIp, prefSrcStatus) = getRoutePrefSrc(bindIp)
+
+  case prefSrcStatus:
+    of NoRoutingInfo, PrefSrcIsPublic, BindAddressIsPublic:
+      return prefSrcIp
+    of PrefSrcIsPrivate, BindAddressIsPrivate:
+      let extIp = getExternalIP(natStrategy, quiet)
+      if extIp.isSome:
+        return some(ValidIpAddress.init(extIp.get))
+
 proc doPortMapping(tcpPort, udpPort: Port, description: string): Option[(Port, Port)] {.gcsafe.} =
   var
     extTcpPort: Port
@@ -155,7 +202,7 @@ var
   natThread: Thread[PortMappingArgs]
   natCloseChan: Channel[bool]
 
-proc repeatPortMapping(args: PortMappingArgs) {.thread.} =
+proc repeatPortMapping(args: PortMappingArgs) {.thread, raises: [Defect, ValueError].} =
   ignoreSignalsInThread()
   let
     (tcpPort, udpPort, description) = args
@@ -173,7 +220,8 @@ proc repeatPortMapping(args: PortMappingArgs) {.thread.} =
     while true:
       # we're being silly here with this channel polling because we can't
       # select on Nim channels like on Go ones
-      let (dataAvailable, _) = natCloseChan.tryRecv()
+      let (dataAvailable, _) = try: natCloseChan.tryRecv()
+        except Exception: (false, false)
       if dataAvailable:
         return
       else:
@@ -186,9 +234,12 @@ proc repeatPortMapping(args: PortMappingArgs) {.thread.} =
 proc stopNatThread() {.noconv.} =
   # stop the thread
 
-  natCloseChan.send(true)
-  natThread.joinThread()
-  natCloseChan.close()
+  try:
+    natCloseChan.send(true)
+    natThread.joinThread()
+    natCloseChan.close()
+  except Exception as exc:
+    warn "Failed to stop NAT port mapping renewal thread", exc = exc.msg
 
   # delete our port mappings
 
@@ -233,9 +284,12 @@ proc redirectPorts*(tcpPort, udpPort: Port, description: string): Option[(Port, 
     # NAT-PMP lease expires or the router is rebooted and forgets all about
     # these mappings.
     natCloseChan.open()
-    natThread.createThread(repeatPortMapping, (externalTcpPort, externalUdpPort, description))
-    # atexit() in disguise
-    addQuitProc(stopNatThread)
+    try:
+      natThread.createThread(repeatPortMapping, (externalTcpPort, externalUdpPort, description))
+      # atexit() in disguise
+      addQuitProc(stopNatThread)
+    except Exception as exc:
+      warn "Failed to create NAT port mapping renewal thread", exc = exc.msg
 
 proc setupNat*(natStrategy: NatStrategy, tcpPort, udpPort: Port,
     clientId: string):
@@ -267,7 +321,7 @@ type
       of true: extIp*: ValidIpAddress
       of false: nat*: NatStrategy
 
-func parseCmdArg*(T: type NatConfig, p: TaintedString): T =
+func parseCmdArg*(T: type NatConfig, p: TaintedString): T {.raises: [Defect, ConfigurationError].} =
   case p.toLowerAscii:
     of "any":
       NatConfig(hasExtIp: false, nat: NatAny)
@@ -308,46 +362,24 @@ proc setupAddress*(natConfig: NatConfig, bindIp: ValidIpAddress,
 
   case natConfig.nat:
     of NatAny:
-      let bindAddress = initTAddress(bindIp, Port(0))
-      if bindAddress.isAnyLocal():
-        let ip = getRouteIpv4()
-        if ip.isErr():
-          # No route was found, log error and continue without IP.
-          error "No routable IP address found, check your network connection",
-            error = ip.error
-          return (none(ValidIpAddress), some(tcpPort), some(udpPort))
-        elif ip.get().isPublic():
-          return (some(ip.get()), some(tcpPort), some(udpPort))
-        else:
-          # Best route IP is not public, might be an internal network and the
-          # node is either behind a gateway with NAT or for example a container
-          # or VM bridge (or both). Lets try UPnP and NAT-PMP for the case where
-          # the node is behind a gateway with UPnP or NAT-PMP support.
+      let (prefSrcIp, prefSrcStatus) = getRoutePrefSrc(bindIp)
+
+      case prefSrcStatus:
+        of NoRoutingInfo, PrefSrcIsPublic, BindAddressIsPublic:
+          return (prefSrcIp, some(tcpPort), some(udpPort))
+        of PrefSrcIsPrivate, BindAddressIsPrivate:
           return setupNat(natConfig.nat, tcpPort, udpPort, clientId)
-      elif bindAddress.isPublic():
-        # When a specific public interface is provided, use that one.
-        return (some(ValidIpAddress.init(bindIp)), some(tcpPort), some(udpPort))
-      else:
-        return setupNat(natConfig.nat, tcpPort, udpPort, clientId)
     of NatNone:
-      let bindAddress = initTAddress(bindIp, Port(0))
-      if bindAddress.isAnyLocal():
-        let ip = getRouteIpv4()
-        if ip.isErr():
-          # No route was found, log error and continue without IP.
-          error "No routable IP address found, check your network connection",
-            error = ip.error
-          return (none(ValidIpAddress), some(tcpPort), some(udpPort))
-        elif ip.get().isPublic():
-          return (some(ip.get()), some(tcpPort), some(udpPort))
-        else:
+      let (prefSrcIp, prefSrcStatus) = getRoutePrefSrc(bindIp)
+
+      case prefSrcStatus:
+        of NoRoutingInfo, PrefSrcIsPublic, BindAddressIsPublic:
+          return (prefSrcIp, some(tcpPort), some(udpPort))
+        of PrefSrcIsPrivate:
           error "No public IP address found. Should not use --nat:none option"
           return (none(ValidIpAddress), some(tcpPort), some(udpPort))
-      elif bindAddress.isPublic():
-        # When a specific public interface is provided, use that one.
-        return (some(ValidIpAddress.init(bindIp)), some(tcpPort), some(udpPort))
-      else:
-        error "Bind IP is not a public IP address. Should not use --nat:none option"
-        return (none(ValidIpAddress), some(tcpPort), some(udpPort))
+        of BindAddressIsPrivate:
+          error "Bind IP is not a public IP address. Should not use --nat:none option"
+          return (none(ValidIpAddress), some(tcpPort), some(udpPort))
     of NatUpnp, NatPmp:
       return setupNat(natConfig.nat, tcpPort, udpPort, clientId)

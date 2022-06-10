@@ -9,7 +9,6 @@ pkg "argparse"
 pkg "arraymancer", true, "nim c tests/tests_cpu.nim"
 pkg "ast_pattern_matching", false, "nim c -r --oldgensym:on tests/test1.nim"
 pkg "asyncmysql", true
-pkg "bigints"
 pkg "binaryheap", false, "nim c -r binaryheap.nim"
 # pkg "blscurve", true # pending https://github.com/status-im/nim-blscurve/issues/39
 pkg "bncurve", true
@@ -17,8 +16,7 @@ pkg "c2nim", false, "nim c testsuite/tester.nim"
 pkg "cascade"
 pkg "chroma"
 pkg "chronicles", true, "nim c -o:chr -r chronicles.nim"
-# disable until my chronos fix was merged
-#pkg "chronos", true
+pkg "chronos", true, "nim c -r -d:release tests/testall"
 pkg "cligen", false, "nim c -o:cligenn -r cligen.nim"
 pkg "coco", true
 pkg "combparser"
@@ -31,7 +29,7 @@ pkg "easygl", true, "nim c -o:egl -r src/easygl.nim", "https://github.com/jackmo
 pkg "elvis"
 pkg "fragments", false, "nim c -r fragments/dsl.nim"
 pkg "gara"
-pkg "ggplotnim", true, "nimble testCI"
+# pkg "ggplotnim", true, "nimble testCI"
 pkg "glob"
 pkg "gnuplot"
 pkg "hts", false, "nim c -o:htss src/hts.nim"
@@ -52,13 +50,13 @@ pkg "nimcrypto", false, "nim c -r tests/testall.nim"
 pkg "NimData", true, "nim c -o:nimdataa src/nimdata.nim"
 pkg "nimes", true, "nim c src/nimes.nim"
 pkg "nimfp", true, "nim c -o:nfp -r src/fp.nim"
-pkg "nimgame2", true, "nim c nimgame2/nimgame.nim"
-pkg "nimgen", true, "nim c -o:nimgenn -r src/nimgen/runcfg.nim"
+# pkg "nimgame2", true, "nim c nimgame2/nimgame.nim"
+# pkg "nimgen", true, "nim c -o:nimgenn -r src/nimgen/runcfg.nim"
 # pkg "nimlsp", true
 # pkg "nimly", true
 # pkg "nimongo", true, "nimble test_ci"
-pkg "nimpy", false, "nim c -r tests/nimfrompy.nim"
-pkg "nimquery"
+# pkg "nimpy", false, "nim c -r tests/nimfrompy.nim"
+# pkg "nimquery"
 pkg "nimsl", true
 pkg "nimsvg"
 # pkg "nimterop", true

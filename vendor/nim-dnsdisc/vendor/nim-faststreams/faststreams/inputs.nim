@@ -442,7 +442,7 @@ proc fileInput*(filename: string,
   return fileInput(file, offset, pageSize)
 
 proc unsafeMemoryInput*(mem: openArray[byte]): InputStreamHandle =
-  let head = unsafeAddr mem[0]
+  let head = cast[ptr byte](mem)
 
   makeHandle InputStream(
     span: PageSpan(
@@ -808,13 +808,10 @@ template readIntoExImpl(s: InputStream,
   let totalBytesDrained = drainBuffersInto(s, dst, dstLen)
   var bytesDeficit = (dstLen - totalBytesDrained)
 
-  if bytesDeficit > 0:
+  if bytesDeficit > 0 and s.vtable != nil:
     var adjustedDst = offset(dst, totalBytesDrained)
 
     while true:
-      if s.vtable.isNil():
-        break
-
       let newBytesRead = awaiter s.vtable.readOp(s, adjustedDst, bytesDeficit)
 
       s.spanEndPos += newBytesRead

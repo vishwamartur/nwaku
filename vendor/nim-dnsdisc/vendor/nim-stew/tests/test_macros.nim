@@ -36,10 +36,13 @@ type
   DerivedFromRefType = ref object of DerivedType
     anotherDerivedField: string
 
+  EmptyObject = object
+  EmptyRefObject = ref object
+
 macro getFieldsLists(T: type): untyped =
   result = newTree(nnkBracket)
 
-  var resolvedType = skipRef getType(T)[1]
+  var resolvedType = skipPtr skipRef getType(T)[1]
   doAssert resolvedType.kind == nnkSym
   var objectType = getImpl(resolvedType)
   doAssert objectType.kind == nnkTypeDef
@@ -55,6 +58,9 @@ static:
     "derivedField",
     "anotherDerivedField"
   ]
+
+  doAssert getFieldsLists(EmptyObject).len == 0
+  doAssert getFieldsLists(EmptyRefObject).len == 0
 
 let myType = MyType[string](myField: "test", myGeneric: "test", kind: true, first: "test")
 

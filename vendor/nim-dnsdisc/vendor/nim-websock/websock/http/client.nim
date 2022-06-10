@@ -125,7 +125,7 @@ proc connect*(
   address: TransportAddress,
   version = HttpVersion11,
   tlsFlags: set[TLSFlags] = {},
-  tlsMinVersion = TLSVersion.TLS11,
+  tlsMinVersion = TLSVersion.TLS12,
   tlsMaxVersion = TLSVersion.TLS12,
   hostName = ""): Future[T] {.async.} =
 
@@ -167,11 +167,16 @@ proc connect*(
   host: string,
   version = HttpVersion11,
   tlsFlags: set[TLSFlags] = {},
-  tlsMinVersion = TLSVersion.TLS11,
-  tlsMaxVersion = TLSVersion.TLS12): Future[T]
+  tlsMinVersion = TLSVersion.TLS12,
+  tlsMaxVersion = TLSVersion.TLS12,
+  hostName = ""): Future[T]
   {.async, raises: [Defect, HttpError].} =
 
-  let hostPort = host.split(":")
+  let wantedHostName = if hostName.len > 0:
+      hostName
+    else:
+      host.split(":")[0]
+
   let addrs = resolveTAddress(host)
   for a in addrs:
     try:
@@ -181,7 +186,7 @@ proc connect*(
         tlsFlags,
         tlsMinVersion,
         tlsMaxVersion,
-        hostName = hostPort[0])
+        hostName = wantedHostName)
 
       return conn
     except TransportError as exc:

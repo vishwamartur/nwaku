@@ -295,7 +295,6 @@ procSuite "Utp socket unit test":
     await outgoingSocket.destroyWait()
 
   asyncTest "Ignoring totally out of order packet":
-    # TODO test is valid until implementing selective acks
     let q = newAsyncQueue[Packet]()
     let initalRemoteSeqNr = 10'u16
 
@@ -305,10 +304,10 @@ procSuite "Utp socket unit test":
 
     await outgoingSocket.processPacket(packets[1024])
 
-    check:
-      outgoingSocket.numPacketsInReordedBuffer() == 0
-
     await outgoingSocket.processPacket(packets[1023])
+
+    # give some time to process those packets
+    await sleepAsync(milliseconds(500))
 
     check:
       outgoingSocket.numPacketsInReordedBuffer() == 1
@@ -349,6 +348,8 @@ procSuite "Utp socket unit test":
 
     await outgoingSocket.processPacket(responseAck)
 
+    await waitUntil(proc (): bool = outgoingSocket.numPacketsInOutGoingBuffer() == 0)
+
     check:
       outgoingSocket.numPacketsInOutGoingBuffer() == 0
 
@@ -370,7 +371,7 @@ procSuite "Utp socket unit test":
         )
         await socket.processPacket(ack)
     except CancelledError:
-      echo "foo"
+      discard
 
   asyncTest "Hitting RTO timeout with packets in flight should not decay window":
     let q = newAsyncQueue[Packet]()
@@ -427,7 +428,7 @@ procSuite "Utp socket unit test":
     let dataToWrite1 = @[0'u8]
     let dataToWrite2 = @[1'u8]
 
-    let (outgoingSocket, initialPacket) = connectOutGoingSocket(initialRemoteSeq, q, 0)
+    let (outgoingSocket, initialPacket) = connectOutGoingSocket(initialRemoteSeq, q, cfg = SocketConfig.init(optSndBuffer = 0))
 
     let writeFut1 = outgoingSocket.write(dataToWrite1)
     let writeFut2 = outgoingSocket.write(dataToWrite2)
@@ -530,6 +531,8 @@ procSuite "Utp socket unit test":
       )
 
     await outgoingSocket.processPacket(responseAck)
+
+    await waitUntil(proc (): bool = outgoingSocket.isConnected())
 
     check:
       outgoingSocket.isConnected()
@@ -768,6 +771,8 @@ procSuite "Utp socket unit test":
 
     await outgoingSocket.processPacket(responseAck)
 
+    await waitUntil(proc (): bool = not outgoingSocket.isConnected())
+
     check:
       not outgoingSocket.isConnected()
 
@@ -1005,6 +1010,8 @@ procSuite "Utp socket unit test":
 
     await outgoingSocket.processPacket(responseAck)
 
+    await waitUntil(proc (): bool = int(outgoingSocket.numOfBytesInFlight) == len(dataToWrite))
+
     check:
       # only first packet has been acked so there should still by 5 bytes left
       int(outgoingSocket.numOfBytesInFlight) == len(dataToWrite)
@@ -1052,18 +1059,18 @@ procSuite "Utp socket unit test":
     let q = newAsyncQueue[Packet]()
     let initialRemoteSeq = 10'u16
 
-    let dataToWrite = @[1'u8, 2, 3, 4, 5]
+    let dataToWrite = generateByteArray(rng[], 1001)
 
     # remote is initialized with buffer to small to handle whole payload
-    let (outgoingSocket, initialPacket) = connectOutGoingSocket(initialRemoteSeq, q, uint32(len(dataToWrite) - 1))
+    let (outgoingSocket, initialPacket) = connectOutGoingSocket(initialRemoteSeq, q, cfg = SocketConfig.init(optSndBuffer = 1000))
 
     let writeFut = outgoingSocket.write(dataToWrite)
 
     # wait some time to check future is not finished
     await sleepAsync(seconds(2))
 
-    # write is not finished as future is blocked from progressing due to to small
-    # send window
+    # write is not finished as future is blocked from progressing due to to full
+    # send buffer
     check:
       not writeFut.finished()
 
@@ -1071,20 +1078,18 @@ procSuite "Utp socket unit test":
       ackPacket(
         initialRemoteSeq,
         initialPacket.header.connectionId,
-        initialPacket.header.seqNr,
-        uint32(len(dataToWrite)),
+        initialPacket.header.seqNr + 1,
+        testBufferSize,
         0
       )
 
     await outgoingSocket.processPacket(someAckFromRemote)
 
-    # after processing packet with increased buffer size write should complete and
-    # packet should be sent
-    let sentPacket = await q.get()
+    # only after processing ack write will progress
+    let writeResult = await writeFut
 
     check:
-      sentPacket.payload == dataToWrite
-      writeFut.finished()
+      writeResult.isOK()
 
     await outgoingSocket.destroyWait()
 
@@ -1092,30 +1097,21 @@ procSuite "Utp socket unit test":
     let q = newAsyncQueue[Packet]()
     let initialRemoteSeq = 10'u16
 
-    let dataToWrite = @[1'u8, 2, 3, 4, 5]
-
+    let dataToWirte = 1160
     # remote is initialized with buffer to small to handle whole payload
-    let (outgoingSocket, initialPacket) = connectOutGoingSocket(initialRemoteSeq, q)
-    let remoteRcvWindowSize = uint32(outgoingSocket.getPacketSize())
-    let someAckFromRemote =
-      ackPacket(
-        initialRemoteSeq,
-        initialPacket.header.connectionId,
-        initialPacket.header.seqNr,
-        remoteRcvWindowSize,
-        0
-      )
+    let (outgoingSocket, initialPacket) = connectOutGoingSocket(initialRemoteSeq, q, cfg = SocketConfig.init(optSndBuffer = 1160))
 
-    # we are using ack from remote to setup our snd window size to one packet size on one packet
-    await outgoingSocket.processPacket(someAckFromRemote)
+    let twoPacketData = generateByteArray(rng[], int(dataToWirte))
 
-    let twoPacketData = generateByteArray(rng[], int(2 * remoteRcvWindowSize))
+    let writeResult = await outgoingSocket.write(twoPacketData)
 
+    check:
+      writeResult.isOk()
+
+    # this write will not progress as snd buffer is full
     let writeFut = outgoingSocket.write(twoPacketData)
 
-    # after this time first packet will be send and will timeout, but the write should not
-    # finish, as timeouting packets do not notify writing about new space in snd
-    # buffer
+    # we wait for packets to timeout
     await sleepAsync(seconds(2))
 
     check:
@@ -1162,15 +1158,22 @@ procSuite "Utp socket unit test":
     check:
       packet.header.pType == ST_DATA
       uint32(len(packet.payload)) == remoteRcvWindowSize
-      not writeFut.finished
+
+    let packet1Fut = q.get()
+
+    await sleepAsync(milliseconds(500))
+
+    check:
+      not packet1Fut.finished()
 
     await outgoingSocket.processPacket(firstAckFromRemote)
 
-    let packet1 = await q.get()
-    let writeResult = await writeFut
+    # packet is sent only after first packet is acked
+    let packet1 = await packet1Fut
 
     check:
       packet1.header.pType == ST_DATA
+      packet1.header.seqNr == packet.header.seqNr + 1
       writeFut.finished
 
     await outgoingSocket.destroyWait()
@@ -1192,19 +1195,10 @@ procSuite "Utp socket unit test":
     check:
       outgoingSocket.isConnected()
 
-    let writeFut = outgoingSocket.write(someData)
-
-    await sleepAsync(seconds(1))
-
-    check:
-      # Even after 1 second write is not finished as we did not receive any message
-      # so remote rcv window is still zero
-      not writeFut.finished()
-
-    # Ultimately, after 3 second remote rcv window will be reseted to minimal value
-    # and write will be able to progress
-    let writeResult = await writeFut
-
+    # write result will be successfull as send buffer has space
+    let writeResult = await outgoingSocket.write(someData)
+    
+    # this will finish in seconds(3) as only after this time window will be set to min value
     let p = await q.get()
 
     check:
@@ -1331,6 +1325,8 @@ procSuite "Utp socket unit test":
 
     await outgoingSocket.processPacket(dataP1)
 
+    let fastResend = await q.get()
+
     let ack = await q.get()
 
     check:
@@ -1343,5 +1339,215 @@ procSuite "Utp socket unit test":
       # should be updated
       thirdSend.header.timestamp > secondSend.header.timestamp
       thirdSend.header.ackNr > secondSend.header.ackNr
+
+    await outgoingSocket.destroyWait()
+
+  asyncTest "Should support fast timeout ":
+    let q = newAsyncQueue[Packet]()
+    let initialRemoteSeq = 10'u16
+
+    # small writes to make sure it will be 3 different packets
+    let dataToWrite1 = @[1'u8]
+    let dataToWrite2 = @[1'u8]
+    let dataToWrite3 = @[1'u8]
+
+
+    let (outgoingSocket, initialPacket) = connectOutGoingSocket(initialRemoteSeq, q)
+
+    let writeRes1 = await outgoingSocket.write(dataToWrite1)
+    let writeRes2 = await outgoingSocket.write(dataToWrite2)
+    let writeRes3 = await outgoingSocket.write(dataToWrite3)  
+
+    check:
+      writeRes1.isOk()
+      writeRes2.isOk()
+      writeRes3.isOk()
+
+    # drain queue of all sent packets
+    let sent1 = await q.get()
+    let sent2 = await q.get()
+    let sent3 = await q.get()
+
+    # wait for first timeout. Socket will enter fast timeout mode
+    let reSent1 = await q.get()
+
+    check:
+      # check that re-sent packet is the oldest one
+      reSent1.payload == sent1.payload
+      reSent1.header.seqNr == sent1.header.seqNr
+
+    # ack which will ack our re-sent packet
+    let responseAck =
+      ackPacket(
+        initialRemoteSeq,
+        initialPacket.header.connectionId,
+        reSent1.header.seqNr,
+        testBufferSize,
+        0
+      )
+
+    await outgoingSocket.processPacket(responseAck)
+
+    let fastResentPacket = await q.get()
+
+    check:
+      # second packet is now oldest unacked packet so it should be the one which
+      # is send during fast resend
+      fastResentPacket.payload == sent2.payload
+      fastResentPacket.header.seqNr == sent2.header.seqNr
+
+    # duplicate ack, processing it should not fast-resend any packet
+    await outgoingSocket.processPacket(responseAck)
+
+    let resent3 = await q.get()
+
+    check:
+      # in next timeout cycle packet nr3 is the only one waiting for re-send
+      resent3.payload == sent3.payload
+      resent3.header.seqNr == sent3.header.seqNr
+
+    await outgoingSocket.destroyWait()
+
+  asyncTest "Socket should accept data only in connected state":
+    let q = newAsyncQueue[Packet]()
+    let initialRemoteSeq = 10'u16
+    let cfg = SocketConfig.init()
+    let remoteReciveBuffer = 1024'u32
+
+    let dataDropped = @[1'u8]
+    let dataRecived = @[2'u8]
+
+    let sock1 = newOutgoingSocket[TransportAddress](testAddress, initTestSnd(q), cfg, defaultRcvOutgoingId, rng[])
+
+    asyncSpawn sock1.startOutgoingSocket()
+
+    let initialPacket = await q.get()
+
+    check:
+      initialPacket.header.pType == ST_SYN
+
+    let dpDropped = dataPacket(
+      initialRemoteSeq,
+      initialPacket.header.connectionId,
+      initialPacket.header.seqNr,
+      testBufferSize,
+      dataDropped,
+      0
+    )
+
+    let dpReceived = dataPacket(
+      initialRemoteSeq,
+      initialPacket.header.connectionId,
+      initialPacket.header.seqNr,
+      testBufferSize,
+      dataRecived,
+      0
+    )
+
+    let responseAck =
+      ackPacket(
+        initialRemoteSeq,
+        initialPacket.header.connectionId,
+        initialPacket.header.seqNr,
+        remoteReciveBuffer,
+        0
+      )
+
+    # even though @[1'u8] is received first, it should be dropped as socket is not
+    # yet in connected state
+    await sock1.processPacket(dpDropped)
+    await sock1.processPacket(responseAck)
+    await sock1.processPacket(dpReceived)
+
+    let receivedData = await sock1.read(1)
+
+    check:
+      receivedData == dataRecived
+
+    await sock1.destroyWait()
+
+  asyncTest "Clean up all resources when closing due to timeout failure":
+    let q = newAsyncQueue[Packet]()
+    let initialRemoteSeq = 10'u16
+
+    let dataToWrite = @[1'u8]
+    let customCfg = SocketConfig.init(dataResendsBeforeFailure = 2, optSndBuffer = 1)
+    let (outgoingSocket, initialPacket) = connectOutGoingSocket(initialRemoteSeq, q, cfg = customCfg)
+
+    let bytesWritten = await outgoingSocket.write(dataToWrite)
+    # this future will never finish as there is not place in write buffer
+    # although it should get properly clearead up when socket is closed
+    let writeFut = outgoingSocket.write(dataToWrite)
+
+    check:
+      bytesWritten.get() == len(dataToWrite)
+
+    let sentPacket = await q.get()
+    # wait for failure and cleanup of all resources
+    await waitUntil(proc (): bool = outgoingSocket.isClosedAndCleanedUpAllResources())
+    check:
+      # main event loop handler should fire and clean up dangling future
+      writeFut.finished()
+    await outgoingSocket.destroyWait()
+
+  asyncTest "Receiving ack for fin packet should destroy socket and clean up all resources":
+    let q = newAsyncQueue[Packet]()
+    let initialRemoteSeq = 10'u16
+
+    let (outgoingSocket, initialPacket) = connectOutGoingSocket(initialRemoteSeq, q)
+
+    outgoingSocket.close()
+
+    let sendFin = await q.get()
+
+    check:
+      sendFin.header.pType == ST_FIN
+
+    let responseAck =
+      ackPacket(
+        initialRemoteSeq,
+        initialPacket.header.connectionId,
+        sendFin.header.seqNr,
+        testBufferSize,
+        0
+      )
+
+    await outgoingSocket.processPacket(responseAck)
+
+    await waitUntil(proc (): bool = not outgoingSocket.isConnected())
+
+    check:
+      not outgoingSocket.isConnected()
+
+    await waitUntil(proc (): bool = outgoingSocket.isClosedAndCleanedUpAllResources())
+
+    check:
+      outgoingSocket.isClosedAndCleanedUpAllResources()
+
+    await outgoingSocket.destroyWait()
+
+  asyncTest "Maximum payload size should be configurable":
+    let q = newAsyncQueue[Packet]()
+    let initalRemoteSeqNr = 10'u16
+    let d = generateByteArray(rng[], 5000)
+    let maxPayloadSize = 800'u32
+    let config = SocketConfig.init(payloadSize = maxPayloadSize)
+
+    let (outgoingSocket, initialPacket) = connectOutGoingSocket(initalRemoteSeqNr, q, cfg = config)
+
+    let wr = await outgoingSocket.write(d)
+
+    check:
+      wr.isOk()
+
+    # Initial max window should allow for at least 2 packets to go through
+    let dp1 = await q.get()
+    let dp2 = await q.get()
+
+    check:
+      dp1.header.pType == ST_DATA
+      len(dp1.payload) == int(maxPayloadSize)
+      dp2.header.pType == ST_DATA
+      len(dp2.payload) == int(maxPayloadSize)
 
     await outgoingSocket.destroyWait()

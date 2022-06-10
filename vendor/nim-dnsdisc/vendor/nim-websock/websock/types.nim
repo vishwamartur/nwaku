@@ -9,7 +9,11 @@
 
 {.push raises: [Defect].}
 
-import pkg/[chronos, chronos/streams/tlsstream, stew/results]
+import pkg/[chronos,
+            chronos/streams/tlsstream,
+            chronos/apps/http/httptable,
+            httputils,
+            stew/results]
 import ./utils
 
 const
@@ -92,6 +96,7 @@ type
     stream*: AsyncStream
     frame*: Frame
     first*: bool
+    reading*: bool
     proto*: string
 
   Ext* = ref object of RootObj
@@ -111,6 +116,26 @@ type
     name*: string
     factory*: ExtFactoryProc
     clientOffer*: string
+
+  # client exec order:
+  #   1. append to request header
+  #   2. verify response header
+  # server exec order:
+  #   1. verify request header
+  #   2. append to response header
+  # ------------------------------
+  # Handshake exec order:
+  # 1. client append to request header
+  # 2. server verify request header
+  # 3. server reply with response header
+  # 4. client verify response header from server
+  Hook* = ref object of RootObj
+    append*: proc(ctx: Hook,
+                  headers: var HttpTable): Result[void, string]
+                  {.gcsafe, raises: [Defect].}
+    verify*: proc(ctx: Hook,
+                  headers: HttpTable): Future[Result[void, string]]
+                  {.closure, gcsafe, raises: [Defect].}
 
   WebSocketError* = object of CatchableError
   WSMalformedHeaderError* = object of WebSocketError
@@ -133,6 +158,7 @@ type
   WSInvalidOpcodeError* = object of WebSocketError
   WSInvalidUTF8* = object of WebSocketError
   WSExtError* = object of WebSocketError
+  WSHookError* = object of WebSocketError
 
 const
   StatusNotUsed* = (StatusCodes(0)..StatusCodes(999))

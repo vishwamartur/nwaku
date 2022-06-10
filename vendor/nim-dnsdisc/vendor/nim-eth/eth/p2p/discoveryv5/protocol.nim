@@ -1,5 +1,5 @@
 # nim-eth - Node Discovery Protocol v5
-# Copyright (c) 2020-2021 Status Research & Development GmbH
+# Copyright (c) 2020-2022 Status Research & Development GmbH
 # Licensed and distributed under either of
 #   * MIT license (license terms in the root directory or at https://opensource.org/licenses/MIT).
 #   * Apache v2 license (license terms in the root directory or at https://www.apache.org/licenses/LICENSE-2.0).
@@ -52,24 +52,31 @@
 ## https://github.com/ethereum/devp2p/blob/master/discv5/discv5-rationale.md#115-guard-against-kademlia-implementation-flaws
 ##
 ## The result is that in an implementation which just stores buckets per
-## logarithmic distance, it simply needs to return the right bucket. In our
+## logarithmic distance, it simply needs to return the right bucket. In this
 ## split-bucket implementation, this cannot be done as such and thus the closest
 ## neighbours search is still done. And to do this, a reverse calculation of an
 ## id at given logarithmic distance is needed (which is why there is the
 ## `idAtDistance` proc). Next, nodes with invalid distances need to be filtered
 ## out to be compliant to the specification. This can most likely get further
-## optimised, but it sounds likely better to switch away from the split-bucket
-## approach. I believe that the main benefit it has is improved lookups
-## (due to no unbalanced branches), and it looks like this will be negated by
-## limiting the returned nodes to only the ones of the requested logarithmic
-## distance for the `FindNode` call.
+## optimised, but if it would turn out to be an issue, it is probably easier to
+## switch away from the split-bucket approach. The main benefit that the split
+## bucket approach has is improved lookups (less hops due to no unbalanced
+## branches), but lookup functionality of Kademlia is not something that is
+## typically used in discv5. It is mostly used as a secure mechanism to find &
+## select peers.
 
-## This `FindNode` change in discovery v5 will also have an effect on the
+## This `FindNode` change in discovery v5 could also have an effect on the
 ## efficiency of the network. Work will be moved from the receiver of
-## `FindNodes` to the requester. But this also means more network traffic,
-## as less nodes will potentially be passed around per `FindNode` call, and thus
-## more requests will be needed for a lookup (adding bandwidth and latency).
-## This might be a concern for mobile devices.
+## `FindNodes` to the requester. But this could also mean more network traffic,
+## as less nodes may potentially be passed around per `FindNode` call, and thus
+## more requests may be needed for a lookup (adding bandwidth and latency).
+## For this reason Discovery v5.1 has added the possibility to send a `FindNode`
+## request with multiple distances specified. This implementation will
+## underneath still use the neighbours search, specifically for the first
+## distance provided. This means that if distances with wide gaps are provided,
+## it could be that only nodes matching the first distance are returned.
+## When distance 0 is provided in the requested list of distances, only the own
+## ENR will be returned.
 
 {.push raises: [Defect].}
 
@@ -78,11 +85,13 @@ import
   stew/shims/net as stewNet, json_serialization/std/net,
   stew/[endians2, results], chronicles, chronos, stint, bearssl, metrics,
   ".."/../[rlp, keys, async_utils],
-  "."/[messages, encoding, node, routing_table, enr, random2, sessions, ip_vote, nodes_verification]
+  "."/[messages, encoding, node, routing_table, enr, random2, sessions, ip_vote,
+    nodes_verification]
 
 import nimcrypto except toHex
 
-export options, results, node, enr
+export
+  options, results, node, enr, encoding.maxDiscv5PacketSize
 
 declareCounter discovery_message_requests_outgoing,
   "Discovery protocol outgoing message requests", labels = ["response"]
@@ -116,6 +125,10 @@ const
   ## call
 
 type
+  DiscoveryConfig* = object
+    tableIpLimits*: TableIpLimits
+    bitsPerHop*: int
+
   Protocol* = ref object
     transp: DatagramTransport
     localNode*: Node
@@ -140,13 +153,20 @@ type
     node: Node
     message: seq[byte]
 
-  TalkProtocolHandler* = proc(p: TalkProtocol, request: seq[byte], fromId: NodeId, fromUdpAddress: Address): seq[byte]
+  TalkProtocolHandler* = proc(
+    p: TalkProtocol, request: seq[byte],
+    fromId: NodeId, fromUdpAddress: Address): seq[byte]
     {.gcsafe, raises: [Defect].}
 
   TalkProtocol* = ref object of RootObj
     protocolHandler*: TalkProtocolHandler
 
   DiscResult*[T] = Result[T, cstring]
+
+const
+  defaultDiscoveryConfig* = DiscoveryConfig(
+    tableIpLimits: DefaultTableIpLimits,
+    bitsPerHop: DefaultBitsPerHop)
 
 proc addNode*(d: Protocol, node: Node): bool =
   ## Add `Node` to discovery routing table.
@@ -224,7 +244,7 @@ proc updateRecord*(
   # TODO: Would it make sense to actively ping ("broadcast") to all the peers
   # we stored a handshake with in order to get that ENR updated?
 
-proc send(d: Protocol, a: Address, data: seq[byte]) =
+proc send*(d: Protocol, a: Address, data: seq[byte]) =
   let ta = initTAddress(a.ip, a.port)
   let f = d.transp.sendTo(ta, data)
   f.callback = proc(data: pointer) {.gcsafe.} =
@@ -332,13 +352,13 @@ proc handleMessage(d: Protocol, srcId: NodeId, fromAddr: Address,
   of ping:
     discovery_message_requests_incoming.inc()
     d.handlePing(srcId, fromAddr, message.ping, message.reqId)
-  of findnode:
+  of findNode:
     discovery_message_requests_incoming.inc()
-    d.handleFindNode(srcId, fromAddr, message.findnode, message.reqId)
-  of talkreq:
+    d.handleFindNode(srcId, fromAddr, message.findNode, message.reqId)
+  of talkReq:
     discovery_message_requests_incoming.inc()
-    d.handleTalkReq(srcId, fromAddr, message.talkreq, message.reqId)
-  of regtopic, topicquery:
+    d.handleTalkReq(srcId, fromAddr, message.talkReq, message.reqId)
+  of regTopic, topicQuery:
     discovery_message_requests_incoming.inc()
     discovery_message_requests_incoming.inc(labelValues = ["no_response"])
     trace "Received unimplemented message kind", kind = message.kind,
@@ -565,7 +585,7 @@ proc findNode*(d: Protocol, toNode: Node, distances: seq[uint16]):
     d.replaceNode(toNode)
     return err(nodes.error)
 
-proc talkreq*(d: Protocol, toNode: Node, protocol, request: seq[byte]):
+proc talkReq*(d: Protocol, toNode: Node, protocol, request: seq[byte]):
     Future[DiscResult[seq[byte]]] {.async.} =
   ## Send a discovery talkreq message.
   ##
@@ -575,9 +595,9 @@ proc talkreq*(d: Protocol, toNode: Node, protocol, request: seq[byte]):
   let resp = await d.waitMessage(toNode, reqId)
 
   if resp.isSome():
-    if resp.get().kind == talkresp:
+    if resp.get().kind == talkResp:
       d.routingTable.setJustSeen(toNode)
-      return ok(resp.get().talkresp.response)
+      return ok(resp.get().talkResp.response)
     else:
       d.replaceNode(toNode)
       discovery_message_requests_outgoing.inc(labelValues = ["invalid_response"])
@@ -603,7 +623,7 @@ proc lookupWorker(d: Protocol, destNode: Node, target: NodeId):
     Future[seq[Node]] {.async.} =
   let dists = lookupDistances(target, destNode.id)
 
-  # Instead of doing max `lookupRequestLimit` findNode requests,  make use
+  # Instead of doing max `lookupRequestLimit` findNode requests, make use
   # of the discv5.1 functionality to request nodes for multiple distances.
   let r = await d.findNode(destNode, dists)
   if r.isOk:
@@ -833,6 +853,22 @@ proc refreshLoop(d: Protocol) {.async.} =
   except CancelledError:
     trace "refreshLoop canceled"
 
+proc updateExternalIp*(d: Protocol, extIp: ValidIpAddress, udpPort: Port): bool =
+  var success = false
+  let
+    previous = d.localNode.address
+    res = d.localNode.update(d.privateKey,
+      ip = some(extIp), udpPort = some(udpPort))
+
+  if res.isErr:
+    warn "Failed updating ENR with newly discovered external address",
+      previous, newExtIp = extIp, newUdpPort = udpPort, error = res.error
+  else:
+    success = true
+    info "Updated ENR with newly discovered external address",
+      previous, newExtIp = extIp, newUdpPort = udpPort, uri = toURI(d.localNode.record)
+  return success
+
 proc ipMajorityLoop(d: Protocol) {.async.} =
   ## When `enrAutoUpdate` is enabled, the IP:port combination returned
   ## by the majority will be used to update the local ENR.
@@ -860,15 +896,9 @@ proc ipMajorityLoop(d: Protocol) {.async.} =
           let address = majority.get()
           let previous = d.localNode.address
           if d.enrAutoUpdate:
-            let res = d.localNode.update(d.privateKey,
-              ip = some(address.ip), udpPort = some(address.port))
-            if res.isErr:
-              warn "Failed updating ENR with newly discovered external address",
-                majority, previous, error = res.error
-            else:
+            let success = d.updateExternalIp(address.ip, address.port)
+            if success:
               discovery_enr_auto_update.inc()
-              info "Updated ENR with newly discovered external address",
-                majority, previous, uri = toURI(d.localNode.record)
           else:
             warn "Discovered new external address but ENR auto update is off",
               majority, previous
@@ -880,18 +910,32 @@ proc ipMajorityLoop(d: Protocol) {.async.} =
   except CancelledError:
     trace "ipMajorityLoop canceled"
 
-proc newProtocol*(privKey: PrivateKey,
-                  enrIp: Option[ValidIpAddress],
-                  enrTcpPort, enrUdpPort: Option[Port],
-                  localEnrFields: openArray[(string, seq[byte])] = [],
-                  bootstrapRecords: openArray[Record] = [],
-                  previousRecord = none[enr.Record](),
-                  bindPort: Port,
-                  bindIp = IPv4_any(),
-                  enrAutoUpdate = false,
-                  tableIpLimits = DefaultTableIpLimits,
-                  rng = newRng()):
-                  Protocol =
+func init*(
+    T: type DiscoveryConfig,
+    tableIpLimit: uint,
+    bucketIpLimit: uint,
+    bitsPerHop: int): T =
+
+  DiscoveryConfig(
+    tableIpLimits: TableIpLimits(
+      tableIpLimit: tableIpLimit,
+      bucketIpLimit: bucketIpLimit),
+    bitsPerHop: bitsPerHop
+  )
+
+proc newProtocol*(
+    privKey: PrivateKey,
+    enrIp: Option[ValidIpAddress],
+    enrTcpPort, enrUdpPort: Option[Port],
+    localEnrFields: openArray[(string, seq[byte])] = [],
+    bootstrapRecords: openArray[Record] = [],
+    previousRecord = none[enr.Record](),
+    bindPort: Port,
+    bindIp = IPv4_any(),
+    enrAutoUpdate = false,
+    config = defaultDiscoveryConfig,
+    rng = newRng()):
+    Protocol =
   # TODO: Tried adding bindPort = udpPort as parameter but that gave
   # "Error: internal error: environment misses: udpPort" in nim-beacon-chain.
   # Anyhow, nim-beacon-chain would also require some changes to support port
@@ -909,6 +953,11 @@ proc newProtocol*(privKey: PrivateKey,
   else:
     record = enr.Record.init(1, privKey, enrIp, enrTcpPort, enrUdpPort,
       extraFields).expect("Record within size limits")
+
+  debug "Initializing discovery v5",
+    enrIp, enrTcpPort, enrUdpPort, enrAutoUpdate,
+    bootstrapEnrs = bootstrapRecords, localEnrFields,
+    bindPort, bindIp
 
   info "ENR initialized", ip = enrIp, tcp = enrTcpPort, udp = enrUdpPort,
     seqNum = record.seqNum, uri = toURI(record)
@@ -933,7 +982,8 @@ proc newProtocol*(privKey: PrivateKey,
     bootstrapRecords: @bootstrapRecords,
     ipVote: IpVote.init(),
     enrAutoUpdate: enrAutoUpdate,
-    routingTable: RoutingTable.init(node, DefaultBitsPerHop, tableIpLimits, rng),
+    routingTable: RoutingTable.init(
+      node, config.bitsPerHop, config.tableIpLimits, rng),
     rng: rng)
 
 template listeningAddress*(p: Protocol): Address =

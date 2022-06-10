@@ -8,6 +8,8 @@ import
 export
   client
 
+{.push raises: [Defect].}
+
 logScope:
   topics = "JSONRPC-HTTP-CLIENT"
 
@@ -19,11 +21,14 @@ type
     httpSession: HttpSessionRef
     httpAddress: HttpResult[HttpAddress]
     maxBodySize: int
+    getHeaders: GetJsonRpcRequestHeaders
 
 const
   MaxHttpRequestSize = 128 * 1024 * 1024 # maximum size of HTTP body in octets
 
-proc new(T: type RpcHttpClient, maxBodySize = MaxHttpRequestSize, secure = false): T =
+proc new(
+    T: type RpcHttpClient, maxBodySize = MaxHttpRequestSize, secure = false,
+    getHeaders: GetJsonRpcRequestHeaders = nil): T =
   let httpSessionFlags = if secure:
     {
       HttpClientFlag.NoVerifyHost,
@@ -34,32 +39,64 @@ proc new(T: type RpcHttpClient, maxBodySize = MaxHttpRequestSize, secure = false
 
   T(
     maxBodySize: maxBodySize,
-    httpSession: HttpSessionRef.new(flags = httpSessionFlags)
+    httpSession: HttpSessionRef.new(flags = httpSessionFlags),
+    getHeaders: getHeaders
   )
 
-proc newRpcHttpClient*(maxBodySize = MaxHttpRequestSize, secure = false): RpcHttpClient =
-  RpcHttpClient.new(maxBodySize, secure)
+proc newRpcHttpClient*(
+    maxBodySize = MaxHttpRequestSize, secure = false,
+    getHeaders: GetJsonRpcRequestHeaders = nil): RpcHttpClient =
+  RpcHttpClient.new(maxBodySize, secure, getHeaders)
 
 method call*(client: RpcHttpClient, name: string,
              params: JsonNode): Future[Response]
-            {.async, gcsafe, raises: [Defect, CatchableError].} =
+            {.async, gcsafe.} =
   doAssert client.httpSession != nil
   if client.httpAddress.isErr:
     raise newException(RpcAddressUnresolvableError, client.httpAddress.error)
 
+  var headers =
+    if not isNil(client.getHeaders):
+      client.getHeaders()
+    else:
+      @[]
+  headers.add(("Content-Type", "application/json"))
+
   let
     id = client.getNextId()
     reqBody = $rpcCallNode(name, params, id)
-    req = HttpClientRequestRef.post(client.httpSession,
-                                    client.httpAddress.get,
-                                    body = reqBody.toOpenArrayByte(0, reqBody.len - 1))
-    res =
-      try:
-        await req.send()
-      except CancelledError as e:
-        raise e
-      except CatchableError as e:
-        raise (ref RpcPostError)(msg: "Failed to send POST Request with JSON-RPC.", parent: e)
+
+  var req: HttpClientRequestRef
+  var res: HttpClientResponseRef
+
+  defer:
+    # BEWARE!
+    # Using multiple defer statements in this function or multiple
+    # try/except blocks within a single defer statement doesn't
+    # produce the desired run-time code, so we use slightly bizzare
+    # code to ensure the exceptions safety of this function:
+    try:
+      var closeFutures = newSeq[Future[void]]()
+      if req != nil: closeFutures.add req.closeWait()
+      if res != nil: closeFutures.add res.closeWait()
+      if closeFutures.len > 0: await allFutures(closeFutures)
+    except CatchableError as err:
+      # TODO
+      # `close` functions shouldn't raise in general, but we first
+      # need to ensure this through exception tracking in Chronos
+      debug "Error closing JSON-RPC HTTP resuest/response", err = err.msg
+
+  req = HttpClientRequestRef.post(client.httpSession,
+                                  client.httpAddress.get,
+                                  body = reqBody.toOpenArrayByte(0, reqBody.len - 1),
+                                  headers = headers)
+  res =
+    try:
+      await req.send()
+    except CancelledError as e:
+      raise e
+    except CatchableError as e:
+      raise (ref RpcPostError)(msg: "Failed to send POST Request with JSON-RPC.", parent: e)
 
   if res.status < 200 or res.status >= 300: # res.status is not 2xx (success)
     raise newException(ErrorResponse, "POST Response: " & $res.status)
@@ -100,8 +137,7 @@ method call*(client: RpcHttpClient, name: string,
     # TODO: Provide more clarity regarding the failure here
     raise newException(InvalidResponse, "Invalid response")
 
-proc connect*(client: RpcHttpClient, url: string)
-             {.async, raises: [Defect].} =
+proc connect*(client: RpcHttpClient, url: string) {.async.} =
   client.httpAddress = client.httpSession.getAddress(url)
   if client.httpAddress.isErr:
     raise newException(RpcAddressUnresolvableError, client.httpAddress.error)
@@ -117,3 +153,7 @@ proc connect*(client: RpcHttpClient, address: string, port: Port, secure: bool) 
     client.httpAddress = res
   else:
     raise newException(RpcAddressUnresolvableError, res.error)
+
+method close*(client: RpcHttpClient) {.async.} =
+  if not client.httpSession.isNil:
+    await client.httpSession.closeWait()
