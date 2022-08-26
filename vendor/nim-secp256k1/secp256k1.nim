@@ -12,7 +12,7 @@
 import
   strformat, typetraits,
   stew/[byteutils, objects, results, ctops],
-  ./secp256k1_abi
+  ./secp256k1/abi
 
 from nimcrypto/utils import burnMem
 
@@ -21,7 +21,7 @@ export results
 # Implementation notes
 #
 # The goal of this wrapper is to create a thin layer on top of the API presented
-# in secp256k1_abi, exploiting some of its regulatities to make it slightly more
+# in secp256k1/abi, exploiting some of its regulatities to make it slightly more
 # convenient to use from Nim
 #
 # * Types like keys and signatures are guaranteed to hold valid values which
@@ -372,6 +372,9 @@ func fromRaw*(T: type SkRecoverableSignature, data: openArray[byte]): SkResult[T
       static(&"secp: recoverable signature must be {SkRawRecoverableSignatureSize} bytes"))
 
   let recid = cint(data[64])
+  if recid < 0 or recid > 3:
+    return err("secp: recoverable signature's recid must be >= 0 and <= 3")
+
   var sig {.noinit.}: secp256k1_ecdsa_recoverable_signature
   if secp256k1_ecdsa_recoverable_signature_parse_compact(
       secp256k1_context_no_precomp, addr sig, data.ptr0, recid) != 1:
