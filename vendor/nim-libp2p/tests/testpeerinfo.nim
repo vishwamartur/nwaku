@@ -1,6 +1,6 @@
 {.used.}
 
-import options, bearssl
+import options
 import chronos, stew/byteutils
 import ../libp2p/crypto/crypto,
        ../libp2p/multicodec,
@@ -26,7 +26,7 @@ suite "PeerInfo":
     
     let
       seckey = PrivateKey.random(rng[]).tryGet()
-      peerId = PeerID.init(seckey).get()
+      peerId = PeerId.init(seckey).get()
       multiAddresses = @[MultiAddress.init("/ip4/0.0.0.0/tcp/24").tryGet(), MultiAddress.init("/ip4/0.0.0.0/tcp/25").tryGet()]
       peerInfo = PeerInfo.new(seckey, multiAddresses)
     

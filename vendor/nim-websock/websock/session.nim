@@ -1,5 +1,5 @@
 ## nim-websock
-## Copyright (c) 2021 Status Research & Development GmbH
+## Copyright (c) 2021-2022 Status Research & Development GmbH
 ## Licensed under either of
 ##  * Apache License, version 2.0, ([LICENSE-APACHE](LICENSE-APACHE))
 ##  * MIT license ([LICENSE-MIT](LICENSE-MIT))
@@ -37,21 +37,21 @@ proc writeMessage*(ws: WSSession,
   let maxSize = ws.frameSize
   var i = 0
   while ws.readyState notin {ReadyState.Closing}:
-    let len = min(data.len, maxSize)
+    let canSend = min(data.len - i, maxSize)
     let frame = Frame(
-        fin: if (len + i >= data.len): true else: false,
+        fin: if (canSend + i >= data.len): true else: false,
         rsv1: false,
         rsv2: false,
         rsv3: false,
         opcode: if i > 0: Opcode.Cont else: opcode, # fragments have to be `Continuation` frames
         mask: ws.masked,
-        data: data[i ..< len + i],
+        data: data[i ..< canSend + i],
         maskKey: maskKey)
 
     let encoded = await frame.encode(extensions)
     await ws.stream.writer.write(encoded)
 
-    i += len
+    i += canSend
     if i >= data.len:
       break
 
@@ -153,7 +153,7 @@ proc handleClose*(
     code = StatusFulfilled
     reason = ""
 
-  case payLoad.len:
+  case payload.len:
   of 0:
     code = StatusNoStatus
   of 1:

@@ -1,7 +1,18 @@
+# Copyright (c) 2019-2022 Status Research & Development GmbH
+# Licensed and distributed under either of
+#   * MIT license: http://opensource.org/licenses/MIT
+#   * Apache License, Version 2.0: http://www.apache.org/licenses/LICENSE-2.0
+# at your option. This file may not be copied, modified, or distributed except according to those terms.
+
+{.used.}
+
 import
-  unittest, math,
+  unittest2, math,
   ../../stew/ptrops,
   ../../stew/ranges/[stackarrays]
+
+when (NimMajor, NimMinor) < (1, 4):
+  import ../../stew/shims/stddefects
 
 suite "Stack arrays":
   test "Basic operations work as expected":
@@ -25,14 +36,14 @@ suite "Stack arrays":
       cast[ptr int](offset(addr arr[0], 5))[] == 10
 
   test "Allocating with a negative size throws a RangeError":
-    expect RangeError:
+    expect RangeDefect:
       discard allocStackArray(string, -1)
 
   test "The array access is bounds-checked":
     var arr = allocStackArray(string, 3)
     arr[2] = "test"
     check arr[2] == "test"
-    expect RangeError:
+    expect RangeDefect:
       arr[3] = "another test"
 
   test "proof of stack allocation":

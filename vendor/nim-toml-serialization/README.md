@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![License: Apache](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![TOML](assets/badge-TOML.svg)](https://github.com/toml-lang/toml/releases/tag/1.0.0-rc.2)
+[![TOML](assets/badge-TOML.svg)](https://github.com/toml-lang/toml/releases/tag/1.0.0)
 ![Stability: experimental](https://img.shields.io/badge/stability-experimental-orange.svg)
 ![nimble](https://img.shields.io/badge/available%20on-nimble-yellow.svg?style=flat-square)
 ![Github action](https://github.com/status-im/nim-toml-serialization/workflows/CI/badge.svg)
@@ -26,6 +26,10 @@ family and provides several operation modes:
   - Allow skipping unknown fields using `TomlUnknownFields` flag.
     - Skipping unknown fields also done efficiently, no token produced.
       But skipped fields should contains valid TOML value or the parser will raise exception.
+  - Since v0.2.1 you can choose to use `OrderedTable` instead of `Table` when parsing into `TomlValueRef`
+    using `-d:tomlOrderedTable` compile time switch.
+  - Since v0.2.3, compile time decode/loadFile are allowed. It means you can initialize const value using
+    `decode` or `loadFile`. It also ok to use it inside static block or other nim VM code.
 
 ## Spec compliance
 nim-toml-serialization implements [v1.0.0](https://github.com/toml-lang/toml/releases/tag/1.0.0)
@@ -344,7 +348,7 @@ TomlTime contains subsecond field. The spec says the precision is implementation
 In nim-toml-serialization the default is 6 digits precision.
 Longer precision will be truncated by the parser.
 
-You can override this using compiler switch `-d:subsecondPrecision=numDigits`.
+You can override this using compiler switch `-d:tomlSubsecondPrecision=numDigits`.
 
 ## Installation
 

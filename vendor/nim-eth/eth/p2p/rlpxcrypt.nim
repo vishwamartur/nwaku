@@ -13,7 +13,7 @@
 {.push raises: [Defect].}
 
 import
-  nimcrypto, stew/results
+  nimcrypto/[bcmode, keccak, rijndael, utils], stew/results
 from auth import ConnectionSecret
 
 export results
@@ -199,6 +199,14 @@ proc decryptHeader*(c: var SecretState, data: openArray[byte],
     # return self.aes_dec.update(header_ciphertext)
     c.aesdec.decrypt(toa(data, 0, RlpHeaderLength), output)
     result = ok()
+
+proc decryptHeaderAndGetMsgSize*(c: var SecretState,
+                                 encryptedHeader: openArray[byte],
+                                 outSize: var int,
+                                 outHeader: var RlpxHeader): RlpxResult[void] =
+  result = decryptHeader(c, encryptedHeader, outHeader)
+  if result.isOk():
+    outSize = outHeader.getBodySize
 
 proc decryptHeaderAndGetMsgSize*(c: var SecretState,
                                  encryptedHeader: openArray[byte],

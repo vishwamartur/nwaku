@@ -1,15 +1,18 @@
-Hi all, welcome to the first article of the nim-libp2p's tutorial series!
+# Simple ping tutorial
 
-_This tutorial is for everyone who is interested in building peer-to-peer chatting applications. No Nim programming experience is needed._
+Hi all, welcome to the first nim-libp2p tutorial!
+
+!!! tips ""
+    This tutorial is for everyone who is interested in building peer-to-peer applications. No Nim programming experience is needed.
 
 To give you a quick overview, **Nim** is the programming language we are using and **nim-libp2p** is the Nim implementation of [libp2p](https://libp2p.io/), a modular library that enables the development of peer-to-peer network applications.
 
 Hope you'll find it helpful in your journey of learning. Happy coding! ;)
 
-# Before you start
+## Before you start
 The only prerequisite here is [Nim](https://nim-lang.org/), the programming language with a Python-like syntax and a performance similar to C. Detailed information can be found [here](https://nim-lang.org/docs/tut1.html).
 
-Install Nim via their official website: [https://nim-lang.org/install.html](https://nim-lang.org/install.html)  
+Install Nim via their [official website](https://nim-lang.org/install.html).
 Check Nim's installation via `nim --version` and its package manager Nimble via `nimble --version`.
 
 You can now install the latest version of `nim-libp2p`:
@@ -17,25 +20,24 @@ You can now install the latest version of `nim-libp2p`:
 nimble install libp2p@#master
 ```
 
-# A simple ping application
+## A simple ping application
 We'll start by creating a simple application, which is starting two libp2p [switch](https://docs.libp2p.io/concepts/stream-multiplexing/#switch-swarm), and pinging each other using the [Ping](https://docs.libp2p.io/concepts/protocols/#ping) protocol.
 
-_TIP: You can extract the code from this tutorial by running `nim c -r tools/markdown_runner.nim examples/tutorial_1_connect.md` in the libp2p folder!_
+!!! tips ""
+    You can extract the code from this tutorial by running `nim c -r tools/markdown_runner.nim examples/tutorial_1_connect.md` in the libp2p folder!
 
 Let's create a `part1.nim`, and import our dependencies:
 ```nim
-import bearssl
 import chronos
 
 import libp2p
 import libp2p/protocols/ping
 ```
-[bearssl](https://github.com/status-im/nim-bearssl) is used as a [cryptographic pseudorandom number generator](https://en.wikipedia.org/wiki/Cryptographically-secure_pseudorandom_number_generator)  
 [chronos](https://github.com/status-im/nim-chronos) the asynchronous framework used by `nim-libp2p`
 
 Next, we'll create an helper procedure to create our switches. A switch needs a bit of configuration, and it will be easier to do this configuration only once:
 ```nim
-proc createSwitch(ma: MultiAddress, rng: ref BrHmacDrbgContext): Switch =
+proc createSwitch(ma: MultiAddress, rng: ref HmacDrbgContext): Switch =
   var switch = SwitchBuilder
     .new()
     .withRng(rng)       # Give the application RNG
@@ -60,17 +62,17 @@ proc main() {.async, gcsafe.} =
     localAddress = MultiAddress.init("/ip4/0.0.0.0/tcp/0").tryGet()
     pingProtocol = Ping.new(rng=rng)
 ```
-We created some variables that we'll need for the rest of the application: the global `rng` instance, our `localAddress`, and an instance of the `Ping` protocol.  
+We created some variables that we'll need for the rest of the application: the global `rng` instance, our `localAddress`, and an instance of the `Ping` protocol.
 The address is in the [MultiAddress](https://github.com/multiformats/multiaddr) format. The port `0` means "take any port available".
 
-`tryGet` is procedure which is part of the [nim-result](https://github.com/arnetheduck/nim-result/), that will throw an exception if the supplied MultiAddress is not valid.
+`tryGet` is procedure which is part of [nim-result](https://github.com/arnetheduck/nim-result/), that will throw an exception if the supplied MultiAddress is invalid.
 
 We can now create our two switches:
 ```nim
   let
     switch1 = createSwitch(localAddress, rng)
     switch2 = createSwitch(localAddress, rng)
-    
+
   switch1.mount(pingProtocol)
 
   await switch1.start()
@@ -78,7 +80,7 @@ We can now create our two switches:
 ```
 We've **mounted** the `pingProtocol` on our first switch. This means that the first switch will actually listen for any ping requests coming in, and handle them accordingly.
 
-Now that we've started the nodes, they are listening for incoming peers.  
+Now that we've started the nodes, they are listening for incoming peers.
 We can find out which port was attributed, and the resulting local addresses, by using `switch1.peerInfo.addrs`.
 
 We'll **dial** the first switch from the second one, by specifying it's **Peer ID**, it's **MultiAddress** and the **`Ping` protocol codec**:
@@ -97,7 +99,7 @@ We now have a `Ping` connection setup between the second and the first switch, w
 And that's it! Just a little bit of cleanup: shutting down the switches, waiting for them to stop, and we'll call our `main` procedure:
 ```nim
   await allFutures(switch1.stop(), switch2.stop()) # close connections and shutdown all transports
-  
+
 waitFor(main())
 ```
 

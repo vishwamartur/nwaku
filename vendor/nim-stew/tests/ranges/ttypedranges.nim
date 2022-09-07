@@ -1,6 +1,18 @@
+# Copyright (c) 2019-2022 Status Research & Development GmbH
+# Licensed and distributed under either of
+#   * MIT license: http://opensource.org/licenses/MIT
+#   * Apache License, Version 2.0: http://www.apache.org/licenses/LICENSE-2.0
+# at your option. This file may not be copied, modified, or distributed except according to those terms.
+
+{.used.}
+
 import
-  unittest, sets,
+  unittest2, sets,
   ../../stew/ranges/[typedranges, ptr_arith]
+
+when (NimMajor, NimMinor) < (1, 4):
+  import ../../stew/shims/stddefects
+
 
 suite "Typed ranges":
   test "basic stuff":
@@ -161,7 +173,7 @@ suite "Typed ranges":
       try:
         a.advance(b)
         res = 1
-      except IndexError:
+      except IndexDefect:
         res = 2
       res
 
@@ -213,7 +225,7 @@ suite "Typed ranges":
       try:
         a.advance(b)
         res = 1
-      except IndexError:
+      except IndexDefect:
         res = 2
       res
 

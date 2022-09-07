@@ -13,8 +13,8 @@
 {.push raises: [Defect].}
 
 import
-  nimcrypto/[rijndael, keccak, utils], bearssl,
-  stew/[byteutils, endians2, objects, results],
+  nimcrypto/[rijndael, keccak, utils],
+  stew/[arrayops, byteutils, endians2, objects, results],
   ".."/[keys, rlp],
   ./ecies
 
@@ -88,19 +88,14 @@ type
 template toa(a, b, c: untyped): untyped =
   toOpenArray((a), (b), (b) + (c) - 1)
 
-proc `xor`[N: static int](a, b: array[N, byte]): array[N, byte] =
-  for i in 0 ..< len(a):
-    result[i] = a[i] xor b[i]
-
 proc mapErrTo[T, E](r: Result[T, E], v: static AuthError): AuthResult[T] =
   r.mapErr(proc (e: E): AuthError = v)
 
-proc tryInit*(
-    T: type Handshake, rng: var BrHmacDrbgContext, host: KeyPair,
+proc init*(
+    T: type Handshake, rng: var HmacDrbgContext, host: KeyPair,
     flags: set[HandshakeFlag] = {Initiator},
-    version: uint8 = SupportedRlpxVersion): AuthResult[T] =
+    version: uint8 = SupportedRlpxVersion): T =
   ## Create new `Handshake` object.
-
   var
     initiatorNonce: Nonce
     responderNonce: Nonce
@@ -109,12 +104,12 @@ proc tryInit*(
 
   if Initiator in flags:
     expectedLength = AckMessageV4Length
-    brHmacDrbgGenerate(rng, initiatorNonce)
+    rng.generate(initiatorNonce)
   else:
     expectedLength = AuthMessageV4Length
-    brHmacDrbgGenerate(rng, responderNonce)
+    rng.generate(responderNonce)
 
-  return ok(T(
+  return T(
     version: version,
     flags: flags,
     host: host,
@@ -122,10 +117,10 @@ proc tryInit*(
     initiatorNonce: initiatorNonce,
     responderNonce: responderNonce,
     expectedLength: expectedLength
-  ))
+  )
 
 proc authMessagePreEIP8(h: var Handshake,
-                        rng: var BrHmacDrbgContext,
+                        rng: var HmacDrbgContext,
                         pubkey: PublicKey,
                         output: var openArray[byte],
                         outlen: var int,
@@ -164,7 +159,7 @@ proc authMessagePreEIP8(h: var Handshake,
   ok()
 
 proc authMessageEIP8(h: var Handshake,
-                     rng: var BrHmacDrbgContext,
+                     rng: var HmacDrbgContext,
                      pubkey: PublicKey,
                      output: var openArray[byte],
                      outlen: var int,
@@ -173,7 +168,6 @@ proc authMessageEIP8(h: var Handshake,
   ## Create EIP8 authentication message.
   var
     buffer: array[PlainAuthMessageMaxEIP8, byte]
-    padsize: array[1, byte]
 
   doAssert(EIP8 in h.flags)
   outlen = 0
@@ -193,29 +187,33 @@ proc authMessageEIP8(h: var Handshake,
   let
     pencsize = eciesEncryptedLength(len(payload))
 
-  while true:
-    brHmacDrbgGenerate(rng, padsize)
-    if int(padsize[0]) > (AuthMessageV4Length - (pencsize + 2)):
-      break
+  var padsize = int(rng.generate(byte)) # aka rand(max)
+  while padsize <= (AuthMessageV4Length - (pencsize + 2)):
+    padsize = int(rng.generate(byte))
+
   # It is possible to make packet size constant by uncommenting this line
   # padsize = 24
-  let wosize = pencsize + int(padsize[0])
-  let fullsize = wosize + 2
-  brHmacDrbgGenerate(
-    rng, toa(buffer, PlainAuthMessageEIP8Length, int(padsize[0])))
+  let
+    wosize = pencsize + padsize
+    fullsize = wosize + 2
+
+  rng.generate(toa(buffer, PlainAuthMessageEIP8Length, padsize))
+
   if encrypt:
-    copyMem(addr buffer[0], addr payload[0], len(payload))
     if len(output) < fullsize:
       return err(BufferOverrun)
+
+    copyMem(addr buffer[0], addr payload[0], len(payload))
+
     let wosizeBE = uint16(wosize).toBytesBE()
     output[0..<2] = wosizeBE
-    if eciesEncrypt(rng, toa(buffer, 0, len(payload) + int(padsize[0])),
+    if eciesEncrypt(rng, toa(buffer, 0, len(payload) + padsize),
                     toa(output, 2, wosize), pubkey,
                     toa(output, 0, 2)).isErr:
       return err(EciesError)
     outlen = fullsize
   else:
-    let plainsize = len(payload) + int(padsize[0])
+    let plainsize = len(payload) + padsize
     if len(output) < plainsize:
       return err(BufferOverrun)
     copyMem(addr output[0], addr buffer[0], plainsize)
@@ -224,7 +222,7 @@ proc authMessageEIP8(h: var Handshake,
   ok()
 
 proc ackMessagePreEIP8(h: var Handshake,
-                       rng: var BrHmacDrbgContext,
+                       rng: var HmacDrbgContext,
                        output: var openArray[byte],
                        outlen: var int,
                        flag: byte = 0,
@@ -251,7 +249,7 @@ proc ackMessagePreEIP8(h: var Handshake,
   ok()
 
 proc ackMessageEIP8(h: var Handshake,
-                    rng: var BrHmacDrbgContext,
+                    rng: var HmacDrbgContext,
                     output: var openArray[byte],
                     outlen: var int,
                     flag: byte = 0,
@@ -268,7 +266,7 @@ proc ackMessageEIP8(h: var Handshake,
   outlen = 0
   let pencsize = eciesEncryptedLength(len(payload))
   while true:
-    brHmacDrbgGenerate(rng, padsize)
+    generate(rng, padsize)
     if int(padsize[0]) > (AckMessageV4Length - (pencsize + 2)):
       break
   # It is possible to make packet size constant by uncommenting this line
@@ -276,8 +274,7 @@ proc ackMessageEIP8(h: var Handshake,
   let wosize = pencsize + int(padsize[0])
   let fullsize = wosize + 2
   if int(padsize[0]) > 0:
-    brHmacDrbgGenerate(
-      rng, toa(buffer, PlainAckMessageEIP8Length, int(padsize[0])))
+    rng.generate(toa(buffer, PlainAckMessageEIP8Length, int(padsize[0])))
 
   copyMem(addr buffer[0], addr payload[0], len(payload))
   if encrypt:
@@ -312,7 +309,7 @@ template ackSize*(h: Handshake, encrypt: bool = true): int =
   else:
     if encrypt: (AckMessageV4Length) else: (PlainAckMessageV4Length)
 
-proc authMessage*(h: var Handshake, rng: var BrHmacDrbgContext,
+proc authMessage*(h: var Handshake, rng: var HmacDrbgContext,
                   pubkey: PublicKey,
                   output: var openArray[byte],
                   outlen: var int, flag: byte = 0,
@@ -324,7 +321,7 @@ proc authMessage*(h: var Handshake, rng: var BrHmacDrbgContext,
   else:
     authMessagePreEIP8(h, rng, pubkey, output, outlen, flag, encrypt)
 
-proc ackMessage*(h: var Handshake, rng: var BrHmacDrbgContext,
+proc ackMessage*(h: var Handshake, rng: var HmacDrbgContext,
                  output: var openArray[byte],
                  outlen: var int, flag: byte = 0,
                  encrypt: bool = true): AuthResult[void] =

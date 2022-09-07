@@ -1,13 +1,16 @@
-## Nim-LibP2P
-## Copyright (c) 2019 Status Research & Development GmbH
-## Licensed under either of
-##  * Apache License, version 2.0, ([LICENSE-APACHE](LICENSE-APACHE))
-##  * MIT license ([LICENSE-MIT](LICENSE-MIT))
-## at your option.
-## This file may not be copied, modified, or distributed except according to
-## those terms.
+# Nim-LibP2P
+# Copyright (c) 2022 Status Research & Development GmbH
+# Licensed under either of
+#  * Apache License, version 2.0, ([LICENSE-APACHE](LICENSE-APACHE))
+#  * MIT license ([LICENSE-MIT](LICENSE-MIT))
+# at your option.
+# This file may not be copied, modified, or distributed except according to
+# those terms.
 
-{.push raises: [Defect].}
+when (NimMajor, NimMinor) < (1, 4):
+  {.push raises: [Defect].}
+else:
+  {.push raises: [].}
 
 import std/strformat
 import stew/byteutils
@@ -108,7 +111,7 @@ method pushEof*(s: BufferStream) {.base, async.} =
   finally:
     s.pushing = false
 
-method atEof*(s: BufferStream): bool {.raises: [Defect].} =
+method atEof*(s: BufferStream): bool =
   s.isEof and s.readBuf.len == 0
 
 method readOnce*(s: BufferStream,
@@ -134,6 +137,10 @@ method readOnce*(s: BufferStream,
     let buf =
       try:
         await s.readQueue.popFirst()
+      except CancelledError as exc:
+        # Not very efficient, but shouldn't happen often
+        s.readBuf.assign(@(p.toOpenArray(0, rbytes - 1)) & @(s.readBuf.data))
+        raise exc
       except CatchableError as exc:
         # When an exception happens here, the Bufferstream is effectively
         # broken and no more reads will be valid - for now, return EOF if it's

@@ -1,3 +1,4 @@
+
 # nim-eth
 # Copyright (c) 2018-2021 Status Research & Development GmbH
 # Licensed and distributed under either of
@@ -7,9 +8,13 @@
 
 import
   std/[deques, tables],
-  bearssl, chronos,
-  ".."/../[rlp, keys], ".."/../common/eth_types,
+  chronos,
+  stew/results,
+  ../../common/chaindb,
+  ".."/../[rlp, keys],
   ".."/[enode, kademlia, discovery, rlpxcrypt]
+
+export chaindb
 
 const
   useSnappy* = defined(useSnappy)
@@ -25,6 +30,8 @@ type
     keys*: KeyPair
     address*: Address # The external address that the node will be advertising
     peerPool*: PeerPool
+    bindIp*: IpAddress
+    bindPort*: Port
 
     # Private fields:
     capabilities*: seq[Capability]
@@ -34,7 +41,7 @@ type
     discovery*: DiscoveryProtocol
     when useSnappy:
       protocolVersion*: uint
-    rng*: ref BrHmacDrbgContext
+    rng*: ref HmacDrbgContext
 
   Peer* = ref object
     remote*: Node
@@ -64,7 +71,6 @@ type
     connectedNodes*: Table[Node, Peer]
     connectingNodes*: HashSet[Node]
     running*: bool
-    listenPort*: Port
     observers*: Table[int, PeerObserver]
 
   PeerObserver* = object

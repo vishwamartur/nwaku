@@ -52,7 +52,8 @@ proc init*(T: type TomlReader,
   TomlReader.init(stream, TomlCaseSensitive, flags)
 
 proc moveToKey*(r: var TomlReader, key: string, tomlCase: TomlCase) =
-  r.state = r.lex.parseToml(key, tomlCase)
+  if key.len > 0:
+    r.state = r.lex.parseToml(key, tomlCase)
 
 proc setParsed[T: enum](e: var T, s: string) =
   e = parseEnum[T](s)
@@ -151,7 +152,11 @@ template parseInlineTable(r: var TomlReader, key: untyped, body: untyped) =
 
       next = nonws(r.lex, skipNoLf)
       if next == '}':
-        raiseIllegalChar(r.lex, ',')
+        if TomlInlineTableTrailingComma in r.lex.flags:
+          eatChar
+          break
+        else:
+          raiseIllegalChar(r.lex, ',')
     of '\n':
       if TomlInlineTableNewline in r.lex.flags:
         eatChar
@@ -211,6 +216,7 @@ template parseListImpl*(r: var TomlReader, index, body: untyped) =
       #  "[b,]")
       next = nonws(r.lex, skipLf)
       if next == ']':
+        eatChar
         break
     else:
       body
@@ -371,7 +377,11 @@ proc decodeInlineTable[T](r: var TomlReader, value: var T) =
 
         next = nonws(r.lex, skipNoLf)
         if next == '}':
-          raiseIllegalChar(r.lex, ',')
+          if TomlInlineTableTrailingComma in r.lex.flags:
+            eatChar
+            break
+          else:
+            raiseIllegalChar(r.lex, ',')
       of '\n':
         if TomlInlineTableNewline in r.lex.flags:
           eatChar

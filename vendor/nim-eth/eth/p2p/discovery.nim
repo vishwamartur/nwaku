@@ -9,7 +9,7 @@
 
 import
   std/times,
-  chronos, stint, nimcrypto/keccak, chronicles, bearssl,
+  chronos, stint, nimcrypto/keccak, chronicles,
   stew/[objects, results],
   ".."/[keys, rlp],
   "."/[kademlia, enode]
@@ -33,21 +33,25 @@ type
     privKey: PrivateKey
     address: Address
     bootstrapNodes*: seq[Node]
-    thisNode*: Node
+    localNode*: Node
     kademlia*: KademliaProtocol[DiscoveryProtocol]
     transp: DatagramTransport
+    bindIp: IpAddress
+    bindPort: Port
 
   CommandId = enum
     cmdPing = 1
     cmdPong = 2
     cmdFindNode = 3
     cmdNeighbours = 4
+    cmdENRRequest = 5
+    cmdENRResponse = 6
 
   DiscProtocolError* = object of CatchableError
 
   DiscResult*[T] = Result[T, cstring]
 
-const MinListLen: array[CommandId, int] = [4, 3, 2, 2]
+const MinListLen: array[CommandId, int] = [4, 3, 2, 2, 1, 2]
 
 proc append*(w: var RlpWriter, a: IpAddress) =
   case a.family
@@ -154,16 +158,26 @@ proc sendNeighbours*(d: DiscoveryProtocol, node: Node, neighbours: seq[Node]) =
 
   if nodes.len != 0: flush()
 
-proc newDiscoveryProtocol*(privKey: PrivateKey, address: Address,
-                           bootstrapNodes: openArray[ENode], rng = newRng()
-                           ): DiscoveryProtocol =
-  result.new()
-  result.privKey = privKey
-  result.address = address
-  result.bootstrapNodes = newSeqOfCap[Node](bootstrapNodes.len)
-  for n in bootstrapNodes: result.bootstrapNodes.add(newNode(n))
-  result.thisNode = newNode(privKey.toPublicKey(), address)
-  result.kademlia = newKademliaProtocol(result.thisNode, result, rng = rng)
+proc newDiscoveryProtocol*(
+    privKey: PrivateKey, address: Address,
+    bootstrapNodes: openArray[ENode],
+    bindPort: Port, bindIp = IPv4_any(),
+    rng = newRng()): DiscoveryProtocol =
+  let
+    localNode = newNode(privKey.toPublicKey(), address)
+    discovery = DiscoveryProtocol(
+      privKey: privKey,
+      address: address,
+      localNode: localNode,
+      bindIp: bindIp,
+      bindPort: bindPort)
+    kademlia = newKademliaProtocol(localNode, discovery, rng = rng)
+
+  discovery.kademlia = kademlia
+
+  for n in bootstrapNodes: discovery.bootstrapNodes.add(newNode(n))
+
+  discovery
 
 proc recvPing(d: DiscoveryProtocol, node: Node, msgHash: MDigest[256])
     {.raises: [ValueError, Defect].} =
@@ -255,6 +269,9 @@ proc receive*(d: DiscoveryProtocol, a: Address, msg: openArray[byte])
           d.recvNeighbours(node, payload)
         of cmdFindNode:
           d.recvFindNode(node, payload)
+        of cmdENRRequest, cmdENRResponse:
+          # TODO: Implement EIP-868
+          discard
       else:
         trace "Received msg already expired", cmdId, a
     else:
@@ -281,8 +298,8 @@ proc processClient(transp: DatagramTransport, raddr: TransportAddress):
     debug "Receive failed", exc = e.name, err = e.msg
 
 proc open*(d: DiscoveryProtocol) {.raises: [Defect, CatchableError].} =
-  # TODO allow binding to specific IP / IPv6 / etc
-  let ta = initTAddress(IPv4_any(), d.address.udpPort)
+  # TODO: allow binding to both IPv4 and IPv6
+  let ta = initTAddress(d.bindIp, d.bindPort)
   d.transp = newDatagramTransport(processClient, udata = d, local = ta)
 
 proc lookupRandom*(d: DiscoveryProtocol): Future[seq[Node]] =
@@ -341,10 +358,10 @@ when isMainModule:
   let listenPort = Port(30310)
   var address = Address(udpPort: listenPort, tcpPort: listenPort)
   address.ip.family = IpAddressFamily.IPv4
-  let discovery = newDiscoveryProtocol(privkey, address, bootnodes)
+  let discovery = newDiscoveryProtocol(privkey, address, bootnodes, listenPort)
 
-  echo discovery.thisNode.node.pubkey
-  echo "this_node.id: ", discovery.thisNode.id.toHex()
+  echo discovery.localNode.node.pubkey
+  echo "this_node.id: ", discovery.localNode.id.toHex()
 
   discovery.open()
 

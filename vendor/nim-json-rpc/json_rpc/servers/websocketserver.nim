@@ -10,51 +10,34 @@ logScope:
   topics = "JSONRPC-WS-SERVER"
 
 type
-  RpcWebSocketServerAuth* = ##\
-    ## Authenticator function. On error, the resulting `HttpCode` is sent back\
-    ## to the client and the `string` argument will be used in an exception,\
-    ## following.
-    proc(req: HttpTable): Result[void,(HttpCode,string)]
-      {.gcsafe, raises: [Defect].}
+  # WsAuthHook: handle CORS, JWT auth, etc. in HTTP header
+  # before actual request processed
+  # return value:
+  # - true: auth success, continue execution
+  # - false: could not authenticate, stop execution
+  #   and return the response
+  WsAuthHook* = proc(request: HttpRequest): Future[bool]
+                  {.gcsafe, raises: [Defect, CatchableError].}
 
   RpcWebSocketServer* = ref object of RpcServer
-    authHook: Option[RpcWebSocketServerAuth] ## Authorization call back handler
     server: StreamServer
     wsserver: WSServer
-
-  HookEx = ref object of Hook
-    handler: RpcWebSocketServerAuth ## from `RpcWebSocketServer`
-    request: HttpRequest            ## current request needed for error response
-
-proc authWithHtCodeResponse(ctx: Hook, headers: HttpTable):
-            Future[Result[void, string]] {.async, gcsafe, raises: [Defect].} =
-  ## Wrapper around authorization handler which is stored in the
-  ## extended `Hook` object.
-  let
-    cty = ctx.HookEx
-    rc = cty.handler(headers)
-  if rc.isErr:
-    await cty.request.stream.writer.sendError(rc.error[0])
-    return err(rc.error[1])
-  return ok()
+    authHooks: seq[WsAuthHook]
 
 proc handleRequest(rpc: RpcWebSocketServer, request: HttpRequest) {.async.} =
   trace "Handling request:", uri = request.uri.path
   trace "Initiating web socket connection."
 
-  # Authorization handler constructor (if enabled)
-  var hooks: seq[Hook]
-  if rpc.authHook.isSome:
-    let hookEx = HookEx(
-      append: nil,
-      request: request,
-      handler: rpc.authHook.get,
-      verify: authWithHtCodeResponse)
-    hooks = @[hookEx.Hook]
+  # if hook result is false,
+  # it means we should return immediately
+  for hook in rpc.authHooks:
+    let res = await hook(request)
+    if not res:
+      return
 
   try:
     let server = rpc.wsserver
-    let ws = await server.handleRequest(request, hooks = hooks)
+    let ws = await server.handleRequest(request)
     if ws.readyState != ReadyState.Open:
       error "Failed to open websocket connection"
       return
@@ -94,25 +77,27 @@ proc handleRequest(rpc: RpcWebSocketServer, request: HttpRequest) {.async.} =
     error "WebSocket error:", exception = exc.msg
 
 proc initWebsocket(rpc: RpcWebSocketServer, compression: bool,
-                   authHandler: Option[RpcWebSocketServerAuth]) =
+                   authHooks: seq[WsAuthHook],
+                   rng: Rng) =
   if compression:
     let deflateFactory = deflateFactory()
-    rpc.wsserver = WSServer.new(factories = [deflateFactory])
+    rpc.wsserver = WSServer.new(factories = [deflateFactory], rng = rng)
   else:
-    rpc.wsserver = WSServer.new()
-  rpc.authHook = authHandler
+    rpc.wsserver = WSServer.new(rng = rng)
+  rpc.authHooks = authHooks
 
 proc newRpcWebSocketServer*(
   address: TransportAddress,
   compression: bool = false,
   flags: set[ServerFlags] = {ServerFlags.TcpNoDelay,ServerFlags.ReuseAddr},
-  authHandler = none(RpcWebSocketServerAuth)): RpcWebSocketServer =
+  authHooks: seq[WsAuthHook] = @[],
+  rng = newRng()): RpcWebSocketServer =
 
   var server = new(RpcWebSocketServer)
   proc processCallback(request: HttpRequest): Future[void] =
     handleRequest(server, request)
 
-  server.initWebsocket(compression, authHandler)
+  server.initWebsocket(compression, authHooks, rng)
   server.server = HttpServer.create(
     address,
     processCallback,
@@ -126,13 +111,15 @@ proc newRpcWebSocketServer*(
   port: Port,
   compression: bool = false,
   flags: set[ServerFlags] = {ServerFlags.TcpNoDelay, ServerFlags.ReuseAddr},
-  authHandler = none(RpcWebSocketServerAuth)): RpcWebSocketServer =
+  authHooks: seq[WsAuthHook] = @[],
+  rng = newRng()): RpcWebSocketServer =
 
   newRpcWebSocketServer(
     initTAddress(host, port),
     compression,
     flags,
-    authHandler
+    authHooks,
+    rng
   )
 
 proc newRpcWebSocketServer*(
@@ -145,13 +132,14 @@ proc newRpcWebSocketServer*(
   tlsFlags: set[TLSFlags] = {},
   tlsMinVersion = TLSVersion.TLS12,
   tlsMaxVersion = TLSVersion.TLS12,
-  authHandler = none(RpcWebSocketServerAuth)): RpcWebSocketServer =
+  authHooks: seq[WsAuthHook] = @[],
+  rng = newRng()): RpcWebSocketServer =
 
   var server = new(RpcWebSocketServer)
   proc processCallback(request: HttpRequest): Future[void] =
     handleRequest(server, request)
 
-  server.initWebsocket(compression, authHandler)
+  server.initWebsocket(compression, authHooks, rng)
   server.server = TlsHttpServer.create(
     address,
     tlsPrivateKey,
@@ -176,7 +164,8 @@ proc newRpcWebSocketServer*(
   tlsFlags: set[TLSFlags] = {},
   tlsMinVersion = TLSVersion.TLS12,
   tlsMaxVersion = TLSVersion.TLS12,
-  authHandler = none(RpcWebSocketServerAuth)): RpcWebSocketServer =
+  authHooks: seq[WsAuthHook] = @[],
+  rng = newRng()): RpcWebSocketServer =
 
   newRpcWebSocketServer(
     initTAddress(host, port),
@@ -187,7 +176,8 @@ proc newRpcWebSocketServer*(
     tlsFlags,
     tlsMinVersion,
     tlsMaxVersion,
-    authHandler
+    authHooks,
+    rng
   )
 
 proc start*(server: RpcWebSocketServer) =

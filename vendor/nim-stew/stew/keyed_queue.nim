@@ -1,5 +1,5 @@
 # Nimbus
-# Copyright (c) 2018 Status Research & Development GmbH
+# Copyright (c) 2018-2022 Status Research & Development GmbH
 # Licensed under either of
 #  * Apache License, version 2.0, ([LICENSE-APACHE](LICENSE-APACHE) or
 #    http://www.apache.org/licenses/LICENSE-2.0)
@@ -29,7 +29,10 @@ import
 export
   results
 
-{.push raises: [Defect].}
+when (NimMajor, NimMinor) < (1, 4):
+  {.push raises: [Defect].}
+else:
+  {.push raises: [].}
 
 type
   KeyedQueueItem*[K,V] = object ##\
@@ -380,14 +383,12 @@ proc delete*[K,V](rq: var KeyedQueue[K,V]; key: K):
   ## Delete the item with key `key` from the queue and returns the key-value
   ## item pair just deleted (if any).
   if rq.tab.hasKey(key):
-    try:
+    noKeyError("delete"):
       let kvp = KeyedQueuePair[K,V](
         key: key,
         data: rq.tab[key].data)
       rq.deleteImpl(key)
       return ok(kvp)
-    except KeyError:
-      raiseAssert "We've checked that the key is present above"
   err()
 
 proc del*[K,V](rq: var KeyedQueue[K,V]; key: K) =
@@ -773,7 +774,7 @@ iterator nextKeys*[K,V](rq: var KeyedQueue[K,V]): K =
   ## :Note:
   ##    When running in a loop it is *ok* to delete the current item and all
   ##    the items already visited. Items not visited yet must not be deleted
-  ##    as the loop would be come unpredictable, then.
+  ##    as the loop would become unpredictable.
   if 0 < rq.tab.len:
     var
       key = rq.kFirst

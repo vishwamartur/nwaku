@@ -103,9 +103,7 @@ template endRecordField*(w: var JsonWriter) =
   endRecord(w)
   w.state = AfterField
 
-proc writeIterable*(w: var JsonWriter, collection: auto) =
-  mixin writeValue
-
+iterator stepwiseArrayCreation*[C](w: var JsonWriter, collection: C): auto =
   append '['
 
   if w.hasPrettyOutput:
@@ -122,7 +120,7 @@ proc writeIterable*(w: var JsonWriter, collection: auto) =
         indent()
 
     w.state = RecordExpected
-    w.writeValue(e)
+    yield e
     first = false
 
   if w.hasPrettyOutput:
@@ -131,6 +129,11 @@ proc writeIterable*(w: var JsonWriter, collection: auto) =
     indent()
 
   append ']'
+
+proc writeIterable*(w: var JsonWriter, collection: auto) =
+  mixin writeValue
+  for e in w.stepwiseArrayCreation(collection):
+    w.writeValue(e)
 
 proc writeArray*[T](w: var JsonWriter, elements: openArray[T]) =
   writeIterable(w, elements)
@@ -142,8 +145,24 @@ template isStringLike(v: string|cstring|openArray[char]|seq[char]): bool = true
 template isStringLike[N](v: array[N, char]): bool = true
 template isStringLike(v: auto): bool = false
 
+template writeObjectField*[FieldType, RecordType](w: var JsonWriter,
+                                                  record: RecordType,
+                                                  fieldName: static string,
+                                                  field: FieldType): bool =
+  mixin writeFieldIMPL, writeValue
+
+  type
+    R = type record
+
+  w.writeFieldName(fieldName)
+  when RecordType is tuple:
+    w.writeValue(field)
+  else:
+    w.writeFieldIMPL(FieldTag[R, fieldName], field, record)
+  true
+
 proc writeValue*(w: var JsonWriter, value: auto) =
-  mixin enumInstanceSerializedFields, writeValue, writeFieldIMPL
+  mixin enumInstanceSerializedFields, writeValue
 
   when value is JsonNode:
     append if w.hasPrettyOutput: value.pretty
@@ -199,7 +218,7 @@ proc writeValue*(w: var JsonWriter, value: auto) =
     w.stream.writeText ord(value)
 
   elif value is range:
-    when low(value) < 0:
+    when low(typeof(value)) < 0:
       w.stream.writeText int64(value)
     else:
       w.stream.writeText uint64(value)
@@ -216,13 +235,12 @@ proc writeValue*(w: var JsonWriter, value: auto) =
     w.writeArray(value)
 
   elif value is (object or tuple):
-    w.beginRecord(type(value))
     type RecordType = type value
+    w.beginRecord RecordType
     value.enumInstanceSerializedFields(fieldName, field):
-      type FieldType = type field
-      w.writeFieldName(fieldName)
-      w.writeFieldIMPL(FieldTag[RecordType, fieldName, FieldType], field, value)
-      w.state = AfterField
+      mixin writeObjectField
+      if writeObjectField(w, value, fieldName, field):
+        w.state = AfterField
     w.endRecord()
 
   else:

@@ -1,12 +1,14 @@
 # byteutils
-# Copyright (c) 2018 Status Research & Development GmbH
+# Copyright (c) 2018-2022 Status Research & Development GmbH
 # Licensed and distributed under either of
 #   * MIT license (license terms in the root directory or at http://opensource.org/licenses/MIT).
 #   * Apache v2 license (license terms in the root directory or at http://www.apache.org/licenses/LICENSE-2.0).
 # at your option. This file may not be copied, modified, or distributed except according to those terms.
 
+{.used.}
+
 import
-  std/unittest,
+  unittest2,
   ../stew/byteutils
 
 proc compilationTest {.exportc: "compilationTest".} =
@@ -27,6 +29,32 @@ suite "Byte utils":
     var a: array[4, byte]
     hexToByteArray(s, a)
     check a == [255.byte, 255, 255, 255]
+
+  test "hexToByteArrayStrict":
+    let
+      short0 = ""
+      short1 = "0x"
+      short2 = "0x00"
+      short3 = "0xffffff"
+      short4 = "0xfffffff"
+      correct = "0xffffffff"
+      long1 = "0xfffffffff"
+      long2 = "0xffffffffff"
+
+    var a: array[4, byte]
+    hexToByteArrayStrict(correct, a)
+    check a == [255.byte, 255, 255, 255]
+
+    template reject(val: string) =
+      expect ValueError: hexToByteArrayStrict(val, a)
+
+    reject short0
+    reject short1
+    reject short2
+    reject short3
+    reject short4
+    reject long1
+    reject long2
 
   test "hexToByteArray: Return array":
     let
@@ -115,6 +143,7 @@ suite "Byte utils":
       string.fromBytes([]) == ""
       @[byte(ord('a'))] == static("a".toBytes())
       "a" == static(string.fromBytes([byte(ord('a'))]))
+
   test "slices":
     var a: array[4, byte]
     a[0..<2] = [2'u8, 3]

@@ -11,7 +11,7 @@
 
 import
   unittest2,
-  nimcrypto/[utils, sysrand, keccak],
+  nimcrypto/[utils, sysrand],
   ../../eth/keys, ../../eth/p2p/[auth, rlpxcrypt]
 
 const data = [
@@ -95,14 +95,14 @@ suite "Ethereum RLPx encryption/decryption test suite":
   proc newTestHandshake(flags: set[HandshakeFlag]): Handshake =
     if Initiator in flags:
       let pk = PrivateKey.fromHex(testValue("initiator_private_key"))[]
-      result = Handshake.tryInit(rng[], pk.toKeyPair(), flags)[]
+      result = Handshake.init(rng[], pk.toKeyPair(), flags)
       let epki = testValue("initiator_ephemeral_private_key")
       result.ephemeral = PrivateKey.fromHex(epki)[].toKeyPair()
       let nonce = fromHex(stripSpaces(testValue("initiator_nonce")))
       result.initiatorNonce[0..^1] = nonce[0..^1]
     elif Responder in flags:
       let pk = PrivateKey.fromHex(testValue("receiver_private_key"))[]
-      result = Handshake.tryInit(rng[], pk.toKeyPair(), flags)[]
+      result = Handshake.init(rng[], pk.toKeyPair(), flags)
       let epkr = testValue("receiver_ephemeral_private_key")
       result.ephemeral = PrivateKey.fromHex(epkr)[].toKeyPair()
       let nonce = fromHex(stripSpaces(testValue("receiver_nonce")))

@@ -14,16 +14,15 @@ import
   std/[os, tables, times, random, sequtils, options],
   chronos, chronicles,
   ".."/[rlp, keys, common],
-  ./private/p2p_types, "."/[discovery, kademlia, rlpx]
+  ./private/p2p_types, "."/[discovery, kademlia, rlpx, enode]
 
 const
   lookupInterval = 5
   connectLoopSleep = chronos.milliseconds(2000)
 
-proc newPeerPool*(network: EthereumNode,
-                  networkId: NetworkId, keyPair: KeyPair,
-                  discovery: DiscoveryProtocol, clientId: string,
-                  listenPort = Port(30303), minPeers = 10): PeerPool =
+proc newPeerPool*(
+    network: EthereumNode, networkId: NetworkId, keyPair: KeyPair,
+    discovery: DiscoveryProtocol, clientId: string, minPeers = 10): PeerPool =
   new result
   result.network = network
   result.keyPair = keyPair
@@ -33,12 +32,11 @@ proc newPeerPool*(network: EthereumNode,
   result.connectedNodes = initTable[Node, Peer]()
   result.connectingNodes = initHashSet[Node]()
   result.observers = initTable[int, PeerObserver]()
-  result.listenPort = listenPort
 
 proc nodesToConnect(p: PeerPool): seq[Node] =
   p.discovery.randomNodes(p.minPeers).filterIt(it notin p.discovery.bootstrapNodes)
 
-proc addObserver(p: PeerPool, observerId: int, observer: PeerObserver) =
+proc addObserver*(p: PeerPool, observerId: int, observer: PeerObserver) =
   doAssert(observerId notin p.observers)
   p.observers[observerId] = observer
   if not observer.onPeerConnected.isNil:
@@ -46,7 +44,7 @@ proc addObserver(p: PeerPool, observerId: int, observer: PeerObserver) =
       if observer.protocol.isNil or peer.supports(observer.protocol):
         observer.onPeerConnected(peer)
 
-proc delObserver(p: PeerPool, observerId: int) =
+proc delObserver*(p: PeerPool, observerId: int) =
   p.observers.del(observerId)
 
 proc addObserver*(p: PeerPool, observerId: ref, observer: PeerObserver) =
@@ -125,9 +123,12 @@ proc connectToNode*(p: PeerPool, n: Node) {.async.} =
     trace "Connection established (outgoing)", peer
     p.addPeer(peer)
 
+proc connectToNode*(p: PeerPool, n: ENode) {.async.} =
+  await p.connectToNode(newNode(n))
+
 proc connectToNodes(p: PeerPool, nodes: seq[Node]) {.async.} =
   for node in nodes:
-    discard p.connectToNode(node)
+    await p.connectToNode(node)
 
     # # TODO: Consider changing connect() to raise an exception instead of
     # # returning None, as discussed in
@@ -169,6 +170,8 @@ proc run(p: PeerPool) {.async.} =
   trace "Running PeerPool..."
   p.running = true
   while p.running:
+
+    debug "Amount of peers", amount = p.connectedNodes.len()
     var dropConnections = false
     try:
       await p.maybeConnectToMorePeers()
@@ -213,3 +216,16 @@ iterator peers*(p: PeerPool, Protocol: type): Peer =
     if peer.supports(Protocol):
       yield peer
 
+func numPeers*(p: PeerPool): int =
+  p.connectedNodes.len
+
+func contains*(p: PeerPool, n: ENode): bool =
+  for remote, _ in p.connectedNodes:
+    if remote.node == n:
+      return true
+
+func contains*(p: PeerPool, n: Node): bool =
+  n in p.connectedNodes
+
+func contains*(p: PeerPool, n: Peer): bool =
+  n.remote in p.connectedNodes

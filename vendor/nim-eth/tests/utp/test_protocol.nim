@@ -8,10 +8,10 @@
 
 import
   sequtils,
-  chronos, bearssl,
+  chronos,
   testutils/unittests,
   ./test_utils,
-  ../../eth/utp/utp_router,
+  ../../eth/utp/utp_router as rt,
   ../../eth/utp/utp_protocol,
   ../../eth/keys
 
@@ -147,10 +147,43 @@ procSuite "Utp protocol over udp tests":
     await utpProt1.shutdownWait()
     await utpProt2.shutdownWait()
 
+
+  proc cbUserData(server: UtpRouter[TransportAddress], client: UtpSocket[TransportAddress]): Future[void] =
+    let q = rt.getUserData[TransportAddress, AsyncQueue[UtpSocket[TransportAddress]]](server)
+    q.addLast(client)
+
+  asyncTest "Provide user data pointer and use it in callback":
+    let incomingConnections = newAsyncQueue[UtpSocket[TransportAddress]]()
+    let address = initTAddress("127.0.0.1", 9079)
+    let utpProt1 = UtpProtocol.new(cbUserData, address, incomingConnections)
+
+    let address1 = initTAddress("127.0.0.1", 9080)
+    let utpProt2 = UtpProtocol.new(cbUserData, address1, incomingConnections)
+
+    let connResult = await utpProt1.connectTo(address1)
+
+    check:
+      connResult.isOk()
+
+    let clientSocket = connResult.get()
+    # this future will be completed when we called accepted connection callback
+    let serverSocket = await incomingConnections.get()
+
+    check:
+      clientSocket.isConnected()
+      # after successful connection outgoing buffer should be empty as syn packet
+      # should be correctly acked
+      clientSocket.numPacketsInOutGoingBuffer() == 0
+
+      not serverSocket.isConnected()
+
+    await utpProt1.shutdownWait()
+    await utpProt2.shutdownWait()
+
   asyncTest "Fail to connect to offline remote host":
     let server1Called = newAsyncEvent()
     let address = initTAddress("127.0.0.1", 9079)
-    let utpProt1 = UtpProtocol.new(setAcceptedCallback(server1Called), address , SocketConfig.init(milliseconds(200)))
+    let utpProt1 = UtpProtocol.new(setAcceptedCallback(server1Called), address , nil, SocketConfig.init(milliseconds(200)))
 
     let address1 = initTAddress("127.0.0.1", 9080)
 
@@ -174,7 +207,7 @@ procSuite "Utp protocol over udp tests":
   asyncTest "Success connect to remote host which initialy was offline":
     let server1Called = newAsyncEvent()
     let address = initTAddress("127.0.0.1", 9079)
-    let utpProt1 = UtpProtocol.new(setAcceptedCallback(server1Called), address, SocketConfig.init(milliseconds(500)))
+    let utpProt1 = UtpProtocol.new(setAcceptedCallback(server1Called), address, nil, SocketConfig.init(milliseconds(500)))
 
     let address1 = initTAddress("127.0.0.1", 9080)
 
@@ -210,7 +243,7 @@ procSuite "Utp protocol over udp tests":
       # Server socket is not in connected state, until first data transfer
       (not s.serverSocket.isConnected())
 
-    let bytesToTransfer = generateByteArray(rng[], 100)
+    let bytesToTransfer = rng[].generateBytes(100)
 
     let bytesReceivedFromClient = await transferData(s.clientSocket, s.serverSocket, bytesToTransfer)
 
@@ -237,7 +270,7 @@ procSuite "Utp protocol over udp tests":
       (not s.serverSocket.isConnected())
 
     # 5000 bytes is over maximal packet size
-    let bytesToTransfer = generateByteArray(rng[], 5000)
+    let bytesToTransfer = rng[].generateBytes(5000)
 
     let bytesReceivedFromClient = await transferData(s.clientSocket, s.serverSocket, bytesToTransfer)
     let bytesReceivedFromServer = await transferData(s.serverSocket, s.clientSocket, bytesToTransfer)
@@ -266,14 +299,14 @@ procSuite "Utp protocol over udp tests":
 
 
     # 5000 bytes is over maximal packet size
-    let bytesToTransfer = generateByteArray(rng[], 5000)
+    let bytesToTransfer = rng[].generateBytes(5000)
 
     let written = await s.clientSocket.write(bytesToTransfer)
 
     check:
       written.get() == len(bytesToTransfer)
 
-    let bytesToTransfer1 = generateByteArray(rng[], 5000)
+    let bytesToTransfer1 = rng[].generateBytes(5000)
 
     let written1 = await s.clientSocket.write(bytesToTransfer1)
 
@@ -301,8 +334,8 @@ procSuite "Utp protocol over udp tests":
       s.clientSocket2.numPacketsInOutGoingBuffer() == 0
 
     let numBytesToTransfer = 5000
-    let client1Data = generateByteArray(rng[], numBytesToTransfer)
-    let client2Data = generateByteArray(rng[], numBytesToTransfer)
+    let client1Data = rng[].generateBytes(numBytesToTransfer)
+    let client2Data = rng[].generateBytes(numBytesToTransfer)
 
     discard s.clientSocket1.write(client1Data)
     discard s.clientSocket2.write(client2Data)
@@ -327,7 +360,7 @@ procSuite "Utp protocol over udp tests":
       # Server socket is not in connected state, until first data transfer
       (not s.serverSocket.isConnected())
 
-    let bytesToTransfer = generateByteArray(rng[], 100)
+    let bytesToTransfer = rng[].generateBytes(100)
 
     let bytesReceivedFromClient = await transferData(s.clientSocket, s.serverSocket, bytesToTransfer)
 
@@ -362,9 +395,9 @@ procSuite "Utp protocol over udp tests":
       # Server socket is not in connected state, until first data transfer
       (not s.serverSocket.isConnected())
 
-    let bytesToTransfer1 = generateByteArray(rng[], 1000)
-    let bytesToTransfer2 = generateByteArray(rng[], 1000)
-    let bytesToTransfer3 = generateByteArray(rng[], 1000)
+    let bytesToTransfer1 = rng[].generateBytes(1000)
+    let bytesToTransfer2 = rng[].generateBytes(1000)
+    let bytesToTransfer3 = rng[].generateBytes(1000)
 
     let w1 = await s.clientSocket.write(bytesToTransfer1)
     let w2 = await s.clientSocket.write(bytesToTransfer2)
@@ -387,17 +420,18 @@ procSuite "Utp protocol over udp tests":
     var server1Called = newAsyncEvent()
     let address1 = initTAddress("127.0.0.1", 9079)
     let utpProt1 =
-      UtpProtocol.new(setAcceptedCallback(server1Called), address1, SocketConfig.init(lowSynTimeout))
+      UtpProtocol.new(setAcceptedCallback(server1Called), address1, nil, SocketConfig.init(lowSynTimeout))
 
     let address2 = initTAddress("127.0.0.1", 9080)
     let utpProt2 =
-      UtpProtocol.new(registerIncomingSocketCallback(serverSockets), address2, SocketConfig.init(lowSynTimeout))
+      UtpProtocol.new(registerIncomingSocketCallback(serverSockets), address2, nil, SocketConfig.init(lowSynTimeout))
 
     let address3 = initTAddress("127.0.0.1", 9081)
     let utpProt3 =
       UtpProtocol.new(
         registerIncomingSocketCallback(serverSockets),
         address3,
+        nil,
         SocketConfig.init(),
         allowOneIdCallback(allowedId)
       )
@@ -424,7 +458,7 @@ procSuite "Utp protocol over udp tests":
 
   asyncTest "Success data transfer of a lot of data should increase available window on sender side":
     let s = await initClientServerScenario()
-
+    let startMaxWindow = 2 * s.clientSocket.getSocketConfig().payloadSize
     check:
       s.clientSocket.isConnected()
       # initially window has value equal to some pre configured constant
@@ -436,7 +470,7 @@ procSuite "Utp protocol over udp tests":
       (not s.serverSocket.isConnected())
 
     # big transfer of 50kb
-    let bytesToTransfer = generateByteArray(rng[], 50000)
+    let bytesToTransfer = rng[].generateBytes(50000)
 
     let bytesReceivedFromClient = await transferData(s.clientSocket, s.serverSocket, bytesToTransfer)
 
@@ -455,6 +489,7 @@ procSuite "Utp protocol over udp tests":
 
   asyncTest "Not used socket should decay its max send window":
     let s = await initClientServerScenario()
+    let startMaxWindow = 2 * s.clientSocket.getSocketConfig().payloadSize
 
     check:
       s.clientSocket.isConnected()
@@ -467,7 +502,7 @@ procSuite "Utp protocol over udp tests":
       (not s.serverSocket.isConnected())
 
     # big transfer of 50kb
-    let bytesToTransfer = generateByteArray(rng[], 50000)
+    let bytesToTransfer = rng[].generateBytes(50000)
 
     let bytesReceivedFromClient = await transferData(s.clientSocket, s.serverSocket, bytesToTransfer)
 

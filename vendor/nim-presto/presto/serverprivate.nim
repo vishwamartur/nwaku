@@ -12,20 +12,22 @@ import chronicles
 import stew/results
 import route, common, segpath, servercommon
 
-proc getContentBody*(r: HttpRequestRef): Future[Option[ContentBody]] {.async.} =
+proc getContentBody*(r: HttpRequestRef): Future[Option[ContentBody]] {.
+     async.} =
   if r.meth notin PostMethods:
     return none[ContentBody]()
   else:
     var default: seq[byte]
-    let cres = getContentType(r.headers.getList("content-type"))
-    if not(cres.isOk()):
-      raise newException(RestBadRequestError, "Incorrect Content-Type header")
+    if r.contentTypeData.isNone():
+      raise newException(RestBadRequestError,
+                         "Incorrect/missing Content-Type header")
     let data =
       if r.hasBody():
         await r.getBody()
       else:
         default
-    let cbody = ContentBody(contentType: cres.get(), data: data)
+    let cbody = ContentBody(contentType: r.contentTypeData.get(),
+                                   data: data)
     return some[ContentBody](cbody)
 
 proc originsMatch(requestOrigin, allowedOrigin: string): bool =
@@ -37,6 +39,14 @@ proc originsMatch(requestOrigin, allowedOrigin: string): bool =
     requestOrigin.toOpenArray(8, requestOrigin.len - 1) == allowedOrigin
   else:
     false
+
+proc mergeHttpHeaders(a: var HttpTable, b: HttpTable) =
+  # Copy headers from table ``b`` to table ``a`` whose keys are not present in
+  # ``a``.
+  for key, items in b.items():
+    if key notin a:
+      for item in items:
+        a.add(key, item)
 
 proc processRestRequest*[T](server: T,
                             rf: RequestFence): Future[HttpResponseRef] {.
@@ -133,6 +143,7 @@ proc processRestRequest*[T](server: T,
                     content_type = restRes.content.contentType,
                     content_size = len(restRes.content.data)
 
+              headers.mergeHttpHeaders(restRes.headers)
               return await request.respond(restRes.status,
                                            restRes.content.data, headers)
             of RestApiResponseKind.Error:
@@ -141,8 +152,10 @@ proc processRestRequest*[T](server: T,
                     status = restRes.status.toInt(),
                     meth = $request.meth, peer = $request.remoteAddress(),
                     uri = $request.uri, error
-              let headers = HttpTable.init([("Content-Type",
+              var headers = HttpTable.init([("Content-Type",
                                             error.contentType)])
+
+              headers.mergeHttpHeaders(restRes.headers)
               return await request.respond(error.status, error.message,
                                            headers)
             of RestApiResponseKind.Redirect:
@@ -159,7 +172,8 @@ proc processRestRequest*[T](server: T,
                     else:
                       uri.query = uri.query & "&" & request.uri.query
                   $uri
-              return await request.redirect(restRes.status, location)
+              return await request.redirect(restRes.status, location,
+                                            restRes.headers)
           else:
             debug "Response was sent in request handler", meth = $request.meth,
                   peer = $request.remoteAddress(), uri = $request.uri,

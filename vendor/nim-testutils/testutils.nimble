@@ -1,7 +1,7 @@
 mode = ScriptMode.Verbose
 
 packageName   = "testutils"
-version       = "0.4.2"
+version       = "0.5.0"
 author        = "Status Research & Development GmbH"
 description   = "A unittest framework"
 license       = "Apache License 2.0"
@@ -10,7 +10,7 @@ bin           = @["ntu"]
 #srcDir        = "testutils"
 
 requires "nim >= 1.2.0",
-         "https://github.com/status-im/nim-unittest2.git#head"
+         "unittest2"
 
 proc execCmd(cmd: string) =
   echo "execCmd: " & cmd

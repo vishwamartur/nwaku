@@ -1,5 +1,5 @@
 # Nimbus
-# Copyright (c) 2018-2019 Status Research & Development GmbH
+# Copyright (c) 2018-2022 Status Research & Development GmbH
 # Licensed under either of
 #  * Apache License, version 2.0, ([LICENSE-APACHE](LICENSE-APACHE) or
 #    http://www.apache.org/licenses/LICENSE-2.0)
@@ -8,11 +8,13 @@
 # at your option. This file may not be copied, modified, or distributed except
 # according to those terms.
 
+{.used.}
+
 import
   std/[algorithm, sequtils, strformat, strutils, tables],
+  unittest2,
   ../stew/keyed_queue,
-  ../stew/keyed_queue/kq_debug,
-  unittest
+  ../stew/keyed_queue/kq_debug
 
 const
   usedStrutils = newSeq[string]().join(" ")

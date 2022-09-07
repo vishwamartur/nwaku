@@ -1,23 +1,27 @@
-## Nim-Libp2p
-## Copyright (c) 2018 Status Research & Development GmbH
-## Licensed under either of
-##  * Apache License, version 2.0, ([LICENSE-APACHE](LICENSE-APACHE))
-##  * MIT license ([LICENSE-MIT](LICENSE-MIT))
-## at your option.
-## This file may not be copied, modified, or distributed except according to
-## those terms.
+# Nim-Libp2p
+# Copyright (c) 2022 Status Research & Development GmbH
+# Licensed under either of
+#  * Apache License, version 2.0, ([LICENSE-APACHE](LICENSE-APACHE))
+#  * MIT license ([LICENSE-MIT](LICENSE-MIT))
+# at your option.
+# This file may not be copied, modified, or distributed except according to
+# those terms.
 
 ## This module implements MultiAddress.
 
-{.push raises: [Defect].}
+when (NimMajor, NimMinor) < (1, 4):
+  {.push raises: [Defect].}
+else:
+  {.push raises: [].}
+{.push public.}
 
 import pkg/chronos
 import std/[nativesockets, hashes]
 import tables, strutils, sets, stew/shims/net
 import multicodec, multihash, multibase, transcoder, vbuffer, peerid,
-       protobuf/minprotobuf, errors
+       protobuf/minprotobuf, errors, utility
 import stew/[base58, base32, endians2, results]
-export results, minprotobuf, vbuffer
+export results, minprotobuf, vbuffer, utility
 
 type
   MAKind* = enum
@@ -586,9 +590,27 @@ proc getPart(ma: MultiAddress, index: int): MaResult[MultiAddress] =
     inc(offset)
   ok(res)
 
+proc getParts[U, V](ma: MultiAddress, slice: HSlice[U, V]): MaResult[MultiAddress] =
+  when slice.a is BackwardsIndex or slice.b is BackwardsIndex:
+    let maLength = ? len(ma)
+  template normalizeIndex(index): int =
+    when index is BackwardsIndex: maLength - int(index)
+    else: int(index)
+  let
+    indexStart = normalizeIndex(slice.a)
+    indexEnd = normalizeIndex(slice.b)
+  var res: MultiAddress
+  for i in indexStart..indexEnd:
+    ? res.append(? ma[i])
+  ok(res)
+
 proc `[]`*(ma: MultiAddress, i: int): MaResult[MultiAddress] {.inline.} =
   ## Returns part with index ``i`` of MultiAddress ``ma``.
   ma.getPart(i)
+
+proc `[]`*(ma: MultiAddress, slice: HSlice): MaResult[MultiAddress] {.inline.} =
+  ## Returns parts with slice ``slice`` of MultiAddress ``ma``.
+  ma.getParts(slice)
 
 iterator items*(ma: MultiAddress): MaResult[MultiAddress] =
   ## Iterates over all addresses inside of MultiAddress ``ma``.
@@ -625,6 +647,13 @@ iterator items*(ma: MultiAddress): MaResult[MultiAddress] =
       res.data.writeVarint(header)
     res.data.finish()
     yield ok(MaResult[MultiAddress], res)
+
+proc len*(ma: MultiAddress): MaResult[int] =
+  var counter: int
+  for part in ma:
+    if part.isErr: return err(part.error)
+    counter.inc()
+  ok(counter)
 
 proc contains*(ma: MultiAddress, codec: MultiCodec): MaResult[bool] {.inline.} =
   ## Returns ``true``, if address with MultiCodec ``codec`` present in

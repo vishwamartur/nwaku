@@ -4,7 +4,7 @@ import
 
 type
   DefaultFlavor* = object
-  FieldTag*[RecordType; fieldName: static string; FieldType] = distinct void
+  FieldTag*[RecordType: object; fieldName: static string] = distinct void
 
 let
   # Identifiers affecting the public interface of the library:
@@ -31,7 +31,7 @@ template enumInstanceSerializedFields*(obj: auto,
   ## will refer to the field value.
   ##
   ## The order of visited fields matches the order of the fields in
-  ## the object definition unless `serialziedFields` is used to specify
+  ## the object definition unless `setSerializedFields` is used to specify
   ## a different order. Fields marked with the `dontSerialize` pragma
   ## are skipped.
   ##
@@ -81,7 +81,7 @@ macro enumAllSerializedFieldsImpl(T: type, body: untyped): untyped =
   ##    case object discriminator which make this field accessible.
   ##
   ## The order of visited fields matches the order of the fields in
-  ## the object definition unless `serialziedFields` is used to specify
+  ## the object definition unless `setSerializedFields` is used to specify
   ## a different order. Fields marked with the `dontSerialize` pragma
   ## are skipped.
   ##
@@ -179,18 +179,27 @@ template totalSerializedFields*(T: type): int =
 macro customSerialization*(field: untyped, definition): untyped =
   discard
 
+template GetFieldType(FT: type FieldTag): type =
+  typeof field(declval(FT.RecordType), FT.fieldName)
+
 template readFieldIMPL[Reader](field: type FieldTag,
                                reader: var Reader): untyped =
   mixin readValue
   {.gcsafe.}: # needed by Nim-1.6
-    reader.readValue(field.FieldType)
+    reader.readValue GetFieldType(field)
+
+template readFieldIMPL[Reader](field: type FieldTag,
+                               reader: var Reader): untyped =
+  mixin readValue
+  {.gcsafe.}: # needed by Nim-1.6
+    reader.readValue GetFieldType(field)
 
 template writeFieldIMPL*[Writer](writer: var Writer,
                                  fieldTag: type FieldTag,
                                  fieldVal: auto,
                                  holderObj: auto) =
   mixin writeValue
-  writer.writeValue(fieldVal)
+  writeValue(writer, fieldVal)
 
 proc makeFieldReadersTable(RecordType, ReaderType: distinct type):
                            seq[FieldReader[RecordType, ReaderType]] =
@@ -201,11 +210,12 @@ proc makeFieldReadersTable(RecordType, ReaderType: distinct type):
                   {.gcsafe, nimcall, raises: [SerializationError, Defect].} =
       when RecordType is tuple:
         const i = fieldName.parseInt
+
       try:
-        type F = FieldTag[RecordType, realFieldName, type(FieldType)]
         when RecordType is tuple:
-          obj[i] = readFieldIMPL(F, reader)
+          reader.readValue obj[i]
         else:
+          type F = FieldTag[RecordType, realFieldName]
           # TODO: The `FieldType` coercion below is required to deal
           # with a nim bug caused by the distinct `ssz.List` type.
           # It seems to break the generics cache mechanism, which
@@ -215,8 +225,9 @@ proc makeFieldReadersTable(RecordType, ReaderType: distinct type):
       except SerializationError as err:
         raise err
       except CatchableError as err:
+        type LocalRecordType = `RecordType` # workaround to allow compile time evaluation
         reader.handleReadException(
-          `RecordType`,
+          LocalRecordType,
           fieldName,
           when RecordType is tuple: obj[i] else: field(obj, realFieldName),
           err)
@@ -235,6 +246,20 @@ proc fieldReadersTable*(RecordType, ReaderType: distinct type):
     tbl = new typeof(tbl)
     tbl[] = makeFieldReadersTable(RecordType, ReaderType)
   return addr(tbl[])
+
+proc findFieldIdx*(fieldsTable: FieldReadersTable,
+                   fieldName: string,
+                   expectedFieldPos: var int): int =
+  for i in expectedFieldPos ..< fieldsTable.len:
+    if fieldsTable[i].fieldName == fieldName:
+      expectedFieldPos = i + 1
+      return i
+
+  for i in 0 ..< expectedFieldPos:
+    if fieldsTable[i].fieldName == fieldName:
+      return i
+
+  return -1
 
 proc findFieldReader*(fieldsTable: FieldReadersTable,
                       fieldName: string,
@@ -344,7 +369,7 @@ proc genCustomSerializationForField(Format, field,
   if readBody != nil:
     result.add quote do:
       type ReaderType = Reader(`Format`)
-      proc readFieldIMPL*(F: type FieldTag[`RecordType`, `fieldName`, auto],
+      proc readFieldIMPL*(F: type FieldTag[`RecordType`, `fieldName`],
                           `readerSym`: var ReaderType): `FieldType`
                          {.raises: [IOError, SerializationError, Defect].} =
         `readBody`
@@ -353,10 +378,10 @@ proc genCustomSerializationForField(Format, field,
     result.add quote do:
       type WriterType = Writer(`Format`)
       proc writeFieldIMPL*(`writerSym`: var WriterType,
-                           F: type FieldTag[`RecordType`, `fieldName`, auto],
+                           F: type FieldTag[`RecordType`, `fieldName`],
                            `valueSym`: auto,
                            `holderSym`: `RecordType`)
-                          {.raises: [IOError, SerializationError, Defect].} =
+                          {.raises: [IOError, Defect].} =
         `writeBody`
 
 proc genCustomSerializationForType(Format, typ: NimNode,
@@ -374,7 +399,7 @@ proc genCustomSerializationForType(Format, typ: NimNode,
     result.add quote do:
       type WriterType = Writer(`Format`)
       proc writeValue*(`writerSym`: var WriterType, `valueSym`: `typ`)
-                      {.raises: [IOError, SerializationError, Defect].} =
+                      {.raises: [IOError, Defect].} =
         `writeBody`
 
 macro useCustomSerialization*(Format: typed, field: untyped, body: untyped): untyped =

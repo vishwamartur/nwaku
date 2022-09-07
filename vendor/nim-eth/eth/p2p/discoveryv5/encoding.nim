@@ -15,7 +15,8 @@
 
 import
   std/[tables, options, hashes, net],
-  nimcrypto, stint, chronicles, bearssl, stew/[results, byteutils], metrics,
+  nimcrypto/[bcmode, rijndael, sha2], stint, chronicles,
+  stew/[results, byteutils], metrics,
   ".."/../[rlp, keys],
   "."/[messages, node, enr, hkdf, sessions]
 
@@ -44,6 +45,11 @@ const
   staticHeaderSize = protocolId.len + 2 + 2 + 1 + gcmNonceSize
   authdataHeadSize = sizeof(NodeId) + 1 + 1
   whoareyouSize = ivSize + staticHeaderSize + idNonceSize + 8
+  # It's mentioned in the specification that 1280 is the maximum size for the
+  # discovery v5 packet, not for the UDP datagram. Thus this limit is applied on
+  # the UDP payload and the UDP header is not taken into account.
+  # https://github.com/ethereum/devp2p/blob/26e380b1f3a57db16fbdd4528dde82104c77fa38/discv5/discv5-wire.md#udp-communication
+  maxDiscv5PacketSize* = 1280
 
 type
   AESGCMNonce* = array[gcmNonceSize, byte]
@@ -189,18 +195,19 @@ proc encodeStaticHeader*(flag: Flag, nonce: AESGCMNonce, authSize: int):
   # TODO: assert on authSize of > 2^16?
   result.add((uint16(authSize)).toBytesBE())
 
-proc encodeMessagePacket*(rng: var BrHmacDrbgContext, c: var Codec,
+proc encodeMessagePacket*(rng: var HmacDrbgContext, c: var Codec,
     toId: NodeId, toAddr: Address, message: openArray[byte]):
     (seq[byte], AESGCMNonce) =
-  var nonce: AESGCMNonce
-  brHmacDrbgGenerate(rng, nonce) # Random AESGCM nonce
-  var iv: array[ivSize, byte]
-  brHmacDrbgGenerate(rng, iv) # Random IV
+  let
+    nonce = rng.generate(AESGCMNonce) # Random AESGCM nonce
+    iv = rng.generate(array[ivSize, byte]) # Random IV
 
   # static-header
-  let authdata = c.localNode.id.toByteArrayBE()
-  let staticHeader = encodeStaticHeader(Flag.OrdinaryMessage, nonce,
-    authdata.len())
+  let
+    authdata = c.localNode.id.toByteArrayBE()
+    staticHeader = encodeStaticHeader(Flag.OrdinaryMessage, nonce,
+      authdata.len())
+
   # header = static-header || authdata
   var header: seq[byte]
   header.add(staticHeader)
@@ -220,8 +227,7 @@ proc encodeMessagePacket*(rng: var BrHmacDrbgContext, c: var Codec,
     # message. 16 bytes for the gcm tag and 4 bytes for ping with requestId of
     # 1 byte (e.g "01c20101"). Could increase to 27 for 8 bytes requestId in
     # case this must not look like a random packet.
-    var randomData: array[gcmTagSize + 4, byte]
-    brHmacDrbgGenerate(rng, randomData)
+    let randomData = rng.generate(array[gcmTagSize + 4, byte])
     messageEncrypted.add(randomData)
     discovery_session_lru_cache_misses.inc()
 
@@ -234,11 +240,11 @@ proc encodeMessagePacket*(rng: var BrHmacDrbgContext, c: var Codec,
 
   return (packet, nonce)
 
-proc encodeWhoareyouPacket*(rng: var BrHmacDrbgContext, c: var Codec,
+proc encodeWhoareyouPacket*(rng: var HmacDrbgContext, c: var Codec,
     toId: NodeId, toAddr: Address, requestNonce: AESGCMNonce, recordSeq: uint64,
     pubkey: Option[PublicKey]): seq[byte] =
-  var idNonce: IdNonce
-  brHmacDrbgGenerate(rng, idNonce)
+  let
+    idNonce = rng.generate(IdNonce)
 
   # authdata
   var authdata: seq[byte]
@@ -254,10 +260,9 @@ proc encodeWhoareyouPacket*(rng: var BrHmacDrbgContext, c: var Codec,
   header.add(staticHeader)
   header.add(authdata)
 
-  var iv: array[ivSize, byte]
-  brHmacDrbgGenerate(rng, iv) # Random IV
-
-  let maskedHeader = encryptHeader(toId, iv, header)
+  let
+    iv = rng.generate(array[ivSize, byte]) # Random IV
+    maskedHeader = encryptHeader(toId, iv, header)
 
   var packet: seq[byte]
   packet.add(iv)
@@ -276,14 +281,12 @@ proc encodeWhoareyouPacket*(rng: var BrHmacDrbgContext, c: var Codec,
 
   return packet
 
-proc encodeHandshakePacket*(rng: var BrHmacDrbgContext, c: var Codec,
+proc encodeHandshakePacket*(rng: var HmacDrbgContext, c: var Codec,
     toId: NodeId, toAddr: Address, message: openArray[byte],
     whoareyouData: WhoareyouData, pubkey: PublicKey): seq[byte] =
-  var header: seq[byte]
-  var nonce: AESGCMNonce
-  brHmacDrbgGenerate(rng, nonce)
-  var iv: array[ivSize, byte]
-  brHmacDrbgGenerate(rng, iv) # Random IV
+  let
+    nonce = rng.generate(AESGCMNonce)
+    iv = rng.generate(array[ivSize, byte]) # Random IV
 
   var authdata: seq[byte]
   var authdataHead: seq[byte]
@@ -312,6 +315,7 @@ proc encodeHandshakePacket*(rng: var BrHmacDrbgContext, c: var Codec,
   let staticHeader = encodeStaticHeader(Flag.HandshakeMessage, nonce,
     authdata.len())
 
+  var header: seq[byte]
   header.add(staticHeader)
   header.add(authdata)
 
@@ -580,7 +584,10 @@ proc decodePacket*(c: var Codec, fromAddr: Address, input: openArray[byte]):
   ## WHOAREYOU packet. In case of the latter a `newNode` might be provided.
   # Smallest packet is Whoareyou packet so that is the minimum size
   if input.len() < whoareyouSize:
-    return err("Packet size too short")
+    return err("Packet size too small")
+
+  if input.len() > maxDiscv5PacketSize:
+    return err("Packet size too big")
 
   # TODO: Just pass in the full input? Makes more sense perhaps.
   let (staticHeader, header) = ? decodeHeader(c.localNode.id,
@@ -604,9 +611,9 @@ proc decodePacket*(c: var Codec, fromAddr: Address, input: openArray[byte]):
       input.toOpenArray(0, ivSize - 1), header,
       input.toOpenArray(ivSize + header.len, input.high))
 
-proc init*(T: type RequestId, rng: var BrHmacDrbgContext): T =
+proc init*(T: type RequestId, rng: var HmacDrbgContext): T =
   var reqId = RequestId(id: newSeq[byte](8)) # RequestId must be <= 8 bytes
-  brHmacDrbgGenerate(rng, reqId.id)
+  rng.generate(reqId.id)
   reqId
 
 proc numFields(T: typedesc): int =

@@ -1,16 +1,20 @@
-## Nim-LibP2P
-## Copyright (c) 2019 Status Research & Development GmbH
-## Licensed under either of
-##  * Apache License, version 2.0, ([LICENSE-APACHE](LICENSE-APACHE))
-##  * MIT license ([LICENSE-MIT](LICENSE-MIT))
-## at your option.
-## This file may not be copied, modified, or distributed except according to
-## those terms.
+# Nim-LibP2P
+# Copyright (c) 2022 Status Research & Development GmbH
+# Licensed under either of
+#  * Apache License, version 2.0, ([LICENSE-APACHE](LICENSE-APACHE))
+#  * MIT license ([LICENSE-MIT](LICENSE-MIT))
+# at your option.
+# This file may not be copied, modified, or distributed except according to
+# those terms.
 
-{.push raises: [Defect].}
+when (NimMajor, NimMinor) < (1, 4):
+  {.push raises: [Defect].}
+else:
+  {.push raises: [].}
 
 import std/[oids, strformat]
-import chronos, chronicles, stew/endians2, bearssl
+import bearssl/rand
+import chronos, chronicles, stew/endians2
 import nimcrypto/[hmac, sha2, sha, hash, rijndael, twofish, bcmode]
 import secure,
        ../../stream/connection,
@@ -37,7 +41,7 @@ const
 
 type
   Secio* = ref object of Secure
-    rng: ref BrHmacDrbgContext
+    rng: ref HmacDrbgContext
     localPrivateKey: PrivateKey
     localPublicKey: PublicKey
     remotePublicKey: PublicKey
@@ -287,7 +291,7 @@ proc transactMessage(conn: Connection,
   await conn.write(msg)
   return await conn.readRawMessage()
 
-method handshake*(s: Secio, conn: Connection, initiator: bool = false): Future[SecureConn] {.async.} =
+method handshake*(s: Secio, conn: Connection, initiator: bool, peerId: Opt[PeerId]): Future[SecureConn] {.async.} =
   var
     localNonce: array[SecioNonceSize, byte]
     remoteNonce: seq[byte]
@@ -304,7 +308,7 @@ method handshake*(s: Secio, conn: Connection, initiator: bool = false): Future[S
     localPeerId: PeerId
     localBytesPubkey = s.localPublicKey.getBytes().tryGet()
 
-  brHmacDrbgGenerate(s.rng[], localNonce)
+  hmacDrbgGenerate(s.rng[], localNonce)
 
   var request = createProposal(localNonce,
                                localBytesPubkey,
@@ -338,9 +342,14 @@ method handshake*(s: Secio, conn: Connection, initiator: bool = false): Future[S
 
   remotePeerId = PeerId.init(remotePubkey).tryGet()
 
-  # TODO: PeerId check against supplied PeerId
-  if not initiator:
-    conn.peerId = remotePeerId
+  if peerId.isSome():
+    let targetPid = peerId.get()
+    if not targetPid.validate():
+      raise newException(SecioError, "Failed to validate expected peerId.")
+
+    if remotePeerId != targetPid:
+      raise newException(SecioError, "Peer ids don't match!")
+  conn.peerId = remotePeerId
   let order = getOrder(remoteBytesPubkey, localNonce, localBytesPubkey,
                        remoteNonce).tryGet()
   trace "Remote proposal", schemes = remoteExchanges, ciphers = remoteCiphers,
@@ -428,7 +437,7 @@ method init(s: Secio) {.gcsafe.} =
 
 proc new*(
   T: typedesc[Secio],
-  rng: ref BrHmacDrbgContext,
+  rng: ref HmacDrbgContext,
   localPrivateKey: PrivateKey): T =
   let pkRes = localPrivateKey.getPublicKey()
   if pkRes.isErr:

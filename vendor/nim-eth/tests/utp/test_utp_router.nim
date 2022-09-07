@@ -8,7 +8,7 @@
 
 import
   std/[hashes, options],
-  chronos, bearssl, chronicles,
+  chronos, chronicles,
   testutils/unittests,
   ./test_utils,
   ../../eth/utp/utp_router,
@@ -87,7 +87,7 @@ procSuite "Utp router unit tests":
 
   asyncTest "Router should create new incoming socket when receiving not known syn packet":
     let q = newAsyncQueue[UtpSocket[int]]()
-    let router = UtpRouter[int].new(registerIncomingSocketCallback(q), SocketConfig.init(), rng)
+    let router = UtpRouter[int].new(registerIncomingSocketCallback(q), nil, nil, SocketConfig.init(), rng)
     router.sendCb = testSend
     let encodedSyn = encodePacket(synPacket(10, 10, 10))
 
@@ -95,6 +95,25 @@ procSuite "Utp router unit tests":
 
     check:
       router.len() == 1
+
+  asyncTest "Router should not create new incoming connections when hitting connections limit":
+    let q = newAsyncQueue[UtpSocket[int]]()
+    let connectionsLimit = 2
+    let customConfig = SocketConfig.init(maxNumberOfOpenConnections = connectionsLimit)
+    let router = UtpRouter[int].new(registerIncomingSocketCallback(q), customConfig, rng)
+    router.sendCb = testSend
+
+    var synPackets: seq[seq[byte]]
+
+    for i in 1..connectionsLimit+5:
+      let encodedSyn = encodePacket(synPacket(10, uint16(i), 10))
+      synPackets.add(encodedSyn)
+
+    for p in synPackets:
+      await router.processIncomingBytes(p, testSender)
+
+    check:
+      router.len() == connectionsLimit
 
   asyncTest "Incoming connection should be closed when not receving data for period of time when configured":
     let q = newAsyncQueue[UtpSocket[int]]()
@@ -192,7 +211,6 @@ procSuite "Utp router unit tests":
 
     check:
       socket.isConnected()
-
 
   asyncTest "Router should create new incoming socket when receiving same syn packet from diffrent sender":
     let q = newAsyncQueue[UtpSocket[int]]()
@@ -312,6 +330,8 @@ procSuite "Utp router unit tests":
 
     let connectResult = await connectFuture
 
+    await waitUntil(proc (): bool = router.len() == 0)
+
     check:
       connectResult.isErr()
       connectResult.error().kind == ConnectionTimedOut
@@ -333,6 +353,8 @@ procSuite "Utp router unit tests":
 
     await connectFuture.cancelAndWait()
 
+    await waitUntil(proc (): bool = router.len() == 0)
+
     check:
       router.len() == 0
 
@@ -352,7 +374,7 @@ procSuite "Utp router unit tests":
 
     check:
       connectResult.isErr()
-      # even though send is failing we will just finish with timeout, 
+      # even though send is failing we will just finish with timeout,
       connectResult.error().kind == ConnectionTimedOut
       router.len() == 0
 

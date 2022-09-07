@@ -1,5 +1,5 @@
 # Nimbus
-# Copyright (c) 2018-2019 Status Research & Development GmbH
+# Copyright (c) 2018-2022 Status Research & Development GmbH
 # Licensed under either of
 #  * Apache License, version 2.0, ([LICENSE-APACHE](LICENSE-APACHE) or
 #    http://www.apache.org/licenses/LICENSE-2.0)
@@ -8,10 +8,12 @@
 # at your option. This file may not be copied, modified, or distributed except
 # according to those terms.
 
+{.used.}
+
 import
   std/[algorithm, sequtils, strformat, tables],
   ../stew/sorted_set,
-  unittest
+  unittest2
 
 const
   keyList = [

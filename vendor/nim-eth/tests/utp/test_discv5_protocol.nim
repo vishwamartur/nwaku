@@ -8,19 +8,15 @@
 
 import
   std/options,
-  chronos, bearssl,
+  chronos,
   stew/shims/net, stew/byteutils,
   testutils/unittests,
   ../../eth/p2p/discoveryv5/[enr, node, routing_table],
   ../../eth/p2p/discoveryv5/protocol as discv5_protocol,
   ../../eth/utp/utp_discv5_protocol,
   ../../eth/keys,
+  ../../eth/utp/utp_router as rt,
   ../p2p/discv5_test_helper
-
-proc generateByteArray(rng: var BrHmacDrbgContext, length: int): seq[byte] =
-  var bytes = newSeq[byte](length)
-  brHmacDrbgGenerate(rng, bytes)
-  return bytes
 
 procSuite "Utp protocol over discovery v5 tests":
   let rng = newRng()
@@ -70,6 +66,41 @@ procSuite "Utp protocol over discovery v5 tests":
     await node1.closeWait()
     await node2.closeWait()
 
+  proc cbUserData(server: UtpRouter[NodeAddress], client: UtpSocket[NodeAddress]): Future[void] =
+    let queue = rt.getUserData[NodeAddress, AsyncQueue[UtpSocket[NodeAddress]]](server)
+    queue.addLast(client)
+
+  asyncTest "Provide user data pointer and use it in callback":
+    let
+      queue = newAsyncQueue[UtpSocket[NodeAddress]]()
+      node1 = initDiscoveryNode(
+        rng, PrivateKey.random(rng[]), localAddress(20302))
+      node2 = initDiscoveryNode(
+        rng, PrivateKey.random(rng[]), localAddress(20303))
+
+      # constructor which uses connection callback and user data pointer as ref
+      utp1 = UtpDiscv5Protocol.new(node1, utpProtId, cbUserData, queue)
+      utp2 = UtpDiscv5Protocol.new(node2, utpProtId, cbUserData, queue)
+
+    # nodes must have session between each other
+    check:
+      (await node1.ping(node2.localNode)).isOk()
+
+    let clientSocketResult = await utp1.connectTo(NodeAddress.init(node2.localNode).unsafeGet())
+    let clientSocket = clientSocketResult.get()
+    let serverSocket = await queue.get()
+
+    check:
+      clientSocket.isConnected()
+      # in this test we do not configure the socket to be connected just after
+      # accepting incoming connection
+      not serverSocket.isConnected()
+
+    await clientSocket.destroyWait()
+    await serverSocket.destroyWait()
+    await node1.closeWait()
+    await node2.closeWait()
+
   asyncTest "Success write data over packet size to remote host":
     let
       queue = newAsyncQueue[UtpSocket[NodeAddress]]()
@@ -91,7 +122,7 @@ procSuite "Utp protocol over discovery v5 tests":
 
     let serverSocket = await queue.get()
 
-    let bytesToTransfer = generateByteArray(rng[], numOfBytes)
+    let bytesToTransfer = rng[].generateBytes(numOfBytes)
     let written = await clientSocket.write(bytesToTransfer)
 
     let received = await serverSocket.read(numOfBytes)
@@ -127,6 +158,7 @@ procSuite "Utp protocol over discovery v5 tests":
           node2,
           utpProtId,
           registerIncomingSocketCallback(queue),
+          nil,
           allowOneIdCallback(allowedId),
           SocketConfig.init())
 

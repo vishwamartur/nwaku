@@ -1,5 +1,5 @@
 ## nim-websock
-## Copyright (c) 2021 Status Research & Development GmbH
+## Copyright (c) 2021-2022 Status Research & Development GmbH
 ## Licensed under either of
 ##  * Apache License, version 2.0, ([LICENSE-APACHE](LICENSE-APACHE))
 ##  * MIT license ([LICENSE-MIT](LICENSE-MIT))
@@ -7,13 +7,10 @@
 ## This file may not be copied, modified, or distributed except according to
 ## those terms.
 
-import std/strutils
 import pkg/[
   httputils,
-  chronos,
-  chronicles,
-  stew/byteutils,
-  asynctest/unittest2]
+  chronos/unittest2/asynctests,
+  ]
 
 import ../websock/websock
 
@@ -96,16 +93,18 @@ proc serverHookWithCode(request: HttpRequest): Hook =
   )
 
 suite "Test Hooks":
-  var
-    server: HttpServer
-    goodCP = goodClientHook()
-    badCP  = badClientHook()
+  setup:
+    var
+      server: HttpServer
+      goodCP = goodClientHook()
+      badCP  = badClientHook()
 
   teardown:
-    server.stop()
-    await server.closeWait()
+    if server != nil:
+      server.stop()
+      waitFor server.closeWait()
 
-  test "client with valid token":
+  asyncTest "client with valid token":
     proc handle(request: HttpRequest) {.async.} =
       check request.uri.path == WSPath
       let
@@ -129,7 +128,7 @@ suite "Test Hooks":
     check TokenHook(goodCP).token == "accept"
     await session.stream.closeWait()
 
-  test "client with bad token":
+  asyncTest "client with bad token":
     proc handle(request: HttpRequest) {.async.} =
       check request.uri.path == WSPath
       let
@@ -153,7 +152,7 @@ suite "Test Hooks":
     check TokenHook(badCP).token == "reject"
     await session.stream.closeWait()
 
-  test "server hook with code get good client":
+  asyncTest "server hook with code get good client":
     proc handle(request: HttpRequest) {.async.} =
       check request.uri.path == WSPath
       let
@@ -177,7 +176,7 @@ suite "Test Hooks":
     check TokenHook(goodCP).token == "accept"
     await session.stream.closeWait()
 
-  test "server hook with code get bad client":
+  asyncTest "server hook with code get bad client":
     proc handle(request: HttpRequest) {.async.} =
       check request.uri.path == WSPath
       let

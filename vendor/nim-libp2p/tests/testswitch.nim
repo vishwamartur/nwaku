@@ -21,6 +21,7 @@ import ../libp2p/[errors,
                   nameresolving/nameresolver,
                   nameresolving/mockresolver,
                   stream/chronosstream,
+                  utils/semaphore,
                   transports/tcptransport,
                   transports/wstransport]
 import ./helpers
@@ -200,11 +201,31 @@ suite "Switch":
     check not switch1.isConnected(switch2.peerInfo.peerId)
     check not switch2.isConnected(switch1.peerInfo.peerId)
 
+  asyncTest "e2e connect to peer with unkown PeerId":
+    let switch1 = newStandardSwitch(secureManagers = [SecureProtocol.Noise])
+    let switch2 = newStandardSwitch(secureManagers = [SecureProtocol.Noise])
+    await switch1.start()
+    await switch2.start()
+
+    check: (await switch2.connect(switch1.peerInfo.addrs)) == switch1.peerInfo.peerId
+    await switch2.disconnect(switch1.peerInfo.peerId)
+
+    await allFuturesThrowing(
+      switch1.stop(),
+      switch2.stop()
+    )
+
   asyncTest "e2e should not leak on peer disconnect":
     let switch1 = newStandardSwitch()
     let switch2 = newStandardSwitch()
     await switch1.start()
     await switch2.start()
+
+    let startCounts =
+      @[
+        switch1.connManager.inSema.count, switch1.connManager.outSema.count,
+        switch2.connManager.inSema.count, switch2.connManager.outSema.count
+      ]
 
     await switch2.connect(switch1.peerInfo.peerId, switch1.peerInfo.addrs)
 
@@ -218,6 +239,15 @@ suite "Switch":
 
     checkTracker(LPChannelTrackerName)
     checkTracker(SecureConnTrackerName)
+
+    await sleepAsync(1.seconds)
+
+    check:
+      startCounts ==
+        @[
+          switch1.connManager.inSema.count, switch1.connManager.outSema.count,
+          switch2.connManager.inSema.count, switch2.connManager.outSema.count
+        ]
 
     await allFuturesThrowing(
       switch1.stop(),
@@ -979,3 +1009,29 @@ suite "Switch":
     await destSwitch.stop()
     await srcWsSwitch.stop()
     await srcTcpSwitch.stop()
+
+  asyncTest "mount unstarted protocol":
+    proc handle(conn: Connection, proto: string) {.async, gcsafe.} =
+      check "test123" == string.fromBytes(await conn.readLp(1024))
+      await conn.writeLp("test456")
+      await conn.close()
+    let
+      src = newStandardSwitch()
+      dst = newStandardSwitch()
+      testProto = new TestProto
+    testProto.codec = TestCodec
+    testProto.handler = handle
+
+    await src.start()
+    await dst.start()
+    expect LPError:
+      dst.mount(testProto)
+    await testProto.start()
+    dst.mount(testProto)
+
+    let conn = await src.dial(dst.peerInfo.peerId, dst.peerInfo.addrs, TestCodec)
+    await conn.writeLp("test123")
+    check "test456" == string.fromBytes(await conn.readLp(1024))
+    await conn.close()
+    await src.stop()
+    await dst.stop()

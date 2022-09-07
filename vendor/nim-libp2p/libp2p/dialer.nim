@@ -1,11 +1,11 @@
-## Nim-LibP2P
-## Copyright (c) 2021 Status Research & Development GmbH
-## Licensed under either of
-##  * Apache License, version 2.0, ([LICENSE-APACHE](LICENSE-APACHE))
-##  * MIT license ([LICENSE-MIT](LICENSE-MIT))
-## at your option.
-## This file may not be copied, modified, or distributed except according to
-## those terms.
+# Nim-LibP2P
+# Copyright (c) 2022 Status Research & Development GmbH
+# Licensed under either of
+#  * Apache License, version 2.0, ([LICENSE-APACHE](LICENSE-APACHE))
+#  * MIT license ([LICENSE-MIT](LICENSE-MIT))
+# at your option.
+# This file may not be copied, modified, or distributed except according to
+# those terms.
 
 import std/[sugar, tables]
 
@@ -21,6 +21,7 @@ import dial,
        stream/connection,
        transports/transport,
        nameresolving/nameresolver,
+       upgrademngrs/upgrade,
        errors
 
 export dial, errors
@@ -46,9 +47,8 @@ type
 
 proc dialAndUpgrade(
   self: Dialer,
-  peerId: PeerId,
-  addrs: seq[MultiAddress],
-  forceDial: bool):
+  peerId: Opt[PeerId],
+  addrs: seq[MultiAddress]):
   Future[Connection] {.async.} =
   debug "Dialing peer", peerId
 
@@ -65,20 +65,7 @@ proc dialAndUpgrade(
           trace "Dialing address", address = $a, peerId, hostname
           let dialed = try:
               libp2p_total_dial_attempts.inc()
-              # await a connection slot when the total
-              # connection count is equal to `maxConns`
-              #
-              # Need to copy to avoid "cannot be captured" errors in Nim-1.4.x.
-              let
-                transportCopy = transport
-                addressCopy = a
-              await self.connManager.trackOutgoingConn(
-                () => transportCopy.dial(hostname, addressCopy),
-                forceDial
-              )
-            except TooManyConnectionsError as exc:
-              trace "Connection limit reached!"
-              raise exc
+              await transport.dial(hostname, a)
             except CancelledError as exc:
               debug "Dialing canceled", msg = exc.msg, peerId
               raise exc
@@ -87,9 +74,6 @@ proc dialAndUpgrade(
               libp2p_failed_dials.inc()
               continue # Try the next address
 
-          # make sure to assign the peer to the connection
-          dialed.peerId = peerId
-
           # also keep track of the connection's bottom unsafe transport direction
           # required by gossipsub scoring
           dialed.transportDir = Direction.Out
@@ -97,10 +81,11 @@ proc dialAndUpgrade(
           libp2p_successful_dials.inc()
 
           let conn = try:
-              await transport.upgradeOutgoing(dialed)
+              await transport.upgradeOutgoing(dialed, peerId)
             except CatchableError as exc:
               # If we failed to establish the connection through one transport,
               # we won't succeeded through another - no use in trying again
+              # TODO we should try another address though
               await dialed.close()
               debug "Upgrade failed", msg = exc.msg, peerId
               if exc isnot CancelledError:
@@ -113,20 +98,22 @@ proc dialAndUpgrade(
 
 proc internalConnect(
   self: Dialer,
-  peerId: PeerId,
+  peerId: Opt[PeerId],
   addrs: seq[MultiAddress],
   forceDial: bool):
   Future[Connection] {.async.} =
-  if self.localPeerId == peerId:
+  if Opt.some(self.localPeerId) == peerId:
     raise newException(CatchableError, "can't dial self!")
 
   # Ensure there's only one in-flight attempt per peer
-  let lock = self.dialLock.mgetOrPut(peerId, newAsyncLock())
+  let lock = self.dialLock.mgetOrPut(peerId.get(default(PeerId)), newAsyncLock())
   try:
     await lock.acquire()
 
     # Check if we have a connection already and try to reuse it
-    var conn = self.connManager.selectConn(peerId)
+    var conn =
+      if peerId.isSome: self.connManager.selectConn(peerId.get())
+      else: nil
     if conn != nil:
       if conn.atEof or conn.closed:
         # This connection should already have been removed from the connection
@@ -139,12 +126,18 @@ proc internalConnect(
       trace "Reusing existing connection", conn, direction = $conn.dir
       return conn
 
-    conn = await self.dialAndUpgrade(peerId, addrs, forceDial)
+    let slot = await self.connManager.getOutgoingSlot(forceDial)
+    conn =
+      try:
+        await self.dialAndUpgrade(peerId, addrs)
+      except CatchableError as exc:
+        slot.release()
+        raise exc
+    slot.trackConnection(conn)
     if isNil(conn): # None of the addresses connected
       raise newException(DialFailedError, "Unable to establish outgoing link")
 
-    # We already check for this in Connection manager
-    # but a disconnect could have happened right after
+    # A disconnect could have happened right after
     # we've added the connection so we check again
     # to prevent races due to that.
     if conn.closed() or conn.atEof():
@@ -171,7 +164,15 @@ method connect*(
   if self.connManager.connCount(peerId) > 0:
     return
 
-  discard await self.internalConnect(peerId, addrs, forceDial)
+  discard await self.internalConnect(Opt.some(peerId), addrs, forceDial)
+
+method connect*(
+  self: Dialer,
+  addrs: seq[MultiAddress],
+  ): Future[PeerId] {.async.} =
+  ## Connects to a peer and retrieve its PeerId
+
+  return (await self.internalConnect(Opt.none(PeerId), addrs, false)).peerId
 
 proc negotiateStream(
   self: Dialer,
@@ -184,6 +185,27 @@ proc negotiateStream(
     raise newException(DialFailedError, "Unable to select sub-protocol " & $protos)
 
   return conn
+
+method tryDial*(
+  self: Dialer,
+  peerId: PeerId,
+  addrs: seq[MultiAddress]): Future[MultiAddress] {.async.} =
+  ## Create a protocol stream in order to check
+  ## if a connection is possible.
+  ## Doesn't use the Connection Manager to save it.
+  ##
+
+  trace "Check if it can dial", peerId, addrs
+  try:
+    let conn = await self.dialAndUpgrade(Opt.some(peerId), addrs)
+    if conn.isNil():
+      raise newException(DialFailedError, "No valid multiaddress")
+    await conn.close()
+    return conn.observedAddr
+  except CancelledError as exc:
+    raise exc
+  except CatchableError as exc:
+    raise newException(DialFailedError, exc.msg)
 
 method dial*(
   self: Dialer,
@@ -223,7 +245,7 @@ method dial*(
 
   try:
     trace "Dialing (new)", peerId, protos
-    conn = await self.internalConnect(peerId, addrs, forceDial)
+    conn = await self.internalConnect(Opt.some(peerId), addrs, forceDial)
     trace "Opening stream", conn
     stream = await self.connManager.getStream(conn)
 

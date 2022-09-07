@@ -14,4 +14,6 @@ import
   test_features,
   test_encoder,
   test_value_ops,
-  test_lexer
+  test_lexer,
+  test_lexer_float,
+  test_compile_time
