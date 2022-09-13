@@ -9,4 +9,3 @@ import
 when not useNews:
   # The proxy implementation is based on websock
   import testproxy
-  import testhook

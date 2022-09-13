@@ -5,7 +5,7 @@ import
   chronos/apps/http/[httpserver, shttpserver],
   ".."/[errors, server]
 
-export server, shttpserver
+export server
 
 logScope:
   topics = "JSONRPC-HTTP-SERVER"
@@ -14,31 +14,13 @@ type
   ReqStatus = enum
     Success, Error, ErrorFailure
 
-  # HttpAuthHook: handle CORS, JWT auth, etc. in HTTP header
-  # before actual request processed
-  # return value:
-  # - nil: auth success, continue execution
-  # - HttpResponse: could not authenticate, stop execution
-  #   and return the response
-  HttpAuthHook* = proc(request: HttpRequestRef): Future[HttpResponseRef]
-                  {.gcsafe, raises: [Defect, CatchableError].}
-
   RpcHttpServer* = ref object of RpcServer
     httpServers: seq[HttpServerRef]
-    authHooks: seq[HttpAuthHook]
 
-proc processClientRpc(rpcServer: RpcHttpServer): HttpProcessCallback =
+proc processClientRpc(rpcServer: RpcServer): HttpProcessCallback =
   return proc (req: RequestFence): Future[HttpResponseRef] {.async.} =
     if req.isOk():
       let request = req.get()
-
-      # if hook result is not nil,
-      # it means we should return immediately
-      for hook in rpcServer.authHooks:
-        let res = await hook(request)
-        if not res.isNil:
-          return res
-
       let body = await request.getBody()
 
       let future = rpcServer.route(string.fromBytes(body))
@@ -195,36 +177,36 @@ proc addSecureHttpServer*(server: RpcHttpServer,
   for a in resolvedAddresses(address, port):
     server.addSecureHttpServer(a, tlsPrivateKey, tlsCertificate)
 
-proc new*(T: type RpcHttpServer, authHooks: seq[HttpAuthHook] = @[]): T =
-  T(router: RpcRouter.init(), httpServers: @[], authHooks: authHooks)
+proc new*(T: type RpcHttpServer): T =
+  T(router: RpcRouter.init(), httpServers: @[])
 
-proc new*(T: type RpcHttpServer, router: RpcRouter, authHooks: seq[HttpAuthHook] = @[]): T =
-  T(router: router, httpServers: @[], authHooks: authHooks)
+proc new*(T: type RpcHttpServer, router: RpcRouter): T =
+  T(router: router, httpServers: @[])
 
-proc newRpcHttpServer*(authHooks: seq[HttpAuthHook] = @[]): RpcHttpServer =
-  RpcHttpServer.new(authHooks)
+proc newRpcHttpServer*(): RpcHttpServer =
+  RpcHttpServer.new()
 
-proc newRpcHttpServer*(router: RpcRouter, authHooks: seq[HttpAuthHook] = @[]): RpcHttpServer =
-  RpcHttpServer.new(router, authHooks)
+proc newRpcHttpServer*(router: RpcRouter): RpcHttpServer =
+  RpcHttpServer.new(router)
 
-proc newRpcHttpServer*(addresses: openArray[TransportAddress], authHooks: seq[HttpAuthHook] = @[]): RpcHttpServer =
+proc newRpcHttpServer*(addresses: openArray[TransportAddress]): RpcHttpServer =
   ## Create new server and assign it to addresses ``addresses``.
-  result = newRpcHttpServer(authHooks)
+  result = newRpcHttpServer()
   result.addHttpServers(addresses)
 
-proc newRpcHttpServer*(addresses: openArray[string], authHooks: seq[HttpAuthHook] = @[]): RpcHttpServer =
+proc newRpcHttpServer*(addresses: openArray[string]): RpcHttpServer =
   ## Create new server and assign it to addresses ``addresses``.
-  result = newRpcHttpServer(authHooks)
+  result = newRpcHttpServer()
   result.addHttpServers(addresses)
 
-proc newRpcHttpServer*(addresses: openArray[string], router: RpcRouter, authHooks: seq[HttpAuthHook] = @[]): RpcHttpServer =
+proc newRpcHttpServer*(addresses: openArray[string], router: RpcRouter): RpcHttpServer =
   ## Create new server and assign it to addresses ``addresses``.
-  result = newRpcHttpServer(router, authHooks)
+  result = newRpcHttpServer(router)
   result.addHttpServers(addresses)
 
-proc newRpcHttpServer*(addresses: openArray[TransportAddress], router: RpcRouter, authHooks: seq[HttpAuthHook] = @[]): RpcHttpServer =
+proc newRpcHttpServer*(addresses: openArray[TransportAddress], router: RpcRouter): RpcHttpServer =
   ## Create new server and assign it to addresses ``addresses``.
-  result = newRpcHttpServer(router, authHooks)
+  result = newRpcHttpServer(router)
   result.addHttpServers(addresses)
 
 proc start*(server: RpcHttpServer) =

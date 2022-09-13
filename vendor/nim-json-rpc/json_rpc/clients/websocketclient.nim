@@ -128,7 +128,6 @@ else:
   proc connect*(
       client: RpcWebSocketClient, uri: string,
       compression = false,
-      hooks: seq[Hook] = @[],
       flags: set[TLSFlags] = {NoVerifyHost, NoVerifyServerName}) {.async.} =
     var ext: seq[ExtFactory] = if compression: @[deflateFactory()]
                                else: @[]
@@ -136,7 +135,6 @@ else:
     let ws = await WebSocket.connect(
       uri=uri,
       factories=ext,
-      hooks=hooks,
       flags=flags
     )
     client.transport = ws

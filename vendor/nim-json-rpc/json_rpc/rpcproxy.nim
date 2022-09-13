@@ -40,7 +40,7 @@ proc getWebSocketClientConfig*(
               uri: string,
               compression: bool = false,
               flags: set[TLSFlags] = {
-                TLSFlags.NoVerifyHost, TLSFlags.NoVerifyServerName}): ClientConfig =
+                NoVerifyHost, NoVerifyServerName}): ClientConfig =
   ClientConfig(kind: WebSocket, wsUri: uri, compression: compression, flags: flags)
 
 proc proxyCall(client: RpcClient, name: string): RpcProc =
@@ -82,10 +82,7 @@ proc connectToProxy(proxy: RpcProxy): Future[void] =
   of Http:
     return proxy.httpClient.connect(proxy.httpUri)
   of WebSocket:
-    return proxy.webSocketClient.connect(
-      uri = proxy.wsUri,
-      compression = proxy.compression,
-      flags = proxy.flags)
+    return proxy.webSocketClient.connect(proxy.wsUri, proxy.compression, proxy.flags)
 
 proc start*(proxy: RpcProxy) {.async.} =
   proxy.rpcHttpServer.start()
