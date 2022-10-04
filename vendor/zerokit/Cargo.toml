@@ -1,7 +1,8 @@
 [workspace]
 members = [
   "multiplier",
-  "poseidon-tornado",
   "semaphore",
   "rln",
+  "rln-wasm",
+  "utils",
 ]
