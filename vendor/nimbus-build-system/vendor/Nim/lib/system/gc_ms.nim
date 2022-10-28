@@ -36,7 +36,7 @@ type
                    # local
     waMarkPrecise  # fast precise marking
 
-  Finalizer {.compilerproc.} = proc (self: pointer) {.nimcall, benign.}
+  Finalizer {.compilerproc.} = proc (self: pointer) {.nimcall, benign, raises: [].}
     # A ref type can have a finalizer that is called before the object's
     # storage is freed.
 
@@ -115,10 +115,10 @@ when BitsPerPage mod (sizeof(int)*8) != 0:
   {.error: "(BitsPerPage mod BitsPerUnit) should be zero!".}
 
 # forward declarations:
-proc collectCT(gch: var GcHeap; size: int) {.benign.}
-proc forAllChildren(cell: PCell, op: WalkOp) {.benign.}
-proc doOperation(p: pointer, op: WalkOp) {.benign.}
-proc forAllChildrenAux(dest: pointer, mt: PNimType, op: WalkOp) {.benign.}
+proc collectCT(gch: var GcHeap; size: int) {.benign, raises: [].}
+proc forAllChildren(cell: PCell, op: WalkOp) {.benign, raises: [].}
+proc doOperation(p: pointer, op: WalkOp) {.benign, raises: [].}
+proc forAllChildrenAux(dest: pointer, mt: PNimType, op: WalkOp) {.benign, raises: [].}
 # we need the prototype here for debugging purposes
 
 when defined(nimGcRefLeak):
@@ -259,8 +259,7 @@ proc forAllChildren(cell: PCell, op: WalkOp) =
         var s = cast[PGenericSeq](d)
         if s != nil:
           for i in 0..s.len-1:
-            forAllChildrenAux(cast[pointer](d +% i *% cell.typ.base.size +%
-              GenericSeqSize), cell.typ.base, op)
+            forAllChildrenAux(cast[pointer](d +% align(GenericSeqSize, cell.typ.base.align) +% i *% cell.typ.base.size), cell.typ.base, op)
     else: discard
 
 proc rawNewObj(typ: PNimType, size: int, gch: var GcHeap): pointer =
@@ -308,14 +307,14 @@ when not defined(nimSeqsV2):
   {.push overflowChecks: on.}
   proc newSeq(typ: PNimType, len: int): pointer {.compilerRtl.} =
     # `newObj` already uses locks, so no need for them here.
-    let size = len * typ.base.size + GenericSeqSize
+    let size = align(GenericSeqSize, typ.base.align) + len * typ.base.size
     result = newObj(typ, size)
     cast[PGenericSeq](result).len = len
     cast[PGenericSeq](result).reserved = len
     when defined(memProfiler): nimProfile(size)
 
   proc newSeqRC1(typ: PNimType, len: int): pointer {.compilerRtl.} =
-    let size = len * typ.base.size + GenericSeqSize
+    let size = align(GenericSeqSize, typ.base.align) + len * typ.base.size
     result = newObj(typ, size)
     cast[PGenericSeq](result).len = len
     cast[PGenericSeq](result).reserved = len
@@ -329,11 +328,13 @@ when not defined(nimSeqsV2):
     gcAssert(ol.typ.kind in {tyString, tySequence}, "growObj: 2")
 
     var res = cast[PCell](rawAlloc(gch.region, newsize + sizeof(Cell)))
-    var elemSize = 1
-    if ol.typ.kind != tyString: elemSize = ol.typ.base.size
+    var elemSize, elemAlign = 1
+    if ol.typ.kind != tyString:
+      elemSize = ol.typ.base.size
+      elemAlign = ol.typ.base.align
     incTypeSize ol.typ, newsize
 
-    var oldsize = cast[PGenericSeq](old).len*elemSize + GenericSeqSize
+    var oldsize = align(GenericSeqSize, elemAlign) + cast[PGenericSeq](old).len*elemSize
     copyMem(res, ol, oldsize + sizeof(Cell))
     zeroMem(cast[pointer](cast[ByteAddress](res)+% oldsize +% sizeof(Cell)),
             newsize-oldsize)
@@ -427,15 +428,6 @@ proc sweep(gch: var GcHeap) =
         if c.refcount == rcBlack: c.refcount = rcWhite
         else: freeCyclicCell(gch, c)
 
-when false:
-  proc newGcInvariant*() =
-    for x in allObjects(gch.region):
-      if isCell(x):
-        var c = cast[PCell](x)
-        if c.typ == nil:
-          writeStackTrace()
-          quit 1
-
 proc markGlobals(gch: var GcHeap) =
   if gch.gcThreadId == 0:
     when defined(nimTracing):
@@ -493,9 +485,10 @@ when not defined(useNimRtl):
   proc GC_disable() =
     inc(gch.recGcLock)
   proc GC_enable() =
-    if gch.recGcLock <= 0:
-      raise newException(AssertionError,
-          "API usage error: GC_enable called but GC is already enabled")
+    when defined(nimDoesntTrackDefects):
+      if gch.recGcLock <= 0:
+        raise newException(AssertionDefect,
+            "API usage error: GC_enable called but GC is already enabled")
     dec(gch.recGcLock)
 
   proc GC_setStrategy(strategy: GC_Strategy) = discard
@@ -504,7 +497,7 @@ when not defined(useNimRtl):
     gch.cycleThreshold = InitialThreshold
 
   proc GC_disableMarkAndSweep() =
-    gch.cycleThreshold = high(gch.cycleThreshold)-1
+    gch.cycleThreshold = high(typeof(gch.cycleThreshold))-1
     # set to the max value to suppress the cycle detector
 
   when defined(nimTracing):

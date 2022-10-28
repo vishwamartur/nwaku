@@ -2,6 +2,9 @@
       Hot code reloading
 ===================================
 
+.. default-role:: code
+.. include:: rstcommon.rst
+
 The `hotCodeReloading`:idx: option enables special compilation mode where
 changes in the code can be applied automatically to a running program.
 The code reloading happens at the granularity of an individual module.
@@ -14,51 +17,52 @@ preserved.
 Basic workflow
 ==============
 
-Currently hot code reloading does not work for the main module itself,
+Currently, hot code reloading does not work for the main module itself,
 so we have to use a helper module where the major logic we want to change
 during development resides.
 
-In this example we use SDL2 to create a window and we reload the logic
-code when ``F9`` is pressed. The important lines are marked with ``#***``.
-To install SDL2 you can use ``nimble install sdl2``.
+In this example, we use SDL2 to create a window and we reload the logic
+code when `F9` is pressed. The important lines are marked with `#***`.
+To install SDL2 you can use `nimble install sdl2`:cmd:.
 
 
 .. code-block:: nim
 
   # logic.nim
-  import sdl2/sdl
+  import sdl2
 
   #*** import the hotcodereloading stdlib module ***
-  import hotcodereloading
+  import std/hotcodereloading
 
   var runGame*: bool = true
-  var window: Window
-  var renderer: Renderer
+  var window: WindowPtr
+  var renderer: RendererPtr
+  var evt = sdl2.defaultEvent
 
   proc init*() =
-    discard sdl.init(INIT_EVERYTHING)
-    window = createWindow("testing", WINDOWPOS_UNDEFINED.cint, WINDOWPOS_UNDEFINED.cint, 640, 480, 0'u32)
-    assert(window != nil, $sdl.getError())
+    discard sdl2.init(INIT_EVERYTHING)
+    window = createWindow("testing", SDL_WINDOWPOS_UNDEFINED.cint, SDL_WINDOWPOS_UNDEFINED.cint, 640, 480, 0'u32)
+    assert(window != nil, $sdl2.getError())
     renderer = createRenderer(window, -1, RENDERER_SOFTWARE)
-    assert(renderer != nil, $sdl.getError())
+    assert(renderer != nil, $sdl2.getError())
 
   proc destroy*() =
     destroyRenderer(renderer)
     destroyWindow(window)
 
-  var posX = 1
-  var posY = 0
-  var dX = 1
-  var dY = 1
+  var posX: cint = 1
+  var posY: cint = 0
+  var dX: cint = 1
+  var dY: cint = 1
 
   proc update*() =
-    for evt in events():
-      if evt.kind == QUIT:
+    while pollEvent(evt):
+      if evt.kind == QuitEvent:
         runGame = false
         break
-      if evt.kind == KEY_DOWN:
-        if evt.key.keysym.scancode == SCANCODE_ESCAPE: runGame = false
-        elif evt.key.keysym.scancode == SCANCODE_F9:
+      if evt.kind == KeyDown:
+        if evt.key.keysym.scancode == SDL_SCANCODE_ESCAPE: runGame = false
+        elif evt.key.keysym.scancode == SDL_SCANCODE_F9:
           #*** reload this logic.nim module on the F9 keypress ***
           performCodeReload()
 
@@ -71,14 +75,14 @@ To install SDL2 you can use ``nimble install sdl2``.
     if posY >= 480: dY = -2
     if posY <= 0: dY = +2
 
-    discard renderer.setRenderDrawColor(0, 0, 255, 255)
-    discard renderer.renderClear()
-    discard renderer.setRenderDrawColor(255, 128, 128, 0)
+    discard renderer.setDrawColor(0, 0, 255, 255)
+    discard renderer.clear()
+    discard renderer.setDrawColor(255, 128, 128, 0)
 
-    var rect: Rect(x: posX - 25, y: posY - 25, w: 50, h: 50)
-    discard renderer.renderFillRect(rect.addr)
+    var rect: Rect = (x: posX - 25, y: posY - 25, w: 50.cint, h: 50.cint)
+    discard renderer.fillRect(rect)
     delay(16)
-    renderer.renderPresent()
+    renderer.present()
 
 
 .. code-block:: nim
@@ -95,36 +99,42 @@ To install SDL2 you can use ``nimble install sdl2``.
   main()
 
 
-Compile this example via::
+Compile this example via:
 
+```cmd
   nim c --hotcodereloading:on mymain.nim
+```
 
 Now start the program and KEEP it running!
 
-::
-
+.. code:: cmd
   # Unix:
   mymain &
   # or Windows (click on the .exe)
   mymain.exe
   # edit
 
-For example, change the line::
+For example, change the line:
 
-  discard renderer.setRenderDrawColor(255, 128, 128, 0)
+```nim
+  discard renderer.setDrawColor(255, 128, 128, 0)
+```
 
-into::
+into:
 
-  discard renderer.setRenderDrawColor(255, 255, 128, 0)
+```nim
+  discard renderer.setDrawColor(255, 255, 128, 0)
+```
 
 (This will change the color of the rectangle.)
 
 Then recompile the project, but do not restart or quit the mymain.exe program!
-::
 
+```cmd
   nim c --hotcodereloading:on mymain.nim
+```
 
-Now give the ``mymain`` SDL window the focus, press F9 and watch the
+Now give the `mymain` SDL window the focus, press F9, and watch the
 updated version of the program.
 
 
@@ -132,8 +142,8 @@ updated version of the program.
 Reloading API
 =============
 
-One can use the special event handlers ``beforeCodeReload`` and
-``afterCodeReload`` to reset the state of a particular variable or to force
+One can use the special event handlers `beforeCodeReload` and
+`afterCodeReload` to reset the state of a particular variable or to force
 the execution of certain statements:
 
 .. code-block:: Nim
@@ -177,40 +187,56 @@ It's expected that most projects will implement the reloading with a suitable
 build-system triggered IPC notification mechanism, but a polling solution is
 also possible through the provided `hasAnyModuleChanged()`:idx: API.
 
-In order to access ``beforeCodeReload``, ``afterCodeReload``, ``hasModuleChanged``
-or ``hasAnyModuleChanged`` one must import the `hotcodereloading`:idx: module.
+In order to access `beforeCodeReload`, `afterCodeReload`, `hasModuleChanged`
+or `hasAnyModuleChanged` one must import the `hotcodereloading`:idx: module.
 
 
 Native code targets
 ===================
 
 Native projects using the hot code reloading option will be implicitly
-compiled with the `-d:useNimRtl` option and they will depend on both
-the ``nimrtl`` library and the ``nimhcr`` library which implements the
-hot code reloading run-time.
+compiled with the `-d:useNimRtl`:option: option and they will depend on both
+the `nimrtl` library and the `nimhcr` library which implements the
+hot code reloading run-time. Both libraries can be found in the `lib`
+folder of Nim and can be compiled into dynamic libraries to satisfy
+runtime demands of the example code above. An example of compiling
+``nimhcr.nim`` and ``nimrtl.nim`` when the source dir of Nim is installed
+with choosenim follows.
+
+.. code:: console
+
+  # Unix/MacOS
+  # Make sure you are in the directory containing your .nim files
+  $ cd your-source-directory
+
+  # Compile two required files and set their output directory to current dir
+  $ nim c --outdir:$PWD ~/.choosenim/toolchains/nim-#devel/lib/nimhcr.nim
+  $ nim c --outdir:$PWD ~/.choosenim/toolchains/nim-#devel/lib/nimrtl.nim
+
+  # verify that you have two files named libnimhcr and libnimrtl in your
+  # source directory (.dll for Windows, .so for Unix, .dylib for MacOS)
 
 All modules of the project will be compiled to separate dynamic link
-libraries placed in the ``nimcache`` directory. Please note that during
+libraries placed in the `nimcache` directory. Please note that during
 the execution of the program, the hot code reloading run-time will load
 only copies of these libraries in order to not interfere with any newly
 issued build commands.
 
 The main module of the program is considered non-reloadable. Please note
 that procs from reloadable modules should not appear in the call stack of
-program while ``performCodeReload`` is being called. Thus, the main module
+program while `performCodeReload` is being called. Thus, the main module
 is a suitable place for implementing a program loop capable of calling
-``performCodeReload``.
+`performCodeReload`.
 
 Please note that reloading won't be possible when any of the type definitions
 in the program has been changed. When closure iterators are used (directly or
-through async code), the reloaded refinitions will affect only newly created
-instances. Existing iterator instancess will execute their original code to
+through async code), the reloaded definitions will affect only newly created
+instances. Existing iterator instances will execute their original code to
 completion.
 
 JavaScript target
 =================
 
-Once your code is compiled for hot reloading, the ``nim-livereload`` NPM
-package provides a convenient solution for implementing the actual reloading
+Once your code is compiled for hot reloading, a convenient solution for implementing the actual reloading
 in the browser using a framework such as [LiveReload](http://livereload.com/)
 or [BrowserSync](https://browsersync.io/).

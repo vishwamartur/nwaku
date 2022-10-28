@@ -17,6 +17,8 @@ when defined(windows):
   const libcDll = "msvcrt.dll"
 elif defined(linux):
   const libcDll = "libc.so(.6|.5|)"
+elif defined(openbsd):
+  const libcDll = "/usr/lib/libc.so(.95.1|)"
 elif defined(bsd):
   const libcDll = "/lib/libc.so.7"
 elif defined(osx):
@@ -90,7 +92,7 @@ proc mapType(conf: ConfigRef, t: ast.PType): ptr libffi.Type =
     else: result = nil
   of tyFloat, tyFloat64: result = addr libffi.type_double
   of tyFloat32: result = addr libffi.type_float
-  of tyVar, tyLent, tyPointer, tyPtr, tyRef, tyCString, tySequence, tyString, tyUntyped,
+  of tyVar, tyLent, tyPointer, tyPtr, tyRef, tyCstring, tySequence, tyString, tyUntyped,
      tyTyped, tyTypeDesc, tyProc, tyArray, tyStatic, tyNil:
     result = addr libffi.type_pointer
   of tyDistinct, tyAlias, tySink:
@@ -102,14 +104,14 @@ proc mapType(conf: ConfigRef, t: ast.PType): ptr libffi.Type =
 
 proc mapCallConv(conf: ConfigRef, cc: TCallingConvention, info: TLineInfo): TABI =
   case cc
-  of ccDefault: result = DEFAULT_ABI
+  of ccNimCall: result = DEFAULT_ABI
   of ccStdCall: result = when defined(windows) and defined(x86): STDCALL else: DEFAULT_ABI
   of ccCDecl: result = DEFAULT_ABI
   else:
     globalError(conf, info, "cannot map calling convention to FFI")
 
-template rd(T, p: untyped): untyped = (cast[ptr T](p))[]
-template wr(T, p, v: untyped): untyped = (cast[ptr T](p))[] = v
+template rd(typ, p: untyped): untyped = (cast[ptr typ](p))[]
+template wr(typ, p, v: untyped): untyped = (cast[ptr typ](p))[] = v
 template `+!`(x, y: untyped): untyped =
   cast[pointer](cast[ByteAddress](x) + y)
 
@@ -175,8 +177,8 @@ const maxPackDepth = 20
 var packRecCheck = 0
 
 proc pack(conf: ConfigRef, v: PNode, typ: PType, res: pointer) =
-  template awr(T, v: untyped): untyped =
-    wr(T, res, v)
+  template awr(typ, v: untyped): untyped =
+    wr(typ, res, v)
 
   case typ.kind
   of tyBool: awr(bool, v.intVal != 0)
@@ -203,7 +205,7 @@ proc pack(conf: ConfigRef, v: PNode, typ: PType, res: pointer) =
   of tyFloat32: awr(float32, v.floatVal)
   of tyFloat64: awr(float64, v.floatVal)
 
-  of tyPointer, tyProc,  tyCString, tyString:
+  of tyPointer, tyProc,  tyCstring, tyString:
     if v.kind == nkNilLit:
       # nothing to do since the memory is 0 initialized anyway
       discard
@@ -384,7 +386,7 @@ proc unpack(conf: ConfigRef, x: pointer, typ: PType, n: PNode): PNode =
     result = unpackObject(conf, x, typ, n)
   of tyArray:
     result = unpackArray(conf, x, typ, n)
-  of tyCString, tyString:
+  of tyCstring, tyString:
     let p = rd(cstring, x)
     if p.isNil:
       setNil()
@@ -400,7 +402,7 @@ proc unpack(conf: ConfigRef, x: pointer, typ: PType, n: PNode): PNode =
 
 proc fficast*(conf: ConfigRef, x: PNode, destTyp: PType): PNode =
   if x.kind == nkPtrLit and x.typ.kind in {tyPtr, tyRef, tyVar, tyLent, tyPointer,
-                                           tyProc, tyCString, tyString,
+                                           tyProc, tyCstring, tyString,
                                            tySequence}:
     result = newNodeIT(x.kind, x.info, destTyp)
     result.intVal = x.intVal

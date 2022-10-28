@@ -2,7 +2,7 @@
 /* vim: tabstop=4 shiftwidth=4 noexpandtab
  * MiniUPnP project
  * http://miniupnp.free.fr/ or https://miniupnp.tuxfamily.org/
- * (c) 2006-2020 Thomas Bernard
+ * (c) 2006-2021 Thomas Bernard
  * This software is subject to the conditions detailed
  * in the LICENCE file provided within the distribution */
 
@@ -27,6 +27,7 @@
 #include "upnpsoap.h"
 #include "upnpreplyparse.h"
 #include "upnpredirect.h"
+#include "upnppermissions.h"
 #include "upnppinhole.h"
 #include "getifaddr.h"
 #include "getifstats.h"
@@ -344,15 +345,15 @@ GetExternalIPAddress(struct upnphttp * h, const char * action, const char * ns)
 		{
 			syslog(LOG_ERR, "Failed to get ip address for interface %s",
 				ext_if_name);
-			strncpy(ext_ip_addr, "0.0.0.0", INET_ADDRSTRLEN);
+			ext_ip_addr[0] = '\0';
 		} else if (addr_is_reserved(&addr)) {
 			syslog(LOG_NOTICE, "private/reserved address %s is not suitable for external IP", ext_ip_addr);
-			strncpy(ext_ip_addr, "0.0.0.0", INET_ADDRSTRLEN);
+			ext_ip_addr[0] = '\0';
 		}
 	}
 #else
 	struct lan_addr_s * lan_addr;
-	strncpy(ext_ip_addr, "0.0.0.0", INET_ADDRSTRLEN);
+	ext_ip_addr[0] = '\0';
 	for(lan_addr = lan_addrs.lh_first; lan_addr != NULL; lan_addr = lan_addr->list.le_next)
 	{
 		if( (h->clientaddr.s_addr & lan_addr->mask.s_addr)
@@ -363,11 +364,17 @@ GetExternalIPAddress(struct upnphttp * h, const char * action, const char * ns)
 		}
 	}
 #endif
+	/* WANIPConnection:2 Service 2.3.13 :
+	 * When the external IP address could not be retrieved by the gateway
+	 * (for example, because the interface is down or because there was a
+	 * failure in the last connection setup attempt),
+	 * then the ExternalIPAddress MUST be equal to the empty string.
+	 *
+	 * There is no precise requirement on how theses cases must be handled
+	 * in IGDv1 specifications, but ExternalIPAddress default value is empty
+	 * string. */
 	if (strcmp(ext_ip_addr, "0.0.0.0") == 0)
-	{
-		SoapError(h, 501, "Action Failed");
-		return;
-	}
+		ext_ip_addr[0] = '\0';
 	bodylen = snprintf(body, sizeof(body), resp,
 	              action, ns, /*SERVICE_TYPE_WANIPC,*/
 				  ext_ip_addr, action);
@@ -586,7 +593,7 @@ AddAnyPortMapping(struct upnphttp * h, const char * action, const char * ns)
 	struct NameValueParserData data;
 	const char * int_ip, * int_port, * ext_port, * protocol, * desc;
 	const char * r_host;
-	unsigned short iport, eport, eport_below, eport_above;
+	unsigned short iport, eport;
 	const char * leaseduration_str;
 	unsigned int leaseduration;
 
@@ -674,26 +681,41 @@ AddAnyPortMapping(struct upnphttp * h, const char * action, const char * ns)
 
 	/* first try the port asked in request, then
 	 * try +1, -1, +2, -2, etc. */
-	eport_above = eport_below = eport;
-	for(;;) {
-		r = upnp_redirect(r_host, eport, int_ip, iport, protocol, desc, leaseduration);
-		if (r == 0 || r == -1) {
-			/* OK or failure : Stop */
-			break;
+	r = upnp_redirect(r_host, eport, int_ip, iport, protocol, desc, leaseduration);
+	if (r != 0 && r != -1) {
+		unsigned short eport_below, eport_above;
+		struct in_addr address;
+		uint32_t allowed_eports[65536 / 32];
+
+		if(inet_aton(int_ip, &address) <= 0) {
+			syslog(LOG_ERR, "inet_aton(%s) FAILED", int_ip);
 		}
-		/* r : -2 / -4 already redirected or -3 permission check failed */
-		if (eport_below <= 1 && eport_above == 65535) {
-			/* all possible ports tried */
-			r = 1;
-			break;
+		get_permitted_ext_ports(allowed_eports, upnppermlist, num_upnpperm,
+		                        address.s_addr, iport);
+		eport_above = eport_below = eport;
+		for(;;) {
+			/* loop invariant
+			 * eport is equal to either eport_below or eport_above (or both) */
+			if (eport_below <= 1 && eport_above == 65535) {
+				/* all possible ports tried */
+				r = 1;
+				break;
+			}
+			if (eport_above == 65535 || (eport > eport_below && eport_below > 1)) {
+				eport = --eport_below;
+			} else {
+				eport = ++eport_above;
+			}
+			if (!(allowed_eports[eport / 32] & ((uint32_t)1U << (eport % 32))))
+				continue;	/* not allowed */
+			r = upnp_redirect(r_host, eport, int_ip, iport, protocol, desc, leaseduration);
+			if (r == 0 || r == -1) {
+				/* OK or failure : Stop */
+				break;
+			}
+			/* r : -2 / -4 already redirected or -3 permission check failed :
+			 * continue */
 		}
-		if (eport_above == 65535 || (eport > eport_below && eport_below > 1)) {
-			eport = --eport_below;
-		} else {
-			eport = ++eport_above;
-		}
-		/* loop invariant :
-		 * eport is equal to either eport_below or eport_above (or both) */
 	}
 
 	ClearNameValueList(&data);

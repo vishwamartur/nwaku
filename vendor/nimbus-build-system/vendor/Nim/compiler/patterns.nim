@@ -36,7 +36,7 @@ proc putLazy(c: PPatternContext, sym: PSym, n: PNode) =
 proc matches(c: PPatternContext, p, n: PNode): bool
 
 proc canonKind(n: PNode): TNodeKind =
-  ## nodekind canonilization for pattern matching
+  ## nodekind canonicalization for pattern matching
   result = n.kind
   case result
   of nkCallKinds: result = nkCall
@@ -210,11 +210,8 @@ proc matchStmtList(c: PPatternContext, p, n: PNode): PNode =
     for j in 0..<p.len:
       if not matches(c, p[j], n[i+j]):
         # we need to undo any bindings:
-        when defined(nimNoNilSeqs):
-          c.mapping = @[]
-          c.mappingIsFull = false
-        else:
-          if not isNil(c.mapping): c.mapping = nil
+        c.mapping = @[]
+        c.mappingIsFull = false
         return false
     result = true
 

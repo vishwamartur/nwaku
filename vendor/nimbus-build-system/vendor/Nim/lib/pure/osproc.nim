@@ -18,7 +18,8 @@
 include "system/inclrtl"
 
 import
-  strutils, os, strtabs, streams, cpuinfo
+  strutils, os, strtabs, streams, cpuinfo, streamwrapper,
+  std/private/since
 
 export quoteShell, quoteShellWindows, quoteShellPosix
 
@@ -74,14 +75,13 @@ const poDemon* {.deprecated.} = poDaemon ## Nim versions before 0.20
 proc execProcess*(command: string, workingDir: string = "",
     args: openArray[string] = [], env: StringTableRef = nil,
     options: set[ProcessOption] = {poStdErrToStdOut, poUsePath, poEvalCommand}):
-  TaintedString {.rtl, extern: "nosp$1",
+  string {.rtl, extern: "nosp$1",
                   tags: [ExecIOEffect, ReadIOEffect, RootEffect].}
   ## A convenience procedure that executes ``command`` with ``startProcess``
   ## and returns its output as a string.
   ##
-  ## **WARNING:** This function uses `poEvalCommand` by default for backward
-  ## compatibility.
-  ## Make sure to pass options explicitly.
+  ## .. warning:: This function uses `poEvalCommand` by default for backwards
+  ##   compatibility. Make sure to pass options explicitly.
   ##
   ## See also:
   ## * `startProcess proc
@@ -105,7 +105,7 @@ proc execCmd*(command: string): int {.rtl, extern: "nosp$1",
   ## This operation is also often called `system`:idx:.
   ##
   ## See also:
-  ## * `execCmdEx proc <#execCmdEx,string,set[ProcessOption]>`_
+  ## * `execCmdEx proc <#execCmdEx,string,set[ProcessOption],StringTableRef,string,string>`_
   ## * `startProcess proc
   ##   <#startProcess,string,string,openArray[string],StringTableRef,set[ProcessOption]>`_
   ## * `execProcess proc
@@ -154,9 +154,9 @@ proc startProcess*(command: string, workingDir: string = "",
 proc close*(p: Process) {.rtl, extern: "nosp$1", tags: [WriteIOEffect].}
   ## When the process has finished executing, cleanup related handles.
   ##
-  ## **WARNING:** If the process has not finished executing, this will forcibly
-  ## terminate the process. Doing so may result in zombie processes and
-  ## `pty leaks <http://stackoverflow.com/questions/27021641/how-to-fix-request-failed-on-channel-0>`_.
+  ## .. warning:: If the process has not finished executing, this will forcibly
+  ##   terminate the process. Doing so may result in zombie processes and
+  ##   `pty leaks <http://stackoverflow.com/questions/27021641/how-to-fix-request-failed-on-channel-0>`_.
 
 proc suspend*(p: Process) {.rtl, extern: "nosp$1", tags: [].}
   ## Suspends the process `p`.
@@ -186,6 +186,7 @@ proc terminate*(p: Process) {.rtl, extern: "nosp$1", tags: [].}
   ## * `suspend proc <#suspend,Process>`_
   ## * `resume proc <#resume,Process>`_
   ## * `kill proc <#kill,Process>`_
+  ## * `posix_utils.sendSignal(pid: Pid, signal: int) <posix_utils.html#sendSignal,Pid,int>`_
 
 proc kill*(p: Process) {.rtl, extern: "nosp$1", tags: [].}
   ## Kill the process `p`.
@@ -197,9 +198,10 @@ proc kill*(p: Process) {.rtl, extern: "nosp$1", tags: [].}
   ## * `suspend proc <#suspend,Process>`_
   ## * `resume proc <#resume,Process>`_
   ## * `terminate proc <#terminate,Process>`_
+  ## * `posix_utils.sendSignal(pid: Pid, signal: int) <posix_utils.html#sendSignal,Pid,int>`_
 
 proc running*(p: Process): bool {.rtl, extern: "nosp$1", tags: [].}
-  ## Returns true iff the process `p` is still running. Returns immediately.
+  ## Returns true if the process `p` is still running. Returns immediately.
 
 proc processID*(p: Process): int {.rtl, extern: "nosp$1".} =
   ## Returns `p`'s process ID.
@@ -212,8 +214,8 @@ proc waitForExit*(p: Process, timeout: int = -1): int {.rtl,
     extern: "nosp$1", tags: [].}
   ## Waits for the process to finish and returns `p`'s error code.
   ##
-  ## **WARNING**: Be careful when using `waitForExit` for processes created without
-  ## `poParentStreams` because they may fill output buffers, causing deadlock.
+  ## .. warning:: Be careful when using `waitForExit` for processes created without
+  ##   `poParentStreams` because they may fill output buffers, causing deadlock.
   ##
   ## On posix, if the process has exited because of a signal, 128 + signal
   ## number will be returned.
@@ -227,8 +229,8 @@ proc peekExitCode*(p: Process): int {.rtl, extern: "nosp$1", tags: [].}
 proc inputStream*(p: Process): Stream {.rtl, extern: "nosp$1", tags: [].}
   ## Returns ``p``'s input stream for writing to.
   ##
-  ## **WARNING**: The returned `Stream` should not be closed manually as it
-  ## is closed when closing the Process ``p``.
+  ## .. warning:: The returned `Stream` should not be closed manually as it
+  ##   is closed when closing the Process ``p``.
   ##
   ## See also:
   ## * `outputStream proc <#outputStream,Process>`_
@@ -237,8 +239,12 @@ proc inputStream*(p: Process): Stream {.rtl, extern: "nosp$1", tags: [].}
 proc outputStream*(p: Process): Stream {.rtl, extern: "nosp$1", tags: [].}
   ## Returns ``p``'s output stream for reading from.
   ##
-  ## **WARNING**: The returned `Stream` should not be closed manually as it
-  ## is closed when closing the Process ``p``.
+  ## You cannot perform peek/write/setOption operations to this stream.
+  ## Use `peekableOutputStream proc <#peekableOutputStream,Process>`_
+  ## if you need to peek stream.
+  ##
+  ## .. warning:: The returned `Stream` should not be closed manually as it
+  ##   is closed when closing the Process ``p``.
   ##
   ## See also:
   ## * `inputStream proc <#inputStream,Process>`_
@@ -247,19 +253,47 @@ proc outputStream*(p: Process): Stream {.rtl, extern: "nosp$1", tags: [].}
 proc errorStream*(p: Process): Stream {.rtl, extern: "nosp$1", tags: [].}
   ## Returns ``p``'s error stream for reading from.
   ##
-  ## **WARNING**: The returned `Stream` should not be closed manually as it
-  ## is closed when closing the Process ``p``.
+  ## You cannot perform peek/write/setOption operations to this stream.
+  ## Use `peekableErrorStream proc <#peekableErrorStream,Process>`_
+  ## if you need to peek stream.
+  ##
+  ## .. warning:: The returned `Stream` should not be closed manually as it
+  ##   is closed when closing the Process ``p``.
   ##
   ## See also:
   ## * `inputStream proc <#inputStream,Process>`_
   ## * `outputStream proc <#outputStream,Process>`_
 
+proc peekableOutputStream*(p: Process): Stream {.rtl, extern: "nosp$1", tags: [], since: (1, 3).}
+  ## Returns ``p``'s output stream for reading from.
+  ##
+  ## You can peek returned stream.
+  ##
+  ## .. warning:: The returned `Stream` should not be closed manually as it
+  ##   is closed when closing the Process ``p``.
+  ##
+  ## See also:
+  ## * `outputStream proc <#outputStream,Process>`_
+  ## * `peekableErrorStream proc <#peekableErrorStream,Process>`_
+
+proc peekableErrorStream*(p: Process): Stream {.rtl, extern: "nosp$1", tags: [], since: (1, 3).}
+  ## Returns ``p``'s error stream for reading from.
+  ##
+  ## You can run peek operation to returned stream.
+  ##
+  ## .. warning:: The returned `Stream` should not be closed manually as it
+  ##   is closed when closing the Process ``p``.
+  ##
+  ## See also:
+  ## * `errorStream proc <#errorStream,Process>`_
+  ## * `peekableOutputStream proc <#peekableOutputStream,Process>`_
+
 proc inputHandle*(p: Process): FileHandle {.rtl, extern: "nosp$1",
   tags: [].} =
   ## Returns ``p``'s input file handle for writing to.
   ##
-  ## **WARNING**: The returned `FileHandle` should not be closed manually as
-  ## it is closed when closing the Process ``p``.
+  ## .. warning:: The returned `FileHandle` should not be closed manually as
+  ##   it is closed when closing the Process ``p``.
   ##
   ## See also:
   ## * `outputHandle proc <#outputHandle,Process>`_
@@ -270,8 +304,8 @@ proc outputHandle*(p: Process): FileHandle {.rtl, extern: "nosp$1",
     tags: [].} =
   ## Returns ``p``'s output file handle for reading from.
   ##
-  ## **WARNING**: The returned `FileHandle` should not be closed manually as
-  ## it is closed when closing the Process ``p``.
+  ## .. warning:: The returned `FileHandle` should not be closed manually as
+  ##   it is closed when closing the Process ``p``.
   ##
   ## See also:
   ## * `inputHandle proc <#inputHandle,Process>`_
@@ -282,8 +316,8 @@ proc errorHandle*(p: Process): FileHandle {.rtl, extern: "nosp$1",
     tags: [].} =
   ## Returns ``p``'s error file handle for reading from.
   ##
-  ## **WARNING**: The returned `FileHandle` should not be closed manually as
-  ## it is closed when closing the Process ``p``.
+  ## .. warning:: The returned `FileHandle` should not be closed manually as
+  ##   it is closed when closing the Process ``p``.
   ##
   ## See also:
   ## * `inputHandle proc <#inputHandle,Process>`_
@@ -296,12 +330,16 @@ proc countProcessors*(): int {.rtl, extern: "nosp$1".} =
   ## It is implemented just calling `cpuinfo.countProcessors`.
   result = cpuinfo.countProcessors()
 
+when not defined(nimHasEffectsOf):
+  {.pragma: effectsOf.}
+
 proc execProcesses*(cmds: openArray[string],
     options = {poStdErrToStdOut, poParentStreams}, n = countProcessors(),
     beforeRunEvent: proc(idx: int) = nil,
     afterRunEvent: proc(idx: int, p: Process) = nil):
   int {.rtl, extern: "nosp$1",
-        tags: [ExecIOEffect, TimeEffect, ReadEnvEffect, RootEffect].} =
+        tags: [ExecIOEffect, TimeEffect, ReadEnvEffect, RootEffect],
+        effectsOf: [beforeRunEvent, afterRunEvent].} =
   ## Executes the commands `cmds` in parallel.
   ## Creates `n` processes that execute in parallel.
   ##
@@ -413,30 +451,81 @@ proc execProcesses*(cmds: openArray[string],
       if afterRunEvent != nil: afterRunEvent(i, p)
       close(p)
 
+iterator lines*(p: Process): string {.since: (1, 3), tags: [ReadIOEffect].} =
+  ## Convenience iterator for working with `startProcess` to read data from a
+  ## background process.
+  ##
+  ## See also:
+  ## * `readLines proc <#readLines,Process>`_
+  ##
+  ## Example:
+  ##
+  ## .. code-block:: Nim
+  ##   const opts = {poUsePath, poDaemon, poStdErrToStdOut}
+  ##   var ps: seq[Process]
+  ##   for prog in ["a", "b"]: # run 2 progs in parallel
+  ##     ps.add startProcess("nim", "", ["r", prog], nil, opts)
+  ##   for p in ps:
+  ##     var i = 0
+  ##     for line in p.lines:
+  ##       echo line
+  ##       i.inc
+  ##       if i > 100: break
+  ##     p.close
+  var outp = p.outputStream
+  var line = newStringOfCap(120)
+  while true:
+    if outp.readLine(line):
+      yield line
+    else:
+      if p.peekExitCode != -1: break
+
+proc readLines*(p: Process): (seq[string], int) {.since: (1, 3).} =
+  ## Convenience function for working with `startProcess` to read data from a
+  ## background process.
+  ##
+  ## See also:
+  ## * `lines iterator <#lines.i,Process>`_
+  ##
+  ## Example:
+  ##
+  ## .. code-block:: Nim
+  ##   const opts = {poUsePath, poDaemon, poStdErrToStdOut}
+  ##   var ps: seq[Process]
+  ##   for prog in ["a", "b"]: # run 2 progs in parallel
+  ##     ps.add startProcess("nim", "", ["r", prog], nil, opts)
+  ##   for p in ps:
+  ##     let (lines, exCode) = p.readLines
+  ##     if exCode != 0:
+  ##       for line in lines: echo line
+  ##     p.close
+  for line in p.lines: result[0].add(line)
+  result[1] = p.peekExitCode
+
 when not defined(useNimRtl):
   proc execProcess(command: string, workingDir: string = "",
       args: openArray[string] = [], env: StringTableRef = nil,
       options: set[ProcessOption] = {poStdErrToStdOut, poUsePath,
           poEvalCommand}):
-    TaintedString =
+    string =
 
     var p = startProcess(command, workingDir = workingDir, args = args,
         env = env, options = options)
     var outp = outputStream(p)
-    result = TaintedString""
-    var line = newStringOfCap(120).TaintedString
+    result = ""
+    var line = newStringOfCap(120)
     while true:
       # FIXME: converts CR-LF to LF.
       if outp.readLine(line):
-        result.string.add(line.string)
-        result.string.add("\n")
+        result.add(line)
+        result.add("\n")
       elif not running(p): break
     close(p)
 
 template streamAccess(p) =
   assert poParentStreams notin p.options, "API usage error: stream access not allowed when you use poParentStreams"
 
-when defined(Windows) and not defined(useNimRtl):
+when defined(windows) and not defined(useNimRtl):
   # We need to implement a handle stream for Windows:
   type
     FileHandleStream = ref object of StreamObj
@@ -759,6 +848,18 @@ when defined(Windows) and not defined(useNimRtl):
       p.errStream = newFileHandleStream(p.errHandle)
     result = p.errStream
 
+  proc peekableOutputStream(p: Process): Stream =
+    streamAccess(p)
+    if p.outStream == nil:
+      p.outStream = newFileHandleStream(p.outHandle).newPipeOutStream
+    result = p.outStream
+
+  proc peekableErrorStream(p: Process): Stream =
+    streamAccess(p)
+    if p.errStream == nil:
+      p.errStream = newFileHandleStream(p.errHandle).newPipeOutStream
+    result = p.errStream
+
   proc execCmd(command: string): int =
     var
       si: STARTUPINFO
@@ -834,7 +935,7 @@ elif not defined(useNimRtl):
     result = cast[cstringArray](alloc0((counter + 1) * sizeof(cstring)))
     var i = 0
     for key, val in envPairs():
-      var x = key.string & "=" & val.string
+      var x = key & "=" & val
       result[i] = cast[cstring](alloc(x.len+1))
       copyMem(result[i], addr(x[0]), x.len+1)
       inc(i)
@@ -883,7 +984,7 @@ elif not defined(useNimRtl):
         when not defined(android): "/bin/sh"
         else: "/system/bin/sh"
       data.sysCommand = useShPath
-      sysArgsRaw = @[data.sysCommand, "-c", command]
+      sysArgsRaw = @[useShPath, "-c", command]
       assert args.len == 0, "`args` has to be empty when using poEvalCommand."
     else:
       data.sysCommand = command
@@ -1136,7 +1237,7 @@ elif not defined(useNimRtl):
 
   when defined(macosx) or defined(freebsd) or defined(netbsd) or
        defined(openbsd) or defined(dragonfly):
-    import kqueue, times
+    import kqueue
 
     proc waitForExit(p: Process, timeout: int = -1): int =
       if p.exitFlag:
@@ -1196,6 +1297,67 @@ elif not defined(useNimRtl):
           discard posix.close(kqFD)
 
       result = exitStatusLikeShell(p.exitStatus)
+  elif defined(haiku):
+    const
+      B_OBJECT_TYPE_THREAD = 3
+      B_EVENT_INVALID = 0x1000
+      B_RELATIVE_TIMEOUT = 0x8
+
+    type
+      ObjectWaitInfo {.importc: "object_wait_info", header: "OS.h".} = object
+        obj {.importc: "object".}: int32
+        typ {.importc: "type".}: uint16
+        events: uint16
+
+    proc waitForObjects(infos: ptr ObjectWaitInfo, numInfos: cint, flags: uint32,
+                        timeout: int64): clong
+                       {.importc: "wait_for_objects_etc", header: "OS.h".}
+
+    proc waitForExit(p: Process, timeout: int = -1): int =
+      if p.exitFlag:
+        return exitStatusLikeShell(p.exitStatus)
+
+      if timeout == -1:
+        var status: cint = 1
+        if waitpid(p.id, status, 0) < 0:
+          raiseOSError(osLastError())
+        p.exitFlag = true
+        p.exitStatus = status
+      else:
+        var info = ObjectWaitInfo(
+          obj: p.id, # Haiku's PID is actually the main thread ID.
+          typ: B_OBJECT_TYPE_THREAD,
+          events: B_EVENT_INVALID # notify when the thread die.
+        )
+
+        while true:
+          var status: cint = 1
+          let count = waitForObjects(addr info, 1, B_RELATIVE_TIMEOUT, timeout)
+
+          if count < 0:
+            let err = count.cint
+            if err == ETIMEDOUT:
+              # timeout expired, so we try to kill the process
+              if posix.kill(p.id, SIGKILL) == -1:
+                raiseOSError(osLastError())
+              if waitpid(p.id, status, 0) < 0:
+                raiseOSError(osLastError())
+              p.exitFlag = true
+              p.exitStatus = status
+              break
+            elif err != EINTR:
+              raiseOSError(err.OSErrorCode)
+          elif count > 0:
+            if waitpid(p.id, status, 0) < 0:
+              raiseOSError(osLastError())
+            p.exitFlag = true
+            p.exitStatus = status
+            break
+          else:
+            doAssert false, "unreachable!"
+
+      result = exitStatusLikeShell(p.exitStatus)
+
   else:
     import times
 
@@ -1321,28 +1483,40 @@ elif not defined(useNimRtl):
         p.exitStatus = status
         result = exitStatusLikeShell(status)
 
-  proc createStream(stream: var owned(Stream), handle: var FileHandle,
-                    fileMode: FileMode) =
+  proc createStream(handle: var FileHandle,
+                    fileMode: FileMode): owned FileStream =
     var f: File
     if not open(f, handle, fileMode): raiseOSError(osLastError())
-    stream = newFileStream(f)
+    return newFileStream(f)
 
   proc inputStream(p: Process): Stream =
     streamAccess(p)
     if p.inStream == nil:
-      createStream(p.inStream, p.inHandle, fmWrite)
+      p.inStream = createStream(p.inHandle, fmWrite)
     return p.inStream
 
   proc outputStream(p: Process): Stream =
     streamAccess(p)
     if p.outStream == nil:
-      createStream(p.outStream, p.outHandle, fmRead)
+      p.outStream = createStream(p.outHandle, fmRead)
     return p.outStream
 
   proc errorStream(p: Process): Stream =
     streamAccess(p)
     if p.errStream == nil:
-      createStream(p.errStream, p.errHandle, fmRead)
+      p.errStream = createStream(p.errHandle, fmRead)
+    return p.errStream
+
+  proc peekableOutputStream(p: Process): Stream =
+    streamAccess(p)
+    if p.outStream == nil:
+      p.outStream = createStream(p.outHandle, fmRead).newPipeOutStream
+    return p.outStream
+
+  proc peekableErrorStream(p: Process): Stream =
+    streamAccess(p)
+    if p.errStream == nil:
+      p.errStream = createStream(p.errHandle, fmRead).newPipeOutStream
     return p.errStream
 
   proc csystem(cmd: cstring): cint {.nodecl, importc: "system",
@@ -1399,12 +1573,17 @@ elif not defined(useNimRtl):
 
 
 proc execCmdEx*(command: string, options: set[ProcessOption] = {
-                poStdErrToStdOut, poUsePath}): tuple[
-                output: TaintedString,
+                poStdErrToStdOut, poUsePath}, env: StringTableRef = nil,
+                workingDir = "", input = ""): tuple[
+                output: string,
                 exitCode: int] {.tags:
                 [ExecIOEffect, ReadIOEffect, RootEffect], gcsafe.} =
-  ## A convenience proc that runs the `command`, grabs all its output and
-  ## exit code and returns both.
+  ## A convenience proc that runs the `command`, and returns its `output` and
+  ## `exitCode`. `env` and `workingDir` params behave as for `startProcess`.
+  ## If `input.len > 0`, it is passed as stdin.
+  ##
+  ## Note: this could block if `input.len` is greater than your OS's maximum
+  ## pipe buffer size.
   ##
   ## See also:
   ## * `execCmd proc <#execCmd,string>`_
@@ -1416,22 +1595,39 @@ proc execCmdEx*(command: string, options: set[ProcessOption] = {
   ## Example:
   ##
   ## .. code-block:: Nim
-  ##  let (outp, errC) = execCmdEx("nim c -r mytestfile.nim")
+  ##   var result = execCmdEx("nim r --hints:off -", options = {}, input = "echo 3*4")
+  ##   import std/[strutils, strtabs]
+  ##   stripLineEnd(result[0]) ## portable way to remove trailing newline, if any
+  ##   doAssert result == ("12", 0)
+  ##   doAssert execCmdEx("ls --nonexistent").exitCode != 0
+  ##   when defined(posix):
+  ##     assert execCmdEx("echo $FO", env = newStringTable({"FO": "B"})) == ("B\n", 0)
+  ##     assert execCmdEx("echo $PWD", workingDir = "/") == ("/\n", 0)
 
-  var p = startProcess(command, options = options + {poEvalCommand})
+  when (NimMajor, NimMinor, NimPatch) < (1, 3, 5):
+    doAssert input.len == 0
+    doAssert workingDir.len == 0
+    doAssert env == nil
+
+  var p = startProcess(command, options = options + {poEvalCommand},
+    workingDir = workingDir, env = env)
   var outp = outputStream(p)
 
-  # There is no way to provide input for the child process
-  # anymore. Closing it will create EOF on stdin instead of eternal
-  # blocking.
+  if input.len > 0:
+    # There is no way to provide input for the child process
+    # anymore. Closing it will create EOF on stdin instead of eternal
+    # blocking.
+    # Writing in chunks would require a selectors (eg kqueue/epoll) to avoid
+    # blocking on io.
+    inputStream(p).write(input)
   close inputStream(p)
 
-  result = (TaintedString"", -1)
-  var line = newStringOfCap(120).TaintedString
+  result = ("", -1)
+  var line = newStringOfCap(120)
   while true:
     if outp.readLine(line):
-      result[0].string.add(line.string)
-      result[0].string.add("\n")
+      result[0].add(line)
+      result[0].add("\n")
     else:
       result[1] = peekExitCode(p)
       if result[1] != -1: break

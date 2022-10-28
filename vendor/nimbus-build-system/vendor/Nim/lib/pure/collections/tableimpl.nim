@@ -7,7 +7,7 @@
 #    distribution, for details about the copyright.
 #
 
-# An ``include`` file for the different table implementations.
+# An `include` file for the different table implementations.
 
 include hashcommon
 
@@ -27,7 +27,7 @@ proc rawGetDeep[X, A](t: X, key: A, hc: var Hash): int {.inline.} =
   rawGetDeepImpl()
 
 proc rawInsert[X, A, B](t: var X, data: var KeyValuePairSeq[A, B],
-                     key: A, val: B, hc: Hash, h: Hash) =
+                     key: A, val: sink B, hc: Hash, h: Hash) =
   rawInsertImpl()
 
 template checkIfInitialized() =
@@ -117,8 +117,8 @@ template delImplIdx(t, i, makeEmpty, cellEmpty, cellHash) =
         var j = i         # The correctness of this depends on (h+1) in nextTry
         var r = j         # though may be adaptable to other simple sequences.
         makeEmpty(i)                     # mark current EMPTY
-        t.data[i].key = default(type(t.data[i].key))
-        t.data[i].val = default(type(t.data[i].val))
+        t.data[i].key = default(typeof(t.data[i].key))
+        t.data[i].val = default(typeof(t.data[i].val))
         while true:
           i = (i + 1) and msk            # increment mod table size
           if cellEmpty(i):               # end of collision cluster; So all done
@@ -149,8 +149,8 @@ template clearImpl() {.dirty.} =
   for i in 0 ..< t.dataLen:
     when compiles(t.data[i].hcode): # CountTable records don't contain a hcode
       t.data[i].hcode = 0
-    t.data[i].key = default(type(t.data[i].key))
-    t.data[i].val = default(type(t.data[i].val))
+    t.data[i].key = default(typeof(t.data[i].key))
+    t.data[i].val = default(typeof(t.data[i].val))
   t.counter = 0
 
 template ctAnd(a, b): bool =
@@ -160,12 +160,12 @@ template ctAnd(a, b): bool =
   else: false
 
 template initImpl(result: typed, size: int) =
-  when ctAnd(declared(SharedTable), type(result) is SharedTable):
-    init(result, size)
+  let correctSize = slotsNeeded(size)
+  when ctAnd(declared(SharedTable), typeof(result) is SharedTable):
+    init(result, correctSize)
   else:
-    assert isPowerOfTwo(size)
     result.counter = 0
-    newSeq(result.data, size)
+    newSeq(result.data, correctSize)
     when compiles(result.first):
       result.first = -1
       result.last = -1

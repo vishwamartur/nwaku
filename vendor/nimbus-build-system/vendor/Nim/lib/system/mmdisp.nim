@@ -38,27 +38,10 @@ type
   PByte = ptr ByteArray
   PString = ptr string
 
-# Page size of the system; in most cases 4096 bytes. For exotic OS or
-# CPU this needs to be changed:
-const
-  PageShift = when defined(cpu16): 8 else: 12 # \
-    # my tests showed no improvements for using larger page sizes.
-  PageSize = 1 shl PageShift
-  PageMask = PageSize-1
-
-  MemAlign = 8 # also minimal allocatable memory block
-
-  BitsPerPage = PageSize div MemAlign
-  UnitsPerPage = BitsPerPage div (sizeof(int)*8)
-    # how many ints do we need to describe a page:
-    # on 32 bit systems this is only 16 (!)
-
-  TrunkShift = 9
-  BitsPerTrunk = 1 shl TrunkShift # needs to be power of 2 and divisible by 64
-  TrunkMask = BitsPerTrunk - 1
-  IntsPerTrunk = BitsPerTrunk div (sizeof(int)*8)
-  IntShift = 5 + ord(sizeof(int) == 8) # 5 or 6, depending on int width
-  IntMask = 1 shl IntShift - 1
+when declared(IntsPerTrunk):
+  discard
+else:
+  include bitmasks
 
 proc raiseOutOfMem() {.noinline.} =
   if outOfMemHook != nil: outOfMemHook()
@@ -74,6 +57,16 @@ elif defined(gogc):
 elif (defined(nogc) or defined(gcDestructors)) and defined(useMalloc):
   include system / mm / malloc
 
+  when defined(nogc):
+    proc GC_getStatistics(): string = ""
+    proc newObj(typ: PNimType, size: int): pointer {.compilerproc.} =
+      result = alloc0(size)
+
+    proc newSeq(typ: PNimType, len: int): pointer {.compilerproc.} =
+      result = newObj(typ, align(GenericSeqSize, typ.align) + len * typ.base.size)
+      cast[PGenericSeq](result).len = len
+      cast[PGenericSeq](result).reserved = len
+
 elif defined(nogc):
   include system / mm / none
 
@@ -83,11 +76,9 @@ else:
 
     when not usesDestructors:
       include "system/cellsets"
-    when not leakDetector and not useCellIds:
+    when not leakDetector and not useCellIds and not defined(nimV2):
       sysAssert(sizeof(Cell) == sizeof(FreeCell), "sizeof FreeCell")
-  when compileOption("gc", "v2"):
-    include "system/gc2"
-  elif defined(gcRegions):
+  when defined(gcRegions):
     # XXX due to bootstrapping reasons, we cannot use  compileOption("gc", "stack") here
     include "system/gc_regions"
   elif defined(nimV2) or usesDestructors:
@@ -108,7 +99,7 @@ when not declared(nimNewSeqOfCap) and not defined(nimSeqsV2):
       let s = cap * typ.base.size  # newStr already adds GenericSeqSize
       result = newStr(typ, s, ntfNoRefs notin typ.base.flags)
     else:
-      let s = cap * typ.base.size + GenericSeqSize
+      let s = align(GenericSeqSize, typ.base.align) + cap * typ.base.size
       when declared(newObjNoInit):
         result = if ntfNoRefs in typ.base.flags: newObjNoInit(typ, s) else: newObj(typ, s)
       else:

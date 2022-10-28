@@ -34,6 +34,7 @@ elif defined(linux):
     # Fedora/RHEL
     "/etc/pki/tls/certs",
     # Android
+    "/data/data/com.termux/files/usr/etc/tls/cert.pem",
     "/system/etc/security/cacerts",
   ]
 elif defined(bsd):
@@ -122,9 +123,9 @@ iterator scanSSLCertificates*(useEnvVars = false): string =
     elif not defined(haiku):
       for p in certificatePaths:
         if p.endsWith(".pem") or p.endsWith(".crt"):
-          if existsFile(p):
+          if fileExists(p):
             yield p
-        elif existsDir(p):
+        elif dirExists(p):
           for fn in joinPath(p, "*").walkFiles():
             yield fn
     else:

@@ -40,7 +40,7 @@ proc getWebSocketClientConfig*(
               uri: string,
               compression: bool = false,
               flags: set[TLSFlags] = {
-                NoVerifyHost, NoVerifyServerName}): ClientConfig =
+                TLSFlags.NoVerifyHost, TLSFlags.NoVerifyServerName}): ClientConfig =
   ClientConfig(kind: WebSocket, wsUri: uri, compression: compression, flags: flags)
 
 proc proxyCall(client: RpcClient, name: string): RpcProc =
@@ -48,7 +48,7 @@ proc proxyCall(client: RpcClient, name: string): RpcProc =
           let res = await client.call(name, params)
           return StringOfJson($res)
 
-proc getClient(proxy: RpcProxy): RpcClient =
+proc getClient*(proxy: RpcProxy): RpcClient =
   case proxy.kind
   of Http:
     proxy.httpClient
@@ -71,18 +71,30 @@ proc new*(T: type RpcProxy, server: RpcHttpServer, cfg: ClientConfig): T =
               flags: cfg.flags
             )
 
-proc new*(T: type RpcProxy, listenAddresses: openArray[TransportAddress], cfg: ClientConfig): T {.raises: [Defect, CatchableError].} =
-  RpcProxy.new(newRpcHttpServer(listenAddresses, RpcRouter.init()), cfg)
+proc new*(
+    T: type RpcProxy,
+    listenAddresses: openArray[TransportAddress],
+    cfg: ClientConfig,
+    authHooks: seq[HttpAuthHook] = @[]
+): T {.raises: [Defect, CatchableError].} =
+  RpcProxy.new(newRpcHttpServer(listenAddresses, RpcRouter.init(), authHooks), cfg)
 
-proc new*(T: type RpcProxy, listenAddresses: openArray[string], cfg: ClientConfig): T {.raises: [Defect, CatchableError].} =
-  RpcProxy.new(newRpcHttpServer(listenAddresses, RpcRouter.init()), cfg)
+proc new*(
+    T: type RpcProxy,
+    listenAddresses: openArray[string],
+    cfg: ClientConfig,
+    authHooks: seq[HttpAuthHook] = @[]): T {.raises: [Defect, CatchableError].} =
+  RpcProxy.new(newRpcHttpServer(listenAddresses, RpcRouter.init(), authHooks), cfg)
 
 proc connectToProxy(proxy: RpcProxy): Future[void] =
   case proxy.kind
   of Http:
     return proxy.httpClient.connect(proxy.httpUri)
   of WebSocket:
-    return proxy.webSocketClient.connect(proxy.wsUri, proxy.compression, proxy.flags)
+    return proxy.webSocketClient.connect(
+      uri = proxy.wsUri,
+      compression = proxy.compression,
+      flags = proxy.flags)
 
 proc start*(proxy: RpcProxy) {.async.} =
   proxy.rpcHttpServer.start()

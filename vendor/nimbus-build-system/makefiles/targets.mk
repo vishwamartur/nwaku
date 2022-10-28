@@ -57,6 +57,10 @@ warn-jobs:
 		fi; \
 	fi
 
+nimbus-build-system-paths:
+	echo "Creating nimbus-build-system.paths"; \
+	TOP_LEVEL_DIR="$(CURDIR)" "$(CURDIR)/$(BUILD_SYSTEM_DIR)/scripts/create_nbs_paths.sh"
+
 deps-common: | sanity-checks warn-update warn-jobs $(NIMBLE_DIR)
 # - don't build our Nim target if it's not going to be used
 ifeq ($(USE_SYSTEM_NIM), 0)
@@ -99,7 +103,7 @@ update-test:
 #- deletes the ".nimble" dir and executes the "deps" target
 #- allows parallel building with the '+' prefix
 #- rebuilds the Nim compiler if the corresponding submodule is updated
-update-common: | sanity-checks update-test
+update-common: | sanity-checks update-test nimbus-build-system-paths
 	git submodule foreach --quiet 'git ls-files --exclude-standard --recurse-submodules -z -- ":!:.*" | xargs -0 rm -rf'
 	git submodule update --init --recursive || true
 	# changing URLs in a submodule's submodule means we have to sync and update twice
@@ -130,7 +134,7 @@ ifeq ($(OS), Windows_NT)
 	+ [ -e vendor/nim-nat-traversal/vendor/miniupnp/miniupnpc/$@ ] || \
 		PATH=".:${PATH}" "$(MAKE)" -C vendor/nim-nat-traversal/vendor/miniupnp/miniupnpc -f Makefile.mingw CC=$(CC) $@ $(HANDLE_OUTPUT)
 else
-	+ "$(MAKE)" -C vendor/nim-nat-traversal/vendor/miniupnp/miniupnpc $@ $(HANDLE_OUTPUT)
+	+ "$(MAKE)" -C vendor/nim-nat-traversal/vendor/miniupnp/miniupnpc build/$@ $(HANDLE_OUTPUT)
 endif
 
 libnatpmp.a: | sanity-checks

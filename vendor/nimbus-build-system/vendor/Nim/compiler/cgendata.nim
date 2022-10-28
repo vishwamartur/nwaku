@@ -11,7 +11,7 @@
 
 import
   ast, ropes, options, intsets,
-  tables, ndi, lineinfos, pathutils, modulegraphs
+  tables, ndi, lineinfos, pathutils, modulegraphs, sets
 
 type
   TLabel* = Rope              # for the C generator a label is just a rope
@@ -25,7 +25,7 @@ type
                               # this is needed for strange type generation
                               # reasons
     cfsFieldInfo,             # section for field information
-    cfsTypeInfo,              # section for type information
+    cfsTypeInfo,              # section for type information (ag ABI checks)
     cfsProcHeaders,           # section for C procs prototypes
     cfsData,                  # section for C constant data
     cfsVars,                  # section for C variable declarations
@@ -97,11 +97,12 @@ type
                               # requires 'T x = T()' to become 'T x; x = T()'
                               # (yes, C++ is weird like that)
     withinTryWithExcept*: int # required for goto based exception handling
+    withinBlockLeaveActions*: int # complex to explain
     sigConflicts*: CountTable[string]
 
   TTypeSeq* = seq[PType]
   TypeCache* = Table[SigHash, Rope]
-  TypeCacheWithOwner* = Table[SigHash, tuple[str: Rope, owner: PSym]]
+  TypeCacheWithOwner* = Table[SigHash, tuple[str: Rope, owner: int32]]
 
   CodegenFlag* = enum
     preventStackTrace,  # true if stack traces need to be prevented
@@ -111,7 +112,8 @@ type
     isHeaderFile,       # C source file is the header file
     includesStringh,    # C source file already includes ``<string.h>``
     objHasKidsValid     # whether we can rely on tfObjHasKids
-
+    useAliveDataFromDce # use the `alive: IntSet` field instead of
+                        # computing alive data on our own.
 
   BModuleList* = ref object of RootObj
     mainModProcs*, mainModInit*, otherModsInit*, mainDatInit*: Rope
@@ -121,6 +123,7 @@ type
     forwardedProcs*: seq[PSym] # proc:s that did not yet have a body
     generatedHeader*: BModule
     typeInfoMarker*: TypeCacheWithOwner
+    typeInfoMarkerV2*: TypeCacheWithOwner
     config*: ConfigRef
     graph*: ModuleGraph
     strVersion*, seqVersion*: int # version of the string/seq implementation to use
@@ -145,11 +148,17 @@ type
                               # without extension)
     tmpBase*: Rope            # base for temp identifier generation
     typeCache*: TypeCache     # cache the generated types
+    typeABICache*: HashSet[SigHash] # cache for ABI checks; reusing typeCache
+                              # would be ideal but for some reason enums
+                              # don't seem to get cached so it'd generate
+                              # 1 ABI check per occurence in code
     forwTypeCache*: TypeCache # cache for forward declarations of types
     declaredThings*: IntSet   # things we have declared in this .c file
     declaredProtos*: IntSet   # prototypes we have declared in this .c file
+    alive*: IntSet            # symbol IDs of alive data as computed by `dce.nim`
     headerFiles*: seq[string] # needed headers to include
     typeInfoMarker*: TypeCache # needed for generating type information
+    typeInfoMarkerV2*: TypeCache
     initProc*: BProc          # code for init procedure
     preInitProc*: BProc       # code executed before the init proc
     hcrCreateTypeInfosProc*: Rope # type info globals are in here when HCR=on
@@ -161,7 +170,6 @@ type
     labels*: Natural          # for generating unique module-scope names
     extensionLoaders*: array['0'..'9', Rope] # special procs for the
                                              # OpenGL wrapper
-    injectStmt*: Rope
     sigConflicts*: CountTable[SigHash]
     g*: BModuleList
     ndi*: NdiFile
@@ -185,15 +193,15 @@ proc newProc*(prc: PSym, module: BModule): BProc =
   new(result)
   result.prc = prc
   result.module = module
-  if prc != nil: result.options = prc.options
-  else: result.options = module.config.options
+  result.options = if prc != nil: prc.options
+                   else: module.config.options
   newSeq(result.blocks, 1)
   result.nestedTryStmts = @[]
   result.finallySafePoints = @[]
   result.sigConflicts = initCountTable[string]()
 
 proc newModuleList*(g: ModuleGraph): BModuleList =
-  BModuleList(typeInfoMarker: initTable[SigHash, tuple[str: Rope, owner: PSym]](),
+  BModuleList(typeInfoMarker: initTable[SigHash, tuple[str: Rope, owner: int32]](),
     config: g.config, graph: g, nimtvDeclared: initIntSet())
 
 iterator cgenModules*(g: BModuleList): BModule =

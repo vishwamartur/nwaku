@@ -8,13 +8,13 @@ type
     name*:      string
     children*:  seq[Child]
 
-  C = enum cSourceNode, cString
+  C = enum cSourceNode, cSourceString
 
   Child* = ref object
     case kind*: C:
     of cSourceNode:
       node*:  SourceNode
-    of cString:
+    of cSourceString:
       s*:     string
 
   SourceMap* = ref object
@@ -44,7 +44,7 @@ type
 
 
 proc child*(s: string): Child =
-  Child(kind: cString, s: s)
+  Child(kind: cSourceString, s: s)
 
 
 proc child*(node: SourceNode): Child =
@@ -72,14 +72,13 @@ proc text*(sourceNode: SourceNode, depth: int): string =
   let empty = "  "
   result = &"{repeat(empty, depth)}SourceNode({sourceNode.source}:{sourceNode.line}:{sourceNode.column}):\n"
   for child in sourceNode.children:
-    if child.kind == cString:
+    if child.kind == cSourceString:
       result.add(&"{repeat(empty, depth + 1)}{child.s}\n")
     else:
       result.add(child.node.text(depth + 1))
 
 
-proc `$`*(sourceNode: SourceNode): string =
-  text(sourceNode, 0)
+proc `$`*(sourceNode: SourceNode): string = text(sourceNode, 0)
 
 
 # base64_VLQ
@@ -107,8 +106,7 @@ proc encode*(i: int): string =
     z += 1
 
 
-type
-  TokenState = enum Normal, String, Ident, Mangled
+type TokenState = enum Normal, String, Ident, Mangled
 
 iterator tokenize*(line: string): (bool, string) =
   # result = @[]
@@ -158,7 +156,7 @@ iterator tokenize*(line: string): (bool, string) =
   if token.len > 0:
     yield (isMangled, token)
 
-proc parse*(source: string, path: string, mangled: HashSet[string]): SourceNode =
+proc parse*(source: string, path: string): SourceNode =
   let lines = source.splitLines()
   var lastLocation: SourceNode = nil
   result = newSourceNode(0, 0, path, @[])
@@ -244,10 +242,10 @@ proc serializeMappings(map: SourceMapGenerator, mappings: seq[Mapping]): string 
   var previous = Mapping(generated: (line: 1, column: 0), original: (line: 0, column: 0), name: "", source: "")
   var previousSourceId = 0
   var previousNameId = 0
-  result = ""
   var next = ""
   var nameId = 0
   var sourceId = 0
+  result = ""
 
   for z, mapping in mappings:
     next = ""
@@ -310,7 +308,7 @@ proc addMapping*(map: SourceMapGenerator, mapping: Mapping) =
 
 proc walk*(node: SourceNode, fn: proc(line: string, original: SourceNode)) =
   for child in node.children:
-    if child.kind == cString and child.s.len > 0:
+    if child.kind == cSourceString and child.s.len > 0:
       fn(child.s, node)
     else:
       child.node.walk(fn)
@@ -378,8 +376,8 @@ proc toSourceMap*(node: SourceNode, file: string): SourceMapGenerator =
   map
 
 
-proc genSourceMap*(source: string, mangled: HashSet[string], outFile: string): (Rope, SourceMap) =
-  let node = parse(source, outFile, mangled)
+proc genSourceMap*(source: string, outFile: string): (Rope, SourceMap) =
+  let node = parse(source, outFile)
   let map = node.toSourceMap(file = outFile)
   ((&"{source}\n//# sourceMappingURL={outFile}.map").rope, map.gen)
 

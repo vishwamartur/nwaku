@@ -12,12 +12,12 @@ proc f(b: B)
   but expression 'A()' is of type: A
 
 expression: f(A(), "extra")
-tsigmatch.nim(125, 6) Error: type mismatch: got <tuple of (string, proc (){.gcsafe, locks: 0.})>
+tsigmatch.nim(125, 6) Error: type mismatch: got <(string, proc (){.gcsafe, locks: 0.})>
 but expected one of:
 proc foo(x: (string, proc ()))
   first type mismatch at position: 1
-  required type for x: tuple of (string, proc (){.closure.})
-  but expression '("foobar", proc () = echo(["Hello!"]))' is of type: tuple of (string, proc (){.gcsafe, locks: 0.})
+  required type for x: (string, proc (){.closure.})
+  but expression '("foobar", proc () = echo(["Hello!"]))' is of type: (string, proc (){.gcsafe, locks: 0.})
 
 expression: foo(("foobar", proc () = echo(["Hello!"])))
 tsigmatch.nim(132, 11) Error: type mismatch: got <proc (s: string): string{.noSideEffect, gcsafe, locks: 0.}>
@@ -89,9 +89,9 @@ expression: fun1(default(Mystring), "asdf")
 
 
 
-
-
-
+#[
+see also: tests/errmsgs/tdeclaredlocs.nim
+]#
 
 
 
@@ -132,12 +132,12 @@ block:
   echo foo(fun)
 
 block:
-  # bug #10285 Function signature don't match when inside seq/array/openarray
+  # bug #10285 Function signature don't match when inside seq/array/openArray
   # Note: the error message now shows `closure` which helps debugging the issue
   # out why it doesn't match
   proc takesFunc(f: proc (x: int) {.gcsafe, locks: 0.}) =
     echo "takes single Func"
-  proc takesFuncs(fs: openarray[proc (x: int) {.gcsafe, locks: 0.}]) =
+  proc takesFuncs(fs: openArray[proc (x: int) {.gcsafe, locks: 0.}]) =
     echo "takes multiple Func"
   takesFunc(proc (x: int) {.gcsafe, locks: 0.} = echo x)         # works
   takesFuncs([proc (x: int) {.gcsafe, locks: 0.} = echo x])      # fails

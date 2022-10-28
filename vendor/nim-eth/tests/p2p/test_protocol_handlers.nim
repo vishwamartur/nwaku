@@ -86,3 +86,11 @@ suite "Testing protocol handlers":
       peer.isNil == true
       # To check if the disconnection handler did not run
       node1.protocolState(hah).count == 0
+
+  test "Override network state":
+    let rng = newRng()
+    var node = setupTestNode(rng, hah)
+    node.addCapability(hah, network(count: 3))
+    check node.protocolState(hah).count == 3
+    node.replaceNetworkState(hah, network(count: 7))
+    check node.protocolState(hah).count == 7

@@ -54,14 +54,14 @@ CFLAGS += -m64 -mcmodel=medlow
 
 ISGITREPO != git rev-parse --is-inside-work-tree 2> /dev/null || echo "false"
 .if $(ISGITREPO) == "true"
-GITREF != git rev-parse --short HEAD
-GITBRANCH != git rev-parse --abbrev-ref HEAD
-CPPFLAGS += -DMINIUPNPD_GIT_REF=\"$(GITBRANCH)-$(GITREF)\"
+GITREF != git describe --exact-match --tags 2> /dev/null || echo "`git rev-parse --abbrev-ref HEAD`-`git rev-parse --short HEAD`"
+CPPFLAGS += -DMINIUPNPD_GIT_REF=\"$(GITREF)\"
 .endif
 
 STDOBJS = miniupnpd.o upnphttp.o upnpdescgen.o upnpsoap.o \
           upnpredirect.o getifaddr.o daemonize.o upnpglobalvars.o \
           options.o upnppermissions.o minissdp.o natpmp.o pcpserver.o \
+		  pcplearndscp.o \
           upnpevents.o upnputils.o getconnstatus.o \
           upnpstun.o \
           upnppinhole.o asyncsendto.o portinuse.o
@@ -152,7 +152,7 @@ install:	miniupnpd genuuid
 	$(INSTALL) -d $(DESTDIR)$(INSTALLETCDIR)
 	$(INSTALL) -b miniupnpd.conf $(DESTDIR)$(INSTALLETCDIR)
 	$(INSTALL) -d $(DESTDIR)$(INSTALLMANDIR)
-	$(INSTALL) -m miniupnpd.8 $(DESTDIR)$(INSTALLMANDIR)/man8/miniupnpd.8
+	$(INSTALL) -m 644 miniupnpd.8 $(DESTDIR)$(INSTALLMANDIR)/man8/miniupnpd.8
 
 # genuuid is using the uuid cli tool available under OpenBSD 4.0 in
 # the uuid-1.5.0 package
@@ -190,7 +190,7 @@ dox:	miniupnpd.doxyconf
 	$(DOXYGEN) $>
 
 miniupnpd: $(ALLOBJS)
-	$(CC) $(LDFLAGS) -o $@ $(ALLOBJS) $(LIBS)
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(ALLOBJS) $(LIBS)
 
 # BSDmake :
 #	$(CC) $(LDFLAGS) -o $@ $> $(LIBS)
@@ -230,7 +230,7 @@ testssdppktgen:	testssdppktgen.o
 # BSDmake :
 #	$(CC) $(CFLAGS) -o $@ $>
 
-config.h:	$(SRCDIR)/configure $(SRCDIR)/VERSION
+config.h:	$(SRCDIR)/configure $(SRCDIR)/VERSION $(SRCDIR)/Makefile.bsd
 	$(SRCDIR)/configure $(CONFIG_OPTIONS)
 
 $(STDOBJS) $(MISCOBJS):	$(SRCDIR)/$(@:.o=.c)

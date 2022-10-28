@@ -72,6 +72,11 @@ static: # issue #11861
   initBase(ifb2)
   doAssert(ifb2.txt == "Initialized string from base")
 
+
+static: # issue #15662
+  proc a(T: typedesc) = echo T.type
+  a((int, int))
+
 # bug #16069
 type
   E = enum

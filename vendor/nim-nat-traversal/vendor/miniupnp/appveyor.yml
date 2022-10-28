@@ -1,5 +1,5 @@
 environment:
-  APP_VERSION: '2.1'
+  APP_VERSION: '2.2'
   matrix:
     - PYTHON_VER: C:\Python27
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
@@ -17,11 +17,17 @@ environment:
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
       SETUP_COMPILER_FLAG:
       ARCH_BITS: 64
+    - PYTHON_VER: C:\Python39
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
+      SETUP_COMPILER_FLAG:
+      ARCH_BITS: 32
+    - PYTHON_VER: C:\Python39-x64
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
+      SETUP_COMPILER_FLAG:
+      ARCH_BITS: 64
 
 
 version: '$(APP_VERSION).{build}'
-
-image: Visual Studio 2017
 
 install:
   - set PATH=%PYTHON_VER%;%PYTHON_VER%\Scripts;%PATH%;C:\msys64\mingw%ARCH_BITS%\bin

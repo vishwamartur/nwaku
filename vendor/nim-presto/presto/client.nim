@@ -13,10 +13,6 @@ import httputils, stew/base10
 import segpath, common, macrocommon, agent
 export httpclient, httptable, httpcommon, options, agent, httputils
 
-template endpoint*(v: string) {.pragma.}
-template meth*(v: HttpMethod) {.pragma.}
-template accept*(v: string) {.pragma.}
-
 type
   RestClient* = object of RootObj
     session*: HttpSessionRef
@@ -28,15 +24,17 @@ type
 
   RestPlainResponse* = object
     status*: int
-    contentType*: string
+    contentType*: Opt[ContentTypeData]
     data*: seq[byte]
 
   RestResponse*[T] = object
     status*: int
-    contentType*: string
+    contentType*: Opt[ContentTypeData]
     data*: T
 
   RestStatus* = distinct int
+
+  RestHttpResponseRef* = HttpClientResponseRef
 
   RestClientFlag* {.pure.} = enum
     CommaSeparatedArray
@@ -47,7 +45,17 @@ type
     ConsumeBody
 
   RestReturnKind {.pure.} = enum
-    Status, PlainResponse, GenericResponse, Value
+    Status, PlainResponse, GenericResponse, Value, HttpResponse
+
+  RestConnectionFlag* = enum
+    Dedicated, Close
+
+  RestConnectionFlags* = set[RestConnectionFlag]
+
+template endpoint*(v: string) {.pragma.}
+template meth*(v: HttpMethod) {.pragma.}
+template accept*(v: string) {.pragma.}
+template connection*(v: RestConnectionFlag) {.pragma.}
 
 const
   DefaultAcceptContentType = "application/json"
@@ -69,6 +77,18 @@ proc `==`*(x, y: RestStatus): bool {.borrow.}
 proc `<=`*(x, y: RestStatus): bool {.borrow.}
 proc `<`*(x, y: RestStatus): bool {.borrow.}
 proc `$`*(x: RestStatus): string {.borrow.}
+
+proc `$`*(x: Opt[ContentTypeData]): string =
+  if x.isSome():
+    $x.get()
+  else:
+    "<missing>"
+
+proc `==`*(a: Opt[ContentTypeData], b: MediaType): bool =
+  if a.isNone():
+    false
+  else:
+    a.get() == b
 
 proc new*(t: typedesc[RestClientRef],
           url: string,
@@ -118,11 +138,19 @@ proc new*(t: typedesc[RestClientRef],
 proc closeWait*(client: RestClientRef) {.async.} =
   await client.session.closeWait()
 
+proc toHttpFlags(flags: RestConnectionFlags): set[HttpClientRequestFlag] =
+  var res: set[HttpClientRequestFlag]
+  if RestConnectionFlag.Dedicated in flags:
+    res.incl(HttpClientRequestFlag.DedicatedConnection)
+  if RestConnectionFlag.Close in flags:
+    res.incl(HttpClientRequestFlag.CloseConnection)
+  res
+
 proc createPostRequest*(client: RestClientRef, path: string, query: string,
                         contentType: string, acceptType: string,
                         extraHeaders: openArray[HttpHeaderTuple],
-                        httpMethod: HttpMethod,
-                        contentLength: uint64): HttpClientRequestRef =
+                        httpMethod: HttpMethod, contentLength: uint64,
+                        flags: RestConnectionFlags): HttpClientRequestRef =
   var address = client.address
   address.path = path
   address.query = query
@@ -135,12 +163,13 @@ proc createPostRequest*(client: RestClientRef, path: string, query: string,
   headers.add extraHeaders
 
   HttpClientRequestRef.new(client.session, address, httpMethod,
-                           headers = headers)
+                           headers = headers, flags = flags.toHttpFlags())
 
 proc createGetRequest*(client: RestClientRef, path: string, query: string,
                        contentType: string, acceptType: string,
                        extraHeaders: openArray[HttpHeaderTuple],
-                       httpMethod: HttpMethod): HttpClientRequestRef =
+                       httpMethod: HttpMethod,
+                       flags: RestConnectionFlags): HttpClientRequestRef =
   var address = client.address
   address.path = path
   address.query = query
@@ -151,7 +180,7 @@ proc createGetRequest*(client: RestClientRef, path: string, query: string,
   headers.add extraHeaders
 
   HttpClientRequestRef.new(client.session, address, httpMethod,
-                           headers = headers)
+                           headers = headers, flags = flags.toHttpFlags())
 
 proc getEndpointOrDefault(prc: NimNode,
                           default: string): string {.compileTime.} =
@@ -198,6 +227,14 @@ proc getAsyncPragma(prc: NimNode): NimNode {.compileTime.} =
   for node in pragmaNode.items():
     if node.kind == nnkIdent and node.strVal == "async":
       return node
+
+proc getConnectionPragma(prc: NimNode): NimNode {.compileTime.} =
+  let pragmaNode = prc.pragma()
+  for node in pragmaNode.items():
+    if node.kind == nnkExprColonExpr:
+      if node[0].kind == nnkIdent and node[0].strVal == "connection":
+        return copyNimTree(node[1])
+  return newTree(nnkCurly)
 
 proc raiseRestEncodingStringError*(field: static string) {.
      noreturn, noinline.} =
@@ -249,7 +286,7 @@ proc raiseRestResponseError*(resp: RestPlainResponse) {.
   msg.add("]")
   var error = newException(RestResponseError, msg)
   error.status = resp.status
-  error.contentType = resp.contentType
+  error.contentType = $resp.contentType
   error.message = bytesToString(resp.data)
   raise error
 
@@ -346,14 +383,14 @@ proc transformProcDefinition(prc: NimNode, clientIdent: NimNode,
           case item.kind
           of nnkIdent:
             case item.strVal().toLowerAscii()
-            of "rest", "async", "endpoint", "meth":
+            of "rest", "async", "endpoint", "meth", "accept", "connection":
               false
             else:
               true
           of nnkExprColonExpr:
             item[0].expectKind(nnkIdent)
             case item[0].strVal().toLowerAscii()
-            of "endpoint", "meth":
+            of "endpoint", "meth", "accept", "connection":
               false
             else:
               true
@@ -404,10 +441,56 @@ template closeObjects(o1, o2, o3, o4: untyped): untyped =
     await o4.closeWait()
     o4 = nil
 
-proc requestWithoutBody*(req: HttpClientRequestRef,
-                         flags: set[RestRequestFlag]
-                        ): Future[RestPlainResponse] {.
-     async.} =
+proc processRestResponse(
+       response: HttpClientResponseRef,
+       flags: set[RestRequestFlag]
+     ): Future[RestPlainResponse] {.async.} =
+  let address = response.address
+  try:
+    let res =
+      block:
+        let
+          status = response.status
+          contentType = response.contentType
+          data =
+            block:
+              var default: seq[byte]
+              if RestRequestFlag.ConsumeBody in flags:
+                discard await response.consumeBody()
+                default
+              else:
+                await response.getBodyBytes()
+        debug "Received REST response body from remote server",
+              address, contentType = $contentType, size = len(data),
+              connection = response.connection
+        await response.closeWait()
+        RestPlainResponse(status: status, contentType: contentType,
+                          data: data)
+    return res
+  except CancelledError as exc:
+    debug "REST client was interrupted while reading response",
+          address, connection = response.connection
+    if not(isNil(response)):
+      await response.closeWait()
+    raise exc
+  except HttpError as exc:
+    debug "REST client failed to read response", address,
+          connection = response.connection, errorName = exc.name,
+          errorMsg = exc.msg
+    if not(isNil(response)):
+      await response.closeWait()
+    raiseRestCommunicationError(exc)
+  except CatchableError as exc:
+    debug "REST client got an unexpected exception while reading response",
+          address, connection = response.connection,
+          errorName = exc.name, errorMsg = exc.msg
+    if not(isNil(response)):
+      await response.closeWait()
+    raise(exc)
+
+proc requestWithoutBody*(
+       req: HttpClientRequestRef
+     ): Future[HttpClientResponseRef] {.async.} =
   var
     request = req
     redirect: HttpClientRequestRef = nil
@@ -447,29 +530,9 @@ proc requestWithoutBody*(req: HttpClientRequestRef,
         request = redirect
         redirect = nil
       else:
-        let res =
-          block:
-            let status = response.status
-            let contentType = response.headers.getString("content-type")
-            let data =
-              block:
-                var default: seq[byte]
-                if RestRequestFlag.ConsumeBody in flags:
-                  discard await response.consumeBody()
-                  default
-                else:
-                  await response.getBodyBytes()
-            debug "Received REST response body from remote server",
-                  status = response.status, http_method = $request.meth,
-                  address, connection = request.connection,
-                  contentType = contentType, size = len(data)
-            await request.closeWait()
-            request = nil
-            await response.closeWait()
-            response = nil
-            RestPlainResponse(status: status, contentType: contentType,
-                              data: data)
-        return res
+        await request.closeWait()
+        request = nil
+        return response
     except CancelledError as exc:
       # TODO: when `finally` proved to work inside loops, move closeWait() logic
       # to `finally` handler.
@@ -490,10 +553,12 @@ proc requestWithoutBody*(req: HttpClientRequestRef,
       closeObjects(request, redirect, response)
       raiseRestCommunicationError(exc)
 
-proc requestWithBody*(req: HttpClientRequestRef, pbytes: pointer,
-                      nbytes: uint64, chunkSize: int,
-                      flags: set[RestRequestFlag]): Future[RestPlainResponse] {.
-     async.} =
+proc requestWithBody*(
+       req: HttpClientRequestRef,
+       pbytes: pointer,
+       nbytes: uint64,
+       chunkSize: int
+     ): Future[HttpClientResponseRef] {.async.} =
   doAssert(chunkSize > 0 and chunkSize <= high(int))
   var
     request = req
@@ -552,28 +617,9 @@ proc requestWithBody*(req: HttpClientRequestRef, pbytes: pointer,
         request = redirect
         redirect = nil
       else:
-        let res =
-          block:
-            let status = response.status
-            let contentType = response.headers.getString("content-type")
-            let data =
-              block:
-                var default: seq[byte]
-                if RestRequestFlag.ConsumeBody in flags:
-                  discard await response.consumeBody()
-                  default
-                else:
-                  await response.getBodyBytes()
-            debug "Received REST response body from remote server",
-                  contentType = contentType, size = len(data),
-                  address, connection = request.connection
-            await request.closeWait()
-            request = nil
-            await response.closeWait()
-            response = nil
-            RestPlainResponse(status: status, contentType: contentType,
-                              data: data)
-        return res
+        await request.closeWait()
+        request = nil
+        return response
     except CancelledError as exc:
       # TODO: when `finally` proved to work inside loops, move closeWait() logic
       # to `finally` handler.
@@ -621,6 +667,7 @@ proc restSingleProc(prc: NimNode): NimNode {.compileTime.} =
     requestFlagsIdent = newIdentNode("requestFlags")
     responseResultIdent = newIdentNode("responseResult")
     responseObjectIdent = newIdentNode("responseObject")
+    responseDataIdent = newIdentNode("responseData")
     clientIdent = newIdentNode(RestClientArg)
     contentTypeIdent = newIdentNode(RestContentTypeArg)
     acceptTypeIdent = newIdentNode(RestAcceptTypeArg)
@@ -651,6 +698,8 @@ proc restSingleProc(prc: NimNode): NimNode {.compileTime.} =
           (node, RestReturnKind.Status)
         of "RestPlainResponse":
           (node, RestReturnKind.PlainResponse)
+        of "RestHttpResponseRef":
+          (node, RestReturnKind.HttpResponse)
         else:
           (node, RestReturnKind.Value)
       of nnkBracketExpr:
@@ -662,11 +711,14 @@ proc restSingleProc(prc: NimNode): NimNode {.compileTime.} =
       else:
         (node, RestReturnKind.Value)
 
-  let endpointValue = prc.getEndpointOrDefault("")
-  let acceptValue = prc.getAcceptOrDefault(DefaultAcceptContentType)
-  let methodValue = prc.getMethodOrDefault(newDotExpr(ident("HttpMethod"),
-                                           ident("MethodGet")))
-  let spath = SegmentedPath.init(HttpMethod.MethodGet, endpointValue, nil)
+  let
+    connectionFlagsValue = prc.getConnectionPragma()
+    endpointValue = prc.getEndpointOrDefault("")
+    acceptValue = prc.getAcceptOrDefault(DefaultAcceptContentType)
+    methodValue = prc.getMethodOrDefault(newDotExpr(ident("HttpMethod"),
+                                         ident("MethodGet")))
+    spath = SegmentedPath.init(HttpMethod.MethodGet, endpointValue, nil)
+
   var patterns = spath.getPatterns()
 
   let isPostMethod = methodValue.isPostMethod()
@@ -864,12 +916,11 @@ proc restSingleProc(prc: NimNode): NimNode {.compileTime.} =
             `clientIdent`, `requestPath`, `requestQuery`,
             `contentTypeIdent`, `acceptTypeIdent`,
             `extraHeadersIdent`, `methodValue`,
-            uint64(len(`bodyIdent`))
+            uint64(len(`bodyIdent`)), `connectionFlagsValue`
           )
           await requestWithBody(`requestIdent`,
                                 cast[pointer](unsafeAddr `bodyIdent`[0]),
-                                uint64(len(`bodyIdent`)), chunkSize,
-                                `requestFlagsIdent`)
+                                uint64(len(`bodyIdent`)), chunkSize)
   else:
     statements.add quote do:
       let `responseObjectIdent` =
@@ -877,49 +928,60 @@ proc restSingleProc(prc: NimNode): NimNode {.compileTime.} =
           let `requestIdent` = createGetRequest(
             `clientIdent`, `requestPath`, `requestQuery`,
             `contentTypeIdent`, `acceptTypeIdent`,
-            `extraHeadersIdent`, `methodValue`
+            `extraHeadersIdent`, `methodValue`, `connectionFlagsValue`
           )
-          await requestWithoutBody(`requestIdent`, `requestFlagsIdent`)
+          await requestWithoutBody(`requestIdent`)
 
   case returnKind
   of RestReturnKind.Status:
     # Result will contain only HTTP status.
     statements.add quote do:
-      return RestStatus(`responseObjectIdent`.status)
+      let `responseDataIdent` = await processRestResponse(`responseObjectIdent`,
+                                                          `requestFlagsIdent`)
+      return RestStatus(`responseDataIdent`.status)
   of RestReturnKind.PlainResponse:
     # Result will contain HTTP status, HTTP content-type and sequence of bytes.
     statements.add quote do:
-      return `responseObjectIdent`
+      let `responseDataIdent` = await processRestResponse(`responseObjectIdent`,
+                                                          `requestFlagsIdent`)
+      return `responseDataIdent`
   of RestReturnKind.GenericResponse:
     # Result will contain HTTP status, HTTP content-type and decoded value.
     statements.add quote do:
+      let `responseDataIdent` = await processRestResponse(`responseObjectIdent`,
+                                                          `requestFlagsIdent`)
       let `responseResultIdent` =
         block:
-          let res = decodeBytes(`returnType`, `responseObjectIdent`.data,
-                                `responseObjectIdent`.contentType)
+          let res = decodeBytes(`returnType`, `responseDataIdent`.data,
+                                `responseDataIdent`.contentType)
           if res.isErr():
             raiseRestDecodingBytesError(res.error())
           res.get()
       return RestResponse[`returnType`](
-        status: `responseObjectIdent`.status,
-        contentType: `responseObjectIdent`.contentType,
+        status: `responseDataIdent`.status,
+        contentType: `responseDataIdent`.contentType,
         data: `responseResultIdent`
       )
   of RestReturnKind.Value:
     # Result will be only decoded value, if HTTP status is not in [200, 299]
     # exception `RestResponseError` will be raised.
     statements.add quote do:
-      if `responseObjectIdent`.status < 200 or
-         `responseObjectIdent`.status >= 300:
-        raiseRestResponseError(`responseObjectIdent`)
+      let `responseDataIdent` = await processRestResponse(`responseObjectIdent`,
+                                                          `requestFlagsIdent`)
+      if `responseDataIdent`.status < 200 or
+         `responseDataIdent`.status >= 300:
+        raiseRestResponseError(`responseDataIdent`)
       let `responseResultIdent` =
         block:
-          let res = decodeBytes(`returnType`, `responseObjectIdent`.data,
-                                `responseObjectIdent`.contentType)
+          let res = decodeBytes(`returnType`, `responseDataIdent`.data,
+                                `responseDataIdent`.contentType)
           if res.isErr():
             raiseRestDecodingBytesError(res.error())
           res.get()
       return `responseResultIdent`
+  of RestReturnKind.HttpResponse:
+    statements.add quote do:
+      return RestHttpResponseRef(`responseObjectIdent`)
 
   let res = transformProcDefinition(prc, clientIdent, contentTypeIdent,
                                     acceptTypeIdent, extraHeadersIdent,

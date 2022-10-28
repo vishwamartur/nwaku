@@ -22,9 +22,9 @@ The documentation consists of several documents:
 - | `Tools documentation <tools.html>`_
   | Description of some tools that come with the standard distribution.
 
-- | `GC <gc.html>`_
-  | Additional documentation about Nim's GC and how to operate it in a
-  | realtime setting.
+- | `Memory management <mm.html>`_
+  | Additional documentation about Nim's memory management strategies
+  | and how to operate them in a realtime setting.
 
 - | `Source code filters <filters.html>`_
   | The Nim compiler supports source code filters as a simple yet powerful
@@ -36,4 +36,3 @@ The documentation consists of several documents:
 
 - | `Index <theindex.html>`_
   | The generated index. **Index + (Ctrl+F) == Joy**
-

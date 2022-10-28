@@ -60,8 +60,7 @@ method init(p: TestProto) {.gcsafe.} =
 proc createSwitch(ma: MultiAddress; outgoing: bool, secio: bool = false): (Switch, PeerInfo) =
   var
     privateKey = PrivateKey.random(ECDSA, rng[]).get()
-    peerInfo = PeerInfo.new(privateKey)
-  peerInfo.addrs.add(ma)
+    peerInfo = PeerInfo.new(privateKey, @[ma])
 
   proc createMplex(conn: Connection): Muxer =
     result = Mplex.new(conn)
@@ -295,7 +294,7 @@ suite "Noise":
     (switch2, peerInfo2) = createSwitch(ma2, true, true) # secio, we want to fail
     await switch1.start()
     await switch2.start()
-    expect(UpgradeFailedError):
+    expect(DialFailedError):
       let conn = await switch2.dial(switch1.peerInfo.peerId, switch1.peerInfo.addrs, TestCodec)
 
     await allFuturesThrowing(

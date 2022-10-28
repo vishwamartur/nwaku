@@ -1,4 +1,5 @@
 import asyncdispatch
+import std/unittest
 
 proc task() {.async.} =
   const tSleep = 40
@@ -15,6 +16,6 @@ proc main() =
     # because there is overhead in `async` + `sleepAsync`
     # as can be seen by increasing `tSleep` from 40 to 49, which increases the number
     # of failures.
-  doAssert counter <= 4 + slack
+  check counter <= 4 + slack
 
-for i in 0 .. 4: main()
+for i in 0 .. 10: main()

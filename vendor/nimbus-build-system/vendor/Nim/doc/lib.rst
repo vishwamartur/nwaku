@@ -5,9 +5,11 @@ Nim Standard Library
 :Author: Andreas Rumpf
 :Version: |nimversion|
 
+.. default-role:: code
+.. include:: rstcommon.rst
 .. contents::
 
-Nim's library is divided into *pure libraries*, *impure libraries* and *wrappers*.
+Nim's library is divided into *pure libraries*, *impure libraries*, and *wrappers*.
 
 Pure libraries do not depend on any external ``*.dll`` or ``lib*.so`` binary
 while impure libraries do. A wrapper is an impure library that is a very
@@ -36,19 +38,22 @@ Automatic imports
   magic to work.
 
 * `threads <threads.html>`_
-  Basic Nim thread support. **Note**: This is part of the system module. Do not
-  import it explicitly. Enabled with ``--threads:on``.
+  Basic Nim thread support. **Note:** This is part of the system module. Do not
+  import it explicitly. Enabled with `--threads:on`:option:.
 
-* `channels <channels.html>`_
-  Nim message passing support for threads. **Note**: This is part of the
-  system module. Do not import it explicitly. Enabled with ``--threads:on``.
+* `channels_builtin <channels_builtin.html>`_
+  Nim message passing support for threads. **Note:** This is part of the
+  system module. Do not import it explicitly. Enabled with `--threads:on`:option:.
 
 
 Core
 ----
 
+* `atomics <atomics.html>`_
+  Types and operations for atomic operations and lockless algorithms.
+
 * `bitops <bitops.html>`_
-  Provides a series of low level methods for bit manipulation.
+  Provides a series of low-level methods for bit manipulation.
 
 * `cpuinfo <cpuinfo.html>`_
   This module implements procs to determine the number of CPUs / cores.
@@ -62,6 +67,9 @@ Core
 * `locks <locks.html>`_
   Locks and condition variables for Nim.
 
+* `macrocache <macrocache.html>`_
+  Provides an API for macros to collect compile-time information across modules.
+
 * `macros <macros.html>`_
   Contains the AST API and documentation of Nim for writing macros.
 
@@ -69,7 +77,7 @@ Core
   Reentrant locks for Nim.
 
 * `typeinfo <typeinfo.html>`_
-  Provides (unsafe) access to Nim's run time type information.
+  Provides (unsafe) access to Nim's run-time type information.
 
 * `typetraits <typetraits.html>`_
   This module defines compile-time reflection procs for working with types.
@@ -83,12 +91,17 @@ Algorithms
 ----------
 
 * `algorithm <algorithm.html>`_
-  Implements some common generic algorithms like sort or binary search.
+  This module implements some common generic algorithms like sort or binary search.
+
+* `enumutils <enumutils.html>`_
+  This module adds functionality for the built-in `enum` type.
 
 * `sequtils <sequtils.html>`_
-  This module implements operations for the built-in seq type
+  This module implements operations for the built-in `seq` type
   which were inspired by functional programming languages.
 
+* `setutils <setutils.html>`_
+  This module adds functionality for the built-in `set` type.
 
 
 Collections
@@ -96,14 +109,14 @@ Collections
 
 * `critbits <critbits.html>`_
   This module implements a *crit bit tree* which is an efficient
-  container for a sorted set of strings, or for a sorted mapping of strings.
+  container for a sorted set of strings, or a sorted mapping of strings.
 
 * `deques <deques.html>`_
   Implementation of a double-ended queue.
-  The underlying implementation uses a ``seq``.
+  The underlying implementation uses a `seq`.
 
 * `heapqueue <heapqueue.html>`_
-  Implementation of a heap data structure that can be used as a priority queue.
+  Implementation of a binary heap data structure that can be used as a priority queue.
 
 * `intsets <intsets.html>`_
   Efficient implementation of a set of ints as a sparse bit set.
@@ -115,33 +128,35 @@ Collections
 * `options <options.html>`_
   The option type encapsulates an optional value.
 
+* `packedsets <packedsets.html>`_
+  Efficient implementation of a set of ordinals as a sparse bit set.
+
 * `sets <sets.html>`_
-  Nim hash and bit set support.
+  Nim hash set support.
 
 * `sharedlist <sharedlist.html>`_
-  Nim shared linked list support. Contains shared singly linked list.
+  Nim shared linked list support. Contains a shared singly-linked list.
 
 * `sharedtables <sharedtables.html>`_
   Nim shared hash table support. Contains shared tables.
 
 * `tables <tables.html>`_
-  Nim hash table support. Contains tables, ordered tables and count tables.
-
+  Nim hash table support. Contains tables, ordered tables, and count tables.
 
 
 String handling
 ---------------
 
 * `cstrutils <cstrutils.html>`_
-  Utilities for ``cstring`` handling.
+  Utilities for `cstring` handling.
 
-* `std/editdistance <editdistance.html>`_
+* `editdistance <editdistance.html>`_
   This module contains an algorithm to compute the edit distance between two
   Unicode strings.
 
 * `encodings <encodings.html>`_
   Converts between different character encodings. On UNIX, this uses
-  the ``iconv`` library, on Windows the Windows API.
+  the `iconv` library, on Windows the Windows API.
 
 * `parseutils <parseutils.html>`_
   This module contains helpers for parsing tokens, numbers, identifiers, etc.
@@ -154,22 +169,25 @@ String handling
 
 * `ropes <ropes.html>`_
   This module contains support for a *rope* data type.
-  Ropes can represent very long strings efficiently; especially concatenation
-  is done in O(1) instead of O(n).
+  Ropes can represent very long strings efficiently;
+  in particular, concatenation is done in O(1) instead of O(n).
+
+* `strbasics <strbasics.html>`_
+  This module provides some high performance string operations.
 
 * `strformat <strformat.html>`_
-  Macro based standard string interpolation / formatting. Inspired by
-  Python's ``f``-strings.
+  Macro based standard string interpolation/formatting. Inspired by
+  Python's f-strings.
 
 * `strmisc <strmisc.html>`_
   This module contains uncommon string handling operations that do not
   fit with the commonly used operations in strutils.
 
 * `strscans <strscans.html>`_
-  This module contains a ``scanf`` macro for convenient parsing of mini languages.
+  This module contains a `scanf` macro for convenient parsing of mini languages.
 
 * `strtabs <strtabs.html>`_
-  The ``strtabs`` module implements an efficient hash table that is a mapping
+  The `strtabs` module implements an efficient hash table that is a mapping
   from strings to strings. Supports a case-sensitive, case-insensitive and
   style-insensitive modes.
 
@@ -185,18 +203,18 @@ String handling
   It provides a single proc that does Unicode to ASCII transliterations.
   Based on Python's Unidecode module.
 
-* `std/wordwrap <wordwrap.html>`_
+* `wordwrap <wordwrap.html>`_
   This module contains an algorithm to wordwrap a Unicode string.
 
 
 Time handling
 -------------
 
-* `std/monotimes <monotimes.html>`_
+* `monotimes <monotimes.html>`_
   The `monotimes` module implements monotonic timestamps.
 
 * `times <times.html>`_
-  The ``times`` module contains support for working with time.
+  The `times` module contains support for working with time.
 
 
 Generic Operating System Services
@@ -207,18 +225,18 @@ Generic Operating System Services
   and the OS's native package manager.
   Its primary purpose is to produce output for Nimble packages,
   but it also contains the widely used **Distribution** enum
-  that is useful for writing platform specific code.
+  that is useful for writing platform-specific code.
   See `packaging <packaging.html>`_ for hints on distributing Nim using OS packages.
 
 * `dynlib <dynlib.html>`_
   This module implements the ability to access symbols from shared libraries.
 
 * `marshal <marshal.html>`_
-  Contains procs for serialization and deseralization of arbitrary Nim
+  Contains procs for serialization and deserialization of arbitrary Nim
   data structures.
 
 * `memfiles <memfiles.html>`_
-  This module provides support for memory mapped files (Posix's ``mmap``)
+  This module provides support for memory-mapped files (Posix's `mmap`)
   on the different operating systems.
 
 * `os <os.html>`_
@@ -227,7 +245,7 @@ Generic Operating System Services
   commands, etc.
 
 * `osproc <osproc.html>`_
-  Module for process communication beyond ``os.execShellCmd``.
+  Module for process communication beyond `os.execShellCmd`.
 
 * `streams <streams.html>`_
   This module provides a stream interface and two implementations thereof:
@@ -245,7 +263,7 @@ Math libraries
 --------------
 
 * `complex <complex.html>`_
-  This module implements complex numbers and their mathematical operations.
+  This module implements complex numbers and relevant mathematical operations.
 
 * `fenv <fenv.html>`_
   Floating-point environment. Handling of floating-point rounding and
@@ -254,20 +272,20 @@ Math libraries
 * `math <math.html>`_
   Mathematical operations like cosine, square root.
 
-* `mersenne <mersenne.html>`_
-  Mersenne twister random number generator.
-
 * `random <random.html>`_
   Fast and tiny random number generator.
 
 * `rationals <rationals.html>`_
-  This module implements rational numbers and their mathematical operations.
+  This module implements rational numbers and relevant mathematical operations.
 
 * `stats <stats.html>`_
-  Statistical analysis
+  Statistical analysis.
 
-* `std/sums <sums.html>`_
-  Fast sumation functions.
+* `sums <sums.html>`_
+  Accurate summation functions.
+
+* `sysrand <sysrand.html>`_
+  Cryptographically secure pseudorandom number generator.
 
 
 Internet Protocols and Support
@@ -278,18 +296,18 @@ Internet Protocols and Support
 
 * `asyncfile <asyncfile.html>`_
   This module implements asynchronous file reading and writing using
-  ``asyncdispatch``.
+  `asyncdispatch`.
 
 * `asyncftpclient <asyncftpclient.html>`_
-  This module implements an asynchronous FTP client using the ``asyncnet``
+  This module implements an asynchronous FTP client using the `asyncnet`
   module.
 
 * `asynchttpserver <asynchttpserver.html>`_
-  This module implements an asynchronous HTTP server using the ``asyncnet``
+  This module implements an asynchronous HTTP server using the `asyncnet`
   module.
 
 * `asyncnet <asyncnet.html>`_
-  This module implements asynchronous sockets based on the ``asyncdispatch``
+  This module implements asynchronous sockets based on the `asyncdispatch`
   module.
 
 * `asyncstreams <asyncstreams.html>`_
@@ -313,14 +331,14 @@ Internet Protocols and Support
 
 * `net <net.html>`_
   This module implements a high-level sockets API. It replaces the
-  ``sockets`` module.
+  `sockets` module.
 
 * `selectors <selectors.html>`_
   This module implements a selector API with backends specific to each OS.
-  Currently epoll on Linux and select on other operating systems.
+  Currently, epoll on Linux and select on other operating systems.
 
 * `smtp <smtp.html>`_
-  This module implement a simple SMTP client.
+  This module implements a simple SMTP client.
 
 * `uri <uri.html>`_
   This module provides functions for working with URIs.
@@ -340,47 +358,52 @@ Parsers
   This module parses an HTML document and creates its XML tree representation.
 
 * `json <json.html>`_
-  High performance JSON parser.
+  High-performance JSON parser.
+
+* `jsonutils <jsonutils.html>`_
+  This module implements a hookable (de)serialization for arbitrary types.
 
 * `lexbase <lexbase.html>`_
-  This is a low level module that implements an extremely efficient buffering
+  This is a low-level module that implements an extremely efficient buffering
   scheme for lexers and parsers. This is used by the diverse parsing modules.
 
 * `parsecfg <parsecfg.html>`_
-  The ``parsecfg`` module implements a high performance configuration file
+  The `parsecfg` module implements a high-performance configuration file
   parser. The configuration file's syntax is similar to the Windows ``.ini``
   format, but much more powerful, as it is not a line based parser. String
-  literals, raw string literals and triple quote string literals are supported
+  literals, raw string literals, and triple quote string literals are supported
   as in the Nim programming language.
 
 * `parsecsv <parsecsv.html>`_
-  The ``parsecsv`` module implements a simple high performance CSV parser.
+  The `parsecsv` module implements a simple high-performance CSV parser.
+
+* `parsejson <parsejson.html>`_
+  This module implements a JSON parser. It is used and exported by the `json <json.html>`_ module, but can also be used in its own right.
 
 * `parseopt <parseopt.html>`_
-  The ``parseopt`` module implements a command line option parser.
+  The `parseopt` module implements a command line option parser.
 
 * `parsesql <parsesql.html>`_
-  The ``parsesql`` module implements a simple high performance SQL parser.
+  The `parsesql` module implements a simple high-performance SQL parser.
 
 * `parsexml <parsexml.html>`_
-  The ``parsexml`` module implements a simple high performance XML/HTML parser.
+  The `parsexml` module implements a simple high performance XML/HTML parser.
   The only encoding that is supported is UTF-8. The parser has been designed
-  to be somewhat error correcting, so that even some "wild HTML" found on the
-  Web can be parsed with it.
+  to be somewhat error-correcting, so that even some "wild HTML" found on the
+  web can be parsed with it.
 
 
 Docutils
 --------
 
 * `packages/docutils/highlite <highlite.html>`_
-  Source highlighter for programming or markup languages.  Currently
-  only few languages are supported, other languages may be added.
+  Source highlighter for programming or markup languages. Currently,
+  only a few languages are supported, other languages may be added.
   The interface supports one language nested in another.
 
 * `packages/docutils/rst <rst.html>`_
   This module implements a reStructuredText parser. A large subset
-  is implemented. Some features of the markdown wiki syntax are
-  also supported.
+  is implemented. Some features of the markdown wiki syntax are also supported.
 
 * `packages/docutils/rstast <rstast.html>`_
   This module implements an AST for the reStructuredText parser.
@@ -409,12 +432,11 @@ Generators
   that generates a string with its HTML representation.
 
 
-
 Hashing
 -------
 
 * `base64 <base64.html>`_
-  This module implements a base64 encoder and decoder.
+  This module implements a Base64 encoder and decoder.
 
 * `hashes <hashes.html>`_
   This module implements efficient computations of hash values for diverse
@@ -425,13 +447,12 @@ Hashing
 
 * `oids <oids.html>`_
   An OID is a global ID that consists of a timestamp,
-  a unique counter and a random value. This combination should suffice to
+  a unique counter, and a random value. This combination should suffice to
   produce a globally distributed unique ID. This implementation was extracted
-  from the Mongodb interface and it thus binary compatible with a Mongo OID.
+  from the MongoDB interface and it thus binary compatible with a MongoDB OID.
 
-* `std/sha1 <sha1.html>`_
+* `sha1 <sha1.html>`_
   This module implements a sha1 encoder and decoder.
-
 
 
 Miscellaneous
@@ -447,11 +468,14 @@ Miscellaneous
 * `coro <coro.html>`_
   This module implements experimental coroutines in Nim.
 
+* `enumerate <enumerate.html>`_
+  This module implements `enumerate` syntactic sugar based on Nim's macro system.
+
 * `logging <logging.html>`_
   This module implements a simple logger.
 
 * `segfaults <segfaults.html>`_
-  Turns access violations or segfaults into a ``NilAccessError`` exception.
+  Turns access violations or segfaults into a `NilAccessDefect` exception.
 
 * `sugar <sugar.html>`_
   This module implements nice syntactic sugar based on Nim's macro system.
@@ -459,12 +483,15 @@ Miscellaneous
 * `unittest <unittest.html>`_
   Implements a Unit testing DSL.
 
-* `std/varints <varints.html>`_
-  Decode variable length integers that are compatible with SQLite.
+* `varints <varints.html>`_
+  Decode variable-length integers that are compatible with SQLite.
+
+* `with <with.html>`_
+  This module implements the `with` macro for easy function chaining.
 
 
-Modules for JS backend
-----------------------
+Modules for the JS backend
+--------------------------
 
 * `asyncjs <asyncjs.html>`_
   Types and macros for writing asynchronous procedures in JavaScript.
@@ -472,12 +499,15 @@ Modules for JS backend
 * `dom <dom.html>`_
   Declaration of the Document Object Model for the JS backend.
 
+* `jsbigints <jsbigints.html>`_
+  Arbitrary precision integers.
+
 * `jsconsole <jsconsole.html>`_
-  Wrapper for the ``console`` object.
+  Wrapper for the `console` object.
 
 * `jscore <jscore.html>`_
-  Wrapper of core JavaScript functions. For most purposes you should be using
-  the ``math``, ``json``, and ``times`` stdlib modules instead of this module.
+  The wrapper of core JavaScript functions. For most purposes, you should be using
+  the `math`, `json`, and `times` stdlib modules instead of this module.
 
 * `jsffi <jsffi.html>`_
   Types and macros for easier interaction with JavaScript.
@@ -510,6 +540,13 @@ Database support
   for other databases too.
 
 
+Generic Operating System Services
+---------------------------------
+
+* `rdstdin <rdstdin.html>`_
+  This module contains code for reading from stdin.
+
+
 Wrappers
 ========
 
@@ -517,7 +554,7 @@ The generated HTML for some of these wrappers is so huge that it is
 not contained in the distribution. You can then find them on the website.
 
 
-Windows specific
+Windows-specific
 ----------------
 
 * `winlean <winlean.html>`_
@@ -534,18 +571,12 @@ UNIX specific
 * `posix_utils <posix_utils.html>`_
   Contains helpers for the POSIX standard or specialized for Linux and BSDs.
 
+
 Regular expressions
 -------------------
 
 * `pcre <pcre.html>`_
   Wrapper for the PCRE library.
-
-
-GUI libraries
--------------
-
-* `iup <iup.html>`_
-  Wrapper of the IUP GUI library.
 
 
 Database support
@@ -556,7 +587,7 @@ Database support
 * `mysql <mysql.html>`_
   Contains a wrapper for the mySQL API.
 * `sqlite3 <sqlite3.html>`_
-  Contains a wrapper for SQLite 3 API.
+  Contains a wrapper for the SQLite 3 API.
 * `odbcsql <odbcsql.html>`_
   interface to the ODBC driver.
 

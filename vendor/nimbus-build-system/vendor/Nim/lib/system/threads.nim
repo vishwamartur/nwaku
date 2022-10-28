@@ -11,7 +11,7 @@
 ##
 ## **Note**: This is part of the system module. Do not import it directly.
 ## To activate thread support you need to compile
-## with the ``--threads:on`` command line switch.
+## with the `--threads:on`:option: command line switch.
 ##
 ## Nim's memory model for threads is quite different from other common
 ## programming languages (C, Pascal): Each thread has its own
@@ -24,7 +24,7 @@
 ##
 ## .. code-block:: Nim
 ##
-##  import locks
+##  import std/locks
 ##
 ##  var
 ##    thr: array[0..4, Thread[tuple[a,b: int]]]
@@ -41,21 +41,41 @@
 ##  for i in 0..high(thr):
 ##    createThread(thr[i], threadFunc, (i*10, i*10+5))
 ##  joinThreads(thr)
+##
+##  deinitLock(L)
 
 when not declared(ThisIsSystem):
   {.error: "You must not import this module explicitly".}
 
 const
-  StackGuardSize = 4096
-  ThreadStackMask =
-    when defined(genode):
-      1024*64*sizeof(int)-1
-    else:
-      1024*256*sizeof(int)-1
-  ThreadStackSize = ThreadStackMask+1 - StackGuardSize
+  hasAllocStack = defined(zephyr) # maybe freertos too?
+
+when hasAllocStack or defined(zephyr) or defined(freertos):
+  const
+    nimThreadStackSize {.intdefine.} = 8192 
+    nimThreadStackGuard {.intdefine.} = 128
+
+    StackGuardSize = nimThreadStackGuard 
+    ThreadStackSize = nimThreadStackSize - nimThreadStackGuard 
+else:
+  const
+    StackGuardSize = 4096
+    ThreadStackMask =
+      when defined(genode):
+        1024*64*sizeof(int)-1
+      else:
+        1024*256*sizeof(int)-1
+
+    ThreadStackSize = ThreadStackMask+1 - StackGuardSize
 
 #const globalsSlot = ThreadVarSlot(0)
 #sysAssert checkSlot.int == globalsSlot.int
+
+# Zephyr doesn't include this properly without some help
+when defined(zephyr):
+  {.emit: """/*INCLUDESECTION*/
+  #include <pthread.h>
+  """.}
 
 # create for the main thread. Note: do not insert this data into the list
 # of all threads; it's not to be stopped etc.
@@ -87,15 +107,19 @@ type
     else:
       dataFn: proc (m: TArg) {.nimcall, gcsafe.}
       data: TArg
+    when hasAllocStack:
+      rawStack: pointer
+
+proc `=copy`*[TArg](x: var Thread[TArg], y: Thread[TArg]) {.error.}
 
 var
-  threadDestructionHandlers {.rtlThreadVar.}: seq[proc () {.closure, gcsafe.}]
+  threadDestructionHandlers {.rtlThreadVar.}: seq[proc () {.closure, gcsafe, raises: [].}]
 
-proc onThreadDestruction*(handler: proc () {.closure, gcsafe.}) =
+proc onThreadDestruction*(handler: proc () {.closure, gcsafe, raises: [].}) =
   ## Registers a *thread local* handler that is called at the thread's
   ## destruction.
   ##
-  ## A thread is destructed when the ``.thread`` proc returns
+  ## A thread is destructed when the `.thread` proc returns
   ## normally or when it raises an exception. Note that unhandled exceptions
   ## in a thread nevertheless cause the whole process to die.
   threadDestructionHandlers.add handler
@@ -105,7 +129,10 @@ template afterThreadRuns() =
     threadDestructionHandlers[i]()
 
 when not defined(boehmgc) and not hasSharedHeap and not defined(gogc) and not defined(gcRegions):
-  proc deallocOsPages() {.rtl.}
+  proc deallocOsPages() {.rtl, raises: [].}
+
+proc threadTrouble() {.raises: [], gcsafe.}
+  ## defined in system/excpt.nim
 
 when defined(boehmgc):
   type GCStackBaseProc = proc(sb: pointer, t: pointer) {.noconv.}
@@ -116,7 +143,7 @@ when defined(boehmgc):
   proc boehmGC_unregister_my_thread()
     {.importc: "GC_unregister_my_thread", boehmGC.}
 
-  proc threadProcWrapDispatch[TArg](sb: pointer, thrd: pointer) {.noconv.} =
+  proc threadProcWrapDispatch[TArg](sb: pointer, thrd: pointer) {.noconv, raises: [].} =
     boehmGC_register_my_thread(sb)
     try:
       let thrd = cast[ptr Thread[TArg]](thrd)
@@ -124,11 +151,13 @@ when defined(boehmgc):
         thrd.dataFn()
       else:
         thrd.dataFn(thrd.data)
+    except:
+      threadTrouble()
     finally:
       afterThreadRuns()
     boehmGC_unregister_my_thread()
 else:
-  proc threadProcWrapDispatch[TArg](thrd: ptr Thread[TArg]) =
+  proc threadProcWrapDispatch[TArg](thrd: ptr Thread[TArg]) {.raises: [].} =
     try:
       when TArg is void:
         thrd.dataFn()
@@ -139,21 +168,24 @@ else:
           var x: TArg
           deepCopy(x, thrd.data)
           thrd.dataFn(x)
+    except:
+      threadTrouble()
     finally:
       afterThreadRuns()
+      when hasAllocStack:
+        deallocShared(thrd.rawStack)
 
-proc threadProcWrapStackFrame[TArg](thrd: ptr Thread[TArg]) =
+proc threadProcWrapStackFrame[TArg](thrd: ptr Thread[TArg]) {.raises: [].} =
   when defined(boehmgc):
     boehmGC_call_with_stack_base(threadProcWrapDispatch[TArg], thrd)
   elif not defined(nogc) and not defined(gogc) and not defined(gcRegions) and not usesDestructors:
-    var p {.volatile.}: proc(a: ptr Thread[TArg]) {.nimcall, gcsafe.} =
-      threadProcWrapDispatch[TArg]
+    var p {.volatile.}: pointer
     # init the GC for refc/markandsweep
     nimGC_setStackBottom(addr(p))
     initGC()
     when declared(threadType):
       threadType = ThreadType.NimThread
-    p(thrd)
+    threadProcWrapDispatch[TArg](thrd)
     when declared(deallocOsPages): deallocOsPages()
   else:
     threadProcWrapDispatch(thrd)
@@ -253,7 +285,7 @@ when hostOS == "windows":
     ## Creates a new thread `t` and starts its execution.
     ##
     ## Entry point is the proc `tp`.
-    ## `param` is passed to `tp`. `TArg` can be ``void`` if you
+    ## `param` is passed to `tp`. `TArg` can be `void` if you
     ## don't need to pass any data to the thread.
     t.core = cast[PGcThread](allocShared0(sizeof(GcThread)))
 
@@ -302,7 +334,7 @@ else:
     ## Creates a new thread `t` and starts its execution.
     ##
     ## Entry point is the proc `tp`. `param` is passed to `tp`.
-    ## `TArg` can be ``void`` if you
+    ## `TArg` can be `void` if you
     ## don't need to pass any data to the thread.
     t.core = cast[PGcThread](allocShared0(sizeof(GcThread)))
 
@@ -311,7 +343,15 @@ else:
     when hasSharedHeap: t.core.stackSize = ThreadStackSize
     var a {.noinit.}: Pthread_attr
     doAssert pthread_attr_init(a) == 0
-    let setstacksizeResult = pthread_attr_setstacksize(a, ThreadStackSize)
+    when hasAllocStack:
+      var
+        rawstk = allocShared0(ThreadStackSize + StackGuardSize)
+        stk = cast[pointer](cast[uint](rawstk) + StackGuardSize)
+      let setstacksizeResult = pthread_attr_setstack(addr a, stk, ThreadStackSize)
+      t.rawStack = rawstk
+    else:
+      let setstacksizeResult = pthread_attr_setstacksize(a, ThreadStackSize)
+
     when not defined(ios):
       # This fails on iOS
       doAssert(setstacksizeResult == 0)
@@ -385,7 +425,7 @@ elif defined(netbsd):
 
 elif defined(freebsd):
   proc syscall(arg: cint, arg0: ptr cint): cint {.varargs, importc: "syscall", header: "<unistd.h>".}
-  var SYS_thr_self {.importc:"SYS_thr_self", header:"<sys/syscall.h>"}: cint
+  var SYS_thr_self {.importc:"SYS_thr_self", header:"<sys/syscall.h>".}: cint
 
   proc getThreadId*(): int =
     ## Gets the ID of the currently running thread.

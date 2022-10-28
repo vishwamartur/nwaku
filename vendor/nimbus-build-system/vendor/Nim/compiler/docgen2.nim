@@ -11,7 +11,7 @@
 # semantic checking.
 
 import
-  options, ast, msgs, passes, docgen, lineinfos, pathutils
+  options, ast, msgs, passes, docgen, lineinfos, pathutils, packages
 
 from modulegraphs import ModuleGraph, PPassContext
 
@@ -23,13 +23,15 @@ type
   PGen = ref TGen
 
 proc shouldProcess(g: PGen): bool =
-  (optWholeProject in g.doc.conf.globalOptions and g.module.getnimblePkgId == g.doc.conf.mainPackageId) or
+  (optWholeProject in g.doc.conf.globalOptions and g.doc.conf.belongsToProjectPackage(g.module)) or
       sfMainModule in g.module.flags or g.config.projectMainIdx == g.module.info.fileIndex
 
 template closeImpl(body: untyped) {.dirty.} =
   var g = PGen(p)
   let useWarning = sfMainModule notin g.module.flags
+  let groupedToc = true
   if shouldProcess(g):
+    finishGenerateDoc(g.doc)
     body
     try:
       generateIndex(g.doc)
@@ -38,7 +40,7 @@ template closeImpl(body: untyped) {.dirty.} =
 
 proc close(graph: ModuleGraph; p: PPassContext, n: PNode): PNode =
   closeImpl:
-    writeOutput(g.doc, useWarning)
+    writeOutput(g.doc, useWarning, groupedToc)
 
 proc closeJson(graph: ModuleGraph; p: PPassContext, n: PNode): PNode =
   closeImpl:
@@ -67,13 +69,18 @@ template myOpenImpl(ext: untyped) {.dirty.} =
   g.doc = d
   result = g
 
-proc myOpen(graph: ModuleGraph; module: PSym): PPassContext =
+proc myOpen(graph: ModuleGraph; module: PSym; idgen: IdGenerator): PPassContext =
   myOpenImpl(HtmlExt)
 
-proc myOpenJson(graph: ModuleGraph; module: PSym): PPassContext =
+proc myOpenTex(graph: ModuleGraph; module: PSym; idgen: IdGenerator): PPassContext =
+  myOpenImpl(TexExt)
+
+proc myOpenJson(graph: ModuleGraph; module: PSym; idgen: IdGenerator): PPassContext =
   myOpenImpl(JsonExt)
 
 const docgen2Pass* = makePass(open = myOpen, process = processNode, close = close)
+const docgen2TexPass* = makePass(open = myOpenTex, process = processNode,
+                                 close = close)
 const docgen2JsonPass* = makePass(open = myOpenJson, process = processNodeJson,
                                   close = closeJson)
 

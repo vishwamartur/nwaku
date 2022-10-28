@@ -110,14 +110,14 @@ proc iiTablePut*(t: var TIITable, key, val: int)
 
 # implementation
 
-proc skipConvAndClosure*(n: PNode): PNode =
+proc skipConvCastAndClosure*(n: PNode): PNode =
   result = n
   while true:
     case result.kind
     of nkObjUpConv, nkObjDownConv, nkChckRange, nkChckRangeF, nkChckRange64,
        nkClosure:
       result = result[0]
-    of nkHiddenStdConv, nkHiddenSubConv, nkConv:
+    of nkHiddenStdConv, nkHiddenSubConv, nkConv, nkCast:
       result = result[1]
     else: break
 
@@ -222,9 +222,9 @@ proc getNamedParamFromList*(list: PNode, ident: PIdent): PSym =
   ## gensym'ed and then they have '\`<number>' suffix that we need to
   ## ignore, see compiler / evaltempl.nim, snippet:
   ##
-  ##..code-block:: nim
+  ## .. code-block:: nim
   ##
-  ##    result.add newIdentNode(getIdent(c.ic, x.name.s & "\`gensym" & $x.id),
+  ##   result.add newIdentNode(getIdent(c.ic, x.name.s & "\`gensym" & $x.id),
   ##            if c.instLines: actual.info else: templ.info)
   for i in 1..<list.len:
     let it = list[i].sym
@@ -345,7 +345,7 @@ proc typeToYamlAux(conf: ConfigRef; n: PType, marker: var IntSet, indent: int,
     result.addf("$N$1\"n\": $2",     [istr, treeToYamlAux(conf, n.n, marker, indent + 2, maxRecDepth - 1)])
     if card(n.flags) > 0:
       result.addf("$N$1\"flags\": $2", [istr, flagsToStr(n.flags)])
-    result.addf("$N$1\"callconv\": $2", [istr, makeYamlString(CallingConvToStr[n.callConv])])
+    result.addf("$N$1\"callconv\": $2", [istr, makeYamlString($n.callConv)])
     result.addf("$N$1\"size\": $2", [istr, rope(n.size)])
     result.addf("$N$1\"align\": $2", [istr, rope(n.align)])
     result.addf("$N$1\"sons\": $2", [istr, sonsRope])
@@ -585,15 +585,25 @@ proc value(this: var DebugPrinter; value: PNode) =
   this.openCurly
   this.key "kind"
   this.value  value.kind
+  if value.comment.len > 0:
+    this.key "comment"
+    this.value  value.comment
   when defined(useNodeIds):
     this.key "id"
     this.value value.id
   if this.conf != nil:
     this.key "info"
     this.value $lineInfoToStr(this.conf, value.info)
-  if card(value.flags) > 0:
+  if value.flags != {}:
     this.key "flags"
     this.value value.flags
+
+  if value.typ != nil:
+    this.key "typ"
+    this.value value.typ.kind
+  else:
+    this.key "typ"
+    this.value "nil"
 
   case value.kind
   of nkCharLit..nkUInt64Lit:
@@ -752,9 +762,9 @@ proc strTableAdd*(t: var TStrTable, n: PSym) =
 
 proc strTableInclReportConflict*(t: var TStrTable, n: PSym;
                                  onConflictKeepOld = false): PSym =
-  # returns true if n is already in the string table:
-  # It is essential that `n` is written nevertheless!
-  # This way the newest redefinition is picked by the semantic analyses!
+  # if `t` has a conflicting symbol (same identifier as `n`), return it
+  # otherwise return `nil`. Incl `n` to `t` unless `onConflictKeepOld = true`
+  # and a conflict was found.
   assert n.name != nil
   var h: Hash = n.name.h and high(t.data)
   var replaceSlot = -1
@@ -770,9 +780,10 @@ proc strTableInclReportConflict*(t: var TStrTable, n: PSym;
       replaceSlot = h
     h = nextTry(h, high(t.data))
   if replaceSlot >= 0:
+    result = t.data[replaceSlot] # found it
     if not onConflictKeepOld:
       t.data[replaceSlot] = n # overwrite it with newer definition!
-    return t.data[replaceSlot] # found it
+    return result # but return the old one
   elif mustRehash(t.data.len, t.counter):
     strTableEnlarge(t)
     strTableRawInsert(t.data, n)

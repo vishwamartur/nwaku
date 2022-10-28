@@ -27,7 +27,7 @@
 ## the \`identifier\` notation is used.
 ##
 ## This library relies on the header files of your C compiler. The
-## resulting C code will just ``#include <XYZ.h>`` and *not* define the
+## resulting C code will just `#include <XYZ.h>` and *not* define the
 ## symbols declared here.
 
 # Dead code elimination ensures that we don't accidentally generate #includes
@@ -88,10 +88,10 @@ const
 type Sighandler = proc (a: cint) {.noconv.}
 
 const StatHasNanoseconds* = defined(linux) or defined(freebsd) or
-    defined(osx) or defined(openbsd) or defined(dragonfly) ## \
+    defined(osx) or defined(openbsd) or defined(dragonfly) or defined(haiku) ## \
   ## Boolean flag that indicates if the system supports nanosecond time
-  ## resolution in the fields of ``Stat``. Note that the nanosecond based fields
-  ## (``Stat.st_atim``, ``Stat.st_mtim`` and ``Stat.st_ctim``) can be accessed
+  ## resolution in the fields of `Stat`. Note that the nanosecond based fields
+  ## (`Stat.st_atim`, `Stat.st_mtim` and `Stat.st_ctim`) can be accessed
   ## without checking this flag, because this module defines fallback procs
   ## when they are not available.
 
@@ -105,6 +105,8 @@ elif (defined(macos) or defined(macosx) or defined(bsd)) and defined(cpu64):
   include posix_macos_amd64
 elif defined(nintendoswitch):
   include posix_nintendoswitch
+elif defined(haiku):
+  include posix_haiku
 else:
   include posix_other
 
@@ -149,12 +151,20 @@ proc htons*(a1: uint16): uint16 {.importc, header: "<arpa/inet.h>".}
 proc ntohl*(a1: uint32): uint32 {.importc, header: "<arpa/inet.h>".}
 proc ntohs*(a1: uint16): uint16 {.importc, header: "<arpa/inet.h>".}
 
-proc inet_addr*(a1: cstring): InAddrT {.importc, header: "<arpa/inet.h>".}
-proc inet_ntoa*(a1: InAddr): cstring {.importc, header: "<arpa/inet.h>".}
-proc inet_ntop*(a1: cint, a2: pointer, a3: cstring, a4: int32): cstring {.
-  importc:"(char *)$1", header: "<arpa/inet.h>".}
-proc inet_pton*(a1: cint, a2: cstring, a3: pointer): cint {.
-  importc, header: "<arpa/inet.h>".}
+when not defined(zephyr):
+  proc inet_addr*(a1: cstring): InAddrT {.importc, header: "<arpa/inet.h>".}
+  proc inet_ntoa*(a1: InAddr): cstring {.importc, header: "<arpa/inet.h>".}
+
+when defined(zephyr): # this switch is done to keep Nim 1.6 API backward compatible
+  proc inet_ntop*(a1: cint, a2: pointer | ptr InAddr | ptr In6Addr, a3: cstring, a4: int32): cstring {.
+    importc:"(char *)$1", header: "<arpa/inet.h>".}
+  proc inet_pton*(a1: cint, a2: cstring, a3: pointer | ptr InAddr | ptr In6Addr): cint {.
+    importc, header: "<arpa/inet.h>".}
+else:
+  proc inet_ntop*(a1: cint, a2: pointer, a3: cstring, a4: int32): cstring {.
+    importc:"(char *)$1", header: "<arpa/inet.h>".}
+  proc inet_pton*(a1: cint, a2: cstring, a3: pointer): cint {.
+    importc, header: "<arpa/inet.h>".}
 
 var
   in6addr_any* {.importc, header: "<netinet/in.h>".}: In6Addr
@@ -181,13 +191,17 @@ proc dlsym*(a1: pointer, a2: cstring): pointer {.importc, header: "<dlfcn.h>", s
 
 proc creat*(a1: cstring, a2: Mode): cint {.importc, header: "<fcntl.h>", sideEffect.}
 proc fcntl*(a1: cint | SocketHandle, a2: cint): cint {.varargs, importc, header: "<fcntl.h>", sideEffect.}
-proc open*(a1: cstring, a2: cint): cint {.varargs, importc, header: "<fcntl.h>", sideEffect.}
+proc openImpl(a1: cstring, a2: cint): cint {.varargs, importc: "open", header: "<fcntl.h>", sideEffect.}
+proc open*(a1: cstring, a2: cint, mode: Mode | cint = 0.Mode): cint {.inline.} =
+  # prevents bug #17888
+  openImpl(a1, a2, mode)
+
 proc posix_fadvise*(a1: cint, a2, a3: Off, a4: cint): cint {.
   importc, header: "<fcntl.h>".}
 proc posix_fallocate*(a1: cint, a2, a3: Off): cint {.
   importc, header: "<fcntl.h>".}
 
-when not defined(haiku) and not defined(OpenBSD):
+when not defined(haiku) and not defined(openbsd):
   proc fmtmsg*(a1: int, a2: cstring, a3: cint,
               a4, a5, a6: cstring): cint {.importc, header: "<fmtmsg.h>".}
 
@@ -445,7 +459,7 @@ proc pthread_spin_unlock*(a1: ptr Pthread_spinlock): cint {.
 proc pthread_testcancel*() {.importc, header: "<pthread.h>".}
 
 
-proc exitnow*(code: int): void {.importc: "_exit", header: "<unistd.h>".}
+proc exitnow*(code: int) {.importc: "_exit", header: "<unistd.h>".}
 proc access*(a1: cstring, a2: cint): cint {.importc, header: "<unistd.h>".}
 proc alarm*(a1: cint): cint {.importc, header: "<unistd.h>".}
 proc chdir*(a1: cstring): cint {.importc, header: "<unistd.h>".}
@@ -584,6 +598,8 @@ proc fstatvfs*(a1: cint, a2: var Statvfs): cint {.
   importc, header: "<sys/statvfs.h>".}
 
 proc chmod*(a1: cstring, a2: Mode): cint {.importc, header: "<sys/stat.h>", sideEffect.}
+when defined(osx) or defined(freebsd):
+  proc lchmod*(a1: cstring, a2: Mode): cint {.importc, header: "<sys/stat.h>", sideEffect.}
 proc fchmod*(a1: cint, a2: Mode): cint {.importc, header: "<sys/stat.h>", sideEffect.}
 proc fstat*(a1: cint, a2: var Stat): cint {.importc, header: "<sys/stat.h>", sideEffect.}
 proc lstat*(a1: cstring, a2: var Stat): cint {.importc, header: "<sys/stat.h>", sideEffect.}
@@ -636,7 +652,8 @@ proc posix_madvise*(a1: pointer, a2: int, a3: cint): cint {.
   importc, header: "<sys/mman.h>".}
 proc posix_mem_offset*(a1: pointer, a2: int, a3: var Off,
            a4: var int, a5: var cint): cint {.importc, header: "<sys/mman.h>".}
-when not (defined(linux) and defined(amd64)) and not defined(nintendoswitch):
+when not (defined(linux) and defined(amd64)) and not defined(nintendoswitch) and
+     not defined(haiku):
   proc posix_typed_mem_get_info*(a1: cint,
     a2: var Posix_typed_mem_info): cint {.importc, header: "<sys/mman.h>".}
 proc posix_typed_mem_open*(a1: cstring, a2, a3: cint): cint {.
@@ -873,14 +890,18 @@ proc CMSG_NXTHDR*(mhdr: ptr Tmsghdr, cmsg: ptr Tcmsghdr): ptr Tcmsghdr {.
 proc CMSG_FIRSTHDR*(mhdr: ptr Tmsghdr): ptr Tcmsghdr {.
   importc, header: "<sys/socket.h>".}
 
+{.push warning[deprecated]: off.}
 proc CMSG_SPACE*(len: csize): csize {.
   importc, header: "<sys/socket.h>", deprecated: "argument `len` should be of type `csize_t`".}
+{.pop.}
 
 proc CMSG_SPACE*(len: csize_t): csize_t {.
   importc, header: "<sys/socket.h>".}
 
+{.push warning[deprecated]: off.}
 proc CMSG_LEN*(len: csize): csize {.
   importc, header: "<sys/socket.h>", deprecated: "argument `len` should be of type `csize_t`".}
+{.pop.}
 
 proc CMSG_LEN*(len: csize_t): csize_t {.
   importc, header: "<sys/socket.h>".}
@@ -893,9 +914,13 @@ proc `==`*(x, y: SocketHandle): bool {.borrow.}
 proc accept*(a1: SocketHandle, a2: ptr SockAddr, a3: ptr SockLen): SocketHandle {.
   importc, header: "<sys/socket.h>", sideEffect.}
 
+when defined(linux) or defined(bsd):
+  proc accept4*(a1: SocketHandle, a2: ptr SockAddr, a3: ptr SockLen,
+                flags: cint): SocketHandle {.importc, header: "<sys/socket.h>".}
+
 proc bindSocket*(a1: SocketHandle, a2: ptr SockAddr, a3: SockLen): cint {.
   importc: "bind", header: "<sys/socket.h>".}
-  ## is Posix's ``bind``, because ``bind`` is a reserved word
+  ## is Posix's `bind`, because `bind` is a reserved word
 
 proc connect*(a1: SocketHandle, a2: ptr SockAddr, a3: SockLen): cint {.
   importc, header: "<sys/socket.h>".}
@@ -955,9 +980,15 @@ proc IN6_IS_ADDR_LINKLOCAL* (a1: ptr In6Addr): cint {.
 proc IN6_IS_ADDR_SITELOCAL* (a1: ptr In6Addr): cint {.
   importc, header: "<netinet/in.h>".}
   ## Unicast site-local address.
-proc IN6_IS_ADDR_V4MAPPED* (a1: ptr In6Addr): cint {.
-  importc, header: "<netinet/in.h>".}
-  ## IPv4 mapped address.
+when defined(lwip):
+  proc IN6_IS_ADDR_V4MAPPED*(ipv6_address: ptr In6Addr): cint =
+    var bits32: ptr array[4, uint32] = cast[ptr array[4, uint32]](ipv6_address)
+    return (bits32[1] == 0'u32 and bits32[2] == htonl(0x0000FFFF)).cint
+else:
+  proc IN6_IS_ADDR_V4MAPPED* (a1: ptr In6Addr): cint {.
+    importc, header: "<netinet/in.h>".}
+    ## IPv4 mapped address.
+
 proc IN6_IS_ADDR_V4COMPAT* (a1: ptr In6Addr): cint {.
   importc, header: "<netinet/in.h>".}
   ## IPv4-compatible address.
@@ -981,7 +1012,7 @@ proc endhostent*() {.importc, header: "<netdb.h>".}
 proc endnetent*() {.importc, header: "<netdb.h>".}
 proc endprotoent*() {.importc, header: "<netdb.h>".}
 proc endservent*() {.importc, header: "<netdb.h>".}
-proc freeaddrinfo*(a1: ptr AddrInfo) {.importc, header: "<netdb.h>".}
+proc freeAddrInfo*(a1: ptr AddrInfo) {.importc: "freeaddrinfo", header: "<netdb.h>".}
 
 proc gai_strerror*(a1: cint): cstring {.importc:"(char *)$1", header: "<netdb.h>".}
 
@@ -1019,8 +1050,9 @@ proc setnetent*(a1: cint) {.importc, header: "<netdb.h>".}
 proc setprotoent*(a1: cint) {.importc, header: "<netdb.h>".}
 proc setservent*(a1: cint) {.importc, header: "<netdb.h>".}
 
-proc poll*(a1: ptr TPollfd, a2: Tnfds, a3: int): cint {.
-  importc, header: "<poll.h>", sideEffect.}
+when not defined(lwip):
+  proc poll*(a1: ptr TPollfd, a2: Tnfds, a3: int): cint {.
+    importc, header: "<poll.h>", sideEffect.}
 
 proc realpath*(name, resolved: cstring): cstring {.
   importc: "realpath", header: "<stdlib.h>".}
@@ -1028,10 +1060,24 @@ proc realpath*(name, resolved: cstring): cstring {.
 proc mkstemp*(tmpl: cstring): cint {.importc, header: "<stdlib.h>", sideEffect.}
   ## Creates a unique temporary file.
   ##
-  ## **Warning**: The `tmpl` argument is written to by `mkstemp` and thus
-  ## can't be a string literal. If in doubt copy the string before passing it.
+  ## .. warning:: The `tmpl` argument is written to by `mkstemp` and thus
+  ##   can't be a string literal. If in doubt make a copy of the cstring before
+  ##   passing it in.
+
+proc mkstemps*(tmpl: cstring, suffixlen: int): cint {.importc, header: "<stdlib.h>", sideEffect.}
+  ## Creates a unique temporary file.
+  ##
+  ## .. warning:: The `tmpl` argument is written to by `mkstemps` and thus
+  ##   can't be a string literal. If in doubt make a copy of the cstring before
+  ##   passing it in.
 
 proc mkdtemp*(tmpl: cstring): pointer {.importc, header: "<stdlib.h>", sideEffect.}
+
+when defined(linux) or defined(bsd) or defined(osx):
+  proc mkostemp*(tmpl: cstring, oflags: cint): cint {.importc, header: "<stdlib.h>", sideEffect.}
+  proc mkostemps*(tmpl: cstring, suffixlen: cint, oflags: cint): cint {.importc, header: "<stdlib.h>", sideEffect.}
+
+  proc posix_memalign*(memptr: pointer, alignment: csize_t, size: csize_t): cint {.importc, header: "<stdlib.h>".}
 
 proc utimes*(path: cstring, times: ptr array[2, Timeval]): int {.
   importc: "utimes", header: "<sys/time.h>", sideEffect.}
@@ -1049,13 +1095,13 @@ proc handle_signal(sig: cint, handler: proc (a: cint) {.noconv.}) {.importc: "si
 
 template onSignal*(signals: varargs[cint], body: untyped) =
   ## Setup code to be executed when Unix signals are received. The
-  ## currently handled signal is injected as ``sig`` into the calling
+  ## currently handled signal is injected as `sig` into the calling
   ## scope.
   ##
   ## Example:
   ##
   ## .. code-block::
-  ##   from posix import SIGINT, SIGTERM, onSignal
+  ##   from std/posix import SIGINT, SIGTERM, onSignal
   ##   onSignal(SIGINT, SIGTERM):
   ##     echo "bye from signal ", sig
 

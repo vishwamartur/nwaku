@@ -1,11 +1,11 @@
-/* $Id: $
+/* $Id: nftnlrdr.c,v 1.10 2020/11/11 12:08:43 nanard Exp $
  * vim: tabstop=4 shiftwidth=4 noexpandtab
  * MiniUPnP project
  * http://miniupnp.free.fr/ or https://miniupnp.tuxfamily.org/
  * (c) 2015 Tomofumi Hayashi
  * (c) 2019 Sven Auhagen
  * (c) 2019 Paul Chambers
- * (c) 2020 Thomas Bernard
+ * (c) 2020-2022 Thomas Bernard
  *
  * This software is subject to the conditions detailed
  * in the LICENCE file provided within the distribution.
@@ -15,7 +15,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <syslog.h>
-#include <sys/errno.h>
+#include <errno.h>
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <netinet/in.h>
@@ -75,80 +75,12 @@ init_redirect(void)
 	/* requires elevated privileges */
 	result = nft_mnl_connect();
 
-	/* 'inet' family */
-	if (result == 0) {
-		result = table_op(NFT_MSG_NEWTABLE, NFPROTO_INET, nft_table);
-	}
-	if (result == 0) {
-		result = chain_op(NFT_MSG_NEWCHAIN, NFPROTO_INET, nft_table,
-						  nft_forward_chain, FILTER_CHAIN_TYPE, NF_INET_FORWARD, NF_IP_PRI_FILTER - 25);
-	}
-
-	/* 'ip' family */
-	if (result == 0) {
-		result = table_op(NFT_MSG_NEWTABLE, NFPROTO_IPV4, nft_table);
-	}
-	if (result == 0) {
-		result = chain_op(NFT_MSG_NEWCHAIN, NFPROTO_IPV4, nft_table,
-						  nft_prerouting_chain, NAT_CHAIN_TYPE, NF_INET_PRE_ROUTING, NF_IP_PRI_NAT_DST);
-	}
-	if (result == 0) {
-		result = chain_op(NFT_MSG_NEWCHAIN, NFPROTO_IPV4, nft_table,
-						  nft_postrouting_chain, NAT_CHAIN_TYPE, NF_INET_POST_ROUTING, NF_IP_PRI_NAT_SRC);
-	}
-
-	/* 'ip6' family */
-	if (result == 0) {
-		result = table_op(NFT_MSG_NEWTABLE, NFPROTO_IPV6, nft_table);
-	}
-	if (result == 0) {
-		result = chain_op(NFT_MSG_NEWCHAIN, NFPROTO_IPV6, nft_table,
-						  nft_prerouting_chain, NAT_CHAIN_TYPE, NF_INET_PRE_ROUTING, NF_IP_PRI_NAT_DST);
-	}
-	if (result == 0) {
-		result = chain_op(NFT_MSG_NEWCHAIN, NFPROTO_IPV6, nft_table,
-						  nft_postrouting_chain, NAT_CHAIN_TYPE, NF_INET_POST_ROUTING, NF_IP_PRI_NAT_SRC);
-	}
-
 	return result;
 }
 
 void
 shutdown_redirect(void)
 {
-	int result;
-
-	/* 'inet' family */
-	result = chain_op(NFT_MSG_DELCHAIN, NFPROTO_INET, nft_table,
-					  nft_forward_chain, FILTER_CHAIN_TYPE, NF_INET_FORWARD, NF_IP_PRI_FILTER - 25);
-	if (result == 0) {
-		result = table_op(NFT_MSG_DELTABLE, NFPROTO_INET, nft_table);
-	}
-
-	/* 'ip' family */
-	result = chain_op(NFT_MSG_DELCHAIN, NFPROTO_IPV4, nft_table,
-					  nft_prerouting_chain, NAT_CHAIN_TYPE, NF_INET_PRE_ROUTING, NF_IP_PRI_NAT_DST);
-	if (result == 0) {
-		result = chain_op(NFT_MSG_DELCHAIN, NFPROTO_IPV4, nft_table,
-						  nft_postrouting_chain, NAT_CHAIN_TYPE, NF_INET_POST_ROUTING, NF_IP_PRI_NAT_SRC);
-	}
-	if (result == 0) {
-		result = table_op(NFT_MSG_DELTABLE, NFPROTO_IPV4, nft_table);
-	}
-
-	/* 'ip6' family */
-	if (result == 0) {
-		result = chain_op(NFT_MSG_DELCHAIN, NFPROTO_IPV6, nft_table,
-						  nft_prerouting_chain, NAT_CHAIN_TYPE, NF_INET_PRE_ROUTING, NF_IP_PRI_NAT_DST);
-	}
-	if (result == 0) {
-		result = chain_op(NFT_MSG_DELCHAIN, NFPROTO_IPV6, nft_table,
-						  nft_postrouting_chain, NAT_CHAIN_TYPE, NF_INET_POST_ROUTING, NF_IP_PRI_NAT_SRC);
-	}
-	if (result == 0) {
-		result = table_op(NFT_MSG_DELTABLE, NFPROTO_IPV6, nft_table);
-	}
-
 	nft_mnl_disconnect();
 }
 
@@ -168,6 +100,9 @@ set_rdr_name(rdr_name_type param, const char *string)
 	switch (param) {
 	case RDR_TABLE_NAME:
 		nft_table = string;
+		break;
+	case RDR_NAT_TABLE_NAME:
+		nft_nat_table = string;
 		break;
 	case RDR_NAT_PREROUTING_CHAIN_NAME:
 		nft_prerouting_chain = string;
@@ -256,7 +191,7 @@ add_redirect_rule2(const char * ifname,
 	d_printf(("add redirect rule2(%s, %s, %u, %s, %u, %d, %s)!\n",
 	          ifname, rhost, eport, iaddr, iport, proto, desc));
 
-	r = rule_set_dnat(NFPROTO_IPV4, ifname, proto,
+	r = rule_set_dnat(NFPROTO_INET, ifname, proto,
 	                  0, eport,
 	                  inet_addr(iaddr), iport,  desc, NULL);
 
@@ -285,7 +220,7 @@ add_peer_redirect_rule2(const char * ifname,
 
 	d_printf(("add peer redirect rule2()!\n"));
 
-	r = rule_set_snat(NFPROTO_IPV4, proto,
+	r = rule_set_snat(NFPROTO_INET, proto,
 	                  inet_addr(rhost), rport,
 	                  inet_addr(eaddr), eport,
 	                  inet_addr(iaddr), iport, desc, NULL);
@@ -763,6 +698,8 @@ update_portmapping(const char * ifname, unsigned short eport, int proto,
 
 	d_printf(("update_portmapping()\n"));
 
+	iaddr_str[0] = '\0';
+	rhost[0] = '\0';
 	if (get_redirect_rule(NULL, eport, proto, iaddr_str, INET_ADDRSTRLEN, NULL, NULL, 0, rhost, INET_ADDRSTRLEN, NULL, 0, 0) < 0)
 		return -1;
 

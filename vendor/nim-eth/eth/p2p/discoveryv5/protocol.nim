@@ -84,9 +84,9 @@ import
   std/[tables, sets, options, math, sequtils, algorithm],
   stew/shims/net as stewNet, json_serialization/std/net,
   stew/[endians2, results], chronicles, chronos, stint, metrics,
-  ".."/../[rlp, keys, async_utils],
-  "."/[messages, encoding, node, routing_table, enr, random2, sessions, ip_vote,
-    nodes_verification]
+  ".."/../[rlp, keys],
+  "."/[messages_encoding, encoding, node, routing_table, enr, random2, sessions,
+    ip_vote, nodes_verification]
 
 export
   options, results, node, enr, encoding.maxDiscv5PacketSize
@@ -258,13 +258,15 @@ proc send*(d: Protocol, a: Address, data: seq[byte]) =
       # closed, or could be `TransportOsError` in case of a socket error.
       # In the latter case this would probably mostly occur if the network
       # interface underneath gets disconnected or similar.
+      # It could also be an "Operation not permitted" error, which would
+      # indicate a firewall restriction kicking in.
       # TODO: Should this kind of error be propagated upwards? Probably, but
       # it should not stop the process as that would reset the discovery
       # progress in case there is even a small window of no connection.
       # One case that needs this error available upwards is when revalidating
       # nodes. Else the revalidation might end up clearing the routing tabl
       # because of ping failures due to own network connection failure.
-      warn "Discovery send failed", msg = f.readError.msg
+      warn "Discovery send failed", msg = f.readError.msg, address = a
 
 proc send(d: Protocol, n: Node, data: seq[byte]) =
   doAssert(n.address.isSome())
@@ -836,7 +838,7 @@ proc revalidateLoop(d: Protocol) {.async.} =
       await sleepAsync(milliseconds(d.rng[].rand(revalidateMax)))
       let n = d.routingTable.nodeToRevalidate()
       if not n.isNil:
-        traceAsyncErrors d.revalidateNode(n)
+        asyncSpawn d.revalidateNode(n)
   except CancelledError:
     trace "revalidateLoop canceled"
 
