@@ -31,9 +31,13 @@ declareCounter discovery_session_decrypt_failures, "Session decrypt failures"
 logScope:
   topics = "discv5"
 
+# Support overriding the default discv5 protocol version and protocol id
+#  via compile time defines (e.g., '-d:discv5_protocol_id=d5waku')
 const
   discv5_protocol_version {.intdefine.} : uint16 = 1
   discv5_protocol_id {.strdefine.} = "discv5"
+
+const
   version = discv5_protocol_version
   protocolId = toBytes(discv5_protocol_id)
   idSignatureText  = "discovery v5 identity proof"
@@ -521,7 +525,7 @@ proc decodeHandshakePacket(c: var Codec, fromAddr: Address, nonce: AESGCMNonce,
     # Differently from an ordinary message, this is seen as an error as the
     # secrets just got negotiated in the handshake and thus decryption should
     # always work. We do not send a new Whoareyou on these as it probably means
-    # there is a compatiblity issue and we might loop forever in failed
+    # there is a compatibility issue and we might loop forever in failed
     # handshakes with this peer.
     return err("Decryption of message failed in handshake packet")
 

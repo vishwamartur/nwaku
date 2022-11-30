@@ -11,7 +11,6 @@ import
   unittest2,
   ../../eth/utp/growable_buffer
 
-
 type TestObj = object
   foo: string
 
@@ -24,13 +23,13 @@ suite "Utp ring buffer":
 
   test "Buffer should be initialised to next power of two":
     var elemsCounter = 0
-    let buff = GrowableCircularBuffer[int].init(size = 17) 
+    let buff = GrowableCircularBuffer[int].init(size = 17)
     check:
       buff.len() == 32
 
     for i in buff.items:
-      inc elemsCounter  
-    
+      inc elemsCounter
+
     check:
       elemsCounter == 32
 
@@ -47,7 +46,7 @@ suite "Utp ring buffer":
       buff.get(13) == some(13)
       buff.get(14) == some(14)
 
-  test "Modifing existing element in buffer":
+  test "Modifying existing element in buffer":
     var buff = GrowableCircularBuffer[TestObj].init(size = 4)
     let oldText = "test"
     let newText = "testChanged"
@@ -105,7 +104,7 @@ suite "Utp ring buffer":
     buff.put(15, 15)
 
     check:
-      # it growed to next power of two
+      # it grew to next power of two
       buff.len() == 8
       buff.get(11) == some(11)
       buff.get(12) == some(12)
@@ -158,7 +157,7 @@ suite "Utp ring buffer":
     buff.ensureSize(3, 4)
     buff.put(3, 3)
 
-    # all elements should be available thorugh old indexes
+    # all elements should be available through old indexes
     check:
       buff.get(65535) == some(65535)
       buff.get(0) == some(0)
@@ -166,7 +165,7 @@ suite "Utp ring buffer":
       buff.get(2) == some(2)
       buff.get(3) == some(3)
       buff.len() == 8
-    
+
     var elemsCounter = 0
     for elem in buff.items:
       inc elemsCounter

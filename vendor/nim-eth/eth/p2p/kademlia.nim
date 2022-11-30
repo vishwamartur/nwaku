@@ -443,7 +443,8 @@ proc findNode*(k: KademliaProtocol, nodesSeen: ref HashSet[Node],
 
     var bondedNodes: seq[Future[bool]] = @[]
     for node in candidates:
-      bondedNodes.add(k.bond(node))
+      if node != k.thisNode:
+        bondedNodes.add(k.bond(node))
 
     await allFutures(bondedNodes)
 
@@ -596,28 +597,31 @@ proc recvPong*(k: KademliaProtocol, n: Node, token: seq[byte]) =
     future.complete(true)
   k.updateLastPongReceived(n, getTime())
 
-proc recvPing*(k: KademliaProtocol, n: Node, msgHash: any)
+proc recvPing*(k: KademliaProtocol, n: Node, msgHash: auto)
     {.raises: [ValueError, Defect].} =
   trace "<<< ping from ", n
   k.wire.sendPong(n, msgHash)
 
   if getTime() - k.lastPongReceived(n) > BOND_EXPIRATION:
-    let pingId = pingId(n, k.ping(n))
+    # TODO: It is strange that this would occur, as it means our own node would
+    # have pinged us which should have caused an assert in the first place.
+    if n != k.thisNode:
+      let pingId = pingId(n, k.ping(n))
 
-    let fut = if pingId in k.pongFutures:
-                k.pongFutures[pingId]
-              else:
-                k.waitPong(n, pingId)
+      let fut = if pingId in k.pongFutures:
+                  k.pongFutures[pingId]
+                else:
+                  k.waitPong(n, pingId)
 
-    let cb = proc(data: pointer) {.gcsafe.} =
-               # fut.read == true if pingid exists
-               try:
-                 if fut.completed and fut.read:
-                   k.updateRoutingTable(n)
-               except CatchableError as ex:
-                 error "recvPing:WaitPong exception", msg=ex.msg
+      let cb = proc(data: pointer) {.gcsafe.} =
+                # fut.read == true if pingid exists
+                try:
+                  if fut.completed and fut.read:
+                    k.updateRoutingTable(n)
+                except CatchableError as ex:
+                  error "recvPing:WaitPong exception", msg=ex.msg
 
-    fut.addCallback cb
+      fut.addCallback cb
   else:
     k.updateRoutingTable(n)
 
@@ -663,7 +667,7 @@ proc randomNodes*(k: KademliaProtocol, count: int): seq[Node] =
   result = newSeqOfCap[Node](count)
   var seen = initHashSet[Node]()
 
-  # This is a rather inneficient way of randomizing nodes from all buckets, but even if we
+  # This is a rather inefficient way of randomizing nodes from all buckets, but even if we
   # iterate over all nodes in the routing table, the time it takes would still be
   # insignificant compared to the time it takes for the network roundtrips when connecting
   # to nodes.
