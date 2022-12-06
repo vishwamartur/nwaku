@@ -40,6 +40,8 @@ type WakuRlnConfig* = object
     rlnRelayEthAccountAddress*: string
     rlnRelayCredPath*: string
     rlnRelayCredentialsPassword*: string
+    rlnRelayIdKey*: string
+    rlnRelayIdCommitment*: string
     
 type 
   SpamHandler* = proc(wakuMessage: WakuMessage): void {.gcsafe, closure, raises: [Defect].}
@@ -50,8 +52,8 @@ type
 
 # membership contract interface
 contract(MembershipContract):
-  proc register(pubkey: Uint256) # external payable
-  proc MemberRegistered(pubkey: Uint256, index: Uint256) {.event.}
+  proc register(idCommitment: Uint256) # external payable
+  proc MemberRegistered(idCommitment: Uint256, index: Uint256) {.event.}
   # TODO the followings are to be supported
   # proc registerBatch(pubkeys: seq[Uint256]) # external payable
   # proc withdraw(secret: Uint256, pubkeyIndex: Uint256, receiver: Address)
@@ -842,22 +844,23 @@ proc parse*(event: type MemberRegistered,
             log: JsonNode): RlnRelayResult[MembershipTuple] =
   ## parses the `data` parameter of the `MemberRegistered` event `log`
   ## returns an error if it cannot parse the `data` parameter
-  var pubkey: UInt256
+  var idCommitment: UInt256
   var index: UInt256
   var data: string
   # Remove the 0x prefix
   try:
     data = strip0xPrefix(log["data"].getStr())
+    debug "data", data = data
   except CatchableError:
     return err("failed to parse the data field of the MemberRegistered event: " & getCurrentExceptionMsg())
   var offset = 0
   try:
-    # Parse the pubkey
-    offset += decode(data, offset, pubkey)
+    # Parse the idCommitment
+    offset += decode(data, offset, idCommitment)
     # Parse the index
     offset += decode(data, offset, index)
     return ok((index: index.toMembershipIndex(), 
-               idComm: pubkey.toIDCommitment()))
+               idComm: idCommitment.toIDCommitment()))
   except:
     return err("failed to parse the data field of the MemberRegistered event")
 
@@ -878,6 +881,8 @@ proc getHistoricalEvents*(ethClientUri: string,
   let historicalEvents = await contract.getJsonLogs(MemberRegistered,
                                                     fromBlock=some(fromBlock.blockId()),
                                                     toBlock=some(toBlock.blockId()))
+  debug "historical events", historicalEvents = historicalEvents
+  debug "==============================================================="
   # Create a table that maps block numbers to the list of members registered in that block
   var blockTable = OrderedTable[BlockNumber, seq[MembershipTuple]]()
   for log in historicalEvents:
@@ -1341,7 +1346,26 @@ proc mount(node: WakuNode,
       # do not persist or use a persisted rln-relay credential
       # a new credential will be generated during the mount process but will not be persisted
       info "no need to persist or use a persisted rln-relay credential"
-      res = await node.mountRlnRelayDynamic(memContractAddr = ethMemContractAddress, ethClientAddr = ethClientAddr,
+
+      # TODO: convert below configs to Options
+      if conf.rlnRelayIdKey != "" and conf.rlnRelayIdCommitment != "" and conf.rlnRelayMembershipIndex != 0:
+        let 
+          idKey = hexToUint[IDKey.len*8](conf.rlnRelayIdKey).toBytesLE()
+          idCommitment = hexToUint[IDCommitment.len*8](conf.rlnRelayIdCommitment).toBytesLE()
+        let memKeyPair = MembershipKeyPair(idKey: idKey, idCommitment: idCommitment)
+        info "rln-relay id key and commitment are provided in the config"
+        res = await node.mountRlnRelayDynamic(memContractAddr = ethMemContractAddress, 
+                                                ethClientAddr = ethClientAddr,
+                                                ethAccountAddress = ethAccountAddressOpt, 
+                                                ethAccountPrivKeyOpt = ethAccountPrivKeyOpt, 
+                                                pubsubTopic = conf.rlnRelayPubsubTopic,
+                                                contentTopic = conf.rlnRelayContentTopic, 
+                                                spamHandler = spamHandler, 
+                                                registrationHandler = registrationHandler,
+                                                memKeyPair = some(memKeyPair),
+                                                memIndex = some(conf.rlnRelayMembershipIndex))
+      else:
+        res = await node.mountRlnRelayDynamic(memContractAddr = ethMemContractAddress, ethClientAddr = ethClientAddr,
                 ethAccountAddress = ethAccountAddressOpt, ethAccountPrivKeyOpt = ethAccountPrivKeyOpt, pubsubTopic = conf.rlnRelayPubsubTopic,
                 contentTopic = conf.rlnRelayContentTopic, spamHandler = spamHandler, registrationHandler = registrationHandler)
       

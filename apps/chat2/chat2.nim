@@ -391,9 +391,9 @@ proc processInput(rfd: AsyncFD) {.async.} =
       wssEnabled = conf.websocketSecureSupport)
   await node.start()
 
-  if conf.rlnRelayEthAccountPrivateKey == "" and conf.rlnRelayCredPath == "":
+  if conf.rlnRelayEthAccountPrivateKey == "" and conf.rlnRelayCredPath == "" and conf.rlnRelayIdKey == "":
     raise newException(ConfigurationError,
-    "Either rln-relay-eth-private-key or rln-relay-cred-path MUST be passed")
+    "Either rln-relay-eth-private-key or rln-relay-cred-path or rln-relay-id-key MUST be passed")
 
   if conf.relay:
     await node.mountRelay(conf.topics.split(" "))
@@ -562,7 +562,9 @@ proc processInput(rfd: AsyncFD) {.async.} =
           rlnRelayEthAccountPrivateKey: conf.rlnRelayEthAccountPrivateKey,
           rlnRelayEthAccountAddress: conf.rlnRelayEthAccountAddress,
           rlnRelayCredPath: conf.rlnRelayCredPath,
-          rlnRelayCredentialsPassword: conf.rlnRelayCredentialsPassword
+          rlnRelayCredentialsPassword: conf.rlnRelayCredentialsPassword,
+          rlnRelayIdKey: conf.rlnRelayIdKey,
+          rlnRelayIdCommitment: conf.rlnRelayIdCommitmentKey,
         )
 
         let res = await node.mountRlnRelay(conf=rlnConf, spamHandler = some(spamHandler), registrationHandler = some(registrationHandler))
