@@ -177,6 +177,7 @@ proc register*(idComm: IDCommitment, ethAccountAddress: Option[Address], ethAcco
   let tsReceipt = await web3.getMinedTransactionReceipt(txHash)
   
   # the receipt topic holds the hash of signature of the raised events
+  debug "receipt", receipt=tsReceipt
   let firstTopic = tsReceipt.logs[0].topics[0]
   # the hash of the signature of MemberRegistered(uint256,uint256) event is equal to the following hex value
   if firstTopic[0..65] != "0x5a92c2530f207992057b9c3e544108ffce3beda4a63719f316967c49bf6159d2":
@@ -184,6 +185,7 @@ proc register*(idComm: IDCommitment, ethAccountAddress: Option[Address], ethAcco
 
   # the arguments of the raised event i.e., MemberRegistered are encoded inside the data field
   # data = pk encoded as 256 bits || index encoded as 256 bits
+  debug "receipt data", data=tsReceipt.logs
   let arguments = tsReceipt.logs[0].data
   debug "tx log data", arguments=arguments
   let 
