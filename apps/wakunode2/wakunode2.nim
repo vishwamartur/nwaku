@@ -5,11 +5,9 @@ else:
 
 import
   std/[options, tables, strutils, sequtils, os],
-  stew/shims/net as stewNet,
   chronicles,
   chronos,
   metrics,
-  libbacktrace,
   system/ansi_c,
   eth/keys,
   eth/p2p/discoveryv5/enr,
@@ -23,7 +21,6 @@ import
   libp2p/nameresolving/dnsresolver
 import
   ../../waku/common/sqlite,
-  ../../waku/common/utils/nat,
   ../../waku/common/logging,
   ../../waku/v2/node/peer_manager,
   ../../waku/v2/node/peer_manager/peer_store/waku_peer_storage,
@@ -242,11 +239,12 @@ proc initNode(conf: WakuNodeConf,
     ## `udpPort` is only supplied to satisfy underlying APIs but is not
     ## actually a supported transport for libp2p traffic.
     udpPort = conf.tcpPort
-    (extIp, extTcpPort, extUdpPort) = setupNat(conf.nat,
-                                              clientId,
-                                              Port(uint16(conf.tcpPort) + conf.portsShift),
-                                              Port(uint16(udpPort) + conf.portsShift))
-
+    # (extIp, extTcpPort, extUdpPort) = setupNat(conf.nat,
+    #                                           clientId,
+    #                                           Port(uint16(conf.tcpPort) + conf.portsShift),
+    #                                           Port(uint16(udpPort) + conf.portsShift))
+    extIp = none(ValidIpAddress)
+    extTcpPort = none(Port)
     dns4DomainName = if conf.dns4DomainName != "": some(conf.dns4DomainName)
                       else: none(string)
 
@@ -581,39 +579,8 @@ proc startMetricsLogging(): SetupResult[void] =
 
 
 {.pop.} # @TODO confutils.nim(775, 17) Error: can raise an unlisted exception: ref IOError
-when isMainModule:
-  ## Node setup happens in 6 phases:
-  ## 1. Set up storage
-  ## 2. Initialize node
-  ## 3. Mount and initialize configured protocols
-  ## 4. Start node and mounted protocols
-  ## 5. Start monitoring tools and external interfaces
-  ## 6. Setup graceful shutdown hooks
 
-  const versionString = "version / git commit hash: " & git_version
-  let rng = crypto.newRng()
-
-  let confRes = WakuNodeConf.load(version=versionString)
-  if confRes.isErr():
-    error "failure while loading the configuration", error=confRes.error
-    quit(QuitFailure)
-
-  let conf = confRes.get()
-
-  ## Logging setup
-
-  # Adhere to NO_COLOR initiative: https://no-color.org/
-  let color = try: not parseBool(os.getEnv("NO_COLOR", "false"))
-              except: true
-
-  logging.setupLogLevel(conf.logLevel)
-  logging.setupLogFormat(conf.logFormat, color)
-
-
-  ##############
-  # Node setup #
-  ##############
-
+proc init*(T: type WakuNode, conf: WakuNodeConf): WakuNode =
   debug "1/7 Setting up storage"
 
   ## Peer persistence
@@ -677,7 +644,8 @@ when isMainModule:
 
   var node: WakuNode  # This is the node we're going to setup using the conf
 
-  let initNodeRes = initNode(conf, rng, peerStore, dynamicBootstrapNodes)
+  let initNodeRes = initNode(
+    conf, crypto.newRng(), peerStore, dynamicBootstrapNodes)
   if initNodeRes.isok():
     node = initNodeRes.get()
   else:
@@ -727,6 +695,41 @@ when isMainModule:
     if startMetricsLoggingRes.isErr():
       error "6/7 Starting metrics console logging failed. Continuing in current state.", error=startMetricsLoggingRes.error
 
+  node
+
+proc waku2Main* {.gcsafe.} =
+  ## Node setup happens in 6 phases:
+  ## 1. Set up storage
+  ## 2. Initialize node
+  ## 3. Mount and initialize configured protocols
+  ## 4. Start node and mounted protocols
+  ## 5. Start monitoring tools and external interfaces
+  ## 6. Setup graceful shutdown hooks
+
+  const versionString = "version / git commit hash: " & git_version
+
+  let confRes = WakuNodeConf.load(version=versionString)
+  if confRes.isErr():
+    error "failure while loading the configuration", error=confRes.error
+    quit(QuitFailure)
+
+  let conf = confRes.get()
+
+  ## Logging setup
+
+  # Adhere to NO_COLOR initiative: https://no-color.org/
+  let color = try: not parseBool(os.getEnv("NO_COLOR", "false"))
+              except: true
+
+  logging.setupLogLevel(conf.logLevel)
+  logging.setupLogFormat(conf.logFormat, color)
+
+
+  ##############
+  # Node setup #
+  ##############
+
+  let node = WakuNode.init(conf)
 
   debug "7/7 Setting up shutdown hooks"
   ## Setup shutdown hooks for this process.
@@ -742,7 +745,7 @@ when isMainModule:
       # workaround for https://github.com/nim-lang/Nim/issues/4057
       setupForeignThreadGc()
     notice "Shutting down after receiving SIGINT"
-    asyncSpawn asyncStopper(node)
+    quit 1 # asyncSpawn asyncStopper(node)
 
   setControlCHook(handleCtrlC)
 
@@ -750,7 +753,7 @@ when isMainModule:
   when defined(posix):
     proc handleSigterm(signal: cint) {.noconv.} =
       notice "Shutting down after receiving SIGTERM"
-      asyncSpawn asyncStopper(node)
+      quit 1 #asyncSpawn asyncStopper(node)
 
     c_signal(ansi_c.SIGTERM, handleSigterm)
 
@@ -758,12 +761,12 @@ when isMainModule:
   when defined(posix):
     proc handleSigsegv(signal: cint) {.noconv.} =
       # Require --debugger:native
-      fatal "Shutting down after receiving SIGSEGV", stacktrace=getBacktrace()
+      fatal "Shutting down after receiving SIGSEGV"
 
       # Not available in -d:release mode
       writeStackTrace()
 
-      waitFor node.stop()
+      # waitFor node.stop()
       quit(QuitFailure)
 
     c_signal(ansi_c.SIGSEGV, handleSigsegv)
@@ -771,3 +774,6 @@ when isMainModule:
   info "Node setup complete"
 
   runForever()
+
+when isMainModule:
+  waku2Main()

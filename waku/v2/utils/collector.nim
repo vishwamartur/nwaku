@@ -4,9 +4,9 @@ else:
   {.push raises: [].}
 
 import
-  metrics
+  metrics, std/tables
 
-proc parseCollectorIntoF64(collector: Collector): float64 {.gcsafe, raises: [Defect] } = 
+proc parseCollectorIntoF64(collector: Collector): float64 {.gcsafe, raises: [Defect] } =
   {.gcsafe.}:
     var total = 0.float64
     for key in collector.metrics.keys():
@@ -17,7 +17,7 @@ proc parseCollectorIntoF64(collector: Collector): float64 {.gcsafe, raises: [Def
     return total
 
 template parseAndAccumulate*(collector: Collector, cumulativeValue: float64): float64 =
-  ## This template is used to get metrics in a window 
+  ## This template is used to get metrics in a window
   ## according to a cumulative value passed in
   {.gcsafe.}:
     let total = parseCollectorIntoF64(collector)

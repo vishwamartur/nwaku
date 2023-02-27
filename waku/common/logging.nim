@@ -91,18 +91,18 @@ proc setupLogFormat*(format: LogFormat, color=true) =
     writeAndFlush(io.stdout, stripAnsi(msg))
 
 
-  when defaultChroniclesStream.outputs.type.arity == 2:
-    case format:
-    of LogFormat.Text:
-      defaultChroniclesStream.outputs[0].writer = if color: stdoutOutputWriter
-                                                  else: stdoutNoColorOutputWriter
-      defaultChroniclesStream.outputs[1].writer = noOutputWriter
+  # when defaultChroniclesStream.outputs.type.arity == 2:
+  #   case format:
+  #   of LogFormat.Text:
+  #     defaultChroniclesStream.outputs[0].writer = if color: stdoutOutputWriter
+  #                                                 else: stdoutNoColorOutputWriter
+  #     defaultChroniclesStream.outputs[1].writer = noOutputWriter
 
-    of LogFormat.Json:
-      defaultChroniclesStream.outputs[0].writer = noOutputWriter
-      defaultChroniclesStream.outputs[1].writer = stdoutOutputWriter
+  #   of LogFormat.Json:
+  #     defaultChroniclesStream.outputs[0].writer = noOutputWriter
+  #     defaultChroniclesStream.outputs[1].writer = stdoutOutputWriter
 
-  else:
-    {.warning:
-      "the present module should be compiled with '-d:chronicles_default_output_device=dynamic' " &
-      "and '-d:chronicles_sinks=\"textlines,json\"' options" .}
+  # else:
+  #   {.warning:
+  #     "the present module should be compiled with '-d:chronicles_default_output_device=dynamic' " &
+  #     "and '-d:chronicles_sinks=\"textlines,json\"' options" .}

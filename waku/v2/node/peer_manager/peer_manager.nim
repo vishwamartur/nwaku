@@ -5,14 +5,14 @@ else:
 
 
 import
-  std/[options, sets, sequtils, times, strutils],
+  std/[options, sets, sequtils, strutils, tables, times],
   chronos,
   chronicles,
   metrics,
   libp2p/multistream
 import
   ../../utils/peers,
-  ../../waku/v2/protocol/waku_relay,
+  ../../protocol/waku_relay,
   ./peer_store/peer_storage,
   ./waku_peer_store
 

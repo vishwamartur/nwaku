@@ -497,7 +497,7 @@ proc parseCmdArg*(T: type Option[int], p: string): T =
 
 ## Configuration validation
 
-let DbUrlRegex = re"^[\w\+]+:\/\/[\w\/\\\.\:\@]+$"
+const DbUrlRegex = re"^[\w\+]+:\/\/[\w\/\\\.\:\@]+$"
 
 proc validateDbUrl*(val: string): ConfResult[string] =
   let val = val.strip()
@@ -508,7 +508,7 @@ proc validateDbUrl*(val: string): ConfResult[string] =
     err("invalid 'db url' option format: " & val)
 
 
-let StoreMessageRetentionPolicyRegex = re"^\w+:\w+$"
+const StoreMessageRetentionPolicyRegex = re"^\w+:\w+$"
 
 proc validateStoreMessageRetentionPolicy*(val: string): ConfResult[string] =
   let val = val.strip()

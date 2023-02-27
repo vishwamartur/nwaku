@@ -4,8 +4,8 @@ import
   json,
   json_rpc/rpcserver
 import
-  ../../waku/whisper/whisper_types,
-  ../../waku/common/hexstrings,
+  ../../../../whisper/whisper_types,
+  ../../../../common/hexstrings,
   ../marshalling,
   ../message
 

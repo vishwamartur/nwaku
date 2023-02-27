@@ -46,7 +46,7 @@ import
   ../../node/peer_manager,
   ./waku_swap_types,
   ../../../common/protobuf,
-  ../../waku/v2/protocol/waku_swap/waku_swap_contracts
+  ./waku_swap_contracts
 
 export waku_swap_types
 
