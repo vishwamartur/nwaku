@@ -148,4 +148,9 @@ when isMainModule:
 
   info "Node setup complete"
 
+  while true:
+    waitFor sleepAsync(2.seconds)
+    try:
+      GC_fullCollect()
+    except: discard
   runForever()
