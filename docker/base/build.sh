@@ -8,7 +8,7 @@ BUILDER=
 PUSH=
 LOAD=
 LATEST=
-IMAGE_NAME="nwaku"
+IMAGE_NAME="nwaku-builder"
 
 for i in `seq 1 $#`;do
     case $1 in
@@ -58,7 +58,7 @@ if [[ "${ARCH}" == "all" ]]; then
     ARCH=${ARCHS}
 fi
 
-TAG="nwaku-base-$(date --utc +"%Y%m%d%H%M%S")"
+TAG="$(date --utc +"%Y%m%d%H%M%S")"
 
 for arch in $(echo ${ARCH}); do
     DOCKER_BUILDKIT=1 \
