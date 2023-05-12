@@ -8,6 +8,7 @@ BUILDER=
 PUSH=
 LOAD=
 LATEST=
+NO_CACHE="--no-cache"
 IMAGE_NAME="nwaku-builder"
 
 for i in `seq 1 $#`;do
@@ -39,6 +40,10 @@ for i in `seq 1 $#`;do
             shift
             LATEST="1"
             ;; 
+        "--use-cache")
+            shift
+            NO_CACHE=""
+            ;;
         *)
             break
             ;;
@@ -66,6 +71,7 @@ for arch in $(echo ${ARCH}); do
             ${BUILDER}\
             ${PUSH}\
             ${LOAD}\
+            ${NO_CACHE}\
             -t ${IMAGE_NAME}:${TAG}_${arch}\
             --build-arg USER_ID=$(id -u)\
             --build-arg GROUP_ID=$(id -g)\
