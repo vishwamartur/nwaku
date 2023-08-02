@@ -95,6 +95,8 @@ proc createEthAccount(): Future[(keys.PrivateKey, Address)] {.async.} =
   let gasPrice = int(await web3.provider.eth_gasPrice())
   web3.defaultAccount = accounts[0]
 
+  warn "gas price", gasPrice=gasPrice, account = $web3.defaultAccount
+
   let pk = keys.PrivateKey.random(rng[])
   let acc = Address(toCanonicalAddress(pk.toPublicKey()))
 
@@ -110,6 +112,31 @@ proc createEthAccount(): Future[(keys.PrivateKey, Address)] {.async.} =
   assert(balance == ethToWei(10.u256))
 
   return (pk, acc)
+
+proc installAnvil(): Process =
+  try:
+    let installAnvil = startProcess("docker pull ghcr.io/foundry-rs/foundry:latest", options = {poEvalCommand})
+    let code = waitForExit(installAnvil)
+    warn "anvil install", code=code, output=installAnvil.outputstream.readAll()
+    let runAnvil = startProcess("docker run -t -p 8540:8540 ghcr.io/foundry-rs/foundry:latest \"anvil --port 8540 --gas-limit 300000000000000 --balance 1000000 --host 0.0.0.0\"", options = {poEvalCommand})
+    let runAnvilPID = runAnvil.processID
+
+    # We read stdout from anvil to see when daemon is ready
+    var anvilStartLog: string
+    var cmdline: string
+    while true:
+      try:
+        if runAnvil.outputstream.readLine(cmdline):
+          warn "anvil", cmdline
+          anvilStartLog.add(cmdline)
+          if cmdline.contains("Listening on 0.0.0.0:8540"):
+            break
+      except CatchableError:
+        break
+    debug "Anvil daemon is running and ready", pid=runAnvilPID, startLog=anvilStartLog
+    return runAnvil
+  except:  # TODO: Fix "BareExcept" warning
+    error "Anvil daemon run failed", err = getCurrentExceptionMsg()
 
 # Runs Ganache daemon
 proc runGanache(): Process =
@@ -138,7 +165,7 @@ proc runGanache(): Process =
     debug "Ganache daemon is running and ready", pid=ganachePID, startLog=ganacheStartLog
     return runGanache
   except:  # TODO: Fix "BareExcept" warning
-    error "Ganache daemon run failed"
+    error "Ganache daemon run failed", err = getCurrentExceptionMsg()
 
 
 # Stops Ganache daemon
@@ -185,7 +212,7 @@ proc setup(signer = true): Future[OnchainGroupManager] {.async.} =
 
 suite "Onchain group manager":
   # We run Ganache
-  let runGanache {.used.} = runGanache()
+  let runGanache {.used.} = installAnvil()
 
   asyncTest "should initialize successfully":
     let manager = await setup()
