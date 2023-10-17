@@ -596,6 +596,10 @@ proc startRestServer(app: App, address: ValidIpAddress, port: Port, conf: WakuNo
 
   ## Filter REST API
   if conf.filter:
+    try:
+      waitFor app.node.mountFilterClient()
+    except CatchableError:
+      return err("Failed to mount FilterClient"  & getCurrentExceptionMsg())
     let legacyFilterCache = rest_legacy_filter_api.MessageCache.init()
     rest_legacy_filter_api.installLegacyFilterRestApiHandlers(server.router, app.node, legacyFilterCache)
 
