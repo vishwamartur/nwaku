@@ -85,7 +85,7 @@ type
         desc: "Runs the registration function on-chain. By default, a dry-run will occur",
         defaultValue: false,
         name: "execute" .}: bool
-      
+
 
     of noCommand:
       ##  Application-level configuration
@@ -208,7 +208,7 @@ type
         desc: "Rln relay identity commitment key as a Hex string",
         defaultValue: ""
         name: "rln-relay-id-commitment-key" }: string
-      
+
       rlnRelayTreePath* {.
         desc: "Path to the RLN merkle tree sled db (https://github.com/spacejam/sled)",
         defaultValue: ""
@@ -360,6 +360,14 @@ type
         desc: "Enable access to REST HTTP Private API: true|false",
         defaultValue: false
         name: "rest-private" }: bool
+
+      restAllowOrigin* {.
+        desc: "Allow cross-origin requests from the specified origin." &
+              "Argument may be repeated." &
+              "Wildcards: * or ? allowed." &
+              "Ex.: \"localhost:*\" or \"127.0.0.1:8080\"",
+        defaultValue: @[""]
+        name: "rest-allow-origin" }: seq[string]
 
       ## Metrics config
 

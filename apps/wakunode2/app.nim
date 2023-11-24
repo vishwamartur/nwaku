@@ -301,7 +301,7 @@ proc setupWakuApp*(app: var App): AppResult[void] =
   ok()
 
 proc getPorts(listenAddrs: seq[MultiAddress]):
-              AppResult[tuple[tcpPort, websocketPort: Option[Port]]] = 
+              AppResult[tuple[tcpPort, websocketPort: Option[Port]]] =
 
   var tcpPort, websocketPort = none(Port)
 
@@ -640,7 +640,10 @@ proc startRestServer(app: App, address: ValidIpAddress, port: Port, conf: WakuNo
 
     return defaultResponse()
 
-  let server = ? newRestHttpServer(address, port, requestErrorHandler = requestErrorHandler)
+  let allowedOrigin = if len(conf.restAllowOrigin) > 0: some(conf.restAllowOrigin.join(","))
+                     else: none(string)
+
+  let server = ? newRestHttpServer(address, port, allowedOrigin = allowedOrigin, requestErrorHandler = requestErrorHandler)
 
   ## Admin REST API
   installAdminApiHandlers(server.router, app.node)
@@ -680,7 +683,7 @@ proc startRestServer(app: App, address: ValidIpAddress, port: Port, conf: WakuNo
 
     let filterCache = rest_filter_api.MessageCache.init()
 
-    let filterDiscoHandler = 
+    let filterDiscoHandler =
       if app.wakuDiscv5.isSome():
         some(defaultDiscoveryHandler(app.wakuDiscv5.get(), Filter))
       else: none(DiscoveryHandler)
@@ -695,7 +698,7 @@ proc startRestServer(app: App, address: ValidIpAddress, port: Port, conf: WakuNo
     notInstalledTab["filter"] = "/filter endpoints are not available. Please check your configuration: --filternode"
 
   ## Store REST API
-  let storeDiscoHandler = 
+  let storeDiscoHandler =
     if app.wakuDiscv5.isSome():
       some(defaultDiscoveryHandler(app.wakuDiscv5.get(), Store))
     else: none(DiscoveryHandler)
@@ -705,7 +708,7 @@ proc startRestServer(app: App, address: ValidIpAddress, port: Port, conf: WakuNo
   ## Light push API
   if conf.lightpushnode  != "" and
      app.node.wakuLightpushClient != nil:
-    let lightDiscoHandler = 
+    let lightDiscoHandler =
       if app.wakuDiscv5.isSome():
         some(defaultDiscoveryHandler(app.wakuDiscv5.get(), Lightpush))
       else: none(DiscoveryHandler)
