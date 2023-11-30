@@ -35,7 +35,7 @@ type
     peerManager*: PeerManager
     pushHandler*: PushMessageHandler
 
-proc handleRequest*(wl: WakuLightPush, peerId: PeerId, buffer: seq[byte]): Future[PushRPC] {.async.} = 
+proc handleRequest*(wl: WakuLightPush, peerId: PeerId, buffer: seq[byte]): Future[PushRPC] {.async.} =
   let reqDecodeRes = PushRPC.decode(buffer)
   var
       isSuccess = false
@@ -57,8 +57,8 @@ proc handleRequest*(wl: WakuLightPush, peerId: PeerId, buffer: seq[byte]): Futur
       pubSubTopic = request.get().pubSubTopic
       message = request.get().message
     waku_lightpush_messages.inc(labelValues = ["PushRequest"])
-    debug "push request", peerId=peerId, requestId=requestId, pubsubTopic=pubsubTopic
-    
+    debug "push request", peerId= $peerId, requestId=requestId, pubsubTopic=pubsubTopic
+
     let handleRes = await wl.pushHandler(peerId, pubsubTopic, message)
     isSuccess = handleRes.isOk()
     pushResponseInfo = (if isSuccess: "OK" else: handleRes.error)

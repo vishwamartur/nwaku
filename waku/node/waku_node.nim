@@ -188,7 +188,7 @@ proc connectToNodes*(node: WakuNode, nodes: seq[RemotePeerInfo] | seq[string], s
 proc mountMetadata*(node: WakuNode, clusterId: uint32): Result[void, string] =
   if not node.wakuMetadata.isNil():
     return err("Waku metadata already mounted, skipping")
-  
+
   let metadata = WakuMetadata.new(clusterId, node.enr, node.topicSubscriptionQueue)
 
   node.wakuMetadata = metadata
@@ -544,7 +544,7 @@ proc filterSubscribe*(node: WakuNode,
   let remotePeer = remotePeerRes.value
 
   if pubsubTopic.isSome():
-    info "registering filter subscription to content", pubsubTopic=pubsubTopic.get(), contentTopics=contentTopics, peer=remotePeer.peerId
+    info "registering filter subscription to content", pubsubTopic=pubsubTopic.get(), contentTopics=contentTopics, peer= $remotePeer.peerId
 
     let subRes = await node.wakuFilterClient.subscribe(remotePeer, pubsubTopic.get(), contentTopics)
     if subRes.isOk():
@@ -565,7 +565,7 @@ proc filterSubscribe*(node: WakuNode,
 
     var futures = collect(newSeq):
       for pubsub, topics in topicMap.pairs:
-        info "registering filter subscription to content", pubsubTopic=pubsub, contentTopics=topics, peer=remotePeer.peerId
+        info "registering filter subscription to content", pubsubTopic=pubsub, contentTopics=topics, peer= $remotePeer.peerId
         let content = topics.mapIt($it)
         node.wakuFilterClient.subscribe(remotePeer, $pubsub, content)
 
@@ -604,7 +604,7 @@ proc legacyFilterUnsubscribe*(node: WakuNode,
   let remotePeer = remotePeerRes.value
 
   if pubsubTopic.isSome():
-    info "deregistering legacy filter subscription to content", pubsubTopic=pubsubTopic.get(), contentTopics=contentTopics, peer=remotePeer.peerId
+    info "deregistering legacy filter subscription to content", pubsubTopic=pubsubTopic.get(), contentTopics=contentTopics, peer= $remotePeer.peerId
 
     let res = await node.wakuFilterClientLegacy.unsubscribe(pubsubTopic.get(), contentTopics, peer=remotePeer)
 
@@ -624,7 +624,7 @@ proc legacyFilterUnsubscribe*(node: WakuNode,
 
     var futures = collect(newSeq):
       for pubsub, topics in topicMap.pairs:
-        info "deregistering filter subscription to content", pubsubTopic=pubsub, contentTopics=topics, peer=remotePeer.peerId
+        info "deregistering filter subscription to content", pubsubTopic=pubsub, contentTopics=topics, peer= $remotePeer.peerId
         let content = topics.mapIt($it)
         node.wakuFilterClientLegacy.unsubscribe($pubsub, content, peer=remotePeer)
 
@@ -662,7 +662,7 @@ proc filterUnsubscribe*(node: WakuNode,
   let remotePeer = remotePeerRes.value
 
   if pubsubTopic.isSome():
-    info "deregistering filter subscription to content", pubsubTopic=pubsubTopic.get(), contentTopics=contentTopics, peer=remotePeer.peerId
+    info "deregistering filter subscription to content", pubsubTopic=pubsubTopic.get(), contentTopics=contentTopics, peer= $remotePeer.peerId
 
     let unsubRes = await node.wakuFilterClient.unsubscribe(remotePeer, pubsubTopic.get(), contentTopics)
     if unsubRes.isOk():
@@ -684,7 +684,7 @@ proc filterUnsubscribe*(node: WakuNode,
 
     var futures = collect(newSeq):
       for pubsub, topics in topicMap.pairs:
-        info "deregistering filter subscription to content", pubsubTopic=pubsub, contentTopics=topics, peer=remotePeer.peerId
+        info "deregistering filter subscription to content", pubsubTopic=pubsub, contentTopics=topics, peer= $remotePeer.peerId
         let content = topics.mapIt($it)
         node.wakuFilterClient.unsubscribe(remotePeer, $pubsub, content)
 
@@ -724,11 +724,11 @@ proc filterUnsubscribeAll*(node: WakuNode,
 
   let remotePeer = remotePeerRes.value
 
-  info "deregistering all filter subscription to content", peer=remotePeer.peerId
+  info "deregistering all filter subscription to content", peer= $remotePeer.peerId
 
   let unsubRes = await node.wakuFilterClient.unsubscribeAll(remotePeer)
   if unsubRes.isOk():
-    info "unsubscribed from all content-topic", peerId=remotePeer.peerId
+    info "unsubscribed from all content-topic", peerId= $remotePeer.peerId
   else:
     error "failed filter unsubscription from all content-topic", error=unsubRes.error
     waku_node_errors.inc(labelValues = ["unsubscribe_filter_failure"])
@@ -930,7 +930,7 @@ proc lightpushPublish*(node: WakuNode, pubsubTopic: Option[PubsubTopic], message
     return err("waku lightpush client is nil")
 
   if pubsubTopic.isSome():
-    debug "publishing message with lightpush", pubsubTopic=pubsubTopic.get(), contentTopic=message.contentTopic, peer=peer.peerId
+    debug "publishing message with lightpush", pubsubTopic=pubsubTopic.get(), contentTopic=message.contentTopic, peer= $peer.peerId
     return await node.wakuLightpushClient.publish(pubsubTopic.get(), message, peer)
 
   let topicMapRes = parseSharding(pubsubTopic, message.contentTopic)
@@ -941,7 +941,7 @@ proc lightpushPublish*(node: WakuNode, pubsubTopic: Option[PubsubTopic], message
     else: topicMapRes.get()
 
   for pubsub, _ in topicMap.pairs: # There's only one pair anyway
-    debug "publishing message with lightpush", pubsubTopic=pubsub, contentTopic=message.contentTopic, peer=peer.peerId
+    debug "publishing message with lightpush", pubsubTopic=pubsub, contentTopic=message.contentTopic, peer= $peer.peerId
     return await node.wakuLightpushClient.publish($pubsub, message, peer)
 
 # TODO: Move to application module (e.g., wakunode2.nim)
@@ -1106,7 +1106,7 @@ proc printNodeNetworkInfo*(node: WakuNode): void =
   except Exception as e:
     warn "Could not retrieve localIp", msg=e.msg
 
-  info "PeerInfo", peerId = peerInfo.peerId, addrs = peerInfo.addrs
+  info "PeerInfo", peerId = $peerInfo.peerId, addrs = peerInfo.addrs
 
   for address in node.announcedAddresses:
     var fulladdr = "[" & $address & "/p2p/" & $peerInfo.peerId & "]"

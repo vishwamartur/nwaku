@@ -66,7 +66,7 @@ proc initProtocolHandler(wf: WakuFilterClientLegacy) =
       requestId = rpc.requestId
       push = rpc.push.get()
 
-    info "received filter message push", peerId=conn.peerId, requestId=requestId
+    info "received filter message push", peerId= $conn.peerId, requestId=requestId
     wf.handleMessagePush(peerId, requestId, push)
 
   wf.handler = handle

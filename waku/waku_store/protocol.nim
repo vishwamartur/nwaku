@@ -69,7 +69,7 @@ proc initProtocolHandler(ws: WakuStore) =
       requestId = reqRpc.requestId
       request = reqRpc.query.get().toAPI()
 
-    info "received history query", peerId=conn.peerId, requestId=requestId, query=request
+    info "received history query", peerId= $conn.peerId, requestId=requestId, query=request
     waku_store_queries.inc()
 
     var responseRes: HistoryResult
@@ -95,7 +95,7 @@ proc initProtocolHandler(ws: WakuStore) =
 
     let response = responseRes.toRPC()
 
-    info "sending history response", peerId=conn.peerId, requestId=requestId, messages=response.messages.len
+    info "sending history response", peerId= $conn.peerId, requestId=requestId, messages=response.messages.len
 
     let rpc = HistoryRPC(requestId: requestId, response: some(response))
     await conn.writeLp(rpc.encode().buffer)

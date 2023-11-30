@@ -75,10 +75,10 @@ proc handleFilterRequest(wf: WakuFilterLegacy, peerId: PeerId, rpc: FilterRPC) =
     contentTopics = rpc.request.get().contentFilters.mapIt(it.contentTopic)
 
   if subscribe:
-    info "added filter subscritpiton", peerId=peerId, pubsubTopic=pubsubTopic, contentTopics=contentTopics
+    info "added filter subscription", peerId= $peerId, pubsubTopic=pubsubTopic, contentTopics=contentTopics
     wf.subscriptions.addSubscription(peerId, requestId, pubsubTopic, contentTopics)
   else:
-    info "removed filter subscritpiton", peerId=peerId, contentTopics=contentTopics
+    info "removed filter subscription", peerId= $peerId, contentTopics=contentTopics
     wf.subscriptions.removeSubscription(peerId, contentTopics)
 
   waku_legacy_filter_subscribers.set(wf.subscriptions.len.int64)

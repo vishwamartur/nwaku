@@ -34,10 +34,10 @@ type
     maintenanceTask: TimerCallback
 
 proc pingSubscriber(wf: WakuFilter, peerId: PeerID): FilterSubscribeResult =
-  trace "pinging subscriber", peerId=peerId
+  trace "pinging subscriber", peerId= $peerId
 
   if peerId notin wf.subscriptions:
-    debug "pinging peer has no subscriptions", peerId=peerId
+    debug "pinging peer has no subscriptions", peerId= $peerId
     return err(FilterSubscribeError.notFound())
 
   ok()
@@ -51,7 +51,7 @@ proc subscribe(wf: WakuFilter, peerId: PeerID, pubsubTopic: Option[PubsubTopic],
 
   let filterCriteria = toHashSet(contentTopics.mapIt((pubsubTopic.get(), it)))
 
-  trace "subscribing peer to filter criteria", peerId=peerId, filterCriteria=filterCriteria
+  trace "subscribing peer to filter criteria", peerId= $peerId, filterCriteria=filterCriteria
 
   if peerId in wf.subscriptions:
     # We already have a subscription for this peer. Try to add the new filter criteria.
@@ -65,7 +65,7 @@ proc subscribe(wf: WakuFilter, peerId: PeerID, pubsubTopic: Option[PubsubTopic],
     # We don't have a subscription for this peer yet. Try to add it.
     if wf.subscriptions.len() >= MaxTotalSubscriptions:
       return err(FilterSubscribeError.serviceUnavailable("node has reached maximum number of subscriptions"))
-    debug "creating new subscription", peerId=peerId
+    debug "creating new subscription", peerId= $peerId
     wf.subscriptions[peerId] = filterCriteria
 
   ok()
@@ -79,10 +79,10 @@ proc unsubscribe(wf: WakuFilter, peerId: PeerID, pubsubTopic: Option[PubsubTopic
 
   let filterCriteria = toHashSet(contentTopics.mapIt((pubsubTopic.get(), it)))
 
-  trace "unsubscribing peer from filter criteria", peerId=peerId, filterCriteria=filterCriteria
+  trace "unsubscribing peer from filter criteria", peerId= $peerId, filterCriteria=filterCriteria
 
   if peerId notin wf.subscriptions:
-    debug "unsubscribing peer has no subscriptions", peerId=peerId
+    debug "unsubscribing peer has no subscriptions", peerId= $peerId
     return err(FilterSubscribeError.notFound())
 
   var peerSubscription = wf.subscriptions.mgetOrPut(peerId, initHashSet[FilterCriterion]())
@@ -94,7 +94,7 @@ proc unsubscribe(wf: WakuFilter, peerId: PeerID, pubsubTopic: Option[PubsubTopic
   peerSubscription.excl(filterCriteria)
 
   if peerSubscription.len() == 0:
-    debug "peer has no more subscriptions, removing subscription", peerId=peerId
+    debug "peer has no more subscriptions, removing subscription", peerId= $peerId
     wf.subscriptions.del(peerId)
   else:
     wf.subscriptions[peerId] = peerSubscription
@@ -103,16 +103,16 @@ proc unsubscribe(wf: WakuFilter, peerId: PeerID, pubsubTopic: Option[PubsubTopic
 
 proc unsubscribeAll(wf: WakuFilter, peerId: PeerID): FilterSubscribeResult =
   if peerId notin wf.subscriptions:
-    debug "unsubscribing peer has no subscriptions", peerId=peerId
+    debug "unsubscribing peer has no subscriptions", peerId= $peerId
     return err(FilterSubscribeError.notFound())
 
-  debug "removing peer subscription", peerId=peerId
+  debug "removing peer subscription", peerId= $peerId
   wf.subscriptions.del(peerId)
 
   ok()
 
 proc handleSubscribeRequest*(wf: WakuFilter, peerId: PeerId, request: FilterSubscribeRequest): FilterSubscribeResponse =
-  info "received filter subscribe request", peerId=peerId, request=request
+  info "received filter subscribe request", peerId= $peerId, request=request
   waku_filter_requests.inc(labelValues = [$request.filterSubscribeType])
 
   var subscribeResult: FilterSubscribeResult
@@ -183,7 +183,7 @@ proc maintainSubscriptions*(wf: WakuFilter) =
     ## TODO: currently we only maintain by syncing with peer store. We could
     ## consider other metrics, such as subscription age, activity, etc.
     if not wf.peerManager.peerStore.hasPeer(peerId, WakuFilterPushCodec):
-      debug "peer has been removed from peer store, removing subscription", peerId=peerId
+      debug "peer has been removed from peer store, removing subscription", peerId= $peerId
       peersToRemove.add(peerId)
 
   if peersToRemove.len() > 0:
@@ -224,13 +224,13 @@ proc handleMessage*(wf: WakuFilter, pubsubTopic: PubsubTopic, message: WakuMessa
 proc initProtocolHandler(wf: WakuFilter) =
 
   proc handler(conn: Connection, proto: string) {.async.} =
-    trace "filter subscribe request handler triggered", peerId=conn.peerId
+    trace "filter subscribe request handler triggered", peerId= $conn.peerId
 
     let buf = await conn.readLp(MaxSubscribeSize)
 
     let decodeRes = FilterSubscribeRequest.decode(buf)
     if decodeRes.isErr():
-      error "Failed to decode filter subscribe request", peerId=conn.peerId, err=decodeRes.error
+      error "Failed to decode filter subscribe request", peerId= $conn.peerId, err=decodeRes.error
       waku_filter_errors.inc(labelValues = [decodeRpcFailure])
       return
 
@@ -238,7 +238,7 @@ proc initProtocolHandler(wf: WakuFilter) =
 
     let response = wf.handleSubscribeRequest(conn.peerId, request)
 
-    debug "sending filter subscribe response", peerId=conn.peerId, response=response
+    debug "sending filter subscribe response", peerId= $conn.peerId, response=response
 
     await conn.writeLp(response.encode().buffer) #TODO: toRPC() separation here
     return

@@ -125,7 +125,7 @@ proc addPeer*(pm: PeerManager, remotePeerInfo: RemotePeerInfo, origin = UnknownO
     # Peer already managed and ENR info is already saved
     return
 
-  trace "Adding peer to manager", peerId = remotePeerInfo.peerId, addresses = remotePeerInfo.addrs
+  trace "Adding peer to manager", peerId = $remotePeerInfo.peerId, addresses = remotePeerInfo.addrs
 
   pm.peerStore[AddressBook][remotePeerInfo.peerId] = remotePeerInfo.addrs
   pm.peerStore[KeyBook][remotePeerInfo.peerId] = publicKey
@@ -158,7 +158,7 @@ proc connectRelay*(pm: PeerManager,
     pm.addPeer(peer)
 
   let failedAttempts = pm.peerStore[NumberFailedConnBook][peerId]
-  debug "Connecting to relay peer", wireAddr=peer.addrs, peerId=peerId, failedAttempts=failedAttempts
+  debug "Connecting to relay peer", wireAddr=peer.addrs, peerId= $peerId, failedAttempts=failedAttempts
 
   var deadline = sleepAsync(dialTimeout)
   var workfut = pm.switch.connect(peerId, peer.addrs)
@@ -210,7 +210,7 @@ proc dialPeer(pm: PeerManager,
     error "dial shall not be used to connect to relays"
     return none(Connection)
 
-  debug "Dialing peer", wireAddr=addrs, peerId=peerId, proto=proto
+  debug "Dialing peer", wireAddr=addrs, peerId= $peerId, proto=proto
 
   # Dial Peer
   let dialFut = pm.switch.dial(peerId, addrs, proto)
@@ -224,20 +224,20 @@ proc dialPeer(pm: PeerManager,
   except CatchableError as exc:
     reasonFailed = "failed"
 
-  debug "Dialing peer failed", peerId=peerId, reason=reasonFailed, proto=proto
+  debug "Dialing peer failed", peerId= $peerId, reason=reasonFailed, proto=proto
 
   return none(Connection)
 
 proc loadFromStorage(pm: PeerManager) =
   ## Load peers from storage, if available
-  
+
   debug "loading peers from storage"
-  
+
   var amount = 0
 
   proc onData(remotePeerInfo: RemotePeerInfo) =
     let peerId = remotePeerInfo.peerId
-    
+
     if pm.switch.peerInfo.peerId == peerId:
       # Do not manage self
       return
@@ -260,7 +260,7 @@ proc loadFromStorage(pm: PeerManager) =
     pm.peerStore[ConnectionBook][peerId] = NotConnected  # Reset connectedness state
     pm.peerStore[DisconnectBook][peerId] = remotePeerInfo.disconnectTime
     pm.peerStore[SourceBook][peerId] = remotePeerInfo.origin
-    
+
     if remotePeerInfo.enr.isSome():
       pm.peerStore[ENRBook][peerId] = remotePeerInfo.enr.get()
 
@@ -363,7 +363,7 @@ proc onPeerEvent(pm: PeerManager, peerId: PeerId, event: PeerEvent) {.async.} =
         clusterOk = true
 
     if not pm.wakuMetadata.isNil() and pm.wakuMetadata.clusterId != 0 and not clusterOk:
-      info "disconnecting from peer", peerId=peerId, reason=reason
+      info "disconnecting from peer", peerId= $peerId, reason=reason
       asyncSpawn(pm.switch.disconnect(peerId))
       pm.peerStore.delete(peerId)
 
@@ -377,7 +377,7 @@ proc onPeerEvent(pm: PeerManager, peerId: PeerId, event: PeerEvent) {.async.} =
       if peersBehindIp.len > pm.colocationLimit:
         # in theory this should always be one, but just in case
         for peerId in peersBehindIp[0..<(peersBehindIp.len - pm.colocationLimit)]:
-          debug "Pruning connection due to ip colocation", peerId = peerId, ip = ip
+          debug "Pruning connection due to ip colocation", peerId = $peerId, ip = ip
           asyncSpawn(pm.switch.disconnect(peerId))
           pm.peerStore.delete(peerId)
 
@@ -498,7 +498,7 @@ proc addServicePeer*(pm: PeerManager, remotePeerInfo: RemotePeerInfo, proto: str
     warn "Can't add relay peer to service peers slots"
     return
 
-  info "Adding peer to service slots", peerId = remotePeerInfo.peerId, addr = remotePeerInfo.addrs[0], service = proto
+  info "Adding peer to service slots", peerId = $remotePeerInfo.peerId, addr = remotePeerInfo.addrs[0], service = proto
   waku_service_peers.set(1, labelValues = [$proto, $remotePeerInfo.addrs[0]])
 
    # Set peer for service slot
@@ -518,7 +518,7 @@ proc reconnectPeers*(pm: PeerManager,
   for peerInfo in pm.peerStore.peers(protocolMatcher(proto)):
     # Check that the peer can be connected
     if peerInfo.connectedness == CannotConnect:
-      debug "Not reconnecting to unreachable or non-existing peer", peerId=peerInfo.peerId
+      debug "Not reconnecting to unreachable or non-existing peer", peerId= $peerInfo.peerId
       continue
 
     # Respect optional backoff period where applicable.
@@ -532,7 +532,7 @@ proc reconnectPeers*(pm: PeerManager,
 
     # TODO: This blocks the whole function. Try to connect to another peer in the meantime.
     if backoffTime > ZeroDuration:
-      debug "Backing off before reconnect...", peerId=peerInfo.peerId, backoffTime=backoffTime
+      debug "Backing off before reconnect...", peerId= $peerInfo.peerId, backoffTime=backoffTime
       # We disconnected recently and still need to wait for a backoff period before connecting
       await sleepAsync(backoffTime)
 
@@ -705,19 +705,19 @@ proc selectPeer*(pm: PeerManager, proto: string, shard: Option[PubsubTopic] = no
   if proto == WakuRelayCodec:
     # TODO: proper heuristic here that compares peer scores and selects "best" one. For now the first peer for the given protocol is returned
     if peers.len > 0:
-      debug "Got peer from peerstore", peerId=peers[0].peerId, multi=peers[0].addrs[0], protocol=proto
+      debug "Got peer from peerstore", peerId= $peers[0].peerId, multi=peers[0].addrs[0], protocol=proto
       return some(peers[0])
     debug "No peer found for protocol", protocol=proto
     return none(RemotePeerInfo)
 
   # For other protocols, we select the peer that is slotted for the given protocol
   pm.serviceSlots.withValue(proto, serviceSlot):
-    debug "Got peer from service slots", peerId=serviceSlot[].peerId, multi=serviceSlot[].addrs[0], protocol=proto
+    debug "Got peer from service slots", peerId= $serviceSlot[].peerId, multi=serviceSlot[].addrs[0], protocol=proto
     return some(serviceSlot[])
 
   # If not slotted, we select a random peer for the given protocol
   if peers.len > 0:
-    debug "Got peer from peerstore", peerId=peers[0].peerId, multi=peers[0].addrs[0], protocol=proto
+    debug "Got peer from peerstore", peerId= $peers[0].peerId, multi=peers[0].addrs[0], protocol=proto
     return some(peers[0])
   debug "No peer found for protocol", protocol=proto
   return none(RemotePeerInfo)

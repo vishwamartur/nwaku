@@ -37,7 +37,7 @@ proc sendSubscribeRequest(wfc: WakuFilterClient, servicePeer: RemotePeerInfo,
                           filterSubscribeRequest: FilterSubscribeRequest):
                         Future[FilterSubscribeResult]
                         {.async.} =
-  trace "Sending filter subscribe request", peerId=servicePeer.peerId, filterSubscribeRequest
+  trace "Sending filter subscribe request", peerId= $servicePeer.peerId, filterSubscribeRequest
 
   let connOpt = await wfc.peerManager.dialPeer(servicePeer, WakuFilterSubscribeCodec)
   if connOpt.isNone():
@@ -132,12 +132,12 @@ proc initProtocolHandler(wfc: WakuFilterClient) =
 
     let decodeRes = MessagePush.decode(buf)
     if decodeRes.isErr():
-      error "Failed to decode message push", peerId=conn.peerId
+      error "Failed to decode message push", peerId= $conn.peerId
       waku_filter_errors.inc(labelValues = [decodeRpcFailure])
       return
 
     let messagePush = decodeRes.value #TODO: toAPI() split here
-    trace "Received message push", peerId=conn.peerId, messagePush
+    trace "Received message push", peerId= $conn.peerId, messagePush
 
     for handler in wfc.pushHandlers:
       asyncSpawn handler(messagePush.pubsubTopic,
