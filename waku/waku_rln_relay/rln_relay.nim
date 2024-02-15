@@ -338,9 +338,13 @@ proc generateRlnValidator*(wakuRlnRelay: WakuRLNRelay,
       return pubsub.ValidationResult.Reject
 
     let msgProof = decodeRes.get()
-    
+
     # validate the message and update log
     let validationRes = wakuRlnRelay.validateMessageAndUpdateLog(message)
+
+    # simulates cpu time of proof generation. to be used with shadow
+    # measured in https://github.com/waku-org/research/issues/23
+    await sleepAsync(chronos.microseconds(4500))
 
     let
       proof = toHex(msgProof.proof)
@@ -413,7 +417,7 @@ proc mount(conf: WakuRlnConfig,
 proc isReady*(rlnPeer: WakuRLNRelay): Future[bool] {.async: (raises: [Exception]).} =
   ## returns true if the rln-relay protocol is ready to relay messages
   ## returns false otherwise
-  
+
   # could be nil during startup
   if rlnPeer.groupManager == nil:
     return false

@@ -71,6 +71,13 @@ const GossipsubParameters = GossipSubParams(
     floodPublish: true,
     gossipFactor: 0.25,
 
+    # scenario2: d: 3
+    # scenario2: dLow: 2
+    # scenario2: dHigh: 4
+    # scenario2: dScore: 2
+    # scenario2: dOut: 1
+    # scenario2: dLazy: 6
+
     d: 6,
     dLow: 4,
     dHigh: 8,
@@ -163,7 +170,8 @@ proc new*(T: type WakuRelay,
       anonymize = true,
       verifySignature = false,
       sign = false,
-      triggerSelf = true,
+      # to avoid triggering the own node handler when publishing
+      triggerSelf = false,
       msgIdProvider = defaultMessageIdProvider,
       maxMessageSize = maxMessageSize,
       parameters = GossipsubParameters
