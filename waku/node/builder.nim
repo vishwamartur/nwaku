@@ -10,16 +10,17 @@ import
   chronicles,
   libp2p/crypto/crypto,
   libp2p/builders,
-  libp2p/nameresolving/nameresolver,
+  libp2p/nameresolving/[nameresolver, dnsresolver],
   libp2p/transports/wstransport
 import
+  ../../apps/wakunode2/external_config, # should we move the wakunode configs out of apps directory?
   ../waku_enr,
   ../waku_discv5,
   ./config,
   ./peer_manager,
   ./waku_node,
-  ./waku_switch
-
+  ./waku_switch,
+  ./peer_manager/peer_store/waku_peer_storage
 
 type
   WakuNodeBuilder* = object
@@ -191,5 +192,56 @@ proc build*(builder: WakuNodeBuilder): Result[WakuNode, string] =
     )
   except Exception:
     return err("failed to build WakuNode instance: " & getCurrentExceptionMsg())
+
+  ok(node)
+
+## Init waku node instance
+proc initNode*(conf: WakuNodeConf,
+              netConfig: NetConfig,
+              rng: ref HmacDrbgContext,
+              nodeKey: crypto.PrivateKey,
+              record: enr.Record,
+              peerStore: Option[WakuPeerStorage],
+              dynamicBootstrapNodes: openArray[RemotePeerInfo] = @[]): Result[WakuNode, string] =
+
+  ## Setup a basic Waku v2 node based on a supplied configuration
+  ## file. Optionally include persistent peer storage.
+  ## No protocols are mounted yet.
+
+  var dnsResolver: DnsResolver
+  if conf.dnsAddrs:
+    # Support for DNS multiaddrs
+    var nameServers: seq[TransportAddress]
+    for ip in conf.dnsAddrsNameServers:
+      nameServers.add(initTAddress(ip, Port(53))) # Assume all servers use port 53
+
+    dnsResolver = DnsResolver.new(nameServers)
+
+  var node: WakuNode
+
+  let pStorage = if peerStore.isNone(): nil
+                 else: peerStore.get()
+
+  # Build waku node instance
+  var builder = WakuNodeBuilder.init()
+  builder.withRng(rng)
+  builder.withNodeKey(nodekey)
+  builder.withRecord(record)
+  builder.withNetworkConfiguration(netConfig)
+  builder.withPeerStorage(pStorage, capacity = conf.peerStoreCapacity)
+  builder.withSwitchConfiguration(
+      maxConnections = some(conf.maxConnections.int),
+      secureKey = some(conf.websocketSecureKeyPath),
+      secureCert = some(conf.websocketSecureCertPath),
+      nameResolver = dnsResolver,
+      sendSignedPeerRecord = conf.relayPeerExchange, # We send our own signed peer record when peer exchange enabled
+      agentString = some(conf.agentString)
+  )
+  builder.withColocationLimit(conf.colocationLimit)
+  builder.withPeerManagerConfig(
+    maxRelayPeers = conf.maxRelayPeers,
+    shardAware = conf.relayShardedPeerManagement,)
+
+  node = ? builder.build().mapErr(proc (err: string): string = "failed to create waku node instance: " & err)
 
   ok(node)
