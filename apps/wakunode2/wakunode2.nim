@@ -15,6 +15,7 @@ import
 import
   ../../tools/rln_keystore_generator/rln_keystore_generator,
   ../../waku/common/logging,
+  ../../waku/waku_node, # TO DO: think if importing it here or somewhere in app
   ./external_config,
   ./networks_config,
   ./app
@@ -100,8 +101,19 @@ when isMainModule:
       conf.discv5Discovery = twnClusterConf.discv5Discovery
       conf.discv5BootstrapNodes =
         conf.discv5BootstrapNodes & twnClusterConf.discv5BootstrapNodes
+      
+    
 
-    var wakunode2 = App.init(rng, conf)
+    ##################### TEST #####################
+
+
+    var node = setupNode(conf).valueOr:
+      echo "----------------- error in setup node: " & error
+    echo "---------------- succesfully created node"
+
+    ################################################
+   
+   #[  var wakunode2 = App.init(rng, conf)
 
     info "Running nwaku node", version = app.git_version
     logConfig(conf)
@@ -152,7 +164,7 @@ when isMainModule:
     let res7 = wakunode2.setupMonitoringAndExternalInterfaces()
     if res7.isErr():
       error "6/7 Starting monitoring and external interfaces failed", error = res7.error
-      quit(QuitFailure)
+      quit(QuitFailure) ]#
 
     debug "7/7 Setting up shutdown hooks"
     ## Setup shutdown hooks for this process.
