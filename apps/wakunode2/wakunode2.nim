@@ -58,7 +58,7 @@ when isMainModule:
   ## 6. Setup graceful shutdown hooks
 
   const versionString = "version / git commit hash: " & app.git_version
-  let rng = crypto.newRng()
+  #let rng = crypto.newRng()
 
   let confRes = WakuNodeConf.load(version = versionString)
   if confRes.isErr():

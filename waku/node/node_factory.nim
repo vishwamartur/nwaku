@@ -1,12 +1,34 @@
 import
-  std/options,
+  std/[options, sequtils],
   chronicles,
-  chronos
+  chronos,
+  libp2p/peerid,
+  libp2p/protocols/pubsub/gossipsub,
+  libp2p/nameresolving/dnsresolver,
+  libp2p/crypto/crypto
 
 import
+  ./waku_node,
+  ./builder,
+  ./peer_manager,
   ./peer_manager/peer_store/waku_peer_storage,
   ./peer_manager/peer_store/migrations as peer_store_sqlite_migrations,
-  ../waku_enr/sharding
+  ../waku_enr/sharding,
+  ../waku_core,
+  ../waku_rln_relay,
+  ../waku_dnsdisc,
+  ../waku_archive,
+  ../waku_store,
+  ../waku_filter,
+  ../waku_filter_v2,
+  ../waku_peer_exchange,
+  ../waku_lightpush/common,
+  ../waku_archive/driver/builder,
+  ../waku_archive/retention_policy/builder,
+  ../common/utils/parse_size_units,
+  ../../apps/wakunode2/external_config, # should we move the wakunode configs out of apps directory?
+  ../../apps/wakunode2/internal_config, # same
+  ../../apps/wakunode2/wakunode2_validator_signed # same
 
 ## Peer persistence
 
@@ -59,7 +81,7 @@ proc retrieveDynamicBootstrapNodes*(dnsDiscovery: bool,
 proc setupProtocols(node: WakuNode,
                     conf: WakuNodeConf,
                     nodeKey: crypto.PrivateKey):
-                    Future[Result[void, error]] {.async.} =
+                    Future[Result[void, string]] {.async.} =
   ## Setup configured protocols on an existing Waku v2 node.
   ## Optionally include persistent message storage.
   ## No protocols are started yet.
@@ -256,7 +278,8 @@ proc setupProtocols(node: WakuNode,
   return ok()
 
 proc setupNode*(conf: WakuNodeConf): Result[WakuNode, string] =
-  var peerStoreOpt: Option[WakuPeerStorage]
+  var peerStore: Option[WakuPeerStorage]
+  let rng = crypto.newRng()
   
   let key =
     if conf.nodeKey.isSome():
@@ -264,7 +287,7 @@ proc setupNode*(conf: WakuNodeConf): Result[WakuNode, string] =
     else:
       crypto.PrivateKey.random(Secp256k1, crypto.newRng()[]).valueOr:
         error "Failed to generate key", error=error
-        return err("Failed to generate key " & error)
+        return err("Failed to generate key " & $error)
   
   let netConfig = networkConfiguration(conf, clientId).valueOr:
     error "failed to create internal config", error=error
@@ -282,10 +305,9 @@ proc setupNode*(conf: WakuNodeConf): Result[WakuNode, string] =
 
   ## Peer persistence
   if conf.peerPersistence:
-    let peerStore = setupPeerStorage().valueOr:
+    peerStore = setupPeerStorage().valueOr:
       error "1/7 Setting up storage failed", error = "failed to setup peer store " & error
       return err("Setting up storage failed " & error)
-    peerStoreOpt = some(peerStore)
 
   debug "2/7 Retrieve dynamic bootstrap nodes"
 
@@ -297,7 +319,7 @@ proc setupNode*(conf: WakuNodeConf): Result[WakuNode, string] =
 
   debug "3/7 Initializing node"
 
-  let node = initNode(conf, netConf, app.rng, key, record, peerStoreOpt, 
+  let node = initNode(conf, netConfig, rng, key, record, peerStore, 
                       dynamicBootstrapNodes).valueOr:
     error "3/7 Initializing node failed", error = error
     return err("Initializing node failed " & error)
