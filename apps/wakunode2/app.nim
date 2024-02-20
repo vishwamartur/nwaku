@@ -110,33 +110,6 @@ proc init*(T: type App, node: WakuNode, conf: WakuNodeConf): T =
     node: node
   )
 
-
-## Peer persistence
-
-const PeerPersistenceDbUrl = "peers.db"
-proc setupPeerStorage(): AppResult[Option[WakuPeerStorage]] =
-  let db = ? SqliteDatabase.new(PeerPersistenceDbUrl)
-
-  ? peer_store_sqlite_migrations.migrate(db)
-
-  let res = WakuPeerStorage.new(db)
-  if res.isErr():
-    return err("failed to init peer store" & res.error)
-
-  ok(some(res.value))
-
-proc setupPeerPersistence*(app: var App): AppResult[void] =
-  if not app.conf.peerPersistence:
-    return ok()
-
-  let peerStoreRes = setupPeerStorage()
-  if peerStoreRes.isErr():
-    return err("failed to setup peer store" & peerStoreRes.error)
-
-  app.peerStore = peerStoreRes.get()
-
-  ok()
-
 ## Setup DiscoveryV5
 
 proc setupDiscoveryV5*(app: App): WakuDiscoveryV5 =
