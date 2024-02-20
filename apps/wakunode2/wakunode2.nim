@@ -109,8 +109,12 @@ when isMainModule:
 
     var node = setupNode(conf).valueOr:
       echo "----------------- error in setup node: " & error
-    echo "---------------- succesfully created node"
+      quit(QuitFailure)
+    echo "---------------- succesfully created node "
+    echo node.announcedAddresses
 
+    var wakunode2 = App.init(node, conf)
+    
     ################################################
    
    #[  var wakunode2 = App.init(rng, conf)

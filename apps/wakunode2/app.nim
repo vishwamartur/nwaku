@@ -99,7 +99,7 @@ func version*(app: App): string =
 
 ## Initialisation
 
-proc init*(T: type App, rng: ref HmacDrbgContext, conf: WakuNodeConf): T =
+#[ proc init*(T: type App, rng: ref HmacDrbgContext, conf: WakuNodeConf): T =
   let key =
     if conf.nodeKey.isSome():
       conf.nodeKey.get()
@@ -140,6 +140,20 @@ proc init*(T: type App, rng: ref HmacDrbgContext, conf: WakuNodeConf): T =
     key: key,
     record: record,
     node: nil
+  ) ]#
+
+## Initialisation
+
+proc init*(T: type App, node: WakuNode, conf: WakuNodeConf): T =
+
+  App(
+    version: git_version,
+    conf: conf,
+    #netConf: netConfig,
+    #rng: node.switch.rng,
+    key: node.switch.peerInfo.privateKey,
+    record: node.enr,
+    node: node
   )
 
 
@@ -542,7 +556,7 @@ proc setupAndMountProtocols*(app: App): Future[AppResult[void]] {.async.} =
     app.key
   )
 
-## Start node
+#[ ## Start node
 
 proc startNode(node: WakuNode, conf: WakuNodeConf,
                dynamicBootstrapNodes: seq[RemotePeerInfo] = @[]): Future[AppResult[void]] {.async.} =
@@ -583,7 +597,7 @@ proc startNode(node: WakuNode, conf: WakuNodeConf,
   if conf.relay:
     node.peerManager.start()
 
-  return ok()
+  return ok() ]#
 
 proc startApp*(app: var App): AppResult[void] =
 
