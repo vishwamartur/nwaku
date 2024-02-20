@@ -201,8 +201,7 @@ proc initNode*(conf: WakuNodeConf,
               rng: ref HmacDrbgContext,
               nodeKey: crypto.PrivateKey,
               record: enr.Record,
-              peerStore: Option[WakuPeerStorage],
-              dynamicBootstrapNodes: openArray[RemotePeerInfo] = @[]): Result[WakuNode, string] =
+              peerStore: Option[WakuPeerStorage]): Result[WakuNode, string] =
 
   ## Setup a basic Waku v2 node based on a supplied configuration
   ## file. Optionally include persistent peer storage.

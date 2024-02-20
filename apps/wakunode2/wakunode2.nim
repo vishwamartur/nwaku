@@ -113,6 +113,15 @@ when isMainModule:
     echo "---------------- succesfully created node "
     echo node.announcedAddresses
 
+    debug "5/7 Starting node and mounted protocols"
+
+    let nodeRes = catch: (waitFor startNode(node, conf))
+    if nodeRes.isErr():
+      quit(QuitFailure)
+
+    nodeRes.get().isOkOr:
+      quit(QuitFailure)
+    
     var wakunode2 = App.init(node, conf)
     
     ################################################

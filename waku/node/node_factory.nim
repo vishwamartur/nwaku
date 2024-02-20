@@ -279,12 +279,19 @@ proc setupProtocols(node: WakuNode,
 
 ## Start node
 
-proc startNode*(node: WakuNode, conf: WakuNodeConf,
-               dynamicBootstrapNodes: seq[RemotePeerInfo] = @[]): Future[Result[void, string]] {.async.} =
+proc startNode*(node: WakuNode, conf: WakuNodeConf): Future[Result[void, string]] {.async.} =
   ## Start a configured node and all mounted protocols.
   ## Connect to static nodes and start
   ## keep-alive, if configured.
 
+  debug "2/7 Retrieve dynamic bootstrap nodes"
+
+  let dynamicBootstrapNodes = retrieveDynamicBootstrapNodes(conf.dnsDiscovery,
+                                                            conf.dnsDiscoveryUrl,
+                                                            conf.dnsDiscoveryNameServers).valueOr:
+    error "2/7 Retrieving dynamic bootstrap nodes failed", error = error
+    return err("Retrieving dynamic bootstrap nodes failed " & error)
+  
   # Start Waku v2 node
   try:
     await node.start()
@@ -352,18 +359,9 @@ proc setupNode*(conf: WakuNodeConf): Result[WakuNode, string] =
       error "1/7 Setting up storage failed", error = "failed to setup peer store " & error
       return err("Setting up storage failed " & error)
 
-  debug "2/7 Retrieve dynamic bootstrap nodes"
-
-  let dynamicBootstrapNodes = retrieveDynamicBootstrapNodes(conf.dnsDiscovery,
-                                                            conf.dnsDiscoveryUrl,
-                                                            conf.dnsDiscoveryNameServers).valueOr:
-    error "2/7 Retrieving dynamic bootstrap nodes failed", error = error
-    return err("Retrieving dynamic bootstrap nodes failed " & error)
-
   debug "3/7 Initializing node"
 
-  let node = initNode(conf, netConfig, rng, key, record, peerStore, 
-                      dynamicBootstrapNodes).valueOr:
+  let node = initNode(conf, netConfig, rng, key, record, peerStore).valueOr:
     error "3/7 Initializing node failed", error = error
     return err("Initializing node failed " & error)
   
@@ -374,15 +372,6 @@ proc setupNode*(conf: WakuNodeConf): Result[WakuNode, string] =
   (waitFor node.setupProtocols(conf, key)).isOkOr:
     error "4/7 Mounting protocols failed", error = error
     return err("Mounting protocols failed " & error)
-
-  debug "5/7 Starting node and mounted protocols"
-
-  let nodeRes = catch: (waitFor startNode(node, conf, dynamicBootstrapNodes))
-  if nodeRes.isErr():
-    return err("5/7 Starting node and protocols failed " & nodeRes.error.msg)
-
-  nodeRes.get().isOkOr:
-    return err("5/7 Starting node and protocols failed " & error)
   
   return ok(node)
   # TO DO: Include code of related to discv5 and updateApp that is currently in startApp
