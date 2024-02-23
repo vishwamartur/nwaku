@@ -72,7 +72,6 @@ type
   App* = object
     version: string
     conf: WakuNodeConf
-    netConf: NetConfig
     rng: ref HmacDrbgContext
     key: crypto.PrivateKey
     record: Record
@@ -98,15 +97,27 @@ func version*(app: App): string =
 
 ## Initialisation
 
-proc init*(T: type App, node: WakuNode, conf: WakuNodeConf): T =
+proc init*(T: type App, conf: WakuNodeConf): T =
+
+  var wakuDiscV5 = none(WakuDiscoveryV5)
+  let rng = crypto.newRng()
+
+  if not conf.nodeKey.isSome():
+    let key = crypto.PrivateKey.random(Secp256k1, rng[]).valueOr:
+      error "Failed to generate key", error=error
+      return err("Failed to generate key " & $error)
+    conf.nodeKey = some(key)
+
+  let node = setupNode(conf)
+
+  #[ if conf.discv5Discovery:
+    wakuDiscV5 = some(app.setupDiscoveryV5()) ]#
 
   App(
     version: git_version,
     conf: conf,
-    #netConf: netConfig,
-    #rng: node.switch.rng,
-    key: node.switch.peerInfo.privateKey,
-    record: node.enr,
+    rng: rng,
+    key: conf.nodeKey,
     node: node
   )
 
@@ -150,12 +161,9 @@ proc setupDiscoveryV5*(app: App): WakuDiscoveryV5 =
 
 proc setupWakuApp*(app: var App): AppResult[void] =
   ## Waku node
-  let initNodeRes = initNode(app.conf, app.netConf, app.rng, app.key, app.record, app.peerStore)
-  if initNodeRes.isErr():
-    return err("failed to init node: " & initNodeRes.error)
-
-  app.node = initNodeRes.get()
-
+  #[ app.node = setupNode(app.conf).valueOr:
+    return err("Failed to set up node: " & error) ]#
+  
   ## Discv5
   if app.conf.discv5Discovery:
     app.wakuDiscV5 = some(app.setupDiscoveryV5())
@@ -180,7 +188,7 @@ proc getPorts(listenAddrs: seq[MultiAddress]):
 
   return ok((tcpPort: tcpPort, websocketPort: websocketPort))
 
-proc updateNetConfig(app: var App): AppResult[void] =
+#[ proc updateNetConfig(app: var App): AppResult[void] =
 
   var conf = app.conf
   let (tcpPort, websocketPort) = getPorts(app.node.switch.peerInfo.listenAddrs).valueOr:
@@ -196,7 +204,7 @@ proc updateNetConfig(app: var App): AppResult[void] =
   let netConf = networkConfiguration(conf, clientId).valueOr:
     return err("Could not update NetConfig: " & error)
 
-  app.netConf = netConf
+  #app.netConf = netConf
 
   return ok()
 
@@ -230,7 +238,7 @@ proc updateApp(app: var App): AppResult[void] =
 
     printNodeNetworkInfo(app.node)
 
-  return ok()
+  return ok() ]#
 
 proc startApp*(app: var App): AppResult[void] =
 
@@ -242,8 +250,8 @@ proc startApp*(app: var App): AppResult[void] =
     return err("exception starting node: " & error)
 
   # Update app data that is set dynamically on node start
-  app.updateApp().isOkOr:
-    return err("Error in updateApp: " & $error)
+  #[ app.updateApp().isOkOr:
+    return err("Error in updateApp: " & $error) ]#
 
   if app.wakuDiscv5.isSome():
     let wakuDiscv5 = app.wakuDiscv5.get()

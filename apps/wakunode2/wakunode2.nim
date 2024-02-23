@@ -106,24 +106,16 @@ when isMainModule:
 
     ##################### TEST #####################
 
-
-    var node = setupNode(conf).valueOr:
-      echo "----------------- error in setup node: " & error
-      quit(QuitFailure)
-    echo "---------------- succesfully created node "
-    echo node.announcedAddresses
-
-    debug "5/7 Starting node and mounted protocols"
-
-    let nodeRes = catch: (waitFor startNode(node, conf))
+    
+    var wakunode2 = App.init(conf)
+    catch: (waitFor startNode(wakunode2.node, conf))
     if nodeRes.isErr():
       quit(QuitFailure)
 
     nodeRes.get().isOkOr:
       quit(QuitFailure)
     
-    var wakunode2 = App.init(node, conf)
-    
+
     ################################################
    
    #[  var wakunode2 = App.init(rng, conf)
