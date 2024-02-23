@@ -97,20 +97,22 @@ func version*(app: App): string =
 
 ## Initialisation
 
-proc init*(T: type App, conf: WakuNodeConf): Result[App, string] =
+proc init*(T: type App, conf: var WakuNodeConf): Result[App, string] =
 
   #var wakuDiscV5 = none(WakuDiscoveryV5)
   let rng = crypto.newRng()
 
-  #[ if not conf.nodekey.isSome():
-    let key = crypto.PrivateKey.random(Secp256k1, rng[]).valueOr:
-      error "Failed to generate key"
-      return err("Failed to generate key")
-    conf.nodekey = some(key) ]#
+  if not conf.nodekey.isSome():
+    let keyRes = crypto.PrivateKey.random(Secp256k1, rng[])
+    if keyRes.isErr():  
+      error "Failed to generate key", error = $keyRes.error
+      return err("Failed to generate key: " & $keyRes.error)
+    conf.nodekey = some(keyRes.get())
 
-  let node = setupNode(conf).valueOr:
-    error "Failed setting up node"#, error=$error
-    return err("Failed setting up node ")# & $error)
+  let nodeRes = setupNode(conf)
+  if nodeRes.isErr():    
+    error "Failed setting up node", error=nodeRes.error
+    return err("Failed setting up node " & nodeRes.error)
 
   #[ if conf.discv5Discovery:
     wakuDiscV5 = some(app.setupDiscoveryV5()) ]#
@@ -120,7 +122,7 @@ proc init*(T: type App, conf: WakuNodeConf): Result[App, string] =
     conf: conf,
     rng: rng,
     key: conf.nodekey.get(),
-    node: node
+    node: nodeRes.get()
   ))
 
 ## Setup DiscoveryV5

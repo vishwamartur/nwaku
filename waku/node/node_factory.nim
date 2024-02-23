@@ -336,7 +336,7 @@ proc setupNode*(conf: WakuNodeConf): Result[WakuNode, string] =
       if conf.nodeKey.isSome():
         conf.nodeKey.get()
       else:
-        crypto.PrivateKey.random(Secp256k1, crypto.newRng()[]).valueOr:
+        crypto.PrivateKey.random(Secp256k1, rng[]).valueOr:
           error "Failed to generate key", error=error
           return err("Failed to generate key " & $error)
 
