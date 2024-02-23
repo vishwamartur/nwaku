@@ -97,29 +97,31 @@ func version*(app: App): string =
 
 ## Initialisation
 
-proc init*(T: type App, conf: WakuNodeConf): T =
+proc init*(T: type App, conf: WakuNodeConf): Result[App, string] =
 
-  var wakuDiscV5 = none(WakuDiscoveryV5)
+  #var wakuDiscV5 = none(WakuDiscoveryV5)
   let rng = crypto.newRng()
 
-  if not conf.nodeKey.isSome():
+  #[ if not conf.nodekey.isSome():
     let key = crypto.PrivateKey.random(Secp256k1, rng[]).valueOr:
-      error "Failed to generate key", error=error
-      return err("Failed to generate key " & $error)
-    conf.nodeKey = some(key)
+      error "Failed to generate key"
+      return err("Failed to generate key")
+    conf.nodekey = some(key) ]#
 
-  let node = setupNode(conf)
+  let node = setupNode(conf).valueOr:
+    error "Failed setting up node"#, error=$error
+    return err("Failed setting up node ")# & $error)
 
   #[ if conf.discv5Discovery:
     wakuDiscV5 = some(app.setupDiscoveryV5()) ]#
 
-  App(
+  ok(App(
     version: git_version,
     conf: conf,
     rng: rng,
-    key: conf.nodeKey,
+    key: conf.nodekey.get(),
     node: node
-  )
+  ))
 
 ## Setup DiscoveryV5
 
@@ -247,7 +249,7 @@ proc startApp*(app: var App): AppResult[void] =
     return err("exception starting node: " & nodeRes.error.msg)
 
   nodeRes.get().isOkOr:
-    return err("exception starting node: " & error)
+    return err("exception starting node: " & $error)
 
   # Update app data that is set dynamically on node start
   #[ app.updateApp().isOkOr:

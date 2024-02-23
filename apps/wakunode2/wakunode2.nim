@@ -107,13 +107,15 @@ when isMainModule:
     ##################### TEST #####################
 
     
-    var wakunode2 = App.init(conf)
+    var wakunode2 = App.init(conf).valueOr:
+      quit(QuitFailure)
+    #[ var wakunode2 = App.init(conf)
     catch: (waitFor startNode(wakunode2.node, conf))
     if nodeRes.isErr():
       quit(QuitFailure)
 
     nodeRes.get().isOkOr:
-      quit(QuitFailure)
+      quit(QuitFailure) ]#
     
 
     ################################################
