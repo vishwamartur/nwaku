@@ -431,14 +431,14 @@ proc setupMonitoringAndExternalInterfaces*(app: var App): AppResult[void] =
   if app.conf.rpc:
     let startRpcServerRes = startRpcServer(app, app.conf.rpcAddress, Port(app.conf.rpcPort + app.conf.portsShift), app.conf)
     if startRpcServerRes.isErr():
-      error "6/7 Starting JSON-RPC server failed. Continuing in current state.", error=startRpcServerRes.error
+      error "Starting JSON-RPC server failed. Continuing in current state.", error=startRpcServerRes.error
     else:
       app.rpcServer = some(startRpcServerRes.value)
 
   if app.conf.rest:
     let startRestServerRes = startRestServer(app, app.conf.restAddress, Port(app.conf.restPort + app.conf.portsShift), app.conf)
     if startRestServerRes.isErr():
-      error "6/7 Starting REST server failed. Continuing in current state.", error=startRestServerRes.error
+      error "Starting REST server failed. Continuing in current state.", error=startRestServerRes.error
     else:
       app.restServer = some(startRestServerRes.value)
 
@@ -446,14 +446,14 @@ proc setupMonitoringAndExternalInterfaces*(app: var App): AppResult[void] =
   if app.conf.metricsServer:
     let startMetricsServerRes = startMetricsServer(app.conf.metricsServerAddress, Port(app.conf.metricsServerPort + app.conf.portsShift))
     if startMetricsServerRes.isErr():
-      error "6/7 Starting metrics server failed. Continuing in current state.", error=startMetricsServerRes.error
+      error "Starting metrics server failed. Continuing in current state.", error=startMetricsServerRes.error
     else:
       app.metricsServer = some(startMetricsServerRes.value)
 
   if app.conf.metricsLogging:
     let startMetricsLoggingRes = startMetricsLogging()
     if startMetricsLoggingRes.isErr():
-      error "6/7 Starting metrics console logging failed. Continuing in current state.", error=startMetricsLoggingRes.error
+      error "Starting metrics console logging failed. Continuing in current state.", error=startMetricsLoggingRes.error
 
   ok()
 

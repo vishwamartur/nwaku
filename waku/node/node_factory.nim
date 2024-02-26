@@ -298,6 +298,8 @@ proc startNode*(node: WakuNode, conf: WakuNodeConf): Future[Result[void, string]
   except CatchableError:
     return err("failed to start waku node: " & getCurrentExceptionMsg())
 
+  ## TO DO: Update here netconfig and ENR when port is 0 after binding
+  
   # Connect to configured static nodes
   if conf.staticnodes.len > 0:
     try:
