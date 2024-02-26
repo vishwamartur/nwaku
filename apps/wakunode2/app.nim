@@ -77,7 +77,6 @@ type
     record: Record
 
     wakuDiscv5: Option[WakuDiscoveryV5]
-    peerStore: Option[WakuPeerStorage]
     dynamicBootstrapNodes: seq[RemotePeerInfo]
 
     node: WakuNode

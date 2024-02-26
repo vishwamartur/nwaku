@@ -346,37 +346,37 @@ proc setupNode*(conf: WakuNodeConf, rng: Option[ref HmacDrbgContext] = none(ref 
 
       let netConfig = networkConfiguration(conf, clientId).valueOr:
         error "failed to create internal config", error=error
-        return err("failed to create internal config " & error)
+        return err("failed to create internal config: " & error)
 
       let record = enrConfiguration(conf, netConfig, key).valueOr:
         error "failed to create record", error=error
-        return err("failed to create record " & error)
+        return err("failed to create record: " & error)
 
       if isClusterMismatched(record, conf.clusterId):
         error "cluster id mismatch configured shards"
         return err("cluster id mismatch configured shards")
 
-      debug "1/7 Setting up storage"
+      debug "Setting up storage"
 
       ## Peer persistence
       if conf.peerPersistence:
         peerStore = setupPeerStorage().valueOr:
-          error "1/7 Setting up storage failed", error = "failed to setup peer store " & error
-          return err("Setting up storage failed " & error)
+          error "Setting up storage failed", error = "failed to setup peer store " & error
+          return err("Setting up storage failed: " & error)
 
-      debug "3/7 Initializing node"
+      debug "Initializing node"
 
       let node = initNode(conf, netConfig, nodeRng, key, record, peerStore).valueOr:
-        error "3/7 Initializing node failed", error = error
-        return err("Initializing node failed " & error)
+        error "Initializing node failed", error = error
+        return err("Initializing node failed: " & error)
 
       # TO DO: see discv5 as in setupWakuApp
 
-      debug "4/7 Mounting protocols"
+      debug "Mounting protocols"
 
       (waitFor node.setupProtocols(conf, key)).isOkOr:
-        error "4/7 Mounting protocols failed", error = error
-        return err("Mounting protocols failed " & error)
+        error "Mounting protocols failed", error = error
+        return err("Mounting protocols failed: " & error)
 
       return ok(node)
       # TO DO: Include code of related to discv5 and updateApp that is currently in startApp
