@@ -74,7 +74,7 @@ type
     conf: WakuNodeConf
     rng: ref HmacDrbgContext
     key: crypto.PrivateKey
-    record: Record
+    #record: Record
 
     wakuDiscv5: Option[WakuDiscoveryV5]
     dynamicBootstrapNodes: seq[RemotePeerInfo]
@@ -159,7 +159,7 @@ proc setupDiscoveryV5*(app: App): WakuDiscoveryV5 =
   WakuDiscoveryV5.new(
     app.rng,
     discv5Conf,
-    some(app.record),
+    some(app.node.enr),
     some(app.node.peerManager),
     app.node.topicSubscriptionQueue,
   )
