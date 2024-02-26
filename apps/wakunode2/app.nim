@@ -99,7 +99,6 @@ func version*(app: App): string =
 
 proc init*(T: type App, conf: var WakuNodeConf): Result[App, string] =
 
-  #var wakuDiscV5 = none(WakuDiscoveryV5)
   let rng = crypto.newRng()
 
   if not conf.nodekey.isSome():
@@ -112,18 +111,21 @@ proc init*(T: type App, conf: var WakuNodeConf): Result[App, string] =
   let nodeRes = setupNode(conf)
   if nodeRes.isErr():    
     error "Failed setting up node", error=nodeRes.error
-    return err("Failed setting up node " & nodeRes.error)
+    return err("Failed setting up node: " & nodeRes.error)
 
-  #[ if conf.discv5Discovery:
-    wakuDiscV5 = some(app.setupDiscoveryV5()) ]#
+  var app = App(
+           version: git_version,
+           conf: conf,
+           rng: rng,
+           key: conf.nodekey.get(),
+           node: nodeRes.get()
+          )
+  
+  ## Discv5
+  if app.conf.discv5Discovery:
+    app.wakuDiscV5 = some(app.setupDiscoveryV5())
 
-  ok(App(
-    version: git_version,
-    conf: conf,
-    rng: rng,
-    key: conf.nodekey.get(),
-    node: nodeRes.get()
-  ))
+  ok(app)
 
 ## Setup DiscoveryV5
 
@@ -162,17 +164,6 @@ proc setupDiscoveryV5*(app: App): WakuDiscoveryV5 =
     some(app.node.peerManager),
     app.node.topicSubscriptionQueue,
   )
-
-proc setupWakuApp*(app: var App): AppResult[void] =
-  ## Waku node
-  #[ app.node = setupNode(app.conf).valueOr:
-    return err("Failed to set up node: " & error) ]#
-  
-  ## Discv5
-  if app.conf.discv5Discovery:
-    app.wakuDiscV5 = some(app.setupDiscoveryV5())
-
-  ok()
 
 proc getPorts(listenAddrs: seq[MultiAddress]):
               AppResult[tuple[tcpPort, websocketPort: Option[Port]]] =
