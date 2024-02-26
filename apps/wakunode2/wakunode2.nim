@@ -15,7 +15,6 @@ import
 import
   ../../tools/rln_keystore_generator/rln_keystore_generator,
   ../../waku/common/logging,
-  ../../waku/waku_node, # TO DO: think if importing it here or somewhere in app
   ./external_config,
   ./networks_config,
   ./app
@@ -58,7 +57,6 @@ when isMainModule:
   ## 6. Setup graceful shutdown hooks
 
   const versionString = "version / git commit hash: " & app.git_version
-  #let rng = crypto.newRng()
 
   let confRes = WakuNodeConf.load(version = versionString)
   if confRes.isErr():
@@ -106,6 +104,9 @@ when isMainModule:
       error "App initialization failed", error = error
       quit(QuitFailure)
 
+    info "Running nwaku node", version = app.git_version
+    logConfig(conf)
+    
     wakunode2.startApp().isOkOr:
       error "Starting app failed", error = error
       quit(QuitFailure)
