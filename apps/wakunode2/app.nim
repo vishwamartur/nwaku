@@ -119,10 +119,6 @@ proc init*(T: type App, conf: var WakuNodeConf): Result[App, string] =
            key: conf.nodekey.get(),
            node: nodeRes.get()
           )
-  
-  ## Discv5
-  if app.conf.discv5Discovery:
-    app.wakuDiscV5 = some(app.setupDiscoveryV5())
 
   ok(app)
 
@@ -247,6 +243,10 @@ proc startApp*(app: var App): AppResult[void] =
   #[ app.updateApp().isOkOr:
     return err("Error in updateApp: " & $error) ]#
 
+  ## Discv5
+  if app.conf.discv5Discovery:
+    app.wakuDiscV5 = some(app.setupDiscoveryV5())
+  
   if app.wakuDiscv5.isSome():
     let wakuDiscv5 = app.wakuDiscv5.get()
     let catchRes = catch: (waitFor wakuDiscv5.start())
