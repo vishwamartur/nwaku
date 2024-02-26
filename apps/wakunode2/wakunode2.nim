@@ -100,13 +100,13 @@ when isMainModule:
       conf.discv5BootstrapNodes =
         conf.discv5BootstrapNodes & twnClusterConf.discv5BootstrapNodes
 
+    info "Running nwaku node", version = app.git_version
+    logConfig(conf)
+
     var wakunode2 = App.init(conf).valueOr:
       error "App initialization failed", error = error
       quit(QuitFailure)
 
-    info "Running nwaku node", version = app.git_version
-    logConfig(conf)
-    
     wakunode2.startApp().isOkOr:
       error "Starting app failed", error = error
       quit(QuitFailure)
