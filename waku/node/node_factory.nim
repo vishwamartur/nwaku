@@ -284,13 +284,13 @@ proc startNode*(node: WakuNode, conf: WakuNodeConf): Future[Result[void, string]
   ## Connect to static nodes and start
   ## keep-alive, if configured.
 
-  debug "2/7 Retrieve dynamic bootstrap nodes"
+  debug "Retrieve dynamic bootstrap nodes"
 
   let dynamicBootstrapNodes = retrieveDynamicBootstrapNodes(conf.dnsDiscovery,
                                                             conf.dnsDiscoveryUrl,
                                                             conf.dnsDiscoveryNameServers).valueOr:
-    error "2/7 Retrieving dynamic bootstrap nodes failed", error = error
-    return err("Retrieving dynamic bootstrap nodes failed " & error)
+    error "Retrieving dynamic bootstrap nodes failed", error = error
+    return err("Retrieving dynamic bootstrap nodes failed: " & error)
   
   # Start Waku v2 node
   try:
@@ -370,8 +370,6 @@ proc setupNode*(conf: WakuNodeConf, rng: Option[ref HmacDrbgContext] = none(ref 
         error "Initializing node failed", error = error
         return err("Initializing node failed: " & error)
 
-      # TO DO: see discv5 as in setupWakuApp
-
       debug "Mounting protocols"
 
       (waitFor node.setupProtocols(conf, key)).isOkOr:
@@ -379,14 +377,6 @@ proc setupNode*(conf: WakuNodeConf, rng: Option[ref HmacDrbgContext] = none(ref 
         return err("Mounting protocols failed: " & error)
 
       return ok(node)
-      # TO DO: Include code of related to discv5 and updateApp that is currently in startApp
     
     except CatchableError:
-      return err("An exception ocurred") # TODO: improve error msg
-
-
-
-  
-
-
-  
+      return err("Exception setting up node: " & getCurrentExceptionMsg())
