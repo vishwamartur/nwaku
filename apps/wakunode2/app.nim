@@ -107,17 +107,26 @@ proc init*(T: type App, conf: var WakuNodeConf): Result[App, string] =
       return err("Failed to generate key: " & $keyRes.error)
     conf.nodekey = some(keyRes.get())
 
+  debug "Retrieve dynamic bootstrap nodes"
+  let dynamicBootstrapNodesRes = retrieveDynamicBootstrapNodes(conf.dnsDiscovery,
+                                                              conf.dnsDiscoveryUrl,
+                                                              conf.dnsDiscoveryNameServers)
+  if dynamicBootstrapNodesRes.isErr():
+    error "Retrieving dynamic bootstrap nodes failed", error = dynamicBootstrapNodesRes.error
+    return err("Retrieving dynamic bootstrap nodes failed: " & dynamicBootstrapNodesRes.error)
+
   let nodeRes = setupNode(conf, some(rng))
   if nodeRes.isErr():    
     error "Failed setting up node", error=nodeRes.error
     return err("Failed setting up node: " & nodeRes.error)
-
+  
   var app = App(
            version: git_version,
            conf: conf,
            rng: rng,
            key: conf.nodekey.get(),
-           node: nodeRes.get()
+           node: nodeRes.get(),
+           dynamicBootstrapNodes: dynamicBootstrapNodesRes.get()
           )
 
   ok(app)
@@ -232,7 +241,7 @@ proc updateApp(app: var App): AppResult[void] =
 
 proc startApp*(app: var App): AppResult[void] =
 
-  let nodeRes = catch: (waitFor startNode(app.node,app.conf))
+  let nodeRes = catch: (waitFor startNode(app.node, app.conf, app.dynamicBootstrapNodes))
   if nodeRes.isErr():
     return err("exception starting node: " & nodeRes.error.msg)
 

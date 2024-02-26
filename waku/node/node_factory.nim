@@ -279,55 +279,48 @@ proc setupProtocols(node: WakuNode,
 
 ## Start node
 
-proc startNode*(node: WakuNode, conf: WakuNodeConf): Future[Result[void, string]] {.async.} =
-  ## Start a configured node and all mounted protocols.
-  ## Connect to static nodes and start
-  ## keep-alive, if configured.
-
-  debug "Retrieve dynamic bootstrap nodes"
-
-  let dynamicBootstrapNodes = retrieveDynamicBootstrapNodes(conf.dnsDiscovery,
-                                                            conf.dnsDiscoveryUrl,
-                                                            conf.dnsDiscoveryNameServers).valueOr:
-    error "Retrieving dynamic bootstrap nodes failed", error = error
-    return err("Retrieving dynamic bootstrap nodes failed: " & error)
-  
-  # Start Waku v2 node
-  try:
-    await node.start()
-  except CatchableError:
-    return err("failed to start waku node: " & getCurrentExceptionMsg())
-
-  ## TO DO: Update here netconfig and ENR when port is 0 after binding
-  
-  # Connect to configured static nodes
-  if conf.staticnodes.len > 0:
+proc startNode*(node: WakuNode, conf: WakuNodeConf, 
+   dynamicBootstrapNodes: seq[RemotePeerInfo] = @[]): Future[Result[void, string]] {.async.} =
+    ## Start a configured node and all mounted protocols.
+    ## Connect to static nodes and start
+    ## keep-alive, if configured.
+    
+    # Start Waku v2 node
     try:
-      await connectToNodes(node, conf.staticnodes, "static")
+      await node.start()
     except CatchableError:
-      return err("failed to connect to static nodes: " & getCurrentExceptionMsg())
+      return err("failed to start waku node: " & getCurrentExceptionMsg())
 
-  if dynamicBootstrapNodes.len > 0:
-    info "Connecting to dynamic bootstrap peers"
-    try:
-      await connectToNodes(node, dynamicBootstrapNodes, "dynamic bootstrap")
-    except CatchableError:
-      return err("failed to connect to dynamic bootstrap nodes: " & getCurrentExceptionMsg())
+    ## TO DO: Update here netconfig and ENR when port is 0 after binding
+    
+    # Connect to configured static nodes
+    if conf.staticnodes.len > 0:
+      try:
+        await connectToNodes(node, conf.staticnodes, "static")
+      except CatchableError:
+        return err("failed to connect to static nodes: " & getCurrentExceptionMsg())
 
-  # retrieve px peers and add the to the peer store
-  if conf.peerExchangeNode != "":
-    let desiredOutDegree = node.wakuRelay.parameters.d.uint64()
-    await node.fetchPeerExchangePeers(desiredOutDegree)
+    if dynamicBootstrapNodes.len > 0:
+      info "Connecting to dynamic bootstrap peers"
+      try:
+        await connectToNodes(node, dynamicBootstrapNodes, "dynamic bootstrap")
+      except CatchableError:
+        return err("failed to connect to dynamic bootstrap nodes: " & getCurrentExceptionMsg())
 
-  # Start keepalive, if enabled
-  if conf.keepAlive:
-    node.startKeepalive()
+    # retrieve px peers and add the to the peer store
+    if conf.peerExchangeNode != "":
+      let desiredOutDegree = node.wakuRelay.parameters.d.uint64()
+      await node.fetchPeerExchangePeers(desiredOutDegree)
 
-  # Maintain relay connections
-  if conf.relay:
-    node.peerManager.start()
+    # Start keepalive, if enabled
+    if conf.keepAlive:
+      node.startKeepalive()
 
-  return ok()
+    # Maintain relay connections
+    if conf.relay:
+      node.peerManager.start()
+
+    return ok()
 
 proc setupNode*(conf: WakuNodeConf, rng: Option[ref HmacDrbgContext] = none(ref HmacDrbgContext)):
   Result[WakuNode, string] =
