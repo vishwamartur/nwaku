@@ -108,7 +108,7 @@ proc init*(T: type App, conf: var WakuNodeConf): Result[App, string] =
       return err("Failed to generate key: " & $keyRes.error)
     conf.nodekey = some(keyRes.get())
 
-  let nodeRes = setupNode(conf)
+  let nodeRes = setupNode(conf, some(rng))
   if nodeRes.isErr():    
     error "Failed setting up node", error=nodeRes.error
     return err("Failed setting up node: " & nodeRes.error)
