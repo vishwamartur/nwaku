@@ -21,7 +21,8 @@ import
   libp2p/switch
 import
   ../waku_core,
-  ./message_id
+  ./message_id,
+  ./message_hash
 
 
 logScope:
@@ -121,7 +122,8 @@ const GossipsubParameters = GossipSubParams(
 
 type
   WakuRelayResult*[T] = Result[T, string]
-  WakuRelayHandler* = proc(pubsubTopic: PubsubTopic, message: WakuMessage): Future[void] {.gcsafe, raises: [Defect].}
+  WakuRelayHandler* = proc(pubsubTopic: PubsubTopic,
+                           message: WakuMessage): Future[void] {.gcsafe, raises: [Defect].}
   WakuValidatorHandler* = proc(pubsubTopic: PubsubTopic, message: WakuMessage): Future[ValidationResult] {.gcsafe, raises: [Defect].}
   WakuRelay* = ref object of GossipSub
     # a map of PubsubTopic's => seq[WakuValidatorHandler] that are
@@ -166,7 +168,8 @@ proc new*(T: type WakuRelay,
       triggerSelf = true,
       msgIdProvider = defaultMessageIdProvider,
       maxMessageSize = maxMessageSize,
-      parameters = GossipsubParameters
+      parameters = GossipsubParameters,
+      msgHashProvider = messageHashProvider
     )
 
     procCall GossipSub(w).initPubSub()

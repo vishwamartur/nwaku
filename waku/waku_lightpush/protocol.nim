@@ -6,6 +6,7 @@ else:
 import
   std/options,
   stew/results,
+  stew/byteutils,
   chronicles,
   chronos,
   metrics,
@@ -57,7 +58,11 @@ proc handleRequest*(wl: WakuLightPush, peerId: PeerId, buffer: seq[byte]): Futur
       pubSubTopic = request.get().pubSubTopic
       message = request.get().message
     waku_lightpush_messages.inc(labelValues = ["PushRequest"])
-    debug "push request", peerId=peerId, requestId=requestId, pubsubTopic=pubsubTopic
+    info "lightpush request received",
+                  lightpush_client_peer_id = shortLog(peerId),
+                  requestId = requestId,
+                  pubsubTopic = pubsubTopic,
+                  msg_hash = pubsubTopic.computeMessageHash(message).to0xHex()
     
     let handleRes = await wl.pushHandler(peerId, pubsubTopic, message)
     isSuccess = handleRes.isOk()

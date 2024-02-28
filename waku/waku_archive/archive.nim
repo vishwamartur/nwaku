@@ -6,6 +6,9 @@ else:
 import
   std/[tables, times, sequtils, options, algorithm, strutils],
   stew/results,
+  stew/byteutils,
+  libp2p/utility,
+  ../waku_relay/message_id,
   chronicles,
   chronos,
   regex,
@@ -108,11 +111,12 @@ proc handleMessage*(w: WakuArchive,
     let
       msgDigest = computeDigest(msg)
       msgHash = computeMessageHash(pubsubTopic, msg)
+      msgDigestHex = to0xHex(msgDigest.data)
+      msgHashHex = to0xHex(msgHash)
       msgReceivedTime = if msg.timestamp > 0: msg.timestamp
                         else: getNanosecondTime(getTime().toUnixFloat())
 
     trace "handling message", pubsubTopic=pubsubTopic, contentTopic=msg.contentTopic, timestamp=msg.timestamp, digest=msgDigest, messageHash=msgHash
-
     let putRes = await w.driver.put(pubsubTopic, msg, msgDigest, msgHash, msgReceivedTime)
     if putRes.isErr():
       if "duplicate key value violates unique constraint" in putRes.error:
@@ -120,6 +124,13 @@ proc handleMessage*(w: WakuArchive,
       else:
         debug "failed to insert message", err=putRes.error
       waku_archive_errors.inc(labelValues = [insertFailure])
+
+    info "message archived", msg_hash = msgHashHex,
+                             pubsubTopic = pubsubTopic,
+                             contentTopic = msg.contentTopic,
+                             timestamp = msg.timestamp,
+                             digest = msgDigestHex,
+                             messageHash = msgHashHex
 
   let insertDuration = getTime().toUnixFloat() - insertStartTime
   waku_archive_insert_duration_seconds.observe(insertDuration)

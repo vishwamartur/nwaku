@@ -146,24 +146,27 @@ proc handleSubscribeRequest*(wf: WakuFilter, peerId: PeerId, request: FilterSubs
     return FilterSubscribeResponse.ok(request.requestId)
 
 proc pushToPeer(wf: WakuFilter, peer: PeerId, buffer: seq[byte]) {.async.} =
-  trace "pushing message to subscribed peer", peer=peer
+  info "pushing message to subscribed peer", peer_id = shortLog(peer)
 
   if not wf.peerManager.peerStore.hasPeer(peer, WakuFilterPushCodec):
     # Check that peer has not been removed from peer store
-    trace "no addresses for peer", peer=peer
+    error "no addresses for peer", peer_id = shortLog(peer)
     return
 
   let conn = await wf.peerManager.dialPeer(peer, WakuFilterPushCodec)
   if conn.isNone():
     ## We do not remove this peer, but allow the underlying peer manager
     ## to do so if it is deemed necessary
-    trace "no connection to peer", peer=peer
+    error "no connection to peer", peer_id = shortLog(peer)
     return
 
   await conn.get().writeLp(buffer)
 
 proc pushToPeers(wf: WakuFilter, peers: seq[PeerId], messagePush: MessagePush) {.async.} =
-  debug "pushing message to subscribed peers", pubsubTopic=messagePush.pubsubTopic, contentTopic=messagePush.wakuMessage.contentTopic, peers=peers, hash=messagePush.pubsubTopic.computeMessageHash(messagePush.wakuMessage).to0xHex()
+  info "pushing message to subscribed peers", pubsubTopic=messagePush.pubsubTopic,
+          contentTopic=messagePush.wakuMessage.contentTopic,
+          target_peer_ids = peers.mapIt(shortLog(it)),
+          hash=messagePush.pubsubTopic.computeMessageHash(messagePush.wakuMessage).to0xHex()
 
   let bufferToPublish = messagePush.encode().buffer
 
@@ -194,7 +197,7 @@ proc maintainSubscriptions*(wf: WakuFilter) =
 
 const MessagePushTimeout = 20.seconds
 proc handleMessage*(wf: WakuFilter, pubsubTopic: PubsubTopic, message: WakuMessage) {.async.} =
-  trace "handling message", pubsubTopic=pubsubTopic, message=message
+  info "handling message", pubsubTopic=pubsubTopic, message=message
 
   let handleMessageStartTime = Moment.now()
 
@@ -202,7 +205,7 @@ proc handleMessage*(wf: WakuFilter, pubsubTopic: PubsubTopic, message: WakuMessa
     ## Find subscribers and push message to them
     let subscribedPeers = wf.subscriptions.findSubscribedPeers(pubsubTopic, message.contentTopic)
     if subscribedPeers.len() == 0:
-      trace "no subscribed peers found", pubsubTopic=pubsubTopic, contentTopic=message.contentTopic
+      info "no subscribed peers found", pubsubTopic=pubsubTopic, contentTopic=message.contentTopic
       return
 
     let messagePush = MessagePush(
@@ -210,11 +213,21 @@ proc handleMessage*(wf: WakuFilter, pubsubTopic: PubsubTopic, message: WakuMessa
           wakuMessage: message)
 
     if not await wf.pushToPeers(subscribedPeers, messagePush).withTimeout(MessagePushTimeout):
-      debug "timed out pushing message to peers", pubsubTopic=pubsubTopic, contentTopic=message.contentTopic, hash=pubsubTopic.computeMessageHash(message).to0xHex()
+      info "timed out pushing message to peers",
+                            pubsubTopic=pubsubTopic,
+                            contentTopic=message.contentTopic,
+                            msg_hash=pubsubTopic.computeMessageHash(message).to0xHex(),
+                            numPeers = subscribedPeers.len,
+                            subscribedPeers = toSeq(subscribedPeers.mapIt(shortLog(it)))
       waku_filter_errors.inc(labelValues = [pushTimeoutFailure])
     else:
-      debug "pushed message succesfully to all subscribers", pubsubTopic=pubsubTopic, contentTopic=message.contentTopic, hash=pubsubTopic.computeMessageHash(message).to0xHex()
+      info "pushed message succesfully to all subscribers",
 
+              pubsubTopic=pubsubTopic,
+              contentTopic=message.contentTopic,
+              msg_hash=pubsubTopic.computeMessageHash(message).to0xHex(),
+              numPeers = subscribedPeers.len,
+              subscribedPeers = toSeq(subscribedPeers.mapIt(shortLog(it)))
 
   let
     handleMessageDuration = Moment.now() - handleMessageStartTime
