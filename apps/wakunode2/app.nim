@@ -71,13 +71,11 @@ type
   App* = object
     version: string
     conf: WakuNodeConf
-    netConf: NetConfig
     rng: ref HmacDrbgContext
     key: crypto.PrivateKey
-    record: Record
+    #record: Record
 
     wakuDiscv5: Option[WakuDiscoveryV5]
-    peerStore: Option[WakuPeerStorage]
     dynamicBootstrapNodes: seq[RemotePeerInfo]
 
     node: WakuNode
@@ -95,74 +93,42 @@ func node*(app: App): WakuNode =
 func version*(app: App): string =
   app.version
 
-
 ## Initialisation
 
-proc init*(T: type App, rng: ref HmacDrbgContext, conf: WakuNodeConf): T =
-  let key =
-    if conf.nodeKey.isSome():
-      conf.nodeKey.get()
-    else:
-      let keyRes = crypto.PrivateKey.random(Secp256k1, rng[])
+proc init*(T: type App, conf: var WakuNodeConf): Result[App, string] =
 
-      if keyRes.isErr():
-        error "failed to generate key", error=keyRes.error
-        quit(QuitFailure)
+  let rng = crypto.newRng()
 
-      keyRes.get()
+  if not conf.nodekey.isSome():
+    let keyRes = crypto.PrivateKey.random(Secp256k1, rng[])
+    if keyRes.isErr():  
+      error "Failed to generate key", error = $keyRes.error
+      return err("Failed to generate key: " & $keyRes.error)
+    conf.nodekey = some(keyRes.get())
 
-  let netConfigRes = networkConfiguration(conf, clientId)
+  debug "Retrieve dynamic bootstrap nodes"
+  let dynamicBootstrapNodesRes = retrieveDynamicBootstrapNodes(conf.dnsDiscovery,
+                                                              conf.dnsDiscoveryUrl,
+                                                              conf.dnsDiscoveryNameServers)
+  if dynamicBootstrapNodesRes.isErr():
+    error "Retrieving dynamic bootstrap nodes failed", error = dynamicBootstrapNodesRes.error
+    return err("Retrieving dynamic bootstrap nodes failed: " & dynamicBootstrapNodesRes.error)
 
-  let netConfig =
-    if netConfigRes.isErr():
-      error "failed to create internal config", error=netConfigRes.error
-      quit(QuitFailure)
-    else: netConfigRes.get()
+  let nodeRes = setupNode(conf, some(rng))
+  if nodeRes.isErr():    
+    error "Failed setting up node", error=nodeRes.error
+    return err("Failed setting up node: " & nodeRes.error)
+  
+  var app = App(
+           version: git_version,
+           conf: conf,
+           rng: rng,
+           key: conf.nodekey.get(),
+           node: nodeRes.get(),
+           dynamicBootstrapNodes: dynamicBootstrapNodesRes.get()
+          )
 
-  let recordRes = enrConfiguration(conf, netConfig, key)
-
-  let record =
-    if recordRes.isErr():
-      error "failed to create record", error=recordRes.error
-      quit(QuitFailure)
-    else: recordRes.get()
-
-  if isClusterMismatched(record, conf.clusterId):
-    error "cluster id mismatch configured shards"
-    quit(QuitFailure)
-
-  App(
-    version: git_version,
-    conf: conf,
-    netConf: netConfig,
-    rng: rng,
-    key: key,
-    record: record,
-    node: nil
-  )
-
-proc setupPeerPersistence*(app: var App): AppResult[void] =
-  if not app.conf.peerPersistence:
-    return ok()
-
-  let peerStoreRes = setupPeerStorage()
-  if peerStoreRes.isErr():
-    return err("failed to setup peer store" & peerStoreRes.error)
-
-  app.peerStore = peerStoreRes.get()
-
-  ok()
-
-proc setupDyamicBootstrapNodes*(app: var App): AppResult[void] =
-  let dynamicBootstrapNodesRes = retrieveDynamicBootstrapNodes(app.conf.dnsDiscovery,
-                                                               app.conf.dnsDiscoveryUrl,
-                                                               app.conf.dnsDiscoveryNameServers)
-  if dynamicBootstrapNodesRes.isOk():
-    app.dynamicBootstrapNodes = dynamicBootstrapNodesRes.get()
-  else:
-    warn "2/7 Retrieving dynamic bootstrap nodes failed. Continuing without dynamic bootstrap nodes.", error=dynamicBootstrapNodesRes.error
-
-  ok()
+  ok(app)
 
 ## Setup DiscoveryV5
 
@@ -187,7 +153,7 @@ proc setupDiscoveryV5*(app: App): WakuDiscoveryV5 =
 
   let discv5Conf = WakuDiscoveryV5Config(
     discv5Config: some(discv5Config),
-    address: app.conf.listenAddress,
+    address: app.conf.listenAddress, # TO DO: take this from the node instead of app.conf
     port: discv5UdpPort,
     privateKey: keys.PrivateKey(app.key.skkey),
     bootstrapRecords: discv5BootstrapEnrs,
@@ -197,24 +163,10 @@ proc setupDiscoveryV5*(app: App): WakuDiscoveryV5 =
   WakuDiscoveryV5.new(
     app.rng,
     discv5Conf,
-    some(app.record),
+    some(app.node.enr),
     some(app.node.peerManager),
     app.node.topicSubscriptionQueue,
   )
-
-proc setupWakuApp*(app: var App): AppResult[void] =
-  ## Waku node
-  let initNodeRes = initNode(app.conf, app.netConf, app.rng, app.key, app.record, app.peerStore, app.dynamicBootstrapNodes)
-  if initNodeRes.isErr():
-    return err("failed to init node: " & initNodeRes.error)
-
-  app.node = initNodeRes.get()
-
-  ## Discv5
-  if app.conf.discv5Discovery:
-    app.wakuDiscV5 = some(app.setupDiscoveryV5())
-
-  ok()
 
 proc getPorts(listenAddrs: seq[MultiAddress]):
               AppResult[tuple[tcpPort, websocketPort: Option[Port]]] =
@@ -234,7 +186,7 @@ proc getPorts(listenAddrs: seq[MultiAddress]):
 
   return ok((tcpPort: tcpPort, websocketPort: websocketPort))
 
-proc updateNetConfig(app: var App): AppResult[void] =
+#[ proc updateNetConfig(app: var App): AppResult[void] =
 
   var conf = app.conf
   let (tcpPort, websocketPort) = getPorts(app.node.switch.peerInfo.listenAddrs).valueOr:
@@ -250,7 +202,7 @@ proc updateNetConfig(app: var App): AppResult[void] =
   let netConf = networkConfiguration(conf, clientId).valueOr:
     return err("Could not update NetConfig: " & error)
 
-  app.netConf = netConf
+  #app.netConf = netConf
 
   return ok()
 
@@ -284,28 +236,25 @@ proc updateApp(app: var App): AppResult[void] =
 
     printNodeNetworkInfo(app.node)
 
-  return ok()
-
-proc setupAndMountProtocols*(app: App): Future[AppResult[void]] {.async.} =
-  return await setupProtocols(
-    app.node,
-    app.conf,
-    app.key
-  )
+  return ok() ]#
 
 proc startApp*(app: var App): AppResult[void] =
 
-  let nodeRes = catch: (waitFor startNode(app.node,app.conf,app.dynamicBootstrapNodes))
+  let nodeRes = catch: (waitFor startNode(app.node, app.conf, app.dynamicBootstrapNodes))
   if nodeRes.isErr():
     return err("exception starting node: " & nodeRes.error.msg)
 
   nodeRes.get().isOkOr:
-    return err("exception starting node: " & error)
+    return err("exception starting node: " & $error)
 
   # Update app data that is set dynamically on node start
-  app.updateApp().isOkOr:
-    return err("Error in updateApp: " & $error)
+  #[ app.updateApp().isOkOr:
+    return err("Error in updateApp: " & $error) ]#
 
+  ## Discv5
+  if app.conf.discv5Discovery:
+    app.wakuDiscV5 = some(app.setupDiscoveryV5())
+  
   if app.wakuDiscv5.isSome():
     let wakuDiscv5 = app.wakuDiscv5.get()
     let catchRes = catch: (waitFor wakuDiscv5.start())
@@ -316,8 +265,6 @@ proc startApp*(app: var App): AppResult[void] =
       return err("failed to start waku discovery v5: " & error)
 
   return ok()
-
-
 
 ## Monitoring and external interfaces
 
@@ -490,14 +437,14 @@ proc setupMonitoringAndExternalInterfaces*(app: var App): AppResult[void] =
   if app.conf.rpc:
     let startRpcServerRes = startRpcServer(app, app.conf.rpcAddress, Port(app.conf.rpcPort + app.conf.portsShift), app.conf)
     if startRpcServerRes.isErr():
-      error "6/7 Starting JSON-RPC server failed. Continuing in current state.", error=startRpcServerRes.error
+      error "Starting JSON-RPC server failed. Continuing in current state.", error=startRpcServerRes.error
     else:
       app.rpcServer = some(startRpcServerRes.value)
 
   if app.conf.rest:
     let startRestServerRes = startRestServer(app, app.conf.restAddress, Port(app.conf.restPort + app.conf.portsShift), app.conf)
     if startRestServerRes.isErr():
-      error "6/7 Starting REST server failed. Continuing in current state.", error=startRestServerRes.error
+      error "Starting REST server failed. Continuing in current state.", error=startRestServerRes.error
     else:
       app.restServer = some(startRestServerRes.value)
 
@@ -505,17 +452,16 @@ proc setupMonitoringAndExternalInterfaces*(app: var App): AppResult[void] =
   if app.conf.metricsServer:
     let startMetricsServerRes = startMetricsServer(app.conf.metricsServerAddress, Port(app.conf.metricsServerPort + app.conf.portsShift))
     if startMetricsServerRes.isErr():
-      error "6/7 Starting metrics server failed. Continuing in current state.", error=startMetricsServerRes.error
+      error "Starting metrics server failed. Continuing in current state.", error=startMetricsServerRes.error
     else:
       app.metricsServer = some(startMetricsServerRes.value)
 
   if app.conf.metricsLogging:
     let startMetricsLoggingRes = startMetricsLogging()
     if startMetricsLoggingRes.isErr():
-      error "6/7 Starting metrics console logging failed. Continuing in current state.", error=startMetricsLoggingRes.error
+      error "Starting metrics console logging failed. Continuing in current state.", error=startMetricsLoggingRes.error
 
   ok()
-
 
 # App shutdown
 
