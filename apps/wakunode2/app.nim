@@ -168,7 +168,7 @@ proc setupDiscoveryV5*(app: App): WakuDiscoveryV5 =
     app.node.topicSubscriptionQueue,
   )
 
-proc getPorts(listenAddrs: seq[MultiAddress]):
+#[ proc getPorts(listenAddrs: seq[MultiAddress]):
               AppResult[tuple[tcpPort, websocketPort: Option[Port]]] =
 
   var tcpPort, websocketPort = none(Port)
@@ -186,7 +186,7 @@ proc getPorts(listenAddrs: seq[MultiAddress]):
 
   return ok((tcpPort: tcpPort, websocketPort: websocketPort))
 
-#[ proc updateNetConfig(app: var App): AppResult[void] =
+proc updateNetConfig(app: var App): AppResult[void] =
 
   var conf = app.conf
   let (tcpPort, websocketPort) = getPorts(app.node.switch.peerInfo.listenAddrs).valueOr:
