@@ -20,6 +20,8 @@ RUN apk update && apk upgrade
 # Ran separately from 'make' to avoid re-doing
 RUN git submodule update --init --recursive
 
+RUN rm -r ./vendor/zerokit/semaphore
+
 # Slowest build step for the sake of caching layers
 RUN make -j$(nproc) deps QUICK_AND_DIRTY_COMPILER=1 ${NIM_COMMIT}
 
