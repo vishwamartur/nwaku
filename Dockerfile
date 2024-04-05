@@ -21,6 +21,7 @@ RUN apk update && apk upgrade
 RUN git submodule update --init --recursive
 
 RUN rm -r ./vendor/zerokit/semaphore
+RUN sed -i.bak -e '23,25d;5d' ./vendor/zerokit/Cargo.toml
 
 # Slowest build step for the sake of caching layers
 RUN make -j$(nproc) deps QUICK_AND_DIRTY_COMPILER=1 ${NIM_COMMIT}
