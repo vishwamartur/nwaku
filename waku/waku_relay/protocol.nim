@@ -256,6 +256,7 @@ proc new*(
 
     procCall GossipSub(w).initPubSub()
     w.initProtocolHandler()
+    w.initRelayMetricObserver()
   except InitializationError:
     return err("initialization error: " & getCurrentExceptionMsg())
 
