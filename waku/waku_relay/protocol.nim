@@ -206,23 +206,7 @@ proc initRelayMetricObserver(w: WakuRelay) =
         sentTime = getNowInNanosecondTime(),
         payloadSizeBytes = msg.payload.len
 
-  proc updateMetrics(
-      peer: PubSubPeer,
-      pubsub_topic: string,
-      msg: WakuMessage,
-      msgSize: int,
-      onRecv: bool,
-  ) =
-    waku_relay_network_bytes.inc(
-      msgSize.int64, labelValues = [pubsub_topic, if onRecv: "in" else: "out"]
-    )
-
   proc onRecv(peer: PubSubPeer, msgs: var RPCMsg) =
-    for msg in msgs.messages:
-      let (msg_id_short, topic, wakuMessage, msgSize) = decodeRpcMessageInfo(peer, msg).valueOr:
-        continue
-      # message receive log happens in treaceHandler as this one is called before checks
-      updateMetrics(peer, topic, wakuMessage, msgSize, onRecv = true)
     discard
 
   proc onRecvAndValidated(peer: PubSubPeer, msg: Message, msgId: MessageId) =
@@ -238,8 +222,6 @@ proc initRelayMetricObserver(w: WakuRelay) =
 
     logMessageInfo(peer, msg.topic, msg_id_short, wakuMessage, onRecv = true)
 
-    discard
-
   proc onSend(peer: PubSubPeer, msgs: var RPCMsg) =
     for msg in msgs.messages:
       let (msg_id_short, topic, wakuMessage, msgSize) = decodeRpcMessageInfo(peer, msg).valueOr:
@@ -247,7 +229,6 @@ proc initRelayMetricObserver(w: WakuRelay) =
           my_peer_id = w.switch.peerInfo.peerId, to_peer_id = peer.peerId
         continue
       logMessageInfo(peer, topic, msg_id_short, wakuMessage, onRecv = false)
-      updateMetrics(peer, topic, wakuMessage, msgSize, onRecv = false)
 
   let administrativeObserver = PubSubObserver(
     onRecv: onRecv, onSend: onSend, onRecvAndValidated: onRecvAndValidated
