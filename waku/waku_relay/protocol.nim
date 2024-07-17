@@ -150,6 +150,35 @@ proc initProtocolHandler(w: WakuRelay) =
   w.handler = handler
   w.codec = WakuRelayCodec
 
+proc logMessageInfo*(
+    w: WakuRelay,
+    peerId: string,
+    topic: string,
+    msg_id_short: string,
+    msg: WakuMessage,
+    onRecv: bool,
+) =
+  let msg_hash = computeMessageHash(topic, msg).to0xHex()
+
+  if onRecv:
+    notice "received relay message",
+      my_peer_id = w.switch.peerInfo.peerId,
+      msg_hash = msg_hash,
+      msg_id = msg_id_short,
+      from_peer_id = peerId,
+      topic = topic,
+      receivedTime = getNowInNanosecondTime(),
+      payloadSizeBytes = msg.payload.len
+  else:
+    notice "sent relay message",
+      my_peer_id = w.switch.peerInfo.peerId,
+      msg_hash = msg_hash,
+      msg_id = msg_id_short,
+      to_peer_id = peerId,
+      topic = topic,
+      sentTime = getNowInNanosecondTime(),
+      payloadSizeBytes = msg.payload.len
+
 proc initRelayMetricObserver(w: WakuRelay) =
   proc decodeRpcMessageInfo(
       peer: PubSubPeer, msg: Message
@@ -178,34 +207,6 @@ proc initRelayMetricObserver(w: WakuRelay) =
     let msgSize = msg.data.len + msg.topic.len
     return ok((msg_id_short, msg.topic, wakuMessage, msgSize))
 
-  proc logMessageInfo(
-      peer: PubSubPeer,
-      topic: string,
-      msg_id_short: string,
-      msg: WakuMessage,
-      onRecv: bool,
-  ) =
-    let msg_hash = computeMessageHash(topic, msg).to0xHex()
-
-    if onRecv:
-      notice "received relay message",
-        my_peer_id = w.switch.peerInfo.peerId,
-        msg_hash = msg_hash,
-        msg_id = msg_id_short,
-        from_peer_id = peer.peerId,
-        topic = topic,
-        receivedTime = getNowInNanosecondTime(),
-        payloadSizeBytes = msg.payload.len
-    else:
-      notice "sent relay message",
-        my_peer_id = w.switch.peerInfo.peerId,
-        msg_hash = msg_hash,
-        msg_id = msg_id_short,
-        to_peer_id = peer.peerId,
-        topic = topic,
-        sentTime = getNowInNanosecondTime(),
-        payloadSizeBytes = msg.payload.len
-
   proc onRecv(peer: PubSubPeer, msgs: var RPCMsg) =
     discard
 
@@ -220,7 +221,7 @@ proc initRelayMetricObserver(w: WakuRelay) =
         error = $error
       return
 
-    logMessageInfo(peer, msg.topic, msg_id_short, wakuMessage, onRecv = true)
+    logMessageInfo(w, $peer.peerId, msg.topic, msg_id_short, wakuMessage, onRecv = true)
 
   proc onSend(peer: PubSubPeer, msgs: var RPCMsg) =
     for msg in msgs.messages:
@@ -228,7 +229,7 @@ proc initRelayMetricObserver(w: WakuRelay) =
         warn "onSend: failed decoding RPC info",
           my_peer_id = w.switch.peerInfo.peerId, to_peer_id = peer.peerId
         continue
-      logMessageInfo(peer, topic, msg_id_short, wakuMessage, onRecv = false)
+      logMessageInfo(w, $peer.peerId, topic, msg_id_short, wakuMessage, onRecv = false)
 
   let administrativeObserver = PubSubObserver(
     onRecv: onRecv, onSend: onSend, onRecvAndValidated: onRecvAndValidated

@@ -163,6 +163,9 @@ proc installRelayApiHandlers*(
     (await node.wakuRelay.validateMessage(pubsubTopic, message)).isOkOr:
       return RestApiResponse.badRequest("Failed to publish: " & error)
 
+    # Log for testing purposes
+    logMessageInfo(node.wakuRelay, "rest", pubsubTopic, "none", message, onRecv = true)
+
     # if we reach here its either a non-RLN message or a RLN message with a valid proof
     debug "Publishing message",
       pubSubTopic = pubSubTopic, rln = not node.wakuRlnRelay.isNil()
@@ -273,6 +276,9 @@ proc installRelayApiHandlers*(
 
     (await node.wakuRelay.validateMessage(pubsubTopic, message)).isOkOr:
       return RestApiResponse.badRequest("Failed to publish: " & error)
+
+    # Log for testing purposes
+    logMessageInfo(node.wakuRelay, "rest", pubsubTopic, "none", message, onRecv = true)
 
     # if we reach here its either a non-RLN message or a RLN message with a valid proof
     debug "Publishing message",
