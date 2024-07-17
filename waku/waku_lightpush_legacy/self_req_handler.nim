@@ -20,8 +20,8 @@ import
   ../utils/requests
 
 proc handleSelfLightPushRequest*(
-    self: WakuLightPush, pubSubTopic: Option[PubsubTopic], message: WakuMessage
-): Future[WakuLightPushResult] {.async.} =
+    self: WakuLegacyLightPush, pubSubTopic: PubsubTopic, message: WakuMessage
+): Future[WakuLightPushResult[void]] {.async.} =
   ## Handles the lightpush requests made by the node to itself.
   ## Normally used in REST-lightpush requests
 
@@ -29,14 +29,22 @@ proc handleSelfLightPushRequest*(
     # provide self peerId as now this node is used directly, thus there is no light client sender peer.
     let selfPeerId = self.peerManager.switch.peerInfo.peerId
 
-    let req = LightpushRequest(
-      requestId: generateRequestId(self.rng), pubSubTopic: pubSubTopic, message: message
-    )
+    let req = PushRequest(pubSubTopic: pubSubTopic, message: message)
+    let rpc = PushRPC(requestId: generateRequestId(self.rng), request: some(req))
 
-    let response = await self.handleRequest(selfPeerId, req.encode().buffer)
+    let respRpc = await self.handleRequest(selfPeerId, rpc.encode().buffer)
 
-    return response.toPushResult()
+    if respRpc.response.isNone():
+      waku_legacy_lightpush_errors.inc(labelValues = [emptyResponseBodyFailure])
+      return err(emptyResponseBodyFailure)
+
+    let response = respRpc.response.get()
+    if not response.isSuccess:
+      if response.info.isSome():
+        return err(response.info.get())
+      else:
+        return err("unknown failure")
+
+    return ok()
   except Exception:
-    return lightPushResultInternalError(
-      "exception in handleSelfLightPushRequest: " & getCurrentExceptionMsg()
-    )
+    return err("exception in handleSelfLightPushRequest: " & getCurrentExceptionMsg())

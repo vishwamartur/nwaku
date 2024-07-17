@@ -79,7 +79,7 @@ suite "Waku Lightpush - End To End":
       lightpushClient.mountLightpushClient()
 
       # When the client publishes a message
-      let publishResponse = await lightpushClient.lightpushPublish(
+      let publishResponse = await lightpushClient.legacyLightpushPublish(
         some(pubsubTopic), message, serverRemotePeerInfo
       )
 
@@ -97,7 +97,7 @@ suite "Waku Lightpush - End To End":
       )
 
       # When the client publishes an over-limit message
-      let publishResponse = await client.lightpushPublish(
+      let publishResponse = await client.legacyLightpushPublish(
         some(pubsubTopic), msgOverLimit, serverRemotePeerInfo
       )
 
@@ -167,7 +167,7 @@ suite "RLN Proofs as a Lightpush Service":
       lightpushClient.mountLightpushClient()
 
       # When the client publishes a message
-      let publishResponse = await lightpushClient.lightpushPublish(
+      let publishResponse = await lightpushClient.legacyLightpushPublish(
         some(pubsubTopic), message, serverRemotePeerInfo
       )
 

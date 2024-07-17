@@ -34,7 +34,7 @@ import
   ../node/peer_manager,
   ../node/peer_manager/peer_store/waku_peer_storage,
   ../node/peer_manager/peer_store/migrations as peer_store_sqlite_migrations,
-  ../waku_lightpush/common,
+  ../waku_lightpush_legacy/common,
   ../common/utils/parse_size_units,
   ../common/rate_limit/setting
 
@@ -301,15 +301,15 @@ proc setupProtocols(
     try:
       let rateLimitSetting: RateLimitSetting =
         (conf.requestRateLimit, chronos.seconds(conf.requestRatePeriod))
-      await mountLightPush(node, rateLimitSetting)
+      await mountLegacyLightPush(node, rateLimitSetting)
     except CatchableError:
       return err("failed to mount waku lightpush protocol: " & getCurrentExceptionMsg())
 
   if conf.lightpushnode != "":
     let lightPushNode = parsePeerInfo(conf.lightpushnode)
     if lightPushNode.isOk():
-      mountLightPushClient(node)
-      node.peerManager.addServicePeer(lightPushNode.value, WakuLightPushCodec)
+      mountLegacyLightPushClient(node)
+      node.peerManager.addServicePeer(lightPushNode.value, WakuLegacyLightPushCodec)
     else:
       return err("failed to set node waku lightpush peer: " & lightPushNode.error)
 

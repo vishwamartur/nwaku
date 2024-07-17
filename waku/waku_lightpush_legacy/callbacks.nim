@@ -32,28 +32,27 @@ proc checkAndGenerateRLNProof*(
 proc getNilPushHandler*(): PushMessageHandler =
   return proc(
       peer: PeerId, pubsubTopic: string, message: WakuMessage
-  ): Future[WakuLightPushResult] {.async.} =
-    return lightpushResultInternalError("no waku relay found")
+  ): Future[WakuLightPushResult[void]] {.async.} =
+    return err("no waku relay found")
 
 proc getRelayPushHandler*(
     wakuRelay: WakuRelay, rlnPeer: Option[WakuRLNRelay] = none[WakuRLNRelay]()
 ): PushMessageHandler =
   return proc(
       peer: PeerId, pubsubTopic: string, message: WakuMessage
-  ): Future[WakuLightPushResult] {.async.} =
+  ): Future[WakuLightPushResult[void]] {.async.} =
     # append RLN proof
-    let msgWithProof = checkAndGenerateRLNProof(rlnPeer, message).valueOr:
-      return lighpushErrorResult(OUT_OF_RLN_PROOF, error)
+    let msgWithProof = checkAndGenerateRLNProof(rlnPeer, message)
+    if msgWithProof.isErr():
+      return err(msgWithProof.error)
 
-    (await wakuRelay.validateMessage(pubSubTopic, msgWithProof)).isOkOr:
-      # TODO: Maybe to add separate VALIDATION_ERROR status code?!
-      return lighpushErrorResult(MESSAGE_VALIDATION_ERROR, $error)
+    (await wakuRelay.validateMessage(pubSubTopic, msgWithProof.value)).isOkOr:
+      return err(error)
 
-    let publishedCount = await wakuRelay.publish(pubsubTopic, msgWithProof)
+    let publishedCount = await wakuRelay.publish(pubsubTopic, msgWithProof.value)
     if publishedCount == 0:
       ## Agreed change expected to the lightpush protocol to better handle such case. https://github.com/waku-org/pm/issues/93
       let msgHash = computeMessageHash(pubsubTopic, message).to0xHex()
       notice "Lightpush request has not been published to any peers", msg_hash = msgHash
-      return lighpushErrorResult(NO_PEERS_TO_RELAY, "Not able to relay to any peers")
 
-    return lightpushSuccessResult(publishedCount.uint32)
+    return ok()

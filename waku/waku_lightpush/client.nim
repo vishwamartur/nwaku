@@ -11,7 +11,7 @@ import
   ./rpc_codec
 
 logScope:
-  topics = "waku lightpush client"
+  topics = "waku lightpush v2 client"
 
 type WakuLightPushClient* = ref object
   peerManager*: PeerManager
@@ -23,48 +23,42 @@ proc new*(
   WakuLightPushClient(peerManager: peerManager, rng: rng)
 
 proc sendPushRequest(
-    wl: WakuLightPushClient, req: PushRequest, peer: PeerId | RemotePeerInfo
-): Future[WakuLightPushResult[void]] {.async, gcsafe.} =
-  let connOpt = await wl.peerManager.dialPeer(peer, WakuLightPushCodec)
-  if connOpt.isNone():
+    wl: WakuLightPushClient, req: LightPushRequest, peer: PeerId | RemotePeerInfo
+): Future[WakuLightPushResult] {.async, gcsafe.} =
+  let connection = (await wl.peerManager.dialPeer(peer, WakuLightPushCodec)).valueOr:
     waku_lightpush_errors.inc(labelValues = [dialFailure])
-    return err(dialFailure)
-  let connection = connOpt.get()
+    return
+      lightpushResultInternalError(dialFailure & ": " & $peer & " is not accessible")
 
-  let rpc = PushRPC(requestId: generateRequestId(wl.rng), request: some(req))
-  await connection.writeLP(rpc.encode().buffer)
+  await connection.writeLP(req.encode().buffer)
 
   var buffer: seq[byte]
   try:
     buffer = await connection.readLp(DefaultMaxRpcSize.int)
   except LPStreamRemoteClosedError:
-    return err("Exception reading: " & getCurrentExceptionMsg())
+    error "Failed to read responose from peer", exception = getCurrentExceptionMsg()
+    return
+      lightpushResultInternalError("Exception reading: " & getCurrentExceptionMsg())
 
-  let decodeRespRes = PushRPC.decode(buffer)
-  if decodeRespRes.isErr():
+  let response = LightpushResponse.decode(buffer).valueOr:
     error "failed to decode response"
     waku_lightpush_errors.inc(labelValues = [decodeRpcFailure])
-    return err(decodeRpcFailure)
+    return lightpushResultInternalError(decodeRpcFailure)
 
-  let pushResponseRes = decodeRespRes.get()
-  if pushResponseRes.response.isNone():
-    waku_lightpush_errors.inc(labelValues = [emptyResponseBodyFailure])
-    return err(emptyResponseBodyFailure)
+  if response.requestId != req.requestId:
+    error "response failure, requestId mismatch",
+      requestId = req.requestId, responseReqeustId = response.requestId
+    return lightpushResultInternalError("response failure, requestId mismatch")
 
-  let response = pushResponseRes.response.get()
-  if not response.isSuccess:
-    if response.info.isSome():
-      return err(response.info.get())
-    else:
-      return err("unknown failure")
-
-  return ok()
+  return toPushResult(response)
 
 proc publish*(
     wl: WakuLightPushClient,
-    pubSubTopic: PubsubTopic,
+    pubSubTopic: Option[PubsubTopic] = none(PubsubTopic),
     message: WakuMessage,
     peer: PeerId | RemotePeerInfo,
-): Future[WakuLightPushResult[void]] {.async, gcsafe.} =
-  let pushRequest = PushRequest(pubSubTopic: pubSubTopic, message: message)
+): Future[WakuLightPushResult] {.async, gcsafe.} =
+  let pushRequest = LightpushRequest(
+    requestId: generateRequestId(wl.rng), pubSubTopic: pubSubTopic, message: message
+  )
   return await wl.sendPushRequest(pushRequest, peer)

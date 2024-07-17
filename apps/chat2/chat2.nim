@@ -227,9 +227,9 @@ proc publish(c: Chat, line: string) =
       c.node.wakuRlnRelay.lastEpoch = proof.epoch
 
     try:
-      if not c.node.wakuLightPush.isNil():
+      if not c.node.wakuLegacyLightPush.isNil():
         # Attempt lightpush
-        (waitFor c.node.lightpushPublish(some(DefaultPubsubTopic), message)).isOkOr:
+        (waitFor c.node.legacyLightpushPublish(some(DefaultPubsubTopic), message)).isOkOr:
           error "failed to publish lightpush message", error = error
       else:
         (waitFor c.node.publish(some(DefaultPubsubTopic), message)).isOkOr:
@@ -500,8 +500,8 @@ proc processInput(rfd: AsyncFD, rng: ref HmacDrbgContext) {.async.} =
   if conf.lightpushnode != "":
     let peerInfo = parsePeerInfo(conf.lightpushnode)
     if peerInfo.isOk():
-      await mountLightPush(node)
-      node.mountLightPushClient()
+      await mountLegacyLightPush(node)
+      node.mountLegacyLightPushClient()
       node.peerManager.addServicePeer(peerInfo.value, WakuLightpushCodec)
     else:
       error "LightPush not mounted. Couldn't parse conf.lightpushnode",

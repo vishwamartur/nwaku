@@ -11,12 +11,12 @@ import
   waku/[
     node/peer_manager,
     waku_core,
-    waku_lightpush,
-    waku_lightpush/client,
-    waku_lightpush/common,
-    waku_lightpush/protocol_metrics,
-    waku_lightpush/rpc,
-    waku_lightpush/rpc_codec,
+    waku_lightpush_legacy,
+    waku_lightpush_legacy/client,
+    waku_lightpush_legacy/common,
+    waku_lightpush_legacy/protocol_metrics,
+    waku_lightpush_legacy/rpc,
+    waku_lightpush_legacy/rpc_codec,
   ],
   ../testlib/[assertions, wakucore, testasync, futures, testutils],
   ./lightpush_utils,
@@ -29,8 +29,8 @@ suite "Waku Lightpush Client":
 
     serverSwitch {.threadvar.}: Switch
     clientSwitch {.threadvar.}: Switch
-    server {.threadvar.}: WakuLightPush
-    client {.threadvar.}: WakuLightPushClient
+    server {.threadvar.}: WakuLegacyLightPush
+    client {.threadvar.}: WakuLegacyLightPushClient
 
     serverRemotePeerInfo {.threadvar.}: RemotePeerInfo
     clientPeerId {.threadvar.}: PeerId

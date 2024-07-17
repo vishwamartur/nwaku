@@ -21,11 +21,11 @@ suite "WakuNode - Lightpush":
 
     await destNode.mountRelay(@[DefaultPubsubTopic])
     await bridgeNode.mountRelay(@[DefaultPubsubTopic])
-    await bridgeNode.mountLightPush()
-    lightNode.mountLightPushClient()
+    await bridgeNode.mountLegacyLightPush()
+    lightNode.mountLegacyLightPushClient()
 
     discard await lightNode.peerManager.dialPeer(
-      bridgeNode.peerInfo.toRemotePeerInfo(), WakuLightPushCodec
+      bridgeNode.peerInfo.toRemotePeerInfo(), WakuLegacyLightPushCodec
     )
     await sleepAsync(100.milliseconds)
     await destNode.connectToNodes(@[bridgeNode.peerInfo.toRemotePeerInfo()])
@@ -48,7 +48,7 @@ suite "WakuNode - Lightpush":
     await sleepAsync(100.millis)
 
     ## When
-    let res = await lightNode.lightpushPublish(some(DefaultPubsubTopic), message)
+    let res = await lightNode.legacyLightpushPublish(some(DefaultPubsubTopic), message)
     assert res.isOk(), $res.error
 
     ## Then

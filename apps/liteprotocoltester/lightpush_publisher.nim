@@ -59,7 +59,8 @@ proc publishMessages(
       selfPeerId, messagesSent, numMessages, startedAt, prevMessageAt,
       lightpushContentTopic,
     )
-    let wlpRes = await wakuNode.lightpushPublish(some(lightpushPubsubTopic), message)
+    let wlpRes =
+      await wakuNode.legacyLightpushPublish(some(lightpushPubsubTopic), message)
 
     if wlpRes.isOk():
       info "published message using lightpush",
@@ -85,7 +86,7 @@ proc publishMessages(
   discard c_raise(ansi_c.SIGTERM)
 
 proc setupAndPublish*(wakuNode: WakuNode, conf: LiteProtocolTesterConf) =
-  if isNil(wakuNode.wakuLightpushClient):
+  if isNil(wakuNode.wakuLegacyLightpushClient):
     error "WakuFilterClient not initialized"
     return
 
