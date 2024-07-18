@@ -222,7 +222,9 @@ proc initRelayMetricObserver(w: WakuRelay) =
         error = $error
       return
 
-    logMessageInfo(w, $peer.peerId, msg.topic, msg_id_short, wakuMessage, onRecv = true)
+    logMessageInfo(
+      w, shortLog(peer.peerId), msg.topic, msg_id_short, wakuMessage, onRecv = true
+    )
 
   proc onSend(peer: PubSubPeer, msgs: var RPCMsg) =
     for msg in msgs.messages:
@@ -230,7 +232,9 @@ proc initRelayMetricObserver(w: WakuRelay) =
         warn "onSend: failed decoding RPC info",
           my_peer_id = w.switch.peerInfo.peerId, to_peer_id = peer.peerId
         continue
-      logMessageInfo(w, $peer.peerId, topic, msg_id_short, wakuMessage, onRecv = false)
+      logMessageInfo(
+        w, shortLog(peer.peerId), topic, msg_id_short, wakuMessage, onRecv = false
+      )
 
   let administrativeObserver = PubSubObserver(
     onRecv: onRecv, onSend: onSend, onRecvAndValidated: onRecvAndValidated
