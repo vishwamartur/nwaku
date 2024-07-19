@@ -1,3 +1,4 @@
+import chronicles
 import
   ../../common/error_handling,
   ../protocol_types,
@@ -60,14 +61,11 @@ method register*(
 # The user should have the identity secret to this commitment
 # It should be used when the user wants to join the group
 method register*(
-    g: GroupManager,
-    credentials: IdentityCredential,
-    userMessageLimit: UserMessageLimit,
+    g: GroupManager, credentials: IdentityCredential, userMessageLimit: UserMessageLimit
 ): Future[void] {.base, async: (raises: [Exception]).} =
   raise newException(
     CatchableError, "register proc for " & $g.type & " is not implemented yet"
   )
-
 
 # This proc is used to register a batch of new identity commitments into the merkle tree
 # The user may or may not have the identity secret to these commitments
@@ -111,7 +109,6 @@ method atomicBatch*(
   raise newException(
     CatchableError, "atomicBatch proc for " & $g.type & " is not implemented yet"
   )
-
 
 method stop*(g: GroupManager): Future[void] {.base, async.} =
   raise
@@ -185,7 +182,11 @@ method generateProof*(
 ): GroupManagerResult[RateLimitProof] {.base, gcsafe, raises: [].} =
   ## generates a proof for the given data and epoch
   ## the proof is generated using the current merkle root
+  debug "AAAAA", credentials = g.idCredentials
+  debug "AAAAA", membership = g.membershipIndex
+
   if g.idCredentials.isNone():
+    debug "AAAAA"
     return err("identity credentials are not set")
   if g.membershipIndex.isNone():
     return err("membership index is not set")
@@ -201,9 +202,10 @@ method generateProof*(
       userMessageLimit = g.userMessageLimit.get(),
       messageId = messageId,
     ).valueOr:
+      debug "AAAAA"
       return err("proof generation failed: " & $error)
+  debug "AAAAA"
   return ok(proof)
-
 
 method isReady*(g: GroupManager): Future[bool] {.base, async.} =
   raise newException(

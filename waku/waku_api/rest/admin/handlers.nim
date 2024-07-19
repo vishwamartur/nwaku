@@ -42,7 +42,9 @@ proc installAdminV1GetPeersHandler(router: var RestRouter, node: WakuNode) =
   router.api(MethodGet, ROUTE_ADMIN_V1_PEERS) do() -> RestApiResponse:
     var peers: WakuPeers = @[]
 
+    debug "AAAAA"
     if not node.wakuRelay.isNil():
+      debug "AAAAA"
       let relayPeers = node.peerManager.peerStore.peers(WakuRelayCodec).mapIt(
           (
             multiaddr: constructMultiaddrStr(it),
@@ -50,9 +52,11 @@ proc installAdminV1GetPeersHandler(router: var RestRouter, node: WakuNode) =
             connected: it.connectedness == Connectedness.Connected,
           )
         )
+      debug "AAAAA", relayPeers
       tuplesToWakuPeers(peers, relayPeers)
 
     if not node.wakuFilter.isNil():
+      debug "AAAAA"
       let filterV2Peers = node.peerManager.peerStore
         .peers(WakuFilterSubscribeCodec)
         .mapIt(
@@ -62,9 +66,12 @@ proc installAdminV1GetPeersHandler(router: var RestRouter, node: WakuNode) =
             connected: it.connectedness == Connectedness.Connected,
           )
         )
+      debug "AAAAA", filterV2Peers
       tuplesToWakuPeers(peers, filterV2Peers)
 
+    debug "AAAAA"
     if not node.wakuStore.isNil():
+      debug "AAAAA"
       let storePeers = node.peerManager.peerStore.peers(WakuStoreCodec).mapIt(
           (
             multiaddr: constructMultiaddrStr(it),
@@ -72,9 +79,12 @@ proc installAdminV1GetPeersHandler(router: var RestRouter, node: WakuNode) =
             connected: it.connectedness == Connectedness.Connected,
           )
         )
+      debug "AAAAA", storePeers
       tuplesToWakuPeers(peers, storePeers)
 
+    debug "AAAAA"
     if not node.wakuLegacyStore.isNil():
+      debug "AAAAA"
       let legacyStorePeers = node.peerManager.peerStore
         .peers(WakuLegacyStoreCodec)
         .mapIt(
@@ -84,9 +94,12 @@ proc installAdminV1GetPeersHandler(router: var RestRouter, node: WakuNode) =
             connected: it.connectedness == Connectedness.Connected,
           )
         )
+      debug "AAAAA", legacyStorePeers
       tuplesToWakuPeers(peers, legacyStorePeers)
 
+    debug "AAAAA"
     if not node.wakuLightPush.isNil():
+      debug "AAAAA"
       # Map WakuStore peers to WakuPeers and add to return list
       let lightpushPeers = node.peerManager.peerStore.peers(WakuLightPushCodec).mapIt(
           (
@@ -95,9 +108,12 @@ proc installAdminV1GetPeersHandler(router: var RestRouter, node: WakuNode) =
             connected: it.connectedness == Connectedness.Connected,
           )
         )
+      debug "AAAAA", lightpushPeers
       tuplesToWakuPeers(peers, lightpushPeers)
 
+    debug "AAAAA"
     let resp = RestApiResponse.jsonResponse(peers, status = Http200)
+    debug "AAAAA"
     if resp.isErr():
       error "An error ocurred while building the json respose: ", error = resp.error
       return RestApiResponse.internalServerError(
