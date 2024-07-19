@@ -253,6 +253,7 @@ proc searchLoop(wd: WakuDiscoveryV5) {.async.} =
     # when no peers are in the routing table. Don't run it in continuous loop.
     #
     # Also, give some time to dial the discovered nodes and update stats, etc.
+    notice "searchLoop sleepAsync 5 seconds"
     await sleepAsync(5.seconds)
 
 proc subscriptionsListener(wd: WakuDiscoveryV5) {.async.} =

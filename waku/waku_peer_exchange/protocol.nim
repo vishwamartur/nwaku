@@ -147,6 +147,7 @@ proc updatePxEnrCache(wpx: WakuPeerExchange) {.async.} =
   # try more aggressively to fill the cache at startup
   while wpx.enrCache.len < MaxPeersCacheSize:
     wpx.populateEnrCache()
+    notice "updatePxEnrCache sleepAsync 5 seconds"
     await sleepAsync(5.seconds)
 
   heartbeat "Updating px enr cache", CacheRefreshInterval:

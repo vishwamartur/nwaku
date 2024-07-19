@@ -593,6 +593,8 @@ proc reconnectPeers*(
       trace "Backing off before reconnect...",
         peerId = peerInfo.peerId, backoffTime = backoffTime
       # We disconnected recently and still need to wait for a backoff period before connecting
+
+      notice "reconnectPeers sleepAsync backoffTime", backoffTime = backoffTime
       await sleepAsync(backoffTime)
 
     discard await pm.connectRelay(peerInfo)
@@ -680,6 +682,7 @@ proc connectToNodes*(
   #
   # This issue was known to Dmitiry on nim-libp2p and may be resolvable
   # later.
+  notice "connectToNodes sleepAsync 5 seconds"
   await sleepAsync(chronos.seconds(5))
 
 proc connectedPeers*(pm: PeerManager, protocol: string): (seq[PeerId], seq[PeerId]) =
@@ -726,6 +729,8 @@ proc pruneInRelayConns(pm: PeerManager, amount: int) {.async.} =
     asyncSpawn(pm.switch.disconnect(p))
 
 proc connectToRelayPeers*(pm: PeerManager) {.async.} =
+  notice "Entering connectToRelayPeers"
+
   var (inRelayPeers, outRelayPeers) = pm.connectedPeers(WakuRelayCodec)
   let maxConnections = pm.switch.connManager.inSema.size
   let totalRelayPeers = inRelayPeers.len + outRelayPeers.len
@@ -749,14 +754,21 @@ proc connectToRelayPeers*(pm: PeerManager) {.async.} =
     min(outsideBackoffPeers.len, pm.outRelayPeersTarget - outRelayPeers.len)
     ## number of outstanding connection requests
 
+  notice "connectToRelayPeers",
+    numPendingConnReqs = numPendingConnReqs,
+    outRelayPeersTarget = pm.outRelayPeersTarget
+
   while numPendingConnReqs > 0 and outRelayPeers.len < pm.outRelayPeersTarget:
     let numPeersToConnect = min(numPendingConnReqs, MaxParallelDials)
+    notice "connectToRelayPeers connecting to peers",
+      numPeersToConnect = numPeersToConnect
     await pm.connectToNodes(outsideBackoffPeers[index ..< (index + numPeersToConnect)])
 
     (inRelayPeers, outRelayPeers) = pm.connectedPeers(WakuRelayCodec)
 
     index += numPeersToConnect
     numPendingConnReqs -= numPeersToConnect
+  notice "Exiting connectToRelayPeers"
 
 proc manageRelayPeers*(pm: PeerManager) {.async.} =
   if pm.wakuMetadata.shards.len == 0:
@@ -953,6 +965,7 @@ proc prunePeerStoreLoop(pm: PeerManager) {.async.} =
   trace "Starting prune peerstore loop"
   while pm.started:
     pm.prunePeerStore()
+    notice "prunePeerStoreLoop sleepAsync 10 minutes"
     await sleepAsync(PrunePeerStoreInterval)
 
 # Ensures a healthy amount of connected relay peers
@@ -963,6 +976,7 @@ proc relayConnectivityLoop*(pm: PeerManager) {.async.} =
       await pm.manageRelayPeers()
     else:
       await pm.connectToRelayPeers()
+    notice "relayConnectivityLoop sleepAsync 30 seconds"
     await sleepAsync(ConnectivityLoopInterval)
 
 proc logAndMetrics(pm: PeerManager) {.async.} =
