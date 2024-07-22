@@ -13,7 +13,8 @@ import
   ../waku_core,
   ../waku_core/message/digest,
   ./common,
-  ./archive_metrics
+  ./archive_metrics,
+  ./hashes_cache
 
 logScope:
   topics = "waku archive"
@@ -46,6 +47,8 @@ type WakuArchive* = ref object
 
   retentionPolicyHandle: Future[void]
   metricsHandle: Future[void]
+
+  hashesCache: HashesTimestampCache
 
 proc validate*(msg: WakuMessage): Result[void, string] =
   if msg.ephemeral:
@@ -97,6 +100,9 @@ proc handleMessage*(
       contentTopic = msg.contentTopic,
       timestamp = msg.timestamp,
       error = error
+    return
+
+  self.hashesCache.addHashTimestamp(msgHash, msg.timestamp)
 
   trace "message archived",
     hash_hash = msgHash.to0xHex(),
@@ -106,6 +112,18 @@ proc handleMessage*(
 
   let insertDuration = getTime().toUnixFloat() - insertStartTime
   waku_archive_insert_duration_seconds.observe(insertDuration)
+
+proc isQueryFilteringOnlyByHashes(query: ArchiveQuery): bool =
+  ## Returns true if the given query is only interested in hashes, i.e., only with the filter
+  ## WHERE messagehashes IN (...)
+  ##
+  ## That kind of queries consume a lot of time. If we detect that type of queries, then
+  ## we will try to filter a bit more, by timestamp, and we will get that info from an in-memory
+  ## HashesTimestampCache.
+
+  return
+    query.cursor.isNone() and query.pubsubTopic.isNone() and query.contentTopics.len == 0 and
+    query.startTime.isNone() and query.endTime.isNone() and query.hashes.len > 0
 
 proc findMessages*(
     self: WakuArchive, query: ArchiveQuery
@@ -130,16 +148,27 @@ proc findMessages*(
 
   let isAscendingOrder = query.direction.into()
 
-  let queryStartTime = getTime().toUnixFloat()
+  var startTime = query.startTime
+  var endTime = query.endTime
 
+  let queryOnlyByHashes = query.isQueryFilteringOnlyByHashes()
+  if queryOnlyByHashes:
+    trace "querying by hashes only"
+    let timeSpan = self.hashesCache.getTimeSpanForHashes(query.hashes)
+    if timeSpan.isSome():
+      startTime = some(timeSpan.get().startTime)
+      endTime = some(timeSpan.get().endTime)
+      trace "setting time range from hashes-cache", startTime, endTime
+
+  let queryStartTime = getTime().toUnixFloat()
   let rows = (
     await self.driver.getMessages(
       includeData = query.includeData,
       contentTopics = query.contentTopics,
       pubsubTopic = query.pubsubTopic,
       cursor = query.cursor,
-      startTime = query.startTime,
-      endTime = query.endTime,
+      startTime = startTime,
+      endTime = endTime,
       hashes = query.hashes,
       maxPageSize = maxPageSize + 1,
       ascendingOrder = isAscendingOrder,
@@ -212,6 +241,7 @@ proc start*(self: WakuArchive) =
     self.retentionPolicyHandle = self.periodicRetentionPolicy()
 
   self.metricsHandle = self.periodicMetricReport()
+  self.hashesCache.startCacheCleaner()
 
 proc stopWait*(self: WakuArchive) {.async.} =
   var futures: seq[Future[void]]
@@ -223,3 +253,4 @@ proc stopWait*(self: WakuArchive) {.async.} =
     futures.add(self.metricsHandle.cancelAndWait())
 
   await noCancel(allFutures(futures))
+  await self.hashesCache.stopCacheCleaner()
