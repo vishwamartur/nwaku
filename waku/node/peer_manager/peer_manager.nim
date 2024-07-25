@@ -594,7 +594,7 @@ proc reconnectPeers*(
         peerId = peerInfo.peerId, backoffTime = backoffTime
       # We disconnected recently and still need to wait for a backoff period before connecting
 
-      notice "reconnectPeers sleepAsync backoffTime", backoffTime = backoffTime
+      echo "reconnectPeers sleepAsync backoffTime: ", backoffTime
       await sleepAsync(backoffTime)
 
     discard await pm.connectRelay(peerInfo)
@@ -682,7 +682,7 @@ proc connectToNodes*(
   #
   # This issue was known to Dmitiry on nim-libp2p and may be resolvable
   # later.
-  notice "connectToNodes sleepAsync 5 seconds"
+  echo "connectToNodes sleepAsync 5 seconds"
   await sleepAsync(chronos.seconds(5))
 
 proc connectedPeers*(pm: PeerManager, protocol: string): (seq[PeerId], seq[PeerId]) =
@@ -760,8 +760,8 @@ proc connectToRelayPeers*(pm: PeerManager) {.async.} =
 
   while numPendingConnReqs > 0 and outRelayPeers.len < pm.outRelayPeersTarget:
     let numPeersToConnect = min(numPendingConnReqs, MaxParallelDials)
-    notice "connectToRelayPeers connecting to peers",
-      numPeersToConnect = numPeersToConnect
+    echo "connectToRelayPeers connecting to peers numPeersToConnect: ",
+      numPeersToConnect
     await pm.connectToNodes(outsideBackoffPeers[index ..< (index + numPeersToConnect)])
 
     (inRelayPeers, outRelayPeers) = pm.connectedPeers(WakuRelayCodec)

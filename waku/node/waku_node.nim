@@ -1198,7 +1198,7 @@ proc keepaliveLoop(node: WakuNode, keepalive: chronos.Duration) {.async.} =
       except CatchableError as exc:
         waku_node_errors.inc(labelValues = ["keep_alive_failure"])
 
-    trace "keepaliveLoop sleepAsync keepalive", keepalive = keepalive
+    echo "keepaliveLoop sleepAsync keepalive: ", keepalive
     await sleepAsync(keepalive)
 
 proc startKeepalive*(node: WakuNode) =
