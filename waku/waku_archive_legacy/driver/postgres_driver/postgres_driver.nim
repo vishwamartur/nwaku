@@ -33,6 +33,10 @@ const InsertRowStmtDefinition = # TODO: get the sql queries from a file
   """INSERT INTO messages (id, messageHash, contentTopic, payload, pubsubTopic,
   version, timestamp, meta) VALUES ($1, $2, $3, $4, $5, $6, $7, CASE WHEN $8 = '' THEN NULL ELSE $8 END) ON CONFLICT DO NOTHING;"""
 
+const InsertRowInMessagesLookupStmtName = "InsertRowMessagesLookup"
+const InsertRowInMessagesLookupStmtDefinition =
+  """INSERT INTO messages_lookup (messageHash, timestamp) VALUES ($1, $2) ON CONFLICT DO NOTHING;"""
+
 const SelectNoCursorAscStmtName = "SelectWithoutCursorAsc"
 const SelectNoCursorAscStmtDef =
   """SELECT contentTopic, payload, pubsubTopic, version, timestamp, id, messageHash, meta FROM messages
@@ -228,27 +232,43 @@ method put*(
 
   trace "put PostgresDriver", timestamp = timestamp
 
+  (
+    await s.writeConnPool.runStmt(
+      InsertRowStmtName,
+      InsertRowStmtDefinition,
+      @[
+        digest, messageHash, contentTopic, payload, pubsubTopic, version, timestamp,
+        meta,
+      ],
+      @[
+        int32(digest.len),
+        int32(messageHash.len),
+        int32(contentTopic.len),
+        int32(payload.len),
+        int32(pubsubTopic.len),
+        int32(version.len),
+        int32(timestamp.len),
+        int32(meta.len),
+      ],
+      @[int32(0), int32(0), int32(0), int32(0), int32(0), int32(0), int32(0), int32(0)],
+    )
+  ).isOkOr:
+    return err("could not put msg in messages table: " & $error)
+
+  ## Now add the row to messages_lookup
   return await s.writeConnPool.runStmt(
-    InsertRowStmtName,
-    InsertRowStmtDefinition,
-    @[digest, messageHash, contentTopic, payload, pubsubTopic, version, timestamp, meta],
-    @[
-      int32(digest.len),
-      int32(messageHash.len),
-      int32(contentTopic.len),
-      int32(payload.len),
-      int32(pubsubTopic.len),
-      int32(version.len),
-      int32(timestamp.len),
-      int32(meta.len),
-    ],
-    @[int32(0), int32(0), int32(0), int32(0), int32(0), int32(0), int32(0), int32(0)],
+    InsertRowInMessagesLookupStmtName,
+    InsertRowInMessagesLookupStmtDefinition,
+    @[messageHash, timestamp],
+    @[int32(messageHash.len), int32(timestamp.len)],
+    @[int32(0), int32(0)],
   )
 
 method getAllMessages*(
     s: PostgresDriver
 ): Future[ArchiveDriverResult[seq[ArchiveRow]]] {.async.} =
   ## Retrieve all messages from the store.
+  debug "beginning of getAllMessages"
 
   var rows: seq[(PubsubTopic, WakuMessage, seq[byte], Timestamp, WakuMessageHash)]
   proc rowCallback(pqResult: ptr PGresult) =
@@ -639,6 +659,50 @@ proc getMessagesV2PreparedStmt(
 
   return ok(rows)
 
+proc getMessagesByMessageHashes(
+    s: PostgresDriver, hashes: string, maxPageSize: uint
+): Future[ArchiveDriverResult[seq[ArchiveRow]]] {.async.} =
+  ## Retrieves information only filtering by a given messageHashes list.
+  ## This proc levarages on the messages_lookup table to have better query performance
+  ## and only query the desired partitions in the partitioned messages table
+  debug "beginning of getMessagesByMessageHashes"
+  var query =
+    fmt"""
+  WITH min_timestamp AS (
+    SELECT MIN(timestamp) AS min_ts
+    FROM messages_lookup
+    WHERE messagehash IN (
+      {hashes}
+    )
+  )
+  SELECT contentTopic, payload, pubsubTopic, version, m.timestamp, id, m.messageHash, meta
+  FROM messages m
+  INNER JOIN
+    messages_lookup l
+  ON
+    m.timestamp = l.timestamp
+    AND m.messagehash = l.messagehash
+  WHERE
+    l.timestamp >= (SELECT min_ts FROM min_timestamp)
+    AND l.messagehash IN (
+      {hashes}
+    )
+  ORDER BY
+    m.timestamp DESC,
+    m.messagehash DESC
+  LIMIT {maxPageSize};
+  """
+
+  var rows: seq[(PubsubTopic, WakuMessage, seq[byte], Timestamp, WakuMessageHash)]
+  proc rowCallback(pqResult: ptr PGresult) =
+    rowCallbackImpl(pqResult, rows)
+
+  (await s.readConnPool.pgQuery(query = query, rowCallback = rowCallback)).isOkOr:
+    return err("failed to run query: " & $error)
+
+  debug "end of getMessagesByMessageHashes"
+  return ok(rows)
+
 method getMessages*(
     s: PostgresDriver,
     includeData = true,
@@ -651,7 +715,14 @@ method getMessages*(
     maxPageSize = DefaultPageSize,
     ascendingOrder = true,
 ): Future[ArchiveDriverResult[seq[ArchiveRow]]] {.async.} =
+  debug "beginning of getMessages"
+
   let hexHashes = hashes.mapIt(toHex(it))
+
+  if cursor.isNone() and pubsubTopic.isNone() and contentTopicSeq.len == 0 and
+      startTime.isNone() and endTime.isNone() and hexHashes.len > 0:
+    return
+      await s.getMessagesByMessageHashes("'" & hexHashes.join("','") & "'", maxPageSize)
 
   if contentTopicSeq.len == 1 and hexHashes.len == 1 and pubsubTopic.isSome() and
       startTime.isSome() and endTime.isSome():
@@ -791,7 +862,8 @@ method getNewestMessageTimestamp*(
 method deleteOldestMessagesNotWithinLimit*(
     s: PostgresDriver, limit: int
 ): Future[ArchiveDriverResult[void]] {.async.} =
-  let execRes = await s.writeConnPool.pgQuery(
+  debug "beginning of deleteOldestMessagesNotWithinLimit"
+  var execRes = await s.writeConnPool.pgQuery(
     """DELETE FROM messages WHERE id NOT IN
                           (
                         SELECT id FROM messages ORDER BY timestamp DESC LIMIT ?
@@ -801,6 +873,19 @@ method deleteOldestMessagesNotWithinLimit*(
   if execRes.isErr():
     return err("error in deleteOldestMessagesNotWithinLimit: " & execRes.error)
 
+  execRes = await s.writeConnPool.pgQuery(
+    """DELETE FROM messages_lookup WHERE messageHash NOT IN
+                          (
+                        SELECT messageHash FROM messages ORDER BY timestamp DESC LIMIT ?
+                          );""",
+    @[$limit],
+  )
+  if execRes.isErr():
+    return err(
+      "error in deleteOldestMessagesNotWithinLimit messages_lookup: " & execRes.error
+    )
+
+  debug "end of deleteOldestMessagesNotWithinLimit"
   return ok()
 
 method close*(s: PostgresDriver): Future[ArchiveDriverResult[void]] {.async.} =
@@ -991,8 +1076,9 @@ proc getTableSize*(
   return ok(tableSize)
 
 proc removePartition(
-    self: PostgresDriver, partitionName: string
+    self: PostgresDriver, partition: Partition
 ): Future[ArchiveDriverResult[void]] {.async.} =
+  let partitionName = partition.getName()
   var partSize = ""
   let partSizeRes = await self.getTableSize(partitionName)
   if partSizeRes.isOk():
@@ -1014,6 +1100,14 @@ proc removePartition(
   debug "removed partition", partition_name = partitionName, partition_size = partSize
   self.partitionMngr.removeOldestPartitionName()
 
+  ## Now delete rows from the messages_lookup table
+  let timeRange = partition.getTimeRange()
+  let deleteRowsQuery =
+    "DELETE FROM messages_lookup WHERE timestamp >= " & $timeRange.beginning &
+    " AND timestamp < " & $timeRange.`end`
+  (await self.performWriteQuery(deleteRowsQuery)).isOkOr:
+    return err(fmt"error in {deleteRowsQuery}: " & $error)
+
   return ok()
 
 proc removePartitionsOlderThan(
@@ -1027,7 +1121,7 @@ proc removePartitionsOlderThan(
     return err("could not get oldest partition in removePartitionOlderThan: " & $error)
 
   while not oldestPartition.containsMoment(tsInSec):
-    (await self.removePartition(oldestPartition.getName())).isOkOr:
+    (await self.removePartition(oldestPartition)).isOkOr:
       return err("issue in removePartitionsOlderThan: " & $error)
 
     oldestPartition = self.partitionMngr.getOldestPartition().valueOr:
@@ -1056,7 +1150,7 @@ proc removeOldestPartition(
         debug "Skipping to remove the current partition"
         return ok()
 
-  return await self.removePartition(oldestPartition.getName())
+  return await self.removePartition(oldestPartition)
 
 proc containsAnyPartition*(self: PostgresDriver): bool =
   return not self.partitionMngr.isEmpty()
