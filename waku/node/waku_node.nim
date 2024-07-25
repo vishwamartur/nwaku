@@ -701,16 +701,10 @@ proc mountArchive*(
   return ok()
 
 proc mountLegacyArchive*(
-    node: WakuNode,
-    driver: waku_archive_legacy.ArchiveDriver,
-    retentionPolicy = none(waku_archive_legacy.RetentionPolicy),
+    node: WakuNode, driver: waku_archive_legacy.ArchiveDriver
 ): Result[void, string] =
-  node.wakuLegacyArchive = waku_archive_legacy.WakuArchive.new(
-    driver = driver, retentionPolicy = retentionPolicy
-  ).valueOr:
+  node.wakuLegacyArchive = waku_archive_legacy.WakuArchive.new(driver = driver).valueOr:
     return err("error in mountLegacyArchive: " & error)
-
-  node.wakuLegacyArchive.start()
 
   return ok()
 
@@ -1089,6 +1083,8 @@ proc mountRlnRelay*(
     raise
       newException(CatchableError, "failed to mount WakuRlnRelay: " & rlnRelayRes.error)
   let rlnRelay = rlnRelayRes.get()
+  if (rlnConf.rlnRelayUserMessageLimit > rlnRelay.groupManager.rlnRelayMaxMessageLimit):
+    error "rln-relay-user-message-limit can't be exceed then MAX_MESSAGE_LIMIT set by rln contract"
   let validator = generateRlnValidator(rlnRelay, spamHandler)
 
   # register rln validator as default validator

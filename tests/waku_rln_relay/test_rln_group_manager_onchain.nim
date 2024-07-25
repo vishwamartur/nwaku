@@ -15,6 +15,9 @@ import
   eth/keys
 import
   waku/[
+    waku_node,
+    node/waku_node,
+    waku_rln_relay,
     waku_rln_relay/protocol_types,
     waku_rln_relay/constants,
     waku_rln_relay/contract,
@@ -22,7 +25,7 @@ import
     waku_rln_relay/conversion_utils,
     waku_rln_relay/group_manager/on_chain/group_manager,
   ],
-  ../testlib/common,
+  ../testlib/[wakucore, wakunode, common],
   ./utils
 
 const CHAIN_ID = 1337
@@ -212,8 +215,9 @@ proc setup(): Future[OnchainGroupManager] {.async.} =
     chainId: CHAIN_ID,
     ethPrivateKey: pk,
     rlnInstance: rlnInstance,
-    onFatalErrorAction: proc (errStr: string) =
+    onFatalErrorAction: proc(errStr: string) =
       raiseAssert errStr
+    ,
   )
 
   return manager
@@ -232,6 +236,7 @@ suite "Onchain group manager":
       manager.wakuRlnContract.isSome()
       manager.initialized
       manager.rlnContractDeployedBlockNumber > 0
+      manager.rlnRelayMaxMessageLimit == 100
 
     await manager.stop()
 
@@ -273,8 +278,9 @@ suite "Onchain group manager":
       ethClientUrl: EthClient,
       ethContractAddress: $differentContractAddress,
       rlnInstance: manager.rlnInstance,
-      onFatalErrorAction: proc (errStr: string) =
+      onFatalErrorAction: proc(errStr: string) =
         raiseAssert errStr
+      ,
     )
     (await manager2.init()).isErrOr:
       raiseAssert "Expected error when contract address doesn't match"
@@ -775,6 +781,26 @@ suite "Onchain group manager":
       isReady == true
 
     await manager.stop()
+
+  asyncTest "rln-relay-max-message-limit testing":
+    let
+      nodekey = generateSecp256k1Key()
+      node = newTestWakuNode(nodekey, parseIpAddress("0.0.0.0"), Port(0))
+
+    await node.mountRelay(@[DefaultPubsubTopic])
+
+    let wakuRlnConfig = WakuRlnConfig(
+      rlnRelayDynamic: false,
+      rlnRelayCredIndex: some(0.uint),
+      rlnRelayUserMessageLimit: 111,
+      rlnRelayTreepath: genTempPath("rln_tree", "wakunode_0"),
+    )
+
+    try:
+      await node.mountRlnRelay(wakuRlnConfig)
+    except CatchableError as e:
+      check e.msg ==
+        "failed to mount WakuRlnRelay: rln-relay-user-message-limit can't be exceed then MAX_MESSAGE_LIMIT set by rln contract"
 
   ################################
   ## Terminating/removing Anvil
