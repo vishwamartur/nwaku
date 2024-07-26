@@ -23,7 +23,7 @@ const
   MaxPageSize*: uint = 100
 
   # Retention policy
-  WakuArchiveDefaultRetentionPolicyInterval* = chronos.minutes(30)
+  WakuArchiveDefaultRetentionPolicyInterval* = chronos.seconds(5)
 
   # Metrics reporting
   WakuArchiveDefaultMetricsReportInterval* = chronos.minutes(30)
