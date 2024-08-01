@@ -134,6 +134,10 @@ ifeq ($(DEBUG_DISCV5), 1)
 NIM_PARAMS := $(NIM_PARAMS) -d:debugDiscv5
 endif
 
+ifeq ($(DEBUG_CHRONOS), 1)
+NIM_PARAMS := $(NIM_PARAMS) -d:chronosFutureTracking
+endif
+
 clean: | clean-libbacktrace
 
 

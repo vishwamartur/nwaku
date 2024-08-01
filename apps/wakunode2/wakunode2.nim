@@ -131,4 +131,13 @@ when isMainModule:
 
     info "Node setup complete"
 
+    when defined(chronosFutureTracking):
+      proc dumpChronosInfo() {.async.} =
+        while true:
+          info "----------- Dumping Chronos Info -----------"
+          echo dumpPendingFutures()
+          await sleepAsync(10.seconds)
+
+      asyncSpawn dumpChronosInfo()
+
     runForever()
