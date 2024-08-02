@@ -135,7 +135,7 @@ when isMainModule:
       proc dumpChronosInfo() {.async.} =
         while true:
           info "----------- Dumping Chronos Info -----------"
-          echo dumpPendingFutures()
+          echo dumpPendingFutures(OnlyPending)
           await sleepAsync(10.seconds)
 
       asyncSpawn dumpChronosInfo()
