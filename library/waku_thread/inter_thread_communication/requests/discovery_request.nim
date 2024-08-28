@@ -73,6 +73,12 @@ proc createPeerExchangeRequest*(
 ): ptr type T =
   return T.createShared(PEER_EXCHANGE, "", "", 0, "", numPeers)
 
+proc createDiscV5StartRequest*(T: type DiscoveryRequest): ptr type T =
+  return T.createShared(START_DISCV5, "", "", 0, "")
+
+proc createDiscV5StopRequest*(T: type DiscoveryRequest): ptr type T =
+  return T.createShared(STOP_DISCV5, "", "", 0, "")
+
 proc destroyShared(self: ptr DiscoveryRequest) =
   deallocShared(self[].enrTreeUrl)
   deallocShared(self[].nameDnsServer)
