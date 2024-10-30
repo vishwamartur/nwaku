@@ -32,16 +32,23 @@ build_component() {
     local dir="$1"
     local command="$2"
     local name="$3"
-    
+
     echo "Building $name"
     if [ -d "$dir" ]; then
         change_directory "$dir"
         execute_command "$command"
+        # Execute command but ignore errors containing 'upx'
+        if ! eval "$command" 2>&1 | tee /tmp/build.log; then
+            if grep -q "upx" /tmp/build.log; then
+                echo "⚠ Warning: UPX compression skipped (not installed)"
+            else
+                echo "✗ Command failed"
+                exit 1
+            fi
+        fi
         change_directory - > /dev/null
     else
         echo "✗ $name directory not found: $dir"
-        exit 1
-    fi
 }
 
 echo "1. Updating submodules"
