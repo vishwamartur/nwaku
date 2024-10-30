@@ -49,6 +49,8 @@ build_component() {
         change_directory - > /dev/null
     else
         echo "✗ $name directory not found: $dir"
+        exit 1
+    fi
 }
 
 echo "1. Updating submodules"
