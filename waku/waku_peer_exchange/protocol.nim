@@ -68,6 +68,7 @@ proc request*(
     await conn.writeLP(rpc.encode().buffer)
     buffer = await conn.readLp(DefaultMaxRpcSize.int)
   except CatchableError as exc:
+    error "exception when handling peer exchange request", error = getCurrentExceptionMsg()
     waku_px_errors.inc(labelValues = [exc.msg])
     callResult = (
       status_code: PeerExchangeResponseStatusCode.SERVICE_UNAVAILABLE,
@@ -78,10 +79,12 @@ proc request*(
     await conn.closeWithEof()
 
   if callResult.status_code != PeerExchangeResponseStatusCode.SUCCESS:
+    error "peer exchange request failed", status_code = callResult.status_code
     return err(callResult)
 
   let decodedBuff = PeerExchangeRpc.decode(buffer)
   if decodedBuff.isErr():
+    error "peer exchange request error decoding buffer", error = $decodedBuff.error
     return err(
       (
         status_code: PeerExchangeResponseStatusCode.BAD_RESPONSE,
@@ -89,6 +92,7 @@ proc request*(
       )
     )
   if decodedBuff.get().response.status_code != PeerExchangeResponseStatusCode.SUCCESS:
+    error "peer exchange request error", status_code = decodedBuff.get().response.status_code
     return err(
       (
         status_code: decodedBuff.get().response.status_code,
@@ -104,6 +108,7 @@ proc request*(
   try:
     let connOpt = await wpx.peerManager.dialPeer(peer, WakuPeerExchangeCodec)
     if connOpt.isNone():
+      error "error in request connOpt is none"
       return err(
         (
           status_code: PeerExchangeResponseStatusCode.DIAL_FAILURE,
@@ -112,6 +117,7 @@ proc request*(
       )
     return await wpx.request(numPeers, connOpt.get())
   except CatchableError:
+    error "peer exchange request exception", error = getCurrentExceptionMsg()
     return err(
       (
         status_code: PeerExchangeResponseStatusCode.BAD_RESPONSE,
@@ -125,6 +131,7 @@ proc request*(
   let peerOpt = wpx.peerManager.selectPeer(WakuPeerExchangeCodec)
   if peerOpt.isNone():
     waku_px_errors.inc(labelValues = [peerNotFoundFailure])
+    error "peer exchange error peerOpt is none"
     return err(
       (
         status_code: PeerExchangeResponseStatusCode.SERVICE_UNAVAILABLE,
@@ -141,6 +148,7 @@ proc respond(
   try:
     await conn.writeLP(rpc.encode().buffer)
   except CatchableError as exc:
+    error "exception when trying to send a respond", error = getCurrentExceptionMsg()
     waku_px_errors.inc(labelValues = [exc.msg])
     return err(
       (
@@ -162,6 +170,7 @@ proc respondError(
   try:
     await conn.writeLP(rpc.encode().buffer)
   except CatchableError as exc:
+    error "exception when trying to send a respond", error = getCurrentExceptionMsg()
     waku_px_errors.inc(labelValues = [exc.msg])
     return err(
       (
@@ -189,15 +198,15 @@ proc getEnrsFromCache(
 
 proc poolFilter*(cluster: Option[uint16], peer: RemotePeerInfo): bool =
   if peer.origin != Discv5:
-    trace "peer not from discv5", peer = $peer, origin = $peer.origin
+    debug "peer not from discv5", peer = $peer, origin = $peer.origin
     return false
 
   if peer.enr.isNone():
-    trace "peer has no ENR", peer = $peer
+    debug "peer has no ENR", peer = $peer
     return false
 
   if cluster.isSome() and peer.enr.get().isClusterMismatched(cluster.get()):
-    trace "peer has mismatching cluster", peer = $peer
+    debug "peer has mismatching cluster", peer = $peer
     return false
 
   return true
@@ -214,6 +223,7 @@ proc populateEnrCache(wpx: WakuPeerExchange) =
 
   # swap cache for new
   wpx.enrCache = newEnrCache
+  debug "ENR cache populated"
 
 proc updatePxEnrCache(wpx: WakuPeerExchange) {.async.} =
   # try more aggressively to fill the cache at startup
@@ -233,6 +243,7 @@ proc initProtocolHandler(wpx: WakuPeerExchange) =
       try:
         buffer = await conn.readLp(DefaultMaxRpcSize.int)
       except CatchableError as exc:
+        error "exception when handling px request", error = getCurrentExceptionMsg()
         waku_px_errors.inc(labelValues = [exc.msg])
 
         (
@@ -256,8 +267,8 @@ proc initProtocolHandler(wpx: WakuPeerExchange) =
           error "Failed to respond with BAD_REQUEST:", error = $error
         return
 
-      trace "peer exchange request received"
       let enrs = wpx.getEnrsFromCache(decBuf.get().request.numPeers)
+      debug "peer exchange request received", enrs = $enrs
       (await wpx.respond(enrs, conn)).isErrOr:
         waku_px_peers_sent.inc(enrs.len().int64())
     do:
