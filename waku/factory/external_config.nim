@@ -210,6 +210,10 @@ type WakuNodeConf* = object
       desc: "Maximum allowed number of relay peers.", name: "max-relay-peers"
     .}: Option[int]
 
+    maxServicePeers* {.
+      desc: "Maximum allowed number of service peers.", name: "max-service-peers"
+    .}: Option[int]
+
     peerStoreCapacity* {.
       desc: "Maximum stored peers in the peerstore.", name: "peer-store-capacity"
     .}: Option[int]

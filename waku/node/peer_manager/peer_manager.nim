@@ -81,6 +81,7 @@ type PeerManager* = ref object of RootObj
   storage*: PeerStorage
   serviceSlots*: Table[string, RemotePeerInfo]
   maxRelayPeers*: int
+  maxServicePeers*: int
   outRelayPeersTarget: int
   inRelayPeersTarget: int
   ipTable*: Table[string, seq[PeerId]]
@@ -959,6 +960,7 @@ proc new*(
     switch: Switch,
     wakuMetadata: WakuMetadata = nil,
     maxRelayPeers: Option[int] = none(int),
+    maxServicePeers: Option[int] = none(int),
     storage: PeerStorage = nil,
     initialBackoffInSec = InitialBackoffInSec,
     backoffFactor = BackoffFactor,
@@ -993,6 +995,20 @@ proc new*(
     # Leave by default 20% of connections for service peers
     maxRelayPeersValue = maxConnections - (maxConnections div 5)
 
+  var maxServicePeersValue = 0
+  var d_low = 4
+
+  if maxServicePeers.isSome():
+    if maxServicePeers.get() > maxConnections - d_low:
+      error "Max number of service peers can't be greater than the max amount of connections minus d_low",
+        maxConnections = maxConnections, maxServicePeers = maxServicePeers.get()
+      raise newException(
+        Defect, "Max number of service peers can't be greater than the max amount of connections minus d_low"
+      )
+    maxServicePeersValue = min(maxServicePeers.get(), maxConnections - d_low)
+  else:
+    maxServicePeersValue = max(maxConnections - maxRelayPeersValue, maxConnections div 5)
+
   # attempt to calculate max backoff to prevent potential overflows or unreasonably high values
   let backoff = calculateBackoff(initialBackoffInSec, backoffFactor, maxFailedAttempts)
   if backoff.weeks() > 1:
@@ -1011,6 +1027,7 @@ proc new*(
     outRelayPeersTarget: outRelayPeersTarget,
     inRelayPeersTarget: maxRelayPeersValue - outRelayPeersTarget,
     maxRelayPeers: maxRelayPeersValue,
+    maxServicePeers: maxServicePeersValue,
     maxFailedAttempts: maxFailedAttempts,
     colocationLimit: colocationLimit,
     shardedPeerManagement: shardedPeerManagement,
