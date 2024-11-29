@@ -194,12 +194,14 @@ proc pushToPeers(
     error "duplicate message found, not-pushing message to subscribed peers",
       pubsubTopic = messagePush.pubsubTopic,
       contentTopic = messagePush.wakuMessage.contentTopic,
+      payload = shortLog(messagePush.wakuMessage.payload),
       target_peer_ids = targetPeerIds,
       msg_hash = msgHash
   else:
     notice "pushing message to subscribed peers",
       pubsubTopic = messagePush.pubsubTopic,
       contentTopic = messagePush.wakuMessage.contentTopic,
+      payload = shortLog(messagePush.wakuMessage.payload),
       target_peer_ids = targetPeerIds,
       msg_hash = msgHash
 
