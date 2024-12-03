@@ -176,6 +176,11 @@ proc pushToPeer(wf: WakuFilter, peer: PeerId, buffer: seq[byte]) {.async.} =
     error "no connection to peer", peerId = shortLog(peer)
     return
 
+  defer:
+    ## TODO we need to perform a better resource management and avoid
+    ## creating a new stream and closing it for every single msg
+    await conn.get().close()
+
   await conn.get().writeLp(buffer)
   debug "published successful", peerId = shortLog(peer)
   waku_service_network_bytes.inc(
