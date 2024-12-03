@@ -25,9 +25,9 @@ type WakuFilter* = ref object of LPProtocol
   subscriptions*: FilterSubscriptions
     # a mapping of peer ids to a sequence of filter criteria
   peerManager: PeerManager
-  maintenanceTask: TimerCallback
   messageCache: TimedCache[string]
   peerRequestRateLimiter*: PerPeerRateLimiter
+  subscriptionsManagerFut: Future[void]
 
 proc pingSubscriber(wf: WakuFilter, peerId: PeerID): FilterSubscribeResult =
   debug "pinging subscriber", peerId = peerId
@@ -220,7 +220,7 @@ proc maintainSubscriptions*(wf: WakuFilter) =
   var peersToRemove: seq[PeerId]
   for peerId in wf.subscriptions.peersSubscribed.keys:
     if not wf.peerManager.peerStore.hasPeer(peerId, WakuFilterPushCodec):
-      debug "peer has been removed from peer store, removing subscription",
+      debug "peer has been removed from peer store, we will remove subscription",
         peerId = peerId
       peersToRemove.add(peerId)
 
@@ -343,28 +343,19 @@ proc new*(
   setServiceLimitMetric(WakuFilterSubscribeCodec, rateLimitSetting)
   return wf
 
-const MaintainSubscriptionsInterval* = 1.minutes
-
-proc startMaintainingSubscriptions(wf: WakuFilter, interval: Duration) =
+proc periodicSubscriptionsMaintenance(wf: WakuFilter) {.async.} =
+  const MaintainSubscriptionsInterval = 1.minutes
   debug "starting to maintain subscriptions"
-  var maintainSubs: CallbackFunc
-  maintainSubs = CallbackFunc(
-    proc(udata: pointer) {.gcsafe.} =
-      maintainSubscriptions(wf)
-      wf.maintenanceTask = setTimer(Moment.fromNow(interval), maintainSubs)
-  )
-
-  wf.maintenanceTask = setTimer(Moment.fromNow(interval), maintainSubs)
+  while true:
+    wf.maintainSubscriptions()
+    await sleepAsync(MaintainSubscriptionsInterval)
 
 method start*(wf: WakuFilter) {.async, base.} =
   debug "starting filter protocol"
-  wf.startMaintainingSubscriptions(MaintainSubscriptionsInterval)
-
   await procCall LPProtocol(wf).start()
+  wf.subscriptionsManagerFut = wf.periodicSubscriptionsMaintenance()
 
 method stop*(wf: WakuFilter) {.async, base.} =
   debug "stopping filter protocol"
-  if not wf.maintenanceTask.isNil():
-    wf.maintenanceTask.clearTimer()
-
+  await wf.subscriptionsManagerFut.cancelAndWait()
   await procCall LPProtocol(wf).stop()
