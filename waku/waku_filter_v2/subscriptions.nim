@@ -1,6 +1,12 @@
 {.push raises: [].}
 
-import std/[sets, tables], chronicles, chronos, libp2p/peerid, stew/shims/sets
+import
+  std/[sets, tables, sequtils],
+  chronicles,
+  chronos,
+  libp2p/peerid,
+  libp2p/stream/connection,
+  stew/shims/sets
 import ../waku_core, ../utils/tableutils, ../common/rate_limit/setting
 
 logScope:
@@ -83,14 +89,30 @@ proc findSubscribedPeers*(
   return foundPeers
 
 proc removePeer*(s: var FilterSubscriptions, peerId: PeerID) =
+  debug "removePeer",
+    currentPeerIds = toSeq(s.peersSubscribed.keys).mapIt(shortLog(it)), peerId = peerId
+
   ## Remove all subscriptions for a given peer
   s.peersSubscribed.del(peerId)
 
+  debug "removePeer after deletion",
+    currentPeerIds = toSeq(s.peersSubscribed.keys).mapIt(shortLog(it)), peerId = peerId
+
 proc removePeers*(s: var FilterSubscriptions, peerIds: seq[PeerID]) =
+  debug "removePeers",
+    currentPeerIds = toSeq(s.peersSubscribed.keys).mapIt(shortLog(it)),
+    peerIds = peerIds.mapIt(shortLog(it))
+
   ## Remove all subscriptions for a given list of peers
   s.peersSubscribed.keepItIf(key notin peerIds)
 
+  debug "removePeers after deletion",
+    currentPeerIds = toSeq(s.peersSubscribed.keys).mapIt(shortLog(it)),
+    peerIds = peerIds.mapIt(shortLog(it))
+
 proc cleanUp*(fs: var FilterSubscriptions) =
+  debug "cleanUp", currentPeerIds = toSeq(fs.peersSubscribed.keys).mapIt(shortLog(it))
+
   ## Remove all subscriptions for peers that have not been seen for a while
   let now = Moment.now()
   fs.peersSubscribed.keepItIf(now - val.lastSeen <= fs.subscriptionTimeout)
@@ -100,6 +122,9 @@ proc cleanUp*(fs: var FilterSubscriptions) =
     subscribedPeers.keepItIf(fs.isSubscribed(it) == true)
 
   fs.subscriptions.keepItIf(val.len > 0)
+
+  debug "after cleanUp",
+    currentPeerIds = toSeq(fs.peersSubscribed.keys).mapIt(shortLog(it))
 
 proc refreshSubscription*(s: var FilterSubscriptions, peerId: PeerID) =
   s.peersSubscribed.withValue(peerId, data):
@@ -120,7 +145,7 @@ proc addSubscription*(
   do:
     ## not yet subscribed
     if cast[uint](s.peersSubscribed.len) >= s.maxPeers:
-      return err("node has reached maximum number of subscriptions")
+      return err("node has reached maximum number of subscriptions: " & $(s.maxPeers))
 
     let newPeerData: PeerData = (lastSeen: Moment.now(), criteriaCount: 0)
     peerData = addr(s.peersSubscribed.mgetOrPut(peerId, newPeerData))
