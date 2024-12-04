@@ -355,12 +355,12 @@ proc periodicSubscriptionsMaintenance(wf: WakuFilter) {.async.} =
     wf.maintainSubscriptions()
     await sleepAsync(MaintainSubscriptionsInterval)
 
-method start*(wf: WakuFilter) {.async, base.} =
+proc start*(wf: WakuFilter) {.async.} =
   debug "starting filter protocol"
   await procCall LPProtocol(wf).start()
   wf.subscriptionsManagerFut = wf.periodicSubscriptionsMaintenance()
 
-method stop*(wf: WakuFilter) {.async, base.} =
+proc stop*(wf: WakuFilter) {.async.} =
   debug "stopping filter protocol"
   await wf.subscriptionsManagerFut.cancelAndWait()
   await procCall LPProtocol(wf).stop()
