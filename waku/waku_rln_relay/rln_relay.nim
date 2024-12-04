@@ -277,7 +277,7 @@ proc validateMessageAndUpdateLog*(
   if proofMetadataRes.isErr():
     return MessageValidationResult.Invalid
 
-  # insert the message to the log (never errors) only if the 
+  # insert the message to the log (never errors) only if the
   # message is valid.
   if isValidMessage == MessageValidationResult.Valid:
     discard rlnPeer.updateLog(msgProof.epoch, proofMetadataRes.get())
@@ -392,6 +392,23 @@ proc generateRlnValidator*(
 
   return validator
 
+proc monitorEpochs(wakuRlnRelay: WakuRLNRelay) {.async.} =
+  var lastEpoch = wakuRlnRelay.calcEpoch(epochTime())
+
+  while true:
+    try:
+      let currentEpoch = wakuRlnRelay.calcEpoch(epochTime())
+
+      if currentEpoch != lastEpoch:
+        waku_rln_proof_remining.set(
+          wakuRlnRelay.groupManager.userMessageLimit.get().float64
+        )
+        lastEpoch = currentEpoch
+
+      await sleepAsync(500)
+    except CatchableError as e:
+      error "Error in epoch monitoring", err = e.msg
+
 proc mount(
     conf: WakuRlnConfig, registrationHandler = none(RegistrationHandler)
 ): Future[RlnRelayResult[WakuRlnRelay]] {.async.} =
@@ -445,16 +462,19 @@ proc mount(
   (await groupManager.startGroupSync()).isOkOr:
     return err("could not start the group sync: " & $error)
 
-  return ok(
-    WakuRLNRelay(
-      groupManager: groupManager,
-      nonceManager:
-        NonceManager.init(conf.rlnRelayUserMessageLimit, conf.rlnEpochSizeSec.float),
-      rlnEpochSizeSec: conf.rlnEpochSizeSec,
-      rlnMaxEpochGap: max(uint64(MaxClockGapSeconds / float64(conf.rlnEpochSizeSec)), 1),
-      onFatalErrorAction: conf.onFatalErrorAction,
-    )
+  wakuRlnRelay = WakuRLNRelay(
+    groupManager: groupManager,
+    nonceManager:
+      NonceManager.init(conf.rlnRelayUserMessageLimit, conf.rlnEpochSizeSec.float),
+    rlnEpochSizeSec: conf.rlnEpochSizeSec,
+    rlnMaxEpochGap: max(uint64(MaxClockGapSeconds / float64(conf.rlnEpochSizeSec)), 1),
+    onFatalErrorAction: conf.onFatalErrorAction,
   )
+
+  # Start epoch monitoring in the background
+  asyncSpawn monitorEpochs(wakuRlnRelay)
+
+  return ok(wakuRlnRelay)
 
 proc isReady*(rlnPeer: WakuRLNRelay): Future[bool] {.async: (raises: [Exception]).} =
   ## returns true if the rln-relay protocol is ready to relay messages
