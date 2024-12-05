@@ -45,7 +45,7 @@ proc subscribe(
     peerId: PeerID,
     pubsubTopic: Option[PubsubTopic],
     contentTopics: seq[ContentTopic],
-): FilterSubscribeResult =
+): Future[FilterSubscribeResult] {.async.} =
   # TODO: check if this condition is valid???
   if pubsubTopic.isNone() or contentTopics.len == 0:
     error "pubsubTopic and contentTopics must be specified", peerId = peerId
@@ -66,7 +66,7 @@ proc subscribe(
   debug "subscribing peer to filter criteria",
     peerId = peerId, filterCriteria = filterCriteria
 
-  wf.subscriptions.addSubscription(peerId, filterCriteria).isOkOr:
+  (await wf.subscriptions.addSubscription(peerId, filterCriteria, wf.peerManager)).isOkOr:
     return err(FilterSubscribeError.serviceUnavailable(error))
 
   debug "correct subscription", peerId = peerId
@@ -108,20 +108,22 @@ proc unsubscribe(
 
   ok()
 
-proc unsubscribeAll(wf: WakuFilter, peerId: PeerID): FilterSubscribeResult =
+proc unsubscribeAll(
+    wf: WakuFilter, peerId: PeerID
+): Future[FilterSubscribeResult] {.async.} =
   if not wf.subscriptions.isSubscribed(peerId):
     debug "unsubscribing peer has no subscriptions", peerId = peerId
     return err(FilterSubscribeError.notFound())
 
   debug "removing peer subscription", peerId = peerId
-  wf.subscriptions.removePeer(peerId)
+  await wf.subscriptions.removePeer(peerId)
   wf.subscriptions.cleanUp()
 
   ok()
 
 proc handleSubscribeRequest*(
     wf: WakuFilter, peerId: PeerId, request: FilterSubscribeRequest
-): FilterSubscribeResponse =
+): Future[FilterSubscribeResponse] {.async.} =
   info "received filter subscribe request", peerId = peerId, request = request
   waku_filter_requests.inc(labelValues = [$request.filterSubscribeType])
 
@@ -135,12 +137,13 @@ proc handleSubscribeRequest*(
     of FilterSubscribeType.SUBSCRIBER_PING:
       subscribeResult = wf.pingSubscriber(peerId)
     of FilterSubscribeType.SUBSCRIBE:
-      subscribeResult = wf.subscribe(peerId, request.pubsubTopic, request.contentTopics)
+      subscribeResult =
+        await wf.subscribe(peerId, request.pubsubTopic, request.contentTopics)
     of FilterSubscribeType.UNSUBSCRIBE:
       subscribeResult =
         wf.unsubscribe(peerId, request.pubsubTopic, request.contentTopics)
     of FilterSubscribeType.UNSUBSCRIBE_ALL:
-      subscribeResult = wf.unsubscribeAll(peerId)
+      subscribeResult = await wf.unsubscribeAll(peerId)
 
   let
     requestDuration = Moment.now() - requestStartTime
@@ -168,20 +171,11 @@ proc pushToPeer(wf: WakuFilter, peer: PeerId, buffer: seq[byte]) {.async.} =
     error "no addresses for peer", peerId = shortLog(peer)
     return
 
-  ## TODO: Check if dial is necessary always???
-  let conn = await wf.peerManager.dialPeer(peer, WakuFilterPushCodec)
-  if conn.isNone():
-    ## We do not remove this peer, but allow the underlying peer manager
-    ## to do so if it is deemed necessary
-    error "no connection to peer", peerId = shortLog(peer)
+  let conn = wf.subscriptions.getConnectionByPeerId(peer).valueOr:
+    error "could not get connection by peer id", error = $error
     return
 
-  defer:
-    ## TODO we need to perform a better resource management and avoid
-    ## creating a new stream and closing it for every single msg
-    await conn.get().close()
-
-  await conn.get().writeLp(buffer)
+  await conn.writeLp(buffer)
   debug "published successful", peerId = shortLog(peer)
   waku_service_network_bytes.inc(
     amount = buffer.len().int64, labelValues = [WakuFilterPushCodec, "out"]
@@ -218,7 +212,7 @@ proc pushToPeers(
       pushFuts.add(pushFut)
     await allFutures(pushFuts)
 
-proc maintainSubscriptions*(wf: WakuFilter) =
+proc maintainSubscriptions*(wf: WakuFilter) {.async.} =
   debug "maintaining subscriptions"
 
   ## Remove subscriptions for peers that have been removed from peer store
@@ -230,7 +224,7 @@ proc maintainSubscriptions*(wf: WakuFilter) =
       peersToRemove.add(peerId)
 
   if peersToRemove.len > 0:
-    wf.subscriptions.removePeers(peersToRemove)
+    await wf.subscriptions.removePeers(peersToRemove)
     wf.peerRequestRateLimiter.unregister(peersToRemove)
 
   wf.subscriptions.cleanUp()
@@ -307,7 +301,7 @@ proc initProtocolHandler(wf: WakuFilter) =
 
       let request = decodeRes.value #TODO: toAPI() split here
 
-      response = wf.handleSubscribeRequest(conn.peerId, request)
+      response = await wf.handleSubscribeRequest(conn.peerId, request)
 
       debug "sending filter subscribe response",
         peer_id = shortLog(conn.peerId), response = response
@@ -352,7 +346,7 @@ proc periodicSubscriptionsMaintenance(wf: WakuFilter) {.async.} =
   const MaintainSubscriptionsInterval = 1.minutes
   debug "starting to maintain subscriptions"
   while true:
-    wf.maintainSubscriptions()
+    await wf.maintainSubscriptions()
     await sleepAsync(MaintainSubscriptionsInterval)
 
 proc start*(wf: WakuFilter) {.async.} =
