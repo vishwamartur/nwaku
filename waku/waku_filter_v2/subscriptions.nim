@@ -40,7 +40,7 @@ type
     maxPeers: uint
     maxCriteriaPerPeer: uint
 
-proc init*(
+proc new*(
     T: type FilterSubscriptions,
     subscriptionTimeout: Duration = DefaultSubscriptionTimeToLiveSec,
     maxFilterPeers: uint32 = MaxFilterPeers,
@@ -171,6 +171,8 @@ proc addSubscription*(
 
     let newPeerData: PeerData =
       (lastSeen: Moment.now(), criteriaCount: 0, connection: connRes.get())
+
+    peerData = addr(s.peersSubscribed.mgetOrPut(peerId, newPeerData))
 
   for filterCriterion in filterCriteria:
     var peersOfSub = addr(s.subscriptions.mgetOrPut(filterCriterion, SubscribedPeers()))

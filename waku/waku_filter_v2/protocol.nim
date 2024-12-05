@@ -330,7 +330,7 @@ proc new*(
     rateLimitSetting: Option[RateLimitSetting] = none[RateLimitSetting](),
 ): T =
   let wf = WakuFilter(
-    subscriptions: FilterSubscriptions.init(
+    subscriptions: FilterSubscriptions.new(
       subscriptionTimeout, maxFilterPeers, maxFilterCriteriaPerPeer
     ),
     peerManager: peerManager,
